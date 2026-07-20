@@ -1,0 +1,16 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/inspectorio-qrm-openapi.json, openapi/inspectorio-rsc-openapi.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: apiKey
+  sources:
+  - openapi/inspectorio-qrm-openapi.json
+  - openapi/inspectorio-rsc-openapi.json
