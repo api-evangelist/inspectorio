@@ -1,0 +1,302 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS MASTER DATA API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: MASTER DATA
+paths:
+  /api/v1/master-data:
+    post:
+      operationId: CreateMasterData
+      summary: Create Master Data
+      description: Create a new master data entry
+      tags:
+      - MASTER DATA
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MasterDataCreateRequest'
+      responses:
+        '201':
+          description: Master data created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MasterDataResponse'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+  /api/v1/master-data/{uuid}:
+    get:
+      operationId: GetMasterDataByUUID
+      summary: Get Master Data by UUID
+      description: Get a specific master data entry by its UUID
+      tags:
+      - MASTER DATA
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        schema:
+          type: string
+        description: UUID of the master data entry
+        example: UID_ABC_123
+      responses:
+        '200':
+          description: Successfully retrieved master data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MasterDataResponse'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+    delete:
+      operationId: DeleteMasterDataByUUID
+      summary: Delete Master Data
+      description: Delete a specific master data entry by its UUID
+      tags:
+      - MASTER DATA
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        schema:
+          type: string
+        description: UUID of the master data entry
+        example: UID_ABC_123
+      responses:
+        '204':
+          description: Master data successfully deleted
+          content:
+            application/json:
+              schema: {}
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+    put:
+      operationId: UpdateMasterDataByUUID
+      summary: Update Master Data
+      description: Update a specific master data entry by its UUID
+      tags:
+      - MASTER DATA
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        schema:
+          type: string
+        description: UUID of the master data entry
+        example: UID_ABC_123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MasterDataCreateRequest'
+      responses:
+        '200':
+          description: Master data updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MasterDataResponse'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+components:
+  schemas:
+    BadRequestResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Bad request error message
+        code:
+          type: integer
+          description: Response status code
+          example: 400
+        status:
+          type: integer
+          description: Response status code
+          example: 400
+    MasterDataResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            updatedDate:
+              type: string
+              format: date-time
+              example: '2025-02-14T06:52:42.073326+00:00'
+            version:
+              type: string
+              example: shipment-booking-v1.0.0
+            uid:
+              type: string
+              example: UID_ABC_123
+            rawData:
+              type: object
+              description: Raw data content in any valid JSON format
+              example:
+                purchaseOrderNumber: PO_123456
+                vendorSubmitDate: '2024-04-09'
+                estimatedCargoReadyDate: '2024-04-11'
+                shipmentLoadType: CY
+                shipmentBookingId: SB_ABC_123
+                shipmentBookingStatus: PackageBookingStatusAcceptedEvent
+                targetOrgId: custom_01
+            createdDate:
+              type: string
+              format: date-time
+              example: '2025-02-14T06:52:42.073319+00:00'
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    MasterDataCreateRequest:
+      type: object
+      required:
+      - uid
+      - rawData
+      properties:
+        uid:
+          type: string
+          description: Unique identifier for the master data entry
+          example: UID_ABC_123
+        rawData:
+          type: object
+          description: Raw data content in any valid JSON format
+          example:
+            purchaseOrderNumber: PO_123456
+            vendorSubmitDate: '2024-04-09'
+            estimatedCargoReadyDate: '2024-04-11'
+            shipmentLoadType: CY
+            shipmentBookingId: SB_ABC_123
+            shipmentBookingStatus: PackageBookingStatusAcceptedEvent
+            targetOrgId: custom_01
+        version:
+          type: string
+          description: Optional version identifier for the data format
+          example: shipment-booking-v1.0.0
+          nullable: true
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object

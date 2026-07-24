@@ -1,0 +1,992 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS METADATA API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: METADATA
+paths:
+  /api/v1/metadata/{namespace}:
+    get:
+      summary: List Metadata
+      description: List Metadata
+      parameters:
+      - description: The limitation of the returned results. Use together with ***offset*** param to paginate through items in the results
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          maximum: 100
+          minimum: 1
+          type: integer
+      - description: End date of the range when metadata was created
+        in: query
+        name: created_to
+        required: false
+        schema:
+          example: '2021-12-31T23:59:59Z'
+          format: date-time
+          type: string
+      - description: End date of the range when meta data was updated
+        in: query
+        name: updated_to
+        required: false
+        schema:
+          example: '2021-12-31T23:59:59Z'
+          format: date-time
+          type: string
+      - description: 'Order of metadata in ascending or descending. Only support date filters: ***created_date***, ***updated_date***'
+        in: query
+        name: order
+        required: false
+        schema:
+          default: created_date:desc
+          example: created_date:desc|asc
+          type: string
+      - description: Start date of the range when meta data was updated
+        in: query
+        name: updated_from
+        required: false
+        schema:
+          example: '2021-12-31T23:59:59Z'
+          format: date-time
+          type: string
+      - description: Retrieve a subset of results starting with the offset value. Use together with ***limit*** param to paginate through items in the results
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          minimum: 0
+          type: integer
+      - description: Start date of the range when metadata was created
+        in: query
+        name: created_from
+        required: false
+        schema:
+          example: '2021-12-31T23:59:59Z'
+          format: date-time
+          type: string
+      - description: The logical type of data that is set by Inspectorio
+        in: path
+        name: namespace
+        required: true
+        schema:
+          enum:
+          - analytics
+          - inspection
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataListResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - METADATA
+    post:
+      summary: Create Metadata
+      description: Create Metadata
+      parameters:
+      - description: The logical type of data that is set by Inspectorio
+        in: path
+        name: namespace
+        required: true
+        schema:
+          enum:
+          - analytics
+          - inspection
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetadataCreate'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrUpdateMetadataResponse'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - METADATA
+  /api/v1/metadata/{namespace}/{uid}:
+    delete:
+      summary: Delete Metadata
+      description: Delete Metadata
+      parameters:
+      - description: The logical type of data that is set by Inspectorio
+        in: path
+        name: namespace
+        required: true
+        schema:
+          enum:
+          - analytics
+          - inspection
+          type: string
+      - description: UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid
+        in: path
+        name: uid
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content:
+            application/json:
+              schema: {}
+          description: No Content
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - METADATA
+    get:
+      summary: Get Metadata
+      description: Get Metadata
+      parameters:
+      - description: The logical type of data that is set by Inspectorio
+        in: path
+        name: namespace
+        required: true
+        schema:
+          enum:
+          - analytics
+          - inspection
+          type: string
+      - description: UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid
+        in: path
+        name: uid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMetadataResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - METADATA
+    put:
+      summary: Update Metadata
+      description: Update Metadata
+      parameters:
+      - description: The logical type of data that is set by Inspectorio
+        in: path
+        name: namespace
+        required: true
+        schema:
+          enum:
+          - analytics
+          - inspection
+          type: string
+      - description: UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid
+        in: path
+        name: uid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetadataUpdate'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrUpdateMetadataResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - METADATA
+components:
+  schemas:
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    ValueTypeDate:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - date
+          type: string
+        value:
+          description: The value
+          example: '2020-09-30'
+          format: date
+          type: string
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeDateTime:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - datetime
+          type: string
+        value:
+          description: The value
+          example: '2020-09-30T09:09:09Z'
+          format: date-time
+          type: string
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeDateArray:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - date-array
+          type: string
+        value:
+          description: The value
+          items:
+            format: date
+            type: string
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeBoolean:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - boolean
+          type: string
+        value:
+          description: The value
+          example: false
+          type: boolean
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeObjectArrayRequest:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - object-array
+          type: string
+        value:
+          description: The value
+          items:
+            items:
+              $ref: '#/components/schemas/MetadataPrimitiveItemRequest'
+            maxItems: 150
+            minItems: 1
+            type: array
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object
+    GetMetadataResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/MetadataResponse'
+          description: Metadata
+      type: object
+    MetadataListResponse:
+      properties:
+        data:
+          description: List of metadata
+          items:
+            $ref: '#/components/schemas/MetadataResponse'
+          type: array
+        limit:
+          maximum: 100
+          minimum: 1
+          type: integer
+        offset:
+          minimum: 0
+          type: integer
+        total:
+          type: integer
+      required:
+      - limit
+      - offset
+      - total
+      type: object
+    ValueTypeObjectArrayResponse:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - object-array
+          type: string
+        value:
+          description: The value
+          items:
+            items:
+              $ref: '#/components/schemas/MetadataPrimitiveItemResponse'
+            maxItems: 150
+            minItems: 1
+            type: array
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    ValueTypeObjectResponse:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - object
+          type: string
+        value:
+          description: The value
+          items:
+            $ref: '#/components/schemas/MetadataPrimitiveItemResponse'
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    MetadataItemResponse:
+      discriminator:
+        mapping:
+          boolean: '#/components/schemas/ValueTypeBoolean'
+          boolean-array: '#/components/schemas/ValueTypeBooleanArray'
+          date: '#/components/schemas/ValueTypeDate'
+          date-array: '#/components/schemas/ValueTypeDateArray'
+          datetime: '#/components/schemas/ValueTypeDateTime'
+          datetime-array: '#/components/schemas/ValueTypeDateTimeArray'
+          file: '#/components/schemas/ValueTypeFileResponse'
+          number: '#/components/schemas/ValueTypeNumber'
+          number-array: '#/components/schemas/ValueTypeNumberArray'
+          object: '#/components/schemas/ValueTypeObjectResponse'
+          object-array: '#/components/schemas/ValueTypeObjectArrayResponse'
+          string: '#/components/schemas/ValueTypeString'
+          string-array: '#/components/schemas/ValueTypeStringArray'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/ValueTypeString'
+      - $ref: '#/components/schemas/ValueTypeNumber'
+      - $ref: '#/components/schemas/ValueTypeBoolean'
+      - $ref: '#/components/schemas/ValueTypeDate'
+      - $ref: '#/components/schemas/ValueTypeDateTime'
+      - $ref: '#/components/schemas/ValueTypeStringArray'
+      - $ref: '#/components/schemas/ValueTypeNumberArray'
+      - $ref: '#/components/schemas/ValueTypeDateArray'
+      - $ref: '#/components/schemas/ValueTypeDateTimeArray'
+      - $ref: '#/components/schemas/ValueTypeBooleanArray'
+      - $ref: '#/components/schemas/ValueTypeFileResponse'
+      - $ref: '#/components/schemas/ValueTypeObjectResponse'
+      - $ref: '#/components/schemas/ValueTypeObjectArrayResponse'
+      properties:
+        type:
+          description: Type of the metadata item
+          type: string
+      type: object
+    ValueTypeStringArray:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - string-array
+          type: string
+        value:
+          description: The value
+          items:
+            type: string
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeFileResponse:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - file
+          type: string
+        value:
+          description: The value
+          example: https://files.stg.inspectorio.com/sight/589/7712/9b02e83f-a28b-40a1-acd0-0863a5489074.jpg
+          type: string
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeNumberArray:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - number-array
+          type: string
+        value:
+          description: The value
+          items:
+            type: number
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    MetadataResponse:
+      properties:
+        createdDate:
+          description: Creation date of the metadata
+          example: '2021-06-03T04:02:57.849000+00:00'
+          format: date-time
+          type: string
+        items:
+          description: Metadata items
+          items:
+            $ref: '#/components/schemas/MetadataItemResponse'
+          maxItems: 150
+          minItems: 1
+          type: array
+        uid:
+          description: Unique identifier of a Metadata.
+          example: 374b5abc9dcb
+          maxLength: 100
+          minLength: 1
+          type: string
+        updatedDate:
+          description: Last updated date of the metadata
+          example: '2021-06-03T04:02:57.849000+00:00'
+          format: date-time
+          type: string
+      required:
+      - items
+      - uid
+      type: object
+    MetadataUpdate:
+      properties:
+        items:
+          description: Metadata items
+          items:
+            $ref: '#/components/schemas/MetadataItemRequest'
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - items
+      type: object
+    ValueTypeDateTimeArray:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - datetime-array
+          type: string
+        value:
+          description: The value
+          items:
+            format: date-time
+            type: string
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    MetadataItemRequest:
+      discriminator:
+        mapping:
+          boolean: '#/components/schemas/ValueTypeBoolean'
+          boolean-array: '#/components/schemas/ValueTypeBooleanArray'
+          date: '#/components/schemas/ValueTypeDate'
+          date-array: '#/components/schemas/ValueTypeDateArray'
+          datetime: '#/components/schemas/ValueTypeDateTime'
+          datetime-array: '#/components/schemas/ValueTypeDateTimeArray'
+          file: '#/components/schemas/ValueTypeFileRequest'
+          number: '#/components/schemas/ValueTypeNumber'
+          number-array: '#/components/schemas/ValueTypeNumberArray'
+          object: '#/components/schemas/ValueTypeObjectRequest'
+          object-array: '#/components/schemas/ValueTypeObjectArrayRequest'
+          string: '#/components/schemas/ValueTypeString'
+          string-array: '#/components/schemas/ValueTypeStringArray'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/ValueTypeString'
+      - $ref: '#/components/schemas/ValueTypeNumber'
+      - $ref: '#/components/schemas/ValueTypeBoolean'
+      - $ref: '#/components/schemas/ValueTypeDate'
+      - $ref: '#/components/schemas/ValueTypeDateTime'
+      - $ref: '#/components/schemas/ValueTypeStringArray'
+      - $ref: '#/components/schemas/ValueTypeNumberArray'
+      - $ref: '#/components/schemas/ValueTypeDateArray'
+      - $ref: '#/components/schemas/ValueTypeDateTimeArray'
+      - $ref: '#/components/schemas/ValueTypeBooleanArray'
+      - $ref: '#/components/schemas/ValueTypeFileRequest'
+      - $ref: '#/components/schemas/ValueTypeObjectRequest'
+      - $ref: '#/components/schemas/ValueTypeObjectArrayRequest'
+      properties:
+        type:
+          description: Type of the metadata item
+          type: string
+      type: object
+    MetadataPrimitiveItemRequest:
+      discriminator:
+        mapping:
+          boolean: '#/components/schemas/ValueTypeBoolean'
+          boolean-array: '#/components/schemas/ValueTypeBooleanArray'
+          date: '#/components/schemas/ValueTypeDate'
+          date-array: '#/components/schemas/ValueTypeDateArray'
+          datetime: '#/components/schemas/ValueTypeDateTime'
+          datetime-array: '#/components/schemas/ValueTypeDateTimeArray'
+          file: '#/components/schemas/ValueTypeFileRequest'
+          number: '#/components/schemas/ValueTypeNumber'
+          number-array: '#/components/schemas/ValueTypeNumberArray'
+          string: '#/components/schemas/ValueTypeString'
+          string-array: '#/components/schemas/ValueTypeStringArray'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/ValueTypeString'
+      - $ref: '#/components/schemas/ValueTypeNumber'
+      - $ref: '#/components/schemas/ValueTypeBoolean'
+      - $ref: '#/components/schemas/ValueTypeDate'
+      - $ref: '#/components/schemas/ValueTypeDateTime'
+      - $ref: '#/components/schemas/ValueTypeStringArray'
+      - $ref: '#/components/schemas/ValueTypeNumberArray'
+      - $ref: '#/components/schemas/ValueTypeDateArray'
+      - $ref: '#/components/schemas/ValueTypeDateTimeArray'
+      - $ref: '#/components/schemas/ValueTypeBooleanArray'
+      - $ref: '#/components/schemas/ValueTypeFileRequest'
+      properties:
+        type:
+          description: Type of the metadata item
+          type: string
+      type: object
+    CreateOrUpdateMetadataResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/MetadataResponse'
+          description: Metadata
+      type: object
+    MetadataPrimitiveItemResponse:
+      discriminator:
+        mapping:
+          boolean: '#/components/schemas/ValueTypeBoolean'
+          boolean-array: '#/components/schemas/ValueTypeBooleanArray'
+          date: '#/components/schemas/ValueTypeDate'
+          date-array: '#/components/schemas/ValueTypeDateArray'
+          datetime: '#/components/schemas/ValueTypeDateTime'
+          datetime-array: '#/components/schemas/ValueTypeDateTimeArray'
+          file: '#/components/schemas/ValueTypeFileResponse'
+          number: '#/components/schemas/ValueTypeNumber'
+          number-array: '#/components/schemas/ValueTypeNumberArray'
+          string: '#/components/schemas/ValueTypeString'
+          string-array: '#/components/schemas/ValueTypeStringArray'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/ValueTypeString'
+      - $ref: '#/components/schemas/ValueTypeNumber'
+      - $ref: '#/components/schemas/ValueTypeBoolean'
+      - $ref: '#/components/schemas/ValueTypeDate'
+      - $ref: '#/components/schemas/ValueTypeDateTime'
+      - $ref: '#/components/schemas/ValueTypeStringArray'
+      - $ref: '#/components/schemas/ValueTypeNumberArray'
+      - $ref: '#/components/schemas/ValueTypeDateArray'
+      - $ref: '#/components/schemas/ValueTypeDateTimeArray'
+      - $ref: '#/components/schemas/ValueTypeBooleanArray'
+      - $ref: '#/components/schemas/ValueTypeFileResponse'
+      properties:
+        type:
+          description: Type of the metadata item
+          type: string
+      type: object
+    ValueTypeObjectRequest:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - object
+          type: string
+        value:
+          description: The value
+          items:
+            $ref: '#/components/schemas/MetadataPrimitiveItemRequest'
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeString:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - string
+          type: string
+        value:
+          description: The value
+          example: The value of test_key
+          type: string
+      required:
+      - key
+      - type
+      - value
+      type: object
+    MetadataCreate:
+      properties:
+        items:
+          description: Metadata items
+          items:
+            $ref: '#/components/schemas/MetadataItemRequest'
+          maxItems: 150
+          minItems: 1
+          type: array
+        uid:
+          description: Unique identifier of a Metadata.
+          example: 374b5abc9dcb
+          maxLength: 100
+          minLength: 1
+          type: string
+      required:
+      - items
+      - uid
+      type: object
+    ValueTypeFileRequest:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - file
+          type: string
+        value:
+          description: The value
+          example: c6ad775c-00fa-4e66-95c5-baed151d1628
+          minLength: 1
+          type: string
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeNumber:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - number
+          type: string
+        value:
+          description: The value
+          example: 2021
+          type: number
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeBooleanArray:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - boolean-array
+          type: string
+        value:
+          description: The value
+          items:
+            type: boolean
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object

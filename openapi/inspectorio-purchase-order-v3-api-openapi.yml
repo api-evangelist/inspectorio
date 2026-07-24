@@ -1,0 +1,965 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS PURCHASE ORDER V3 API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: PURCHASE ORDER V3
+paths:
+  /api/v3/purchase-orders:
+    get:
+      summary: List Purchase Orders (V3)
+      description: List Purchase Orders. Use entity_type (item or material) to filter by finished goods or raw materials.
+      operationId: listPurchaseOrdersV3
+      tags:
+      - PURCHASE ORDER V3
+      parameters:
+      - $ref: '#/components/parameters/PurchaseOrderListCreatedFrom'
+      - $ref: '#/components/parameters/PurchaseOrderListCreatedTo'
+      - $ref: '#/components/parameters/PurchaseOrderListUpdatedFrom'
+      - $ref: '#/components/parameters/PurchaseOrderListUpdatedTo'
+      - $ref: '#/components/parameters/PurchaseOrderListOffset'
+      - $ref: '#/components/parameters/PurchaseOrderListDeliveryDateFrom'
+      - $ref: '#/components/parameters/PurchaseOrderListOpoNumber'
+      - $ref: '#/components/parameters/PurchaseOrderListDeliveryDateTo'
+      - $ref: '#/components/parameters/PurchaseOrderListPoNumber'
+      - $ref: '#/components/parameters/PurchaseOrderListExactPoNumber'
+      - $ref: '#/components/parameters/PurchaseOrderListEntityType'
+      - $ref: '#/components/parameters/PurchaseOrderListLimit'
+      responses:
+        '200':
+          $ref: '#/components/responses/PurchaseOrderList200'
+    post:
+      summary: Create Purchase Order (V3)
+      description: 'Create a Purchase Order. Body is either Finished Goods (item) or Material PO.
+
+        Use PurchaseOrderFinishedGoodsPOST for items (packaging_details required). Use PurchaseOrderMaterialPOST for materials (no packaging_details; material_supplier_custom_id optional).
+
+        '
+      operationId: createPurchaseOrderV3
+      tags:
+      - PURCHASE ORDER V3
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/PurchaseOrderFinishedGoodsPOST'
+              - $ref: '#/components/schemas/PurchaseOrderMaterialPOST'
+      responses:
+        '201':
+          $ref: '#/components/responses/PurchaseOrderCreate201'
+  /api/v3/purchase-orders/{uid}:
+    delete:
+      summary: Delete Purchase Order (V3)
+      description: Delete Purchase Order
+      operationId: deletePurchaseOrderV3
+      parameters:
+      - in: path
+        name: uid
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content:
+            application/json:
+              schema: {}
+          description: No Content
+      tags:
+      - PURCHASE ORDER V3
+    get:
+      summary: Get Purchase Order (V3)
+      description: Get Purchase Order
+      operationId: getPurchaseOrderV3
+      parameters:
+      - in: path
+        name: uid
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchaseOrderGET'
+      tags:
+      - PURCHASE ORDER V3
+    put:
+      summary: Update Purchase Order (V3)
+      description: 'Update a Purchase Order. Body is either Finished Goods (item) or Material PO.
+
+        Use PurchaseOrderFinishedGoodsPOST for items (packaging_details required).
+
+        Use PurchaseOrderMaterialPUT for materials (no packaging_details; supports cancel_reason and canceled_quantity).
+
+        '
+      operationId: updatePurchaseOrderV3
+      parameters:
+      - in: path
+        name: uid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/PurchaseOrderFinishedGoodsPOST'
+              - $ref: '#/components/schemas/PurchaseOrderMaterialPUT'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+      tags:
+      - PURCHASE ORDER V3
+  /api/v3/purchase-orders/{uid}/status:
+    put:
+      summary: Update the status of a purchase order (V3)
+      operationId: updatePurchaseOrderStatusV3
+      tags:
+      - PURCHASE ORDER V3
+      parameters:
+      - name: uid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  description: The status to set on the purchase order. Accepts the string value "canceled" or a JSON null value to clear the status.
+                  type: string
+                  nullable: true
+                  enum:
+                  - canceled
+                  - null
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Invalid request
+  /api/v3/purchase-orders/{uid}/packaging-details:
+    put:
+      summary: Update Packaging Details of a Purchase Order (V3)
+      description: Update the packaging details of a specific purchase order. Note that we only attach/detach items from the purchase order in this endpoint (not insert/delete items).
+      operationId: updatePackagingDetailsV3
+      tags:
+      - PURCHASE ORDER V3
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PackagingDetails'
+      parameters:
+      - name: uid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Packaging details updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Packaging details updated successfully
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Invalid request parameters
+        '404':
+          description: Purchase order not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Purchase order not found
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Internal server error
+components:
+  schemas:
+    AdditionalAttributesRead:
+      allOf:
+      - $ref: '#/components/schemas/AdditionalAttributesBase'
+      properties:
+        fieldType:
+          type: string
+          description: The type of the attribute (str, num, dte, etc)
+    PurchaseOrderMaterialPOST:
+      description: 'Request body for creating a Material Purchase Order.
+
+        packaging_details is not used (omit or leave empty). Each line requires quantity and quantity_uom_code.
+
+        '
+      allOf:
+      - $ref: '#/components/schemas/PurchaseOrderMaterialWriteBase'
+      properties:
+        lines:
+          description: Purchase Order Line information (material items only; each line requires quantity and quantity_uom_code).
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/PurchaseOrderLineMaterialPOST'
+    PackagedProduct:
+      allOf:
+      - $ref: '#/components/schemas/LinkedProduct'
+      description: A quantifiable item reference
+      properties:
+        case_pack_quantity:
+          description: Number of units in a Carton
+          minimum: 1
+          type: integer
+        quantity_uom_code:
+          description: 'Unit of measure code for quantity (required when entity_type is material).
+
+            Possible values: See full list [here](/reference/uom-codes)
+
+            '
+          type: string
+          maxLength: 255
+          nullable: true
+          example: m
+    PurchaseOrderBase:
+      properties:
+        lines:
+          description: Purchase Order Line information
+          type: array
+          minItems: 1
+          items: {}
+        total_quantity:
+          description: Total quantity of the purchase order, must be non negative
+          example: 100
+          type: integer
+          nullable: true
+        total_quantity_uom_code:
+          description: 'Unit of measure code for the total quantity.
+
+            Possible values: See full list [here](/reference/uom-codes)
+
+            '
+          example: pcs
+          nullable: true
+          type: string
+          maxLength: 30
+        data_provider_custom_id:
+          description: Local Custom ID of the organization that owns item references in this PO
+          example: data_provider_1
+          type: string
+          nullable: true
+          maxLength: 255
+        custom_id:
+          description: Original purchase order number stored in client's system
+          example: opo_1
+          type: string
+          nullable: true
+          maxLength: 255
+        uid:
+          description: Also called po_id. Unique identifier of the purchase order
+          example: abc-def-123-456
+          type: string
+          maxLength: 255
+        created_at:
+          description: Creation date of the purchase order
+          example: '2025-12-15T10:01:10.693888Z'
+          format: date-time
+          readOnly: true
+          type: string
+        created_date:
+          description: The creation date from the client system of the Purchase Order
+          example: '2023-02-10'
+          format: date
+          nullable: true
+          type: string
+        client_id:
+          description: Local Custom ID of the Brand/Retailer organization of the purchase order
+          example: client_1
+          nullable: true
+          type: string
+          maxLength: 255
+        updated_at:
+          description: Last updated date of the purchase order
+          example: '2025-12-15T10:01:10.693897Z'
+          format: date-time
+          readOnly: true
+          type: string
+        updated_date:
+          description: The last updated date from the client system of the Purchase Order
+          example: '2019-02-20T06:37:18Z'
+          format: date-time
+          nullable: true
+          type: string
+        commit_id:
+          description: Commit ID of the purchase order
+          example: commit_id_1
+          nullable: true
+          type: string
+          maxLength: 255
+        commit_po_sequence:
+          description: Commit PO sequence of the purchase order
+          example: commit_po_sequence_1
+          nullable: true
+          type: string
+          maxLength: 255
+        delivery_date:
+          description: Delivery date or shipment start date of the purchase order
+          example: '2021-05-23'
+          format: date
+          nullable: true
+          type: string
+        event_name:
+          description: Name of the corresponding event in the client's system
+          example: Event 1
+          nullable: true
+          type: string
+          maxLength: 255
+        factory_custom_id:
+          description: Local Custom ID of the Factory organization of the purchase order
+          example: factory_1
+          nullable: true
+          type: string
+          maxLength: 255
+        in_store_date:
+          description: In store date of the purchase order
+          example: '2021-06-01T00:00:00Z'
+          format: date-time
+          nullable: true
+          type: string
+        po_number:
+          description: Purchase order number to be stored in Inspectorio
+          example: po_1
+          minLength: 1
+          maxLength: 255
+          type: string
+        po_source:
+          description: Indicate the source of materials (produced by domestic vendors or imported from vendors outside the country)
+          example: domestic
+          nullable: true
+          type: string
+          maxLength: 255
+        po_status:
+          description: Status of the purchase order. Accepts the string value "canceled" or a JSON null value to clear the status.
+          enum:
+          - canceled
+          - null
+          example: canceled
+          nullable: true
+          type: string
+        po_type:
+          description: Purchase order type in a pre-configured list
+          example: po_type_1
+          minLength: 1
+          maxLength: 80
+          nullable: true
+          type: string
+        share_to_ids:
+          description: Local Custom IDs of the shared organizations of the purchase order
+          example:
+          - sub_org_1
+          items:
+            type: string
+            maxLength: 255
+          nullable: true
+          type: array
+        ship_end_date:
+          description: Shipment end date of the purchase order
+          example: '2021-05-30T00:00:00Z'
+          format: date-time
+          nullable: true
+          type: string
+        vendor_custom_id:
+          description: Local Custom ID of the Supplier organization of the purchase order
+          example: vendor_1
+          minLength: 1
+          maxLength: 255
+          type: string
+        total_cost:
+          $ref: '#/components/schemas/Cost'
+          nullable: true
+        total_cost_currency_code:
+          $ref: '#/components/schemas/CostCurrencyCode'
+          nullable: true
+      required:
+      - po_number
+      - vendor_custom_id
+      - lines
+      - created_at
+      - updated_at
+      type: object
+    PurchaseOrderGET:
+      allOf:
+      - $ref: '#/components/schemas/PurchaseOrderBase'
+      properties:
+        lines:
+          description: Purchase Order Line information
+          type: array
+          minItems: 1
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/PurchaseOrderLineFinishedGoodsGET'
+            - $ref: '#/components/schemas/PurchaseOrderLineMaterialGET'
+        packaging_details:
+          description: Packaging details (empty or omitted for Material PO).
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/AssortmentPackagingDetailLine'
+            - $ref: '#/components/schemas/SolidPackagingDetailLine'
+          nullable: true
+        additionalAttributes:
+          $ref: '#/components/schemas/AdditionalAttributesRead'
+    SolidPackagedProduct:
+      allOf:
+      - $ref: '#/components/schemas/PackagedProduct'
+      properties:
+        quantity:
+          type: integer
+          description: Quantity of the product
+          minimum: 1
+          nullable: false
+        case_pack_quantity:
+          type: integer
+          description: Number of units in a Carton
+          minimum: 1
+          nullable: true
+      required:
+      - quantity
+    PurchaseOrderLineReadBase:
+      description: Order Line information
+      type: object
+      properties:
+        unit_cost:
+          $ref: '#/components/schemas/Cost'
+        unit_cost_currency_code:
+          $ref: '#/components/schemas/CostCurrencyCode'
+          nullable: true
+        shipment_term:
+          $ref: '#/components/schemas/ShipmentTerm'
+    LinkedProduct:
+      description: An integrated product reference
+      properties:
+        custom_id:
+          description: Custom Identifier for the Product referred
+          type: string
+          maxLength: 255
+          example: item_123
+        entity_type:
+          type: string
+          enum:
+          - item
+      required:
+      - custom_id
+      - entity_type
+    PurchaseOrderLineMaterialPOST:
+      title: Linked Material Item
+      allOf:
+      - $ref: '#/components/schemas/PurchaseOrderLineMaterialWriteBase'
+      properties:
+        quantity:
+          type: integer
+          minimum: 1
+          nullable: false
+    PurchaseOrderLineLinkedProductPOST:
+      title: Linked Finished Goods Item
+      allOf:
+      - $ref: '#/components/schemas/PurchaseOrderLineBase'
+      properties:
+        item:
+          $ref: '#/components/schemas/LinkedProduct'
+    PurchaseOrderMaterialPUT:
+      description: 'Request body for updating a Material Purchase Order.
+
+        packaging_details is not used (omit or leave empty). Supports cancel_reason and canceled_quantity.
+
+        '
+      allOf:
+      - $ref: '#/components/schemas/PurchaseOrderMaterialWriteBase'
+      properties:
+        lines:
+          description: Purchase Order Line information (material items only; each line requires quantity and quantity_uom_code).
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/PurchaseOrderLineMaterialPUT'
+        cancel_reason:
+          description: 'Reason for canceling quantity. Required when all quantities are canceled (Canceled - All).
+
+            '
+          type: string
+          nullable: true
+          example: Order cancelled due to quality issues
+    MaterialItem:
+      description: Material Item data
+      allOf:
+      - $ref: '#/components/schemas/components-schemas-Product'
+      properties:
+        entity_type:
+          type: string
+          enum:
+          - material
+    PurchaseOrderLineMaterialPUT:
+      title: Linked Material Item (Update)
+      allOf:
+      - $ref: '#/components/schemas/PurchaseOrderLineMaterialWriteBase'
+      properties:
+        quantity:
+          type: integer
+          minimum: 0
+          nullable: false
+          description: Quantity of the line item. Can be 0 when fully canceled.
+        canceled_quantity:
+          type: integer
+          minimum: 0
+          nullable: true
+          description: Quantity that has been canceled for this line item
+    PurchaseOrderMaterialWriteBase:
+      description: Base schema for Material Purchase Order write operations.
+      allOf:
+      - $ref: '#/components/schemas/PurchaseOrderBase'
+      properties:
+        material_supplier_custom_id:
+          description: 'Local Custom ID of the Material Supplier organization (optional).
+
+            If provided, must match a Supplier in your Local Organization configuration.
+
+            '
+          example: material_supplier_1
+          minLength: 1
+          maxLength: 255
+          nullable: true
+          type: string
+        additional_attributes:
+          $ref: '#/components/schemas/AdditionalAttributesBase'
+          nullable: true
+      required:
+      - uid
+    CostCurrencyCode:
+      description: 'Cost Currency Code.
+
+        Possible values: See full list [here](/reference/currency-codes)
+
+        '
+      type: string
+      maxLength: 3
+      example: USD
+    PurchaseOrderLineMaterialWriteBase:
+      title: Material Item Base
+      description: Base schema for Material line item write operations.
+      allOf:
+      - $ref: '#/components/schemas/PurchaseOrderLineBase'
+      properties:
+        item:
+          $ref: '#/components/schemas/MaterialItem'
+        quantity_uom_code:
+          type: string
+          maxLength: 255
+          description: 'Unit of measure code for quantity.
+
+            Possible values: See full list [here](/reference/uom-codes)
+
+            '
+          example: m
+          nullable: false
+      required:
+      - quantity
+      - quantity_uom_code
+    SolidPackagingDetailLine:
+      allOf:
+      - $ref: '#/components/schemas/PackagingDetailLine'
+      description: Solid Packaging of a Product
+      type: object
+      properties:
+        item:
+          description: Custom Identifier for the Item referred
+          allOf:
+          - $ref: '#/components/schemas/SolidPackagedProduct'
+        packaging_type:
+          type: string
+          enum:
+          - solid
+        carton_quantity:
+          type: integer
+          description: Quantity of the carton
+          minimum: 1
+          nullable: true
+      required:
+      - item
+    AssortmentPackagingDetailLine:
+      allOf:
+      - $ref: '#/components/schemas/PackagingDetailLine'
+      description: Assortment of Multiple Products
+      type: object
+      properties:
+        assortment_id:
+          type: string
+          maxLength: 255
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssortmentPackagedProduct'
+        packaging_type:
+          type: string
+          enum:
+          - assortment
+      required:
+      - assortment_id
+      - carton_quantity
+    PurchaseOrderLineMaterialGET:
+      description: Material Order Line information
+      allOf:
+      - $ref: '#/components/schemas/PurchaseOrderLineReadBase'
+      properties:
+        item:
+          $ref: '#/components/schemas/MaterialItem'
+        quantity:
+          type: integer
+          minimum: 1
+        quantity_uom_code:
+          type: string
+          maxLength: 255
+          example: m
+        canceled_quantity:
+          type: integer
+          minimum: 0
+          nullable: true
+          description: Quantity that has been canceled for this line item
+        additional_attributes:
+          $ref: '#/components/schemas/AdditionalAttributesBase'
+          nullable: true
+    PurchaseOrderLineProductPOST:
+      title: Manual Finished Goods Item
+      allOf:
+      - $ref: '#/components/schemas/PurchaseOrderLineBase'
+      properties:
+        item:
+          $ref: '#/components/schemas/ProductItem'
+    PackagingDetailLine:
+      type: object
+      discriminator:
+        propertyName: packaging_type
+        mapping:
+          assortment: '#/components/schemas/AssortmentPackagingDetailLine'
+          solid: '#/components/schemas/SolidPackagingDetailLine'
+      properties:
+        carton_quantity:
+          minimum: 1
+          type: integer
+        packaging_type:
+          type: string
+          enum:
+          - solid
+          - assortment
+      required:
+      - packaging_type
+    ProductItem:
+      description: Product Item data
+      allOf:
+      - $ref: '#/components/schemas/components-schemas-Product'
+      properties:
+        entity_type:
+          type: string
+          enum:
+          - item
+        color:
+          description: Color of the product
+          type: string
+          maxLength: 255
+          nullable: false
+        size:
+          description: Size of the product
+          type: string
+          maxLength: 255
+          nullable: false
+      required:
+      - color
+      - size
+    AdditionalAttributesBase:
+      type: array
+      description: Additional custom attributes associated with the entity
+      items:
+        type: object
+        properties:
+          key:
+            type: string
+            maxLength: 255
+            description: The identifier of the attribute
+          value:
+            oneOf:
+            - type: string
+            - type: number
+            - type: array
+              items:
+                type: string
+        required:
+        - key
+        - value
+    Cost:
+      description: Cost Amount
+      type: number
+      format: double
+    AssortmentPackagedProduct:
+      allOf:
+      - $ref: '#/components/schemas/PackagedProduct'
+      required:
+      - case_pack_quantity
+    PurchaseOrderLineFinishedGoodsGET:
+      description: Finished Goods Order Line information
+      allOf:
+      - $ref: '#/components/schemas/PurchaseOrderLineReadBase'
+      properties:
+        item:
+          $ref: '#/components/schemas/components-schemas-Product'
+        additional_attributes:
+          $ref: '#/components/schemas/AdditionalAttributesRead'
+    PurchaseOrderLineBase:
+      allOf:
+      - $ref: '#/components/schemas/PurchaseOrderLineReadBase'
+      properties:
+        additional_attributes:
+          $ref: '#/components/schemas/AdditionalAttributesRead'
+          nullable: true
+    PackagingDetails:
+      type: array
+      minimum: 1
+      items:
+        oneOf:
+        - $ref: '#/components/schemas/AssortmentPackagingDetailLine'
+        - $ref: '#/components/schemas/SolidPackagingDetailLine'
+    ShipmentTerm:
+      description: Shipment terms
+      type: string
+      maxLength: 255
+      example: DDP
+    components-schemas-Product:
+      description: Full product data
+      allOf:
+      - $ref: '#/components/schemas/LinkedProduct'
+      properties:
+        style_id:
+          type: string
+          maxLength: 255
+        style_name:
+          type: string
+          maxLength: 255
+        product_category:
+          type: string
+          maxLength: 255
+          description: The Product Category ID
+        product_line:
+          type: string
+          maxLength: 32
+          description: The Product Line ID
+        department:
+          type: string
+          maxLength: 255
+          description: The Department ID
+          nullable: true
+        class:
+          type: string
+          maxLength: 255
+          description: The Class ID
+          nullable: true
+        brand:
+          type: string
+          maxLength: 255
+          description: The Brand ID
+        color:
+          description: Color of the product
+          type: string
+          maxLength: 255
+          nullable: true
+        size:
+          description: Size of the product
+          type: string
+          maxLength: 255
+          nullable: true
+    PurchaseOrderFinishedGoodsPOST:
+      description: 'Request body for creating a Finished Goods (item) Purchase Order.
+
+        Requires packaging_details. Line items use product/item references (entity_type item).
+
+        '
+      allOf:
+      - $ref: '#/components/schemas/PurchaseOrderBase'
+      properties:
+        packaging_details:
+          allOf:
+          - $ref: '#/components/schemas/PackagingDetails'
+          description: Packaging details information (required for Finished Goods PO).
+        lines:
+          description: Purchase Order Line information (finished goods only; ProductItem or LinkedProduct).
+          type: array
+          minItems: 1
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/PurchaseOrderLineProductPOST'
+            - $ref: '#/components/schemas/PurchaseOrderLineLinkedProductPOST'
+        additionalAttributes:
+          $ref: '#/components/schemas/AdditionalAttributesBase'
+          nullable: true
+      required:
+      - uid
+      - packaging_details
+  parameters:
+    PurchaseOrderListOffset:
+      in: query
+      name: offset
+      required: false
+      schema:
+        default: 0
+        minimum: 0
+        type: integer
+    PurchaseOrderListEntityType:
+      description: Purchase order entity type
+      in: query
+      name: entity_type
+      required: false
+      schema:
+        default: item
+        example: item
+        type: string
+        enum:
+        - item
+        - material
+    PurchaseOrderListCreatedFrom:
+      description: Filter purchase orders created from this date-time timestamp
+      in: query
+      name: created_from
+      required: false
+      schema:
+        example: '2025-12-15T02:20:38Z'
+        format: date-time
+        nullable: true
+        type: string
+    PurchaseOrderListCreatedTo:
+      description: Filter purchase orders created to this date-time timestamp
+      in: query
+      name: created_to
+      required: false
+      schema:
+        example: '2025-12-15T02:35:40Z'
+        format: date-time
+        nullable: true
+        type: string
+    PurchaseOrderListPoNumber:
+      description: Purchase order number to be stored in Inspectorio (partial/prefix match, case-insensitive)
+      in: query
+      name: po_number
+      required: false
+      schema:
+        example: PO_Number
+        type: string
+    PurchaseOrderListUpdatedFrom:
+      description: Filter purchase orders updated from this date-time timestamp
+      in: query
+      name: updated_from
+      required: false
+      schema:
+        example: '2025-12-15T02:20:38Z'
+        format: date-time
+        nullable: true
+        type: string
+    PurchaseOrderListLimit:
+      description: Limit result of list
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 10
+        maximum: 100
+        minimum: 1
+        type: integer
+    PurchaseOrderListDeliveryDateTo:
+      description: Purchase order delivery date to
+      in: query
+      name: delivery_date_to
+      required: false
+      schema:
+        example: '2021-06-15T23:59:59Z'
+        format: date-time
+        nullable: true
+        type: string
+    PurchaseOrderListDeliveryDateFrom:
+      description: Purchase order delivery date from
+      in: query
+      name: delivery_date_from
+      required: false
+      schema:
+        example: '2021-05-23T23:59:59Z'
+        format: date-time
+        nullable: true
+        type: string
+    PurchaseOrderListExactPoNumber:
+      description: Purchase order number for exact match (case-insensitive). Returns at most one result.
+      in: query
+      name: exact_po_number
+      required: false
+      schema:
+        example: PO48
+        type: string
+        maxLength: 255
+    PurchaseOrderListUpdatedTo:
+      description: Filter purchase orders updated to this date-time timestamp
+      in: query
+      name: updated_to
+      required: false
+      schema:
+        example: '2025-12-15T02:35:40Z'
+        format: date-time
+        nullable: true
+        type: string
+    PurchaseOrderListOpoNumber:
+      description: Original purchase order number stored in the client's system
+      in: query
+      name: opo_number
+      required: false
+      schema:
+        example: OPO_123
+        type: string
+  responses:
+    PurchaseOrderCreate201:
+      description: Created
+    PurchaseOrderList200:
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/PurchaseOrderGET'

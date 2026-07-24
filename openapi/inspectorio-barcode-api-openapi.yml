@@ -1,0 +1,319 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS BARCODE API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: BARCODE
+paths:
+  /api/v1/barcode:
+    post:
+      summary: Create Barcode
+      description: Create Barcode
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BarcodeUpsertRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BarcodeUpsertResponse'
+          description: All Items are created
+        '207':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BarcodeUpsertResponse'
+          description: Only some items are created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BarcodeUpsertResponse'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - BARCODE
+  /api/v1/barcode/retrieve:
+    post:
+      summary: Retrieve Barcode
+      description: Retrieve Barcode
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BarcodeRetriveAndDeleteRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BarcodeRetriveResponse'
+          description: Get Successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - BARCODE
+  /api/v1/barcode/delete:
+    post:
+      summary: Delete Barcode
+      description: Delete Barcode
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BarcodeRetriveAndDeleteRequest'
+      responses:
+        '204':
+          content:
+            application/json:
+              schema: {}
+          description: No Content
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - BARCODE
+components:
+  schemas:
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    BarcodeRetriveResponse:
+      items:
+        properties:
+          code:
+            description: Barcode
+            type: string
+          format:
+            $ref: '#/components/schemas/BarcodeFormat'
+        type: object
+      type: array
+    BarcodeUpsertRequest:
+      items:
+        $ref: '#/components/schemas/BarcodeUpsertRequestItem'
+      type: array
+    BarcodeUpsertResponseItem:
+      properties:
+        entityType:
+          description: The type of entity.
+          enum:
+          - po
+          - item
+          - packaging
+          type: string
+        customId:
+          description: required when entityType is po or item
+          type: string
+        poCustomId:
+          description: required when entityType is packaging
+          type: string
+        itemCustomId:
+          description: required when entityType is packaging
+          type: string
+        assortmentCustomId:
+          description: define this if this is assortment
+          type: string
+        format:
+          $ref: '#/components/schemas/BarcodeFormat'
+        status:
+          properties:
+            code:
+              description: 200 for success, 400 for failure
+              type: integer
+            message:
+              description: Success or failure message
+              type: string
+          type: object
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    BarcodeUpsertResponse:
+      items:
+        $ref: '#/components/schemas/BarcodeUpsertResponseItem'
+      type: array
+    BarcodeFormat:
+      description: Barcode format. If not send, it will use default value.
+      enum:
+      - Generic
+      - UPC-A
+      - UPC-E
+      - EAN-8
+      - EAN-13
+      - UPC-EAN
+      - Code-39
+      - Code-93
+      - Code-128
+      - Codebar
+      - ITF
+      - QRCode
+      - DataMatrix
+      - Aztec
+      - PDF417
+      - MaxiCode
+      - RSS-14
+      - RSS-Expanded
+      type: string
+      default: Generic
+    BarcodeUpsertRequestItem:
+      properties:
+        entityType:
+          description: The type of entity.
+          enum:
+          - po
+          - item
+          - packaging
+          type: string
+        code:
+          description: Barcode
+          type: string
+        customId:
+          description: required when entityType is po or item
+          type: string
+        poCustomId:
+          description: required when entityType is packaging
+          type: string
+        itemCustomId:
+          description: required when entityType is packaging
+          type: string
+        assortmentCustomId:
+          description: define this if this is assortment
+          type: string
+        format:
+          $ref: '#/components/schemas/BarcodeFormat'
+      required:
+      - entityType
+      - code
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object
+    BarcodeRetriveAndDeleteRequest:
+      properties:
+        entityType:
+          description: The type of entity.
+          enum:
+          - po
+          - item
+          - packaging
+          type: string
+        customId:
+          description: required when entityType is po or item
+          type: string
+        poCustomId:
+          description: required when entityType is packaging
+          type: string
+        itemCustomId:
+          description: required when entityType is packaging
+          type: string
+        assortmentCustomId:
+          description: define this if this is assortment
+          type: string
+        format:
+          $ref: '#/components/schemas/BarcodeFormat'
+      required:
+      - entityType
+      type: object

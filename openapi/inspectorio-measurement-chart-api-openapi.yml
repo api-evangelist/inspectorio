@@ -1,0 +1,396 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS MEASUREMENT CHART API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: MEASUREMENT CHART
+paths:
+  /api/v1/measurement-charts/{style_id}:
+    get:
+      summary: Get Measurement Chart
+      description: Get Measurement Chart
+      parameters:
+      - in: path
+        name: style_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeasurementListResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - MEASUREMENT CHART
+    post:
+      summary: Create Measurement Chart
+      description: Create Measurement Chart
+      parameters:
+      - in: path
+        name: style_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeasurementForm'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeasurementListResponse'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - MEASUREMENT CHART
+    put:
+      summary: Update Measurement Chart
+      description: Update Measurement Chart
+      parameters:
+      - in: path
+        name: style_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MeasurementForm'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeasurementListResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - MEASUREMENT CHART
+components:
+  schemas:
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    MeasurementListInfo:
+      properties:
+        clientUpdatedDate:
+          description: The last updated date from the client system of the Measurement Chart
+          example: '2019-02-20T06:37:18.048000+00:00'
+          format: date-time
+          type: string
+        measurements:
+          description: List of measurement charts
+          items:
+            $ref: '#/components/schemas/MeasurementResponse'
+          type: array
+        source:
+          description: The source from which the Measurement Chart data comes
+          example: SPARK
+          nullable: true
+          type: string
+      type: object
+    MeasurementItemDetail:
+      properties:
+        measurement:
+          description: Measurement value of a size
+          example: '2'
+          type: number
+        size:
+          description: Size name
+          example: Medium
+          minLength: 1
+          type: string
+      required:
+      - measurement
+      - size
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    MeasurementResponse:
+      properties:
+        caption:
+          description: Caption of the point of measurement
+          example: C01
+          type: string
+        isPomCritical:
+          description: Measurement is critical or not
+          example: 'true'
+          type: boolean
+        pom:
+          description: Point of measurement of the measurement chart
+          example: Chest
+          minLength: 1
+          type: string
+        setId:
+          description: The external id of the measurement set. Use this field when you want to group POMs in a specified set
+          example: Set 1
+          nullable: true
+          type: string
+        sizes:
+          description: Sizes in a measurement chart
+          items:
+            $ref: '#/components/schemas/MeasurementItemDetail'
+          type: array
+        tolerance:
+          description: Tolerance Lower & Upper of a point of measurement, only use this attribute if your organization has not enabled Unequal Tolerance
+          example: 1/4
+          nullable: true
+          type: number
+        toleranceLower:
+          description: Tolerance Lower, use this attribute together with toleranceUpper if your organization has enabled Unequal Tolerance
+          example: 1/4
+          nullable: true
+          type: number
+        toleranceUpper:
+          description: Tolerance Upper, use this attribute together with toleranceLower if your organization has enabled Unequal Tolerance
+          example: 3/4
+          nullable: true
+          type: number
+        unit:
+          description: 'Unit used for measurement. Current values: inch, cm, mm'
+          example: cm
+          type: string
+      required:
+      - caption
+      - pom
+      - unit
+      type: object
+    MeasurementItem:
+      properties:
+        caption:
+          description: Caption of a point of measurement
+          example: C01
+          minLength: 1
+          type: string
+        isPomCritical:
+          description: Measurement is critical or not
+          example: 'true'
+          nullable: true
+          type: boolean
+        pom:
+          description: Point of measurement
+          example: Chest
+          minLength: 1
+          type: string
+        setId:
+          description: The external id of the measurement set. Use this field when you want to group POMs in a specified set
+          example: Set 1
+          maxLength: 500
+          nullable: true
+          type: string
+        sizes:
+          description: List of sizes in the measurement chart
+          items:
+            $ref: '#/components/schemas/MeasurementItemDetail'
+          minItems: 1
+          type: array
+        tolerance:
+          description: Tolerance Lower & Upper of a point of measurement, only use this attribute if your organization has not enabled Unequal Tolerance
+          example: '1'
+          nullable: true
+          type: number
+        toleranceLower:
+          description: Tolerance Lower, use this attribute together with toleranceUpper if your organization has enabled Unequal Tolerance
+          example: '1'
+          nullable: true
+          type: number
+        toleranceUpper:
+          description: Tolerance Upper, use this attribute together with toleranceLower if your organization has enabled Unequal Tolerance
+          example: '1'
+          nullable: true
+          type: number
+        unit:
+          description: Unit in the measurement chart in inch,cm,mm
+          enum:
+          - inch
+          - cm
+          - mm
+          example: cm
+          type: string
+      required:
+      - caption
+      - pom
+      - sizes
+      - unit
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    MeasurementForm:
+      properties:
+        clientUpdatedDate:
+          description: The last updated date from the client system of the Measurement Chart
+          example: '2019-02-20T06:37:18Z'
+          format: date-time
+          nullable: true
+          type: string
+        measurements:
+          description: Measurement chart information
+          items:
+            $ref: '#/components/schemas/MeasurementItem'
+          minItems: 1
+          type: array
+        source:
+          description: The source from which the Measurement Chart data comes
+          example: SPARK
+          maxLength: 30
+          nullable: true
+          type: string
+        supplierId:
+          nullable: true
+          type: string
+      required:
+      - measurements
+      type: object
+    MeasurementListResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/MeasurementListInfo'
+          description: Measurement charts data
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object

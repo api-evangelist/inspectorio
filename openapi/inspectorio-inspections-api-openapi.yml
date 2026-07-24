@@ -1,0 +1,719 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS Inspections API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: Inspections
+paths:
+  /api/v1/inspections:
+    get:
+      summary: List Inspections
+      description: 'List inspections for the authenticated organization.
+
+        '
+      operationId: listInspectionsV1
+      tags:
+      - Inspections
+      parameters:
+      - $ref: '#/components/parameters/InspectionListOwnership'
+      - $ref: '#/components/parameters/InspectionListStatus'
+      - $ref: '#/components/parameters/InspectionListOrder'
+      - $ref: '#/components/parameters/InspectionListCreatedFrom'
+      - $ref: '#/components/parameters/InspectionListCreatedTo'
+      - $ref: '#/components/parameters/InspectionListUpdatedFrom'
+      - $ref: '#/components/parameters/InspectionListUpdatedTo'
+      - $ref: '#/components/parameters/InspectionListLimit'
+      - $ref: '#/components/parameters/InspectionListOffset'
+      responses:
+        '200':
+          $ref: '#/components/responses/InspectionList200'
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+  /api/v1/inspections/{uuid}:
+    get:
+      summary: Get Inspection
+      description: 'Retrieve a single inspection by UUID.
+
+        '
+      operationId: getInspectionV1
+      tags:
+      - Inspections
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        description: Inspection UUID (equals bookingId).
+        schema:
+          type: string
+          format: uuid
+      - in: query
+        name: include_pull_sample
+        required: false
+        description: 'When set to `1`, embeds the AQL-derived `itemPullSample` on each solid
+
+          and assortment configuration item under `detailOfPIPO`. Requires the
+
+          workmanship step to be configured with an AQL table; otherwise the field
+
+          is omitted.
+
+          '
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      responses:
+        '200':
+          $ref: '#/components/responses/InspectionDetail200'
+        '404':
+          $ref: '#/components/responses/NotFound404'
+components:
+  schemas:
+    AssignedToOrganization:
+      type: object
+      nullable: true
+      description: The organization the inspection is assigned to. Null/absent when there is no assignment.
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        localOrganizationIds:
+          type: array
+          nullable: true
+          items:
+            type: string
+    BillingInformation:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+        contact:
+          type: object
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/Contact'
+    DetailOfPIPO:
+      type: object
+      properties:
+        pipoInformation:
+          $ref: '#/components/schemas/PipoInformation'
+        styles:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas-Style'
+    GpsLocation:
+      type: object
+      properties:
+        latitude:
+          type: string
+        longitude:
+          type: string
+    ReasonCode:
+      type: string
+      nullable: true
+      description: 'Inspection reason code, formatted as `<Action> - <reason>` where Action is
+
+        one of Aborted / Waived / Rejected / Split / Reset. Resolved from the
+
+        configured reason option answer when present, otherwise the free-text
+
+        reason. `null` when no reason code applies to the inspection.
+
+        '
+      example: Aborted - Order not ready
+    schemas-Style:
+      type: object
+      required:
+      - styleId
+      - productCategoryId
+      properties:
+        styleId:
+          type: string
+        styleName:
+          type: string
+          nullable: true
+        productCategoryId:
+          type: string
+        productCategoryName:
+          type: string
+        solids:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/Solid'
+        assortments:
+          type: array
+          nullable: true
+          items:
+            type: object
+            description: 'Assortment packing detail. Each entry in `assortmentConfiguration`
+
+              carries an `itemPullSample` (AQL-derived pull sample size) when the
+
+              request passes `include_pull_sample=1` and the workmanship step is
+
+              configured with an AQL table.
+
+              '
+        measurements:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas-Measurement'
+    schemas-Questionnaire:
+      type: object
+      properties:
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuestionnaireQuestion'
+    InspectionDetailResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/InspectionDetail'
+    Solid:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        itemId:
+          type: string
+          nullable: true
+        color:
+          type: string
+          nullable: true
+        size:
+          type: string
+          nullable: true
+        brandId:
+          type: string
+          nullable: true
+        brandName:
+          type: string
+          nullable: true
+        quantity:
+          type: integer
+          nullable: true
+        availableQuantity:
+          type: integer
+          nullable: true
+        cartonQuantity:
+          type: integer
+          nullable: true
+        availableCartonQuantity:
+          type: integer
+          nullable: true
+        casePackQuantity:
+          type: integer
+          nullable: true
+        itemPullSample:
+          type: integer
+          nullable: true
+          description: 'AQL-derived pull sample size for this item. Only present when the
+
+            request passes `include_pull_sample=1` and the workmanship step is
+
+            configured with an AQL table.
+
+            '
+    InspectionListItem:
+      type: object
+      required:
+      - inspectionId
+      - caseNumber
+      - status
+      - createdDate
+      - updatedDate
+      - createdBy
+      - fromOrganizationId
+      - fromOrganizationName
+      - toOrganizationId
+      - toOrganizationName
+      - expectedDate
+      - clientInformation
+      - vendorInformation
+      - factoryInformation
+      - inspectionInformation
+      - tags
+      properties:
+        inspectionId:
+          type: string
+          format: uuid
+          description: Inspection UUID. `bookingId` equals `inspectionId`.
+        caseNumber:
+          type: string
+        status:
+          type: string
+          description: Aggregated inspection status (single enum string).
+        reasonCode:
+          $ref: '#/components/schemas/ReasonCode'
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type: string
+          format: date-time
+        actualInspectionDate:
+          type: string
+          format: date-time
+          description: 'Omitted unless an actual inspection date has been recorded.
+
+            '
+        expectedDate:
+          $ref: '#/components/schemas/ExpectedDate'
+        confirmedBy:
+          type: string
+          nullable: true
+          description: 'The organization which confirmed the booking. Returns `null` when not
+
+            confirmed.
+
+            '
+        confirmedDate:
+          type: string
+          format: date-time
+          description: 'Computed from the `confirm` activity timestamp. Omitted when there is
+
+            no confirm activity.
+
+            '
+        createdBy:
+          type: string
+          description: The user who created the booking.
+        fromOrganizationId:
+          type: string
+        fromOrganizationName:
+          type: string
+        toOrganizationId:
+          type: string
+        toOrganizationName:
+          type: string
+        assignedToOrganization:
+          $ref: '#/components/schemas/AssignedToOrganization'
+        assignedToInspector:
+          $ref: '#/components/schemas/AssignedToInspector'
+        clientInformation:
+          $ref: '#/components/schemas/OrganizationInfo'
+        vendorInformation:
+          $ref: '#/components/schemas/OrganizationInfo'
+        factoryInformation:
+          $ref: '#/components/schemas/OrganizationInfo'
+        locationPicker:
+          $ref: '#/components/schemas/LocationPicker'
+        inspectionForm:
+          type: string
+          description: 'The name of the inspection form used.
+
+            '
+        workflowName:
+          type: string
+          nullable: true
+          description: Workflow name. Null when no workflow is assigned.
+        inspectionInformation:
+          $ref: '#/components/schemas/InspectionInformation'
+        tags:
+          type: array
+          items:
+            type: string
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+          nullable: true
+    QuestionnaireQuestion:
+      type: object
+      required:
+      - id
+      - questionType
+      - validation
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        questionType:
+          type: string
+        options:
+          type: array
+          items:
+            type: object
+        validation:
+          type: object
+          required:
+          - mandatory
+          properties:
+            mandatory:
+              type: boolean
+              description: 'Maps to `BookingQuestion.required` (same as AMS
+
+                `questionnaire.questions[].validation.mandatory`).
+
+                '
+    schemas-Measurement:
+      type: object
+      properties:
+        caption:
+          type: string
+          nullable: true
+        pom:
+          type: string
+          nullable: true
+        unit:
+          type: string
+          nullable: true
+        isPomCritical:
+          type: boolean
+          nullable: true
+        tolerance:
+          type: number
+          nullable: true
+        toleranceLower:
+          type: number
+          nullable: true
+        toleranceUpper:
+          type: number
+          nullable: true
+        sizes:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeasurementSize'
+    PipoInformation:
+      type: object
+      properties:
+        poNumber:
+          type: string
+        opoNumber:
+          type: string
+        poTypes:
+          type: array
+          items:
+            type: string
+        productLineId:
+          type: string
+        productLineName:
+          type: string
+    InspectionListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/InspectionListItem'
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+    LocationPicker:
+      type: object
+      properties:
+        address:
+          type: string
+        gpsLocation:
+          $ref: '#/components/schemas/GpsLocation'
+    schemas-OrganizationContact:
+      type: object
+      description: 'Key contact for an organization, including its identifier. The parent
+
+        `contact` property is `null` when no contact is on file.
+
+        '
+      properties:
+        contactId:
+          type: string
+          nullable: true
+          example: contact_id
+        name:
+          type: string
+          example: Contact Name
+        email:
+          type: string
+          example: email@email.com
+        mobileNumber:
+          type: string
+          example: '1234567890'
+        telephoneNumber:
+          type: string
+          example: '1234567890'
+    AssignedToInspector:
+      type: object
+      nullable: true
+      description: The inspector the inspection is assigned to. Null/absent when there is no assignment.
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        employeeId:
+          type: string
+    Contact:
+      type: object
+      description: 'Key contact for an organization. When included, all contact fields are
+
+        present as strings (may be empty). The parent `contact` property is
+
+        `null` when no contact is on file.
+
+        '
+      properties:
+        name:
+          type: string
+          example: Contact Name
+        email:
+          type: string
+          example: email@email.com
+        mobileNumber:
+          type: string
+          example: '1234567890'
+        telephoneNumber:
+          type: string
+          example: '1234567890'
+    OrganizationInfo:
+      type: object
+      properties:
+        organizationId:
+          type: string
+        localOrganizationId:
+          type: string
+        localOrganizationIds:
+          type: array
+          nullable: true
+          items:
+            type: string
+        localState:
+          type: string
+          nullable: true
+          description: 'Province/state of the linked local organization. `null` unless a
+
+            local organization is linked.
+
+            '
+          example: Wyoming
+        localPostalCode:
+          type: string
+          nullable: true
+          description: 'Postal code of the linked local organization. `null` unless a local
+
+            organization is linked.
+
+            '
+          example: '82052'
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+          description: ISO alpha-2 country code.
+        contact:
+          type: object
+          nullable: true
+          allOf:
+          - $ref: '#/components/schemas/schemas-OrganizationContact'
+    InspectionDetail:
+      allOf:
+      - $ref: '#/components/schemas/InspectionListItem'
+      - type: object
+        properties:
+          billingInformation:
+            $ref: '#/components/schemas/BillingInformation'
+          detailOfPIPO:
+            $ref: '#/components/schemas/DetailOfPIPO'
+          questionnaire:
+            $ref: '#/components/schemas/schemas-Questionnaire'
+    InspectionInformation:
+      type: object
+      properties:
+        typeOfInspection:
+          type: string
+          example: FRI
+        typeOfInspectionName:
+          type: string
+          example: Final Random Inspection
+    ExpectedDate:
+      type: object
+      required:
+      - inspectionDate
+      properties:
+        inspectionDate:
+          type: string
+          format: date-time
+          description: Expected inspection date (ISO-8601).
+        shipmentDate:
+          type: string
+          format: date-time
+          nullable: true
+          description: Expected shipment date (ISO-8601).
+    MeasurementSize:
+      type: object
+      properties:
+        size:
+          type: string
+          nullable: true
+        measurement:
+          type: string
+          nullable: true
+  parameters:
+    InspectionListOrder:
+      in: query
+      name: order
+      required: false
+      description: 'Sort order in the form `<field>:asc|desc`. Allowed fields: `created_date` and `updated_date`.
+
+        '
+      schema:
+        type: string
+        example: created_date:desc
+    InspectionListOwnership:
+      in: query
+      name: ownership
+      required: true
+      description: 'Ownership (Sent/Received/Shared)
+
+        '
+      schema:
+        type: string
+        enum:
+        - sent
+        - received
+        - shared
+    InspectionListLimit:
+      in: query
+      name: limit
+      required: false
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 10
+        minimum: 1
+        maximum: 100
+    InspectionListUpdatedFrom:
+      in: query
+      name: updated_from
+      required: false
+      description: 'Inclusive lower bound for last-updated date (ISO-8601 datetime). Must be
+
+        paired with `updated_to`.
+
+        '
+      schema:
+        type: string
+        format: date-time
+    InspectionListUpdatedTo:
+      in: query
+      name: updated_to
+      required: false
+      description: 'Inclusive upper bound for last-updated date (ISO-8601 datetime). Must be
+
+        paired with `updated_from`.
+
+        '
+      schema:
+        type: string
+        format: date-time
+    InspectionListCreatedFrom:
+      in: query
+      name: created_from
+      required: false
+      description: 'Inclusive lower bound for creation date (ISO-8601 datetime). Must be
+
+        paired with `created_to`.
+
+        '
+      schema:
+        type: string
+        format: date-time
+    InspectionListStatus:
+      in: query
+      name: status
+      required: false
+      description: 'Inspection status
+
+        '
+      schema:
+        type: string
+        enum:
+        - new
+        - confirmed
+        - pending
+        - in-progress
+        - completed
+        - released
+        - aborted
+        - waived
+        - rejected
+        - merged
+        - canceled
+    InspectionListOffset:
+      in: query
+      name: offset
+      required: false
+      description: Number of records to skip.
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    InspectionListCreatedTo:
+      in: query
+      name: created_to
+      required: false
+      description: 'Inclusive upper bound for creation date (ISO-8601 datetime). Must be
+
+        paired with `created_from`.
+
+        '
+      schema:
+        type: string
+        format: date-time
+  responses:
+    InspectionDetail200:
+      description: A single inspection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InspectionDetailResponse'
+    InspectionList200:
+      description: A paginated list of inspections.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InspectionListResponse'
+    NotFound404:
+      description: Inspection not found or not accessible by the authenticated organization.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest400:
+      description: Invalid query parameters (e.g. missing `ownership`, multiple `status` values, unpaired date range).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

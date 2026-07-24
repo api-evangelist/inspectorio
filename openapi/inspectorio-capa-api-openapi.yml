@@ -1,0 +1,1051 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS CAPA API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: CAPA
+paths:
+  /api/v1/capas/{report_id}:
+    get:
+      summary: Get CAPA
+      description: Get CAPA
+      parameters:
+      - in: path
+        name: report_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomResponse7'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - CAPA
+components:
+  schemas:
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    CustomResponse7:
+      properties:
+        data:
+          $ref: '#/components/schemas/CapaDetailResponse'
+      type: object
+    SpecialPointComment:
+      properties:
+        attachments:
+          description: List of attachments on the comment
+          items:
+            $ref: '#/components/schemas/SpecialPointAttachment'
+          type: array
+        createdDate:
+          description: Date the comment was created
+          example: '2021-05-25T13:58:26+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        email:
+          description: Email of the user who posted the comment
+          example: john@email.com
+          nullable: true
+          type: string
+        firstName:
+          description: First name of the user who posted the comment
+          example: John
+          nullable: true
+          type: string
+        lastName:
+          description: Last name of the user who posted the comment
+          example: Doe
+          nullable: true
+          type: string
+        message:
+          description: Comment message
+          nullable: true
+          type: string
+        organizationName:
+          description: Organization of the user who posted the comment
+          example: Acme Corp
+          nullable: true
+          type: string
+      type: object
+    Attachment:
+      properties:
+        url:
+          description: URL of attachments for the CAPA report
+          example: https://.../image1.jpg
+          format: url
+          type: string
+      type: object
+    DefectGeneral:
+      properties:
+        aql:
+          $ref: '#/components/schemas/Aql'
+          description: AQL information
+        defectFound:
+          $ref: '#/components/schemas/DefectSeverity'
+          description: Information on the number of defects
+        defects:
+          description: Defect details
+          items:
+            $ref: '#/components/schemas/DefectDetail'
+          type: array
+        maxAllowed:
+          $ref: '#/components/schemas/DefectSeverity'
+          description: Maximum number of defect allowed
+        totalDefects:
+          description: Total number of defects
+          example: 2
+          type: integer
+        totalItems:
+          description: Total number of defective items
+          example: 2
+          type: integer
+      type: object
+    ChatBox:
+      properties:
+        attachments:
+          description: Attachments in Chatbox
+          example: file1
+          items:
+            $ref: '#/components/schemas/ChatBoxAttachment'
+          type: array
+        createdDate:
+          description: Creation date of the message in Chatbox
+          example: '2021-05-25T13:58:26+00:00'
+          format: date-time
+          type: string
+        email:
+          description: Email of the contact who posted the message in Chatbox
+          example: john@email.com
+          type: string
+        firstName:
+          description: First Name of the contact who posted the message in Chatbox
+          example: John
+          nullable: true
+          type: string
+        lastName:
+          description: Last Name of the contact who posted the message in Chatbox
+          example: Doe
+          nullable: true
+          type: string
+        message:
+          description: Message in Chatbox
+          example: Please update the status
+          nullable: true
+          type: string
+        organizationName:
+          description: Organization of the contact who posted the message in Chatbox
+          example: Acme Corp
+          nullable: true
+          type: string
+      type: object
+    OutOfTolerance:
+      properties:
+        unit:
+          example: cm
+          nullable: true
+          type: string
+        value:
+          description: value of the out of acceptable tolerance
+          example: 1.5
+          type: number
+      type: object
+    GeneralInformation:
+      properties:
+        actualInspectionDate:
+          description: Actual inspection date
+          example: '2021-05-07T00:00:00+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        assortmentIds:
+          description: List of assortment IDs
+          example: A123
+          items:
+            nullable: true
+            type: string
+          nullable: true
+          type: array
+        availableQuantity:
+          description: Available quantity of items of purchase orders
+          example: '200'
+          nullable: true
+          type: integer
+        capaStatus:
+          description: CAPA status of the report
+          example: Approved
+          nullable: true
+          type: string
+        factoryId:
+          description: Custom ID of the factory in the inspection
+          example: F0123
+          nullable: true
+          type: string
+        factoryName:
+          description: Name of the factory in the inspection
+          example: Acme Factory
+          nullable: true
+          type: string
+        inspectionId:
+          description: Unique identifier of the inspection
+          example: 1234902f-5ab4-4f4e-8422-794109d951b4
+          nullable: true
+          type: string
+        inspectionLocation:
+          $ref: '#/components/schemas/InspectionLocation'
+          description: Location where the inspection took place
+          nullable: true
+        inspectionResult:
+          description: Inspection result
+          example: pass
+          nullable: true
+          type: string
+        inspectionType:
+          description: Inspection type
+          example: TPR
+          nullable: true
+          type: string
+        inspectorName:
+          description: Inspector name
+          example: John Doe
+          nullable: true
+          type: string
+        itemIds:
+          description: List of item IDs
+          example: 111-22-123456
+          items:
+            nullable: true
+            type: string
+          nullable: true
+          type: array
+        orderQuantity:
+          description: Order quantity of items of purchase orders
+          example: '200'
+          nullable: true
+          type: integer
+        packingTypes:
+          description: List of packing types
+          example: Solid
+          items:
+            nullable: true
+            type: string
+          nullable: true
+          type: array
+        productCategories:
+          description: list of product categories
+          items:
+            $ref: '#/components/schemas/ProductCategoryOrLine'
+          nullable: true
+          type: array
+        productLines:
+          description: List of product lines
+          items:
+            $ref: '#/components/schemas/ProductCategoryOrLine'
+          nullable: true
+          type: array
+        proposedInspectionDate:
+          description: Proposed inspection date
+          example: '2021-05-07T00:00:00+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        styleIds:
+          description: List of style IDs
+          example: S123
+          items:
+            nullable: true
+            type: string
+          nullable: true
+          type: array
+        supplierId:
+          description: Custom ID of the supplier in the inspection
+          example: S0246
+          nullable: true
+          type: string
+        supplierName:
+          description: Name of the supplier in the inspection
+          example: Padme Supplier
+          nullable: true
+          type: string
+      type: object
+    InspectionLocation:
+      properties:
+        address:
+          description: Address of the inspected organization
+          example: 1 Madison Avenue
+          nullable: true
+          type: string
+        contact:
+          $ref: '#/components/schemas/OrganizationContact2'
+          description: Contact information of the organization
+        country:
+          description: Country of the inspected organization in 2 characters ISO format
+          example: US
+          nullable: true
+          type: string
+        name:
+          example: Acme Corp
+          nullable: true
+          type: string
+        organizationId:
+          description: Unique identifier of the inspected organization
+          example: F000123
+          nullable: true
+          type: string
+      type: object
+    Aql:
+      properties:
+        aqlId:
+          description: AQL ID
+          example: '123'
+          nullable: true
+          type: string
+        critical:
+          description: Number of Critical defects
+          example: 0
+          type: number
+        major:
+          description: Number of Major defects
+          example: 1
+          type: number
+        minor:
+          description: Number of Minor defects
+          example: 2
+          type: number
+      type: object
+    NonConformities:
+      properties:
+        assembly:
+          $ref: '#/components/schemas/DefectGeneral'
+          description: Assembly section
+        checkList:
+          description: Checklist section
+          items:
+            $ref: '#/components/schemas/Checklist'
+          type: array
+        measurement:
+          $ref: '#/components/schemas/Measurement'
+          description: Measurement section
+        measurementByDefects:
+          $ref: '#/components/schemas/DefectGeneral'
+          description: Measurement by Defects section
+        moistureCheck:
+          $ref: '#/components/schemas/MoistureCheck'
+          description: Moisture Check section
+        packaging:
+          $ref: '#/components/schemas/Packing'
+          description: Packaging section
+        questions:
+          description: Questions
+          items:
+            $ref: '#/components/schemas/Question'
+          type: array
+        rfid:
+          description: RFID section
+          items:
+            $ref: '#/components/schemas/RFID'
+          type: array
+        workmanship:
+          $ref: '#/components/schemas/DefectGeneral'
+          description: Workmanship section
+      type: object
+    FailedMeasurement:
+      properties:
+        found:
+          description: Number of failed measurement found
+          example: 2
+          type: number
+        measurementDescription:
+          description: Measurement Description
+          example: Chest
+          nullable: true
+          type: string
+        occurrence:
+          description: Number of occurrences
+          example: 2
+          type: number
+        sampleName:
+          example: tanktop_1
+          nullable: true
+          type: string
+        standard:
+          description: Standard measurement
+          example: 20
+          type: number
+        tolerance:
+          description: Tolerance Lower & Upper of a point of measurement, only use this attribute if your organization has not enabled Unequal Tolerance
+          example: 0.5
+          type: number
+        toleranceLower:
+          description: Tolerance lower of a point of measurement
+          example: 0.5
+          type: number
+        toleranceUpper:
+          description: Tolerance upper of a point of measurement
+          example: 0.5
+          type: number
+      type: object
+    CorrectiveActionData:
+      properties:
+        details:
+          description: Details on the corrective action
+          example: Rework on the defective units
+          nullable: true
+          type: string
+        value:
+          description: An action in the corrective list
+          example: Rework Units
+          nullable: true
+          type: string
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object
+    Measurement:
+      properties:
+        aql:
+          $ref: '#/components/schemas/Aql'
+          description: AQL information
+        comments:
+          description: Comment on the actions
+          example: Reviewed
+          items:
+            $ref: '#/components/schemas/ChatBox'
+          type: array
+        correctiveAction:
+          $ref: '#/components/schemas/CorrectiveActionData'
+          description: Information on the corrective action
+        defectFound:
+          $ref: '#/components/schemas/DefectSeverity'
+          description: Information on the number of defects
+        failedMeasurements:
+          description: Failed measurements information
+          items:
+            $ref: '#/components/schemas/FailedMeasurement'
+          type: array
+        maxAllowed:
+          $ref: '#/components/schemas/DefectSeverity'
+          description: Maximum number of defect allowed
+        preventativeAction:
+          description: Preventative action
+          example: Advise all staff
+          nullable: true
+          type: string
+        rootCause:
+          description: Root cause of the defect
+          example: Wrong carton dimension
+          nullable: true
+          type: string
+      type: object
+    Packing:
+      properties:
+        aql:
+          $ref: '#/components/schemas/Aql'
+          description: AQL information
+        defectFound:
+          $ref: '#/components/schemas/DefectSeverity'
+          description: Information on the number of defects
+        defects:
+          description: Defect details
+          items:
+            $ref: '#/components/schemas/DefectDetail'
+          type: array
+        maxAllowed:
+          $ref: '#/components/schemas/DefectSeverity'
+          description: Maximum number of defect allowed
+        packingType:
+          description: Packing type
+          nullable: true
+          type: string
+        totalDefects:
+          description: Total number of defects
+          example: 2
+          type: integer
+        totalItems:
+          description: Total number of defective items
+          example: 2
+          type: integer
+      type: object
+    Checklist:
+      properties:
+        attachments:
+          description: List of attachments in the questionnaire
+          items:
+            $ref: '#/components/schemas/Attachment'
+          type: array
+        comments:
+          description: Comment on the actions
+          example: Reviewed
+          items:
+            $ref: '#/components/schemas/ChatBox'
+          type: array
+        correctiveAction:
+          $ref: '#/components/schemas/CorrectiveActionData'
+          description: Information on the corrective action
+        label:
+          description: Label of question
+          example: General
+          nullable: true
+          type: string
+        preventativeAction:
+          description: Preventative action
+          example: Advise all staff
+          nullable: true
+          type: string
+        rootCause:
+          description: Root cause of the defect
+          example: Wrong carton dimension
+          nullable: true
+          type: string
+      type: object
+    SpecialPointAttachment:
+      properties:
+        fileName:
+          description: File name of the attachment
+          example: photo.jpg
+          nullable: true
+          type: string
+        fileUrl:
+          description: URL of the attachment
+          example: https://.../file.jpg
+          nullable: true
+          type: string
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    AcceptableTolerances:
+      properties:
+        from:
+          description: The bottom range of the acceptable tolerance
+          example: 0.2
+          type: number
+        to:
+          description: The top range of the acceptable tolerance
+          example: 1
+          type: number
+        unit:
+          description: Unit of the acceptable tolerance in cm,mm,inch
+          example: cm
+          nullable: true
+          type: string
+      type: object
+    ProductCategoryOrLine:
+      properties:
+        id:
+          description: Unique identifier of the product category or product line
+          example: C123
+          nullable: true
+          type: string
+        name:
+          description: Name of the product category or product line
+          example: Menswear
+          nullable: true
+          type: string
+      type: object
+    DefectItem:
+      properties:
+        attachments:
+          description: List of attachments of defective items
+          items:
+            $ref: '#/components/schemas/Attachment'
+          type: array
+        classification:
+          description: Classification of the defective item
+          example: Minor
+          nullable: true
+          type: string
+        color:
+          description: Color of the defective item
+          example: black
+          nullable: true
+          type: string
+        customId:
+          description: Custom ID of the defective item
+          example: ITEM123
+          nullable: true
+          type: string
+        itemId:
+          description: ID of the defective item
+          example: 111-22-333
+          nullable: true
+          type: string
+        size:
+          description: Size of the defective item
+          example: Medium
+          nullable: true
+          type: string
+        comment:
+          description: Inspector comment on the defective item
+          example: Thread is loose
+          nullable: true
+          type: string
+        styleId:
+          description: Style ID of the defective item
+          example: style_1
+          nullable: true
+          type: string
+      type: object
+    OrganizationContact2:
+      properties:
+        contactId:
+          description: Unique identifier of the organization contact
+          example: '1122'
+          nullable: true
+          type: string
+        email:
+          description: Email address of the organization contact
+          example: john@email.com
+          nullable: true
+          type: string
+        mobileNumber:
+          description: Mobile number of the organization contact
+          example: '1234567890'
+          nullable: true
+          type: string
+        name:
+          description: Name of the organization contact
+          example: John Doe
+          nullable: true
+          type: string
+        telephoneNumber:
+          description: Telephone number of the organization contact
+          example: '1234567890'
+          nullable: true
+          type: string
+      type: object
+    DefectSeverity:
+      properties:
+        critical:
+          description: Number of Critical defects
+          example: 0
+          type: integer
+        major:
+          description: Number of Major defects
+          example: 1
+          type: integer
+        minor:
+          description: Number of Minor defects
+          example: 2
+          type: integer
+      type: object
+    CapaDetailResponse:
+      properties:
+        chatBox:
+          description: Chatbox
+          items:
+            $ref: '#/components/schemas/ChatBox'
+          type: array
+        generalInformation:
+          $ref: '#/components/schemas/GeneralInformation'
+          description: General information on CAPA
+        nonConformities:
+          $ref: '#/components/schemas/NonConformities'
+          description: Non-Conformity
+        reInspectionDetail:
+          $ref: '#/components/schemas/ReInspection'
+          description: Re-inspection details
+        shipmentWindow:
+          $ref: '#/components/schemas/ShipmentWindow'
+          description: Shipment window
+        specialPoints:
+          description: List of special points
+          items:
+            $ref: '#/components/schemas/SpecialPoint'
+          type: array
+      type: object
+    ReInspection:
+      properties:
+        comment:
+          description: Comment on the re-inspection
+          example: Reviewed
+          nullable: true
+          type: string
+        inspectionType:
+          description: Inspection Type of the re-inspection
+          example: TPR
+          nullable: true
+          type: string
+        reInspectionBookingId:
+          description: Booking ID of the re-inspection
+          example: 9dc7928867dc
+          nullable: true
+          type: string
+        reInspectionDate:
+          description: Re-inspection date
+          example: '2021-05-07T00:00:00+00:00'
+          nullable: true
+          type: string
+      type: object
+    DefectDetail:
+      properties:
+        affectedPercentage:
+          description: Affected percentage by the defect
+          example: 1
+          type: number
+        comments:
+          description: Comment on the actions
+          example: Reviewed
+          items:
+            $ref: '#/components/schemas/ChatBox'
+          type: array
+        correctiveAction:
+          $ref: '#/components/schemas/CorrectiveActionData'
+          description: Information on the corrective action
+        defectCategory:
+          description: Defect category
+          example: Construction
+          nullable: true
+          type: string
+        defectCode:
+          description: Defect code
+          example: CON111
+          nullable: true
+          type: string
+        defectItems:
+          description: List of defective items
+          items:
+            $ref: '#/components/schemas/DefectItem'
+          type: array
+        defectName:
+          description: Defect name
+          example: Construction defect
+          nullable: true
+          type: string
+        preventativeAction:
+          description: Preventative action
+          example: Advise all staff
+          nullable: true
+          type: string
+        rootCause:
+          description: Root cause of the defect
+          example: Wrong carton dimension
+          nullable: true
+          type: string
+        totalDefectItems:
+          description: Total defect items
+          example: 1
+          type: integer
+        totalDefectUnits:
+          description: Total defect units
+          example: 1
+          type: integer
+      type: object
+    RFID:
+      properties:
+        barCode:
+          description: Barcode
+          example: '456'
+          nullable: true
+          type: string
+        comments:
+          description: Comment on the actions
+          example: Reviewed
+          items:
+            $ref: '#/components/schemas/ChatBox'
+          type: array
+        correctiveAction:
+          $ref: '#/components/schemas/CorrectiveActionData'
+          description: Information on the corrective action
+        decryptedCode:
+          description: Decrypted Code
+          example: '123123'
+          nullable: true
+          type: string
+        matched:
+          description: Indicate if the code is matched
+          example: 'true'
+          type: boolean
+        photos:
+          description: List of photos
+          items:
+            nullable: true
+            type: string
+          type: array
+        preventativeAction:
+          description: Preventative action
+          example: Advise all staff
+          nullable: true
+          type: string
+        rfid:
+          description: RFID
+          example: '123'
+          nullable: true
+          type: string
+        rootCause:
+          description: Root cause of the defect
+          example: Wrong carton dimension
+          nullable: true
+          type: string
+      type: object
+    Component:
+      properties:
+        acceptableTolerances:
+          description: Acceptable Tolerance information
+          items:
+            $ref: '#/components/schemas/AcceptableTolerances'
+          type: array
+        defectClassification:
+          description: Defect Classification
+          example: Minor
+          nullable: true
+          type: string
+        name:
+          description: Name of the component
+          example: Arm
+          nullable: true
+          type: string
+        outOfTolerance:
+          $ref: '#/components/schemas/OutOfTolerance'
+          description: Out of Tolerance information
+      type: object
+    ShipmentWindow:
+      properties:
+        shipmentDateFrom:
+          description: The first date of the shipment window
+          example: '2021-05-07T00:00:00+00:00'
+          format: date-time
+          type: string
+        shipmentDateTo:
+          description: The last date of the shipment window
+          example: '2021-05-15T00:00:00+00:00'
+          format: date-time
+          type: string
+        shipmentNote:
+          description: Note on the shipment window
+          example: Acknowledged
+          nullable: true
+          type: string
+      type: object
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
+    MoistureCheckDefectItem:
+      properties:
+        components:
+          description: Components of items that failed the moisture check
+          items:
+            $ref: '#/components/schemas/Component'
+          type: array
+        itemId:
+          description: ID of the item that failed the moisture check
+          example: ITEM1212
+          nullable: true
+          type: string
+        type:
+          description: Type of the defective item
+          example: General
+          nullable: true
+          type: string
+      type: object
+    SpecialPoint:
+      properties:
+        comments:
+          description: List of comments on the special point
+          items:
+            $ref: '#/components/schemas/SpecialPointComment'
+          type: array
+        correctiveAction:
+          $ref: '#/components/schemas/CorrectiveActionData'
+        description:
+          description: Description of the special point
+          example: Stitching quality issue observed
+          nullable: true
+          type: string
+        preventativeAction:
+          description: Preventative action
+          example: Advise all staff
+          nullable: true
+          type: string
+        type:
+          description: 'Type of the special point: remark or quality'
+          example: remark
+          nullable: true
+          type: string
+      type: object
+    Question:
+      properties:
+        answer:
+          description: Answer of a question in the questionnaire
+          example: 'Yes'
+          nullable: true
+          type: string
+        answerComments:
+          description: The comments for the answer of a question in the questionnaire
+          example:
+          - comment 1
+          - comment 2
+          - comment 3
+          items:
+            type: string
+          type: array
+          nullable: true
+        attachments:
+          description: List of attachments in the questionnaire
+          items:
+            $ref: '#/components/schemas/Attachment'
+          type: array
+        comments:
+          description: Comment on the actions
+          example: Reviewed
+          items:
+            $ref: '#/components/schemas/ChatBox'
+          type: array
+        correctiveAction:
+          $ref: '#/components/schemas/CorrectiveActionData'
+          description: Information on the corrective action
+        label:
+          description: Label of question
+          example: General
+          nullable: true
+          type: string
+        preventativeAction:
+          description: Preventative action
+          example: Advise all staff
+          nullable: true
+          type: string
+        rootCause:
+          description: Root cause of the defect
+          example: Wrong carton dimension
+          nullable: true
+          type: string
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    ChatBoxAttachment:
+      properties:
+        fileName:
+          description: File Name of the attachment in Chatbox
+          example: 123-abc
+          nullable: true
+          type: string
+        url:
+          description: URL of attachments for the CAPA report
+          example: https://.../image1.jpg
+          format: url
+          type: string
+      type: object
+    MoistureCheck:
+      properties:
+        aql:
+          $ref: '#/components/schemas/Aql'
+          description: AQL information
+        comments:
+          description: Comment on the actions
+          example: Reviewed
+          items:
+            $ref: '#/components/schemas/ChatBox'
+          type: array
+        correctiveAction:
+          $ref: '#/components/schemas/CorrectiveActionData'
+          description: Information on the corrective action
+        defectFound:
+          $ref: '#/components/schemas/DefectSeverity'
+          description: Information on the number of defects
+        defectItems:
+          description: List of defective items that failed the moisture check
+          items:
+            $ref: '#/components/schemas/MoistureCheckDefectItem'
+          type: array
+        maxAllowed:
+          $ref: '#/components/schemas/DefectSeverity'
+          description: Maximum number of defect allowed
+        preventativeAction:
+          description: Preventative action
+          example: Advise all staff
+          nullable: true
+          type: string
+        rootCause:
+          description: Root cause of the defect
+          example: Wrong carton dimension
+          nullable: true
+          type: string
+        totalDefects:
+          description: Total number of defects
+          example: 2
+          type: integer
+        totalItems:
+          description: Total number of defective items
+          example: 2
+          type: integer
+      type: object

@@ -1,0 +1,164 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS AUTH API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: AUTH
+paths:
+  /api/v1/auth/login:
+    post:
+      deprecated: true
+      summary: Login and Retrieve Access Token
+      description: Login and Retrieve Access Token
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginForm'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomResponse3'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      security: []
+      tags:
+      - AUTH
+components:
+  schemas:
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    CustomResponse3:
+      properties:
+        data:
+          $ref: '#/components/schemas/AuthResponse'
+      type: object
+    LoginForm:
+      properties:
+        password:
+          minLength: 1
+          type: string
+        username:
+          minLength: 1
+          type: string
+      required:
+      - password
+      - username
+      type: object
+    AuthResponse:
+      properties:
+        avatarUrl:
+          description: Link of user's avatar
+          example: https://developers.inspectorio.com/img/user.png
+          format: url
+          type: string
+        orgName:
+          description: Name of the organization that the user belongs to
+          example: Acme Corp
+          type: string
+        refreshToken:
+          description: Refresh token used for subsequent API requests
+          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1N123...xyz
+          type: string
+        token:
+          description: Token used for authentication in API requests
+          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1N123...abc
+          type: string
+        username:
+          description: Name of the user
+          example: John Doe
+          type: string
+      required:
+      - refreshToken
+      - token
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object

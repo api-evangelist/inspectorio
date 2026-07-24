@@ -1,0 +1,1660 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS ASSESSMENT-V1 API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: ASSESSMENT-V1
+paths:
+  /api/v1/assessments/search:
+    post:
+      operationId: searchAssessmentsV1
+      description: Search Assessments V1 with filters and pagination
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/V1AssessmentSearchRequest'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V1AssessmentListResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      summary: Search assessments
+      tags:
+      - ASSESSMENT-V1
+  /api/v1/assessments/{assessment_id}:
+    get:
+      description: Get Assessment V1 with detailed information
+      operationId: getAssessmentV1
+      parameters:
+      - in: path
+        name: assessment_id
+        required: true
+        schema:
+          type: string
+        description: Assessment execution ID (UUID)
+      - in: query
+        name: capa_details
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Get additional information about CAPA
+      - in: query
+        name: include_step_questions
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Get question and answers
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V1AssessmentDetailResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundApiError'
+          description: Assessment not found
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      summary: Get Assessment
+      tags:
+      - ASSESSMENT-V1
+components:
+  schemas:
+    StepExecutionResult:
+      properties:
+        numberOfAreaToImproves:
+          description: Number of areas to improve
+          example: 3
+          type: integer
+        score:
+          description: Step score
+          example: 7/10
+          nullable: true
+          type: string
+        rating:
+          description: Step rating
+          example: Good
+          nullable: true
+          type: string
+        scoreInPercentage:
+          description: Score in percentage
+          example: 70%
+          nullable: true
+          type: string
+        createdAt:
+          description: Creation timestamp
+          example: '2024-09-30T10:36:56.057000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        sections:
+          description: Sections data
+          items:
+            type: object
+          type: array
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    CustomLabel:
+      properties:
+        name:
+          description: Name of the label
+          type: string
+        value:
+          description: Value of the label
+          type: string
+      type: object
+    V1AssessmentCapaLabel:
+      properties:
+        name:
+          description: Label field name
+          example: Priority
+          type: string
+        value:
+          description: Label value
+          example: High
+          type: string
+      type: object
+    V1AssessmentStakeholders:
+      properties:
+        assessedOrg:
+          description: The organization being assessed
+          allOf:
+          - $ref: '#/components/schemas/IdNameTypeOrgId'
+          - properties:
+              address:
+                description: Street address of the assessed organization
+                example: 59 Xa lo Ha Noi
+                nullable: true
+                type: string
+              city:
+                description: City of the assessed organization
+                example: Ho Chi Minh City
+                nullable: true
+                type: string
+              postal:
+                description: Postal code of the assessed organization
+                example: '70000'
+                nullable: true
+                type: string
+              country:
+                description: Country code of the assessed organization
+                example: VN
+                nullable: true
+                type: string
+              province:
+                description: Province/state of the assessed organization
+                example: Ho Chi Minh
+                nullable: true
+                type: string
+              contactPersons:
+                description: Assessed organization contact persons
+                items:
+                  $ref: '#/components/schemas/ContactPerson'
+                type: array
+              siteStatus:
+                description: Site status of the assessed organization
+                example: Active
+                nullable: true
+                type: string
+        requester:
+          description: The organization who requested the assessment
+          allOf:
+          - $ref: '#/components/schemas/IdNameTypeOrgId'
+          - properties:
+              contactPersons:
+                description: Requester contact persons
+                items:
+                  $ref: '#/components/schemas/ContactPerson'
+                type: array
+        executors:
+          description: The organizations who execute the assessment
+          items:
+            allOf:
+            - $ref: '#/components/schemas/Executor'
+          type: array
+        selectedPartners:
+          description: The partners associated with the assessed organization
+          items:
+            allOf:
+            - $ref: '#/components/schemas/IdNameTypeOrgId'
+            - properties:
+                contactPersons:
+                  description: Partner contact persons
+                  items:
+                    $ref: '#/components/schemas/ContactPerson'
+                  type: array
+          type: array
+      type: object
+    V1AssessmentStakeholdersList:
+      properties:
+        assessedOrg:
+          description: The organization being assessed (list view - simplified)
+          allOf:
+          - $ref: '#/components/schemas/IdNameTypeOrgId'
+          - properties:
+              city:
+                description: City
+                example: Abbeville
+                nullable: true
+                type: string
+              country:
+                description: Country
+                example: US
+                nullable: true
+                type: string
+        requester:
+          description: The organization who requested the assessment
+          allOf:
+          - $ref: '#/components/schemas/IdNameTypeOrgId'
+        executors:
+          description: The organizations who execute the assessment
+          items:
+            allOf:
+            - $ref: '#/components/schemas/Executor'
+          type: array
+        selectedPartners:
+          description: The partners associated with the assessed organization
+          items:
+            allOf:
+            - $ref: '#/components/schemas/IdNameTypeOrgId'
+            - properties:
+                contactPersons:
+                  description: Partner contact persons
+                  items:
+                    $ref: '#/components/schemas/ContactPerson'
+                  type: array
+          type: array
+      type: object
+    NotFoundApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Not Found
+          type: string
+      type: object
+    V1AssessmentQuestionAnswer:
+      properties:
+        question:
+          description: Question information
+          properties:
+            id:
+              description: Question ID
+              example: 74fad70b-679a-46cc-9e98-ec8aca9b44f8
+              type: string
+            content:
+              description: Question content/text
+              example: Q2.2.1
+              type: string
+          type: object
+        index:
+          description: Answer index
+          example: 1
+          type: integer
+        text:
+          description: Text answer
+          example: Some answer text
+          nullable: true
+          type: string
+        number:
+          description: Numeric answer
+          example: 42
+          nullable: true
+          type: number
+        value:
+          description: Value answer (we plan to migrate to this field in future). Currently only some question types using it.
+          example: 42
+          oneOf:
+          - type: string
+          - type: object
+          - type: 'null'
+        tableValues:
+          description: Table answer values for questions with table response type
+          items:
+            type: object
+          type: array
+        choices:
+          description: Selected choice(s)
+          items:
+            properties:
+              id:
+                description: Choice ID
+                example: 67e04318-e69c-4224-84f3-aff1d4089b80
+                type: string
+              content:
+                description: Choice content
+                example: '3'
+                type: string
+              text:
+                description: Sub answer "paragraph" for the choice (if applicable)
+                example: test
+                nullable: true
+                type: string
+              files:
+                description: Sub answer "files" for the choice (if applicable)
+                items:
+                  $ref: '#/components/schemas/FileSignedUrl'
+                type: array
+            type: object
+          type: array
+        files:
+          description: Uploaded files
+          items:
+            type: object
+          type: array
+      type: object
+    V1AssessmentSubmittedByUser:
+      properties:
+        firstName:
+          description: User first name
+          example: John
+          nullable: true
+          type: string
+        lastName:
+          description: User last name
+          example: Doe
+          nullable: true
+          type: string
+        email:
+          description: User email
+          example: john.doe@example.com
+          type: string
+      type: object
+    V1AssessmentAssignedUser:
+      properties:
+        id:
+          description: User unique identifier
+          example: 5d975074-392d-4850-9f9a-3bde0d756525
+          type: string
+        email:
+          description: User email
+          example: user@inspectorio.mailinator.com
+          type: string
+        firstName:
+          description: User first name
+          example: Forrest
+          nullable: true
+          type: string
+        lastName:
+          description: User last name
+          example: V
+          nullable: true
+          type: string
+      type: object
+    AtiLinkedFinding:
+      properties:
+        scheme:
+          description: Scheme
+          type: string
+          nullable: true
+        severity:
+          description: Severity value
+          example: Informational
+          type: string
+          nullable: true
+        title:
+          description: Title
+          example: Testing finding description
+          type: string
+          nullable: true
+        category:
+          description: Category
+          example: Section 1
+          type: string
+          nullable: true
+        subCategory:
+          description: Sub-category
+          example: Section 1.1
+          type: string
+          nullable: true
+        issueNumber:
+          description: Issue number
+          example: 376882
+          type: string
+          nullable: true
+        description:
+          description: Issue description
+          example: This is a detailed description of the issue.
+          type: string
+          nullable: true
+        schemeData:
+          description: Scheme data
+          type: object
+          nullable: true
+      type: object
+    Capa:
+      properties:
+        id:
+          description: Unique identifier of the CAPA
+          example: 1235330e-b74b-4be6-8d8a-cb0560effc11
+          type: string
+        status:
+          description: Status of the CAPA
+          example: New
+          type: string
+        capaLabels:
+          description: List of CAPA labels
+          items:
+            properties:
+              name:
+                description: Label field name
+                example: Priority
+                type: string
+              value:
+                description: Label value
+                example: High
+                type: string
+          type: array
+        updatedDate:
+          description: Last update date of the CAPA (available when capa_details=true)
+          example: '2025-12-12T10:48:07.191000+00:00'
+          format: date-time
+          type: string
+        updatedByUser:
+          description: User who last updated the CAPA (available when capa_details=true)
+          example: john_doe@example.com
+          nullable: true
+          type: string
+        approvedDate:
+          description: Date when CAPA was approved (available when capa_details=true)
+          example: '2025-12-12T10:48:07.191000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        createdDate:
+          description: Creation date of the CAPA (available when capa_details=true)
+          example: '2025-12-12T10:48:07.191000+00:00'
+          format: date-time
+          type: string
+        dueDate:
+          description: Due date for CAPA completion (available when capa_details=true)
+          example: '2025-12-31T00:00:00.000000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        areaToImproves:
+          description: List of area to improves in this CAPA (available when capa_details=true)
+          items:
+            $ref: '#/components/schemas/DetailedAreaToImprove'
+          type: array
+      type: object
+    V2ReportEscalation:
+      properties:
+        createdDate:
+          description: Date when the Escalation was created
+          format: date-time
+          example: '2024-09-30T10:36:56.057000+00:00'
+          type: string
+        status:
+          description: Status of the escalation
+          type: string
+        resolvedDate:
+          description: Resolution date of the escalation
+          format: date-time
+          example: '2024-09-30T10:36:56.057000+00:00'
+          nullable: true
+          type: string
+        escalatedTo:
+          description: The user who received the escalation
+          items:
+            $ref: '#/components/schemas/V2ReportDetailUser'
+          type: array
+        escalatedBy:
+          $ref: '#/components/schemas/V2ReportDetailUser'
+        resolvedByUser:
+          $ref: '#/components/schemas/V2ReportDetailUser'
+        note:
+          description: Escalation note
+          type: string
+        reasons:
+          description: Escalation reason
+          items:
+            type: string
+          type: array
+        exceptionReasons:
+          description: Escalation exception reason
+          items:
+            type: string
+          type: array
+        reviewerComment:
+          description: Reviewer comment
+          nullable: true
+          type: string
+      type: object
+    V1AssessmentScheme:
+      properties:
+        schema:
+          description: Scheme name
+          example: ISO 9001
+          nullable: true
+          type: string
+        orgId:
+          description: Organization external ID
+          example: ORG_123
+          nullable: true
+          type: string
+        reportId:
+          description: Related report ID
+          example: 5c40e755-3ab0-4fa9-9a44-f76a95f0e87d
+          nullable: true
+          type: string
+        auditDate:
+          description: Audit date for this scheme
+          example: '2024-09-30'
+          format: date
+          nullable: true
+          type: string
+      type: object
+    V1AssessmentDetailResponse:
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/V1AssessmentDetail'
+          description: Assessment data
+      type: object
+    AreaToImproveField:
+      properties:
+        improvementAreaId:
+          description: ID of the improvement area
+          example: 07e1d9ef-aebe-4901-b26c-941cb5983832
+          type: string
+        fieldId:
+          description: ID of the field
+          example: b62ca36f-fa86-4ee0-ae96-bad52c2c46b2
+          type: string
+        field:
+          description: Field definition
+          properties:
+            id:
+              description: Field ID
+              example: b62ca36f-fa86-4ee0-ae96-bad52c2c46b2
+              type: string
+            fieldName:
+              description: Name of the field
+              example: Root Causes
+              type: string
+            description:
+              description: Field description
+              example: Describe the root causes
+              type: string
+            enabled:
+              description: Whether the field is enabled
+              example: true
+              type: boolean
+            responseType:
+              description: Type of response expected
+              example: MULTIPLE_TEXT_ENTRIES
+              type: string
+            requirement:
+              description: Field requirement level
+              example: REQUIRED_WHEN_ATI_MANDATORY
+              type: string
+            systemKey:
+              description: System key for the field
+              example: ROOT_CAUSES
+              nullable: true
+              type: string
+            settings:
+              description: Additional settings
+              nullable: true
+              type: object
+            order:
+              description: Display order
+              example: 0
+              type: integer
+            choices:
+              description: Available choices for the field
+              items:
+                type: object
+              type: array
+            createdAt:
+              description: Creation timestamp
+              example: '2025-11-03T14:40:34.815Z'
+              format: date-time
+              type: string
+            updatedAt:
+              description: Last update timestamp
+              example: '2025-11-03T14:40:34.815Z'
+              format: date-time
+              type: string
+          type: object
+        answer:
+          description: Answer to the field
+          properties:
+            value:
+              description: Answer value
+              example: Some text answer
+              nullable: true
+              type: string
+            choices:
+              description: Selected choices
+              items:
+                type: string
+              type: array
+            textAreas:
+              description: Text area responses
+              items:
+                type: object
+              type: array
+            attachments:
+              description: Attached files
+              items:
+                type: object
+              type: array
+          type: object
+      type: object
+    V1AssessmentListItem:
+      properties:
+        id:
+          description: Unique assessment execution ID
+          example: 5c40e755-3ab0-4fa9-9a44-f76a95f0e87d
+          type: string
+        assessmentId:
+          description: Assessment ID (displays in UI)
+          example: 100000-2
+          type: string
+        caseId:
+          description: Case ID (displays in UI)
+          example: 100000
+          type: string
+        reportId:
+          description: Associated report ID (if report exists)
+          example: 5c40e755-3ab0-4fa9-9a44-f76a95f0e87d
+          nullable: true
+          type: string
+        status:
+          description: Assessment Status (New, Aborted, Submitted ...)
+          example: Submitted
+          type: string
+        type:
+          description: Assessment type
+          example: Verification Assessment
+          enum:
+          - Verification Assessment
+          - Self Assessment
+          type: string
+        reason:
+          description: Assessment Reasons (optional - depending on the configuration in each standard)
+          example: Annual Audit
+          nullable: true
+          type: string
+        workflowName:
+          description: Selected Workflow for the assessment
+          example: Factory Information
+          type: string
+        standard:
+          description: The Standard used for the Assessment
+          allOf:
+          - $ref: '#/components/schemas/NameVersion'
+        rating:
+          description: Rating of the assessment. Calculated based on the rule setting of the standard and the score/issues found in the assessment.
+          example: Good
+          nullable: true
+          type: string
+        score:
+          description: Score of the Assessment. Calculated based on the number of issue found or the selected answers in the assessment.
+          example: 8/10
+          nullable: true
+          type: string
+        scoreInPercentage:
+          description: Score of the Assessment in percentage. Calculated based on the number of issue found or the selected answers in the assessment compare to the maximum score.
+          example: 80%
+          nullable: true
+          type: string
+        totalFindings:
+          description: List of findings. Only contains value if the assessment is issue-based.
+          items:
+            $ref: '#/components/schemas/V1AssessmentFinding'
+          type: array
+        numberOfAreaToImproves:
+          description: The total count of area to improves after the assessment is completed.
+          example: 12
+          type: integer
+        assessmentDueDate:
+          description: Due date of the assessment
+          example: '2024-09-30T10:36:56.057000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        assessmentWindowStart:
+          description: Start date of the Assessment Window
+          example: '2024-09-30T10:36:56.057000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        assessmentWindowEnd:
+          description: End date of the Assessment Window
+          example: '2024-09-30T10:36:56.057000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        auditStartDate:
+          description: Actual Audit Start date (This field has value only when the configuration is enabled in the standard)
+          example: '2024-09-30T00:00:00.000000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        auditEndDate:
+          description: Actual Audit End date (This field has value only when the configuration is enabled in the standard)
+          example: '2024-09-30T00:00:00.000000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        assessmentSubmitDate:
+          description: Assessment Submitted date. This is also Report Generated date.
+          example: '2024-09-30T10:36:56.057000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        assessmentStartDate:
+          description: The start date of the Assessment
+          example: '2024-09-30T10:36:56.057000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        completeCaseDate:
+          description: The date the case was completed
+          example: '2024-09-30T10:36:56.057000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        reopenCaseDate:
+          description: The date the case was reopened
+          example: '2024-09-30T10:36:56.057000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        stakeholders:
+          description: Stakeholders information
+          allOf:
+          - $ref: '#/components/schemas/V1AssessmentStakeholdersList'
+        capa:
+          description: Information of the CAPA, Corrective Action and Preventive Action (basic info only in list view)
+          type: object
+          allOf:
+          - $ref: '#/components/schemas/V1AssessmentCapaList'
+          nullable: true
+        schedulingStatus:
+          description: Scheduling status of the assessment
+          example: Scheduled
+          nullable: true
+          type: string
+        updatedDate:
+          description: System updated date. This field will be updated based on the changes in the Assessment and CAPA.
+          example: '2024-09-30T10:36:56.057000+00:00'
+          format: date-time
+          type: string
+        customFields:
+          description: Client's specific attributes
+          nullable: true
+          type: object
+      type: object
+    BasicStepExecutionInfo:
+      properties:
+        id:
+          description: Step execution ID
+          example: 4ea094ac-84de-4d50-80c3-fef2ef569f3c
+          type: string
+        name:
+          description: Step name
+          example: Questionnaire 1 - Mapping Issue List
+          type: string
+        order:
+          description: Step order
+          example: 0
+          type: integer
+        result:
+          description: Step execution result
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionResult'
+          nullable: true
+          type: object
+        questionnaire:
+          description: Questionnaire information
+          allOf:
+          - $ref: '#/components/schemas/Questionnaire'
+          nullable: true
+          type: object
+        appTestResults:
+          description: Application test results
+          items:
+            type: object
+          type: array
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    V1AssessmentSubmitEvent:
+      properties:
+        submittedByUser:
+          description: User who submitted the assessment
+          allOf:
+          - $ref: '#/components/schemas/V1AssessmentSubmittedByUser'
+          nullable: true
+          type: object
+        submitDate:
+          description: Submission date
+          example: '2024-09-30T10:36:56.057000+00:00'
+          format: date-time
+          type: string
+        submittedByOrg:
+          description: Organization that submitted
+          allOf:
+          - $ref: '#/components/schemas/IdNameTypeOrgId'
+          type: object
+          nullable: true
+      type: object
+    NameVersion:
+      properties:
+        name:
+          description: Name
+          type: string
+        version:
+          description: Version
+          type: string
+      type: object
+    IdNameTypeOrgId:
+      properties:
+        id:
+          description: Unique identifier
+          type: string
+        name:
+          description: Name
+          nullable: true
+          type: string
+        orgId:
+          description: Organization external ID
+          nullable: true
+          type: string
+        type:
+          description: Type
+          type: string
+      type: object
+    Executor:
+      allOf:
+      - $ref: '#/components/schemas/IdNameTypeOrgId'
+      - properties:
+          contactPersons:
+            description: Executor contact persons
+            items:
+              $ref: '#/components/schemas/ContactPerson'
+            type: array
+          isPlaceholder:
+            description: Whether this is a placeholder executor
+            example: false
+            type: boolean
+          ableToSubmitAssessment:
+            description: Whether this executor can submit the assessment
+            example: true
+            type: boolean
+          isLead:
+            description: Whether this executor is the lead
+            example: true
+            type: boolean
+          assignedRoles:
+            description: Roles assigned to this executor
+            items:
+              $ref: '#/components/schemas/ExecutorAssignedRole'
+            type: array
+      type: object
+    V1AssessmentAuditor:
+      properties:
+        id:
+          description: Auditor unique identifier
+          example: 0b22ffe3-286a-48ba-b638-d26bd5cd4fcb
+          type: string
+        email:
+          description: Auditor email
+          example: jane.smith@auditor.com
+          nullable: true
+          type: string
+        firstName:
+          description: Auditor first name
+          example: Jane
+          nullable: true
+          type: string
+        lastName:
+          description: Auditor last name
+          example: Smith
+          nullable: true
+          type: string
+      type: object
+    ContactPerson:
+      properties:
+        name:
+          description: Contact person name
+          example: John Doe
+          type: string
+        title:
+          description: Contact person title
+          example: Factory Manager
+          nullable: true
+          type: string
+        email:
+          description: Contact person email
+          example: john.doe@example.com
+          type: string
+        phoneNumber:
+          description: Contact person phone number
+          example: 1234567890
+          type: string
+      type: object
+    FileSignedUrl:
+      properties:
+        signedUrl:
+          description: Signed URL to upload the file content
+          type: string
+      type: object
+    V1AssessmentSearchRequest:
+      properties:
+        case_id:
+          description: Filter by case ID (numeric custom ID)
+          example: 100000
+          type: integer
+        assessment_type:
+          description: Type of the assessment
+          enum:
+          - Self Assessment
+          - Verification Assessment
+          example: Self Assessment
+          type: string
+        assessment_status:
+          description: Filter by assessment status (single value or comma-separated string) - accepts New, In Progress, Completed, Submitted, Aborted, Assessment Canceled, Report Declined
+          oneOf:
+          - type: string
+            enum:
+            - New
+            - In Progress
+            - Completed
+            - Submitted
+            - Aborted
+            - Assessment Canceled
+            - Report Declined
+          - type: string
+            pattern: ^(New|In Progress|Completed|Submitted|Aborted|Assessment Canceled|Report Declined)(,(New|In Progress|Completed|Submitted|Aborted|Assessment Canceled|Report Declined))*$
+          example: Submitted
+        workflow:
+          description: Filter by workflow name
+          example: Draft
+          type: string
+        workflow_name:
+          description: Filter by workflow name (alternative parameter name)
+          example: Draft
+          type: string
+        standard_name:
+          description: Filter by standard name (single value or comma-separated string)
+          example: Environmental Audit - RS Std
+          type: string
+        standard_version:
+          description: Filter by standard version (single value or comma-separated string)
+          example: '6.1'
+          type: string
+        rating_labels:
+          description: Filter by rating label names (single value or comma-separated string)
+          example: Excellent
+          type: string
+        scheduling_status:
+          description: Filter by scheduling status
+          enum:
+          - N/A
+          - Waiting For Scheduling
+          - Scheduling Confirmed
+          - Scheduling Finished
+          - Scheduling Late
+          - Pending Scheduling Confirmation
+          - Scheduling Declined
+          example: Waiting For Scheduling
+          type: string
+        assessed_org_id:
+          description: Filter by assessed organization external ID
+          example: F123
+          type: string
+        requester_org_id:
+          description: Filter by requester organization external ID (single value or comma-separated string)
+          example: R123
+          type: string
+        executor_org_id:
+          description: Filter by executor organization external ID (single value or comma-separated string)
+          example: E123
+          type: string
+        selected_partner_org_id:
+          description: Filter by selected partner organization (UUID, external ID, or organization name - single value or comma-separated). Supports 'null' to filter assessments with no selected partners.
+          example: 123e4567-e89b-12d3-a456-426614174000,partner123,Factory Org Name
+          type: string
+        country:
+          description: Filter by country/region code (single value or comma-separated - US, CN, VN, etc.)
+          example: US,CN,VN
+          type: string
+        reason:
+          description: Filter by reason name (single value or comma-separated)
+          example: Regular Audit,Special Audit
+          type: string
+        capa_status:
+          description: Status of the CAPA
+          enum:
+          - New
+          - In-Progress
+          - Assessment Requested
+          - Submitted
+          - In Review
+          - Declined
+          - Closed
+          - Assessment Canceled
+          - Reopened
+          - Approved
+          example: New
+          type: string
+        capa_due_date_from:
+          description: Earliest date of the CAPA due date range
+          example: '2020-01-01'
+          format: date
+          type: string
+        capa_due_date_to:
+          description: Latest date of the CAPA due date range
+          example: '2020-01-02'
+          format: date
+          type: string
+        due_date_from:
+          description: Earliest date of the due date range
+          example: '2020-01-01'
+          format: date
+          type: string
+        due_date_to:
+          description: Latest date of the due date range
+          example: '2020-01-02'
+          format: date
+          type: string
+        assessment_due_date_from:
+          description: Earliest date of the assessment due date range (alternative to due_date_from)
+          example: '2020-01-01'
+          format: date
+          type: string
+        assessment_due_date_to:
+          description: Latest date of the assessment due date range (alternative to due_date_to)
+          example: '2020-01-02'
+          format: date
+          type: string
+        audit_date_from:
+          description: Earliest date of the audit date range (filters assessments with audit dates from this date onwards)
+          example: '2020-01-01'
+          format: date
+          type: string
+        audit_date_to:
+          description: Latest date of the audit date range (filters assessments with audit dates up to this date)
+          example: '2020-01-02'
+          format: date
+          type: string
+        audit_start_date_from:
+          description: Earliest date of the audit start date range - filters assessments by their audit start date
+          example: '2020-01-01'
+          format: date
+          type: string
+        audit_start_date_to:
+          description: Latest date of the audit start date range - filters assessments by their audit start date
+          example: '2020-01-02'
+          format: date
+          type: string
+        audit_end_date_from:
+          description: Earliest date of the audit end date range - filters assessments by their audit end date
+          example: '2020-01-01'
+          format: date
+          type: string
+        audit_end_date_to:
+          description: Latest date of the audit end date range - filters assessments by their audit end date
+          example: '2020-01-02'
+          format: date
+          type: string
+        assessment_submit_date_from:
+          description: Earliest date of the assessment submission date range
+          example: '2020-01-01'
+          format: date
+          type: string
+        assessment_submit_date_to:
+          description: Latest date of the assessment submission date range
+          example: '2020-01-02'
+          format: date
+          type: string
+        updated_date_from:
+          description: From the date assessments are updated
+          example: '2020-01-01'
+          format: date
+          type: string
+        updated_date_to:
+          description: To the date assessments are updated
+          example: '2020-01-02'
+          format: date
+          type: string
+        updated_datetime_from:
+          description: From the datetime assessments are updated (ISO 8601 format with Zulu timezone)
+          example: '2020-01-01T12:34:56Z'
+          format: date-time
+          type: string
+        updated_datetime_to:
+          description: To the datetime assessments are updated (ISO 8601 format with Zulu timezone)
+          example: '2020-01-01T12:34:56Z'
+          format: date-time
+          type: string
+        order:
+          description: Order used to sort the assessments whether ascending or descending. Allowed fields - updated_date, created_date, due_date, status, assessment_type, assessmentId, assessmentSubmitDate, assessmentDueDate, auditStartDate, auditEndDate, updatedDate, rating, score. Format - {field}:asc or {field}:desc
+          default: updated_date:desc
+          example: assessmentId:asc
+          pattern: ^(updated_date|created_date|due_date|status|assessment_type|assessmentId|assessmentSubmitDate|assessmentDueDate|auditStartDate|auditEndDate|updatedDate|rating|score)(:(asc|desc))?$
+          type: string
+        search:
+          description: Search term for filtering assessments
+          example: factory
+          type: string
+        limit:
+          description: Limit result of list
+          default: 20
+          maximum: 1000
+          minimum: 1
+          type: integer
+        offset:
+          description: Offset for pagination
+          default: 0
+          minimum: 0
+          type: integer
+      type: object
+    DetailedAreaToImprove:
+      properties:
+        id:
+          description: Unique identifier of the area to improve
+          example: RI0DCKDYR0
+          type: string
+        updatedDate:
+          description: Last update date
+          example: '2025-10-21T15:30:56.214000+00:00'
+          format: date-time
+          type: string
+        title:
+          description: Title of the area to improve
+          example: The general condition of the dormitories need improvement.
+          type: string
+        category:
+          description: Category of the area to improve
+          example: Drinking Water
+          nullable: true
+          type: string
+        subCategory:
+          description: Sub-category of the area to improve
+          example: Social
+          nullable: true
+          type: string
+        description:
+          description: Detailed description
+          example: The facility needs better ventilation
+          nullable: true
+          type: string
+        requiredCorrection:
+          description: Whether correction is required
+          example: false
+          type: boolean
+        recommendation:
+          description: Recommendation for improvement
+          example: Install new equipment
+          nullable: true
+          type: string
+        status:
+          description: Status of the area to improve
+          example: new
+          type: string
+        rootCauses:
+          description: List of root causes
+          items:
+            type: string
+          type: array
+        resolutions:
+          description: List of resolutions
+          items:
+            type: string
+          type: array
+        personInCharge:
+          description: Person responsible for the improvement
+          example: John Doe
+          nullable: true
+          type: string
+        completionDate:
+          description: Target completion date
+          example: '2025-12-15T10:36:56.057000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        resolvedDate:
+          description: Date when the issue was resolved
+          example: '2025-12-15T10:36:56.057000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+        referenceId:
+          description: Reference identifier
+          example: tutest-issue-4-2
+          nullable: true
+          type: string
+        linkedFindings:
+          description: List of linked findings
+          items:
+            $ref: '#/components/schemas/AtiLinkedFinding'
+          type: array
+        customFields:
+          description: Custom fields data
+          nullable: true
+          type: object
+        comments:
+          description: List of comments
+          items:
+            $ref: '#/components/schemas/AtiComment'
+          type: array
+        uploadedFiles:
+          description: List of uploaded files
+          items:
+            type: object
+          type: array
+        areaToImproveLabels:
+          description: Labels associated with this area to improve
+          items:
+            $ref: '#/components/schemas/CustomLabel'
+          type: array
+        fields:
+          description: Custom fields with questions and answers
+          items:
+            $ref: '#/components/schemas/AreaToImproveField'
+          type: array
+      type: object
+    AtiComment:
+      properties:
+        text:
+          description: Comment text
+          example: This is a comment.
+          type: string
+        createdByUser:
+          description: User who created the comment
+          example: jane.smith@auditor.com
+          nullable: true
+          type: string
+      type: object
+    CheckIn:
+      properties:
+        checkinLocation:
+          description: Check-in location coordinates
+          properties:
+            latitude:
+              description: Latitude coordinate
+              example: 10.762622
+              nullable: true
+              type: number
+            longitude:
+              description: Longitude coordinate
+              example: 106.660172
+              nullable: true
+              type: number
+            address:
+              description: Address of the check-in location
+              type: string
+            country:
+              description: Country of the check-in location
+              example: US
+              type: string
+            postal:
+              description: Postal code of the check-in location
+              example: 12345
+              nullable: true
+              type: string
+            state:
+              description: State of the check-in location
+              nullable: true
+              type: string
+            city:
+              description: City of the check-in location
+              nullable: true
+              type: string
+          nullable: true
+          type: object
+        checkinUser:
+          description: User email who performed the check-in
+          example: john.doe@example.com
+          nullable: true
+          type: string
+        checkinDate:
+          description: Check-in date and time
+          example: '2025-12-12T10:47:57.465000+00:00'
+          format: date-time
+          type: string
+        isManual:
+          description: Whether check-in was manual or automatic
+          example: true
+          type: boolean
+        reason:
+          description: Reason for check-in (if manual)
+          example: GPS not available
+          nullable: true
+          type: string
+      type: object
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
+    Questionnaire:
+      properties:
+        id:
+          description: Questionnaire ID
+          example: cb66f153-712f-4582-848d-1811901ef37d
+          type: string
+        name:
+          description: Questionnaire name
+          example: '[tutest] Mapping Issue List - Schemes'
+          type: string
+      type: object
+    V1AssessmentListResponse:
+      properties:
+        data:
+          description: Assessment data
+          items:
+            $ref: '#/components/schemas/V1AssessmentListItem'
+          type: array
+        limit:
+          default: 10
+          description: Limit result of list
+          maximum: 100
+          minimum: 1
+          type: integer
+        offset:
+          default: 0
+          description: Number of items are skipped
+          minimum: 0
+          type: integer
+        total:
+          description: Total number of assessments
+          type: integer
+      required:
+      - data
+      - limit
+      - offset
+      - total
+      type: object
+    V2ReportDetailUser:
+      properties:
+        email:
+          description: Email of the user
+          example: john.doe@abc.com
+          type: string
+        firstName:
+          description: First name of the user
+          example: John
+          nullable: true
+          type: string
+        lastName:
+          description: Last name of the user
+          example: Doe
+          nullable: true
+          type: string
+      type: object
+    V1AssessmentStepExecution:
+      allOf:
+      - $ref: '#/components/schemas/BasicStepExecutionInfo'
+      - properties:
+          questionAnswers:
+            description: List of question answers (available when include_step_questions=true)
+            items:
+              $ref: '#/components/schemas/V1AssessmentQuestionAnswer'
+            type: array
+      type: object
+    V1AssessmentConfidentialNote:
+      properties:
+        content:
+          description: Note content
+          example: Confidential information about assessment
+          type: string
+        createdBy:
+          description: User who created the note
+          example: Jane Auditor
+          nullable: true
+          type: string
+        createdDate:
+          description: Creation date
+          example: '2024-09-30T10:36:56.057000+00:00'
+          format: date-time
+          type: string
+      type: object
+    ExecutorAssignedRole:
+      properties:
+        name:
+          description: Assigned role name
+          example: Lead Auditor
+          type: string
+      type: object
+    V1AssessmentCapaList:
+      properties:
+        id:
+          description: Unique identifier of the CAPA
+          example: 1235330e-b74b-4be6-8d8a-cb0560effc11
+          type: string
+        status:
+          description: Status of the CAPA
+          example: New
+          type: string
+        capaLabels:
+          description: List of CAPA labels
+          items:
+            $ref: '#/components/schemas/V1AssessmentCapaLabel'
+          type: array
+        dueDate:
+          description: The date by which the CAPA should be submitted by the requestee organization
+          example: '2025-01-29T00:00:00.000000+00:00'
+          format: date-time
+          nullable: true
+          type: string
+      type: object
+    V1AssessmentAssignedRole:
+      properties:
+        name:
+          description: Role name
+          example: 3P ASP
+          type: string
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    V1AssessmentFinding:
+      properties:
+        severity:
+          description: Finding severity level
+          example: Critical
+          type: string
+        findings:
+          description: Number of findings at this severity level
+          example: 5
+          type: integer
+      type: object
+    V1AssessmentDetail:
+      allOf:
+      - $ref: '#/components/schemas/V1AssessmentListItem'
+      - properties:
+          stakeholders:
+            description: Stakeholders information (detail view with full data)
+            allOf:
+            - $ref: '#/components/schemas/V1AssessmentStakeholders'
+          capa:
+            description: Information of the CAPA, Corrective Action and Preventive Action (full details when capa_details=true)
+            type: object
+            allOf:
+            - $ref: '#/components/schemas/Capa'
+            nullable: true
+          overallComment:
+            description: Overall comment content
+            example: Input Manually\nasds\nasd\n
+            nullable: true
+            type: string
+          description:
+            description: Assessment description
+            example: Annual audit for supplier compliance
+            nullable: true
+            type: string
+          auditors:
+            description: Auditors of the Assessment
+            items:
+              $ref: '#/components/schemas/V1AssessmentAuditor'
+            type: array
+          assignedUsers:
+            description: Information of the assigned users
+            items:
+              $ref: '#/components/schemas/V1AssessmentAssignedUser'
+            type: array
+          assignedRoles:
+            description: Information of the assigned roles
+            items:
+              $ref: '#/components/schemas/V1AssessmentAssignedRole'
+            type: array
+          auditTimeSpent:
+            description: The time spent by Auditor in hours (This field has value only when the configuration is enabled in the standard)
+            example: 12.5
+            nullable: true
+            type: number
+          assessmentRequestDate:
+            description: Request date of the assessment
+            example: '2024-09-30T10:36:56.057000+00:00'
+            format: date-time
+            type: string
+          caseExpirationDate:
+            description: Expiration date of the Case
+            example: '2024-09-30T10:36:56.057000+00:00'
+            format: date-time
+            nullable: true
+            type: string
+          reportGenerateDate:
+            description: The date the report was generated
+            example: '2024-09-30T10:36:56.057000+00:00'
+            format: date-time
+            nullable: true
+            type: string
+          executionLocations:
+            description: Execution Location (optional - depending on the configuration in each standard)
+            example:
+            - On-site
+            - Desktop Review
+            items:
+              type: string
+            nullable: true
+            type: array
+          schedulingComment:
+            description: Comment about scheduling
+            example: Scheduled for next week
+            nullable: true
+            type: string
+          scheduledToOrganization:
+            description: Organization to which assessment is scheduled
+            allOf:
+            - $ref: '#/components/schemas/IdNameTypeOrgId'
+            nullable: true
+            type: object
+          scheduledToOrganizationRole:
+            description: Role of the scheduled organization
+            example: Lead Auditor
+            nullable: true
+            type: string
+          checkin:
+            description: On-site check-in information
+            allOf:
+            - $ref: '#/components/schemas/CheckIn'
+            nullable: true
+            type: object
+          escalations:
+            description: List of escalations of the assessment
+            items:
+              $ref: '#/components/schemas/V2ReportEscalation'
+            type: array
+          announcementType:
+            description: Announcement type
+            example: Announced
+            enum:
+            - Announced
+            - Semi-Announced
+            - Private
+            - Unannounced
+            nullable: true
+            type: string
+          stepExecutions:
+            description: List of step executions in the assessment
+            items:
+              $ref: '#/components/schemas/V1AssessmentStepExecution'
+            type: array
+          submitEvent:
+            description: Information about assessment submission
+            allOf:
+            - $ref: '#/components/schemas/V1AssessmentSubmitEvent'
+            nullable: true
+            type: object
+          reportLabels:
+            description: Labels of the report/assessment
+            items:
+              type: object
+            type: array
+          confidentialNotes:
+            description: Confidential notes
+            items:
+              $ref: '#/components/schemas/V1AssessmentConfidentialNote'
+            type: array
+          schemes:
+            description: Related schemes information
+            items:
+              $ref: '#/components/schemas/V1AssessmentScheme'
+            type: array
+      type: object

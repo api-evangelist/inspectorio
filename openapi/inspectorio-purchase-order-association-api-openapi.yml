@@ -1,0 +1,281 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS PURCHASE ORDER ASSOCIATION API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: PURCHASE ORDER ASSOCIATION
+paths:
+  /api/v1/purchase-order-associations:
+    post:
+      summary: Create Purchase Order Association
+      description: Create Purchase Order Association
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PurchaseOrderAssociationCreate'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomResponse17'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - PURCHASE ORDER ASSOCIATION
+  /api/v1/purchase-order-associations/{po_number}:
+    get:
+      summary: Get Associations of Purchase Order
+      description: List Associations of Purchase Order
+      parameters:
+      - in: path
+        name: po_number
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PurchaseOrderAssociationListResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - PURCHASE ORDER ASSOCIATION
+  /api/v1/purchase-order-associations/{from_po_number}/{to_po_number}:
+    delete:
+      summary: Delete Purchase Order Association
+      description: Delete Purchase Order Association
+      parameters:
+      - description: From PO number
+        in: path
+        name: from_po_number
+        required: true
+        schema:
+          type: string
+      - description: To PO number
+        in: path
+        name: to_po_number
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content:
+            application/json:
+              schema: {}
+          description: No Content
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - PURCHASE ORDER ASSOCIATION
+components:
+  schemas:
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    PurchaseOrderAssociationCreate:
+      properties:
+        associationType:
+          description: 'The type of association to be created. "linked" is also parent-child relationships, will migrate to "parent child" in the future.
+
+            '
+          enum:
+          - linked
+          - parent child
+          - material
+          type: string
+        fromPoNumber:
+          description: 'Child PO Number for association types: linked, parent child. Material PO Number for association type: material.
+
+            '
+          minLength: 1
+          type: string
+        toPoNumber:
+          description: 'Parent PO Number for association type: linked, parent child. Material PO Number for association type: material.
+
+            '
+          minLength: 1
+          type: string
+        fromPoOwnerId:
+          description: Local org ID of the owner of the fromPoNumber
+          example: client_1
+          nullable: true
+          type: string
+        toPoOwnerId:
+          description: Local org ID of the owner of the toPoNumber
+          example: client_1
+          nullable: true
+          type: string
+      required:
+      - fromPoNumber
+      - toPoNumber
+      - associationType
+      type: object
+    PurchaseOrderAssociationListResponse:
+      properties:
+        associations:
+          description: List of purchase order associations
+          items:
+            $ref: '#/components/schemas/PurchaseOrderAssociationDetail'
+          type: array
+      type: object
+    PurchaseOrderAssociationDetail:
+      properties:
+        associationType:
+          enum:
+          - linked
+          - parent child
+          - material
+          type: string
+        fromPoNumber:
+          minLength: 1
+          type: string
+        toPoNumber:
+          minLength: 1
+          type: string
+        createdDate:
+          description: The creation date of the Purchase Order Association
+          example: '2023-02-10 10:00:00'
+          format: date-time
+          nullable: true
+          type: string
+        associationCreator:
+          description: The creator organization of the Purchase Order Association
+          example: Retailer 01
+          nullable: true
+          type: string
+        fromPoOwnerId:
+          description: The owner organization of the from PO
+          example: custom_id_1
+          nullable: true
+          type: string
+        toPoOwnerId:
+          description: The owner organization of the to PO
+          example: custom_id_2
+          nullable: true
+          type: string
+      required:
+      - fromPoNumber
+      - toPoNumber
+      - associationType
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    CustomResponse17:
+      properties:
+        data:
+          $ref: '#/components/schemas/PurchaseOrderAssociationDetail'
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object

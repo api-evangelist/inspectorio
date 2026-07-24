@@ -1,0 +1,482 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: ANALYTICS
+paths:
+  /api/v1/analytics/factory-risk-profile:
+    get:
+      summary: List Factory Risk Profiles
+      description: List Factory Risk Profiles
+      parameters:
+      - description: Limit result of list
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          maximum: 100
+          minimum: 1
+          type: integer
+      - description: The type of the filtered date. Case-sensitive.
+        in: query
+        name: date_type
+        required: false
+        schema:
+          enum:
+          - process_computed_date
+          example: process_computed_date
+          nullable: true
+          type: string
+      - description: Start date of the query range in yyyy-mm-dd format
+        in: query
+        name: date_from
+        required: true
+        schema:
+          example: '2020-01-01'
+          format: date
+          type: string
+      - in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          minimum: 0
+          type: integer
+      - description: End date of the query range in yyyy-mm-dd format
+        in: query
+        name: date_to
+        required: true
+        schema:
+          example: '2020-10-01'
+          format: date
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FactoryRiskProfileListResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - ANALYTICS
+  /api/v1/analytics/factory-risk-profile/{factory_id}:
+    get:
+      summary: Get Factory Risk Profile
+      description: Get Factory Risk Profile
+      parameters:
+      - description: The type of the filtered date. Case-sensitive.
+        in: query
+        name: date_type
+        required: false
+        schema:
+          enum:
+          - process_computed_date
+          example: process_computed_date
+          nullable: true
+          type: string
+      - description: Start date of the query range in yyyy-mm-dd format
+        in: query
+        name: date_from
+        required: true
+        schema:
+          example: '2020-01-01'
+          format: date
+          type: string
+      - description: End date of the query range in yyyy-mm-dd format
+        in: query
+        name: date_to
+        required: true
+        schema:
+          example: '2020-10-01'
+          format: date
+          type: string
+      - description: Unique identifier of the Brand or Retailer that the factory produces for
+        in: query
+        name: client_id
+        required: false
+        schema:
+          example: client_1
+          nullable: true
+          type: string
+      - in: path
+        name: factory_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FactoryRiskProfileResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - ANALYTICS
+components:
+  schemas:
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object
+    FactoryInformation:
+      properties:
+        localOrganizationId:
+          description: The Local Custom Id of the Factory
+          example: client_1
+          nullable: true
+          type: string
+        localOrganizationIds:
+          description: The list of all connected Local Custom Ids of the Factory
+          example:
+          - F323333
+          - F242146
+          items:
+            type: string
+          nullable: true
+          type: array
+        organizationId:
+          description: The Global organization Id of the Factory
+          example: 291524
+          nullable: true
+          type: integer
+      type: object
+    FactoryRiskProfileLabel:
+      properties:
+        label:
+          description: Type of label
+          example: Manual
+          nullable: true
+          type: string
+        labelValue:
+          description: Value of label
+          example: Low
+          nullable: true
+          type: string
+        reasonCode:
+          description: The selected Top Reason Code when changing                                      Factory Risk Configuration Mode to Manual
+          example: Others - mandatory to fill in comments
+          nullable: true
+          type: string
+        reasonType:
+          description: The selected Top Reason Type when changing                                      Factory Risk Configuration Mode to Manual
+          example: Others
+          nullable: true
+          type: string
+      type: object
+    FactoryRiskProfileInspectionData:
+      properties:
+        inspectionHistories:
+          description: The previous inspections
+          items:
+            $ref: '#/components/schemas/FactoryRiskProfileInspectionDataLasted'
+          nullable: true
+          type: array
+        inspectionLasted:
+          $ref: '#/components/schemas/FactoryRiskProfileInspectionDataLasted'
+          description: The last inspection
+          nullable: true
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    FactoryRiskProfileListResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/FactoryRiskProfileList'
+            description: Factory risk profile list data
+          nullable: true
+          type: array
+        limit:
+          maximum: 100
+          minimum: 1
+          type: integer
+        offset:
+          minimum: 0
+          type: integer
+        total:
+          type: integer
+      required:
+      - limit
+      - offset
+      - total
+      type: object
+    FactoryInformation1:
+      properties:
+        localInformation:
+          description: List of all connected Local Factories
+          items:
+            $ref: '#/components/schemas/LocalInformation'
+          nullable: true
+          type: array
+        organizationId:
+          description: The Global organization Id of the Factory
+          example: 291524
+          nullable: true
+          type: integer
+      type: object
+    LocalInformation:
+      properties:
+        localOrganizationId:
+          description: Local Custom ID of the Factory
+          example: F323333
+          nullable: true
+          type: string
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    FactoryRiskProfileList:
+      properties:
+        factoryInformation:
+          $ref: '#/components/schemas/FactoryInformation1'
+          description: Details of the factory
+          nullable: true
+        latestProcessComputedDate:
+          description: The last activity date of the latest score for eitherFRP score update or risk label/configuration change
+          example: '2020-07-01'
+          format: date
+          nullable: true
+          type: string
+        latestRiskDate:
+          description: Date of the latest Risk Score of the factory
+          example: '2020-07-01'
+          format: date
+          nullable: true
+          type: string
+        latestRiskLabel:
+          description: Label of the latest Risk Score of the factory
+          example: low
+          nullable: true
+          type: string
+        latestRiskScore:
+          description: Latest Risk Score of the factory within the specified time period
+          example: 20.18
+          nullable: true
+          type: number
+        latestRiskSetting:
+          description: Setting of the latest Risk Score of the factory
+          example: Auto by AI
+          nullable: true
+          type: string
+      type: object
+    FactoryRiskProfileRiskLevelData:
+      properties:
+        highMax:
+          description: The highest score of the High Risk range
+          example: 100
+          nullable: true
+          type: integer
+        highMin:
+          description: The lowest score of the High Risk range
+          example: 95
+          nullable: true
+          type: integer
+        lowMax:
+          description: The highest score of the Low Risk range
+          example: 11
+          nullable: true
+          type: integer
+        lowMin:
+          description: The lowest score of the Low Risk range
+          example: 0
+          nullable: true
+          type: integer
+        mediumMax:
+          description: The highest score of the Medium Risk range
+          example: 94
+          nullable: true
+          type: integer
+        mediumMin:
+          description: The lowest score of the Medium Risk range
+          example: 12
+          nullable: true
+          type: integer
+      type: object
+    FactoryRiskProfileScoreData:
+      properties:
+        currentScore:
+          $ref: '#/components/schemas/FactoryRiskProfileScoreDataScore'
+          description: Current risk score of the factory
+          nullable: true
+        lastScore:
+          $ref: '#/components/schemas/FactoryRiskProfileScoreDataScore'
+          description: Last risk score of the factory
+          nullable: true
+      type: object
+    FactoryRiskProfileScoreDataScore:
+      properties:
+        labelData:
+          description: Risk label of the factory
+          items:
+            $ref: '#/components/schemas/FactoryRiskProfileLabel'
+          nullable: true
+          type: array
+        processComputedDate:
+          description: The last activity date of the score for either FRP score update or risk label/configuration change
+          example: '2022-06-28'
+          format: date
+          nullable: true
+          type: string
+        score:
+          description: Factory risk score
+          example: 10.5
+          nullable: true
+          type: number
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    FactoryRiskProfile:
+      properties:
+        factoryInformation:
+          $ref: '#/components/schemas/FactoryInformation'
+          description: The detailed information about the Factory
+          nullable: true
+        inspectionData:
+          $ref: '#/components/schemas/FactoryRiskProfileInspectionData'
+          description: Inspection data of the factory risk profile
+          nullable: true
+        riskLevelData:
+          $ref: '#/components/schemas/FactoryRiskProfileRiskLevelData'
+          description: Risk level data of the factory risk profile
+          nullable: true
+        scoreData:
+          $ref: '#/components/schemas/FactoryRiskProfileScoreData'
+          description: Score data of the factory risk profile
+          nullable: true
+      type: object
+    FactoryRiskProfileResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/FactoryRiskProfile'
+          description: Factory risk profile data
+      type: object
+    FactoryRiskProfileInspectionDataLasted:
+      properties:
+        caseNumber:
+          description: Case number of the inspection which the risk score is calculated based on
+          example: 178292020-04-16MAgarmentCo.,LtdDUPRO
+          nullable: true
+          type: string
+        date:
+          description: Date of the inspection which the risk score is calculated based on
+          example: '2021-04-29'
+          format: date
+          nullable: true
+          type: string
+        result:
+          description: Result of the inspection which the risk score is calculated based on
+          example: fail
+          nullable: true
+          type: string
+      type: object

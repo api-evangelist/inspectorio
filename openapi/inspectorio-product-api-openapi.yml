@@ -1,0 +1,162 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS PRODUCT API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: PRODUCT
+paths:
+  /api/v1/products:
+    get:
+      summary: List Products
+      description: List Products
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductListResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - PRODUCT
+components:
+  schemas:
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    ProductListResponse:
+      properties:
+        data:
+          description: Product data
+          items:
+            $ref: '#/components/schemas/ProductResponse'
+          type: array
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    ProductCategory:
+      properties:
+        productCategoryDescription:
+          description: Description of the product category
+          example: Apparel women tops
+          type: string
+        productCategoryId:
+          description: Unique identifier of the product category
+          example: '123123'
+          type: string
+        productCategoryName:
+          description: Name of the product category
+          example: Womens top
+          type: string
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    ProductResponse:
+      properties:
+        info:
+          $ref: '#/components/schemas/Product'
+          description: Information of the product
+        productLineId:
+          description: 'Unique identifier of the product line '
+          example: A123
+          type: string
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object
+    Product:
+      properties:
+        categories:
+          description: Information of the product category
+          items:
+            $ref: '#/components/schemas/ProductCategory'
+          type: array
+        productDescription:
+          description: Description of the product
+          example: women tops for SS22
+          type: string
+        productName:
+          description: Name of the product
+          example: Cashmere womens top
+          type: string
+      type: object

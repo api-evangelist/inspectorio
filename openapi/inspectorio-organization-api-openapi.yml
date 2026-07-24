@@ -1,0 +1,970 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS ORGANIZATION API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: ORGANIZATION
+paths:
+  /api/v1/organizations:
+    get:
+      summary: List Organizations
+      description: List Organizations
+      parameters:
+      - in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          minimum: 0
+          type: integer
+      - description: Limit result of list
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          maximum: 100
+          minimum: 1
+          type: integer
+      - description: Filter organizations by name
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationListResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - ORGANIZATION
+    post:
+      summary: Create Organization
+      description: Create Organization
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationLocal'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomResponse4'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - ORGANIZATION
+  /api/v1/organizations/{organization_id}:
+    delete:
+      summary: Delete Organization
+      description: Delete Organization
+      parameters:
+      - in: path
+        name: organization_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content:
+            application/json:
+              schema: {}
+          description: No Content
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - ORGANIZATION
+    get:
+      summary: Get Organization
+      description: Get Organization
+      parameters:
+      - in: path
+        name: organization_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomResponse5'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - ORGANIZATION
+    put:
+      summary: Update Organization
+      description: Update Organization
+      parameters:
+      - in: path
+        name: organization_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrganization'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomResponse6'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateApiError'
+          description: Validation Error
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - ORGANIZATION
+components:
+  schemas:
+    UpdateOrganization:
+      properties:
+        address:
+          description: Organization address line 1
+          example: 5 Madison Avenue
+          minLength: 1
+          type: string
+        address2:
+          description: Organization address line 2
+          example: Suite 101
+          type: string
+        billing_email:
+          description: Billing email
+          example: email@test.com
+          nullable: true
+          type: string
+        city:
+          description: City where the organization locates
+          example: New York
+          nullable: true
+          type: string
+        contacts:
+          description: Organization contact information
+          items:
+            $ref: '#/components/schemas/OrganizationContactUpdate'
+          minItems: 1
+          type: array
+        country:
+          description: ISO Alpha-2 country code
+          example: US
+          type: string
+        createdAt:
+          description: Creation date and time of the organization in the system
+          example: '2021-06-02 12:34:02.861000+00:00'
+          readOnly: true
+          type: string
+        linkedId:
+          default: null
+          example: '123123'
+          nullable: true
+          type: string
+        linkedTo:
+          description: Global organization that links to this local organization
+          example: '3111222'
+          readOnly: true
+          type: string
+        location:
+          $ref: '#/components/schemas/OrganizationLocation'
+          description: Organization location
+          nullable: true
+        name:
+          description: Name of the organization
+          example: Acme Corp
+          minLength: 1
+          type: string
+        officeId:
+          description: Office ID
+          example: office_123
+          nullable: true
+          type: string
+        organizationLabels:
+          description: List of organization labels
+          example:
+          - Tier 1
+          - Tier 2
+          items:
+            type: string
+          nullable: true
+          type: array
+        phone:
+          description: Organization phone number
+          example: '1505111222'
+          minLength: 1
+          type: string
+        postal:
+          description: Organization postal code
+          example: A1B2C3
+          nullable: true
+          type: string
+        province:
+          description: Province where the organization locates
+          example: New York
+          nullable: true
+          type: string
+        type:
+          description: Support F(Factory) S(Supplier) B(Brand) R(Retailer) V(Vendor)
+          example: S
+          minLength: 1
+          type: string
+        updatedAt:
+          description: Last updated date and time of the organization in the system
+          example: '2021-06-02 12:34:02.861000+00:00'
+          readOnly: true
+          type: string
+        description:
+          nullable: true
+          example: This is a description
+          description: description of the local organization
+          type: string
+      required:
+      - address
+      - contacts
+      - country
+      - name
+      - phone
+      - type
+      type: object
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    CustomResponse6:
+      properties:
+        data:
+          $ref: '#/components/schemas/CreateOrUpdateOrganizationResponse'
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    CustomResponse5:
+      properties:
+        data:
+          $ref: '#/components/schemas/GetOrganizationResponse'
+      type: object
+    OrganizationContact1:
+      properties:
+        email:
+          description: Email of the organization contact
+          example: john@acme.com
+          type: string
+        firstName:
+          description: First name of the organization contact
+          example: John
+          minLength: 1
+          type: string
+        lastName:
+          description: Last name of the organization contact
+          example: Doe
+          nullable: true
+          type: string
+        phone:
+          description: Phone number of the organization contact
+          example: '1505123123'
+          nullable: true
+          type: string
+        workPhone:
+          description: Work phone number of the organization contact
+          example: '1505456456'
+          type: string
+      required:
+      - firstName
+      type: object
+    OrganizationListResponse:
+      properties:
+        data:
+          description: Organizations data
+          items:
+            $ref: '#/components/schemas/LocalOrganization'
+          type: array
+        limit:
+          type: integer
+        offset:
+          type: integer
+        total:
+          type: integer
+      required:
+      - limit
+      - offset
+      - total
+      type: object
+    OrganizationLocation:
+      properties:
+        latitude:
+          description: Latitude of the organization location
+          example: 38.8951
+          type: number
+        longitude:
+          description: Longitude of the organization location
+          example: -77.0364
+          type: number
+      required:
+      - latitude
+      - longitude
+      type: object
+    LocalOrganization:
+      properties:
+        address:
+          description: Organization address line 1
+          example: 5 Madison Avenue
+          minLength: 1
+          type: string
+        address2:
+          description: Organization address line 2
+          example: Suite 101
+          type: string
+        billing_email:
+          description: Billing email
+          example: email@test.com
+          nullable: true
+          type: string
+        city:
+          description: City where the organization locates
+          example: New York
+          nullable: true
+          type: string
+        contacts:
+          description: Organization contact information
+          items:
+            $ref: '#/components/schemas/OrganizationContact1'
+          minItems: 1
+          type: array
+        country:
+          description: ISO Alpha-2 country code
+          example: US
+          type: string
+        createdAt:
+          description: Creation date and time of the organization in the system
+          example: '2021-06-02 12:34:02.861000+00:00'
+          readOnly: true
+          type: string
+        id:
+          type: string
+        linkedId:
+          nullable: true
+          type: string
+        linkedTo:
+          description: Global organization that links to this local organization
+          example: '3111222'
+          readOnly: true
+          type: string
+        location:
+          $ref: '#/components/schemas/OrganizationLocation'
+          description: Organization location
+          nullable: true
+        name:
+          description: Name of the organization
+          example: Acme Corp
+          minLength: 1
+          type: string
+        organizationLabels:
+          description: List of organization labels
+          example:
+          - Tier 1
+          - Tier 2
+          items:
+            type: string
+          nullable: true
+          type: array
+        phone:
+          description: Organization phone number
+          example: '1505111222'
+          minLength: 1
+          type: string
+        postal:
+          description: Organization postal code
+          example: A1B2C3
+          nullable: true
+          type: string
+        province:
+          description: Province where the organization locates
+          example: New York
+          nullable: true
+          type: string
+        type:
+          description: Support F(Factory) S(Supplier) B(Brand) R(Retailer) V(Vendor)
+          example: S
+          minLength: 1
+          type: string
+        updatedAt:
+          description: Last updated date and time of the organization in the system
+          example: '2021-06-02 12:34:02.861000+00:00'
+          readOnly: true
+          type: string
+        description:
+          nullable: true
+          example: This is a description
+          description: description of the local organization
+          type: string
+      required:
+      - address
+      - contacts
+      - country
+      - name
+      - phone
+      - type
+      type: object
+    OrganizationLocal:
+      properties:
+        address:
+          description: Organization address line 1
+          example: 5 Madison Avenue
+          minLength: 1
+          type: string
+        address2:
+          description: Organization address line 2
+          example: Suite 101
+          type: string
+        billing_email:
+          description: Billing email
+          example: email@test.com
+          nullable: true
+          type: string
+        city:
+          description: City where the organization locates
+          example: New York
+          nullable: true
+          type: string
+        contacts:
+          description: Organization contact information
+          items:
+            $ref: '#/components/schemas/OrganizationContactUpdate'
+          minItems: 1
+          type: array
+        country:
+          description: ISO Alpha-2 country code
+          example: US
+          type: string
+        createdAt:
+          description: Creation date and time of the organization in the system
+          example: '2021-06-02 12:34:02.861000+00:00'
+          readOnly: true
+          type: string
+        id:
+          minLength: 1
+          type: string
+        linkedId:
+          default: null
+          example: '123123'
+          nullable: true
+          type: string
+        linkedTo:
+          description: Global organization that links to this local organization
+          example: '3111222'
+          readOnly: true
+          type: string
+        location:
+          $ref: '#/components/schemas/OrganizationLocation'
+          description: Organization location
+          nullable: true
+        name:
+          description: Name of the organization
+          example: Acme Corp
+          minLength: 1
+          type: string
+        officeId:
+          description: Office ID
+          example: office_123
+          nullable: true
+          type: string
+        organizationLabels:
+          description: List of organization labels
+          example:
+          - Tier 1
+          - Tier 2
+          items:
+            type: string
+          nullable: true
+          type: array
+        phone:
+          description: Organization phone number
+          example: '1505111222'
+          minLength: 1
+          type: string
+        postal:
+          description: Organization postal code
+          example: A1B2C3
+          nullable: true
+          type: string
+        province:
+          description: Province where the organization locates
+          example: New York
+          nullable: true
+          type: string
+        type:
+          description: Support F(Factory) S(Supplier) B(Brand) R(Retailer) V(Vendor)
+          example: S
+          minLength: 1
+          type: string
+        updatedAt:
+          description: Last updated date and time of the organization in the system
+          example: '2021-06-02 12:34:02.861000+00:00'
+          readOnly: true
+          type: string
+        description:
+          nullable: true
+          example: This is a description
+          description: description of the local organization
+          type: string
+      required:
+      - address
+      - contacts
+      - country
+      - id
+      - name
+      - phone
+      - type
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    OrganizationContactUpdate:
+      properties:
+        email:
+          description: Email of the organization contact
+          example: john@acme.com
+          type: string
+        firstName:
+          description: First name of the organization contact
+          example: John
+          minLength: 1
+          type: string
+        lastName:
+          description: Last name of the organization contact
+          example: Doe
+          nullable: true
+          type: string
+        phone:
+          description: Phone number of the organization contact
+          example: '1505123123'
+          nullable: true
+          type: string
+        workPhone:
+          description: Work phone number of the organization contact
+          example: '1505456456'
+          type: string
+      required:
+      - firstName
+      type: object
+    CustomResponse4:
+      properties:
+        data:
+          $ref: '#/components/schemas/CreateOrUpdateOrganizationResponse'
+      type: object
+    GetOrganizationResponse:
+      properties:
+        address:
+          description: Organization address line 1
+          example: 5 Madison Avenue
+          minLength: 1
+          type: string
+        address2:
+          description: Organization address line 2
+          example: Suite 101
+          type: string
+        billing_email:
+          description: Billing email
+          example: email@test.com
+          nullable: true
+          type: string
+        city:
+          description: City where the organization locates
+          example: New York
+          nullable: true
+          type: string
+        contacts:
+          description: Organization contact information
+          items:
+            $ref: '#/components/schemas/OrganizationContact1'
+          minItems: 1
+          type: array
+        country:
+          description: ISO Alpha-2 country code
+          example: US
+          type: string
+        createdAt:
+          description: Creation date and time of the organization in the system
+          example: '2021-06-02 12:34:02.861000+00:00'
+          readOnly: true
+          type: string
+        id:
+          minLength: 1
+          type: string
+        linkedId:
+          nullable: true
+          type: string
+        linkedTo:
+          description: Global organization that links to this local organization
+          example: '3111222'
+          readOnly: true
+          type: string
+        location:
+          $ref: '#/components/schemas/OrganizationLocation'
+          description: Organization location
+          nullable: true
+        name:
+          description: Name of the organization
+          example: Acme Corp
+          minLength: 1
+          type: string
+        officeId:
+          description: Office ID
+          example: office_123
+          nullable: true
+          type: string
+        organizationLabels:
+          description: List of organization labels
+          example:
+          - Tier 1
+          - Tier 2
+          items:
+            type: string
+          nullable: true
+          type: array
+        phone:
+          description: Organization phone number
+          example: '1505111222'
+          minLength: 1
+          type: string
+        postal:
+          description: Organization postal code
+          example: A1B2C3
+          nullable: true
+          type: string
+        province:
+          description: Province where the organization locates
+          example: New York
+          nullable: true
+          type: string
+        type:
+          description: Support F(Factory) S(Supplier) B(Brand) R(Retailer) V(Vendor)
+          example: S
+          minLength: 1
+          type: string
+        updatedAt:
+          description: Last updated date and time of the organization in the system
+          example: '2021-06-02 12:34:02.861000+00:00'
+          readOnly: true
+          type: string
+        description:
+          nullable: true
+          example: This is a description
+          description: description of the local organization
+          type: string
+      required:
+      - address
+      - contacts
+      - country
+      - id
+      - name
+      - phone
+      - type
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object
+    CreateOrUpdateOrganizationResponse:
+      properties:
+        address:
+          description: Organization address line 1
+          example: 5 Madison Avenue
+          minLength: 1
+          type: string
+        address2:
+          description: Organization address line 2
+          example: Suite 101
+          type: string
+        billing_email:
+          description: Billing email
+          example: email@test.com
+          nullable: true
+          type: string
+        city:
+          description: City where the organization locates
+          example: New York
+          nullable: true
+          type: string
+        contacts:
+          description: Organization contact information
+          items:
+            $ref: '#/components/schemas/OrganizationContact1'
+          minItems: 1
+          type: array
+        country:
+          description: ISO Alpha-2 country code
+          example: US
+          type: string
+        createdAt:
+          description: Creation date and time of the organization in the system
+          example: '2021-06-02 12:34:02.861000+00:00'
+          readOnly: true
+          type: string
+        id:
+          minLength: 1
+          type: string
+        linkedTo:
+          description: Global organization that links to this local organization
+          example: '3111222'
+          readOnly: true
+          type: string
+        location:
+          $ref: '#/components/schemas/OrganizationLocation'
+          description: Organization location
+          nullable: true
+        name:
+          description: Name of the organization
+          example: Acme Corp
+          minLength: 1
+          type: string
+        officeId:
+          description: Office ID
+          example: office_123
+          nullable: true
+          type: string
+        organizationLabels:
+          description: List of organization labels
+          example:
+          - Tier 1
+          - Tier 2
+          items:
+            type: string
+          nullable: true
+          type: array
+        phone:
+          description: Organization phone number
+          example: '1505111222'
+          minLength: 1
+          type: string
+        postal:
+          description: Organization postal code
+          example: A1B2C3
+          nullable: true
+          type: string
+        province:
+          description: Province where the organization locates
+          example: New York
+          nullable: true
+          type: string
+        type:
+          description: Support F(Factory) S(Supplier) B(Brand) R(Retailer) V(Vendor)
+          example: S
+          minLength: 1
+          type: string
+        updatedAt:
+          description: Last updated date and time of the organization in the system
+          example: '2021-06-02 12:34:02.861000+00:00'
+          readOnly: true
+          type: string
+        description:
+          nullable: true
+          example: This is a description
+          description: description of the local organization
+          type: string
+      required:
+      - address
+      - contacts
+      - country
+      - id
+      - name
+      - phone
+      - type
+      type: object

@@ -1,0 +1,126 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS STORAGE API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: STORAGE
+paths:
+  /api/v1/file-upload-session:
+    post:
+      summary: Create File Upload Session
+      description: File Upload Session
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileUploadSessionCreate'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomResponse16'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestApiError'
+          description: Bad request
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthenticatedApiError'
+          description: Unauthorized
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyResponsesApiError'
+          description: Rate-limiting Error
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalApiError'
+          description: Internal Error
+      tags:
+      - STORAGE
+components:
+  schemas:
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    FileUploadSessionCreate:
+      properties:
+        fileName:
+          description: Unique identifier of the file to be uploaded. File name must be unique for the organization.
+          example: example.zip
+          minLength: 1
+          type: string
+      required:
+      - fileName
+      type: object
+    FileUploadSessionResponse:
+      properties:
+        expiryTime:
+          description: Time until the link is valid.
+          example: '2022-06-22T10:03:00.183881+00:00'
+          format: date-time
+          type: string
+        uploadSession:
+          description: URL to upload the file to File Management System.
+          example: https://mock.url
+          minLength: 1
+          type: string
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object
+    CustomResponse16:
+      properties:
+        data:
+          $ref: '#/components/schemas/FileUploadSessionResponse'
+      type: object

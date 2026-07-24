@@ -1,0 +1,630 @@
+openapi: 3.0.3
+info:
+  title: File Management ANALYTICS TAXONOMY CATEGORY API
+  version: v3
+servers:
+- description: Production Environment
+  url: https://files-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://files-integration.pre.inspectorio.com
+tags:
+- name: TAXONOMY CATEGORY
+paths:
+  /api/v1/customer-data/taxonomies/{taxonomyLevelCustomId}/categories:
+    post:
+      summary: Create or Restore Category
+      operationId: createCategory
+      description: 'Creates a new category at the given taxonomy level, or restores a soft-deleted
+
+        category with the same `customId` at the same level (201 in both cases).
+
+
+        **Create:** A new row is inserted. `businessId` must be unique among live siblings
+
+        (same parent). `parentCustomId`, if provided, must resolve to a live category at
+
+        the level immediately above.
+
+
+        **Restore:** If a soft-deleted category with the same `customId` exists at this
+
+        level it is restored. `name` and `description` are updated from the request body;
+
+        `businessId` and `parentCustomId` are immutable and ignored on restore.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/TaxonomyLevelCustomIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryCreateRequest'
+      responses:
+        '201':
+          description: Category created or restored.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+        '400':
+          description: Missing required field, parent not found, or level has no business-id attribute.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryValidationError'
+        '401':
+          description: Authentication credentials were not provided or are invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
+              example:
+                detail: Authentication credentials were not provided.
+                code: 401
+                status: 401
+        '404':
+          description: The taxonomy level in the path does not exist for the org.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
+              example:
+                detail: Taxonomy level not found.
+                code: 404
+                status: 404
+        '409':
+          description: A category already uses the given `customId` or `businessId`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConflictError'
+              examples:
+                customIdConflict:
+                  summary: customId already in use
+                  value:
+                    detail: This customId is already in use in this organization.
+                    code: CATEGORY_CUSTOM_ID_CONFLICT
+                    status: 409
+                businessIdConflict:
+                  summary: businessId already in use
+                  value:
+                    detail: A live sibling category already uses this businessId.
+                    code: CATEGORY_BUSINESS_ID_CONFLICT
+                    status: 409
+        '500':
+          description: Internal Server Error
+      tags:
+      - TAXONOMY CATEGORY
+    get:
+      summary: List Categories
+      operationId: listCategories
+      description: 'List categories at the given taxonomy level for the caller''s organization, with
+
+        pagination. Soft-deleted categories are excluded. Pass one or more `parentCustomId`
+
+        values to fetch the children of specific parents (there is no nested children route).
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/TaxonomyLevelCustomIdPath'
+      - $ref: '#/components/parameters/ParentCustomIdQuery'
+      - $ref: '#/components/parameters/SearchQuery'
+      - $ref: '#/components/parameters/OrderBy'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: Paginated list of categories.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryListResponse'
+        '400':
+          description: Invalid query parameter.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
+              example:
+                detail: 'Invalid orderBy field "size". Must be one of: name, createdAt, updatedAt.'
+                code: 400
+                status: 400
+        '401':
+          description: Authentication credentials were not provided or are invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
+              example:
+                detail: Authentication credentials were not provided.
+                code: 401
+                status: 401
+        '404':
+          description: The taxonomy level in the path does not exist for the org.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
+              example:
+                detail: Taxonomy level not found.
+                code: 404
+                status: 404
+        '500':
+          description: Internal Server Error
+      tags:
+      - TAXONOMY CATEGORY
+  /api/v1/customer-data/taxonomies/{taxonomyLevelCustomId}/categories/{customId}:
+    put:
+      summary: Update Category
+      operationId: updateCategory
+      description: 'Updates the mutable fields (`name`, `description`) of a live category.
+
+
+        Only `name` and `description` are accepted. All other fields (`customId`, `businessId`,
+
+        `parentCustomId`, etc.) are silently ignored.
+
+        Soft-deleted categories are not found (404).
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/TaxonomyLevelCustomIdPath'
+      - $ref: '#/components/parameters/CategoryCustomIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryUpdateRequest'
+      responses:
+        '200':
+          description: Category updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+        '400':
+          description: Validation error — missing required field.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
+              example:
+                detail: This field is required.
+                code: 400
+                status: 400
+        '401':
+          description: Authentication credentials were not provided or are invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
+              example:
+                detail: Authentication credentials were not provided.
+                code: 401
+                status: 401
+        '404':
+          description: The taxonomy level or the category does not exist (including soft-deleted).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
+              example:
+                detail: Category not found.
+                code: 404
+                status: 404
+        '500':
+          description: Internal Server Error
+      tags:
+      - TAXONOMY CATEGORY
+    delete:
+      summary: Delete Category
+      operationId: deleteCategory
+      description: 'Soft-deletes a category and recursively soft-deletes its entire descendant subtree.
+
+        Product assignments on affected categories are preserved (not removed).
+
+
+        A deleted category (and each deleted descendant) can be restored individually via
+
+        POST with the same customId — see the Create Category endpoint. Restoring does not
+
+        cascade to descendants: each customId must be restored separately, and the immediate
+
+        parent must already be restored (live) before a child can be restored.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/TaxonomyLevelCustomIdPath'
+      - $ref: '#/components/parameters/CategoryCustomIdPath'
+      responses:
+        '204':
+          description: Category and its descendant subtree soft-deleted successfully.
+        '401':
+          description: Authentication credentials were not provided or are invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
+              example:
+                detail: Authentication credentials were not provided.
+                code: 401
+                status: 401
+        '404':
+          description: The taxonomy level or the category does not exist (including already soft-deleted).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
+              example:
+                detail: Category not found.
+                code: 404
+                status: 404
+        '500':
+          description: Internal Server Error
+      tags:
+      - TAXONOMY CATEGORY
+    get:
+      summary: Get Category
+      operationId: getCategory
+      description: 'Retrieve a single category by its `customId` within the taxonomy level.
+
+        Soft-deleted categories are not found.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/TaxonomyLevelCustomIdPath'
+      - $ref: '#/components/parameters/CategoryCustomIdPath'
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+        '401':
+          description: Authentication credentials were not provided or are invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
+              example:
+                detail: Authentication credentials were not provided.
+                code: 401
+                status: 401
+        '404':
+          description: The taxonomy level or the category does not exist.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDetail'
+              example:
+                detail: Category not found.
+                code: 404
+                status: 404
+        '500':
+          description: Internal Server Error
+      tags:
+      - TAXONOMY CATEGORY
+components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return (page size).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 50
+        default: 10
+    TaxonomyLevelCustomIdPath:
+      name: taxonomyLevelCustomId
+      in: path
+      required: true
+      description: 'Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,
+
+        `class`, `department`). Unique within the caller''s organization.
+
+        '
+      schema:
+        type: string
+        example: product_line
+    CategoryCustomIdPath:
+      name: customId
+      in: path
+      required: true
+      description: 'Client-defined custom identifier of the category. Unique within the
+
+        owner organization (across all taxonomies and levels).
+
+        '
+      schema:
+        type: string
+        example: footwear
+    SearchQuery:
+      name: q
+      in: query
+      required: false
+      description: 'Free-text search. Whitespace-separated terms are OR-matched (case-insensitive)
+
+        against the category `name` and its `businessId`.
+
+        '
+      schema:
+        type: string
+        example: sneaker
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    ParentCustomIdQuery:
+      name: parentCustomId
+      in: query
+      required: false
+      description: 'Filter to categories whose parent has one of these custom IDs. Repeat the
+
+        parameter once per value: `?parentCustomId=footwear&parentCustomId=apparel`
+
+        returns the children of both parents. Comma-separated values are not
+
+        supported — `?parentCustomId=footwear,apparel` is matched as one literal ID.
+
+        Omit to list all categories at the level.
+
+        '
+      style: form
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+          example: footwear
+    OrderBy:
+      name: orderBy
+      in: query
+      required: false
+      description: 'Sort order, in the form `<field>:<direction>`.
+
+
+        `<field>` is one of `name` (sorts by parent name, then category name),
+
+        `createdAt` (creation time) or `updatedAt` (last-update time).
+
+
+        `<direction>` is `asc` or `desc`. The suffix is optional; timestamp fields
+
+        default to `desc` (newest first) while `name` defaults to `asc` (A→Z). Omitting
+
+        the parameter entirely is equivalent to `createdAt:desc`.
+
+        '
+      schema:
+        type: string
+        pattern: ^(name|createdAt|updatedAt)(:(asc|desc))?$
+        default: createdAt:desc
+        example: createdAt:desc
+  schemas:
+    CategoryUpdateRequest:
+      type: object
+      description: Request body for updating a category's mutable fields.
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          description: Display name of the category.
+          example: Footwear
+        description:
+          type: string
+          maxLength: 5000
+          description: Free-text description. Omitting resets it to an empty string (PUT semantics).
+          default: ''
+          example: All footwear products
+    CategoryResponse:
+      description: A single taxonomy category, wrapped in the platform response envelope.
+      allOf:
+      - $ref: '#/components/schemas/Category'
+      - $ref: '#/components/schemas/ResponseEnvelope'
+    Category:
+      type: object
+      description: A taxonomy category. Always addressed by `customId`.
+      properties:
+        customId:
+          type: string
+          description: Client-defined custom identifier of the category.
+          example: footwear
+        name:
+          type: string
+          description: Display name of the category.
+          example: Footwear
+        description:
+          type: string
+          nullable: true
+          description: Free-text description. May be an empty string.
+          example: All footwear products
+        businessId:
+          type: string
+          nullable: true
+          description: 'Business identifier of the category (stored as the taxonomy level''s
+
+            business-id attribute). Empty string when the level has no business-id
+
+            attribute or none was set. Immutable after creation.
+
+            '
+          example: FW-001
+        parentCustomId:
+          type: string
+          nullable: true
+          description: Custom ID of the parent category (one level up). Null for a root node.
+          example: apparel
+        taxonomyLevelCustomId:
+          type: string
+          description: Custom ID of the taxonomy level this category belongs to.
+          example: product_line
+        taxonomyCustomId:
+          type: string
+          description: Custom ID of the taxonomy the level belongs to.
+          example: product
+        lastUpdatedSource:
+          type: string
+          nullable: true
+          description: Origin of the last write (e.g. `api`, `manual`).
+          example: api
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Creation timestamp (ISO 8601).
+          example: '2026-06-15T10:30:00Z'
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+          description: Last-update timestamp (ISO 8601).
+          example: '2026-06-20T14:45:00Z'
+      required:
+      - customId
+      - name
+      - taxonomyLevelCustomId
+    CategoryListResponse:
+      description: Paginated list of taxonomy categories, wrapped in the platform response envelope.
+      allOf:
+      - $ref: '#/components/schemas/ResponseEnvelope'
+      - type: object
+        properties:
+          count:
+            type: integer
+            description: Total number of categories matching the filters. Page through the collection by adjusting `limit` and `offset` against this value.
+            example: 42
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/Category'
+    CategoryCreateRequest:
+      type: object
+      description: Request body for creating or restoring a category.
+      required:
+      - customId
+      - name
+      - businessId
+      properties:
+        customId:
+          type: string
+          maxLength: 128
+          description: Client-defined identifier. Must be unique within the org.
+          example: footwear
+        name:
+          type: string
+          maxLength: 255
+          description: Display name of the category.
+          example: Footwear
+        description:
+          type: string
+          maxLength: 5000
+          description: Free-text description. Defaults to empty string.
+          default: ''
+          example: All footwear products
+        businessId:
+          type: string
+          maxLength: 32
+          description: 'Business identifier. Must be unique among live siblings at this level.
+
+            Immutable after creation — ignored on restore.
+
+            '
+          example: FW-001
+        parentCustomId:
+          type: string
+          nullable: true
+          description: 'Custom ID of the parent category at the level immediately above. Omit for a
+
+            root node. Ignored on restore (re-parenting is not allowed).
+
+            '
+          example: apparel
+    ResponseEnvelope:
+      type: object
+      description: Platform response envelope fields appended to every successful response.
+      properties:
+        code:
+          type: integer
+          description: Echoes the HTTP status code.
+          example: 200
+        status:
+          type: integer
+          description: Echoes the HTTP status code (alias of `code` for legacy consumers).
+          example: 200
+    ConflictError:
+      type: object
+      description: Error body for 409 conflict responses.
+      properties:
+        detail:
+          type: string
+          description: Human-readable error message.
+          example: This customId is already in use in this organization.
+        code:
+          type: string
+          description: Machine-readable conflict code.
+          enum:
+          - CATEGORY_CUSTOM_ID_CONFLICT
+          - CATEGORY_BUSINESS_ID_CONFLICT
+          example: CATEGORY_CUSTOM_ID_CONFLICT
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 409
+    ErrorDetail:
+      type: object
+      description: Error body for 400, 401 and 404 responses.
+      properties:
+        detail:
+          type: string
+          description: Human-readable error message.
+          example: Category not found.
+        code:
+          type: integer
+          description: Echoes the HTTP status code.
+          example: 404
+        status:
+          type: integer
+          description: Echoes the HTTP status code (alias of `code` for legacy consumers).
+          example: 404
+    CategoryValidationError:
+      type: object
+      description: 'Error body for request-body validation failures on create/restore (400). Each key is a
+
+        camelCase field from `CategoryCreateRequest`; the value is either a single message or a
+
+        list of messages for that field, as returned by the underlying serializer.
+
+        '
+      properties:
+        code:
+          type: integer
+          description: Echoes the HTTP status code.
+          example: 400
+        status:
+          type: integer
+          description: Echoes the HTTP status code (alias of `code` for legacy consumers).
+          example: 400
+      additionalProperties:
+        oneOf:
+        - type: string
+        - type: array
+          items:
+            type: string
+      example:
+        customId:
+        - This field is required.
+        code: 400
+        status: 400
