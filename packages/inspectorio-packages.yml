@@ -1,0 +1,18 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  Registry probes 2026-07-19 (npm, PyPI) + GitHub org check. Inspectorio
+  publishes no first-party client SDK; there is no public github.com/inspectorio
+  org and no official npm package.
+packages:
+- language: python
+  registry: pypi
+  name: inspectorio
+  url: https://pypi.org/project/inspectorio/
+  install: pip install inspectorio
+  version: 0.5.1
+  official: false
+  note: >-
+    Third-party community wrapper by Matthias Brenninkmeijer
+    (github.com/matbmeijer/inspectorio), not published or maintained by
+    Inspectorio.

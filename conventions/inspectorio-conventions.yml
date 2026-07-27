@@ -1,0 +1,71 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.inspectorio.com/api-integration/
+derived_from:
+- openapi/inspectorio-qrm-openapi.json
+- openapi/inspectorio-rsc-openapi.json
+summary: >-
+  Cross-cutting request/response conventions for the Inspectorio integration
+  APIs (Quality Risk Management, Responsible Sourcing & Compliance, File
+  Management). Captured from the developer docs and confirmed against the
+  published OpenAPI.
+authentication:
+  style: api-key
+  header: apiKey
+  notes: >-
+    Organization-scoped API key passed in the apiKey header. Keys do not expire
+    unless revoked. A legacy username/hashed-password login (POST
+    /api/v1/auth/login) returns a 24h token and is deprecated.
+  ref: authentication/inspectorio-authentication.yml
+pagination:
+  style: limit-offset
+  params:
+  - name: limit
+    in: query
+    description: Page size.
+  - name: offset
+    in: query
+    description: Zero-based record offset.
+  notes: >-
+    List endpoints across QRM and RSC use limit/offset paging with
+    created_from/created_to and updated_from/updated_to date-range filters and
+    an order parameter for sorting.
+filtering:
+  common_params:
+  - created_from
+  - created_to
+  - updated_from
+  - updated_to
+  - status
+  - order
+  - dataProvider
+idempotency:
+  supported: false
+  notes: >-
+    No documented Idempotency-Key header. Several write endpoints are
+    idempotent-by-key at the resource level (PUT /customer-data/products is an
+    explicit upsert keyed by custom_id; POST/PUT BOM and metadata operations key
+    on custom identifiers), but this is entity-level upsert semantics, not an
+    HTTP idempotency-key contract.
+versioning:
+  scheme: uri-path
+  current:
+    qrm: v1 (with v3 purchase-order endpoints)
+    rsc: v1 (with v2 report endpoints)
+    fms: v3
+  notes: Version is carried in the URL path (e.g. /api/v1/..., /api/v3/...).
+  ref: lifecycle/inspectorio-lifecycle.yml
+error_envelope:
+  content_type: application/json
+  shape: '{ errorCode, message, errors? }'
+  rfc9457: false
+  ref: errors/inspectorio-problem-types.yml
+rate_limiting:
+  signalled_via: HTTP 429 (TooManyResponsesApiError)
+  notes: >-
+    Rate limiting is enforced and surfaced as 429; webhook subscriptions expose
+    configurable calls-per-minute / calls-per-hour limits. No published numeric
+    request-rate headers found in the docs.
+webhooks:
+  ref: asyncapi/inspectorio-webhooks.yml
+  notes: Outbound webhooks follow the Standard Webhooks spec (HMAC-signed).

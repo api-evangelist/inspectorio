@@ -1,0 +1,68 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.inspectorio.com/api-integration/error-codes/
+derived_from:
+- openapi/inspectorio-qrm-openapi.json
+- openapi/inspectorio-rsc-openapi.json
+format: custom
+notes: >-
+  Inspectorio does NOT use RFC 9457 problem+json. Errors are returned as
+  application/json with a custom envelope. Confirmed against the QRM/RSC OpenAPI
+  error schemas (BadRequestApiError, UnauthenticatedApiError, ValidateApiError,
+  TooManyResponsesApiError, InternalApiError) and the published error-codes
+  reference page.
+envelope:
+  content_type: application/json
+  fields:
+  - name: errorCode
+    type: string
+    description: Machine-readable error code (example value "Generic").
+  - name: message
+    type: string
+    description: Human-readable error message.
+  - name: errors
+    type: object
+    required: false
+    description: >-
+      Field-level validation detail on 422/500, keyed by field name with an
+      array of messages (e.g. {"type": ["Input type is not valid"]}).
+retry_guidance: >-
+  For 5xx errors the docs recommend retrying after 1 minute, then after 3
+  minutes, then deferring to the next business day if both retries fail.
+problems:
+- status: 400
+  title: Bad request
+  schema: BadRequestApiError
+  meaning: Malformed request or invalid parameters.
+- status: 401
+  title: Authentication error
+  schema: UnauthenticatedApiError
+  meaning: Missing/invalid API key, or (legacy) expired login token.
+- status: 403
+  title: Forbidden
+  meaning: Authenticated but not permitted for this resource.
+- status: 404
+  title: Not found
+  meaning: URL or resource not found.
+- status: 409
+  title: Conflict
+  schema: ConflictError
+  meaning: Resource already exists / customId already in use.
+- status: 422
+  title: Validation error
+  schema: ValidateApiError
+  meaning: Request body failed validation; see errors[] for field detail.
+- status: 429
+  title: Too many requests
+  schema: TooManyResponsesApiError
+  meaning: Rate limit exceeded.
+- status: 500
+  title: Internal system error
+  schema: InternalApiError
+  meaning: Server-side error; retry per retry_guidance.
+- status: 502
+  title: Bad gateway
+  meaning: Upstream gateway error; retry per retry_guidance.
+- status: 504
+  title: Gateway timeout
+  meaning: Upstream gateway timeout; retry per retry_guidance.

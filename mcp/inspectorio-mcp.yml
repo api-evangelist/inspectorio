@@ -1,0 +1,529 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: derived from openapi/ operations (no official hosted MCP server found)
+server:
+  name: inspectorio
+  transport: stdio
+  note: "candidate \u2014 no official Inspectorio MCP server published as of 2026-07-19"
+tools:
+- name: get_api_v1_analytics_factory_risk_profile
+  description: List Factory Risk Profiles
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_analytics_factory_risk_profile
+  method: GET
+  path: /api/v1/analytics/factory-risk-profile
+- name: get_api_v1_analytics_factory_risk_profile_factory_id
+  description: Get Factory Risk Profile
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_analytics_factory_risk_profile_factory_id
+  method: GET
+  path: /api/v1/analytics/factory-risk-profile/{factory_id}
+- name: get_api_v1_assignments
+  description: List Assignments
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_assignments
+  method: GET
+  path: /api/v1/assignments
+- name: get_api_v1_assignments_assignment_id
+  description: Get Assignment
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_assignments_assignment_id
+  method: GET
+  path: /api/v1/assignments/{assignment_id}
+- name: post_api_v1_auth_login
+  description: Login and Retrieve Access Token
+  source_operation: openapi/inspectorio-qrm-openapi.json#post_api_v1_auth_login
+  method: POST
+  path: /api/v1/auth/login
+- name: get_api_v1_bookings
+  description: List Bookings
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_bookings
+  method: GET
+  path: /api/v1/bookings
+- name: get_api_v1_bookings_booking_id
+  description: Get Booking
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_bookings_booking_id
+  method: GET
+  path: /api/v1/bookings/{booking_id}
+- name: listInspectionsV1
+  description: List Inspections
+  source_operation: openapi/inspectorio-qrm-openapi.json#listInspectionsV1
+  method: GET
+  path: /api/v1/inspections
+- name: getInspectionV1
+  description: Get Inspection
+  source_operation: openapi/inspectorio-qrm-openapi.json#getInspectionV1
+  method: GET
+  path: /api/v1/inspections/{uuid}
+- name: get_api_v1_brands
+  description: List Brands
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_brands
+  method: GET
+  path: /api/v1/brands
+- name: post_api_v1_brands
+  description: Create Brand
+  source_operation: openapi/inspectorio-qrm-openapi.json#post_api_v1_brands
+  method: POST
+  path: /api/v1/brands
+- name: delete_api_v1_brands_brand_id
+  description: Delete Brand
+  source_operation: openapi/inspectorio-qrm-openapi.json#delete_api_v1_brands_brand_id
+  method: DELETE
+  path: /api/v1/brands/{brand_id}
+- name: get_api_v1_brands_brand_id
+  description: Get Brand
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_brands_brand_id
+  method: GET
+  path: /api/v1/brands/{brand_id}
+- name: put_api_v1_brands_brand_id
+  description: Update Brand
+  source_operation: openapi/inspectorio-qrm-openapi.json#put_api_v1_brands_brand_id
+  method: PUT
+  path: /api/v1/brands/{brand_id}
+- name: get_api_v1_capas_report_id
+  description: Get CAPA
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_capas_report_id
+  method: GET
+  path: /api/v1/capas/{report_id}
+- name: post_api_v1_file_upload_session
+  description: Create File Upload Session
+  source_operation: openapi/inspectorio-qrm-openapi.json#post_api_v1_file_upload_session
+  method: POST
+  path: /api/v1/file-upload-session
+- name: ListLabTest
+  description: List Lab Tests
+  source_operation: openapi/inspectorio-qrm-openapi.json#ListLabTest
+  method: GET
+  path: /api/v1/lab-tests
+- name: CreateLabTest
+  description: Create Lab Test
+  source_operation: openapi/inspectorio-qrm-openapi.json#CreateLabTest
+  method: POST
+  path: /api/v1/lab-tests
+- name: CPSCEfiling
+  description: Get CPSC eFiling Data
+  source_operation: openapi/inspectorio-qrm-openapi.json#CPSCEfiling
+  method: POST
+  path: /api/v1/lab-tests/efiling
+- name: BulkActionLabTest
+  description: Bulk Action Lab Test
+  source_operation: openapi/inspectorio-qrm-openapi.json#BulkActionLabTest
+  method: POST
+  path: /api/v1/lab-tests/bulk-actions/{action}
+- name: CreateMasterData
+  description: Create Master Data
+  source_operation: openapi/inspectorio-qrm-openapi.json#CreateMasterData
+  method: POST
+  path: /api/v1/master-data
+- name: GetMasterDataByUUID
+  description: Get Master Data by UUID
+  source_operation: openapi/inspectorio-qrm-openapi.json#GetMasterDataByUUID
+  method: GET
+  path: /api/v1/master-data/{uuid}
+- name: DeleteMasterDataByUUID
+  description: Delete Master Data
+  source_operation: openapi/inspectorio-qrm-openapi.json#DeleteMasterDataByUUID
+  method: DELETE
+  path: /api/v1/master-data/{uuid}
+- name: UpdateMasterDataByUUID
+  description: Update Master Data
+  source_operation: openapi/inspectorio-qrm-openapi.json#UpdateMasterDataByUUID
+  method: PUT
+  path: /api/v1/master-data/{uuid}
+- name: get_api_v1_measurement_charts_style_id
+  description: Get Measurement Chart
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_measurement_charts_style_id
+  method: GET
+  path: /api/v1/measurement-charts/{style_id}
+- name: post_api_v1_measurement_charts_style_id
+  description: Create Measurement Chart
+  source_operation: openapi/inspectorio-qrm-openapi.json#post_api_v1_measurement_charts_style_id
+  method: POST
+  path: /api/v1/measurement-charts/{style_id}
+- name: put_api_v1_measurement_charts_style_id
+  description: Update Measurement Chart
+  source_operation: openapi/inspectorio-qrm-openapi.json#put_api_v1_measurement_charts_style_id
+  method: PUT
+  path: /api/v1/measurement-charts/{style_id}
+- name: get_api_v1_metadata_namespace
+  description: List Metadata
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_metadata_namespace
+  method: GET
+  path: /api/v1/metadata/{namespace}
+- name: post_api_v1_metadata_namespace
+  description: Create Metadata
+  source_operation: openapi/inspectorio-qrm-openapi.json#post_api_v1_metadata_namespace
+  method: POST
+  path: /api/v1/metadata/{namespace}
+- name: delete_api_v1_metadata_namespace_uid
+  description: Delete Metadata
+  source_operation: openapi/inspectorio-qrm-openapi.json#delete_api_v1_metadata_namespace_uid
+  method: DELETE
+  path: /api/v1/metadata/{namespace}/{uid}
+- name: get_api_v1_metadata_namespace_uid
+  description: Get Metadata
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_metadata_namespace_uid
+  method: GET
+  path: /api/v1/metadata/{namespace}/{uid}
+- name: put_api_v1_metadata_namespace_uid
+  description: Update Metadata
+  source_operation: openapi/inspectorio-qrm-openapi.json#put_api_v1_metadata_namespace_uid
+  method: PUT
+  path: /api/v1/metadata/{namespace}/{uid}
+- name: get_api_v1_organizations
+  description: List Organizations
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_organizations
+  method: GET
+  path: /api/v1/organizations
+- name: post_api_v1_organizations
+  description: Create Organization
+  source_operation: openapi/inspectorio-qrm-openapi.json#post_api_v1_organizations
+  method: POST
+  path: /api/v1/organizations
+- name: delete_api_v1_organizations_organization_id
+  description: Delete Organization
+  source_operation: openapi/inspectorio-qrm-openapi.json#delete_api_v1_organizations_organization_id
+  method: DELETE
+  path: /api/v1/organizations/{organization_id}
+- name: get_api_v1_organizations_organization_id
+  description: Get Organization
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_organizations_organization_id
+  method: GET
+  path: /api/v1/organizations/{organization_id}
+- name: put_api_v1_organizations_organization_id
+  description: Update Organization
+  source_operation: openapi/inspectorio-qrm-openapi.json#put_api_v1_organizations_organization_id
+  method: PUT
+  path: /api/v1/organizations/{organization_id}
+- name: get_api_v1_products
+  description: List Products
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_products
+  method: GET
+  path: /api/v1/products
+- name: upsertItems
+  description: Create or Update (Upsert) products, items and materials
+  source_operation: openapi/inspectorio-qrm-openapi.json#upsertItems
+  method: PUT
+  path: /api/v1/customer-data/products
+- name: getSynchronization
+  description: Get synchronization status
+  source_operation: openapi/inspectorio-qrm-openapi.json#getSynchronization
+  method: GET
+  path: /api/v1/customer-data/synchronization/{entity_type}/{id}
+- name: createBom
+  description: Create a new BOM
+  source_operation: openapi/inspectorio-qrm-openapi.json#createBom
+  method: POST
+  path: /api/v1/customer-data/boms
+- name: listBoms
+  description: List all BOMs for an entity
+  source_operation: openapi/inspectorio-qrm-openapi.json#listBoms
+  method: GET
+  path: /api/v1/customer-data/{entity_type}/{entity_custom_id}/boms
+- name: updateBom
+  description: Update an existing BOM
+  source_operation: openapi/inspectorio-qrm-openapi.json#updateBom
+  method: PUT
+  path: /api/v1/customer-data/{entity_type}/{entity_custom_id}/boms/{bom_custom_id}
+- name: getBomDetails
+  description: Get BOM details
+  source_operation: openapi/inspectorio-qrm-openapi.json#getBomDetails
+  method: GET
+  path: /api/v1/customer-data/{entity_type}/{entity_custom_id}/boms/{bom_custom_id}
+- name: deleteBom
+  description: Delete a BOM
+  source_operation: openapi/inspectorio-qrm-openapi.json#deleteBom
+  method: DELETE
+  path: /api/v1/customer-data/{entity_type}/{entity_custom_id}/boms/{bom_custom_id}
+- name: listProductIntegration
+  description: List products, items, or materials
+  source_operation: openapi/inspectorio-qrm-openapi.json#listProductIntegration
+  method: GET
+  path: /api/v1/customer-data/{entity_type}
+- name: getProductIntegrationDetail
+  description: Get a product, item, or material by custom ID
+  source_operation: openapi/inspectorio-qrm-openapi.json#getProductIntegrationDetail
+  method: GET
+  path: /api/v1/customer-data/{entity_type}/{custom_id}
+- name: createCategory
+  description: Create or Restore Category
+  source_operation: openapi/inspectorio-qrm-openapi.json#createCategory
+  method: POST
+  path: /api/v1/customer-data/taxonomies/{taxonomyLevelCustomId}/categories
+- name: listCategories
+  description: List Categories
+  source_operation: openapi/inspectorio-qrm-openapi.json#listCategories
+  method: GET
+  path: /api/v1/customer-data/taxonomies/{taxonomyLevelCustomId}/categories
+- name: updateCategory
+  description: Update Category
+  source_operation: openapi/inspectorio-qrm-openapi.json#updateCategory
+  method: PUT
+  path: /api/v1/customer-data/taxonomies/{taxonomyLevelCustomId}/categories/{customId}
+- name: deleteCategory
+  description: Delete Category
+  source_operation: openapi/inspectorio-qrm-openapi.json#deleteCategory
+  method: DELETE
+  path: /api/v1/customer-data/taxonomies/{taxonomyLevelCustomId}/categories/{customId}
+- name: getCategory
+  description: Get Category
+  source_operation: openapi/inspectorio-qrm-openapi.json#getCategory
+  method: GET
+  path: /api/v1/customer-data/taxonomies/{taxonomyLevelCustomId}/categories/{customId}
+- name: get_api_v1_purchase_orders
+  description: List Purchase Orders
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_purchase_orders
+  method: GET
+  path: /api/v1/purchase-orders
+- name: post_api_v1_purchase_orders
+  description: Create Purchase Order
+  source_operation: openapi/inspectorio-qrm-openapi.json#post_api_v1_purchase_orders
+  method: POST
+  path: /api/v1/purchase-orders
+- name: delete_api_v1_purchase_orders_po_number
+  description: Delete Purchase Order
+  source_operation: openapi/inspectorio-qrm-openapi.json#delete_api_v1_purchase_orders_po_number
+  method: DELETE
+  path: /api/v1/purchase-orders/{po_number}
+- name: get_api_v1_purchase_orders_po_number
+  description: Get Purchase Order
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_purchase_orders_po_number
+  method: GET
+  path: /api/v1/purchase-orders/{po_number}
+- name: put_api_v1_purchase_orders_po_number
+  description: Update Purchase Order
+  source_operation: openapi/inspectorio-qrm-openapi.json#put_api_v1_purchase_orders_po_number
+  method: PUT
+  path: /api/v1/purchase-orders/{po_number}
+- name: post_api_v1_purchase_orders_po_number_actions_action
+  description: Update/Delete Purchase Order
+  source_operation: openapi/inspectorio-qrm-openapi.json#post_api_v1_purchase_orders_po_number_actions_action
+  method: POST
+  path: /api/v1/purchase-orders/{po_number}/actions/{action}
+- name: listPurchaseOrdersV3
+  description: List Purchase Orders (V3)
+  source_operation: openapi/inspectorio-qrm-openapi.json#listPurchaseOrdersV3
+  method: GET
+  path: /api/v3/purchase-orders
+- name: createPurchaseOrderV3
+  description: Create Purchase Order (V3)
+  source_operation: openapi/inspectorio-qrm-openapi.json#createPurchaseOrderV3
+  method: POST
+  path: /api/v3/purchase-orders
+- name: deletePurchaseOrderV3
+  description: Delete Purchase Order (V3)
+  source_operation: openapi/inspectorio-qrm-openapi.json#deletePurchaseOrderV3
+  method: DELETE
+  path: /api/v3/purchase-orders/{uid}
+- name: getPurchaseOrderV3
+  description: Get Purchase Order (V3)
+  source_operation: openapi/inspectorio-qrm-openapi.json#getPurchaseOrderV3
+  method: GET
+  path: /api/v3/purchase-orders/{uid}
+- name: updatePurchaseOrderV3
+  description: Update Purchase Order (V3)
+  source_operation: openapi/inspectorio-qrm-openapi.json#updatePurchaseOrderV3
+  method: PUT
+  path: /api/v3/purchase-orders/{uid}
+- name: updatePurchaseOrderStatusV3
+  description: Update the status of a purchase order (V3)
+  source_operation: openapi/inspectorio-qrm-openapi.json#updatePurchaseOrderStatusV3
+  method: PUT
+  path: /api/v3/purchase-orders/{uid}/status
+- name: updatePackagingDetailsV3
+  description: Update Packaging Details of a Purchase Order (V3)
+  source_operation: openapi/inspectorio-qrm-openapi.json#updatePackagingDetailsV3
+  method: PUT
+  path: /api/v3/purchase-orders/{uid}/packaging-details
+- name: post_api_v1_purchase_order_associations
+  description: Create Purchase Order Association
+  source_operation: openapi/inspectorio-qrm-openapi.json#post_api_v1_purchase_order_associations
+  method: POST
+  path: /api/v1/purchase-order-associations
+- name: get_api_v1_purchase_order_associations_po_number
+  description: Get Associations of Purchase Order
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_purchase_order_associations_po_number
+  method: GET
+  path: /api/v1/purchase-order-associations/{po_number}
+- name: delete_api_v1_purchase_order_associations_from_po_number_to_po_number
+  description: Delete Purchase Order Association
+  source_operation: openapi/inspectorio-qrm-openapi.json#delete_api_v1_purchase_order_associations_from_po_number_to_po_number
+  method: DELETE
+  path: /api/v1/purchase-order-associations/{from_po_number}/{to_po_number}
+- name: get_api_v1_reports
+  description: List Reports
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_reports
+  method: GET
+  path: /api/v1/reports
+- name: get_api_v1_reports_report_id
+  description: Get Report
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_reports_report_id
+  method: GET
+  path: /api/v1/reports/{report_id}
+- name: get_api_v1_time_and_actions
+  description: List Time and Actions
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_time_and_actions
+  method: GET
+  path: /api/v1/time-and-actions
+- name: get_api_v1_time_and_actions_id
+  description: Get Time and Actions
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_time_and_actions_id
+  method: GET
+  path: /api/v1/time-and-actions/{id}
+- name: put_api_v1_time_and_actions_ta_id_milestones
+  description: Update Time and Actions Milestones
+  source_operation: openapi/inspectorio-qrm-openapi.json#put_api_v1_time_and_actions_ta_id_milestones
+  method: PUT
+  path: /api/v1/time-and-actions/{ta_id}/milestones
+- name: get_api_v1_time_and_actions_ta_id_production_status
+  description: Get Time and Actions Production status
+  source_operation: openapi/inspectorio-qrm-openapi.json#get_api_v1_time_and_actions_ta_id_production_status
+  method: GET
+  path: /api/v1/time-and-actions/{ta_id}/production-status
+- name: put_api_v1_time_and_actions_ta_id_production_status
+  description: Update Time and Actions Production status
+  source_operation: openapi/inspectorio-qrm-openapi.json#put_api_v1_time_and_actions_ta_id_production_status
+  method: PUT
+  path: /api/v1/time-and-actions/{ta_id}/production-status
+- name: post_api_v1_barcode
+  description: Create Barcode
+  source_operation: openapi/inspectorio-qrm-openapi.json#post_api_v1_barcode
+  method: POST
+  path: /api/v1/barcode
+- name: post_api_v1_barcode_retrieve
+  description: Retrieve Barcode
+  source_operation: openapi/inspectorio-qrm-openapi.json#post_api_v1_barcode_retrieve
+  method: POST
+  path: /api/v1/barcode/retrieve
+- name: post_api_v1_barcode_delete
+  description: Delete Barcode
+  source_operation: openapi/inspectorio-qrm-openapi.json#post_api_v1_barcode_delete
+  method: POST
+  path: /api/v1/barcode/delete
+- name: GetLabTestPackageDetail
+  description: Get Lab Test Package Detail
+  source_operation: openapi/inspectorio-qrm-openapi.json#GetLabTestPackageDetail
+  method: GET
+  path: /api/v1/lab-tests/test-packages/{package_id}
+- name: UpdateLabTestPackage
+  description: Update Lab Test Package
+  source_operation: openapi/inspectorio-qrm-openapi.json#UpdateLabTestPackage
+  method: PUT
+  path: /api/v1/lab-tests/test-packages/{package_id}
+- name: GetLabTestPackageList
+  description: List Lab Test Packages
+  source_operation: openapi/inspectorio-qrm-openapi.json#GetLabTestPackageList
+  method: GET
+  path: /api/v1/lab-tests/test-packages
+- name: CreateLabTestPackage
+  description: Create Lab Test Package
+  source_operation: openapi/inspectorio-qrm-openapi.json#CreateLabTestPackage
+  method: POST
+  path: /api/v1/lab-tests/test-packages
+- name: GetLabTestPropertyDetail
+  description: Get Lab Test Property Detail
+  source_operation: openapi/inspectorio-qrm-openapi.json#GetLabTestPropertyDetail
+  method: GET
+  path: /api/v1/lab-tests/test-properties/{property_id}
+- name: UpdateLabTestProperty
+  description: Update Lab Test Property
+  source_operation: openapi/inspectorio-qrm-openapi.json#UpdateLabTestProperty
+  method: PUT
+  path: /api/v1/lab-tests/test-properties/{property_id}
+- name: GetLabTestPropertyList
+  description: List Lab Test Properties
+  source_operation: openapi/inspectorio-qrm-openapi.json#GetLabTestPropertyList
+  method: GET
+  path: /api/v1/lab-tests/test-properties
+- name: CreateLabTestProperty
+  description: Create Lab Test Property
+  source_operation: openapi/inspectorio-qrm-openapi.json#CreateLabTestProperty
+  method: POST
+  path: /api/v1/lab-tests/test-properties
+- name: UploadUpdatePreCreatedLabTest
+  description: Upload/Update Pre-Created Lab Test
+  source_operation: openapi/inspectorio-qrm-openapi.json#UploadUpdatePreCreatedLabTest
+  method: PUT
+  path: /api/v1/lab-tests/{id}
+- name: GetLabTestDetail
+  description: Get Lab Test Detail
+  source_operation: openapi/inspectorio-qrm-openapi.json#GetLabTestDetail
+  method: GET
+  path: /api/v1/lab-tests/{id}
+- name: login
+  description: Login and Retrieve Access Token
+  source_operation: openapi/inspectorio-rsc-openapi.json#login
+  method: POST
+  path: /api/v1/auth/login
+- name: createMetadata
+  description: Create Metadata
+  source_operation: openapi/inspectorio-rsc-openapi.json#createMetadata
+  method: POST
+  path: /api/v1/metadata/{namespace}
+- name: deleteMetadata
+  description: Delete Metadata
+  source_operation: openapi/inspectorio-rsc-openapi.json#deleteMetadata
+  method: DELETE
+  path: /api/v1/metadata/{namespace}/{uid}
+- name: getMetadata
+  description: Get Metadata
+  source_operation: openapi/inspectorio-rsc-openapi.json#getMetadata
+  method: GET
+  path: /api/v1/metadata/{namespace}/{uid}
+- name: updateMetadata
+  description: Update Metadata
+  source_operation: openapi/inspectorio-rsc-openapi.json#updateMetadata
+  method: PUT
+  path: /api/v1/metadata/{namespace}/{uid}
+- name: createOrganization
+  description: Create Organization
+  source_operation: openapi/inspectorio-rsc-openapi.json#createOrganization
+  method: POST
+  path: /api/v1/organizations
+- name: getOrganization
+  description: Get Organization
+  source_operation: openapi/inspectorio-rsc-openapi.json#getOrganization
+  method: GET
+  path: /api/v1/organizations/{organization_id}
+- name: updateOrganization
+  description: Update Organization
+  source_operation: openapi/inspectorio-rsc-openapi.json#updateOrganization
+  method: PUT
+  path: /api/v1/organizations/{organization_id}
+- name: listReports
+  description: List reports
+  source_operation: openapi/inspectorio-rsc-openapi.json#listReports
+  method: GET
+  path: /api/v1/reports
+- name: getReport
+  description: Get Report
+  source_operation: openapi/inspectorio-rsc-openapi.json#getReport
+  method: GET
+  path: /api/v1/reports/{report_id}
+- name: listReportsV2
+  description: List reports
+  source_operation: openapi/inspectorio-rsc-openapi.json#listReportsV2
+  method: GET
+  path: /api/v2/reports
+- name: getReportV2
+  description: Get Report
+  source_operation: openapi/inspectorio-rsc-openapi.json#getReportV2
+  method: GET
+  path: /api/v2/reports/{report_id}
+- name: searchAssessmentsV1
+  description: Search assessments
+  source_operation: openapi/inspectorio-rsc-openapi.json#searchAssessmentsV1
+  method: POST
+  path: /api/v1/assessments/search
+- name: getAssessmentV1
+  description: Get Assessment
+  source_operation: openapi/inspectorio-rsc-openapi.json#getAssessmentV1
+  method: GET
+  path: /api/v1/assessments/{assessment_id}
+- name: getStepExecution
+  description: Get Step Execution
+  source_operation: openapi/inspectorio-rsc-openapi.json#getStepExecution
+  method: GET
+  path: /api/v1/reports/{report_id}/steps/{step_id}
+- name: post_signed_upload_session_id
+  description: Upload File
+  source_operation: openapi/inspectorio-fms-openapi.json#post_signed_upload_session_id
+  method: POST
+  path: /signed-upload/{session_id}

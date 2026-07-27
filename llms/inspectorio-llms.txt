@@ -1,0 +1,31 @@
+# Inspectorio
+
+> Inspectorio is a supply-chain management platform for brands, retailers, and suppliers, covering quality risk management, responsible sourcing & compliance, production management, traceability, and lab-test management. It exposes REST integration APIs (organization API-key auth via the `apiKey` header) and HMAC-signed outbound webhooks. Enriched by the API Evangelist network on 2026-07-19.
+
+## APIs
+- [Quality Risk Management API (v1)](https://docs.inspectorio.com/api/qrm): host https://sight.inspectorio.com — inspections, bookings, lab tests, purchase orders, CAPA, customer/product/BOM data, time & actions.
+- [Responsible Sourcing & Compliance API (v1)](https://docs.inspectorio.com/api/rsc): host https://rise-integration.inspectorio.com — assessments, reports, organizations, metadata.
+- [File Management API (v3)](https://docs.inspectorio.com/api/fms): host https://files-integration.inspectorio.com — signed file uploads.
+
+## Specs
+- openapi/inspectorio-qrm-openapi.json (OpenAPI 3.0.3, 88 operations)
+- openapi/inspectorio-rsc-openapi.json (OpenAPI 3.0.3, 15 operations)
+- openapi/inspectorio-fms-openapi.json (OpenAPI 3.0.3)
+
+## Docs
+- [Documentation](https://docs.inspectorio.com/)
+- [Quick Start / API Integration](https://docs.inspectorio.com/api-integration/)
+- [Authentication](https://docs.inspectorio.com/api-integration/authentication/)
+- [Error codes](https://docs.inspectorio.com/api-integration/error-codes/)
+- [Webhooks](https://docs.inspectorio.com/webhooks/)
+- [Announcements / changelog](https://docs.inspectorio.com/announcements/)
+- [Integrations](https://inspectorio.com/en/platform/integrations)
+- [Support portal](https://support.inspectorio.com/hc/en-us/)
+- [Status page](https://status.inspectorio.com)
+- [Trust Center](https://security.inspectorio.com/)
+
+## Conventions
+- Auth: organization API key in the `apiKey` header (keys do not expire unless revoked).
+- Pagination: `limit`/`offset` with `created_from`/`created_to`, `updated_from`/`updated_to`, `order` filters.
+- Errors: custom JSON envelope `{ errorCode, message, errors? }` (not RFC 9457).
+- Webhooks: Standard Webhooks spec, HMAC-signed per-endpoint secret.

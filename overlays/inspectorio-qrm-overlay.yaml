@@ -1,0 +1,13 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Inspectorio Quality Risk Management API
+  version: 1.0.0
+extends: openapi/inspectorio-qrm-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-19'
+    x-apievangelist-provider: inspectorio
+    x-apievangelist-auth: API key in `apiKey` header
+    x-apievangelist-status-page: https://status.inspectorio.com
+    x-apievangelist-changelog: https://docs.inspectorio.com/announcements/

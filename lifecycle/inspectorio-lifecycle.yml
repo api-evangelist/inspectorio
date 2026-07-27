@@ -1,0 +1,29 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.inspectorio.com/
+versioning:
+  scheme: uri-path
+  current: v1
+  notes: >-
+    Version carried in the URL path. QRM is v1 with newer v3 purchase-order
+    endpoints; RSC is v1 with v2 reports; File Management is v3.
+  docs: https://docs.inspectorio.com/api/qrm
+deprecation:
+  policy: >-
+    Endpoints can be marked deprecated in the OpenAPI and announced via the
+    dated announcements feed. The username/password login (POST
+    /api/v1/auth/login) is explicitly marked deprecated in favor of
+    organization API keys.
+  deprecated_operations:
+  - openapi/inspectorio-qrm-openapi.json#/api/v1/auth/login
+  - openapi/inspectorio-rsc-openapi.json#/api/v1/auth/login
+  announcements: https://docs.inspectorio.com/announcements/
+status_page: https://status.inspectorio.com
+status_provider: Atlassian Statuspage
+status_components:
+- Quality Risk Management (QRM) - Mobile API, Integration API, Web
+- Lab Test Management (LT) - Integration API, Web
+- Production Management (PM) - Integration API, Web
+- Responsible Sourcing & Compliance (RSC) - Integration API, Mobile API, Web
+- Digital Assets (DA) - Integration API, Web
+changelog: changelog/inspectorio-changelog.yml

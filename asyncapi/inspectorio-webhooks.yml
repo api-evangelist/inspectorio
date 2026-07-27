@@ -1,0 +1,41 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.inspectorio.com/webhooks/
+spec_type: Webhooks
+summary: >-
+  Inspectorio publishes an outbound webhook (event) surface covering its core
+  business processes. It implements the Standard Webhooks specification: events
+  are delivered as HTTPS POST requests with a JSON payload to a partner-
+  configured URL and are HMAC-signed with a per-endpoint secret so receivers can
+  verify authenticity. No machine-readable AsyncAPI document is published; the
+  event types are browsed in an in-product Events Catalog.
+delivery:
+  transport: https-post
+  format: json
+  standard: https://www.standardwebhooks.com/
+signing:
+  method: HMAC
+  secret: per-endpoint, system-generated, regenerable from the dashboard
+  header: Standard Webhooks signature headers
+verification: >-
+  Receivers verify the HMAC signature against the endpoint secret; Inspectorio
+  provides tutorials and helper code in multiple languages.
+configuration:
+  fields:
+  - name (subscription label)
+  - destination URL
+  - selected event types
+  - rate limits (calls per minute / hour)
+  - custom HTTP headers (for auth/correlation)
+  - system-generated secret key
+retry:
+  automatic: unspecified in docs
+  manual: >-
+    Failed or missed messages can be manually redelivered from the dashboard;
+    each attempt records timestamp, HTTP status code, and error detail.
+events:
+  catalog: In-product Events Catalog (sample payloads + property breakdowns)
+  note: >-
+    Individual event type names are enumerated inside the authenticated Events
+    Catalog and are not published on the public docs; not captured here to avoid
+    fabrication.

@@ -1,0 +1,92 @@
+generated: '2026-07-19'
+method: derived
+source: >-
+  Derived from openapi/inspectorio-qrm-openapi.json and
+  openapi/inspectorio-rsc-openapi.json path structure, path parameters, and
+  id-reference fields.
+entities:
+- name: Organization
+  api: qrm/rsc
+  key: organization_id
+  paths:
+  - '/api/v1/organizations'
+  - '/api/v1/organizations/{organization_id}'
+- name: Brand
+  api: qrm
+  key: brand_id
+  paths:
+  - '/api/v1/brands'
+  - '/api/v1/brands/{brand_id}'
+- name: Product
+  api: qrm
+  key: custom_id
+  note: entity_type is one of product | item | material.
+  paths:
+  - '/api/v1/products'
+  - '/api/v1/customer-data/{entity_type}/{custom_id}'
+- name: BOM
+  api: qrm
+  key: bom_custom_id
+  paths:
+  - '/api/v1/customer-data/{entity_type}/{entity_custom_id}/boms/{bom_custom_id}'
+- name: PurchaseOrder
+  api: qrm
+  key: po_number (v1) / uid (v3)
+  paths:
+  - '/api/v1/purchase-orders/{po_number}'
+  - '/api/v3/purchase-orders/{uid}'
+- name: Booking
+  api: qrm
+  key: booking_id
+  paths:
+  - '/api/v1/bookings/{booking_id}'
+- name: Assignment
+  api: qrm
+  key: assignment_id
+  paths:
+  - '/api/v1/assignments/{assignment_id}'
+- name: Inspection
+  api: qrm
+  key: uuid
+  paths:
+  - '/api/v1/inspections/{uuid}'
+- name: Report
+  api: qrm/rsc
+  key: report_id
+  paths:
+  - '/api/v1/reports/{report_id}'
+  - '/api/v2/reports/{report_id}'
+- name: CAPA
+  api: qrm
+  key: report_id
+  paths:
+  - '/api/v1/capas/{report_id}'
+- name: LabTest
+  api: qrm
+  key: test_id
+  paths:
+  - '/api/v1/lab-tests'
+  - '/api/v1/lab-tests/test-packages/{package_id}'
+- name: Assessment
+  api: rsc
+  key: assessment_id
+  paths:
+  - '/api/v1/assessments/{assessment_id}'
+- name: TimeAndActions
+  api: qrm
+  key: ta_id
+  paths:
+  - '/api/v1/time-and-actions/{id}'
+  - '/api/v1/time-and-actions/{ta_id}/milestones'
+- name: MeasurementChart
+  api: qrm
+  key: style_id
+  paths:
+  - '/api/v1/measurement-charts/{style_id}'
+relationships:
+- {from: BOM, type: belongs_to, to: Product, via: entity_custom_id}
+- {from: PurchaseOrderAssociation, type: has_many, to: PurchaseOrder, via: from_po_number-to_po_number}
+- {from: CAPA, type: belongs_to, to: Report, via: report_id}
+- {from: TimeAndActions, type: has_many, to: Milestone, via: ta_id}
+- {from: Report, type: has_many, to: StepExecution, via: step_id}
+- {from: Inspection, type: belongs_to, to: Booking, via: booking}

@@ -1,0 +1,41 @@
+generated: '2026-07-19'
+method: derived
+source: >-
+  Derived from openapi/ security schemes, error shapes, and pagination
+  conventions; compliance program from https://security.inspectorio.com/
+standards:
+- id: apikey-auth
+  conforms: true
+  evidence: OpenAPI securitySchemes ApiKeyAuth (apiKey in header 'apiKey').
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 security schemes declared in the published specs.
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom application/json envelope, not application/problem+json.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No documented Sunset/Deprecation header support.
+- id: pagination
+  conforms: true
+  evidence: List endpoints use limit/offset query parameters.
+- id: idempotency-key
+  conforms: false
+  evidence: No Idempotency-Key header; entity-level upsert only.
+- id: standard-webhooks
+  conforms: true
+  evidence: Outbound webhooks implement the Standard Webhooks HMAC signing spec.
+- id: iso-27001
+  conforms: true
+  evidence: ISO/IEC 27001 certification listed on the Trust Center.
+- id: gdpr
+  conforms: true
+  evidence: GDPR compliance listed on the Trust Center.
+compliance_program:
+  url: https://security.inspectorio.com/
+  platform: SafeBase by Drata
+  certifications:
+  - ISO/IEC 27001
+  - GDPR

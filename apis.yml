@@ -1,27 +1,372 @@
 aid: inspectorio
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/inspectorio.png
 name: Inspectorio
-description: Inspectorio is a company surfaced as a portfolio company of insight-partners, techstars and
-  added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Inspectorio is a supply-chain management software platform that helps brands,
+  retailers, suppliers, and laboratories digitize and optimize production across
+  quality risk management, responsible sourcing & compliance, production
+  management, traceability, and lab-test management. It serves 15,000+
+  organizations in apparel/footwear, food & beverage, home & furniture, retail,
+  and outdoor/sports. For integrators it exposes REST integration APIs
+  (organization API-key auth via the `apiKey` header) for its Quality Risk
+  Management (Sight), Responsible Sourcing & Compliance (Rise), and File
+  Management domains, plus HMAC-signed outbound webhooks following the Standard
+  Webhooks specification.
 url: https://raw.githubusercontent.com/api-evangelist/inspectorio/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - insight-partners
 - techstars
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
+- Supply Chain
+- Quality Management
+- Compliance
+- Responsible Sourcing
+- Traceability
+- Manufacturing
+- Retail
+- Lab Testing
 - Company
-apis: []
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: inspectorio:inspectorio-analytics-api
+  name: Inspectorio ANALYTICS API
+  description: The ANALYTICS API from Inspectorio — 2 operation(s) for analytics.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - ANALYTICS
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-analytics-api-openapi.yml
+- aid: inspectorio:inspectorio-assessment-v1-api
+  name: Inspectorio ASSESSMENT-V1 API
+  description: The ASSESSMENT-V1 API from Inspectorio — 2 operation(s) for assessment-v1.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - ASSESSMENT-V1
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-assessment-v1-api-openapi.yml
+- aid: inspectorio:inspectorio-assignment-api
+  name: Inspectorio ASSIGNMENT API
+  description: The ASSIGNMENT API from Inspectorio — 2 operation(s) for assignment.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - ASSIGNMENT
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-assignment-api-openapi.yml
+- aid: inspectorio:inspectorio-auth-api
+  name: Inspectorio AUTH API
+  description: The AUTH API from Inspectorio — 1 operation(s) for auth.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - AUTH
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-auth-api-openapi.yml
+- aid: inspectorio:inspectorio-barcode-api
+  name: Inspectorio BARCODE API
+  description: The BARCODE API from Inspectorio — 3 operation(s) for barcode.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - BARCODE
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-barcode-api-openapi.yml
+- aid: inspectorio:inspectorio-booking-api
+  name: Inspectorio BOOKING API
+  description: The BOOKING API from Inspectorio — 2 operation(s) for booking.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - BOOKING
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-booking-api-openapi.yml
+- aid: inspectorio:inspectorio-brand-api
+  name: Inspectorio BRAND API
+  description: The BRAND API from Inspectorio — 2 operation(s) for brand.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - BRAND
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-brand-api-openapi.yml
+- aid: inspectorio:inspectorio-capa-api
+  name: Inspectorio CAPA API
+  description: The CAPA API from Inspectorio — 1 operation(s) for capa.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - CAPA
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-capa-api-openapi.yml
+- aid: inspectorio:inspectorio-customer-data-api
+  name: Inspectorio CUSTOMER DATA API
+  description: The CUSTOMER DATA API from Inspectorio — 7 operation(s) for customer data.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - CUSTOMER DATA
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-customer-data-api-openapi.yml
+- aid: inspectorio:inspectorio-inspections-api
+  name: Inspectorio Inspections API
+  description: The Inspections API from Inspectorio — 2 operation(s) for inspections.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - Inspections
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-inspections-api-openapi.yml
+- aid: inspectorio:inspectorio-lab-test-api
+  name: Inspectorio LAB TEST API
+  description: The LAB TEST API from Inspectorio — 8 operation(s) for lab test.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - LAB TEST
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-lab-test-api-openapi.yml
+- aid: inspectorio:inspectorio-master-data-api
+  name: Inspectorio MASTER DATA API
+  description: The MASTER DATA API from Inspectorio — 2 operation(s) for master data.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - MASTER DATA
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-master-data-api-openapi.yml
+- aid: inspectorio:inspectorio-measurement-chart-api
+  name: Inspectorio MEASUREMENT CHART API
+  description: The MEASUREMENT CHART API from Inspectorio — 1 operation(s) for measurement chart.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - MEASUREMENT CHART
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-measurement-chart-api-openapi.yml
+- aid: inspectorio:inspectorio-metadata-api
+  name: Inspectorio METADATA API
+  description: The METADATA API from Inspectorio — 2 operation(s) for metadata.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - METADATA
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-metadata-api-openapi.yml
+- aid: inspectorio:inspectorio-organization-api
+  name: Inspectorio ORGANIZATION API
+  description: The ORGANIZATION API from Inspectorio — 2 operation(s) for organization.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - ORGANIZATION
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-organization-api-openapi.yml
+- aid: inspectorio:inspectorio-product-api
+  name: Inspectorio PRODUCT API
+  description: The PRODUCT API from Inspectorio — 1 operation(s) for product.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - PRODUCT
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-product-api-openapi.yml
+- aid: inspectorio:inspectorio-purchase-order-api
+  name: Inspectorio PURCHASE ORDER API
+  description: The PURCHASE ORDER API from Inspectorio — 3 operation(s) for purchase order.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - PURCHASE ORDER
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-purchase-order-api-openapi.yml
+- aid: inspectorio:inspectorio-purchase-order-association-api
+  name: Inspectorio PURCHASE ORDER ASSOCIATION API
+  description: >-
+    The PURCHASE ORDER ASSOCIATION API from Inspectorio — 3 operation(s) for purchase order association.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - PURCHASE ORDER ASSOCIATION
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-purchase-order-association-api-openapi.yml
+- aid: inspectorio:inspectorio-purchase-order-v3-api
+  name: Inspectorio PURCHASE ORDER V3 API
+  description: The PURCHASE ORDER V3 API from Inspectorio — 4 operation(s) for purchase order v3.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - PURCHASE ORDER V3
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-purchase-order-v3-api-openapi.yml
+- aid: inspectorio:inspectorio-report-api
+  name: Inspectorio REPORT API
+  description: The REPORT API from Inspectorio — 3 operation(s) for report.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - REPORT
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-report-api-openapi.yml
+- aid: inspectorio:inspectorio-report-v2-api
+  name: Inspectorio REPORT-V2 API
+  description: The REPORT-V2 API from Inspectorio — 3 operation(s) for report-v2.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - REPORT-V2
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-report-v2-api-openapi.yml
+- aid: inspectorio:inspectorio-storage-api
+  name: Inspectorio STORAGE API
+  description: The STORAGE API from Inspectorio — 1 operation(s) for storage.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - STORAGE
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-storage-api-openapi.yml
+- aid: inspectorio:inspectorio-taxonomy-category-api
+  name: Inspectorio TAXONOMY CATEGORY API
+  description: The TAXONOMY CATEGORY API from Inspectorio — 2 operation(s) for taxonomy category.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - TAXONOMY CATEGORY
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-taxonomy-category-api-openapi.yml
+- aid: inspectorio:inspectorio-time-and-actions-api
+  name: Inspectorio TIME AND ACTIONS API
+  description: The TIME AND ACTIONS API from Inspectorio — 4 operation(s) for time and actions.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - TIME AND ACTIONS
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-time-and-actions-api-openapi.yml
+- aid: inspectorio:inspectorio-upload-file-api
+  name: Inspectorio Upload File API
+  description: The Upload File API from Inspectorio — 1 operation(s) for upload file.
+  humanURL: https://docs.inspectorio.com/api/qrm
+  baseURL: https://sight.inspectorio.com
+  tags:
+  - Upload File
+  properties:
+  - type: OpenAPI
+    url: openapi/inspectorio-upload-file-api-openapi.yml
 common:
 - type: Website
   url: https://inspectorio.com/
+- type: DeveloperPortal
+  url: https://docs.inspectorio.com/
+- type: Documentation
+  url: https://docs.inspectorio.com/
+- type: APIReference
+  url: https://docs.inspectorio.com/api/qrm
+- type: GettingStarted
+  url: https://docs.inspectorio.com/quick-start
+- type: Support
+  url: https://support.inspectorio.com/hc/en-us/
+- type: Blog
+  url: https://inspectorio.com/en/about/newsroom
+- type: Login
+  url: https://app.inspectorio.com/auth/login
+- type: TermsOfService
+  url: https://inspectorio.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://inspectorio.com/privacy-policy
+- type: StatusPage
+  url: https://status.inspectorio.com
+- type: Authentication
+  url: authentication/inspectorio-authentication.yml
+- type: DomainSecurity
+  url: security/inspectorio-domain-security.yml
+- type: TrustCenter
+  url: security/inspectorio-trust-center.yml
+- type: Compliance
+  url: security/inspectorio-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/inspectorio-vulnerability-disclosure.yml
+- type: Security
+  url: security/inspectorio-vulnerability-disclosure.yml
+- type: ErrorCatalog
+  url: errors/inspectorio-problem-types.yml
+- type: Conventions
+  url: conventions/inspectorio-conventions.yml
+- type: ChangeLog
+  url: changelog/inspectorio-changelog.yml
+- type: Lifecycle
+  url: lifecycle/inspectorio-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/inspectorio-lifecycle.yml
+- type: Webhooks
+  url: asyncapi/inspectorio-webhooks.yml
+- type: MCPServer
+  url: mcp/inspectorio-mcp.yml
+- type: LLMsTxt
+  url: llms/inspectorio-llms.txt
+- type: Conformance
+  url: conformance/inspectorio-conformance.yml
+- type: DataModel
+  url: data-model/inspectorio-data-model.yml
+- type: Sandbox
+  url: sandbox/inspectorio-sandbox.yml
+- type: Packages
+  url: packages/inspectorio-packages.yml
+- type: WellKnown
+  url: well-known/inspectorio-well-known.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

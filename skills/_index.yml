@@ -1,0 +1,16 @@
+generated: '2026-07-19'
+method: generated
+source: grounded in real operationIds from openapi/ (verified 2026-07-19)
+skills:
+- file: inspectorio-lab-tests.md
+  name: Manage Inspectorio lab tests
+  api: openapi/inspectorio-qrm-openapi.json
+  operations: [CreateLabTest, ListLabTest, GetLabTestPackageDetail, BulkActionLabTest, CPSCEfiling]
+- file: inspectorio-customer-data-sync.md
+  name: Sync product, item, material and BOM data
+  api: openapi/inspectorio-qrm-openapi.json
+  operations: [upsertItems, listProductIntegration, getProductIntegrationDetail, createBom, listBoms, getBomDetails, getSynchronization]
+- file: inspectorio-compliance-reports.md
+  name: Retrieve compliance assessments and reports
+  api: openapi/inspectorio-rsc-openapi.json
+  operations: [searchAssessmentsV1, getAssessmentV1, listReportsV2, getReportV2, getStepExecution]

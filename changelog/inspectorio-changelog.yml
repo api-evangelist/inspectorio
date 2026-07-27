@@ -1,0 +1,48 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.inspectorio.com/announcements/
+scheme: dated-announcements
+notes: >-
+  Inspectorio publishes a dated API announcements feed. Versioning is by URL
+  path (v1/v2/v3); the announcements below are the recent window captured on
+  2026-07-19, not full history.
+entries:
+- date: '2026-06-29'
+  title: Retrieve CPSC-compliant eFiling data for lab tests
+  type: addition
+  highlights: >-
+    New Get CPSC eFiling Data endpoint returns structured, compliance-ready
+    certificate data for completed lab tests.
+- date: '2026-05-08'
+  title: BOM APIs now accept and return countryOfOrigin and attribute fields
+  type: addition
+  highlights: >-
+    Bill-of-materials endpoints support component origin and material-level
+    certification requirement fields.
+- date: '2026-05-05'
+  title: Retrieve complete product, item, and material data with new Get APIs
+  type: addition
+  highlights: >-
+    New Get endpoints for product/item/material data, aligned with the existing
+    upsert-items functionality.
+- date: '2025-11-04'
+  title: Purchase Order V3 APIs now support currency code
+  type: addition
+  highlights: >-
+    PO V3 added unit_cost_currency_code and total_cost_currency_code fields.
+- date: '2025-10-03'
+  title: Lab Test APIs now support 10-letter Test ID search
+  type: addition
+  highlights: Search/retrieve lab tests by short 10-letter Test IDs instead of full UUIDs.
+- date: '2025-08-29'
+  title: Lab Test API - Create a Submitted, New, or Draft lab test
+  type: addition
+  highlights: Labs can initiate test requests on behalf of brands and retailers via API.
+- date: '2025-08-29'
+  title: Purchase Order (V3) APIs now support Total Order Qty and UOM
+  type: addition
+  highlights: Added total_quantity and total_quantity_uom fields.
+- date: '2025-05-30'
+  title: Customer data - integrate your material information with Inspectorio
+  type: addition
+  highlights: Material integration API to create and update materials from external systems.

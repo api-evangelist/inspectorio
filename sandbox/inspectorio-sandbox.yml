@@ -1,0 +1,22 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/ servers[] + https://docs.inspectorio.com/api-integration/
+summary: >-
+  Inspectorio publishes a pre-production (staging) environment alongside
+  production for each API domain. There is no separate test-key prefix or
+  synthetic test-data scheme documented publicly; integration testing is done
+  against the pre-prod hosts with an organization API key. No fabricated test
+  values.
+environments:
+- name: production
+  hosts:
+  - https://sight.inspectorio.com
+  - https://rise-integration.inspectorio.com
+  - https://files-integration.inspectorio.com
+- name: pre-production
+  hosts:
+  - https://sight.pre.inspectorio.com
+  - https://rise-integration.pre.inspectorio.com
+  - https://files-integration.pre.inspectorio.com
+auth:
+  note: Same apiKey header model in both environments; keys are organization-scoped.

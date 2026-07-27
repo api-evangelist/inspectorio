@@ -1,0 +1,281 @@
+{
+  "components": {
+    "schemas": {
+      "BadRequestApiError": {
+        "properties": {
+          "errorCode": {
+            "example": "Generic",
+            "type": "string"
+          },
+          "message": {
+            "example": "Bad Request",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "InternalApiError": {
+        "properties": {
+          "errorCode": {
+            "example": "Generic",
+            "type": "string"
+          },
+          "errors": {
+            "example": {
+              "system": [
+                "Internal error detail message"
+              ]
+            },
+            "type": "object"
+          },
+          "message": {
+            "example": "Internal server error",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SignedFileStorage": {
+        "properties": {
+          "current": {
+            "description": "Storage type",
+            "example": "standard",
+            "type": "string"
+          },
+          "path": {
+            "description": "Relative path to the file",
+            "example": "/sight/xxxx/uuuu/ab8cd482-596d-7a5d-8155-137463f243ac.xls",
+            "type": "string"
+          },
+          "ttl": {
+            "description": "Expiration time",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "current",
+          "path"
+        ],
+        "type": "object"
+      },
+      "SignedUploadFileInfo": {
+        "properties": {
+          "contentType": {
+            "description": "ContentType of the file",
+            "example": "ms-application/excel",
+            "type": "string"
+          },
+          "createdAt": {
+            "description": "Uploaded Time",
+            "example": "2022-07-25T09:46:12+00:00",
+            "type": "string"
+          },
+          "createdBy": {
+            "description": "User Id who upload the file",
+            "example": "uuuu",
+            "type": "string"
+          },
+          "dataSource": {
+            "description": "Source of uploaded file",
+            "example": "integration-api",
+            "type": "string"
+          },
+          "extension": {
+            "description": "Extension of the file",
+            "example": "xls",
+            "type": "string"
+          },
+          "fileId": {
+            "description": "Unique identifier of the file.",
+            "example": "ef9cd482-596d-7a5d-8155-137463f056fd",
+            "type": "string"
+          },
+          "fileName": {
+            "description": "Name of the uploaded file (final name).",
+            "example": "ab8cd482-596d-7a5d-8155-137463f243ac.xls",
+            "type": "string"
+          },
+          "fileSize": {
+            "description": "File size in bytes",
+            "example": "100500",
+            "type": "integer"
+          },
+          "fullHashSum": {
+            "description": "MD5 sum",
+            "example": "C9025CC0FD86FF0A2B6B53AF58ACDE1B",
+            "type": "string"
+          },
+          "lightHashSum": {
+            "description": "MD5 sum by first 2048 bytes",
+            "example": "C9025CC0FD86FF0A2B6B53AF58ACDE1B",
+            "type": "string"
+          },
+          "orgId": {
+            "description": "Org Id of the file",
+            "example": "xxxx",
+            "type": "string"
+          },
+          "originalExtension": {
+            "description": "Original extension of the file",
+            "example": "xls",
+            "type": "string"
+          },
+          "originalName": {
+            "description": "Original name of the uploaded file.",
+            "example": "original file name",
+            "type": "string"
+          },
+          "product": {
+            "description": "Name of the product",
+            "enum": [
+              "sight",
+              "rise",
+              "tracking"
+            ],
+            "example": "sight",
+            "type": "string"
+          },
+          "storage": {
+            "$ref": "#/components/schemas/SignedFileStorage"
+          },
+          "storageName": {
+            "description": "Relative path of the file in our storage",
+            "example": "/sight/xxxx/uuuu/ab8cd482-596d-7a5d-8155-137463f243ac.xls",
+            "type": "string"
+          },
+          "updatedAt": {
+            "description": "Updated Time",
+            "example": "2022-07-25T09:46:12+00:00",
+            "type": "string"
+          },
+          "updatedBy": {
+            "description": "User Id who upload the file",
+            "example": "uuuu",
+            "type": "string"
+          },
+          "userId": {
+            "description": "User Id who upload the file",
+            "example": "uuuu",
+            "type": "string"
+          }
+        },
+        "required": [
+          "contentType",
+          "createdBy",
+          "dataSource",
+          "extension",
+          "fileId",
+          "fileName",
+          "fileSize",
+          "fullHashSum",
+          "lightHashSum",
+          "orgId",
+          "originalExtension",
+          "originalName",
+          "product",
+          "storageName",
+          "updatedBy",
+          "userId"
+        ],
+        "type": "object"
+      },
+      "SignedUploadRequest": {
+        "properties": {
+          "file": {
+            "format": "binary",
+            "type": "string"
+          }
+        },
+        "required": [
+          "file"
+        ],
+        "type": "object"
+      },
+      "SignedUploadResponse": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/SignedUploadFileInfo"
+          }
+        },
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "File Management API",
+    "version": "v3"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/signed-upload/{session_id}": {
+      "post": {
+        "description": "Upload File",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/SignedUploadRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "File uploaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignedUploadResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestApiError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalApiError"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Upload File",
+        "tags": [
+          "Upload File"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Production Environment",
+      "url": "https://files-integration.inspectorio.com"
+    },
+    {
+      "description": "Pre-Production Environment",
+      "url": "https://files-integration.pre.inspectorio.com"
+    }
+  ]
+}
