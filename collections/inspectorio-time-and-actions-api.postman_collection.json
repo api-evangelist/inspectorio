@@ -1,0 +1,1843 @@
+{
+  "item": [
+    {
+      "id": "f0d08791-04f7-49c5-8fde-5b9ed6157808",
+      "name": "TIME AND ACTIONS",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac146305-b0e2-412e-9910-c213ca7362e2",
+          "name": "List Time and Actions",
+          "request": {
+            "name": "List Time and Actions",
+            "description": {
+              "content": "List Time and Actions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "time-and-actions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "po_number",
+                  "value": "<string>",
+                  "description": "Number of the purchase order"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Limit result of list"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_to",
+                  "value": "<dateTime>",
+                  "description": "End date of the range when time and actions were created"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_to",
+                  "value": "<dateTime>",
+                  "description": "End date of the range when time and actions were updated"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_from",
+                  "value": "<dateTime>",
+                  "description": "Start date of the range when time and actions were updated"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_from",
+                  "value": "<dateTime>",
+                  "description": "Start date of the range when time and actions were created"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Status of the Time and Action"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e00cb2d0-2bf5-4cd4-9aa8-b6bb70935796",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "po_number",
+                      "value": "PO_1234"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limit\": 42,\n  \"offset\": 5517,\n  \"total\": 5998,\n  \"data\": [\n    {\n      \"createdDate\": \"2021-06-03 07:18:05.372000+00:00\",\n      \"id\": \"34c75453-3ec6-4822-9e9a-9addc6076b3c\",\n      \"number\": \"TA1\",\n      \"poNumbers\": [\n        \"PO1\",\n        \"PO2\"\n      ],\n      \"status\": \"NEW\",\n      \"updatedDate\": \"2021-06-03 08:27:21.316000+00:00\"\n    },\n    {\n      \"createdDate\": \"2021-06-03 07:18:05.372000+00:00\",\n      \"id\": \"34c75453-3ec6-4822-9e9a-9addc6076b3c\",\n      \"number\": \"TA1\",\n      \"poNumbers\": [\n        \"PO1\",\n        \"PO2\"\n      ],\n      \"status\": \"NEW\",\n      \"updatedDate\": \"2021-06-03 08:27:21.316000+00:00\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b29c99c-d340-4d76-8510-5bfbacb64a9c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "po_number",
+                      "value": "PO_1234"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41c48987-543f-43d3-be94-0e0d9b940c91",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "po_number",
+                      "value": "PO_1234"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33178cb9-7325-45cf-a61a-0f64529492b7",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "po_number",
+                      "value": "PO_1234"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c5d4b05-8cb5-4fab-ab43-74c41b4cdd22",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "po_number",
+                      "value": "PO_1234"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db92d324-3275-4843-8b17-55e941cfdd9d",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "po_number",
+                      "value": "PO_1234"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1df81350-7175-46fa-ae5a-19647f39dea6",
+          "name": "Get Time and Actions",
+          "request": {
+            "name": "Get Time and Actions",
+            "description": {
+              "content": "Get Time and Actions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "time-and-actions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb8ffefb-a20c-4b44-9383-75d2619069d9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"brandRetailerInformation\": {\n      \"contactPersons\": [\n        {\n          \"id\": \"1234\",\n          \"name\": \"John Doe\"\n        },\n        {\n          \"id\": \"1234\",\n          \"name\": \"John Doe\"\n        }\n      ],\n      \"localOrganizationId\": \"123\",\n      \"localOrganizationIds\": [\n        \"123\",\n        \"ABC\"\n      ],\n      \"organizationId\": \"Acme Corp\"\n    },\n    \"completionDate\": \"2022-11-20\",\n    \"createdDate\": \"2021-04-20T07:25:02.285000+00:00\",\n    \"factoryInformation\": {\n      \"contactPersons\": [\n        {\n          \"id\": \"1234\",\n          \"name\": \"John Doe\"\n        },\n        {\n          \"id\": \"1234\",\n          \"name\": \"John Doe\"\n        }\n      ],\n      \"localOrganizationId\": \"123\",\n      \"localOrganizationIds\": [\n        \"123\",\n        \"ABC\"\n      ],\n      \"organizationId\": \"Acme Corp\"\n    },\n    \"formName\": \"Apparel TnA Form\",\n    \"id\": \"34c75453-3ec6-4822-9e9a-9addc6076b3c\",\n    \"isOnTimeShipmentPlan\": false,\n    \"milestones\": [\n      {\n        \"actualEndDate\": \"2021-03-05T00:00:00+00:00\",\n        \"actualStartDate\": \"2021-03-01T00:00:00+00:00\",\n        \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n        \"isOnTimePlannedEndDate\": true,\n        \"isOnTimePlannedStartDate\": false,\n        \"name\": \"Packaging Arrival\",\n        \"plannedEndDate\": \"2021-03-05T00:00:00+00:00\",\n        \"plannedEndDateDelay\": {\n          \"unit\": \"day\",\n          \"value\": 8366\n        },\n        \"plannedStartDate\": \"2021-03-01T00:00:00+00:00\",\n        \"originalPlannedStartDate\": \"2021-03-01T00:00:00+00:00\",\n        \"originalPlannedEndDate\": \"2021-03-05T00:00:00+00:00\",\n        \"latestReviseReason\": \"PO revision\",\n        \"plannedStartDateDelay\": {\n          \"unit\": \"day\",\n          \"value\": 5898\n        },\n        \"shipmentPlanDelay\": {\n          \"reasonCodes\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"reasonSetName\": \"Delay\"\n        }\n      },\n      {\n        \"actualEndDate\": \"2021-03-05T00:00:00+00:00\",\n        \"actualStartDate\": \"2021-03-01T00:00:00+00:00\",\n        \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n        \"isOnTimePlannedEndDate\": true,\n        \"isOnTimePlannedStartDate\": true,\n        \"name\": \"Packaging Arrival\",\n        \"plannedEndDate\": \"2021-03-05T00:00:00+00:00\",\n        \"plannedEndDateDelay\": {\n          \"unit\": \"day\",\n          \"value\": 9032\n        },\n        \"plannedStartDate\": \"2021-03-01T00:00:00+00:00\",\n        \"originalPlannedStartDate\": \"2021-03-01T00:00:00+00:00\",\n        \"originalPlannedEndDate\": \"2021-03-05T00:00:00+00:00\",\n        \"latestReviseReason\": \"PO revision\",\n        \"plannedStartDateDelay\": {\n          \"unit\": \"day\",\n          \"value\": 8391\n        },\n        \"shipmentPlanDelay\": {\n          \"reasonCodes\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"reasonSetName\": \"Delay\"\n        }\n      }\n    ],\n    \"number\": \"TA1\",\n    \"plannedShipBeginDate\": \"2021-04-21T00:00:00+00:00\",\n    \"poNumbers\": [\n      \"PO1\",\n      \"PO2\"\n    ],\n    \"purchaseOrders\": [\n      {\n        \"brandRetailerId\": [\n          \"B1234\"\n        ],\n        \"departments\": [\n          {\n            \"departmentId\": \"020\"\n          },\n          {\n            \"departmentId\": \"020\"\n          }\n        ],\n        \"factoryId\": [\n          \"F1234\"\n        ],\n        \"localBrandRetailerId\": \"B1234\",\n        \"localFactoryId\": \"F1234\",\n        \"localSupplierId\": \"S1234\",\n        \"poNumber\": \"PO1234\",\n        \"supplierId\": [\n          \"S1234\"\n        ]\n      },\n      {\n        \"brandRetailerId\": [\n          \"B1234\"\n        ],\n        \"departments\": [\n          {\n            \"departmentId\": \"020\"\n          },\n          {\n            \"departmentId\": \"020\"\n          }\n        ],\n        \"factoryId\": [\n          \"F1234\"\n        ],\n        \"localBrandRetailerId\": \"B1234\",\n        \"localFactoryId\": \"F1234\",\n        \"localSupplierId\": \"S1234\",\n        \"poNumber\": \"PO1234\",\n        \"supplierId\": [\n          \"S1234\"\n        ]\n      }\n    ],\n    \"shipmentPlan\": {\n      \"comment\": \"Early shipment comment\",\n      \"reasonCodes\": [\n        {\n          \"primaryReasonCode\": \"Third Party Inspection Delay\",\n          \"secondaryReasonCodes\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"primaryReasonCode\": \"Third Party Inspection Delay\",\n          \"secondaryReasonCodes\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"reasonSetName\": \"T&A Late Reason Code\",\n      \"unit\": \"day\",\n      \"value\": 2\n    },\n    \"shipmentPlanDelay\": {\n      \"reasonCodes\": [\n        {\n          \"primaryReasonCode\": \"Third Party Inspection Delay\",\n          \"secondaryReasonCodes\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"primaryReasonCode\": \"Third Party Inspection Delay\",\n          \"secondaryReasonCodes\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"reasonSetName\": \"T&A Late Reason Code\",\n      \"unit\": \"day\",\n      \"value\": 4674\n    },\n    \"status\": \"NEW\",\n    \"supplierInformation\": {\n      \"contactPersons\": [\n        {\n          \"id\": \"1234\",\n          \"name\": \"John Doe\"\n        },\n        {\n          \"id\": \"1234\",\n          \"name\": \"John Doe\"\n        }\n      ],\n      \"localOrganizationId\": \"123\",\n      \"localOrganizationIds\": [\n        \"123\",\n        \"ABC\"\n      ],\n      \"organizationId\": \"Acme Corp\"\n    },\n    \"materialSupplierInformation\": {\n      \"contactPersons\": [\n        {\n          \"id\": \"1234\",\n          \"name\": \"John Doe\"\n        },\n        {\n          \"id\": \"1234\",\n          \"name\": \"John Doe\"\n        }\n      ],\n      \"localOrganizationId\": \"123\",\n      \"localOrganizationIds\": [\n        \"123\",\n        \"ABC\"\n      ],\n      \"organizationId\": \"Acme Corp\"\n    },\n    \"officeInformation\": [\n      {\n        \"officeName\": \"Office 001\",\n        \"localOrganizationId\": \"1234\",\n        \"prefillOption\": \"local_supplier_mapping\",\n        \"contactPersons\": [\n          {\n            \"id\": \"1234\",\n            \"name\": \"John Doe\",\n            \"email\": \"email@test.com\"\n          },\n          {\n            \"id\": \"1234\",\n            \"name\": \"John Doe\",\n            \"email\": \"email@test.com\"\n          }\n        ]\n      },\n      {\n        \"officeName\": \"Office 001\",\n        \"localOrganizationId\": \"1234\",\n        \"prefillOption\": \"local_supplier_mapping\",\n        \"contactPersons\": [\n          {\n            \"id\": \"1234\",\n            \"name\": \"John Doe\",\n            \"email\": \"email@test.com\"\n          },\n          {\n            \"id\": \"1234\",\n            \"name\": \"John Doe\",\n            \"email\": \"email@test.com\"\n          }\n        ]\n      }\n    ],\n    \"updatedDate\": \"2021-04-23T08:15:25.309000+00:00\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37aa3610-6fca-43ff-8eb3-e1b75a60888f",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed7b23cd-6028-4f26-88c6-f429cc6f874f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a186e355-6d13-4785-8014-0698008d4d6e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "916504f9-9a7c-417a-9786-dbd34f151f78",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb13e33a-ce04-41e9-a0a6-b9219f328803",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ecfac8f-4ff6-4474-932b-d77ada147d00",
+          "name": "Update Time and Actions Milestones",
+          "request": {
+            "name": "Update Time and Actions Milestones",
+            "description": {
+              "content": "Update Time and Actions Milestones",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "time-and-actions",
+                ":ta_id",
+                "milestones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ta_id",
+                  "description": "(Required) Id of a Time and Action"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"milestones\": [\n    {\n      \"id\": \"<string>\",\n      \"actualEndDate\": \"<date>\",\n      \"actualStartDate\": \"<date>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"actualEndDate\": \"<date>\",\n      \"actualStartDate\": \"<date>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6a7164d1-365f-40c4-ae71-011df6f5d640",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "milestones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"milestones\": [\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\"\n    },\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"milestones\": [\n      {\n        \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n        \"actualEndDate\": \"2022-12-12\",\n        \"actualStartDate\": \"2022-12-12\"\n      },\n      {\n        \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n        \"actualEndDate\": \"2022-12-12\",\n        \"actualStartDate\": \"2022-12-12\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce9b8b5f-0475-4ad0-9504-bda3f8f0ca2b",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "milestones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"milestones\": [\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\"\n    },\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc128c70-2d87-4aa5-b4ab-48f1a1e7022f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "milestones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"milestones\": [\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\"\n    },\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2808f7ce-5adb-45d1-88a9-7ef319a30cb1",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "milestones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"milestones\": [\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\"\n    },\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbe514ae-cb3b-42a6-9fc1-6912982507bc",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "milestones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"milestones\": [\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\"\n    },\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c46c53dd-96f0-423b-af76-5ed30369c84e",
+          "name": "Get Time and Actions Production status",
+          "request": {
+            "name": "Get Time and Actions Production status",
+            "description": {
+              "content": "Get Time and Actions Production status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "time-and-actions",
+                ":ta_id",
+                "production-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "productionStatusLevel",
+                  "value": "<string>",
+                  "description": "production status by PO or item level"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ta_id",
+                  "description": "(Required) Id of a Time and Action"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e167fde2-365d-4534-b1e1-89f4dd1bad4a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "production-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productionStatusLevel",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"poNumber\": \"8124125\",\n    \"productionStatusLevel\": \"poLevel\",\n    \"productionStatusUntil\": \"2022-12-12\",\n    \"id\": \"34c75453-3ec6-4822-9e9a-9addc6076b3c\",\n    \"milestones\": [\n      {\n        \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n        \"actualEndDate\": \"2022-12-12\",\n        \"actualStartDate\": \"2022-12-12\",\n        \"items\": [\n          {\n            \"itemId\": \"120-230-1234\",\n            \"completion\": 50,\n            \"itemQty\": 100,\n            \"orderQty\": 50,\n            \"poNumber\": \"8124125\",\n            \"styleID\": \"WMN\"\n          },\n          {\n            \"itemId\": \"120-230-1234\",\n            \"completion\": 50,\n            \"itemQty\": 100,\n            \"orderQty\": 50,\n            \"poNumber\": \"8124125\",\n            \"styleID\": \"WMN\"\n          }\n        ],\n        \"name\": \"Production Milestone 1\",\n        \"quantity\": 100\n      },\n      {\n        \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n        \"actualEndDate\": \"2022-12-12\",\n        \"actualStartDate\": \"2022-12-12\",\n        \"items\": [\n          {\n            \"itemId\": \"120-230-1234\",\n            \"completion\": 50,\n            \"itemQty\": 100,\n            \"orderQty\": 50,\n            \"poNumber\": \"8124125\",\n            \"styleID\": \"WMN\"\n          },\n          {\n            \"itemId\": \"120-230-1234\",\n            \"completion\": 50,\n            \"itemQty\": 100,\n            \"orderQty\": 50,\n            \"poNumber\": \"8124125\",\n            \"styleID\": \"WMN\"\n          }\n        ],\n        \"name\": \"Production Milestone 1\",\n        \"quantity\": 100\n      }\n    ],\n    \"quantity\": 2000,\n    \"styleID\": [\n      \"style_1\",\n      \"style_2\",\n      \"style_3\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d46a5f44-a5be-4640-991d-cc9a85092742",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "production-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productionStatusLevel",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e047021-e619-4baf-8d47-3b111fe3d595",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "production-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productionStatusLevel",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1597144f-7a29-4dfb-886d-66042bfa15d0",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "production-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productionStatusLevel",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68d77e13-9917-4060-bcbd-8b2075653c7f",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "production-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productionStatusLevel",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cee3692f-495e-435b-b801-4bfe1d803aec",
+          "name": "Update Time and Actions Production status",
+          "request": {
+            "name": "Update Time and Actions Production status",
+            "description": {
+              "content": "Update Time and Actions Production status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "time-and-actions",
+                ":ta_id",
+                "production-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ta_id",
+                  "description": "(Required) Id of a Time and Action"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productionStatusLevel\": \"<string>\",\n  \"productionStatusUntil\": \"<date>\",\n  \"id\": \"<string>\",\n  \"milestones\": [\n    {\n      \"id\": \"<string>\",\n      \"poNumber\": \"<string>\",\n      \"actualEndDate\": \"<date>\",\n      \"actualStartDate\": \"<date>\",\n      \"items\": [\n        {\n          \"itemId\": \"<string>\",\n          \"itemQty\": \"<integer>\"\n        },\n        {\n          \"itemId\": \"<string>\",\n          \"itemQty\": \"<integer>\"\n        }\n      ],\n      \"quantity\": \"<integer>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"poNumber\": \"<string>\",\n      \"actualEndDate\": \"<date>\",\n      \"actualStartDate\": \"<date>\",\n      \"items\": [\n        {\n          \"itemId\": \"<string>\",\n          \"itemQty\": \"<integer>\"\n        },\n        {\n          \"itemId\": \"<string>\",\n          \"itemQty\": \"<integer>\"\n        }\n      ],\n      \"quantity\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6267d1ee-5a28-4c0f-980f-f44a40a00277",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "production-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productionStatusLevel\": \"<string>\",\n  \"productionStatusUntil\": \"2022-12-12\",\n  \"id\": \"34c75453-3ec6-4822-9e9a-9addc6076b3c\",\n  \"milestones\": [\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"poNumber\": \"8124125\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\",\n      \"items\": [\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        },\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        }\n      ],\n      \"quantity\": 100\n    },\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"poNumber\": \"8124125\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\",\n      \"items\": [\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        },\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        }\n      ],\n      \"quantity\": 100\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"productionStatusLevel\": \"<string>\",\n    \"productionStatusUntil\": \"2022-12-12\",\n    \"id\": \"34c75453-3ec6-4822-9e9a-9addc6076b3c\",\n    \"milestones\": [\n      {\n        \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n        \"poNumber\": \"8124125\",\n        \"actualEndDate\": \"2022-12-12\",\n        \"actualStartDate\": \"2022-12-12\",\n        \"items\": [\n          {\n            \"itemId\": \"120-230-1234\",\n            \"itemQty\": 100\n          },\n          {\n            \"itemId\": \"120-230-1234\",\n            \"itemQty\": 100\n          }\n        ],\n        \"quantity\": 100\n      },\n      {\n        \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n        \"poNumber\": \"8124125\",\n        \"actualEndDate\": \"2022-12-12\",\n        \"actualStartDate\": \"2022-12-12\",\n        \"items\": [\n          {\n            \"itemId\": \"120-230-1234\",\n            \"itemQty\": 100\n          },\n          {\n            \"itemId\": \"120-230-1234\",\n            \"itemQty\": 100\n          }\n        ],\n        \"quantity\": 100\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fc18170-82f3-415f-b7a3-882b5a5bb523",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "production-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productionStatusLevel\": \"<string>\",\n  \"productionStatusUntil\": \"2022-12-12\",\n  \"id\": \"34c75453-3ec6-4822-9e9a-9addc6076b3c\",\n  \"milestones\": [\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"poNumber\": \"8124125\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\",\n      \"items\": [\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        },\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        }\n      ],\n      \"quantity\": 100\n    },\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"poNumber\": \"8124125\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\",\n      \"items\": [\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        },\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        }\n      ],\n      \"quantity\": 100\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da30dba6-2d7f-4486-9621-9f60983625a0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "production-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productionStatusLevel\": \"<string>\",\n  \"productionStatusUntil\": \"2022-12-12\",\n  \"id\": \"34c75453-3ec6-4822-9e9a-9addc6076b3c\",\n  \"milestones\": [\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"poNumber\": \"8124125\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\",\n      \"items\": [\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        },\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        }\n      ],\n      \"quantity\": 100\n    },\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"poNumber\": \"8124125\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\",\n      \"items\": [\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        },\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        }\n      ],\n      \"quantity\": 100\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a05d8fd-ab62-496a-a7c7-ff5dab5c0b54",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "production-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productionStatusLevel\": \"<string>\",\n  \"productionStatusUntil\": \"2022-12-12\",\n  \"id\": \"34c75453-3ec6-4822-9e9a-9addc6076b3c\",\n  \"milestones\": [\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"poNumber\": \"8124125\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\",\n      \"items\": [\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        },\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        }\n      ],\n      \"quantity\": 100\n    },\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"poNumber\": \"8124125\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\",\n      \"items\": [\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        },\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        }\n      ],\n      \"quantity\": 100\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1e7d755-6291-4f0b-b8f5-4638eeafde82",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "time-and-actions",
+                    ":ta_id",
+                    "production-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ta_id",
+                      "description": "(Required) Id of a Time and Action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productionStatusLevel\": \"<string>\",\n  \"productionStatusUntil\": \"2022-12-12\",\n  \"id\": \"34c75453-3ec6-4822-9e9a-9addc6076b3c\",\n  \"milestones\": [\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"poNumber\": \"8124125\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\",\n      \"items\": [\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        },\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        }\n      ],\n      \"quantity\": 100\n    },\n    {\n      \"id\": \"1234f24e-54f6-4326-b4d3-402d52af291a\",\n      \"poNumber\": \"8124125\",\n      \"actualEndDate\": \"2022-12-12\",\n      \"actualStartDate\": \"2022-12-12\",\n      \"items\": [\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        },\n        {\n          \"itemId\": \"120-230-1234\",\n          \"itemQty\": 100\n        }\n      ],\n      \"quantity\": 100\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://files-integration.inspectorio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "60eb0776-5b59-4693-9d0c-a0eac3499bc0",
+    "name": "File Management ANALYTICS TIME AND ACTIONS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

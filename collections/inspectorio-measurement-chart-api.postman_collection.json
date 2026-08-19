@@ -1,0 +1,1120 @@
+{
+  "item": [
+    {
+      "id": "53a31589-a414-4c5a-b27a-8e6a1bf3f8dc",
+      "name": "MEASUREMENT CHART",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a9611e-8664-4c2e-9fd3-573b2570b8f3",
+          "name": "Get Measurement Chart",
+          "request": {
+            "name": "Get Measurement Chart",
+            "description": {
+              "content": "Get Measurement Chart",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "measurement-charts",
+                ":style_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "style_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7502eed0-1de3-411e-8d3c-dc224399ba29",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"clientUpdatedDate\": \"2019-02-20T06:37:18.048000+00:00\",\n    \"measurements\": [\n      {\n        \"caption\": \"C01\",\n        \"pom\": \"Chest\",\n        \"unit\": \"cm\",\n        \"isPomCritical\": false,\n        \"setId\": \"Set 1\",\n        \"sizes\": [\n          {\n            \"measurement\": 8499.107476596395,\n            \"size\": \"Medium\"\n          },\n          {\n            \"measurement\": 9607.527759927525,\n            \"size\": \"Medium\"\n          }\n        ],\n        \"tolerance\": 7501.690138642175,\n        \"toleranceLower\": 7529.346529473882,\n        \"toleranceUpper\": 1385.4121291317756\n      },\n      {\n        \"caption\": \"C01\",\n        \"pom\": \"Chest\",\n        \"unit\": \"cm\",\n        \"isPomCritical\": false,\n        \"setId\": \"Set 1\",\n        \"sizes\": [\n          {\n            \"measurement\": 4654.034932128265,\n            \"size\": \"Medium\"\n          },\n          {\n            \"measurement\": 8317.712050778859,\n            \"size\": \"Medium\"\n          }\n        ],\n        \"tolerance\": 3350.7322265393314,\n        \"toleranceLower\": 3451.4704505807313,\n        \"toleranceUpper\": 4819.613636397324\n      }\n    ],\n    \"source\": \"SPARK\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "164ab2b2-2eb2-4ba0-96d3-1e6e033d6968",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "927e0e3f-3e2a-4479-9bb1-1e4366454d57",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6bf1db2a-c648-457c-a919-617c691dedc3",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78c5c0a8-930a-49bf-892a-65f9e6e538c6",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c31a090-1404-4a6c-be09-6d2bf77fd143",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df628079-a129-4b97-a4c0-de420ed388e0",
+          "name": "Create Measurement Chart",
+          "request": {
+            "name": "Create Measurement Chart",
+            "description": {
+              "content": "Create Measurement Chart",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "measurement-charts",
+                ":style_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "style_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"measurements\": [\n    {\n      \"caption\": \"<string>\",\n      \"pom\": \"<string>\",\n      \"sizes\": [\n        {\n          \"measurement\": \"<number>\",\n          \"size\": \"<string>\"\n        }\n      ],\n      \"unit\": \"<string>\",\n      \"isPomCritical\": \"<boolean>\",\n      \"setId\": \"<string>\",\n      \"tolerance\": \"<number>\",\n      \"toleranceLower\": \"<number>\",\n      \"toleranceUpper\": \"<number>\"\n    }\n  ],\n  \"clientUpdatedDate\": \"<dateTime>\",\n  \"source\": \"<string>\",\n  \"supplierId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67c08ae3-95d6-44a0-981a-79e14c88953c",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurements\": [\n    {\n      \"caption\": \"C01\",\n      \"pom\": \"Chest\",\n      \"sizes\": [\n        {\n          \"measurement\": \"<number>\",\n          \"size\": \"Medium\"\n        }\n      ],\n      \"unit\": \"cm\",\n      \"isPomCritical\": \"<boolean>\",\n      \"setId\": \"Set 1\",\n      \"tolerance\": \"<number>\",\n      \"toleranceLower\": \"<number>\",\n      \"toleranceUpper\": \"<number>\"\n    }\n  ],\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"source\": \"SPARK\",\n  \"supplierId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"clientUpdatedDate\": \"2019-02-20T06:37:18.048000+00:00\",\n    \"measurements\": [\n      {\n        \"caption\": \"C01\",\n        \"pom\": \"Chest\",\n        \"unit\": \"cm\",\n        \"isPomCritical\": false,\n        \"setId\": \"Set 1\",\n        \"sizes\": [\n          {\n            \"measurement\": \"<number>\",\n            \"size\": \"Medium\"\n          },\n          {\n            \"measurement\": \"<number>\",\n            \"size\": \"Medium\"\n          }\n        ],\n        \"tolerance\": 8569.572154993482,\n        \"toleranceLower\": 2811.203432788997,\n        \"toleranceUpper\": 762.4142544017254\n      },\n      {\n        \"caption\": \"C01\",\n        \"pom\": \"Chest\",\n        \"unit\": \"cm\",\n        \"isPomCritical\": true,\n        \"setId\": \"Set 1\",\n        \"sizes\": [\n          {\n            \"measurement\": \"<number>\",\n            \"size\": \"Medium\"\n          },\n          {\n            \"measurement\": \"<number>\",\n            \"size\": \"Medium\"\n          }\n        ],\n        \"tolerance\": 8645.700583988992,\n        \"toleranceLower\": 8157.2462970900615,\n        \"toleranceUpper\": 6758.663550021649\n      }\n    ],\n    \"source\": \"SPARK\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e237f4d7-a085-461a-a3ca-deee96af50c9",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurements\": [\n    {\n      \"caption\": \"C01\",\n      \"pom\": \"Chest\",\n      \"sizes\": [\n        {\n          \"measurement\": \"<number>\",\n          \"size\": \"Medium\"\n        }\n      ],\n      \"unit\": \"cm\",\n      \"isPomCritical\": \"<boolean>\",\n      \"setId\": \"Set 1\",\n      \"tolerance\": \"<number>\",\n      \"toleranceLower\": \"<number>\",\n      \"toleranceUpper\": \"<number>\"\n    }\n  ],\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"source\": \"SPARK\",\n  \"supplierId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a89a9856-e83a-4eeb-bb3f-2fd65755a474",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurements\": [\n    {\n      \"caption\": \"C01\",\n      \"pom\": \"Chest\",\n      \"sizes\": [\n        {\n          \"measurement\": \"<number>\",\n          \"size\": \"Medium\"\n        }\n      ],\n      \"unit\": \"cm\",\n      \"isPomCritical\": \"<boolean>\",\n      \"setId\": \"Set 1\",\n      \"tolerance\": \"<number>\",\n      \"toleranceLower\": \"<number>\",\n      \"toleranceUpper\": \"<number>\"\n    }\n  ],\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"source\": \"SPARK\",\n  \"supplierId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "461958e5-8481-482c-80f9-26d17c361251",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurements\": [\n    {\n      \"caption\": \"C01\",\n      \"pom\": \"Chest\",\n      \"sizes\": [\n        {\n          \"measurement\": \"<number>\",\n          \"size\": \"Medium\"\n        }\n      ],\n      \"unit\": \"cm\",\n      \"isPomCritical\": \"<boolean>\",\n      \"setId\": \"Set 1\",\n      \"tolerance\": \"<number>\",\n      \"toleranceLower\": \"<number>\",\n      \"toleranceUpper\": \"<number>\"\n    }\n  ],\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"source\": \"SPARK\",\n  \"supplierId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8ae1af4-2e45-4610-83c0-b22da8388aec",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurements\": [\n    {\n      \"caption\": \"C01\",\n      \"pom\": \"Chest\",\n      \"sizes\": [\n        {\n          \"measurement\": \"<number>\",\n          \"size\": \"Medium\"\n        }\n      ],\n      \"unit\": \"cm\",\n      \"isPomCritical\": \"<boolean>\",\n      \"setId\": \"Set 1\",\n      \"tolerance\": \"<number>\",\n      \"toleranceLower\": \"<number>\",\n      \"toleranceUpper\": \"<number>\"\n    }\n  ],\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"source\": \"SPARK\",\n  \"supplierId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee0eb2ce-2f1a-4c49-8792-1e121541100a",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurements\": [\n    {\n      \"caption\": \"C01\",\n      \"pom\": \"Chest\",\n      \"sizes\": [\n        {\n          \"measurement\": \"<number>\",\n          \"size\": \"Medium\"\n        }\n      ],\n      \"unit\": \"cm\",\n      \"isPomCritical\": \"<boolean>\",\n      \"setId\": \"Set 1\",\n      \"tolerance\": \"<number>\",\n      \"toleranceLower\": \"<number>\",\n      \"toleranceUpper\": \"<number>\"\n    }\n  ],\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"source\": \"SPARK\",\n  \"supplierId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e7bdeff-496e-4af3-8c5f-ef96352927f0",
+          "name": "Update Measurement Chart",
+          "request": {
+            "name": "Update Measurement Chart",
+            "description": {
+              "content": "Update Measurement Chart",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "measurement-charts",
+                ":style_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "style_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"measurements\": [\n    {\n      \"caption\": \"<string>\",\n      \"pom\": \"<string>\",\n      \"sizes\": [\n        {\n          \"measurement\": \"<number>\",\n          \"size\": \"<string>\"\n        }\n      ],\n      \"unit\": \"<string>\",\n      \"isPomCritical\": \"<boolean>\",\n      \"setId\": \"<string>\",\n      \"tolerance\": \"<number>\",\n      \"toleranceLower\": \"<number>\",\n      \"toleranceUpper\": \"<number>\"\n    }\n  ],\n  \"clientUpdatedDate\": \"<dateTime>\",\n  \"source\": \"<string>\",\n  \"supplierId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ecc08616-7ff4-4a31-b0bb-00dedd7733b1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurements\": [\n    {\n      \"caption\": \"C01\",\n      \"pom\": \"Chest\",\n      \"sizes\": [\n        {\n          \"measurement\": \"<number>\",\n          \"size\": \"Medium\"\n        }\n      ],\n      \"unit\": \"cm\",\n      \"isPomCritical\": \"<boolean>\",\n      \"setId\": \"Set 1\",\n      \"tolerance\": \"<number>\",\n      \"toleranceLower\": \"<number>\",\n      \"toleranceUpper\": \"<number>\"\n    }\n  ],\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"source\": \"SPARK\",\n  \"supplierId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"clientUpdatedDate\": \"2019-02-20T06:37:18.048000+00:00\",\n    \"measurements\": [\n      {\n        \"caption\": \"C01\",\n        \"pom\": \"Chest\",\n        \"unit\": \"cm\",\n        \"isPomCritical\": false,\n        \"setId\": \"Set 1\",\n        \"sizes\": [\n          {\n            \"measurement\": \"<number>\",\n            \"size\": \"Medium\"\n          },\n          {\n            \"measurement\": \"<number>\",\n            \"size\": \"Medium\"\n          }\n        ],\n        \"tolerance\": 8569.572154993482,\n        \"toleranceLower\": 2811.203432788997,\n        \"toleranceUpper\": 762.4142544017254\n      },\n      {\n        \"caption\": \"C01\",\n        \"pom\": \"Chest\",\n        \"unit\": \"cm\",\n        \"isPomCritical\": true,\n        \"setId\": \"Set 1\",\n        \"sizes\": [\n          {\n            \"measurement\": \"<number>\",\n            \"size\": \"Medium\"\n          },\n          {\n            \"measurement\": \"<number>\",\n            \"size\": \"Medium\"\n          }\n        ],\n        \"tolerance\": 8645.700583988992,\n        \"toleranceLower\": 8157.2462970900615,\n        \"toleranceUpper\": 6758.663550021649\n      }\n    ],\n    \"source\": \"SPARK\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6abfb257-4063-41b7-9929-6622a1392c55",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurements\": [\n    {\n      \"caption\": \"C01\",\n      \"pom\": \"Chest\",\n      \"sizes\": [\n        {\n          \"measurement\": \"<number>\",\n          \"size\": \"Medium\"\n        }\n      ],\n      \"unit\": \"cm\",\n      \"isPomCritical\": \"<boolean>\",\n      \"setId\": \"Set 1\",\n      \"tolerance\": \"<number>\",\n      \"toleranceLower\": \"<number>\",\n      \"toleranceUpper\": \"<number>\"\n    }\n  ],\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"source\": \"SPARK\",\n  \"supplierId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44d53479-cf01-4d00-814b-8eb11f3c46c3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurements\": [\n    {\n      \"caption\": \"C01\",\n      \"pom\": \"Chest\",\n      \"sizes\": [\n        {\n          \"measurement\": \"<number>\",\n          \"size\": \"Medium\"\n        }\n      ],\n      \"unit\": \"cm\",\n      \"isPomCritical\": \"<boolean>\",\n      \"setId\": \"Set 1\",\n      \"tolerance\": \"<number>\",\n      \"toleranceLower\": \"<number>\",\n      \"toleranceUpper\": \"<number>\"\n    }\n  ],\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"source\": \"SPARK\",\n  \"supplierId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db3ccc40-adb2-4d74-8ff5-24bd60d00092",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurements\": [\n    {\n      \"caption\": \"C01\",\n      \"pom\": \"Chest\",\n      \"sizes\": [\n        {\n          \"measurement\": \"<number>\",\n          \"size\": \"Medium\"\n        }\n      ],\n      \"unit\": \"cm\",\n      \"isPomCritical\": \"<boolean>\",\n      \"setId\": \"Set 1\",\n      \"tolerance\": \"<number>\",\n      \"toleranceLower\": \"<number>\",\n      \"toleranceUpper\": \"<number>\"\n    }\n  ],\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"source\": \"SPARK\",\n  \"supplierId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "751376c9-b4ef-4112-99d1-a2968be87f99",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurements\": [\n    {\n      \"caption\": \"C01\",\n      \"pom\": \"Chest\",\n      \"sizes\": [\n        {\n          \"measurement\": \"<number>\",\n          \"size\": \"Medium\"\n        }\n      ],\n      \"unit\": \"cm\",\n      \"isPomCritical\": \"<boolean>\",\n      \"setId\": \"Set 1\",\n      \"tolerance\": \"<number>\",\n      \"toleranceLower\": \"<number>\",\n      \"toleranceUpper\": \"<number>\"\n    }\n  ],\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"source\": \"SPARK\",\n  \"supplierId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72f9bdb1-2508-4d00-9156-8c41ba7d5938",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "measurement-charts",
+                    ":style_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "style_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurements\": [\n    {\n      \"caption\": \"C01\",\n      \"pom\": \"Chest\",\n      \"sizes\": [\n        {\n          \"measurement\": \"<number>\",\n          \"size\": \"Medium\"\n        }\n      ],\n      \"unit\": \"cm\",\n      \"isPomCritical\": \"<boolean>\",\n      \"setId\": \"Set 1\",\n      \"tolerance\": \"<number>\",\n      \"toleranceLower\": \"<number>\",\n      \"toleranceUpper\": \"<number>\"\n    }\n  ],\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"source\": \"SPARK\",\n  \"supplierId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://files-integration.inspectorio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d1498c1e-cc75-4947-b161-8acecb9317d6",
+    "name": "File Management ANALYTICS MEASUREMENT CHART API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

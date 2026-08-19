@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS REPORT API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "REPORT",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/reports",
+            "params": [
+              {
+                "name": "style_id",
+                "value": "",
+                "type": "query",
+                "description": "Style ID of items included in reports"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "limit number of results per page"
+              },
+              {
+                "name": "created_to",
+                "value": "",
+                "type": "query",
+                "description": "End date of the range when reports were created"
+              },
+              {
+                "name": "updated_to",
+                "value": "",
+                "type": "query",
+                "description": "End date of the range when reports were updated"
+              },
+              {
+                "name": "system_updated_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the range when reports were updated by the system (including both client actions and actions taken by Inspectorio on behalf of the client)"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Order of reports in response by report creation date in descending or ascending"
+              },
+              {
+                "name": "capa_status",
+                "value": "",
+                "type": "query",
+                "description": "CAPA status of the report"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updated_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the range when reports were updated"
+              },
+              {
+                "name": "created_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the range when reports were created"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Status of reports"
+              },
+              {
+                "name": "system_updated_to",
+                "value": "",
+                "type": "query",
+                "description": "End date of the range when reports were updated by the system (including both client actions and actions taken by Inspectorio on behalf of the client)"
+              },
+              {
+                "name": "inspection_date_to",
+                "value": "",
+                "type": "query",
+                "description": "End date of the range of inspection date in reports"
+              },
+              {
+                "name": "inspection_date_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the range of inspection date in reports"
+              }
+            ]
+          },
+          "docs": "List Reports"
+        },
+        {
+          "info": {
+            "name": "Get Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/reports/:report_id",
+            "params": [
+              {
+                "name": "report_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Report"
+        },
+        {
+          "info": {
+            "name": "Get Step Execution",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/reports/:report_id/steps/:step_id",
+            "params": [
+              {
+                "name": "step_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "report_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Step Execution"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

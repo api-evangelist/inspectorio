@@ -1,0 +1,1078 @@
+{
+  "item": [
+    {
+      "id": "205b3b2c-1dd8-43ce-9af7-9df25edfe7e2",
+      "name": "PURCHASE ORDER V3",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "84e8314f-ee26-4671-b1fe-4575cad71526",
+          "name": "List Purchase Orders (V3)",
+          "request": {
+            "name": "List Purchase Orders (V3)",
+            "description": {
+              "content": "List Purchase Orders. Use entity_type (item or material) to filter by finished goods or raw materials.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "purchase-orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "created_from",
+                  "value": "<dateTime>",
+                  "description": "Filter purchase orders created from this date-time timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_to",
+                  "value": "<dateTime>",
+                  "description": "Filter purchase orders created to this date-time timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_from",
+                  "value": "<dateTime>",
+                  "description": "Filter purchase orders updated from this date-time timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_to",
+                  "value": "<dateTime>",
+                  "description": "Filter purchase orders updated to this date-time timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "delivery_date_from",
+                  "value": "<dateTime>",
+                  "description": "Purchase order delivery date from"
+                },
+                {
+                  "disabled": false,
+                  "key": "opo_number",
+                  "value": "<string>",
+                  "description": "Original purchase order number stored in the client's system"
+                },
+                {
+                  "disabled": false,
+                  "key": "delivery_date_to",
+                  "value": "<dateTime>",
+                  "description": "Purchase order delivery date to"
+                },
+                {
+                  "disabled": false,
+                  "key": "po_number",
+                  "value": "<string>",
+                  "description": "Purchase order number to be stored in Inspectorio (partial/prefix match, case-insensitive)"
+                },
+                {
+                  "disabled": false,
+                  "key": "exact_po_number",
+                  "value": "<string>",
+                  "description": "Purchase order number for exact match (case-insensitive). Returns at most one result."
+                },
+                {
+                  "disabled": false,
+                  "key": "entity_type",
+                  "value": "item",
+                  "description": "Purchase order entity type"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Limit result of list"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c2fe28bc-6abf-4358-8e0f-65e803a9dcd3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "purchase-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "created_from",
+                      "value": "2025-12-15T02:20:38Z"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2025-12-15T02:35:40Z"
+                    },
+                    {
+                      "key": "updated_from",
+                      "value": "2025-12-15T02:20:38Z"
+                    },
+                    {
+                      "key": "updated_to",
+                      "value": "2025-12-15T02:35:40Z"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "delivery_date_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "opo_number",
+                      "value": "OPO_123"
+                    },
+                    {
+                      "key": "delivery_date_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "po_number",
+                      "value": "PO_Number"
+                    },
+                    {
+                      "key": "exact_po_number",
+                      "value": "PO48"
+                    },
+                    {
+                      "key": "entity_type",
+                      "value": "item"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"po_number\": \"po_1\",\n    \"vendor_custom_id\": \"vendor_1\",\n    \"lines\": [\n      {\n        \"item\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"additional_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"unit_cost\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"unit_cost_currency_code\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"shipment_term\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"created_at\": \"2025-12-15T10:01:10.693888Z\",\n    \"updated_at\": \"2025-12-15T10:01:10.693897Z\",\n    \"packaging_details\": [\n      {\n        \"assortment_id\": \"string\",\n        \"carton_quantity\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"packaging_type\": \"assortment\",\n        \"items\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      {\n        \"assortment_id\": \"string\",\n        \"carton_quantity\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"packaging_type\": \"assortment\",\n        \"items\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      }\n    ],\n    \"additionalAttributes\": {\n      \"value\": \"<Error: Could not resolve allOf schema\"\n    },\n    \"total_quantity\": 100,\n    \"total_quantity_uom_code\": \"pcs\",\n    \"data_provider_custom_id\": \"data_provider_1\",\n    \"custom_id\": \"opo_1\",\n    \"uid\": \"abc-def-123-456\",\n    \"created_date\": \"2023-02-10\",\n    \"client_id\": \"client_1\",\n    \"updated_date\": \"2019-02-20T06:37:18Z\",\n    \"commit_id\": \"commit_id_1\",\n    \"commit_po_sequence\": \"commit_po_sequence_1\",\n    \"delivery_date\": \"2021-05-23\",\n    \"event_name\": \"Event 1\",\n    \"factory_custom_id\": \"factory_1\",\n    \"in_store_date\": \"2021-06-01T00:00:00Z\",\n    \"po_source\": \"domestic\",\n    \"po_status\": \"canceled\",\n    \"po_type\": \"po_type_1\",\n    \"share_to_ids\": [\n      \"sub_org_1\"\n    ],\n    \"ship_end_date\": \"2021-05-30T00:00:00Z\",\n    \"total_cost\": 6668.76103867066,\n    \"total_cost_currency_code\": \"USD\"\n  },\n  {\n    \"po_number\": \"po_1\",\n    \"vendor_custom_id\": \"vendor_1\",\n    \"lines\": [\n      {\n        \"item\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"additional_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"unit_cost\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"unit_cost_currency_code\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"shipment_term\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"created_at\": \"2025-12-15T10:01:10.693888Z\",\n    \"updated_at\": \"2025-12-15T10:01:10.693897Z\",\n    \"packaging_details\": [\n      {\n        \"assortment_id\": \"string\",\n        \"carton_quantity\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"packaging_type\": \"assortment\",\n        \"items\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      {\n        \"assortment_id\": \"string\",\n        \"carton_quantity\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"packaging_type\": \"assortment\",\n        \"items\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      }\n    ],\n    \"additionalAttributes\": {\n      \"value\": \"<Error: Could not resolve allOf schema\"\n    },\n    \"total_quantity\": 100,\n    \"total_quantity_uom_code\": \"pcs\",\n    \"data_provider_custom_id\": \"data_provider_1\",\n    \"custom_id\": \"opo_1\",\n    \"uid\": \"abc-def-123-456\",\n    \"created_date\": \"2023-02-10\",\n    \"client_id\": \"client_1\",\n    \"updated_date\": \"2019-02-20T06:37:18Z\",\n    \"commit_id\": \"commit_id_1\",\n    \"commit_po_sequence\": \"commit_po_sequence_1\",\n    \"delivery_date\": \"2021-05-23\",\n    \"event_name\": \"Event 1\",\n    \"factory_custom_id\": \"factory_1\",\n    \"in_store_date\": \"2021-06-01T00:00:00Z\",\n    \"po_source\": \"domestic\",\n    \"po_status\": \"canceled\",\n    \"po_type\": \"po_type_1\",\n    \"share_to_ids\": [\n      \"sub_org_1\"\n    ],\n    \"ship_end_date\": \"2021-05-30T00:00:00Z\",\n    \"total_cost\": 1067.100594921555,\n    \"total_cost_currency_code\": \"USD\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65e31f5f-1ecc-465a-b736-98553e97a5b2",
+          "name": "Create Purchase Order (V3)",
+          "request": {
+            "name": "Create Purchase Order (V3)",
+            "description": {
+              "content": "Create a Purchase Order. Body is either Finished Goods (item) or Material PO.\nUse PurchaseOrderFinishedGoodsPOST for items (packaging_details required). Use PurchaseOrderMaterialPOST for materials (no packaging_details; material_supplier_custom_id optional).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "purchase-orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lines\": [\n    {\n      \"item\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"packaging_details\": [\n    {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  ],\n  \"po_number\": \"<string>\",\n  \"uid\": \"<string>\",\n  \"vendor_custom_id\": \"<string>\",\n  \"additionalAttributes\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"total_quantity\": \"<integer>\",\n  \"total_quantity_uom_code\": \"<string>\",\n  \"data_provider_custom_id\": \"<string>\",\n  \"custom_id\": \"<string>\",\n  \"created_date\": \"<date>\",\n  \"client_id\": \"<string>\",\n  \"updated_date\": \"<dateTime>\",\n  \"commit_id\": \"<string>\",\n  \"commit_po_sequence\": \"<string>\",\n  \"delivery_date\": \"<date>\",\n  \"event_name\": \"<string>\",\n  \"factory_custom_id\": \"<string>\",\n  \"in_store_date\": \"<dateTime>\",\n  \"po_source\": \"<string>\",\n  \"po_status\": \"<string>\",\n  \"po_type\": \"<string>\",\n  \"share_to_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ship_end_date\": \"<dateTime>\",\n  \"total_cost\": \"<double>\",\n  \"total_cost_currency_code\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eb22570b-d060-4d1a-84e0-377542949fb7",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "purchase-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lines\": [\n    {\n      \"item\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"packaging_details\": [\n    {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  ],\n  \"po_number\": \"po_1\",\n  \"uid\": \"abc-def-123-456\",\n  \"vendor_custom_id\": \"vendor_1\",\n  \"additionalAttributes\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"total_quantity\": 100,\n  \"total_quantity_uom_code\": \"pcs\",\n  \"data_provider_custom_id\": \"data_provider_1\",\n  \"custom_id\": \"opo_1\",\n  \"created_date\": \"2023-02-10\",\n  \"client_id\": \"client_1\",\n  \"updated_date\": \"2019-02-20T06:37:18Z\",\n  \"commit_id\": \"commit_id_1\",\n  \"commit_po_sequence\": \"commit_po_sequence_1\",\n  \"delivery_date\": \"2021-05-23\",\n  \"event_name\": \"Event 1\",\n  \"factory_custom_id\": \"factory_1\",\n  \"in_store_date\": \"2021-06-01T00:00:00Z\",\n  \"po_source\": \"domestic\",\n  \"po_status\": \"canceled\",\n  \"po_type\": \"po_type_1\",\n  \"share_to_ids\": [\n    \"sub_org_1\"\n  ],\n  \"ship_end_date\": \"2021-05-30T00:00:00Z\",\n  \"total_cost\": \"<double>\",\n  \"total_cost_currency_code\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5f26efb-d495-4d80-ba47-7b0710b36545",
+          "name": "Delete Purchase Order (V3)",
+          "request": {
+            "name": "Delete Purchase Order (V3)",
+            "description": {
+              "content": "Delete Purchase Order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "purchase-orders",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "542be1ae-83a3-48ad-b9de-a85194632b15",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "purchase-orders",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c24b82b3-d7b7-4078-8806-e7797a3f4027",
+          "name": "Get Purchase Order (V3)",
+          "request": {
+            "name": "Get Purchase Order (V3)",
+            "description": {
+              "content": "Get Purchase Order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "purchase-orders",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb482303-b059-4705-9621-f5d1a7267115",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "purchase-orders",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"po_number\": \"po_1\",\n  \"vendor_custom_id\": \"vendor_1\",\n  \"lines\": [\n    {\n      \"item\": {\n        \"style_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"style_name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_category\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_line\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"department\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"class\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"brand\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"color\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"size\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"additional_attributes\": {\n        \"fieldType\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"unit_cost\": \"<double>\",\n      \"unit_cost_currency_code\": \"USD\",\n      \"shipment_term\": \"DDP\"\n    }\n  ],\n  \"packaging_details\": [\n    {\n      \"assortment_id\": \"string\",\n      \"carton_quantity\": 9799,\n      \"packaging_type\": \"assortment\",\n      \"items\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    {\n      \"assortment_id\": \"string\",\n      \"carton_quantity\": 2929,\n      \"packaging_type\": \"solid\",\n      \"items\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  ],\n  \"additionalAttributes\": {\n    \"value\": \"<Error: Could not resolve allOf schema\"\n  },\n  \"total_quantity\": 100,\n  \"total_quantity_uom_code\": \"pcs\",\n  \"data_provider_custom_id\": \"data_provider_1\",\n  \"custom_id\": \"opo_1\",\n  \"uid\": \"abc-def-123-456\",\n  \"created_at\": \"2025-12-15T10:01:10.693888Z\",\n  \"created_date\": \"2023-02-10\",\n  \"client_id\": \"client_1\",\n  \"updated_at\": \"2025-12-15T10:01:10.693897Z\",\n  \"updated_date\": \"2019-02-20T06:37:18Z\",\n  \"commit_id\": \"commit_id_1\",\n  \"commit_po_sequence\": \"commit_po_sequence_1\",\n  \"delivery_date\": \"2021-05-23\",\n  \"event_name\": \"Event 1\",\n  \"factory_custom_id\": \"factory_1\",\n  \"in_store_date\": \"2021-06-01T00:00:00Z\",\n  \"po_source\": \"domestic\",\n  \"po_status\": \"canceled\",\n  \"po_type\": \"po_type_1\",\n  \"share_to_ids\": [\n    \"sub_org_1\"\n  ],\n  \"ship_end_date\": \"2021-05-30T00:00:00Z\",\n  \"total_cost\": \"<double>\",\n  \"total_cost_currency_code\": \"USD\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "caafc213-4149-40ac-912d-2001e4f501d5",
+          "name": "Update Purchase Order (V3)",
+          "request": {
+            "name": "Update Purchase Order (V3)",
+            "description": {
+              "content": "Update a Purchase Order. Body is either Finished Goods (item) or Material PO.\nUse PurchaseOrderFinishedGoodsPOST for items (packaging_details required).\nUse PurchaseOrderMaterialPUT for materials (no packaging_details; supports cancel_reason and canceled_quantity).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "purchase-orders",
+                ":uid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lines\": [\n    {\n      \"item\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"packaging_details\": [\n    {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  ],\n  \"po_number\": \"<string>\",\n  \"uid\": \"<string>\",\n  \"vendor_custom_id\": \"<string>\",\n  \"additionalAttributes\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"total_quantity\": \"<integer>\",\n  \"total_quantity_uom_code\": \"<string>\",\n  \"data_provider_custom_id\": \"<string>\",\n  \"custom_id\": \"<string>\",\n  \"created_date\": \"<date>\",\n  \"client_id\": \"<string>\",\n  \"updated_date\": \"<dateTime>\",\n  \"commit_id\": \"<string>\",\n  \"commit_po_sequence\": \"<string>\",\n  \"delivery_date\": \"<date>\",\n  \"event_name\": \"<string>\",\n  \"factory_custom_id\": \"<string>\",\n  \"in_store_date\": \"<dateTime>\",\n  \"po_source\": \"<string>\",\n  \"po_status\": \"<string>\",\n  \"po_type\": \"<string>\",\n  \"share_to_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ship_end_date\": \"<dateTime>\",\n  \"total_cost\": \"<double>\",\n  \"total_cost_currency_code\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "423839c9-5eba-4bf8-9bb3-2ede69937c4c",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "purchase-orders",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lines\": [\n    {\n      \"item\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"packaging_details\": [\n    {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  ],\n  \"po_number\": \"po_1\",\n  \"uid\": \"abc-def-123-456\",\n  \"vendor_custom_id\": \"vendor_1\",\n  \"additionalAttributes\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"total_quantity\": 100,\n  \"total_quantity_uom_code\": \"pcs\",\n  \"data_provider_custom_id\": \"data_provider_1\",\n  \"custom_id\": \"opo_1\",\n  \"created_date\": \"2023-02-10\",\n  \"client_id\": \"client_1\",\n  \"updated_date\": \"2019-02-20T06:37:18Z\",\n  \"commit_id\": \"commit_id_1\",\n  \"commit_po_sequence\": \"commit_po_sequence_1\",\n  \"delivery_date\": \"2021-05-23\",\n  \"event_name\": \"Event 1\",\n  \"factory_custom_id\": \"factory_1\",\n  \"in_store_date\": \"2021-06-01T00:00:00Z\",\n  \"po_source\": \"domestic\",\n  \"po_status\": \"canceled\",\n  \"po_type\": \"po_type_1\",\n  \"share_to_ids\": [\n    \"sub_org_1\"\n  ],\n  \"ship_end_date\": \"2021-05-30T00:00:00Z\",\n  \"total_cost\": \"<double>\",\n  \"total_cost_currency_code\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6d62bf9a-1eab-4f23-829a-23820a5fee19",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "purchase-orders",
+                    ":uid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lines\": [\n    {\n      \"item\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  ],\n  \"packaging_details\": [\n    {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    }\n  ],\n  \"po_number\": \"po_1\",\n  \"uid\": \"abc-def-123-456\",\n  \"vendor_custom_id\": \"vendor_1\",\n  \"additionalAttributes\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"total_quantity\": 100,\n  \"total_quantity_uom_code\": \"pcs\",\n  \"data_provider_custom_id\": \"data_provider_1\",\n  \"custom_id\": \"opo_1\",\n  \"created_date\": \"2023-02-10\",\n  \"client_id\": \"client_1\",\n  \"updated_date\": \"2019-02-20T06:37:18Z\",\n  \"commit_id\": \"commit_id_1\",\n  \"commit_po_sequence\": \"commit_po_sequence_1\",\n  \"delivery_date\": \"2021-05-23\",\n  \"event_name\": \"Event 1\",\n  \"factory_custom_id\": \"factory_1\",\n  \"in_store_date\": \"2021-06-01T00:00:00Z\",\n  \"po_source\": \"domestic\",\n  \"po_status\": \"canceled\",\n  \"po_type\": \"po_type_1\",\n  \"share_to_ids\": [\n    \"sub_org_1\"\n  ],\n  \"ship_end_date\": \"2021-05-30T00:00:00Z\",\n  \"total_cost\": \"<double>\",\n  \"total_cost_currency_code\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5638c46-1790-43bc-8240-e25930754b79",
+          "name": "Update the status of a purchase order (V3)",
+          "request": {
+            "name": "Update the status of a purchase order (V3)",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "purchase-orders",
+                ":uid",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "15c8430c-7f15-48a1-9535-be9bfb7c1b61",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "purchase-orders",
+                    ":uid",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1cfe6a55-a02c-4859-921e-f07bc1e77ae4",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "purchase-orders",
+                    ":uid",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39d45184-383d-4600-b211-29b39945dbad",
+          "name": "Update Packaging Details of a Purchase Order (V3)",
+          "request": {
+            "name": "Update Packaging Details of a Purchase Order (V3)",
+            "description": {
+              "content": "Update the packaging details of a specific purchase order. Note that we only attach/detach items from the purchase order in this endpoint (not insert/delete items).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "purchase-orders",
+                ":uid",
+                "packaging-details"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"assortment_id\": \"<string>\",\n    \"carton_quantity\": \"<integer>\",\n    \"packaging_type\": \"<string>\",\n    \"items\": [\n      {\n        \"case_pack_quantity\": 8351.02491100993\n      },\n      {\n        \"case_pack_quantity\": true\n      }\n    ]\n  },\n  {\n    \"assortment_id\": \"<string>\",\n    \"carton_quantity\": \"<integer>\",\n    \"packaging_type\": \"<string>\",\n    \"items\": [\n      {\n        \"case_pack_quantity\": \"string\"\n      },\n      {\n        \"case_pack_quantity\": 6972\n      }\n    ]\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c10383e3-2d30-4169-86a2-3c94e5a19979",
+              "name": "Packaging details updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "purchase-orders",
+                    ":uid",
+                    "packaging-details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"assortment_id\": \"<string>\",\n    \"carton_quantity\": \"<integer>\",\n    \"packaging_type\": \"<string>\",\n    \"items\": [\n      {\n        \"case_pack_quantity\": \"string\"\n      },\n      {\n        \"case_pack_quantity\": 3799.336522508642\n      }\n    ]\n  },\n  {\n    \"assortment_id\": \"<string>\",\n    \"carton_quantity\": \"<integer>\",\n    \"packaging_type\": \"<string>\",\n    \"items\": [\n      {\n        \"case_pack_quantity\": 4740.999500342422\n      },\n      {\n        \"case_pack_quantity\": 1369.4043428854097\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Packaging details updated successfully\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c617217-adb9-4199-a39f-e4bf14cf5cb2",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "purchase-orders",
+                    ":uid",
+                    "packaging-details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"assortment_id\": \"<string>\",\n    \"carton_quantity\": \"<integer>\",\n    \"packaging_type\": \"<string>\",\n    \"items\": [\n      {\n        \"case_pack_quantity\": \"string\"\n      },\n      {\n        \"case_pack_quantity\": 3799.336522508642\n      }\n    ]\n  },\n  {\n    \"assortment_id\": \"<string>\",\n    \"carton_quantity\": \"<integer>\",\n    \"packaging_type\": \"<string>\",\n    \"items\": [\n      {\n        \"case_pack_quantity\": 4740.999500342422\n      },\n      {\n        \"case_pack_quantity\": 1369.4043428854097\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Invalid request parameters\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d25a75b7-ca7e-4b2c-a178-36a5f61f5dfd",
+              "name": "Purchase order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "purchase-orders",
+                    ":uid",
+                    "packaging-details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"assortment_id\": \"<string>\",\n    \"carton_quantity\": \"<integer>\",\n    \"packaging_type\": \"<string>\",\n    \"items\": [\n      {\n        \"case_pack_quantity\": \"string\"\n      },\n      {\n        \"case_pack_quantity\": 3799.336522508642\n      }\n    ]\n  },\n  {\n    \"assortment_id\": \"<string>\",\n    \"carton_quantity\": \"<integer>\",\n    \"packaging_type\": \"<string>\",\n    \"items\": [\n      {\n        \"case_pack_quantity\": 4740.999500342422\n      },\n      {\n        \"case_pack_quantity\": 1369.4043428854097\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Purchase order not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ec9dc8f-60ed-4b58-84a7-0a1435abcaf6",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "purchase-orders",
+                    ":uid",
+                    "packaging-details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"assortment_id\": \"<string>\",\n    \"carton_quantity\": \"<integer>\",\n    \"packaging_type\": \"<string>\",\n    \"items\": [\n      {\n        \"case_pack_quantity\": \"string\"\n      },\n      {\n        \"case_pack_quantity\": 3799.336522508642\n      }\n    ]\n  },\n  {\n    \"assortment_id\": \"<string>\",\n    \"carton_quantity\": \"<integer>\",\n    \"packaging_type\": \"<string>\",\n    \"items\": [\n      {\n        \"case_pack_quantity\": 4740.999500342422\n      },\n      {\n        \"case_pack_quantity\": 1369.4043428854097\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://files-integration.inspectorio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e73bdb7d-f727-4f8d-b67d-878704bc678c",
+    "name": "File Management ANALYTICS PURCHASE ORDER V3 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

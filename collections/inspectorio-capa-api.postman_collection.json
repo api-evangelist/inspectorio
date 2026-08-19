@@ -1,0 +1,354 @@
+{
+  "item": [
+    {
+      "id": "bc7cc9dd-68e8-4cb3-a798-1924d63e3278",
+      "name": "CAPA",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1c9af208-04f3-4f79-aa5d-7d702ea85224",
+          "name": "Get CAPA",
+          "request": {
+            "name": "Get CAPA",
+            "description": {
+              "content": "Get CAPA",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "capas",
+                ":report_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "report_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "facdadca-eb6f-4550-a437-ce9776434650",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "capas",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"chatBox\": [\n      {\n        \"attachments\": [\n          {\n            \"fileName\": \"123-abc\",\n            \"url\": \"https://.../image1.jpg\"\n          },\n          {\n            \"fileName\": \"123-abc\",\n            \"url\": \"https://.../image1.jpg\"\n          }\n        ],\n        \"createdDate\": \"2021-05-25T13:58:26+00:00\",\n        \"email\": \"john@email.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"message\": \"Please update the status\",\n        \"organizationName\": \"Acme Corp\"\n      },\n      {\n        \"attachments\": [\n          {\n            \"fileName\": \"123-abc\",\n            \"url\": \"https://.../image1.jpg\"\n          },\n          {\n            \"fileName\": \"123-abc\",\n            \"url\": \"https://.../image1.jpg\"\n          }\n        ],\n        \"createdDate\": \"2021-05-25T13:58:26+00:00\",\n        \"email\": \"john@email.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"message\": \"Please update the status\",\n        \"organizationName\": \"Acme Corp\"\n      }\n    ],\n    \"generalInformation\": {\n      \"actualInspectionDate\": \"2021-05-07T00:00:00+00:00\",\n      \"assortmentIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"availableQuantity\": 6687,\n      \"capaStatus\": \"Approved\",\n      \"factoryId\": \"F0123\",\n      \"factoryName\": \"Acme Factory\",\n      \"inspectionId\": \"1234902f-5ab4-4f4e-8422-794109d951b4\",\n      \"inspectionLocation\": {\n        \"address\": \"1 Madison Avenue\",\n        \"contact\": {\n          \"contactId\": \"1122\",\n          \"email\": \"john@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"John Doe\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"F000123\"\n      },\n      \"inspectionResult\": \"pass\",\n      \"inspectionType\": \"TPR\",\n      \"inspectorName\": \"John Doe\",\n      \"itemIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"orderQuantity\": 499,\n      \"packingTypes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productCategories\": [\n        {\n          \"id\": \"C123\",\n          \"name\": \"Menswear\"\n        },\n        {\n          \"id\": \"C123\",\n          \"name\": \"Menswear\"\n        }\n      ],\n      \"productLines\": [\n        {\n          \"id\": \"C123\",\n          \"name\": \"Menswear\"\n        },\n        {\n          \"id\": \"C123\",\n          \"name\": \"Menswear\"\n        }\n      ],\n      \"proposedInspectionDate\": \"2021-05-07T00:00:00+00:00\",\n      \"styleIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"supplierId\": \"S0246\",\n      \"supplierName\": \"Padme Supplier\"\n    },\n    \"nonConformities\": {\n      \"assembly\": {\n        \"aql\": {\n          \"aqlId\": \"123\",\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defectFound\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defects\": [\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"totalDefects\": 2,\n        \"totalItems\": 2\n      },\n      \"checkList\": [\n        {\n          \"attachments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"comments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"label\": \"General\",\n          \"preventativeAction\": \"Advise all staff\",\n          \"rootCause\": \"Wrong carton dimension\"\n        },\n        {\n          \"attachments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"comments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"label\": \"General\",\n          \"preventativeAction\": \"Advise all staff\",\n          \"rootCause\": \"Wrong carton dimension\"\n        }\n      ],\n      \"measurement\": {\n        \"aql\": {\n          \"aqlId\": \"123\",\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"comments\": [\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"message\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organizationName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"message\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organizationName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"correctiveAction\": {\n          \"details\": \"Rework on the defective units\",\n          \"value\": \"Rework Units\"\n        },\n        \"defectFound\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"failedMeasurements\": [\n          {\n            \"found\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"measurementDescription\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"occurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sampleName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"standard\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tolerance\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"toleranceLower\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"toleranceUpper\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"found\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"measurementDescription\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"occurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sampleName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"standard\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tolerance\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"toleranceLower\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"toleranceUpper\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"preventativeAction\": \"Advise all staff\",\n        \"rootCause\": \"Wrong carton dimension\"\n      },\n      \"measurementByDefects\": {\n        \"aql\": {\n          \"aqlId\": \"123\",\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defectFound\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defects\": [\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"totalDefects\": 2,\n        \"totalItems\": 2\n      },\n      \"moistureCheck\": {\n        \"aql\": {\n          \"aqlId\": \"123\",\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"comments\": [\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"message\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organizationName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"message\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organizationName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"correctiveAction\": {\n          \"details\": \"Rework on the defective units\",\n          \"value\": \"Rework Units\"\n        },\n        \"defectFound\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defectItems\": [\n          {\n            \"components\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"itemId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"components\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"itemId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"preventativeAction\": \"Advise all staff\",\n        \"rootCause\": \"Wrong carton dimension\",\n        \"totalDefects\": 2,\n        \"totalItems\": 2\n      },\n      \"packaging\": {\n        \"aql\": {\n          \"aqlId\": \"123\",\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defectFound\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defects\": [\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"packingType\": \"string\",\n        \"totalDefects\": 2,\n        \"totalItems\": 2\n      },\n      \"questions\": [\n        {\n          \"answer\": \"Yes\",\n          \"answerComments\": [\n            \"comment 1\",\n            \"comment 2\",\n            \"comment 3\"\n          ],\n          \"attachments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"comments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"label\": \"General\",\n          \"preventativeAction\": \"Advise all staff\",\n          \"rootCause\": \"Wrong carton dimension\"\n        },\n        {\n          \"answer\": \"Yes\",\n          \"answerComments\": [\n            \"comment 1\",\n            \"comment 2\",\n            \"comment 3\"\n          ],\n          \"attachments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"comments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"label\": \"General\",\n          \"preventativeAction\": \"Advise all staff\",\n          \"rootCause\": \"Wrong carton dimension\"\n        }\n      ],\n      \"rfid\": [\n        {\n          \"barCode\": \"456\",\n          \"comments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"decryptedCode\": \"123123\",\n          \"matched\": true,\n          \"photos\": [\n            \"string\",\n            \"string\"\n          ],\n          \"preventativeAction\": \"Advise all staff\",\n          \"rfid\": \"123\",\n          \"rootCause\": \"Wrong carton dimension\"\n        },\n        {\n          \"barCode\": \"456\",\n          \"comments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"decryptedCode\": \"123123\",\n          \"matched\": false,\n          \"photos\": [\n            \"string\",\n            \"string\"\n          ],\n          \"preventativeAction\": \"Advise all staff\",\n          \"rfid\": \"123\",\n          \"rootCause\": \"Wrong carton dimension\"\n        }\n      ],\n      \"workmanship\": {\n        \"aql\": {\n          \"aqlId\": \"123\",\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defectFound\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defects\": [\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"totalDefects\": 2,\n        \"totalItems\": 2\n      }\n    },\n    \"reInspectionDetail\": {\n      \"comment\": \"Reviewed\",\n      \"inspectionType\": \"TPR\",\n      \"reInspectionBookingId\": \"9dc7928867dc\",\n      \"reInspectionDate\": \"2021-05-07T00:00:00+00:00\"\n    },\n    \"shipmentWindow\": {\n      \"shipmentDateFrom\": \"2021-05-07T00:00:00+00:00\",\n      \"shipmentDateTo\": \"2021-05-15T00:00:00+00:00\",\n      \"shipmentNote\": \"Acknowledged\"\n    },\n    \"specialPoints\": [\n      {\n        \"comments\": [\n          {\n            \"attachments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"createdDate\": \"2021-05-25T13:58:26+00:00\",\n            \"email\": \"john@email.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"message\": \"string\",\n            \"organizationName\": \"Acme Corp\"\n          },\n          {\n            \"attachments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"createdDate\": \"2021-05-25T13:58:26+00:00\",\n            \"email\": \"john@email.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"message\": \"string\",\n            \"organizationName\": \"Acme Corp\"\n          }\n        ],\n        \"correctiveAction\": {\n          \"details\": \"Rework on the defective units\",\n          \"value\": \"Rework Units\"\n        },\n        \"description\": \"Stitching quality issue observed\",\n        \"preventativeAction\": \"Advise all staff\",\n        \"type\": \"remark\"\n      },\n      {\n        \"comments\": [\n          {\n            \"attachments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"createdDate\": \"2021-05-25T13:58:26+00:00\",\n            \"email\": \"john@email.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"message\": \"string\",\n            \"organizationName\": \"Acme Corp\"\n          },\n          {\n            \"attachments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"createdDate\": \"2021-05-25T13:58:26+00:00\",\n            \"email\": \"john@email.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"message\": \"string\",\n            \"organizationName\": \"Acme Corp\"\n          }\n        ],\n        \"correctiveAction\": {\n          \"details\": \"Rework on the defective units\",\n          \"value\": \"Rework Units\"\n        },\n        \"description\": \"Stitching quality issue observed\",\n        \"preventativeAction\": \"Advise all staff\",\n        \"type\": \"remark\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "365b3ae7-acf0-4459-889e-9cbbfd9247ce",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "capas",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d4fbcbb-5c86-45af-9c15-9a5b023fbf02",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "capas",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2262ba45-5281-4792-9afd-2ab24b4a1562",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "capas",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1de20e31-bd71-49c4-9747-40c136801705",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "capas",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "549179f5-0111-4385-abde-6da7dc585fa3",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "capas",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://files-integration.inspectorio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "43dea3e9-7509-48f5-8d84-960c68359bf8",
+    "name": "File Management ANALYTICS CAPA API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

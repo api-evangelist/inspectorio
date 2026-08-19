@@ -1,0 +1,1792 @@
+{
+  "item": [
+    {
+      "id": "ab9d4137-fc2d-4e60-ae8e-d3dea2e468c6",
+      "name": "TAXONOMY CATEGORY",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1a91139b-2ef6-4db1-a3bf-35672d7237cf",
+          "name": "Create or Restore Category",
+          "request": {
+            "name": "Create or Restore Category",
+            "description": {
+              "content": "Creates a new category at the given taxonomy level, or restores a soft-deleted\ncategory with the same `customId` at the same level (201 in both cases).\n\n**Create:** A new row is inserted. `businessId` must be unique among live siblings\n(same parent). `parentCustomId`, if provided, must resolve to a live category at\nthe level immediately above.\n\n**Restore:** If a soft-deleted category with the same `customId` exists at this\nlevel it is restored. `name` and `description` are updated from the request body;\n`businessId` and `parentCustomId` are immutable and ignored on restore.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "customer-data",
+                "taxonomies",
+                ":taxonomyLevelCustomId",
+                "categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taxonomyLevelCustomId",
+                  "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"businessId\": \"<string>\",\n  \"description\": \"\",\n  \"parentCustomId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e062cf82-c62a-4526-be15-61ce42d2e136",
+              "name": "Category created or restored.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"footwear\",\n  \"name\": \"Footwear\",\n  \"businessId\": \"FW-001\",\n  \"description\": \"All footwear products\",\n  \"parentCustomId\": \"apparel\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customId\": \"footwear\",\n  \"name\": \"Footwear\",\n  \"taxonomyLevelCustomId\": \"product_line\",\n  \"description\": \"All footwear products\",\n  \"businessId\": \"FW-001\",\n  \"parentCustomId\": \"apparel\",\n  \"taxonomyCustomId\": \"product\",\n  \"lastUpdatedSource\": \"api\",\n  \"createdAt\": \"2026-06-15T10:30:00Z\",\n  \"updatedAt\": \"2026-06-20T14:45:00Z\",\n  \"code\": 200,\n  \"status\": 200\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9af47dd5-6794-4c40-ad22-6857a4042a4b",
+              "name": "Missing required field, parent not found, or level has no business-id attribute.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"footwear\",\n  \"name\": \"Footwear\",\n  \"businessId\": \"FW-001\",\n  \"description\": \"All footwear products\",\n  \"parentCustomId\": \"apparel\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 400,\n  \"status\": 400\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "217312d8-7cf5-4bfc-988f-ee7df7b4994e",
+              "name": "Authentication credentials were not provided or are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"footwear\",\n  \"name\": \"Footwear\",\n  \"businessId\": \"FW-001\",\n  \"description\": \"All footwear products\",\n  \"parentCustomId\": \"apparel\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Authentication credentials were not provided.\",\n  \"code\": 401,\n  \"status\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14ee3070-d2c4-434f-8c1b-c7a500e7bf69",
+              "name": "The taxonomy level in the path does not exist for the org.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"footwear\",\n  \"name\": \"Footwear\",\n  \"businessId\": \"FW-001\",\n  \"description\": \"All footwear products\",\n  \"parentCustomId\": \"apparel\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Taxonomy level not found.\",\n  \"code\": 404,\n  \"status\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3634dcfa-1013-488e-b2fa-c4e04ebf729f",
+              "name": "A category already uses the given `customId` or `businessId`.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"footwear\",\n  \"name\": \"Footwear\",\n  \"businessId\": \"FW-001\",\n  \"description\": \"All footwear products\",\n  \"parentCustomId\": \"apparel\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"This customId is already in use in this organization.\",\n  \"code\": \"CATEGORY_CUSTOM_ID_CONFLICT\",\n  \"status\": 409\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f58531a6-8602-4b20-90df-b0ca01fd178d",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"footwear\",\n  \"name\": \"Footwear\",\n  \"businessId\": \"FW-001\",\n  \"description\": \"All footwear products\",\n  \"parentCustomId\": \"apparel\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7460fd2e-361d-4fc0-a97b-ee7e19a78096",
+          "name": "List Categories",
+          "request": {
+            "name": "List Categories",
+            "description": {
+              "content": "List categories at the given taxonomy level for the caller's organization, with\npagination. Soft-deleted categories are excluded. Pass one or more `parentCustomId`\nvalues to fetch the children of specific parents (there is no nested children route).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "customer-data",
+                "taxonomies",
+                ":taxonomyLevelCustomId",
+                "categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "parentCustomId",
+                  "value": "<string>",
+                  "description": "Filter to categories whose parent has one of these custom IDs. Repeat the\nparameter once per value: `?parentCustomId=footwear&parentCustomId=apparel`\nreturns the children of both parents. Comma-separated values are not\nsupported — `?parentCustomId=footwear,apparel` is matched as one literal ID.\nOmit to list all categories at the level.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "parentCustomId",
+                  "value": "<string>",
+                  "description": "Filter to categories whose parent has one of these custom IDs. Repeat the\nparameter once per value: `?parentCustomId=footwear&parentCustomId=apparel`\nreturns the children of both parents. Comma-separated values are not\nsupported — `?parentCustomId=footwear,apparel` is matched as one literal ID.\nOmit to list all categories at the level.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Free-text search. Whitespace-separated terms are OR-matched (case-insensitive)\nagainst the category `name` and its `businessId`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderBy",
+                  "value": "createdAt:desc",
+                  "description": "Sort order, in the form `<field>:<direction>`.\n\n`<field>` is one of `name` (sorts by parent name, then category name),\n`createdAt` (creation time) or `updatedAt` (last-update time).\n\n`<direction>` is `asc` or `desc`. The suffix is optional; timestamp fields\ndefault to `desc` (newest first) while `name` defaults to `asc` (A→Z). Omitting\nthe parameter entirely is equivalent to `createdAt:desc`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return (page size)."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taxonomyLevelCustomId",
+                  "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4ddb3a6-58dc-42fd-bee0-f6ee22fa1e48",
+              "name": "Paginated list of categories.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "parentCustomId",
+                      "value": "footwear"
+                    },
+                    {
+                      "key": "parentCustomId",
+                      "value": "footwear"
+                    },
+                    {
+                      "key": "q",
+                      "value": "sneaker"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "createdAt:desc"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 200,\n  \"status\": 200,\n  \"count\": 42,\n  \"results\": [\n    {\n      \"customId\": \"footwear\",\n      \"name\": \"Footwear\",\n      \"taxonomyLevelCustomId\": \"product_line\",\n      \"description\": \"All footwear products\",\n      \"businessId\": \"FW-001\",\n      \"parentCustomId\": \"apparel\",\n      \"taxonomyCustomId\": \"product\",\n      \"lastUpdatedSource\": \"api\",\n      \"createdAt\": \"2026-06-15T10:30:00Z\",\n      \"updatedAt\": \"2026-06-20T14:45:00Z\"\n    },\n    {\n      \"customId\": \"footwear\",\n      \"name\": \"Footwear\",\n      \"taxonomyLevelCustomId\": \"product_line\",\n      \"description\": \"All footwear products\",\n      \"businessId\": \"FW-001\",\n      \"parentCustomId\": \"apparel\",\n      \"taxonomyCustomId\": \"product\",\n      \"lastUpdatedSource\": \"api\",\n      \"createdAt\": \"2026-06-15T10:30:00Z\",\n      \"updatedAt\": \"2026-06-20T14:45:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7add7c7-2669-48f5-b0e4-cbb5f4873bed",
+              "name": "Invalid query parameter.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "parentCustomId",
+                      "value": "footwear"
+                    },
+                    {
+                      "key": "parentCustomId",
+                      "value": "footwear"
+                    },
+                    {
+                      "key": "q",
+                      "value": "sneaker"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "createdAt:desc"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Invalid orderBy field \\\"size\\\". Must be one of: name, createdAt, updatedAt.\",\n  \"code\": 400,\n  \"status\": 400\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82895426-eadc-43d9-b4f9-91784ca48134",
+              "name": "Authentication credentials were not provided or are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "parentCustomId",
+                      "value": "footwear"
+                    },
+                    {
+                      "key": "parentCustomId",
+                      "value": "footwear"
+                    },
+                    {
+                      "key": "q",
+                      "value": "sneaker"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "createdAt:desc"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Authentication credentials were not provided.\",\n  \"code\": 401,\n  \"status\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "edd7aa31-36e2-490d-9fb9-df4c3d68b7d8",
+              "name": "The taxonomy level in the path does not exist for the org.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "parentCustomId",
+                      "value": "footwear"
+                    },
+                    {
+                      "key": "parentCustomId",
+                      "value": "footwear"
+                    },
+                    {
+                      "key": "q",
+                      "value": "sneaker"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "createdAt:desc"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Taxonomy level not found.\",\n  \"code\": 404,\n  \"status\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7274a3e3-617c-46f0-a232-e50aeab93d55",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "parentCustomId",
+                      "value": "footwear"
+                    },
+                    {
+                      "key": "parentCustomId",
+                      "value": "footwear"
+                    },
+                    {
+                      "key": "q",
+                      "value": "sneaker"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "createdAt:desc"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a87f4a7b-1ab0-4233-8ec8-e7c086acc6cb",
+          "name": "Update Category",
+          "request": {
+            "name": "Update Category",
+            "description": {
+              "content": "Updates the mutable fields (`name`, `description`) of a live category.\n\nOnly `name` and `description` are accepted. All other fields (`customId`, `businessId`,\n`parentCustomId`, etc.) are silently ignored.\nSoft-deleted categories are not found (404).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "customer-data",
+                "taxonomies",
+                ":taxonomyLevelCustomId",
+                "categories",
+                ":customId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taxonomyLevelCustomId",
+                  "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customId",
+                  "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf35a50a-2101-4d19-907e-fcceadcdca76",
+              "name": "Category updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories",
+                    ":customId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customId",
+                      "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Footwear\",\n  \"description\": \"All footwear products\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customId\": \"footwear\",\n  \"name\": \"Footwear\",\n  \"taxonomyLevelCustomId\": \"product_line\",\n  \"description\": \"All footwear products\",\n  \"businessId\": \"FW-001\",\n  \"parentCustomId\": \"apparel\",\n  \"taxonomyCustomId\": \"product\",\n  \"lastUpdatedSource\": \"api\",\n  \"createdAt\": \"2026-06-15T10:30:00Z\",\n  \"updatedAt\": \"2026-06-20T14:45:00Z\",\n  \"code\": 200,\n  \"status\": 200\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31c5fcfd-34c2-4dc6-aec5-4f93ee02df3b",
+              "name": "Validation error — missing required field.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories",
+                    ":customId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customId",
+                      "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Footwear\",\n  \"description\": \"All footwear products\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"This field is required.\",\n  \"code\": 400,\n  \"status\": 400\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d82f61f-ae31-44c6-8cc5-0758b140b885",
+              "name": "Authentication credentials were not provided or are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories",
+                    ":customId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customId",
+                      "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Footwear\",\n  \"description\": \"All footwear products\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Authentication credentials were not provided.\",\n  \"code\": 401,\n  \"status\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52de3fd5-14fd-4baf-ae03-c10bba73b536",
+              "name": "The taxonomy level or the category does not exist (including soft-deleted).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories",
+                    ":customId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customId",
+                      "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Footwear\",\n  \"description\": \"All footwear products\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Category not found.\",\n  \"code\": 404,\n  \"status\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "395cc9f7-91e3-4173-bad0-402b9a9ee819",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories",
+                    ":customId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customId",
+                      "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Footwear\",\n  \"description\": \"All footwear products\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57f040d4-6d72-46f0-80a6-4f998a6e9de8",
+          "name": "Delete Category",
+          "request": {
+            "name": "Delete Category",
+            "description": {
+              "content": "Soft-deletes a category and recursively soft-deletes its entire descendant subtree.\nProduct assignments on affected categories are preserved (not removed).\n\nA deleted category (and each deleted descendant) can be restored individually via\nPOST with the same customId — see the Create Category endpoint. Restoring does not\ncascade to descendants: each customId must be restored separately, and the immediate\nparent must already be restored (live) before a child can be restored.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "customer-data",
+                "taxonomies",
+                ":taxonomyLevelCustomId",
+                "categories",
+                ":customId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taxonomyLevelCustomId",
+                  "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customId",
+                  "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0443ac47-c30e-4eba-9eba-180eb2604ab5",
+              "name": "Category and its descendant subtree soft-deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories",
+                    ":customId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customId",
+                      "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "35705839-bda7-49ab-8bae-c8495707e6bb",
+              "name": "Authentication credentials were not provided or are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories",
+                    ":customId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customId",
+                      "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Authentication credentials were not provided.\",\n  \"code\": 401,\n  \"status\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72bef656-93a9-4119-b2f5-0d17f22f1338",
+              "name": "The taxonomy level or the category does not exist (including already soft-deleted).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories",
+                    ":customId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customId",
+                      "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Category not found.\",\n  \"code\": 404,\n  \"status\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fc5483c-b66d-4108-a53a-9928363774ec",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories",
+                    ":customId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customId",
+                      "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d70c11f-6b7e-482f-8ae9-c1f8ca4e3d3f",
+          "name": "Get Category",
+          "request": {
+            "name": "Get Category",
+            "description": {
+              "content": "Retrieve a single category by its `customId` within the taxonomy level.\nSoft-deleted categories are not found.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "customer-data",
+                "taxonomies",
+                ":taxonomyLevelCustomId",
+                "categories",
+                ":customId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taxonomyLevelCustomId",
+                  "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customId",
+                  "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18c44fd3-968c-4fe2-adfb-80478cbcedd0",
+              "name": "Successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories",
+                    ":customId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customId",
+                      "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customId\": \"footwear\",\n  \"name\": \"Footwear\",\n  \"taxonomyLevelCustomId\": \"product_line\",\n  \"description\": \"All footwear products\",\n  \"businessId\": \"FW-001\",\n  \"parentCustomId\": \"apparel\",\n  \"taxonomyCustomId\": \"product\",\n  \"lastUpdatedSource\": \"api\",\n  \"createdAt\": \"2026-06-15T10:30:00Z\",\n  \"updatedAt\": \"2026-06-20T14:45:00Z\",\n  \"code\": 200,\n  \"status\": 200\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c8bc556-3c73-452f-97cd-cc22b66bc3d2",
+              "name": "Authentication credentials were not provided or are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories",
+                    ":customId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customId",
+                      "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Authentication credentials were not provided.\",\n  \"code\": 401,\n  \"status\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1a7c55d-5dd8-4aab-9af3-08a9c669e5c7",
+              "name": "The taxonomy level or the category does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories",
+                    ":customId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customId",
+                      "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Category not found.\",\n  \"code\": 404,\n  \"status\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4262389-da3f-4501-9fc0-62d5da2d925f",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "taxonomies",
+                    ":taxonomyLevelCustomId",
+                    "categories",
+                    ":customId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taxonomyLevelCustomId",
+                      "description": "(Required) Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customId",
+                      "description": "(Required) Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://files-integration.inspectorio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2771b0c1-d40e-4e1e-8ab2-150c344022f5",
+    "name": "File Management ANALYTICS TAXONOMY CATEGORY API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

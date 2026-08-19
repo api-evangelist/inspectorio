@@ -1,0 +1,1932 @@
+{
+  "item": [
+    {
+      "id": "9f687b3d-10c3-42c8-861a-61da11858c89",
+      "name": "PURCHASE ORDER",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1362b18b-37db-4eda-a531-33346f4db236",
+          "name": "List Purchase Orders",
+          "request": {
+            "name": "List Purchase Orders",
+            "description": {
+              "content": "List Purchase Orders",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "purchase-orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "po_number",
+                  "value": "<string>",
+                  "description": "Purchase order number to be stored in Inspectorio"
+                },
+                {
+                  "disabled": false,
+                  "key": "opo_number",
+                  "value": "<string>",
+                  "description": "Original purchase order number stored in the client's system"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Limit result of list"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "delivery_date_to",
+                  "value": "<dateTime>",
+                  "description": "Purchase order delivery date to"
+                },
+                {
+                  "disabled": false,
+                  "key": "delivery_date_from",
+                  "value": "<dateTime>",
+                  "description": "Purchase order delivery date from"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_from",
+                  "value": "<dateTime>",
+                  "description": "Purchase order creation date from"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_to",
+                  "value": "<dateTime>",
+                  "description": "Purchase order creation date to"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9faa0ce-2444-406e-8edb-909e2b2ae209",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "po_number",
+                      "value": "PO_Number"
+                    },
+                    {
+                      "key": "opo_number",
+                      "value": "OPO_123"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "delivery_date_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "delivery_date_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limit\": 78,\n  \"offset\": 6647,\n  \"total\": 5815,\n  \"data\": [\n    {\n      \"poNumber\": \"po_1\",\n      \"productLineId\": \"product_line_1\",\n      \"vendorId\": \"vendor_1\",\n      \"clientCreatedDate\": \"2023-02-10\",\n      \"clientId\": \"client_1\",\n      \"clientName\": \"Lex Corp\",\n      \"clientUpdatedDate\": \"2019-02-20T06:37:18.048000+00:00\",\n      \"commitId\": \"commit_id_1\",\n      \"commitPoSequence\": \"commit_po_sequence_1\",\n      \"createdDate\": \"2021-06-03T04:30:22.726000+00:00\",\n      \"deliveryDate\": \"2021-09-14T00:00:00+00:00\",\n      \"eventName\": \"Event 1\",\n      \"factoryId\": \"factory_1\",\n      \"factoryName\": \"Padme Corp\",\n      \"inStoreDate\": \"2021-09-19T00:00:00+00:00\",\n      \"localClientId\": \"client_1\",\n      \"localClientIds\": [\n        \"sub_org_1\"\n      ],\n      \"localFactoryId\": \"factory_1\",\n      \"localFactoryIds\": [\n        \"sub_org_1\"\n      ],\n      \"localSupplierId\": \"supplier_1\",\n      \"localSupplierIds\": [\n        \"sub_org_1\"\n      ],\n      \"opoNumber\": \"opo_1\",\n      \"poSource\": \"domestic\",\n      \"poStatus\": \"canceled\",\n      \"poType\": \"po_type_1\",\n      \"productLineName\": \"Apparel\",\n      \"shareToIds\": [\n        \"sub_org_1\"\n      ],\n      \"shareToLocalIds\": [\n        \"sub_org_1\"\n      ],\n      \"shipEndDate\": \"2021-09-19T00:00:00+00:00\",\n      \"styles\": [\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"styleName\": \"string\"\n        },\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"styleName\": \"string\"\n        }\n      ],\n      \"uid\": \"uid\",\n      \"updatedDate\": \"2021-06-03T04:30:22.726000+00:00\",\n      \"vendorName\": \"Acme Corp\"\n    },\n    {\n      \"poNumber\": \"po_1\",\n      \"productLineId\": \"product_line_1\",\n      \"vendorId\": \"vendor_1\",\n      \"clientCreatedDate\": \"2023-02-10\",\n      \"clientId\": \"client_1\",\n      \"clientName\": \"Lex Corp\",\n      \"clientUpdatedDate\": \"2019-02-20T06:37:18.048000+00:00\",\n      \"commitId\": \"commit_id_1\",\n      \"commitPoSequence\": \"commit_po_sequence_1\",\n      \"createdDate\": \"2021-06-03T04:30:22.726000+00:00\",\n      \"deliveryDate\": \"2021-09-14T00:00:00+00:00\",\n      \"eventName\": \"Event 1\",\n      \"factoryId\": \"factory_1\",\n      \"factoryName\": \"Padme Corp\",\n      \"inStoreDate\": \"2021-09-19T00:00:00+00:00\",\n      \"localClientId\": \"client_1\",\n      \"localClientIds\": [\n        \"sub_org_1\"\n      ],\n      \"localFactoryId\": \"factory_1\",\n      \"localFactoryIds\": [\n        \"sub_org_1\"\n      ],\n      \"localSupplierId\": \"supplier_1\",\n      \"localSupplierIds\": [\n        \"sub_org_1\"\n      ],\n      \"opoNumber\": \"opo_1\",\n      \"poSource\": \"domestic\",\n      \"poStatus\": \"canceled\",\n      \"poType\": \"po_type_1\",\n      \"productLineName\": \"Apparel\",\n      \"shareToIds\": [\n        \"sub_org_1\"\n      ],\n      \"shareToLocalIds\": [\n        \"sub_org_1\"\n      ],\n      \"shipEndDate\": \"2021-09-19T00:00:00+00:00\",\n      \"styles\": [\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"styleName\": \"string\"\n        },\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"styleName\": \"string\"\n        }\n      ],\n      \"uid\": \"uid\",\n      \"updatedDate\": \"2021-06-03T04:30:22.726000+00:00\",\n      \"vendorName\": \"Acme Corp\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0eefb502-10bd-4ba7-b833-b747dd398ca6",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "po_number",
+                      "value": "PO_Number"
+                    },
+                    {
+                      "key": "opo_number",
+                      "value": "OPO_123"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "delivery_date_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "delivery_date_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47cebcc6-41d6-41a1-9a6e-1c3a0376dc1b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "po_number",
+                      "value": "PO_Number"
+                    },
+                    {
+                      "key": "opo_number",
+                      "value": "OPO_123"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "delivery_date_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "delivery_date_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da5d57c0-1370-4ab1-b4e5-f4c1c5394380",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "po_number",
+                      "value": "PO_Number"
+                    },
+                    {
+                      "key": "opo_number",
+                      "value": "OPO_123"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "delivery_date_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "delivery_date_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4685a15f-367d-4f71-9ee2-664f5836b26c",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "po_number",
+                      "value": "PO_Number"
+                    },
+                    {
+                      "key": "opo_number",
+                      "value": "OPO_123"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "delivery_date_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "delivery_date_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2706f7bd-547f-4aae-af63-a0bea31d3a53",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "po_number",
+                      "value": "PO_Number"
+                    },
+                    {
+                      "key": "opo_number",
+                      "value": "OPO_123"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "delivery_date_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "delivery_date_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd91bc89-5064-4f90-8e51-810bf2500279",
+          "name": "Create Purchase Order",
+          "request": {
+            "name": "Create Purchase Order",
+            "description": {
+              "content": "Create Purchase Order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "purchase-orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"poNumber\": \"<string>\",\n  \"productLineId\": \"<string>\",\n  \"styles\": [\n    {\n      \"productCategoryId\": \"<string>\",\n      \"styleId\": \"<string>\",\n      \"assortments\": [\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"solids\": [\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"<string>\",\n          \"departmentId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"<string>\"\n        },\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"<string>\",\n          \"departmentId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"<string>\"\n        }\n      ],\n      \"styleName\": \"<string>\"\n    }\n  ],\n  \"vendorId\": \"<string>\",\n  \"clientCreatedDate\": \"<date>\",\n  \"clientId\": \"<string>\",\n  \"clientUpdatedDate\": \"<dateTime>\",\n  \"commitId\": \"<string>\",\n  \"commitPoSequence\": \"<string>\",\n  \"deliveryDate\": \"<dateTime>\",\n  \"eventName\": \"<string>\",\n  \"factoryId\": \"<string>\",\n  \"inStoreDate\": \"<dateTime>\",\n  \"opoNumber\": \"<string>\",\n  \"poSource\": \"<string>\",\n  \"poStatus\": \"<string>\",\n  \"poType\": \"<string>\",\n  \"shareToIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shipEndDate\": \"<dateTime>\",\n  \"uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "27e563ee-3474-479b-9f0c-d7776c16a210",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"poNumber\": \"po_1\",\n  \"productLineId\": \"product_line_1\",\n  \"styles\": [\n    {\n      \"productCategoryId\": \"product_category_1\",\n      \"styleId\": \"style_1\",\n      \"assortments\": [\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"solids\": [\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        },\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        }\n      ],\n      \"styleName\": \"<string>\"\n    }\n  ],\n  \"vendorId\": \"vendor_1\",\n  \"clientCreatedDate\": \"2023-02-10\",\n  \"clientId\": \"client_1\",\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"commitId\": \"commit_id_1\",\n  \"commitPoSequence\": \"commit_po_sequence_1\",\n  \"deliveryDate\": \"2021-05-23T00:00:00Z\",\n  \"eventName\": \"Event 1\",\n  \"factoryId\": \"factory_1\",\n  \"inStoreDate\": \"2021-06-01T00:00:00Z\",\n  \"opoNumber\": \"opo_1\",\n  \"poSource\": \"domestic\",\n  \"poStatus\": \"canceled\",\n  \"poType\": \"po_type_1\",\n  \"shareToIds\": [\n    \"sub_org_1\"\n  ],\n  \"shipEndDate\": \"2021-05-30T00:00:00Z\",\n  \"uid\": \"abc-def-123-456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"poNumber\": \"po_1\",\n    \"productLineId\": \"product_line_1\",\n    \"vendorId\": \"vendor_1\",\n    \"clientCreatedDate\": \"2023-02-10\",\n    \"clientId\": \"client_1\",\n    \"clientName\": \"Lex Corp\",\n    \"clientUpdatedDate\": \"2019-02-20T06:37:18.048000+00:00\",\n    \"commitId\": \"commit_id_1\",\n    \"commitPoSequence\": \"commit_po_sequence_1\",\n    \"createdDate\": \"2021-06-03T04:30:22.726000+00:00\",\n    \"deliveryDate\": \"2021-09-14T00:00:00+00:00\",\n    \"eventName\": \"Event 1\",\n    \"factoryId\": \"factory_1\",\n    \"factoryName\": \"Padme Corp\",\n    \"inStoreDate\": \"2021-09-19T00:00:00+00:00\",\n    \"localClientId\": \"client_1\",\n    \"localClientIds\": [\n      \"sub_org_1\"\n    ],\n    \"localFactoryId\": \"factory_1\",\n    \"localFactoryIds\": [\n      \"sub_org_1\"\n    ],\n    \"localSupplierId\": \"supplier_1\",\n    \"localSupplierIds\": [\n      \"sub_org_1\"\n    ],\n    \"opoNumber\": \"opo_1\",\n    \"poSource\": \"domestic\",\n    \"poStatus\": \"canceled\",\n    \"poType\": \"po_type_1\",\n    \"productLineName\": \"Apparel\",\n    \"shareToIds\": [\n      \"sub_org_1\"\n    ],\n    \"shareToLocalIds\": [\n      \"sub_org_1\"\n    ],\n    \"shipEndDate\": \"2021-09-19T00:00:00+00:00\",\n    \"styles\": [\n      {\n        \"productCategoryId\": \"product_category_1\",\n        \"styleId\": \"style_1\",\n        \"assortments\": [\n          {\n            \"assortmentId\": \"<string>\",\n            \"cartonQuantity\": \"<integer>\",\n            \"items\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"assortmentId\": \"<string>\",\n            \"cartonQuantity\": \"<integer>\",\n            \"items\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"productCategoryName\": \"string\",\n        \"solids\": [\n          {\n            \"color\": \"<string>\",\n            \"itemId\": \"<string>\",\n            \"quantity\": \"<integer>\",\n            \"size\": \"<string>\",\n            \"brandId\": \"brand_1\",\n            \"brandName\": \"string\",\n            \"cartonQuantity\": \"<integer>\",\n            \"casePackQuantity\": \"<integer>\",\n            \"classId\": \"class_id_1\",\n            \"departmentId\": \"department_id_1\",\n            \"id\": \"<string>\",\n            \"shipmentTerm\": \"shipment_term_1\"\n          },\n          {\n            \"color\": \"<string>\",\n            \"itemId\": \"<string>\",\n            \"quantity\": \"<integer>\",\n            \"size\": \"<string>\",\n            \"brandId\": \"brand_1\",\n            \"brandName\": \"string\",\n            \"cartonQuantity\": \"<integer>\",\n            \"casePackQuantity\": \"<integer>\",\n            \"classId\": \"class_id_1\",\n            \"departmentId\": \"department_id_1\",\n            \"id\": \"<string>\",\n            \"shipmentTerm\": \"shipment_term_1\"\n          }\n        ],\n        \"styleName\": \"string\"\n      },\n      {\n        \"productCategoryId\": \"product_category_1\",\n        \"styleId\": \"style_1\",\n        \"assortments\": [\n          {\n            \"assortmentId\": \"<string>\",\n            \"cartonQuantity\": \"<integer>\",\n            \"items\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"assortmentId\": \"<string>\",\n            \"cartonQuantity\": \"<integer>\",\n            \"items\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"productCategoryName\": \"string\",\n        \"solids\": [\n          {\n            \"color\": \"<string>\",\n            \"itemId\": \"<string>\",\n            \"quantity\": \"<integer>\",\n            \"size\": \"<string>\",\n            \"brandId\": \"brand_1\",\n            \"brandName\": \"string\",\n            \"cartonQuantity\": \"<integer>\",\n            \"casePackQuantity\": \"<integer>\",\n            \"classId\": \"class_id_1\",\n            \"departmentId\": \"department_id_1\",\n            \"id\": \"<string>\",\n            \"shipmentTerm\": \"shipment_term_1\"\n          },\n          {\n            \"color\": \"<string>\",\n            \"itemId\": \"<string>\",\n            \"quantity\": \"<integer>\",\n            \"size\": \"<string>\",\n            \"brandId\": \"brand_1\",\n            \"brandName\": \"string\",\n            \"cartonQuantity\": \"<integer>\",\n            \"casePackQuantity\": \"<integer>\",\n            \"classId\": \"class_id_1\",\n            \"departmentId\": \"department_id_1\",\n            \"id\": \"<string>\",\n            \"shipmentTerm\": \"shipment_term_1\"\n          }\n        ],\n        \"styleName\": \"string\"\n      }\n    ],\n    \"uid\": \"uid\",\n    \"updatedDate\": \"2021-06-03T04:30:22.726000+00:00\",\n    \"vendorName\": \"Acme Corp\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c0b21ff-e01c-4201-bdad-3e1fa223b76f",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"poNumber\": \"po_1\",\n  \"productLineId\": \"product_line_1\",\n  \"styles\": [\n    {\n      \"productCategoryId\": \"product_category_1\",\n      \"styleId\": \"style_1\",\n      \"assortments\": [\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"solids\": [\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        },\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        }\n      ],\n      \"styleName\": \"<string>\"\n    }\n  ],\n  \"vendorId\": \"vendor_1\",\n  \"clientCreatedDate\": \"2023-02-10\",\n  \"clientId\": \"client_1\",\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"commitId\": \"commit_id_1\",\n  \"commitPoSequence\": \"commit_po_sequence_1\",\n  \"deliveryDate\": \"2021-05-23T00:00:00Z\",\n  \"eventName\": \"Event 1\",\n  \"factoryId\": \"factory_1\",\n  \"inStoreDate\": \"2021-06-01T00:00:00Z\",\n  \"opoNumber\": \"opo_1\",\n  \"poSource\": \"domestic\",\n  \"poStatus\": \"canceled\",\n  \"poType\": \"po_type_1\",\n  \"shareToIds\": [\n    \"sub_org_1\"\n  ],\n  \"shipEndDate\": \"2021-05-30T00:00:00Z\",\n  \"uid\": \"abc-def-123-456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "328ca23c-7e48-430a-ad9c-c5a993b0081e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"poNumber\": \"po_1\",\n  \"productLineId\": \"product_line_1\",\n  \"styles\": [\n    {\n      \"productCategoryId\": \"product_category_1\",\n      \"styleId\": \"style_1\",\n      \"assortments\": [\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"solids\": [\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        },\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        }\n      ],\n      \"styleName\": \"<string>\"\n    }\n  ],\n  \"vendorId\": \"vendor_1\",\n  \"clientCreatedDate\": \"2023-02-10\",\n  \"clientId\": \"client_1\",\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"commitId\": \"commit_id_1\",\n  \"commitPoSequence\": \"commit_po_sequence_1\",\n  \"deliveryDate\": \"2021-05-23T00:00:00Z\",\n  \"eventName\": \"Event 1\",\n  \"factoryId\": \"factory_1\",\n  \"inStoreDate\": \"2021-06-01T00:00:00Z\",\n  \"opoNumber\": \"opo_1\",\n  \"poSource\": \"domestic\",\n  \"poStatus\": \"canceled\",\n  \"poType\": \"po_type_1\",\n  \"shareToIds\": [\n    \"sub_org_1\"\n  ],\n  \"shipEndDate\": \"2021-05-30T00:00:00Z\",\n  \"uid\": \"abc-def-123-456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a14e6c17-6ff0-4af2-a937-c489c4e20fec",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"poNumber\": \"po_1\",\n  \"productLineId\": \"product_line_1\",\n  \"styles\": [\n    {\n      \"productCategoryId\": \"product_category_1\",\n      \"styleId\": \"style_1\",\n      \"assortments\": [\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"solids\": [\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        },\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        }\n      ],\n      \"styleName\": \"<string>\"\n    }\n  ],\n  \"vendorId\": \"vendor_1\",\n  \"clientCreatedDate\": \"2023-02-10\",\n  \"clientId\": \"client_1\",\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"commitId\": \"commit_id_1\",\n  \"commitPoSequence\": \"commit_po_sequence_1\",\n  \"deliveryDate\": \"2021-05-23T00:00:00Z\",\n  \"eventName\": \"Event 1\",\n  \"factoryId\": \"factory_1\",\n  \"inStoreDate\": \"2021-06-01T00:00:00Z\",\n  \"opoNumber\": \"opo_1\",\n  \"poSource\": \"domestic\",\n  \"poStatus\": \"canceled\",\n  \"poType\": \"po_type_1\",\n  \"shareToIds\": [\n    \"sub_org_1\"\n  ],\n  \"shipEndDate\": \"2021-05-30T00:00:00Z\",\n  \"uid\": \"abc-def-123-456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9206a742-d93a-43ca-b8b3-5c4e57d30a51",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"poNumber\": \"po_1\",\n  \"productLineId\": \"product_line_1\",\n  \"styles\": [\n    {\n      \"productCategoryId\": \"product_category_1\",\n      \"styleId\": \"style_1\",\n      \"assortments\": [\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"solids\": [\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        },\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        }\n      ],\n      \"styleName\": \"<string>\"\n    }\n  ],\n  \"vendorId\": \"vendor_1\",\n  \"clientCreatedDate\": \"2023-02-10\",\n  \"clientId\": \"client_1\",\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"commitId\": \"commit_id_1\",\n  \"commitPoSequence\": \"commit_po_sequence_1\",\n  \"deliveryDate\": \"2021-05-23T00:00:00Z\",\n  \"eventName\": \"Event 1\",\n  \"factoryId\": \"factory_1\",\n  \"inStoreDate\": \"2021-06-01T00:00:00Z\",\n  \"opoNumber\": \"opo_1\",\n  \"poSource\": \"domestic\",\n  \"poStatus\": \"canceled\",\n  \"poType\": \"po_type_1\",\n  \"shareToIds\": [\n    \"sub_org_1\"\n  ],\n  \"shipEndDate\": \"2021-05-30T00:00:00Z\",\n  \"uid\": \"abc-def-123-456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58052e21-add0-4e69-8496-48c0a1ee2b86",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"poNumber\": \"po_1\",\n  \"productLineId\": \"product_line_1\",\n  \"styles\": [\n    {\n      \"productCategoryId\": \"product_category_1\",\n      \"styleId\": \"style_1\",\n      \"assortments\": [\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"solids\": [\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        },\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        }\n      ],\n      \"styleName\": \"<string>\"\n    }\n  ],\n  \"vendorId\": \"vendor_1\",\n  \"clientCreatedDate\": \"2023-02-10\",\n  \"clientId\": \"client_1\",\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"commitId\": \"commit_id_1\",\n  \"commitPoSequence\": \"commit_po_sequence_1\",\n  \"deliveryDate\": \"2021-05-23T00:00:00Z\",\n  \"eventName\": \"Event 1\",\n  \"factoryId\": \"factory_1\",\n  \"inStoreDate\": \"2021-06-01T00:00:00Z\",\n  \"opoNumber\": \"opo_1\",\n  \"poSource\": \"domestic\",\n  \"poStatus\": \"canceled\",\n  \"poType\": \"po_type_1\",\n  \"shareToIds\": [\n    \"sub_org_1\"\n  ],\n  \"shipEndDate\": \"2021-05-30T00:00:00Z\",\n  \"uid\": \"abc-def-123-456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f804103-1ba9-4e8c-b98b-4a838b3bf624",
+          "name": "Delete Purchase Order",
+          "request": {
+            "name": "Delete Purchase Order",
+            "description": {
+              "content": "Delete Purchase Order ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "purchase-orders",
+                ":po_number"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "po_number",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07fdd98d-583f-4d2d-8227-fcc06409cad7",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2523e64e-a74f-4764-ac7d-8277fa594355",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6813583d-a321-4af1-ae69-7187388a5c3f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76cb2609-25c2-4e9a-a4d3-a1604f750c08",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17ae7eec-8c9f-4c32-99a4-f62d602d0355",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a6bc077-d8f5-4b43-a6ba-d64c676f800f",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dbd7c6d9-4e50-468f-a0a7-cd342e002253",
+          "name": "Get Purchase Order",
+          "request": {
+            "name": "Get Purchase Order",
+            "description": {
+              "content": "Get Purchase Order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "purchase-orders",
+                ":po_number"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "po_number",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be5e46d4-82a8-4713-8523-97f40b90c8b9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"poNumber\": \"po_1\",\n    \"productLineId\": \"product_line_1\",\n    \"vendorId\": \"vendor_1\",\n    \"clientCreatedDate\": \"2023-02-10\",\n    \"clientId\": \"client_1\",\n    \"clientName\": \"Lex Corp\",\n    \"clientUpdatedDate\": \"2019-02-20T06:37:18.048000+00:00\",\n    \"commitId\": \"commit_id_1\",\n    \"commitPoSequence\": \"commit_po_sequence_1\",\n    \"createdDate\": \"2021-06-03T04:30:22.726000+00:00\",\n    \"deliveryDate\": \"2021-09-14T00:00:00+00:00\",\n    \"eventName\": \"Event 1\",\n    \"factoryId\": \"factory_1\",\n    \"factoryName\": \"Padme Corp\",\n    \"inStoreDate\": \"2021-09-19T00:00:00+00:00\",\n    \"localClientId\": \"client_1\",\n    \"localClientIds\": [\n      \"sub_org_1\"\n    ],\n    \"localFactoryId\": \"factory_1\",\n    \"localFactoryIds\": [\n      \"sub_org_1\"\n    ],\n    \"localSupplierId\": \"supplier_1\",\n    \"localSupplierIds\": [\n      \"sub_org_1\"\n    ],\n    \"opoNumber\": \"opo_1\",\n    \"poSource\": \"domestic\",\n    \"poStatus\": \"canceled\",\n    \"poType\": \"po_type_1\",\n    \"productLineName\": \"Apparel\",\n    \"shareToIds\": [\n      \"sub_org_1\"\n    ],\n    \"shareToLocalIds\": [\n      \"sub_org_1\"\n    ],\n    \"shipEndDate\": \"2021-09-19T00:00:00+00:00\",\n    \"styles\": [\n      {\n        \"productCategoryId\": \"product_category_1\",\n        \"styleId\": \"style_1\",\n        \"assortments\": [\n          {\n            \"assortmentId\": \"<string>\",\n            \"cartonQuantity\": \"<integer>\",\n            \"items\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"assortmentId\": \"<string>\",\n            \"cartonQuantity\": \"<integer>\",\n            \"items\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"productCategoryName\": \"string\",\n        \"solids\": [\n          {\n            \"color\": \"<string>\",\n            \"itemId\": \"<string>\",\n            \"quantity\": \"<integer>\",\n            \"size\": \"<string>\",\n            \"brandId\": \"brand_1\",\n            \"brandName\": \"string\",\n            \"cartonQuantity\": \"<integer>\",\n            \"casePackQuantity\": \"<integer>\",\n            \"classId\": \"class_id_1\",\n            \"departmentId\": \"department_id_1\",\n            \"id\": \"<string>\",\n            \"shipmentTerm\": \"shipment_term_1\"\n          },\n          {\n            \"color\": \"<string>\",\n            \"itemId\": \"<string>\",\n            \"quantity\": \"<integer>\",\n            \"size\": \"<string>\",\n            \"brandId\": \"brand_1\",\n            \"brandName\": \"string\",\n            \"cartonQuantity\": \"<integer>\",\n            \"casePackQuantity\": \"<integer>\",\n            \"classId\": \"class_id_1\",\n            \"departmentId\": \"department_id_1\",\n            \"id\": \"<string>\",\n            \"shipmentTerm\": \"shipment_term_1\"\n          }\n        ],\n        \"styleName\": \"string\"\n      },\n      {\n        \"productCategoryId\": \"product_category_1\",\n        \"styleId\": \"style_1\",\n        \"assortments\": [\n          {\n            \"assortmentId\": \"<string>\",\n            \"cartonQuantity\": \"<integer>\",\n            \"items\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"assortmentId\": \"<string>\",\n            \"cartonQuantity\": \"<integer>\",\n            \"items\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"productCategoryName\": \"string\",\n        \"solids\": [\n          {\n            \"color\": \"<string>\",\n            \"itemId\": \"<string>\",\n            \"quantity\": \"<integer>\",\n            \"size\": \"<string>\",\n            \"brandId\": \"brand_1\",\n            \"brandName\": \"string\",\n            \"cartonQuantity\": \"<integer>\",\n            \"casePackQuantity\": \"<integer>\",\n            \"classId\": \"class_id_1\",\n            \"departmentId\": \"department_id_1\",\n            \"id\": \"<string>\",\n            \"shipmentTerm\": \"shipment_term_1\"\n          },\n          {\n            \"color\": \"<string>\",\n            \"itemId\": \"<string>\",\n            \"quantity\": \"<integer>\",\n            \"size\": \"<string>\",\n            \"brandId\": \"brand_1\",\n            \"brandName\": \"string\",\n            \"cartonQuantity\": \"<integer>\",\n            \"casePackQuantity\": \"<integer>\",\n            \"classId\": \"class_id_1\",\n            \"departmentId\": \"department_id_1\",\n            \"id\": \"<string>\",\n            \"shipmentTerm\": \"shipment_term_1\"\n          }\n        ],\n        \"styleName\": \"string\"\n      }\n    ],\n    \"uid\": \"uid\",\n    \"updatedDate\": \"2021-06-03T04:30:22.726000+00:00\",\n    \"vendorName\": \"Acme Corp\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8cfd4d2-7984-4bbf-9cb1-86cca75e5071",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df9ad169-2370-4ead-b5eb-5af906ac1472",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52849e1c-59e4-4542-ac24-6b5654a9e0a5",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "befa502b-3227-42df-8d83-7082dc16bd58",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "960c32f6-0f37-4d64-bd12-c02900edcce1",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c453c9f-b2dd-4514-a009-cbd6195603e4",
+          "name": "Update Purchase Order",
+          "request": {
+            "name": "Update Purchase Order",
+            "description": {
+              "content": "Update Purchase Order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "purchase-orders",
+                ":po_number"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "po_number",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"poNumber\": \"<string>\",\n  \"productLineId\": \"<string>\",\n  \"styles\": [\n    {\n      \"productCategoryId\": \"<string>\",\n      \"styleId\": \"<string>\",\n      \"assortments\": [\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"solids\": [\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"<string>\",\n          \"departmentId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"<string>\"\n        },\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"<string>\",\n          \"departmentId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"<string>\"\n        }\n      ],\n      \"styleName\": \"<string>\"\n    }\n  ],\n  \"vendorId\": \"<string>\",\n  \"clientCreatedDate\": \"<date>\",\n  \"clientId\": \"<string>\",\n  \"clientUpdatedDate\": \"<dateTime>\",\n  \"commitId\": \"<string>\",\n  \"commitPoSequence\": \"<string>\",\n  \"deliveryDate\": \"<dateTime>\",\n  \"eventName\": \"<string>\",\n  \"factoryId\": \"<string>\",\n  \"inStoreDate\": \"<dateTime>\",\n  \"opoNumber\": \"<string>\",\n  \"poSource\": \"<string>\",\n  \"poStatus\": \"<string>\",\n  \"poType\": \"<string>\",\n  \"shareToIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"shipEndDate\": \"<dateTime>\",\n  \"uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "901daee8-7c77-4bac-93f7-3b071b2b7493",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"poNumber\": \"po_1\",\n  \"productLineId\": \"product_line_1\",\n  \"styles\": [\n    {\n      \"productCategoryId\": \"product_category_1\",\n      \"styleId\": \"style_1\",\n      \"assortments\": [\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"solids\": [\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        },\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        }\n      ],\n      \"styleName\": \"<string>\"\n    }\n  ],\n  \"vendorId\": \"vendor_1\",\n  \"clientCreatedDate\": \"2023-02-10\",\n  \"clientId\": \"client_1\",\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"commitId\": \"commit_id_1\",\n  \"commitPoSequence\": \"commit_po_sequence_1\",\n  \"deliveryDate\": \"2021-05-23T00:00:00Z\",\n  \"eventName\": \"Event 1\",\n  \"factoryId\": \"factory_1\",\n  \"inStoreDate\": \"2021-06-01T00:00:00Z\",\n  \"opoNumber\": \"opo_1\",\n  \"poSource\": \"domestic\",\n  \"poStatus\": \"canceled\",\n  \"poType\": \"po_type_1\",\n  \"shareToIds\": [\n    \"sub_org_1\"\n  ],\n  \"shipEndDate\": \"2021-05-30T00:00:00Z\",\n  \"uid\": \"abc-def-123-456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"poNumber\": \"po_1\",\n    \"productLineId\": \"product_line_1\",\n    \"vendorId\": \"vendor_1\",\n    \"clientCreatedDate\": \"2023-02-10\",\n    \"clientId\": \"client_1\",\n    \"clientName\": \"Lex Corp\",\n    \"clientUpdatedDate\": \"2019-02-20T06:37:18.048000+00:00\",\n    \"commitId\": \"commit_id_1\",\n    \"commitPoSequence\": \"commit_po_sequence_1\",\n    \"createdDate\": \"2021-06-03T04:30:22.726000+00:00\",\n    \"deliveryDate\": \"2021-09-14T00:00:00+00:00\",\n    \"eventName\": \"Event 1\",\n    \"factoryId\": \"factory_1\",\n    \"factoryName\": \"Padme Corp\",\n    \"inStoreDate\": \"2021-09-19T00:00:00+00:00\",\n    \"localClientId\": \"client_1\",\n    \"localClientIds\": [\n      \"sub_org_1\"\n    ],\n    \"localFactoryId\": \"factory_1\",\n    \"localFactoryIds\": [\n      \"sub_org_1\"\n    ],\n    \"localSupplierId\": \"supplier_1\",\n    \"localSupplierIds\": [\n      \"sub_org_1\"\n    ],\n    \"opoNumber\": \"opo_1\",\n    \"poSource\": \"domestic\",\n    \"poStatus\": \"canceled\",\n    \"poType\": \"po_type_1\",\n    \"productLineName\": \"Apparel\",\n    \"shareToIds\": [\n      \"sub_org_1\"\n    ],\n    \"shareToLocalIds\": [\n      \"sub_org_1\"\n    ],\n    \"shipEndDate\": \"2021-09-19T00:00:00+00:00\",\n    \"styles\": [\n      {\n        \"productCategoryId\": \"product_category_1\",\n        \"styleId\": \"style_1\",\n        \"assortments\": [\n          {\n            \"assortmentId\": \"<string>\",\n            \"cartonQuantity\": \"<integer>\",\n            \"items\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"assortmentId\": \"<string>\",\n            \"cartonQuantity\": \"<integer>\",\n            \"items\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"productCategoryName\": \"string\",\n        \"solids\": [\n          {\n            \"color\": \"<string>\",\n            \"itemId\": \"<string>\",\n            \"quantity\": \"<integer>\",\n            \"size\": \"<string>\",\n            \"brandId\": \"brand_1\",\n            \"brandName\": \"string\",\n            \"cartonQuantity\": \"<integer>\",\n            \"casePackQuantity\": \"<integer>\",\n            \"classId\": \"class_id_1\",\n            \"departmentId\": \"department_id_1\",\n            \"id\": \"<string>\",\n            \"shipmentTerm\": \"shipment_term_1\"\n          },\n          {\n            \"color\": \"<string>\",\n            \"itemId\": \"<string>\",\n            \"quantity\": \"<integer>\",\n            \"size\": \"<string>\",\n            \"brandId\": \"brand_1\",\n            \"brandName\": \"string\",\n            \"cartonQuantity\": \"<integer>\",\n            \"casePackQuantity\": \"<integer>\",\n            \"classId\": \"class_id_1\",\n            \"departmentId\": \"department_id_1\",\n            \"id\": \"<string>\",\n            \"shipmentTerm\": \"shipment_term_1\"\n          }\n        ],\n        \"styleName\": \"string\"\n      },\n      {\n        \"productCategoryId\": \"product_category_1\",\n        \"styleId\": \"style_1\",\n        \"assortments\": [\n          {\n            \"assortmentId\": \"<string>\",\n            \"cartonQuantity\": \"<integer>\",\n            \"items\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"assortmentId\": \"<string>\",\n            \"cartonQuantity\": \"<integer>\",\n            \"items\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"productCategoryName\": \"string\",\n        \"solids\": [\n          {\n            \"color\": \"<string>\",\n            \"itemId\": \"<string>\",\n            \"quantity\": \"<integer>\",\n            \"size\": \"<string>\",\n            \"brandId\": \"brand_1\",\n            \"brandName\": \"string\",\n            \"cartonQuantity\": \"<integer>\",\n            \"casePackQuantity\": \"<integer>\",\n            \"classId\": \"class_id_1\",\n            \"departmentId\": \"department_id_1\",\n            \"id\": \"<string>\",\n            \"shipmentTerm\": \"shipment_term_1\"\n          },\n          {\n            \"color\": \"<string>\",\n            \"itemId\": \"<string>\",\n            \"quantity\": \"<integer>\",\n            \"size\": \"<string>\",\n            \"brandId\": \"brand_1\",\n            \"brandName\": \"string\",\n            \"cartonQuantity\": \"<integer>\",\n            \"casePackQuantity\": \"<integer>\",\n            \"classId\": \"class_id_1\",\n            \"departmentId\": \"department_id_1\",\n            \"id\": \"<string>\",\n            \"shipmentTerm\": \"shipment_term_1\"\n          }\n        ],\n        \"styleName\": \"string\"\n      }\n    ],\n    \"uid\": \"uid\",\n    \"updatedDate\": \"2021-06-03T04:30:22.726000+00:00\",\n    \"vendorName\": \"Acme Corp\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5071d58d-83d0-429f-bf53-05afce92203d",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"poNumber\": \"po_1\",\n  \"productLineId\": \"product_line_1\",\n  \"styles\": [\n    {\n      \"productCategoryId\": \"product_category_1\",\n      \"styleId\": \"style_1\",\n      \"assortments\": [\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"solids\": [\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        },\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        }\n      ],\n      \"styleName\": \"<string>\"\n    }\n  ],\n  \"vendorId\": \"vendor_1\",\n  \"clientCreatedDate\": \"2023-02-10\",\n  \"clientId\": \"client_1\",\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"commitId\": \"commit_id_1\",\n  \"commitPoSequence\": \"commit_po_sequence_1\",\n  \"deliveryDate\": \"2021-05-23T00:00:00Z\",\n  \"eventName\": \"Event 1\",\n  \"factoryId\": \"factory_1\",\n  \"inStoreDate\": \"2021-06-01T00:00:00Z\",\n  \"opoNumber\": \"opo_1\",\n  \"poSource\": \"domestic\",\n  \"poStatus\": \"canceled\",\n  \"poType\": \"po_type_1\",\n  \"shareToIds\": [\n    \"sub_org_1\"\n  ],\n  \"shipEndDate\": \"2021-05-30T00:00:00Z\",\n  \"uid\": \"abc-def-123-456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6b722e8-c166-44a4-9da9-bbabcd818a6c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"poNumber\": \"po_1\",\n  \"productLineId\": \"product_line_1\",\n  \"styles\": [\n    {\n      \"productCategoryId\": \"product_category_1\",\n      \"styleId\": \"style_1\",\n      \"assortments\": [\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"solids\": [\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        },\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        }\n      ],\n      \"styleName\": \"<string>\"\n    }\n  ],\n  \"vendorId\": \"vendor_1\",\n  \"clientCreatedDate\": \"2023-02-10\",\n  \"clientId\": \"client_1\",\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"commitId\": \"commit_id_1\",\n  \"commitPoSequence\": \"commit_po_sequence_1\",\n  \"deliveryDate\": \"2021-05-23T00:00:00Z\",\n  \"eventName\": \"Event 1\",\n  \"factoryId\": \"factory_1\",\n  \"inStoreDate\": \"2021-06-01T00:00:00Z\",\n  \"opoNumber\": \"opo_1\",\n  \"poSource\": \"domestic\",\n  \"poStatus\": \"canceled\",\n  \"poType\": \"po_type_1\",\n  \"shareToIds\": [\n    \"sub_org_1\"\n  ],\n  \"shipEndDate\": \"2021-05-30T00:00:00Z\",\n  \"uid\": \"abc-def-123-456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e04606c9-35a5-4ca1-ba45-a3a1c3fa1140",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"poNumber\": \"po_1\",\n  \"productLineId\": \"product_line_1\",\n  \"styles\": [\n    {\n      \"productCategoryId\": \"product_category_1\",\n      \"styleId\": \"style_1\",\n      \"assortments\": [\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"solids\": [\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        },\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        }\n      ],\n      \"styleName\": \"<string>\"\n    }\n  ],\n  \"vendorId\": \"vendor_1\",\n  \"clientCreatedDate\": \"2023-02-10\",\n  \"clientId\": \"client_1\",\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"commitId\": \"commit_id_1\",\n  \"commitPoSequence\": \"commit_po_sequence_1\",\n  \"deliveryDate\": \"2021-05-23T00:00:00Z\",\n  \"eventName\": \"Event 1\",\n  \"factoryId\": \"factory_1\",\n  \"inStoreDate\": \"2021-06-01T00:00:00Z\",\n  \"opoNumber\": \"opo_1\",\n  \"poSource\": \"domestic\",\n  \"poStatus\": \"canceled\",\n  \"poType\": \"po_type_1\",\n  \"shareToIds\": [\n    \"sub_org_1\"\n  ],\n  \"shipEndDate\": \"2021-05-30T00:00:00Z\",\n  \"uid\": \"abc-def-123-456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fda56f18-3a7a-425d-956a-5620d39e5a4c",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"poNumber\": \"po_1\",\n  \"productLineId\": \"product_line_1\",\n  \"styles\": [\n    {\n      \"productCategoryId\": \"product_category_1\",\n      \"styleId\": \"style_1\",\n      \"assortments\": [\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"solids\": [\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        },\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        }\n      ],\n      \"styleName\": \"<string>\"\n    }\n  ],\n  \"vendorId\": \"vendor_1\",\n  \"clientCreatedDate\": \"2023-02-10\",\n  \"clientId\": \"client_1\",\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"commitId\": \"commit_id_1\",\n  \"commitPoSequence\": \"commit_po_sequence_1\",\n  \"deliveryDate\": \"2021-05-23T00:00:00Z\",\n  \"eventName\": \"Event 1\",\n  \"factoryId\": \"factory_1\",\n  \"inStoreDate\": \"2021-06-01T00:00:00Z\",\n  \"opoNumber\": \"opo_1\",\n  \"poSource\": \"domestic\",\n  \"poStatus\": \"canceled\",\n  \"poType\": \"po_type_1\",\n  \"shareToIds\": [\n    \"sub_org_1\"\n  ],\n  \"shipEndDate\": \"2021-05-30T00:00:00Z\",\n  \"uid\": \"abc-def-123-456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66a2dd7d-e90e-4fac-9270-5296ea6f528f",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "purchase-orders",
+                    ":po_number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "po_number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"poNumber\": \"po_1\",\n  \"productLineId\": \"product_line_1\",\n  \"styles\": [\n    {\n      \"productCategoryId\": \"product_category_1\",\n      \"styleId\": \"style_1\",\n      \"assortments\": [\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"assortmentId\": \"<string>\",\n          \"cartonQuantity\": \"<integer>\",\n          \"items\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"configuration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"solids\": [\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        },\n        {\n          \"color\": \"<string>\",\n          \"itemId\": \"<string>\",\n          \"quantity\": \"<integer>\",\n          \"size\": \"<string>\",\n          \"brandId\": \"brand_1\",\n          \"cartonQuantity\": \"<integer>\",\n          \"casePackQuantity\": \"<integer>\",\n          \"classId\": \"class_id_1\",\n          \"departmentId\": \"department_id_1\",\n          \"id\": \"<string>\",\n          \"shipmentTerm\": \"shipment_term_1\"\n        }\n      ],\n      \"styleName\": \"<string>\"\n    }\n  ],\n  \"vendorId\": \"vendor_1\",\n  \"clientCreatedDate\": \"2023-02-10\",\n  \"clientId\": \"client_1\",\n  \"clientUpdatedDate\": \"2019-02-20T06:37:18Z\",\n  \"commitId\": \"commit_id_1\",\n  \"commitPoSequence\": \"commit_po_sequence_1\",\n  \"deliveryDate\": \"2021-05-23T00:00:00Z\",\n  \"eventName\": \"Event 1\",\n  \"factoryId\": \"factory_1\",\n  \"inStoreDate\": \"2021-06-01T00:00:00Z\",\n  \"opoNumber\": \"opo_1\",\n  \"poSource\": \"domestic\",\n  \"poStatus\": \"canceled\",\n  \"poType\": \"po_type_1\",\n  \"shareToIds\": [\n    \"sub_org_1\"\n  ],\n  \"shipEndDate\": \"2021-05-30T00:00:00Z\",\n  \"uid\": \"abc-def-123-456\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "977ebf0a-d591-45c6-89b1-aebda93ac06c",
+          "name": "Update/Delete Purchase Order",
+          "request": {
+            "name": "Update/Delete Purchase Order",
+            "description": {
+              "content": "Update/Delete Purchase Order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "purchase-orders",
+                ":po_number",
+                "actions",
+                ":action"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "po_number",
+                  "description": "(Required) PO number"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "action",
+                  "description": "(Required) Specify action applied for given PO. Available values: update, delete\n- action = update   # Same as PUT method\n- action = delete   # Same as DELETE method"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://files-integration.inspectorio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "58bfb124-8eda-465c-b621-168cca5e7685",
+    "name": "File Management ANALYTICS PURCHASE ORDER API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

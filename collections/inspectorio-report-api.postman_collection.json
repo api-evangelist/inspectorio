@@ -1,0 +1,1369 @@
+{
+  "item": [
+    {
+      "id": "b45ed776-bc76-4dcd-9497-4183f605c1dc",
+      "name": "REPORT",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2ad93775-6c4d-45c2-8408-369b4a7b0246",
+          "name": "List Reports",
+          "request": {
+            "name": "List Reports",
+            "description": {
+              "content": "List Reports",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "style_id",
+                  "value": "<string>",
+                  "description": "Style ID of items included in reports"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "limit number of results per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_to",
+                  "value": "<dateTime>",
+                  "description": "End date of the range when reports were created"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_to",
+                  "value": "<dateTime>",
+                  "description": "End date of the range when reports were updated"
+                },
+                {
+                  "disabled": false,
+                  "key": "system_updated_from",
+                  "value": "<dateTime>",
+                  "description": "Start date of the range when reports were updated by the system (including both client actions and actions taken by Inspectorio on behalf of the client)"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "created_date:desc",
+                  "description": "Order of reports in response by report creation date in descending or ascending"
+                },
+                {
+                  "disabled": false,
+                  "key": "capa_status",
+                  "value": "<string>",
+                  "description": "CAPA status of the report"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_from",
+                  "value": "<dateTime>",
+                  "description": "Start date of the range when reports were updated"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_from",
+                  "value": "<dateTime>",
+                  "description": "Start date of the range when reports were created"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Status of reports"
+                },
+                {
+                  "disabled": false,
+                  "key": "system_updated_to",
+                  "value": "<dateTime>",
+                  "description": "End date of the range when reports were updated by the system (including both client actions and actions taken by Inspectorio on behalf of the client)"
+                },
+                {
+                  "disabled": false,
+                  "key": "inspection_date_to",
+                  "value": "<dateTime>",
+                  "description": "End date of the range of inspection date in reports"
+                },
+                {
+                  "disabled": false,
+                  "key": "inspection_date_from",
+                  "value": "<dateTime>",
+                  "description": "Start date of the range of inspection date in reports"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1e8f722-4984-4107-96f3-203a5cadebaf",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "style_id",
+                      "value": "Style_1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "system_updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "order",
+                      "value": "created_date:desc|asc"
+                    },
+                    {
+                      "key": "capa_status",
+                      "value": "Waiting for Response"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "status",
+                      "value": "in-progress"
+                    },
+                    {
+                      "key": "system_updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "inspection_date_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "inspection_date_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limit\": 88,\n  \"offset\": 5428,\n  \"total\": 8440,\n  \"data\": [\n    {\n      \"actualInspectionDate\": \"2021-06-03T00:00:00+00:00\",\n      \"bookingType\": \"normal\",\n      \"capaStatus\": \"Waiting for Response\",\n      \"caseNumber\": \"5832DUPRO2019-00537345TESTMTTestInspectorioFactoryASOLID-ASSORTMENT2019-12-095832IS\",\n      \"client\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"123\",\n        \"localOrganizationIds\": [\n          \"123\",\n          \"ABC\"\n        ],\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"country\": \"VN\",\n      \"createdDate\": \"2021-06-03 07:18:05.372000+00:00\",\n      \"creator\": {\n        \"email\": \"string\",\n        \"id\": \"string\",\n        \"mobileNumber\": \"string\",\n        \"name\": \"string\"\n      },\n      \"executor\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"expectedDate\": \"2021-06-03 00:00:00+00:00\",\n      \"factory\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"123\",\n        \"localOrganizationIds\": [\n          \"123\",\n          \"ABC\"\n        ],\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"inspectionDate\": \"2021-06-03 08:27:20.624000+00:00\",\n      \"inspectionId\": \"123a456b-abcd-efgh-ijk1-a88aa05d7c86\",\n      \"inspectionForm\": \"FIForm\",\n      \"inspectionLocation\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"123\",\n        \"localOrganizationIds\": [\n          \"123\",\n          \"ABC\"\n        ],\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"inspectionResult\": \"fail\",\n      \"inspector\": {\n        \"email\": \"string\",\n        \"employeeId\": \"string\",\n        \"id\": \"string\",\n        \"mobileNumber\": \"string\",\n        \"name\": \"string\"\n      },\n      \"isReferenceSample\": 321,\n      \"opoNumber\": \"123-456\",\n      \"oversightOffice\": {\n        \"id\": \"111\",\n        \"name\": \"Acme Oversight Office\"\n      },\n      \"pdfUrl\": \"https://.../.../.../.../case-number_123a456b-abcd-efgh-ijk1-a88aa05d7c86.pdf\",\n      \"poNumber\": \"123-456-L001\",\n      \"productCategories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productLineId\": \"100991\",\n      \"productLineName\": \"APPAREL\",\n      \"productOrders\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productStyles\": [\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"measurements\": [\n            {\n              \"caption\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pom\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tolerance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"isPomCritical\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sizes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceLower\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceUpper\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"caption\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pom\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tolerance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"isPomCritical\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sizes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceLower\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceUpper\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"styleName\": \"string\"\n        },\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"measurements\": [\n            {\n              \"caption\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pom\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tolerance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"isPomCritical\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sizes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceLower\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceUpper\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"caption\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pom\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tolerance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"isPomCritical\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sizes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceLower\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceUpper\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"styleName\": \"string\"\n        }\n      ],\n      \"status\": \"completed\",\n      \"systemUpdatedAt\": \"2021-06-03 08:27:21.316000+00:00\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"type\": {\n        \"typeOfInspection\": \"FRI\",\n        \"typeOfInspectionName\": \"Final Random Inspection\"\n      },\n      \"updatedDate\": \"2021-06-03 08:27:21.316000+00:00\",\n      \"vendor\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"123\",\n        \"localOrganizationIds\": [\n          \"123\",\n          \"ABC\"\n        ],\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"workflowName\": \"DUPRO Apparel workflow\"\n    },\n    {\n      \"actualInspectionDate\": \"2021-06-03T00:00:00+00:00\",\n      \"bookingType\": \"normal\",\n      \"capaStatus\": \"Waiting for Response\",\n      \"caseNumber\": \"5832DUPRO2019-00537345TESTMTTestInspectorioFactoryASOLID-ASSORTMENT2019-12-095832IS\",\n      \"client\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"123\",\n        \"localOrganizationIds\": [\n          \"123\",\n          \"ABC\"\n        ],\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"country\": \"VN\",\n      \"createdDate\": \"2021-06-03 07:18:05.372000+00:00\",\n      \"creator\": {\n        \"email\": \"string\",\n        \"id\": \"string\",\n        \"mobileNumber\": \"string\",\n        \"name\": \"string\"\n      },\n      \"executor\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"expectedDate\": \"2021-06-03 00:00:00+00:00\",\n      \"factory\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"123\",\n        \"localOrganizationIds\": [\n          \"123\",\n          \"ABC\"\n        ],\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"inspectionDate\": \"2021-06-03 08:27:20.624000+00:00\",\n      \"inspectionId\": \"123a456b-abcd-efgh-ijk1-a88aa05d7c86\",\n      \"inspectionForm\": \"FIForm\",\n      \"inspectionLocation\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"123\",\n        \"localOrganizationIds\": [\n          \"123\",\n          \"ABC\"\n        ],\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"inspectionResult\": \"fail\",\n      \"inspector\": {\n        \"email\": \"string\",\n        \"employeeId\": \"string\",\n        \"id\": \"string\",\n        \"mobileNumber\": \"string\",\n        \"name\": \"string\"\n      },\n      \"isReferenceSample\": 2720,\n      \"opoNumber\": \"123-456\",\n      \"oversightOffice\": {\n        \"id\": \"111\",\n        \"name\": \"Acme Oversight Office\"\n      },\n      \"pdfUrl\": \"https://.../.../.../.../case-number_123a456b-abcd-efgh-ijk1-a88aa05d7c86.pdf\",\n      \"poNumber\": \"123-456-L001\",\n      \"productCategories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productLineId\": \"100991\",\n      \"productLineName\": \"APPAREL\",\n      \"productOrders\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productStyles\": [\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"measurements\": [\n            {\n              \"caption\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pom\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tolerance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"isPomCritical\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sizes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceLower\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceUpper\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"caption\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pom\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tolerance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"isPomCritical\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sizes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceLower\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceUpper\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"styleName\": \"string\"\n        },\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"assortmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"items\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"measurements\": [\n            {\n              \"caption\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pom\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tolerance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"isPomCritical\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sizes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceLower\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceUpper\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"caption\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pom\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tolerance\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"unit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"isPomCritical\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sizes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceLower\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"toleranceUpper\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"itemId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableCartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"availableQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"brandName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"cartonQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"casePackQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"classId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"departmentId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shipmentTerm\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"styleName\": \"string\"\n        }\n      ],\n      \"status\": \"completed\",\n      \"systemUpdatedAt\": \"2021-06-03 08:27:21.316000+00:00\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"type\": {\n        \"typeOfInspection\": \"FRI\",\n        \"typeOfInspectionName\": \"Final Random Inspection\"\n      },\n      \"updatedDate\": \"2021-06-03 08:27:21.316000+00:00\",\n      \"vendor\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"123\",\n        \"localOrganizationIds\": [\n          \"123\",\n          \"ABC\"\n        ],\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"workflowName\": \"DUPRO Apparel workflow\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d39dc1fa-97fb-4656-86ed-41d51d98841e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "style_id",
+                      "value": "Style_1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "system_updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "order",
+                      "value": "created_date:desc|asc"
+                    },
+                    {
+                      "key": "capa_status",
+                      "value": "Waiting for Response"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "status",
+                      "value": "in-progress"
+                    },
+                    {
+                      "key": "system_updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "inspection_date_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "inspection_date_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e11fd74-8542-4beb-ba8e-4d1e04b65c0e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "style_id",
+                      "value": "Style_1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "system_updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "order",
+                      "value": "created_date:desc|asc"
+                    },
+                    {
+                      "key": "capa_status",
+                      "value": "Waiting for Response"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "status",
+                      "value": "in-progress"
+                    },
+                    {
+                      "key": "system_updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "inspection_date_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "inspection_date_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "231631ed-424f-4721-b453-5aaadb30eae7",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "style_id",
+                      "value": "Style_1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "system_updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "order",
+                      "value": "created_date:desc|asc"
+                    },
+                    {
+                      "key": "capa_status",
+                      "value": "Waiting for Response"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "status",
+                      "value": "in-progress"
+                    },
+                    {
+                      "key": "system_updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "inspection_date_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "inspection_date_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e9d34c1-e977-4fbe-ab04-9d1c5f3dc121",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "style_id",
+                      "value": "Style_1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "system_updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "order",
+                      "value": "created_date:desc|asc"
+                    },
+                    {
+                      "key": "capa_status",
+                      "value": "Waiting for Response"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "status",
+                      "value": "in-progress"
+                    },
+                    {
+                      "key": "system_updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "inspection_date_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "inspection_date_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a288442d-7b57-46ea-bf94-cd75b636528c",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "style_id",
+                      "value": "Style_1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "system_updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "order",
+                      "value": "created_date:desc|asc"
+                    },
+                    {
+                      "key": "capa_status",
+                      "value": "Waiting for Response"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "updated_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "created_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    },
+                    {
+                      "key": "status",
+                      "value": "in-progress"
+                    },
+                    {
+                      "key": "system_updated_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "inspection_date_to",
+                      "value": "2021-12-31T23:59:59Z"
+                    },
+                    {
+                      "key": "inspection_date_from",
+                      "value": "2021-01-31T00:00:00Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4062f22-045f-4c17-9e09-3185c2f74f14",
+          "name": "Get Report",
+          "request": {
+            "name": "Get Report",
+            "description": {
+              "content": "Get Report",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "reports",
+                ":report_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "report_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "417bbff2-3e32-4d80-9f2e-ce56463b43c6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"inspectionDefectList\": [\n      {\n        \"assortmentId\": \"1234\",\n        \"clarification\": \"major\",\n        \"color\": \"Blue/Pink\",\n        \"comment\": \"Comment\",\n        \"defectCategory\": \"Safety and Regulatory\",\n        \"defectCode\": \"SR002\",\n        \"defectId\": \"abcd1234-ab12-cd34-ef56-123456789012_workmanship_1\",\n        \"defectName\": \"PKG005 - Missing silica gel / box sticker / box flag\",\n        \"defectiveUnit\": \"Defective unit\",\n        \"description\": \"PKG005 - Missing silica gel / box sticker / box flag\",\n        \"group\": \"workmanship\",\n        \"id\": \"string\",\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"itemDescription\": \"Box AB1851\",\n        \"itemId\": \"02112-1851\",\n        \"organizationId\": \"200373\",\n        \"photos\": [\n          {\n            \"description\": \"Mismatch color\",\n            \"rotateAngle\": \"0\",\n            \"source\": \"https://.../image1.jpg\"\n          },\n          {\n            \"description\": \"Mismatch color\",\n            \"rotateAngle\": \"0\",\n            \"source\": \"https://.../image1.jpg\"\n          }\n        ],\n        \"productCategory\": [\n          \"string\",\n          \"string\"\n        ],\n        \"size\": \"XXL\",\n        \"styleId\": \"123456\",\n        \"totalDefects\": 5188\n      },\n      {\n        \"assortmentId\": \"1234\",\n        \"clarification\": \"major\",\n        \"color\": \"Blue/Pink\",\n        \"comment\": \"Comment\",\n        \"defectCategory\": \"Safety and Regulatory\",\n        \"defectCode\": \"SR002\",\n        \"defectId\": \"abcd1234-ab12-cd34-ef56-123456789012_workmanship_1\",\n        \"defectName\": \"PKG005 - Missing silica gel / box sticker / box flag\",\n        \"defectiveUnit\": \"Defective unit\",\n        \"description\": \"PKG005 - Missing silica gel / box sticker / box flag\",\n        \"group\": \"workmanship\",\n        \"id\": \"string\",\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"itemDescription\": \"Box AB1851\",\n        \"itemId\": \"02112-1851\",\n        \"organizationId\": \"200373\",\n        \"photos\": [\n          {\n            \"description\": \"Mismatch color\",\n            \"rotateAngle\": \"0\",\n            \"source\": \"https://.../image1.jpg\"\n          },\n          {\n            \"description\": \"Mismatch color\",\n            \"rotateAngle\": \"0\",\n            \"source\": \"https://.../image1.jpg\"\n          }\n        ],\n        \"productCategory\": [\n          \"string\",\n          \"string\"\n        ],\n        \"size\": \"XXL\",\n        \"styleId\": \"123456\",\n        \"totalDefects\": 7232\n      }\n    ],\n    \"inspectionEsignatures\": [\n      {\n        \"id\": 123456,\n        \"name\": \"Bob\",\n        \"signature\": \"https://example.jpg\",\n        \"title\": \"Factory Representative\"\n      },\n      {\n        \"id\": 123456,\n        \"name\": \"Bob\",\n        \"signature\": \"https://example.jpg\",\n        \"title\": \"Factory Representative\"\n      }\n    ],\n    \"inspectionGeneral\": {\n      \"actualInspectionDate\": \"2021-06-03T00:00:00+00:00\",\n      \"bookingType\": \"normal\",\n      \"capaStatus\": \"Waiting for Response\",\n      \"caseNumber\": \"5832DUPRO2019-00537345TESTMTTestInspectorioFactoryASOLID-ASSORTMENT2019-12-095832IS\",\n      \"client\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"123\",\n        \"localOrganizationIds\": [\n          \"123\",\n          \"ABC\"\n        ],\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"country\": \"VN\",\n      \"createdDate\": \"2021-06-03 07:18:05.372000+00:00\",\n      \"creator\": {\n        \"email\": \"string\",\n        \"id\": \"string\",\n        \"mobileNumber\": \"string\",\n        \"name\": \"string\"\n      },\n      \"executor\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"expectedDate\": \"2021-06-03 00:00:00+00:00\",\n      \"factory\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"123\",\n        \"localOrganizationIds\": [\n          \"123\",\n          \"ABC\"\n        ],\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"inspectionDate\": \"2021-06-03 08:27:20.624000+00:00\",\n      \"inspectionId\": \"123a456b-abcd-efgh-ijk1-a88aa05d7c86\",\n      \"inspectionForm\": \"FIForm\",\n      \"inspectionLocation\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"123\",\n        \"localOrganizationIds\": [\n          \"123\",\n          \"ABC\"\n        ],\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"inspectionResult\": \"fail\",\n      \"inspector\": {\n        \"email\": \"string\",\n        \"employeeId\": \"string\",\n        \"id\": \"string\",\n        \"mobileNumber\": \"string\",\n        \"name\": \"string\"\n      },\n      \"isReferenceSample\": 9832,\n      \"opoNumber\": \"123-456\",\n      \"oversightOffice\": {\n        \"id\": \"111\",\n        \"name\": \"Acme Oversight Office\"\n      },\n      \"pdfUrl\": \"https://.../.../.../.../case-number_123a456b-abcd-efgh-ijk1-a88aa05d7c86.pdf\",\n      \"photos\": [\n        \"string\",\n        \"string\"\n      ],\n      \"poNumber\": \"123-456-L001\",\n      \"pos\": [\n        {\n          \"poNumber\": \"PO123\"\n        },\n        {\n          \"poNumber\": \"PO123\"\n        }\n      ],\n      \"productCategories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productLineId\": \"100991\",\n      \"productLineName\": \"APPAREL\",\n      \"productOrders\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productStyles\": [\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"measurements\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"styleName\": \"string\"\n        },\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"measurements\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"styleName\": \"string\"\n        }\n      ],\n      \"status\": \"completed\",\n      \"systemUpdatedAt\": \"2021-06-03 08:27:21.316000+00:00\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"type\": {\n        \"typeOfInspection\": \"FRI\",\n        \"typeOfInspectionName\": \"Final Random Inspection\"\n      },\n      \"updatedDate\": \"2021-06-03 08:27:21.316000+00:00\",\n      \"vendor\": {\n        \"address\": \"5 Madison Avenue\",\n        \"city\": \"New York\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"123\",\n        \"localOrganizationIds\": [\n          \"123\",\n          \"ABC\"\n        ],\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"3123123\"\n      },\n      \"workflowName\": \"DUPRO Apparel workflow\"\n    },\n    \"inspectionMeasurementDimensions\": [\n      {\n        \"color\": \"Blue/Pink\",\n        \"dimensionId\": \"1a2b3c4d-1a2b-c1d2-b3b2-b76cd21e2a34__00537345__029-02-0590__XL__Blue/Pink__9999__0\",\n        \"dimensionIndex\": 9059,\n        \"id\": \"029-02-0590\",\n        \"inspectionId\": \"1a2b3c4d-1a2b-c1d2-b3b2-b76cd21e2a34\",\n        \"itemId\": \"029-02-0590\",\n        \"measurementDescription\": \"9999\",\n        \"occurrences\": 4211,\n        \"organizationId\": \"200373\",\n        \"samples\": [\n          {\n            \"name\": \"shirt_1\",\n            \"value\": 1.5\n          },\n          {\n            \"name\": \"shirt_1\",\n            \"value\": 1.5\n          }\n        ],\n        \"size\": \"XXL\",\n        \"skuIndex\": 8866,\n        \"standard\": 10.5,\n        \"styleId\": \"123456\",\n        \"tolerance\": 2.1,\n        \"toleranceLower\": 2.1,\n        \"toleranceUpper\": 2.1,\n        \"unit\": \"cm\"\n      },\n      {\n        \"color\": \"Blue/Pink\",\n        \"dimensionId\": \"1a2b3c4d-1a2b-c1d2-b3b2-b76cd21e2a34__00537345__029-02-0590__XL__Blue/Pink__9999__0\",\n        \"dimensionIndex\": 2912,\n        \"id\": \"029-02-0590\",\n        \"inspectionId\": \"1a2b3c4d-1a2b-c1d2-b3b2-b76cd21e2a34\",\n        \"itemId\": \"029-02-0590\",\n        \"measurementDescription\": \"9999\",\n        \"occurrences\": 1075,\n        \"organizationId\": \"200373\",\n        \"samples\": [\n          {\n            \"name\": \"shirt_1\",\n            \"value\": 1.5\n          },\n          {\n            \"name\": \"shirt_1\",\n            \"value\": 1.5\n          }\n        ],\n        \"size\": \"XXL\",\n        \"skuIndex\": 631,\n        \"standard\": 10.5,\n        \"styleId\": \"123456\",\n        \"tolerance\": 2.1,\n        \"toleranceLower\": 2.1,\n        \"toleranceUpper\": 2.1,\n        \"unit\": \"cm\"\n      }\n    ],\n    \"inspectionPhotos\": [\n      {\n        \"file\": {\n          \"description\": \"photo_1\",\n          \"fileType\": \"image\",\n          \"rotateAngle\": \"0\",\n          \"source\": \"https://.../.../.../1a2b3c4d-1a2b-1a2b-1a2b3c4d_eb77a158.jpg\"\n        },\n        \"groupId\": \"string\",\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"itemId\": \"02112-1851\",\n        \"label\": \"string\",\n        \"organizationId\": \"200373\",\n        \"photoId\": \"string\",\n        \"status\": \"string\",\n        \"styleId\": \"123456\",\n        \"type\": \"image\"\n      },\n      {\n        \"file\": {\n          \"description\": \"photo_1\",\n          \"fileType\": \"image\",\n          \"rotateAngle\": \"0\",\n          \"source\": \"https://.../.../.../1a2b3c4d-1a2b-1a2b-1a2b3c4d_eb77a158.jpg\"\n        },\n        \"groupId\": \"string\",\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"itemId\": \"02112-1851\",\n        \"label\": \"string\",\n        \"organizationId\": \"200373\",\n        \"photoId\": \"string\",\n        \"status\": \"string\",\n        \"styleId\": \"123456\",\n        \"type\": \"image\"\n      }\n    ],\n    \"inspectionQuestions\": [\n      {\n        \"groupId\": \"7384b63c-bc99-43f0-b1b5-600959220e19_1e601f70-3c65-4ea8-931f-4976b9c91b3a\",\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"label\": \"Do we need to pull a Green sealed sample?\",\n        \"options\": [\n          {\n            \"actions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"failResponse\": false,\n            \"id\": \"chk__97\",\n            \"selected\": false,\n            \"value\": \"YES\"\n          },\n          {\n            \"actions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"failResponse\": true,\n            \"id\": \"chk__97\",\n            \"selected\": false,\n            \"value\": \"YES\"\n          }\n        ],\n        \"organizationId\": \"null\",\n        \"questionId\": \"7384b63c-bc99-43f0-b1b5-600959220e19_5689d212-b001-4ad2-89c7-2c39654d4cc3_SyJivf3CA\",\n        \"type\": \"null\"\n      },\n      {\n        \"groupId\": \"7384b63c-bc99-43f0-b1b5-600959220e19_1e601f70-3c65-4ea8-931f-4976b9c91b3a\",\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"label\": \"Do we need to pull a Green sealed sample?\",\n        \"options\": [\n          {\n            \"actions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"failResponse\": true,\n            \"id\": \"chk__97\",\n            \"selected\": true,\n            \"value\": \"YES\"\n          },\n          {\n            \"actions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"failResponse\": false,\n            \"id\": \"chk__97\",\n            \"selected\": true,\n            \"value\": \"YES\"\n          }\n        ],\n        \"organizationId\": \"null\",\n        \"questionId\": \"7384b63c-bc99-43f0-b1b5-600959220e19_5689d212-b001-4ad2-89c7-2c39654d4cc3_SyJivf3CA\",\n        \"type\": \"null\"\n      }\n    ],\n    \"inspectionRFID\": [\n      {\n        \"barcode\": \"123456\",\n        \"code\": \"123\",\n        \"decodedCode\": \"111\",\n        \"id\": \"abc-def-123\",\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"matched\": false,\n        \"organizationId\": \"200373\",\n        \"photos\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"barcode\": \"123456\",\n        \"code\": \"123\",\n        \"decodedCode\": \"111\",\n        \"id\": \"abc-def-123\",\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"matched\": false,\n        \"organizationId\": \"200373\",\n        \"photos\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"inspectionResult\": [\n      {\n        \"groupName\": \"Check In\",\n        \"includeInReport\": true,\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"organizationId\": \"200373\",\n        \"resultId\": \"7384b63c-bc99-43f0-b1b5-600959220e19_6e451830-1d61-4a14-a5e7-03ce20704f52\",\n        \"status\": \"non-applicable\"\n      },\n      {\n        \"groupName\": \"Check In\",\n        \"includeInReport\": true,\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"organizationId\": \"200373\",\n        \"resultId\": \"7384b63c-bc99-43f0-b1b5-600959220e19_6e451830-1d61-4a14-a5e7-03ce20704f52\",\n        \"status\": \"non-applicable\"\n      }\n    ],\n    \"inspectionSampleSelection\": [\n      {\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"organizationId\": \"200373\",\n        \"sampleSelection\": 3047,\n        \"sampleSize\": 7151,\n        \"totalInspectionQuantity\": 9034\n      },\n      {\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"organizationId\": \"200373\",\n        \"sampleSelection\": 3600,\n        \"sampleSize\": 3697,\n        \"totalInspectionQuantity\": 9364\n      }\n    ],\n    \"inspectionSampleSelectionSamples\": [\n      {\n        \"assortment\": \"solid\",\n        \"assortmentQuantity\": \"50\",\n        \"cartonPull\": 8518,\n        \"id\": \"111\",\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"itemId\": \"02112-1851\",\n        \"itemOrderQuantity\": 4991,\n        \"organizationId\": \"200373\",\n        \"sampleId\": \"00537345__solid__02112-1851\",\n        \"samplePull\": 9242,\n        \"styleId\": \"123456\",\n        \"styleOrderQuantity\": 5743\n      },\n      {\n        \"assortment\": \"solid\",\n        \"assortmentQuantity\": \"50\",\n        \"cartonPull\": 9760,\n        \"id\": \"111\",\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"itemId\": \"02112-1851\",\n        \"itemOrderQuantity\": 8269,\n        \"organizationId\": \"200373\",\n        \"sampleId\": \"00537345__solid__02112-1851\",\n        \"samplePull\": 2121,\n        \"styleId\": \"123456\",\n        \"styleOrderQuantity\": 9356\n      }\n    ],\n    \"inspectionSpecialAttentionPoint\": [\n      {\n        \"attentionId\": \"remark-ee79693e-cd81-45df-af2e-1ee4628b4123-2020-01-15-14-25-13-182\",\n        \"description\": \"This is a test\",\n        \"group\": \"remark-ee79693e-cd81-45df-af2e-1ee4628b4123-2020-01-15-14-25-13-182\",\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"organizationId\": \"200373\",\n        \"pictures\": [\n          {\n            \"rotateAngle\": \"0\",\n            \"source\": \"https://.../image1.jpg\"\n          },\n          {\n            \"rotateAngle\": \"0\",\n            \"source\": \"https://.../image1.jpg\"\n          }\n        ],\n        \"type\": \"remark\"\n      },\n      {\n        \"attentionId\": \"remark-ee79693e-cd81-45df-af2e-1ee4628b4123-2020-01-15-14-25-13-182\",\n        \"description\": \"This is a test\",\n        \"group\": \"remark-ee79693e-cd81-45df-af2e-1ee4628b4123-2020-01-15-14-25-13-182\",\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"organizationId\": \"200373\",\n        \"pictures\": [\n          {\n            \"rotateAngle\": \"0\",\n            \"source\": \"https://.../image1.jpg\"\n          },\n          {\n            \"rotateAngle\": \"0\",\n            \"source\": \"https://.../image1.jpg\"\n          }\n        ],\n        \"type\": \"remark\"\n      }\n    ],\n    \"inspectionStandards\": [\n      {\n        \"aql\": {\n          \"aqlId\": \"31ade06c-1a0b-11e9-83b2-320fe256275a\",\n          \"aqlLevel\": \"ii\",\n          \"aqlName\": \"Packaging\",\n          \"critical\": \"0.010\",\n          \"major\": \"2.5\",\n          \"minor\": \"2.5\",\n          \"source\": \"null\"\n        },\n        \"availableQuantity\": 4862,\n        \"countedForAql\": {\n          \"critical\": \"1\",\n          \"major\": \"0\",\n          \"minor\": \"0\"\n        },\n        \"defectFound\": {\n          \"critical\": \"1\",\n          \"major\": \"0\",\n          \"minor\": \"0\"\n        },\n        \"defectiveUnitActivate\": true,\n        \"determineDesc\": \"AQL Standard\",\n        \"determineType\": \"aqlTable\",\n        \"determineValue\": 5843,\n        \"doubleSampling\": false,\n        \"failReason\": \"critical\",\n        \"group\": \"workmanship\",\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"maxAllowed\": {\n          \"critical\": \"0\",\n          \"major\": \"1\",\n          \"minor\": \"1\"\n        },\n        \"maximumSampleSize\": 5335,\n        \"minimumSampleSize\": 7318,\n        \"noOfDefectiveItems\": 6338,\n        \"noOfDefectiveUnits\": 1970,\n        \"organizationId\": \"200373\",\n        \"packingType\": \"Solid; Assortment\",\n        \"sampleSizeCategory\": [\n          {\n            \"productCategory\": \"124301\",\n            \"sampleSize\": 7804\n          },\n          {\n            \"productCategory\": \"124301\",\n            \"sampleSize\": 5846\n          }\n        ],\n        \"totalDefects\": \"2\",\n        \"totalItems\": 5\n      },\n      {\n        \"aql\": {\n          \"aqlId\": \"31ade06c-1a0b-11e9-83b2-320fe256275a\",\n          \"aqlLevel\": \"ii\",\n          \"aqlName\": \"Packaging\",\n          \"critical\": \"0.010\",\n          \"major\": \"2.5\",\n          \"minor\": \"2.5\",\n          \"source\": \"null\"\n        },\n        \"availableQuantity\": 3415,\n        \"countedForAql\": {\n          \"critical\": \"1\",\n          \"major\": \"0\",\n          \"minor\": \"0\"\n        },\n        \"defectFound\": {\n          \"critical\": \"1\",\n          \"major\": \"0\",\n          \"minor\": \"0\"\n        },\n        \"defectiveUnitActivate\": false,\n        \"determineDesc\": \"AQL Standard\",\n        \"determineType\": \"aqlTable\",\n        \"determineValue\": 4397,\n        \"doubleSampling\": false,\n        \"failReason\": \"critical\",\n        \"group\": \"workmanship\",\n        \"inspectionId\": \"abcd1234-ab12-ab12-ab12-abcd1234efgh4568\",\n        \"maxAllowed\": {\n          \"critical\": \"0\",\n          \"major\": \"1\",\n          \"minor\": \"1\"\n        },\n        \"maximumSampleSize\": 743,\n        \"minimumSampleSize\": 6310,\n        \"noOfDefectiveItems\": 1955,\n        \"noOfDefectiveUnits\": 8733,\n        \"organizationId\": \"200373\",\n        \"packingType\": \"Solid; Assortment\",\n        \"sampleSizeCategory\": [\n          {\n            \"productCategory\": \"124301\",\n            \"sampleSize\": 9198\n          },\n          {\n            \"productCategory\": \"124301\",\n            \"sampleSize\": 6730\n          }\n        ],\n        \"totalDefects\": \"2\",\n        \"totalItems\": 6677\n      }\n    ],\n    \"itemAttributes\": [\n      {\n        \"code\": \"GC Apparel\",\n        \"items\": [\n          {\n            \"groupCode\": \"string\",\n            \"itemId\": \"string\",\n            \"styleId\": \"string\"\n          },\n          {\n            \"groupCode\": \"string\",\n            \"itemId\": \"string\",\n            \"styleId\": \"string\"\n          }\n        ],\n        \"name\": \"Group Code Apparel\",\n        \"type\": \"single_choice\"\n      },\n      {\n        \"code\": \"GC Apparel\",\n        \"items\": [\n          {\n            \"groupCode\": \"string\",\n            \"itemId\": \"string\",\n            \"styleId\": \"string\"\n          },\n          {\n            \"groupCode\": \"string\",\n            \"itemId\": \"string\",\n            \"styleId\": \"string\"\n          }\n        ],\n        \"name\": \"Group Code Apparel\",\n        \"type\": \"single_choice\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d1b7d30-5751-4653-9730-3660242afbe2",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d487c5f7-bf2a-4fbf-ba63-850134714540",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9bd80a0d-c07b-48c0-a07f-cd7c5386aff9",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ebd77b3c-ae47-45da-b793-604ddd29f9e7",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "098a5e3c-402f-4132-b440-e2b85efc572c",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7822eba1-236a-4cec-a610-80451b673f2c",
+          "name": "Get Step Execution",
+          "request": {
+            "name": "Get Step Execution",
+            "description": {
+              "content": "Get Step Execution",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "reports",
+                ":report_id",
+                "steps",
+                ":step_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "step_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "report_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85744f14-f468-433f-80a1-6b270efce1e4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id",
+                    "steps",
+                    ":step_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "step_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"appTestResults\": [\n      {\n        \"factoryType\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"sectionId\": \"string\"\n      },\n      {\n        \"factoryType\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"sectionId\": \"string\"\n      }\n    ],\n    \"assessmentExecution\": {\n      \"ableToExecute\": false,\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"string\",\n      \"updatedDate\": \"1953-02-08T08:12:51.853Z\",\n      \"workflow\": {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"standard\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    \"formData\": {\n      \"data\": {},\n      \"id\": \"string\"\n    },\n    \"id\": \"123d1b06-c172-4cc3-a905-64840ec0a020\",\n    \"issues\": [\n      {\n        \"category\": \"Electrical Safety\",\n        \"id\": \"123abc\",\n        \"severity\": \"Major\",\n        \"sovePrinciple\": \"Safety\",\n        \"text\": \"Safety measures of electrical panels are not in place\"\n      },\n      {\n        \"category\": \"Electrical Safety\",\n        \"id\": \"123abc\",\n        \"severity\": \"Major\",\n        \"sovePrinciple\": \"Safety\",\n        \"text\": \"Safety measures of electrical panels are not in place\"\n      }\n    ],\n    \"questionAnswers\": [\n      {\n        \"choices\": [\n          {\n            \"files\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"option\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"optionId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subQuestionAnswers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"files\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"option\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"optionId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subQuestionAnswers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"comments\": [\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"canEdit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isEdited\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"canEdit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isEdited\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"findingsIssues\": [\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"findingsIssuesId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"severity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"summary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"findingsIssuesId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"severity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"summary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"id\": \"string\",\n        \"index\": 4515,\n        \"isNotApplicable\": true,\n        \"locked\": true,\n        \"mappedIssues\": [\n          {\n            \"answerId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issueId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"answerId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issueId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"number\": 1955,\n        \"parentId\": \"string\",\n        \"questionId\": \"string\",\n        \"text\": \"string\"\n      },\n      {\n        \"choices\": [\n          {\n            \"files\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"option\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"optionId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subQuestionAnswers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"files\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"option\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"optionId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subQuestionAnswers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"comments\": [\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"canEdit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isEdited\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"canEdit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isEdited\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"findingsIssues\": [\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"findingsIssuesId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"severity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"summary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"findingsIssuesId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"severity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"summary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"id\": \"string\",\n        \"index\": 7322,\n        \"isNotApplicable\": true,\n        \"locked\": true,\n        \"mappedIssues\": [\n          {\n            \"answerId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issueId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"answerId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issueId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"number\": 9228,\n        \"parentId\": \"string\",\n        \"questionId\": \"string\",\n        \"text\": \"string\"\n      }\n    ],\n    \"questionnaire\": {\n      \"description\": \"string\",\n      \"flattenSections\": [\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"level\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"questions\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"level\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"questions\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"report\": {\n      \"createdDate\": \"2021-06-27T09:35:21.380000+00:00\",\n      \"id\": \"1239c6ab-55ad-47a2-847d-2973ed4b00aa\",\n      \"isHideScore\": true,\n      \"maxScore\": 135,\n      \"ratingLabel\": {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"score\": 72,\n      \"sections\": [\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"improvements\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"level\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"maxScore\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"path\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"score\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"improvements\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"level\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"maxScore\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"path\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"score\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"stepExeId\": \"13ccab58-b11f-486b-9dc9-05ced81729d8\"\n    },\n    \"status\": \"COMPLETED\",\n    \"step\": {\n      \"formSchema\": {\n        \"description\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"schema\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"version\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"id\": \"123ce62d-892c-4e54-a8c3-3b6f52f0d915\",\n      \"name\": \"Factory Information\"\n    },\n    \"stepId\": \"123ce62d-892c-4e54-a8c3-3b6f52f0d915\",\n    \"updatedBy\": {\n      \"email\": \"john@acme.com\",\n      \"firstName\": \"John\",\n      \"id\": \"cc94fc4e-dcbe-44a5-863e-3255281e02ca\",\n      \"lastName\": \"Doe\"\n    },\n    \"updatedDate\": \"2021-06-24T15:04:28.402000+00:00\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "905b2c21-71a1-4a8a-84e3-cc70498ddf9b",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id",
+                    "steps",
+                    ":step_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "step_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57e8538f-c6fd-4a68-a180-dba19e5ac968",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id",
+                    "steps",
+                    ":step_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "step_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "733a6910-c22c-4713-9702-bea5cac0a9bd",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id",
+                    "steps",
+                    ":step_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "step_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "424ac8a8-5ed4-40a0-a775-55c76f5d75da",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id",
+                    "steps",
+                    ":step_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "step_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://files-integration.inspectorio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cb48bcc3-171c-4240-9861-51f8c3b9defe",
+    "name": "File Management ANALYTICS REPORT API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

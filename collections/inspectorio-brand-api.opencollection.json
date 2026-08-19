@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS BRAND API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "BRAND",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Brands",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/brands",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit result of list"
+              }
+            ]
+          },
+          "docs": "List Brands"
+        },
+        {
+          "info": {
+            "name": "Create Brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/brands",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Brand"
+        },
+        {
+          "info": {
+            "name": "Get Brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/brands/:brand_id",
+            "params": [
+              {
+                "name": "brand_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Brand"
+        },
+        {
+          "info": {
+            "name": "Update Brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v1/brands/:brand_id",
+            "params": [
+              {
+                "name": "brand_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Brand"
+        },
+        {
+          "info": {
+            "name": "Delete Brand",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://files-integration.inspectorio.com/api/v1/brands/:brand_id",
+            "params": [
+              {
+                "name": "brand_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Brand"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

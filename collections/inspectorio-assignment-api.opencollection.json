@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS ASSIGNMENT API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ASSIGNMENT",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Assignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/assignments",
+            "params": [
+              {
+                "name": "factory_country",
+                "value": "",
+                "type": "query",
+                "description": "Factory's country code (two-letter country code) of assignments. Case-insensitive"
+              },
+              {
+                "name": "executor_organization",
+                "value": "",
+                "type": "query",
+                "description": "Inspection Executor of assignments. Allow filtering with the Local Organization ID or the text \"owner\". Case-sensitive"
+              },
+              {
+                "name": "assignment_updated_to",
+                "value": "",
+                "type": "query",
+                "description": "Assignment updated to in date and time"
+              },
+              {
+                "name": "assignment_created_from",
+                "value": "",
+                "type": "query",
+                "description": "Assignment created from in date and time"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit result of list"
+              },
+              {
+                "name": "assignment_status",
+                "value": "",
+                "type": "query",
+                "description": "Status of assignments"
+              },
+              {
+                "name": "assignment_created_to",
+                "value": "",
+                "type": "query",
+                "description": "Assignment created to in date and time"
+              },
+              {
+                "name": "factory_city",
+                "value": "",
+                "type": "query",
+                "description": "Factory's city of assignments. Case-sensitive"
+              },
+              {
+                "name": "expected_inspection_date_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the range of the expected inspection date in assignments. Allow only date format"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Order of the list of assignments"
+              },
+              {
+                "name": "expected_inspection_date_to",
+                "value": "",
+                "type": "query",
+                "description": "End date of the range of the expected inspection date in assignments. Allow only date format"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "assignment_updated_from",
+                "value": "",
+                "type": "query",
+                "description": "Assignment updated from in date and time"
+              }
+            ]
+          },
+          "docs": "List Assignments"
+        },
+        {
+          "info": {
+            "name": "Get Assignment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/assignments/:assignment_id",
+            "params": [
+              {
+                "name": "assignment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Assignment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

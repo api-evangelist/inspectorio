@@ -1,0 +1,910 @@
+{
+  "item": [
+    {
+      "id": "13db0691-f5ca-42eb-adb4-641d90a00801",
+      "name": "ANALYTICS",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cd41ed93-bf6e-4e4e-8bc3-067f1ad21cdc",
+          "name": "List Factory Risk Profiles",
+          "request": {
+            "name": "List Factory Risk Profiles",
+            "description": {
+              "content": "List Factory Risk Profiles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "analytics",
+                "factory-risk-profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Limit result of list"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_type",
+                  "value": "<string>",
+                  "description": "The type of the filtered date. Case-sensitive."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_from",
+                  "value": "<date>",
+                  "description": "(Required) Start date of the query range in yyyy-mm-dd format"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_to",
+                  "value": "<date>",
+                  "description": "(Required) End date of the query range in yyyy-mm-dd format"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1602e85-b621-42a0-9dd2-b6b3606480d2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "analytics",
+                    "factory-risk-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "date_type",
+                      "value": "process_computed_date"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2020-10-01"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limit\": 52,\n  \"offset\": 9234,\n  \"total\": 2565,\n  \"data\": [\n    {\n      \"factoryInformation\": {\n        \"localInformation\": [\n          {\n            \"localOrganizationId\": \"F323333\"\n          },\n          {\n            \"localOrganizationId\": \"F323333\"\n          }\n        ],\n        \"organizationId\": 291524\n      },\n      \"latestProcessComputedDate\": \"2020-07-01\",\n      \"latestRiskDate\": \"2020-07-01\",\n      \"latestRiskLabel\": \"low\",\n      \"latestRiskScore\": 20.18,\n      \"latestRiskSetting\": \"Auto by AI\"\n    },\n    {\n      \"factoryInformation\": {\n        \"localInformation\": [\n          {\n            \"localOrganizationId\": \"F323333\"\n          },\n          {\n            \"localOrganizationId\": \"F323333\"\n          }\n        ],\n        \"organizationId\": 291524\n      },\n      \"latestProcessComputedDate\": \"2020-07-01\",\n      \"latestRiskDate\": \"2020-07-01\",\n      \"latestRiskLabel\": \"low\",\n      \"latestRiskScore\": 20.18,\n      \"latestRiskSetting\": \"Auto by AI\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dcad1bdf-9f47-4e1f-8fd6-1c287fff9b26",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "analytics",
+                    "factory-risk-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "date_type",
+                      "value": "process_computed_date"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2020-10-01"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e25d0449-8405-4f2b-bf24-df5b6f1b6b3c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "analytics",
+                    "factory-risk-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "date_type",
+                      "value": "process_computed_date"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2020-10-01"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52574f78-82c4-495d-b923-89d96614d92c",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "analytics",
+                    "factory-risk-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "date_type",
+                      "value": "process_computed_date"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2020-10-01"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0c77f72-6426-41c5-ac87-bd2bc5bfeb5b",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "analytics",
+                    "factory-risk-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "date_type",
+                      "value": "process_computed_date"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2020-10-01"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82672116-62a8-4129-bf27-bbd273ea4977",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "analytics",
+                    "factory-risk-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "date_type",
+                      "value": "process_computed_date"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2020-10-01"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40c19533-2823-407c-93b7-578b9d9f0736",
+          "name": "Get Factory Risk Profile",
+          "request": {
+            "name": "Get Factory Risk Profile",
+            "description": {
+              "content": "Get Factory Risk Profile",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "analytics",
+                "factory-risk-profile",
+                ":factory_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date_type",
+                  "value": "<string>",
+                  "description": "The type of the filtered date. Case-sensitive."
+                },
+                {
+                  "disabled": false,
+                  "key": "date_from",
+                  "value": "<date>",
+                  "description": "(Required) Start date of the query range in yyyy-mm-dd format"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_to",
+                  "value": "<date>",
+                  "description": "(Required) End date of the query range in yyyy-mm-dd format"
+                },
+                {
+                  "disabled": false,
+                  "key": "client_id",
+                  "value": "<string>",
+                  "description": "Unique identifier of the Brand or Retailer that the factory produces for"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "factory_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e519a8da-fd27-4a66-a6eb-22b6ad0841a7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "analytics",
+                    "factory-risk-profile",
+                    ":factory_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_type",
+                      "value": "process_computed_date"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2020-10-01"
+                    },
+                    {
+                      "key": "client_id",
+                      "value": "client_1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "factory_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"factoryInformation\": {\n      \"localOrganizationId\": \"client_1\",\n      \"localOrganizationIds\": [\n        \"F323333\",\n        \"F242146\"\n      ],\n      \"organizationId\": 291524\n    },\n    \"inspectionData\": {\n      \"inspectionHistories\": [\n        {\n          \"caseNumber\": \"178292020-04-16MAgarmentCo.,LtdDUPRO\",\n          \"date\": \"2021-04-29\",\n          \"result\": \"fail\"\n        },\n        {\n          \"caseNumber\": \"178292020-04-16MAgarmentCo.,LtdDUPRO\",\n          \"date\": \"2021-04-29\",\n          \"result\": \"fail\"\n        }\n      ],\n      \"inspectionLasted\": {\n        \"caseNumber\": \"178292020-04-16MAgarmentCo.,LtdDUPRO\",\n        \"date\": \"2021-04-29\",\n        \"result\": \"fail\"\n      }\n    },\n    \"riskLevelData\": {\n      \"highMax\": 100,\n      \"highMin\": 95,\n      \"lowMax\": 11,\n      \"lowMin\": 0,\n      \"mediumMax\": 94,\n      \"mediumMin\": 12\n    },\n    \"scoreData\": {\n      \"currentScore\": {\n        \"labelData\": [\n          {\n            \"label\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"labelValue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reasonCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reasonType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"label\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"labelValue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reasonCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reasonType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"processComputedDate\": \"2022-06-28\",\n        \"score\": 10.5\n      },\n      \"lastScore\": {\n        \"labelData\": [\n          {\n            \"label\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"labelValue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reasonCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reasonType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"label\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"labelValue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reasonCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reasonType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"processComputedDate\": \"2022-06-28\",\n        \"score\": 10.5\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9dae28c8-0ba3-4d2f-ac76-6684a75fa094",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "analytics",
+                    "factory-risk-profile",
+                    ":factory_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_type",
+                      "value": "process_computed_date"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2020-10-01"
+                    },
+                    {
+                      "key": "client_id",
+                      "value": "client_1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "factory_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c858865a-29b2-4018-8018-dfea9394a019",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "analytics",
+                    "factory-risk-profile",
+                    ":factory_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_type",
+                      "value": "process_computed_date"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2020-10-01"
+                    },
+                    {
+                      "key": "client_id",
+                      "value": "client_1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "factory_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a289d405-4637-4af8-8e9c-12d255c9cd9c",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "analytics",
+                    "factory-risk-profile",
+                    ":factory_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_type",
+                      "value": "process_computed_date"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2020-10-01"
+                    },
+                    {
+                      "key": "client_id",
+                      "value": "client_1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "factory_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e531cb19-c5e1-43b1-af19-c58080732be8",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "analytics",
+                    "factory-risk-profile",
+                    ":factory_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_type",
+                      "value": "process_computed_date"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2020-10-01"
+                    },
+                    {
+                      "key": "client_id",
+                      "value": "client_1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "factory_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f95dac21-6b18-47fa-a0c4-c8557aab4626",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "analytics",
+                    "factory-risk-profile",
+                    ":factory_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_type",
+                      "value": "process_computed_date"
+                    },
+                    {
+                      "key": "date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2020-10-01"
+                    },
+                    {
+                      "key": "client_id",
+                      "value": "client_1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "factory_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://files-integration.inspectorio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "96472817-52ce-4b48-87e3-9662c67ef373",
+    "name": "File Management ANALYTICS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

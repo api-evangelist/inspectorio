@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ANALYTICS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Factory Risk Profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/analytics/factory-risk-profile",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit result of list"
+              },
+              {
+                "name": "date_type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the filtered date. Case-sensitive."
+              },
+              {
+                "name": "date_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the query range in yyyy-mm-dd format"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_to",
+                "value": "",
+                "type": "query",
+                "description": "End date of the query range in yyyy-mm-dd format"
+              }
+            ]
+          },
+          "docs": "List Factory Risk Profiles"
+        },
+        {
+          "info": {
+            "name": "Get Factory Risk Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/analytics/factory-risk-profile/:factory_id",
+            "params": [
+              {
+                "name": "date_type",
+                "value": "",
+                "type": "query",
+                "description": "The type of the filtered date. Case-sensitive."
+              },
+              {
+                "name": "date_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the query range in yyyy-mm-dd format"
+              },
+              {
+                "name": "date_to",
+                "value": "",
+                "type": "query",
+                "description": "End date of the query range in yyyy-mm-dd format"
+              },
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier of the Brand or Retailer that the factory produces for"
+              },
+              {
+                "name": "factory_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Factory Risk Profile"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

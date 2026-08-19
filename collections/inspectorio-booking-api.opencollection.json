@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS BOOKING API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "BOOKING",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Bookings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/bookings",
+            "params": [
+              {
+                "name": "to_organization_id",
+                "value": "",
+                "type": "query",
+                "description": "Organization ID that the booking is booked to"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit result of list"
+              },
+              {
+                "name": "created_to",
+                "value": "",
+                "type": "query",
+                "description": "Booking created to in date and time"
+              },
+              {
+                "name": "updated_to",
+                "value": "",
+                "type": "query",
+                "description": "Booking updated to in date and time"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Order of bookings in the response"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updated_from",
+                "value": "",
+                "type": "query",
+                "description": "Booking updated from in date and time"
+              },
+              {
+                "name": "created_from",
+                "value": "",
+                "type": "query",
+                "description": "Booking created from in date and time"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Bookings"
+        },
+        {
+          "info": {
+            "name": "Get Booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/bookings/:booking_id",
+            "params": [
+              {
+                "name": "booking_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Booking"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

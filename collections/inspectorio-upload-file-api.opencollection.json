@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS Upload File API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Upload File",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload File",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/signed-upload/:session_id",
+            "params": [
+              {
+                "name": "session_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Upload File"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

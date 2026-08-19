@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS MEASUREMENT CHART API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MEASUREMENT CHART",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Measurement Chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/measurement-charts/:style_id",
+            "params": [
+              {
+                "name": "style_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Measurement Chart"
+        },
+        {
+          "info": {
+            "name": "Create Measurement Chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/measurement-charts/:style_id",
+            "params": [
+              {
+                "name": "style_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Measurement Chart"
+        },
+        {
+          "info": {
+            "name": "Update Measurement Chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v1/measurement-charts/:style_id",
+            "params": [
+              {
+                "name": "style_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Measurement Chart"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

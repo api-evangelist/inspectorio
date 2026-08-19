@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS AUTH API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AUTH",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Login and Retrieve Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/auth/login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Login and Retrieve Access Token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

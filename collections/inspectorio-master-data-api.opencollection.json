@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS MASTER DATA API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MASTER DATA",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Master Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/master-data",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new master data entry"
+        },
+        {
+          "info": {
+            "name": "Get Master Data by UUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/master-data/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "UID_ABC_123",
+                "type": "path",
+                "description": "UUID of the master data entry"
+              }
+            ]
+          },
+          "docs": "Get a specific master data entry by its UUID"
+        },
+        {
+          "info": {
+            "name": "Update Master Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v1/master-data/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "UID_ABC_123",
+                "type": "path",
+                "description": "UUID of the master data entry"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific master data entry by its UUID"
+        },
+        {
+          "info": {
+            "name": "Delete Master Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://files-integration.inspectorio.com/api/v1/master-data/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "UID_ABC_123",
+                "type": "path",
+                "description": "UUID of the master data entry"
+              }
+            ]
+          },
+          "docs": "Delete a specific master data entry by its UUID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

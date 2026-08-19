@@ -1,0 +1,3004 @@
+{
+  "item": [
+    {
+      "id": "2d377eff-1bb6-458f-a334-ddecc14b794f",
+      "name": "CUSTOMER DATA",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "41a06132-8fde-418b-83da-bfc78fb174a7",
+          "name": "Create or Update (Upsert) products, items and materials",
+          "request": {
+            "name": "Create or Update (Upsert) products, items and materials",
+            "description": {
+              "content": "This endpoint allows you to create or update products, items, materials and item sets in your Data Set in Inspectorio Platform. Take special attention on the constraints documented about `force_update`and API Rate Limits in our 429 Response Headers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "customer-data",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"custom_id\": \"<string>\",\n    \"custom_revision\": \"<string>\",\n    \"entity_type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"domain\": \"apparel\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"domain_attributes\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"additional_attributes\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"contributions\": [\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"force_update\": \"<boolean>\",\n    \"categories\": [\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      },\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"custom_id\": \"<string>\",\n    \"custom_revision\": \"<string>\",\n    \"entity_type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"domain\": \"apparel\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"domain_attributes\": {\n      \"key_0\": \"<string>\"\n    },\n    \"additional_attributes\": {\n      \"key_0\": \"<string>\"\n    },\n    \"contributions\": [\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"force_update\": \"<boolean>\",\n    \"categories\": [\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      },\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      }\n    ]\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "32973c8b-7fa4-4ab7-8339-c2669601a593",
+              "name": "Multi-Status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"custom_id\": \"<string>\",\n    \"custom_revision\": \"<string>\",\n    \"entity_type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"domain\": \"apparel\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"domain_attributes\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"additional_attributes\": {\n      \"business_unit\": \"US\"\n    },\n    \"contributions\": [\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"force_update\": \"<boolean>\",\n    \"categories\": [\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      },\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"custom_id\": \"<string>\",\n    \"custom_revision\": \"<string>\",\n    \"entity_type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"domain\": \"apparel\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"domain_attributes\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"additional_attributes\": {\n      \"business_unit\": \"US\"\n    },\n    \"contributions\": [\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"force_update\": \"<boolean>\",\n    \"categories\": [\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      },\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Multi-Status (WebDAV) (RFC 4918)",
+              "code": 207,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"custom_id\": \"<string>\",\n    \"status_code\": 400,\n    \"action\": \"error\",\n    \"synchronization\": {\n      \"entity_type\": \"<string>\",\n      \"last_update_source\": \"string\",\n      \"created_at\": \"2008-01-11T05:40:18.859Z\",\n      \"updated_at\": \"1989-07-03T20:06:04.680Z\",\n      \"status\": \"<string>\",\n      \"custom_revision\": \"<string>\"\n    }\n  },\n  {\n    \"custom_id\": \"<string>\",\n    \"status_code\": 200,\n    \"action\": \"error\",\n    \"synchronization\": {\n      \"entity_type\": \"<string>\",\n      \"last_update_source\": \"string\",\n      \"created_at\": \"2023-04-21T23:47:51.295Z\",\n      \"updated_at\": \"2010-02-10T10:39:46.626Z\",\n      \"status\": \"<string>\",\n      \"custom_revision\": \"<string>\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6a724f4-c81f-4282-8c18-4b6a6ae15ee3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"custom_id\": \"<string>\",\n    \"custom_revision\": \"<string>\",\n    \"entity_type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"domain\": \"apparel\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"domain_attributes\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"additional_attributes\": {\n      \"business_unit\": \"US\"\n    },\n    \"contributions\": [\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"force_update\": \"<boolean>\",\n    \"categories\": [\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      },\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"custom_id\": \"<string>\",\n    \"custom_revision\": \"<string>\",\n    \"entity_type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"domain\": \"apparel\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"domain_attributes\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"additional_attributes\": {\n      \"business_unit\": \"US\"\n    },\n    \"contributions\": [\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"force_update\": \"<boolean>\",\n    \"categories\": [\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      },\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9ba79a61-0772-4d0f-83eb-a0d4324b7259",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"custom_id\": \"<string>\",\n    \"custom_revision\": \"<string>\",\n    \"entity_type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"domain\": \"apparel\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"domain_attributes\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"additional_attributes\": {\n      \"business_unit\": \"US\"\n    },\n    \"contributions\": [\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"force_update\": \"<boolean>\",\n    \"categories\": [\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      },\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"custom_id\": \"<string>\",\n    \"custom_revision\": \"<string>\",\n    \"entity_type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"domain\": \"apparel\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"domain_attributes\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"additional_attributes\": {\n      \"business_unit\": \"US\"\n    },\n    \"contributions\": [\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"force_update\": \"<boolean>\",\n    \"categories\": [\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      },\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4434b59-4527-4391-bbd2-7705fab735d5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"custom_id\": \"<string>\",\n    \"custom_revision\": \"<string>\",\n    \"entity_type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"domain\": \"apparel\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"domain_attributes\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"additional_attributes\": {\n      \"business_unit\": \"US\"\n    },\n    \"contributions\": [\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"force_update\": \"<boolean>\",\n    \"categories\": [\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      },\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"custom_id\": \"<string>\",\n    \"custom_revision\": \"<string>\",\n    \"entity_type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"domain\": \"apparel\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"domain_attributes\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"additional_attributes\": {\n      \"business_unit\": \"US\"\n    },\n    \"contributions\": [\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"force_update\": \"<boolean>\",\n    \"categories\": [\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      },\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4c2fc13-30b8-4143-9af6-ed06c53cb826",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"custom_id\": \"<string>\",\n    \"custom_revision\": \"<string>\",\n    \"entity_type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"domain\": \"apparel\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"domain_attributes\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"additional_attributes\": {\n      \"business_unit\": \"US\"\n    },\n    \"contributions\": [\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"force_update\": \"<boolean>\",\n    \"categories\": [\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      },\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"custom_id\": \"<string>\",\n    \"custom_revision\": \"<string>\",\n    \"entity_type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"domain\": \"apparel\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"domain_attributes\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"additional_attributes\": {\n      \"business_unit\": \"US\"\n    },\n    \"contributions\": [\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      {\n        \"role\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"org_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"product_custom_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    ],\n    \"force_update\": \"<boolean>\",\n    \"categories\": [\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      },\n      {\n        \"taxonomy_custom_id\": \"<string>\",\n        \"custom_id\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before making a new request.",
+                  "key": "RateLimit-Reset",
+                  "value": "4081"
+                },
+                {
+                  "disabled": false,
+                  "description": "The number of requests remaining in the current rate limit window.",
+                  "key": "RateLimit-Remaining",
+                  "value": "4081"
+                },
+                {
+                  "disabled": false,
+                  "description": "The maximum number of requests that can be made in a given amount of time.",
+                  "key": "RateLimit-Limit",
+                  "value": "4081"
+                },
+                {
+                  "disabled": false,
+                  "description": "The number of seconds to wait before making a new request.",
+                  "key": "Retry-After",
+                  "value": "4081"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75b77933-80da-447d-b8af-e9efd2e47fd8",
+          "name": "Get synchronization status",
+          "request": {
+            "name": "Get synchronization status",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "customer-data",
+                "synchronization",
+                ":entity_type",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e925c3e0-b16a-4ea8-b900-48758157357b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "synchronization",
+                    ":entity_type",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entity_type\": \"<string>\",\n  \"last_update_source\": \"string\",\n  \"created_at\": \"1950-01-30T18:31:45.921Z\",\n  \"updated_at\": \"1954-06-11T15:37:10.052Z\",\n  \"status\": \"<string>\",\n  \"custom_revision\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6265c728-8839-4352-9407-c014579e78bb",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "synchronization",
+                    ":entity_type",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee2416bd-f3ed-459d-9f59-9c544afb660d",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "synchronization",
+                    ":entity_type",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbe44504-f0e9-4a39-bd27-f01283dbe748",
+          "name": "Create a new BOM",
+          "request": {
+            "name": "Create a new BOM",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "customer-data",
+                "boms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f6459c2-04d5-4787-b1c3-743b878fee12",
+              "name": "BOM created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "boms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"productType\": \"<string>\",\n  \"productCustomId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"poNumber\": \"<string>\",\n  \"contributions\": [\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    }\n  ],\n  \"active\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b262622b-4f61-4215-a7b4-6d922e99a718",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "boms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"productType\": \"<string>\",\n  \"productCustomId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"poNumber\": \"<string>\",\n  \"contributions\": [\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    }\n  ],\n  \"active\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customId\": [\n    \"BOM with custom_id 'BOM-001' already exists for this product and purchase order\"\n  ],\n  \"name\": [\n    \"BOM with name 'Manufacturing BOM for Winter Line' already exists for this product and purchase order\"\n  ],\n  \"active\": [\n    \"This field is required.\"\n  ],\n  \"productType\": [\n    \"This field is required.\"\n  ],\n  \"productCustomId\": [\n    \"This field is required.\"\n  ],\n  \"contributions\": [\n    {\n      \"role\": [\n        \"This field is required.\"\n      ],\n      \"orgCustomId\": [\n        \"This field is required.\"\n      ]\n    }\n  ],\n  \"orgCustomId\": [\n    \"Local organization with custom ID 'non_existent_org' not found\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4895b5a-d9f5-41bb-9191-dfede14ea3f4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "boms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"productType\": \"<string>\",\n  \"productCustomId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"poNumber\": \"<string>\",\n  \"contributions\": [\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    }\n  ],\n  \"active\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a9e6a153-e590-41d9-830b-b79f968fb100",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    "boms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customId\": \"<string>\",\n  \"name\": \"<string>\",\n  \"productType\": \"<string>\",\n  \"productCustomId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"poNumber\": \"<string>\",\n  \"contributions\": [\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    }\n  ],\n  \"active\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "583bbbd3-7f9c-49fa-8492-172c841cd646",
+          "name": "List all BOMs for an entity",
+          "request": {
+            "name": "List all BOMs for an entity",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "customer-data",
+                ":entity_type",
+                ":entity_custom_id",
+                "boms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_custom_id",
+                  "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c2077ff-4cb9-4f17-94cc-df1a2adfae5e",
+              "name": "List of BOMs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"customId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"enabled\": false,\n      \"createdAt\": \"2021-02-17T02:59:27.223Z\",\n      \"productType\": \"string\",\n      \"productCustomId\": \"string\",\n      \"poNumber\": \"string\",\n      \"attachments\": [\n        {\n          \"fileName\": \"string\",\n          \"fileUrl\": \"string\"\n        },\n        {\n          \"fileName\": \"string\",\n          \"fileUrl\": \"string\"\n        }\n      ],\n      \"contributions\": [\n        {\n          \"role\": \"bom_viewer\",\n          \"orgCustomId\": \"string\"\n        },\n        {\n          \"role\": \"bom_viewer\",\n          \"orgCustomId\": \"string\"\n        }\n      ],\n      \"components\": [\n        {\n          \"customId\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"supplierComponentId\": \"string\",\n          \"group\": \"string\",\n          \"unitYield\": 237.64483075143673,\n          \"yieldUom\": \"string\",\n          \"unitWeight\": 7899.792723930896,\n          \"weightUom\": \"string\",\n          \"unitCost\": 2567.707704571057,\n          \"totalYield\": 1965.4352720519375,\n          \"totalWeight\": 4605.171294737027,\n          \"costCurrency\": \"string\",\n          \"countryOfOrigin\": [\n            \"VN\",\n            \"US\"\n          ],\n          \"attribute\": [\n            \"Organic\",\n            \"Recycled\"\n          ],\n          \"supplier\": {\n            \"name\": \"string\",\n            \"customId\": \"string\",\n            \"address\": \"string\",\n            \"city\": \"string\",\n            \"stateProvince\": \"string\",\n            \"postalZipCode\": \"string\",\n            \"country\": \"string\",\n            \"phone\": \"string\",\n            \"contactName\": \"string\",\n            \"contactEmail\": \"string\",\n            \"contactPhone\": \"string\"\n          },\n          \"facilities\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"capabilities\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"city\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"stateProvince\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"postalZipCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactEmail\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactPhone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"capabilities\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"city\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"stateProvince\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"postalZipCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactEmail\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactPhone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"bom\": {\n            \"value\": \"<Circular reference to #/components/schemas/BomDetailIntegrationObject detected>\"\n          }\n        },\n        {\n          \"customId\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"supplierComponentId\": \"string\",\n          \"group\": \"string\",\n          \"unitYield\": 8419.932313824147,\n          \"yieldUom\": \"string\",\n          \"unitWeight\": 4803.061828503884,\n          \"weightUom\": \"string\",\n          \"unitCost\": 9234.346221057775,\n          \"totalYield\": 1674.8294162963407,\n          \"totalWeight\": 8775.808159703205,\n          \"costCurrency\": \"string\",\n          \"countryOfOrigin\": [\n            \"VN\",\n            \"US\"\n          ],\n          \"attribute\": [\n            \"Organic\",\n            \"Recycled\"\n          ],\n          \"supplier\": {\n            \"name\": \"string\",\n            \"customId\": \"string\",\n            \"address\": \"string\",\n            \"city\": \"string\",\n            \"stateProvince\": \"string\",\n            \"postalZipCode\": \"string\",\n            \"country\": \"string\",\n            \"phone\": \"string\",\n            \"contactName\": \"string\",\n            \"contactEmail\": \"string\",\n            \"contactPhone\": \"string\"\n          },\n          \"facilities\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"capabilities\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"city\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"stateProvince\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"postalZipCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactEmail\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactPhone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"capabilities\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"city\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"stateProvince\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"postalZipCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactEmail\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactPhone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"bom\": {\n            \"value\": \"<Circular reference to #/components/schemas/BomDetailIntegrationObject detected>\"\n          }\n        }\n      ],\n      \"customFields\": {\n        \"bom_id\": \"BOM-001\",\n        \"bom_description_custom\": \"Custom description\",\n        \"components\": [\n          {\n            \"supplier_component_id\": \"COMP-001\",\n            \"component_name_api\": \"Fabric A\",\n            \"suppliers_custom\": [\n              {\n                \"supplier_id\": \"SUP-001\",\n                \"supplier_address_custom\": \"123 Main St\"\n              }\n            ]\n          }\n        ]\n      }\n    },\n    {\n      \"customId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"enabled\": true,\n      \"createdAt\": \"2006-12-09T11:01:11.580Z\",\n      \"productType\": \"string\",\n      \"productCustomId\": \"string\",\n      \"poNumber\": \"string\",\n      \"attachments\": [\n        {\n          \"fileName\": \"string\",\n          \"fileUrl\": \"string\"\n        },\n        {\n          \"fileName\": \"string\",\n          \"fileUrl\": \"string\"\n        }\n      ],\n      \"contributions\": [\n        {\n          \"role\": \"bom_viewer\",\n          \"orgCustomId\": \"string\"\n        },\n        {\n          \"role\": \"bom_viewer\",\n          \"orgCustomId\": \"string\"\n        }\n      ],\n      \"components\": [\n        {\n          \"customId\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"supplierComponentId\": \"string\",\n          \"group\": \"string\",\n          \"unitYield\": 6512.7335561769305,\n          \"yieldUom\": \"string\",\n          \"unitWeight\": 9814.328508848408,\n          \"weightUom\": \"string\",\n          \"unitCost\": 4774.859660730056,\n          \"totalYield\": 3183.757319452659,\n          \"totalWeight\": 2325.270133571614,\n          \"costCurrency\": \"string\",\n          \"countryOfOrigin\": [\n            \"VN\",\n            \"US\"\n          ],\n          \"attribute\": [\n            \"Organic\",\n            \"Recycled\"\n          ],\n          \"supplier\": {\n            \"name\": \"string\",\n            \"customId\": \"string\",\n            \"address\": \"string\",\n            \"city\": \"string\",\n            \"stateProvince\": \"string\",\n            \"postalZipCode\": \"string\",\n            \"country\": \"string\",\n            \"phone\": \"string\",\n            \"contactName\": \"string\",\n            \"contactEmail\": \"string\",\n            \"contactPhone\": \"string\"\n          },\n          \"facilities\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"capabilities\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"city\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"stateProvince\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"postalZipCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactEmail\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactPhone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"capabilities\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"city\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"stateProvince\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"postalZipCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactEmail\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactPhone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"bom\": {\n            \"value\": \"<Circular reference to #/components/schemas/BomDetailIntegrationObject detected>\"\n          }\n        },\n        {\n          \"customId\": \"string\",\n          \"name\": \"string\",\n          \"description\": \"string\",\n          \"supplierComponentId\": \"string\",\n          \"group\": \"string\",\n          \"unitYield\": 9923.62938547756,\n          \"yieldUom\": \"string\",\n          \"unitWeight\": 1002.265326614501,\n          \"weightUom\": \"string\",\n          \"unitCost\": 3676.098384481548,\n          \"totalYield\": 7208.090326411798,\n          \"totalWeight\": 7493.780039959125,\n          \"costCurrency\": \"string\",\n          \"countryOfOrigin\": [\n            \"VN\",\n            \"US\"\n          ],\n          \"attribute\": [\n            \"Organic\",\n            \"Recycled\"\n          ],\n          \"supplier\": {\n            \"name\": \"string\",\n            \"customId\": \"string\",\n            \"address\": \"string\",\n            \"city\": \"string\",\n            \"stateProvince\": \"string\",\n            \"postalZipCode\": \"string\",\n            \"country\": \"string\",\n            \"phone\": \"string\",\n            \"contactName\": \"string\",\n            \"contactEmail\": \"string\",\n            \"contactPhone\": \"string\"\n          },\n          \"facilities\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"capabilities\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"city\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"stateProvince\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"postalZipCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactEmail\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactPhone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"capabilities\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"customId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"city\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"stateProvince\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"postalZipCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactEmail\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"contactPhone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"bom\": {\n            \"value\": \"<Circular reference to #/components/schemas/BomDetailIntegrationObject detected>\"\n          }\n        }\n      ],\n      \"customFields\": {\n        \"bom_id\": \"BOM-001\",\n        \"bom_description_custom\": \"Custom description\",\n        \"components\": [\n          {\n            \"supplier_component_id\": \"COMP-001\",\n            \"component_name_api\": \"Fabric A\",\n            \"suppliers_custom\": [\n              {\n                \"supplier_id\": \"SUP-001\",\n                \"supplier_address_custom\": \"123 Main St\"\n              }\n            ]\n          }\n        ]\n      }\n    }\n  ],\n  \"count\": 5931,\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e19ee67c-dc8f-4e92-9996-32b5c5633028",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customId\": [\n    \"BOM with custom_id 'BOM-001' already exists for this product and purchase order\"\n  ],\n  \"name\": [\n    \"BOM with name 'Manufacturing BOM for Winter Line' already exists for this product and purchase order\"\n  ],\n  \"active\": [\n    \"This field is required.\"\n  ],\n  \"productType\": [\n    \"This field is required.\"\n  ],\n  \"productCustomId\": [\n    \"This field is required.\"\n  ],\n  \"contributions\": [\n    {\n      \"role\": [\n        \"string\",\n        \"string\"\n      ],\n      \"orgCustomId\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"role\": [\n        \"string\",\n        \"string\"\n      ],\n      \"orgCustomId\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"orgCustomId\": [\n    \"Local organization with custom ID 'non_existent_org' not found\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b45a32b8-b542-48a1-92b9-d7f94c17b2b3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "086f3c36-616a-4865-8967-e2eb688e3b4f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "882f347f-01b9-4a52-a50b-e481e0d91224",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3812530-57a0-4d2e-918b-b76277f83ed5",
+          "name": "Update an existing BOM",
+          "request": {
+            "name": "Update an existing BOM",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "customer-data",
+                ":entity_type",
+                ":entity_custom_id",
+                "boms",
+                ":bom_custom_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "poNumber",
+                  "value": "<string>",
+                  "description": "Optional Purchase Order number to use when filtering BOMs. Use this when multiple BOMs exist with the same custom ID but different POs."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_custom_id",
+                  "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bom_custom_id",
+                  "description": "(Required) The custom ID of the BOM itself"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "315e6de8-7bb0-48ed-aeed-bbe72e76d853",
+              "name": "BOM updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"poNumber\": \"<string>\",\n  \"contributions\": [\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "97a87f24-a0cd-4db2-aa23-b48c64f06683",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"poNumber\": \"<string>\",\n  \"contributions\": [\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customId\": [\n    \"BOM with custom_id 'BOM-001' already exists for this product and purchase order\"\n  ],\n  \"name\": [\n    \"BOM with name 'Manufacturing BOM for Winter Line' already exists for this product and purchase order\"\n  ],\n  \"active\": [\n    \"This field is required.\"\n  ],\n  \"productType\": [\n    \"This field is required.\"\n  ],\n  \"productCustomId\": [\n    \"This field is required.\"\n  ],\n  \"contributions\": [\n    {\n      \"role\": [\n        \"string\",\n        \"string\"\n      ],\n      \"orgCustomId\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"role\": [\n        \"string\",\n        \"string\"\n      ],\n      \"orgCustomId\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"orgCustomId\": [\n    \"Local organization with custom ID 'non_existent_org' not found\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f57d6b8b-a265-4ac3-a6c3-fb7c8ad7fb8f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"poNumber\": \"<string>\",\n  \"contributions\": [\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7b5a200-80b6-4f5b-83d2-d21dcba2d032",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"poNumber\": \"<string>\",\n  \"contributions\": [\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8953b1aa-cd0e-477a-bfa3-f42dda6a7477",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"poNumber\": \"<string>\",\n  \"contributions\": [\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    },\n    {\n      \"role\": \"<string>\",\n      \"orgCustomId\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69400c7d-961c-433b-8fb4-5179cae58aa3",
+          "name": "Get BOM details",
+          "request": {
+            "name": "Get BOM details",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "customer-data",
+                ":entity_type",
+                ":entity_custom_id",
+                "boms",
+                ":bom_custom_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "poNumber",
+                  "value": "<string>",
+                  "description": "Optional Purchase Order number to use when filtering BOMs. Use this when multiple BOMs exist with the same custom ID but different POs."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_custom_id",
+                  "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bom_custom_id",
+                  "description": "(Required) The custom ID of the BOM itself"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84bf5d2f-ee3e-40be-bb80-e6a92181f73c",
+              "name": "BOM details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customId\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"enabled\": false,\n  \"createdAt\": \"1996-05-12T04:51:27.110Z\",\n  \"productType\": \"string\",\n  \"productCustomId\": \"string\",\n  \"poNumber\": \"string\",\n  \"attachments\": [\n    {\n      \"fileName\": \"string\",\n      \"fileUrl\": \"string\"\n    },\n    {\n      \"fileName\": \"string\",\n      \"fileUrl\": \"string\"\n    }\n  ],\n  \"contributions\": [\n    {\n      \"role\": \"bom_viewer\",\n      \"orgCustomId\": \"string\"\n    },\n    {\n      \"role\": \"bom_editor\",\n      \"orgCustomId\": \"string\"\n    }\n  ],\n  \"components\": [\n    {\n      \"customId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"supplierComponentId\": \"string\",\n      \"group\": \"string\",\n      \"unitYield\": 4214.537790430264,\n      \"yieldUom\": \"string\",\n      \"unitWeight\": 4176.687403909576,\n      \"weightUom\": \"string\",\n      \"unitCost\": 7631.430312488609,\n      \"totalYield\": 4479.674659529481,\n      \"totalWeight\": 9597.7060503478,\n      \"costCurrency\": \"string\",\n      \"countryOfOrigin\": [\n        \"VN\",\n        \"US\"\n      ],\n      \"attribute\": [\n        \"Organic\",\n        \"Recycled\"\n      ],\n      \"supplier\": {\n        \"name\": \"string\",\n        \"customId\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"stateProvince\": \"string\",\n        \"postalZipCode\": \"string\",\n        \"country\": \"string\",\n        \"phone\": \"string\",\n        \"contactName\": \"string\",\n        \"contactEmail\": \"string\",\n        \"contactPhone\": \"string\"\n      },\n      \"facilities\": [\n        {\n          \"name\": \"string\",\n          \"capabilities\": [\n            \"string\",\n            \"string\"\n          ],\n          \"customId\": \"string\",\n          \"address\": \"string\",\n          \"city\": \"string\",\n          \"stateProvince\": \"string\",\n          \"postalZipCode\": \"string\",\n          \"country\": \"string\",\n          \"phone\": \"string\",\n          \"contactName\": \"string\",\n          \"contactEmail\": \"string\",\n          \"contactPhone\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"capabilities\": [\n            \"string\",\n            \"string\"\n          ],\n          \"customId\": \"string\",\n          \"address\": \"string\",\n          \"city\": \"string\",\n          \"stateProvince\": \"string\",\n          \"postalZipCode\": \"string\",\n          \"country\": \"string\",\n          \"phone\": \"string\",\n          \"contactName\": \"string\",\n          \"contactEmail\": \"string\",\n          \"contactPhone\": \"string\"\n        }\n      ],\n      \"bom\": {\n        \"customId\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"enabled\": false,\n        \"createdAt\": \"1955-10-21T11:22:26.614Z\",\n        \"productType\": \"string\",\n        \"productCustomId\": \"string\",\n        \"poNumber\": \"string\",\n        \"attachments\": [\n          {\n            \"fileName\": \"string\",\n            \"fileUrl\": \"string\"\n          },\n          {\n            \"fileName\": \"string\",\n            \"fileUrl\": \"string\"\n          }\n        ],\n        \"contributions\": [\n          {\n            \"role\": \"bom_viewer\",\n            \"orgCustomId\": \"string\"\n          },\n          {\n            \"role\": \"bom_editor\",\n            \"orgCustomId\": \"string\"\n          }\n        ],\n        \"components\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/BomComponentIntegrationObject detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/BomComponentIntegrationObject detected>\"\n          }\n        ],\n        \"customFields\": {\n          \"bom_id\": \"BOM-001\",\n          \"bom_description_custom\": \"Custom description\",\n          \"components\": [\n            {\n              \"supplier_component_id\": \"COMP-001\",\n              \"component_name_api\": \"Fabric A\",\n              \"suppliers_custom\": [\n                {\n                  \"supplier_id\": \"SUP-001\",\n                  \"supplier_address_custom\": \"123 Main St\"\n                }\n              ]\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"customId\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"supplierComponentId\": \"string\",\n      \"group\": \"string\",\n      \"unitYield\": 7341.0098102566635,\n      \"yieldUom\": \"string\",\n      \"unitWeight\": 4451.06001708171,\n      \"weightUom\": \"string\",\n      \"unitCost\": 575.0273039958664,\n      \"totalYield\": 4516.3174783987215,\n      \"totalWeight\": 5883.5838195512215,\n      \"costCurrency\": \"string\",\n      \"countryOfOrigin\": [\n        \"VN\",\n        \"US\"\n      ],\n      \"attribute\": [\n        \"Organic\",\n        \"Recycled\"\n      ],\n      \"supplier\": {\n        \"name\": \"string\",\n        \"customId\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"stateProvince\": \"string\",\n        \"postalZipCode\": \"string\",\n        \"country\": \"string\",\n        \"phone\": \"string\",\n        \"contactName\": \"string\",\n        \"contactEmail\": \"string\",\n        \"contactPhone\": \"string\"\n      },\n      \"facilities\": [\n        {\n          \"name\": \"string\",\n          \"capabilities\": [\n            \"string\",\n            \"string\"\n          ],\n          \"customId\": \"string\",\n          \"address\": \"string\",\n          \"city\": \"string\",\n          \"stateProvince\": \"string\",\n          \"postalZipCode\": \"string\",\n          \"country\": \"string\",\n          \"phone\": \"string\",\n          \"contactName\": \"string\",\n          \"contactEmail\": \"string\",\n          \"contactPhone\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"capabilities\": [\n            \"string\",\n            \"string\"\n          ],\n          \"customId\": \"string\",\n          \"address\": \"string\",\n          \"city\": \"string\",\n          \"stateProvince\": \"string\",\n          \"postalZipCode\": \"string\",\n          \"country\": \"string\",\n          \"phone\": \"string\",\n          \"contactName\": \"string\",\n          \"contactEmail\": \"string\",\n          \"contactPhone\": \"string\"\n        }\n      ],\n      \"bom\": {\n        \"customId\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"enabled\": true,\n        \"createdAt\": \"1950-01-29T12:40:27.211Z\",\n        \"productType\": \"string\",\n        \"productCustomId\": \"string\",\n        \"poNumber\": \"string\",\n        \"attachments\": [\n          {\n            \"fileName\": \"string\",\n            \"fileUrl\": \"string\"\n          },\n          {\n            \"fileName\": \"string\",\n            \"fileUrl\": \"string\"\n          }\n        ],\n        \"contributions\": [\n          {\n            \"role\": \"bom_viewer\",\n            \"orgCustomId\": \"string\"\n          },\n          {\n            \"role\": \"bom_viewer\",\n            \"orgCustomId\": \"string\"\n          }\n        ],\n        \"components\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/BomComponentIntegrationObject detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/BomComponentIntegrationObject detected>\"\n          }\n        ],\n        \"customFields\": {\n          \"bom_id\": \"BOM-001\",\n          \"bom_description_custom\": \"Custom description\",\n          \"components\": [\n            {\n              \"supplier_component_id\": \"COMP-001\",\n              \"component_name_api\": \"Fabric A\",\n              \"suppliers_custom\": [\n                {\n                  \"supplier_id\": \"SUP-001\",\n                  \"supplier_address_custom\": \"123 Main St\"\n                }\n              ]\n            }\n          ]\n        }\n      }\n    }\n  ],\n  \"customFields\": {\n    \"bom_id\": \"BOM-001\",\n    \"bom_description_custom\": \"Custom description\",\n    \"components\": [\n      {\n        \"supplier_component_id\": \"COMP-001\",\n        \"component_name_api\": \"Fabric A\",\n        \"suppliers_custom\": [\n          {\n            \"supplier_id\": \"SUP-001\",\n            \"supplier_address_custom\": \"123 Main St\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33b50ba3-378a-4e9e-b6b4-7a4e909f90b2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customId\": [\n    \"BOM with custom_id 'BOM-001' already exists for this product and purchase order\"\n  ],\n  \"name\": [\n    \"BOM with name 'Manufacturing BOM for Winter Line' already exists for this product and purchase order\"\n  ],\n  \"active\": [\n    \"This field is required.\"\n  ],\n  \"productType\": [\n    \"This field is required.\"\n  ],\n  \"productCustomId\": [\n    \"This field is required.\"\n  ],\n  \"contributions\": [\n    {\n      \"role\": [\n        \"string\",\n        \"string\"\n      ],\n      \"orgCustomId\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"role\": [\n        \"string\",\n        \"string\"\n      ],\n      \"orgCustomId\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"orgCustomId\": [\n    \"Local organization with custom ID 'non_existent_org' not found\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c459faa4-56fa-41c3-9eb8-8e7b3c498c2c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "44b2f748-4f9b-4726-9b18-c8d5bcc2391a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bcadd556-5432-48b9-b937-c6bbec95ec02",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e9f305b-0f31-441f-8e45-cbdd2c81f613",
+          "name": "Delete a BOM",
+          "request": {
+            "name": "Delete a BOM",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "customer-data",
+                ":entity_type",
+                ":entity_custom_id",
+                "boms",
+                ":bom_custom_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "poNumber",
+                  "value": "<string>",
+                  "description": "Optional Purchase Order number to use when filtering BOMs. Use this when multiple BOMs exist with the same custom ID but different POs."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_custom_id",
+                  "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bom_custom_id",
+                  "description": "(Required) The custom ID of the BOM itself"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2d2f1e8-a261-4482-8c58-a7a801adcfec",
+              "name": "BOM deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6dfd5731-ef39-43ad-a26b-6d143bfdb56b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customId\": [\n    \"BOM with custom_id 'BOM-001' already exists for this product and purchase order\"\n  ],\n  \"name\": [\n    \"BOM with name 'Manufacturing BOM for Winter Line' already exists for this product and purchase order\"\n  ],\n  \"active\": [\n    \"This field is required.\"\n  ],\n  \"productType\": [\n    \"This field is required.\"\n  ],\n  \"productCustomId\": [\n    \"This field is required.\"\n  ],\n  \"contributions\": [\n    {\n      \"role\": [\n        \"string\",\n        \"string\"\n      ],\n      \"orgCustomId\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"role\": [\n        \"string\",\n        \"string\"\n      ],\n      \"orgCustomId\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"orgCustomId\": [\n    \"Local organization with custom ID 'non_existent_org' not found\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2e06edb-6ed5-4505-b0d2-ce79dfd694b7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b7e2918a-23d1-456f-89cd-cf20f2ffbae8",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"Not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8808be00-c18b-4435-b005-1fd34472a94e",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":entity_custom_id",
+                    "boms",
+                    ":bom_custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "poNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_custom_id",
+                      "description": "(Required) The custom ID of the entity that the BOM is attached to"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bom_custom_id",
+                      "description": "(Required) The custom ID of the BOM itself"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96773eff-c486-4492-92e4-341f3bd5a2da",
+          "name": "List products, items, or materials",
+          "request": {
+            "name": "List products, items, or materials",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "customer-data",
+                ":entity_type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dataProviderCustomId",
+                  "value": "<string>",
+                  "description": "Optional Local org custom id whose global organization is used\nas the data scope for the lookup. When omitted, the authenticated organization is used.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Page size; default 10."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of records to skip before returning results."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdFrom",
+                  "value": "<dateTime>",
+                  "description": "Lower bound (inclusive) on `createdAt`, ISO 8601 datetime."
+                },
+                {
+                  "disabled": false,
+                  "key": "createdTo",
+                  "value": "<dateTime>",
+                  "description": "Upper bound (inclusive) on `createdAt`, ISO 8601 datetime."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedFrom",
+                  "value": "<dateTime>",
+                  "description": "Lower bound (inclusive) on `updatedAt`, ISO 8601 datetime."
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedTo",
+                  "value": "<dateTime>",
+                  "description": "Upper bound (inclusive) on `updatedAt`, ISO 8601 datetime."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by lifecycle status."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8315c5dc-bd96-42a2-b0f0-3e7dd1caccb0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataProviderCustomId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "createdFrom",
+                      "value": "2024-06-01T00:00:00+00:00"
+                    },
+                    {
+                      "key": "createdTo",
+                      "value": "2024-12-31T23:59:59+00:00"
+                    },
+                    {
+                      "key": "updatedFrom",
+                      "value": "2024-06-01T00:00:00+00:00"
+                    },
+                    {
+                      "key": "updatedTo",
+                      "value": "2024-12-31T23:59:59+00:00"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 200,\n  \"status\": \"success\",\n  \"count\": 2887,\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"results\": [\n    {\n      \"name\": \"string\",\n      \"customId\": \"string\",\n      \"entityType\": \"itm\",\n      \"description\": \"string\",\n      \"categories\": [\n        {\n          \"taxonomy\": \"string\",\n          \"levelCustomId\": \"string\",\n          \"levelIdentifier\": \"string\",\n          \"customId\": \"string\",\n          \"name\": \"string\",\n          \"businessId\": \"string\",\n          \"customIdentifierId\": \"string\"\n        },\n        {\n          \"taxonomy\": \"string\",\n          \"levelCustomId\": \"string\",\n          \"levelIdentifier\": \"string\",\n          \"customId\": \"string\",\n          \"name\": \"string\",\n          \"businessId\": \"string\",\n          \"customIdentifierId\": \"string\"\n        }\n      ],\n      \"ownerOrg\": {\n        \"id\": 5454,\n        \"name\": \"string\",\n        \"customId\": \"string\",\n        \"type\": \"string\"\n      },\n      \"creatorOrg\": {\n        \"id\": 6168,\n        \"name\": \"string\",\n        \"customId\": \"string\",\n        \"type\": \"string\"\n      },\n      \"lastUpdateSource\": \"string\",\n      \"createdAt\": \"2024-06-01T14:30:05Z\",\n      \"updatedAt\": \"2024-06-01T14:30:05Z\",\n      \"status\": \"inactive\",\n      \"style\": {\n        \"styleUuid\": \"string\",\n        \"styleId\": \"string\",\n        \"styleName\": \"string\"\n      },\n      \"productId\": \"string\",\n      \"revisionId\": 2332,\n      \"isSet\": true,\n      \"set\": [\n        {\n          \"styleUuid\": \"string\",\n          \"styleId\": \"string\",\n          \"styleName\": \"string\"\n        },\n        {\n          \"styleUuid\": \"string\",\n          \"styleId\": \"string\",\n          \"styleName\": \"string\"\n        }\n      ],\n      \"domainAttributes\": {\n        \"key_0\": true\n      },\n      \"additionalAttributes\": {\n        \"key_0\": \"string\"\n      },\n      \"suppliers\": [\n        {\n          \"id\": 6190,\n          \"globalOrgId\": 9095,\n          \"customId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 6445,\n          \"globalOrgId\": 4304,\n          \"customId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"factories\": [\n        {\n          \"id\": 3876,\n          \"globalOrgId\": 1534,\n          \"customId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 3370,\n          \"globalOrgId\": 5250,\n          \"customId\": \"string\",\n          \"name\": \"string\"\n        }\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"customId\": \"string\",\n      \"entityType\": \"pdt\",\n      \"description\": \"string\",\n      \"categories\": [\n        {\n          \"taxonomy\": \"string\",\n          \"levelCustomId\": \"string\",\n          \"levelIdentifier\": \"string\",\n          \"customId\": \"string\",\n          \"name\": \"string\",\n          \"businessId\": \"string\",\n          \"customIdentifierId\": \"string\"\n        },\n        {\n          \"taxonomy\": \"string\",\n          \"levelCustomId\": \"string\",\n          \"levelIdentifier\": \"string\",\n          \"customId\": \"string\",\n          \"name\": \"string\",\n          \"businessId\": \"string\",\n          \"customIdentifierId\": \"string\"\n        }\n      ],\n      \"ownerOrg\": {\n        \"id\": 5087,\n        \"name\": \"string\",\n        \"customId\": \"string\",\n        \"type\": \"string\"\n      },\n      \"creatorOrg\": {\n        \"id\": 3138,\n        \"name\": \"string\",\n        \"customId\": \"string\",\n        \"type\": \"string\"\n      },\n      \"lastUpdateSource\": \"string\",\n      \"createdAt\": \"2024-06-01T14:30:05Z\",\n      \"updatedAt\": \"2024-06-01T14:30:05Z\",\n      \"status\": \"inactive\",\n      \"style\": {\n        \"styleUuid\": \"string\",\n        \"styleId\": \"string\",\n        \"styleName\": \"string\"\n      },\n      \"productId\": \"string\",\n      \"revisionId\": 8535,\n      \"isSet\": true,\n      \"set\": [\n        {\n          \"styleUuid\": \"string\",\n          \"styleId\": \"string\",\n          \"styleName\": \"string\"\n        },\n        {\n          \"styleUuid\": \"string\",\n          \"styleId\": \"string\",\n          \"styleName\": \"string\"\n        }\n      ],\n      \"domainAttributes\": {\n        \"key_0\": true\n      },\n      \"additionalAttributes\": {\n        \"key_0\": 9573.186192004907\n      },\n      \"suppliers\": [\n        {\n          \"id\": 5293,\n          \"globalOrgId\": 1420,\n          \"customId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 9934,\n          \"globalOrgId\": 7002,\n          \"customId\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"factories\": [\n        {\n          \"id\": 815,\n          \"globalOrgId\": 8315,\n          \"customId\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 5656,\n          \"globalOrgId\": 2932,\n          \"customId\": \"string\",\n          \"name\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4b0be79-dc44-4c53-834f-3a7b03242d68",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataProviderCustomId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "createdFrom",
+                      "value": "2024-06-01T00:00:00+00:00"
+                    },
+                    {
+                      "key": "createdTo",
+                      "value": "2024-12-31T23:59:59+00:00"
+                    },
+                    {
+                      "key": "updatedFrom",
+                      "value": "2024-06-01T00:00:00+00:00"
+                    },
+                    {
+                      "key": "updatedTo",
+                      "value": "2024-12-31T23:59:59+00:00"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 9633.927851941582\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "582ad88a-900e-4e32-a2f5-05a30235b5cb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataProviderCustomId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "createdFrom",
+                      "value": "2024-06-01T00:00:00+00:00"
+                    },
+                    {
+                      "key": "createdTo",
+                      "value": "2024-12-31T23:59:59+00:00"
+                    },
+                    {
+                      "key": "updatedFrom",
+                      "value": "2024-06-01T00:00:00+00:00"
+                    },
+                    {
+                      "key": "updatedTo",
+                      "value": "2024-12-31T23:59:59+00:00"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "032c72fd-9dbe-4448-8bac-16a9d90b8c7d",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataProviderCustomId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "createdFrom",
+                      "value": "2024-06-01T00:00:00+00:00"
+                    },
+                    {
+                      "key": "createdTo",
+                      "value": "2024-12-31T23:59:59+00:00"
+                    },
+                    {
+                      "key": "updatedFrom",
+                      "value": "2024-06-01T00:00:00+00:00"
+                    },
+                    {
+                      "key": "updatedTo",
+                      "value": "2024-12-31T23:59:59+00:00"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6467785-2f6a-4e80-b9b2-2937f49e9614",
+          "name": "Get a product, item, or material by custom ID",
+          "request": {
+            "name": "Get a product, item, or material by custom ID",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "customer-data",
+                ":entity_type",
+                ":custom_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dataProviderCustomId",
+                  "value": "<string>",
+                  "description": "Optional Local org custom id whose global organization is used\nas the data scope for the lookup. When omitted, the authenticated organization is used.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "custom_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "705b51a0-af07-4745-a8c2-6efc950bd240",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataProviderCustomId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "custom_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"customId\": \"string\",\n  \"entityType\": \"pdt\",\n  \"description\": \"string\",\n  \"categories\": [\n    {\n      \"taxonomy\": \"string\",\n      \"levelCustomId\": \"string\",\n      \"levelIdentifier\": \"string\",\n      \"customId\": \"string\",\n      \"name\": \"string\",\n      \"businessId\": \"string\",\n      \"customIdentifierId\": \"string\"\n    },\n    {\n      \"taxonomy\": \"string\",\n      \"levelCustomId\": \"string\",\n      \"levelIdentifier\": \"string\",\n      \"customId\": \"string\",\n      \"name\": \"string\",\n      \"businessId\": \"string\",\n      \"customIdentifierId\": \"string\"\n    }\n  ],\n  \"ownerOrg\": {\n    \"id\": 5737,\n    \"name\": \"string\",\n    \"customId\": \"string\",\n    \"type\": \"string\"\n  },\n  \"creatorOrg\": {\n    \"id\": 337,\n    \"name\": \"string\",\n    \"customId\": \"string\",\n    \"type\": \"string\"\n  },\n  \"lastUpdateSource\": \"string\",\n  \"createdAt\": \"2024-06-01T14:30:05Z\",\n  \"updatedAt\": \"2024-06-01T14:30:05Z\",\n  \"status\": \"active\",\n  \"style\": {\n    \"styleUuid\": \"string\",\n    \"styleId\": \"string\",\n    \"styleName\": \"string\"\n  },\n  \"productId\": \"string\",\n  \"revisionId\": 7580,\n  \"isSet\": true,\n  \"set\": [\n    {\n      \"styleUuid\": \"string\",\n      \"styleId\": \"string\",\n      \"styleName\": \"string\"\n    },\n    {\n      \"styleUuid\": \"string\",\n      \"styleId\": \"string\",\n      \"styleName\": \"string\"\n    }\n  ],\n  \"domainAttributes\": {\n    \"key_0\": 9259\n  },\n  \"additionalAttributes\": {\n    \"key_0\": 6664.772523138368\n  },\n  \"suppliers\": [\n    {\n      \"id\": 7921,\n      \"globalOrgId\": 5586,\n      \"customId\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": 7223,\n      \"globalOrgId\": 687,\n      \"customId\": \"string\",\n      \"name\": \"string\"\n    }\n  ],\n  \"factories\": [\n    {\n      \"id\": 1963,\n      \"globalOrgId\": 875,\n      \"customId\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": 817,\n      \"globalOrgId\": 2992,\n      \"customId\": \"string\",\n      \"name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f11236d6-0e58-49dc-9140-b5601bebfa11",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataProviderCustomId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "custom_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 9633.927851941582\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "967b5203-04e6-4367-8a86-8f803288d78a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataProviderCustomId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "custom_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4fb91fb7-58f0-4058-830a-f5ee1757f021",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataProviderCustomId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "custom_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "93fdcd5f-8bc8-479a-9319-427a5efcbdff",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "customer-data",
+                    ":entity_type",
+                    ":custom_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataProviderCustomId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "custom_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://files-integration.inspectorio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d4417d39-1e45-47f3-92fb-1bfdaf151c12",
+    "name": "File Management ANALYTICS CUSTOMER DATA API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

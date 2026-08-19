@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS STORAGE API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "STORAGE",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create File Upload Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/file-upload-session",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "File Upload Session"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1183 @@
+{
+  "item": [
+    {
+      "id": "ac929099-3fb8-4097-a75d-9d2d78ef8186",
+      "name": "REPORT-V2",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "04df00c5-23c4-4bc7-afc4-20dfe0064ae0",
+          "name": "List reports",
+          "request": {
+            "name": "List reports",
+            "description": {
+              "content": "List Reports V2 with additional data about report and CAPA",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "assessment_type",
+                  "value": "<string>",
+                  "description": "Type of the assessment between \"Self Assessment\" or \"Verification Assessment\""
+                },
+                {
+                  "disabled": false,
+                  "key": "report_status",
+                  "value": "<string>",
+                  "description": "Status of the reports"
+                },
+                {
+                  "disabled": false,
+                  "key": "requestee_id",
+                  "value": "<string>",
+                  "description": "Requestee ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "capa_status",
+                  "value": "<string>",
+                  "description": "Status of the CAPA"
+                },
+                {
+                  "disabled": false,
+                  "key": "report_generate_date_from",
+                  "value": "<date>",
+                  "description": "Earliest date of the report date range"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_date_from",
+                  "value": "<date>",
+                  "description": "From the date reports are updated"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Limit result of list"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_date_to",
+                  "value": "<date>",
+                  "description": "To the date reports are updated"
+                },
+                {
+                  "disabled": false,
+                  "key": "report_generate_date_to",
+                  "value": "<date>",
+                  "description": "Latest date of the report date range"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "report_generate_date:desc",
+                  "description": "Order used to sort the reports whether ascending or descending"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a08f13f-3bc3-49e7-9254-5f55f6c79ca3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assessment_type",
+                      "value": "Self Assessment"
+                    },
+                    {
+                      "key": "report_status",
+                      "value": "New"
+                    },
+                    {
+                      "key": "requestee_id",
+                      "value": "F_123"
+                    },
+                    {
+                      "key": "capa_status",
+                      "value": "New"
+                    },
+                    {
+                      "key": "report_generate_date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "updated_date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "updated_date_to",
+                      "value": "2020-01-02"
+                    },
+                    {
+                      "key": "report_generate_date_to",
+                      "value": "2020-01-02"
+                    },
+                    {
+                      "key": "order",
+                      "value": "report_generate_date:desc"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 8794,\n  \"data\": [\n    {\n      \"id\": \"5c40e755-3ab0-4fa9-9a44-f76a95f0e87d\",\n      \"caseId\": \"string\",\n      \"assessmentId\": \"100000-2\",\n      \"status\": \"New\",\n      \"reason\": \"Annual Audit\",\n      \"workflowName\": \"Factory Information\",\n      \"executionLocations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"updatedDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"type\": \"Verification Assessment\",\n      \"announcementType\": \"Announced\",\n      \"assessmentStatus\": \"Aborted\",\n      \"assessmentWindowStart\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"assessmentWindowEnd\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"assessmentDueDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"assessmentRequestDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"assessmentSubmitDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"auditStartDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"auditEndDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"auditTimeSpent\": 12,\n      \"auditors\": [\n        {\n          \"email\": \"john.doe@abc.com\",\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\"\n        },\n        {\n          \"email\": \"john.doe@abc.com\",\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\"\n        }\n      ],\n      \"assignedUsers\": [\n        {\n          \"email\": \"john.doe@abc.com\",\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\"\n        },\n        {\n          \"email\": \"john.doe@abc.com\",\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\"\n        }\n      ],\n      \"assignedRoles\": [\n        {\n          \"name\": \"UL China\"\n        },\n        {\n          \"name\": \"UL China\"\n        }\n      ],\n      \"assessmentStartDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"completeCaseDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"reopenCaseDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"reportGenerateDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"caseExpirationDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"customFields\": {},\n      \"standard\": {\n        \"name\": \"string\",\n        \"version\": \"string\"\n      },\n      \"stakeholders\": {\n        \"requester\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"orgId\": \"string\",\n          \"type\": \"string\",\n          \"contactPersons\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phoneNumber\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phoneNumber\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"executors\": [\n          {\n            \"contactPersons\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isPlaceholder\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ableToSubmitAssessment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isLead\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"assignedRoles\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"contactPersons\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isPlaceholder\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ableToSubmitAssessment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isLead\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"assignedRoles\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"requestee\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"orgId\": \"string\",\n          \"type\": \"string\",\n          \"address\": \"123 Main Street\",\n          \"city\": \"Abbeville\",\n          \"province\": \"Alabama\",\n          \"country\": \"US\",\n          \"contactPersons\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phoneNumber\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phoneNumber\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"selectedPartners\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"orgId\": \"string\",\n            \"type\": \"string\",\n            \"contactPersons\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"address\": \"123 Main Street\",\n            \"country\": \"US\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"orgId\": \"string\",\n            \"type\": \"string\",\n            \"contactPersons\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"address\": \"123 Main Street\",\n            \"country\": \"US\"\n          }\n        ]\n      },\n      \"totalFindings\": [\n        {\n          \"severity\": \"Major\",\n          \"findings\": 2\n        },\n        {\n          \"severity\": \"Major\",\n          \"findings\": 2\n        }\n      ],\n      \"rating\": \"Good\",\n      \"score\": \"8/10\",\n      \"scoreInPercentage\": \"80%\",\n      \"numberOfAreaToImproves\": 12,\n      \"reportLabels\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"escalations\": [\n        {\n          \"createdDate\": \"2024-09-30T10:36:56.057000+00:00\",\n          \"status\": \"string\",\n          \"resolvedDate\": \"2024-09-30T10:36:56.057000+00:00\",\n          \"escalatedTo\": [\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"firstName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lastName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"firstName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lastName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"escalatedBy\": {\n            \"email\": \"john.doe@abc.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n          },\n          \"resolvedByUser\": {\n            \"email\": \"john.doe@abc.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n          },\n          \"note\": \"string\",\n          \"reasons\": [\n            \"string\",\n            \"string\"\n          ],\n          \"exceptionReasons\": [\n            \"string\",\n            \"string\"\n          ],\n          \"reviewerComment\": \"string\"\n        },\n        {\n          \"createdDate\": \"2024-09-30T10:36:56.057000+00:00\",\n          \"status\": \"string\",\n          \"resolvedDate\": \"2024-09-30T10:36:56.057000+00:00\",\n          \"escalatedTo\": [\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"firstName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lastName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"firstName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lastName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"escalatedBy\": {\n            \"email\": \"john.doe@abc.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n          },\n          \"resolvedByUser\": {\n            \"email\": \"john.doe@abc.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n          },\n          \"note\": \"string\",\n          \"reasons\": [\n            \"string\",\n            \"string\"\n          ],\n          \"exceptionReasons\": [\n            \"string\",\n            \"string\"\n          ],\n          \"reviewerComment\": \"string\"\n        }\n      ],\n      \"capa\": {\n        \"id\": \"1235330e-b74b-4be6-8d8a-cb0560effc11\",\n        \"status\": \"NEW\",\n        \"capaLabels\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"5c40e755-3ab0-4fa9-9a44-f76a95f0e87d\",\n      \"caseId\": \"string\",\n      \"assessmentId\": \"100000-2\",\n      \"status\": \"New\",\n      \"reason\": \"Annual Audit\",\n      \"workflowName\": \"Factory Information\",\n      \"executionLocations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"updatedDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"type\": \"Verification Assessment\",\n      \"announcementType\": \"Announced\",\n      \"assessmentStatus\": \"Aborted\",\n      \"assessmentWindowStart\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"assessmentWindowEnd\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"assessmentDueDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"assessmentRequestDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"assessmentSubmitDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"auditStartDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"auditEndDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"auditTimeSpent\": 12,\n      \"auditors\": [\n        {\n          \"email\": \"john.doe@abc.com\",\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\"\n        },\n        {\n          \"email\": \"john.doe@abc.com\",\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\"\n        }\n      ],\n      \"assignedUsers\": [\n        {\n          \"email\": \"john.doe@abc.com\",\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\"\n        },\n        {\n          \"email\": \"john.doe@abc.com\",\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\"\n        }\n      ],\n      \"assignedRoles\": [\n        {\n          \"name\": \"UL China\"\n        },\n        {\n          \"name\": \"UL China\"\n        }\n      ],\n      \"assessmentStartDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"completeCaseDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"reopenCaseDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"reportGenerateDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"caseExpirationDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"customFields\": {},\n      \"standard\": {\n        \"name\": \"string\",\n        \"version\": \"string\"\n      },\n      \"stakeholders\": {\n        \"requester\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"orgId\": \"string\",\n          \"type\": \"string\",\n          \"contactPersons\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phoneNumber\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phoneNumber\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"executors\": [\n          {\n            \"contactPersons\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isPlaceholder\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ableToSubmitAssessment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isLead\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"assignedRoles\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"contactPersons\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isPlaceholder\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"ableToSubmitAssessment\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isLead\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"assignedRoles\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"requestee\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"orgId\": \"string\",\n          \"type\": \"string\",\n          \"address\": \"123 Main Street\",\n          \"city\": \"Abbeville\",\n          \"province\": \"Alabama\",\n          \"country\": \"US\",\n          \"contactPersons\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phoneNumber\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phoneNumber\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"selectedPartners\": [\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"orgId\": \"string\",\n            \"type\": \"string\",\n            \"contactPersons\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"address\": \"123 Main Street\",\n            \"country\": \"US\"\n          },\n          {\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"orgId\": \"string\",\n            \"type\": \"string\",\n            \"contactPersons\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"address\": \"123 Main Street\",\n            \"country\": \"US\"\n          }\n        ]\n      },\n      \"totalFindings\": [\n        {\n          \"severity\": \"Major\",\n          \"findings\": 2\n        },\n        {\n          \"severity\": \"Major\",\n          \"findings\": 2\n        }\n      ],\n      \"rating\": \"Good\",\n      \"score\": \"8/10\",\n      \"scoreInPercentage\": \"80%\",\n      \"numberOfAreaToImproves\": 12,\n      \"reportLabels\": [\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"escalations\": [\n        {\n          \"createdDate\": \"2024-09-30T10:36:56.057000+00:00\",\n          \"status\": \"string\",\n          \"resolvedDate\": \"2024-09-30T10:36:56.057000+00:00\",\n          \"escalatedTo\": [\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"firstName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lastName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"firstName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lastName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"escalatedBy\": {\n            \"email\": \"john.doe@abc.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n          },\n          \"resolvedByUser\": {\n            \"email\": \"john.doe@abc.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n          },\n          \"note\": \"string\",\n          \"reasons\": [\n            \"string\",\n            \"string\"\n          ],\n          \"exceptionReasons\": [\n            \"string\",\n            \"string\"\n          ],\n          \"reviewerComment\": \"string\"\n        },\n        {\n          \"createdDate\": \"2024-09-30T10:36:56.057000+00:00\",\n          \"status\": \"string\",\n          \"resolvedDate\": \"2024-09-30T10:36:56.057000+00:00\",\n          \"escalatedTo\": [\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"firstName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lastName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"firstName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lastName\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"escalatedBy\": {\n            \"email\": \"john.doe@abc.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n          },\n          \"resolvedByUser\": {\n            \"email\": \"john.doe@abc.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\"\n          },\n          \"note\": \"string\",\n          \"reasons\": [\n            \"string\",\n            \"string\"\n          ],\n          \"exceptionReasons\": [\n            \"string\",\n            \"string\"\n          ],\n          \"reviewerComment\": \"string\"\n        }\n      ],\n      \"capa\": {\n        \"id\": \"1235330e-b74b-4be6-8d8a-cb0560effc11\",\n        \"status\": \"NEW\",\n        \"capaLabels\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"limit\": 10,\n  \"offset\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b62d94a-0ad8-460b-bc0a-f076eeaea4cb",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assessment_type",
+                      "value": "Self Assessment"
+                    },
+                    {
+                      "key": "report_status",
+                      "value": "New"
+                    },
+                    {
+                      "key": "requestee_id",
+                      "value": "F_123"
+                    },
+                    {
+                      "key": "capa_status",
+                      "value": "New"
+                    },
+                    {
+                      "key": "report_generate_date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "updated_date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "updated_date_to",
+                      "value": "2020-01-02"
+                    },
+                    {
+                      "key": "report_generate_date_to",
+                      "value": "2020-01-02"
+                    },
+                    {
+                      "key": "order",
+                      "value": "report_generate_date:desc"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d967b81-43c1-4973-a9dc-46777db42cd6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assessment_type",
+                      "value": "Self Assessment"
+                    },
+                    {
+                      "key": "report_status",
+                      "value": "New"
+                    },
+                    {
+                      "key": "requestee_id",
+                      "value": "F_123"
+                    },
+                    {
+                      "key": "capa_status",
+                      "value": "New"
+                    },
+                    {
+                      "key": "report_generate_date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "updated_date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "updated_date_to",
+                      "value": "2020-01-02"
+                    },
+                    {
+                      "key": "report_generate_date_to",
+                      "value": "2020-01-02"
+                    },
+                    {
+                      "key": "order",
+                      "value": "report_generate_date:desc"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6132e6aa-84f0-4844-9aec-580f19f31195",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assessment_type",
+                      "value": "Self Assessment"
+                    },
+                    {
+                      "key": "report_status",
+                      "value": "New"
+                    },
+                    {
+                      "key": "requestee_id",
+                      "value": "F_123"
+                    },
+                    {
+                      "key": "capa_status",
+                      "value": "New"
+                    },
+                    {
+                      "key": "report_generate_date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "updated_date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "updated_date_to",
+                      "value": "2020-01-02"
+                    },
+                    {
+                      "key": "report_generate_date_to",
+                      "value": "2020-01-02"
+                    },
+                    {
+                      "key": "order",
+                      "value": "report_generate_date:desc"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71f99ce8-3968-4cc9-ab8c-719203c9b0d5",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assessment_type",
+                      "value": "Self Assessment"
+                    },
+                    {
+                      "key": "report_status",
+                      "value": "New"
+                    },
+                    {
+                      "key": "requestee_id",
+                      "value": "F_123"
+                    },
+                    {
+                      "key": "capa_status",
+                      "value": "New"
+                    },
+                    {
+                      "key": "report_generate_date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "updated_date_from",
+                      "value": "2020-01-01"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "updated_date_to",
+                      "value": "2020-01-02"
+                    },
+                    {
+                      "key": "report_generate_date_to",
+                      "value": "2020-01-02"
+                    },
+                    {
+                      "key": "order",
+                      "value": "report_generate_date:desc"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe0ad035-f73e-4af9-91be-3518d75fac25",
+          "name": "Get Report",
+          "request": {
+            "name": "Get Report",
+            "description": {
+              "content": "Get Report V2 with additional data about report and CAPA",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "reports",
+                ":report_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "capa_details",
+                  "value": "<boolean>",
+                  "description": "Get additional information about CAPA"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "report_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9bcd0cdd-4811-4d16-8f99-a5a8fa3f012d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "capa_details",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"5c40e755-3ab0-4fa9-9a44-f76a95f0e87d\",\n    \"caseId\": \"string\",\n    \"assessmentId\": \"100000-2\",\n    \"status\": \"New\",\n    \"reason\": \"Annual Audit\",\n    \"workflowName\": \"Factory Information\",\n    \"executionLocations\": [\n      \"string\",\n      \"string\"\n    ],\n    \"updatedDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"type\": \"Verification Assessment\",\n    \"announcementType\": \"Announced\",\n    \"assessmentStatus\": \"Aborted\",\n    \"assessmentWindowStart\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"assessmentWindowEnd\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"assessmentDueDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"assessmentRequestDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"assessmentSubmitDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"auditStartDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"auditEndDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"auditTimeSpent\": 12,\n    \"auditors\": [\n      {\n        \"email\": \"john.doe@abc.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\"\n      },\n      {\n        \"email\": \"john.doe@abc.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\"\n      }\n    ],\n    \"assignedUsers\": [\n      {\n        \"email\": \"john.doe@abc.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\"\n      },\n      {\n        \"email\": \"john.doe@abc.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\"\n      }\n    ],\n    \"assignedRoles\": [\n      {\n        \"name\": \"UL China\"\n      },\n      {\n        \"name\": \"UL China\"\n      }\n    ],\n    \"assessmentStartDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"completeCaseDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"reopenCaseDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"reportGenerateDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"caseExpirationDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"confidentialNotes\": [\n      {\n        \"content\": \"Confidential information about assessment\",\n        \"createdBy\": \"Jane Auditor\",\n        \"createdDate\": \"2024-09-30T10:36:56.057000+00:00\"\n      },\n      {\n        \"content\": \"Confidential information about assessment\",\n        \"createdBy\": \"Jane Auditor\",\n        \"createdDate\": \"2024-09-30T10:36:56.057000+00:00\"\n      }\n    ],\n    \"customFields\": {},\n    \"standard\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"stakeholders\": {\n      \"requester\": {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"orgId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"contactPersons\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"executors\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"requestee\": {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"orgId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"address\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"city\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"province\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"country\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"contactPersons\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"selectedPartners\": [\n        {\n          \"contactPersons\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"address\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"country\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"contactPersons\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"address\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"country\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ]\n    },\n    \"totalFindings\": [\n      {\n        \"severity\": \"Major\",\n        \"findings\": 2\n      },\n      {\n        \"severity\": \"Major\",\n        \"findings\": 2\n      }\n    ],\n    \"rating\": \"Good\",\n    \"score\": \"8/10\",\n    \"scoreInPercentage\": \"80%\",\n    \"numberOfAreaToImproves\": 12,\n    \"reportLabels\": [\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      }\n    ],\n    \"escalations\": [\n      {\n        \"createdDate\": \"2024-09-30T10:36:56.057000+00:00\",\n        \"status\": \"string\",\n        \"resolvedDate\": \"2024-09-30T10:36:56.057000+00:00\",\n        \"escalatedTo\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"escalatedBy\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"resolvedByUser\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"note\": \"string\",\n        \"reasons\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"exceptionReasons\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"reviewerComment\": \"string\"\n      },\n      {\n        \"createdDate\": \"2024-09-30T10:36:56.057000+00:00\",\n        \"status\": \"string\",\n        \"resolvedDate\": \"2024-09-30T10:36:56.057000+00:00\",\n        \"escalatedTo\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"escalatedBy\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"resolvedByUser\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"note\": \"string\",\n        \"reasons\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"exceptionReasons\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"reviewerComment\": \"string\"\n      }\n    ],\n    \"checkin\": {\n      \"checkinLocation\": {\n        \"latitude\": 10.762622,\n        \"longitude\": 106.660172,\n        \"address\": \"string\",\n        \"country\": \"US\",\n        \"postal\": \"string\",\n        \"state\": \"string\",\n        \"city\": \"string\"\n      },\n      \"checkinUser\": \"john.doe@example.com\",\n      \"checkinDate\": \"2025-12-12T10:47:57.465000+00:00\",\n      \"isManual\": true,\n      \"reason\": \"GPS not available\"\n    },\n    \"overallComment\": \"Please submit the capa by due date.\",\n    \"stepExecutions\": [\n      {\n        \"id\": \"4ea094ac-84de-4d50-80c3-fef2ef569f3c\",\n        \"name\": \"Questionnaire 1 - Mapping Issue List\",\n        \"order\": 0,\n        \"result\": {},\n        \"questionnaire\": {}\n      },\n      {\n        \"id\": \"4ea094ac-84de-4d50-80c3-fef2ef569f3c\",\n        \"name\": \"Questionnaire 1 - Mapping Issue List\",\n        \"order\": 0,\n        \"result\": {},\n        \"questionnaire\": {}\n      }\n    ],\n    \"submitEvent\": {\n      \"submittedByUser\": {\n        \"email\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"firstName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lastName\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"submitDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"submittedByOrg\": {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"orgId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    \"declineReasons\": [\n      \"string\",\n      \"string\"\n    ],\n    \"capa\": {\n      \"id\": \"1235330e-b74b-4be6-8d8a-cb0560effc11\",\n      \"status\": \"New\",\n      \"capaLabels\": [\n        {\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"updatedDate\": \"2025-12-12T10:48:07.191000+00:00\",\n      \"updatedByUser\": \"john_doe@example.com\",\n      \"approvedDate\": \"2025-12-12T10:48:07.191000+00:00\",\n      \"createdDate\": \"2025-12-12T10:48:07.191000+00:00\",\n      \"dueDate\": \"2025-12-31T00:00:00.000000+00:00\",\n      \"areaToImproves\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88e8d3ae-9d41-4a5b-b81d-ff5e65209fd7",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "capa_details",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0506417f-dd82-454e-a1bb-974b1ab8a475",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "capa_details",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01db12ad-0eb1-4222-96f6-3afb3f44c1c6",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "capa_details",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed5223d2-a4ee-4c78-944f-cabf4c89eab6",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "capa_details",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37733e3c-7a84-466b-94ad-643011309130",
+          "name": "Get Step Execution",
+          "request": {
+            "name": "Get Step Execution",
+            "description": {
+              "content": "Get Step Execution",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "reports",
+                ":report_id",
+                "steps",
+                ":step_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "step_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "report_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4f650e9-c125-45b7-b506-b5d0d3553a38",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id",
+                    "steps",
+                    ":step_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "step_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"appTestResults\": [\n      {\n        \"factoryType\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"sectionId\": \"string\"\n      },\n      {\n        \"factoryType\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"sectionId\": \"string\"\n      }\n    ],\n    \"assessmentExecution\": {\n      \"ableToExecute\": false,\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"status\": \"string\",\n      \"updatedDate\": \"1977-09-11T04:58:40.806Z\",\n      \"workflow\": {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"standard\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    \"formData\": {\n      \"data\": {},\n      \"id\": \"string\"\n    },\n    \"id\": \"123d1b06-c172-4cc3-a905-64840ec0a020\",\n    \"issues\": [\n      {\n        \"category\": \"Electrical Safety\",\n        \"id\": \"123abc\",\n        \"severity\": \"Major\",\n        \"sovePrinciple\": \"Safety\",\n        \"text\": \"Safety measures of electrical panels are not in place\"\n      },\n      {\n        \"category\": \"Electrical Safety\",\n        \"id\": \"123abc\",\n        \"severity\": \"Major\",\n        \"sovePrinciple\": \"Safety\",\n        \"text\": \"Safety measures of electrical panels are not in place\"\n      }\n    ],\n    \"questionAnswers\": [\n      {\n        \"choices\": [\n          {\n            \"files\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"option\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"optionId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subQuestionAnswers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"files\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"option\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"optionId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subQuestionAnswers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"comments\": [\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"canEdit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isEdited\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"canEdit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isEdited\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"findingsIssues\": [\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"findingsIssuesId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"severity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"summary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"findingsIssuesId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"severity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"summary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"id\": \"string\",\n        \"index\": 3676,\n        \"isNotApplicable\": false,\n        \"locked\": false,\n        \"mappedIssues\": [\n          {\n            \"answerId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issueId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"answerId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issueId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"number\": 8803,\n        \"parentId\": \"string\",\n        \"questionId\": \"string\",\n        \"text\": \"string\"\n      },\n      {\n        \"choices\": [\n          {\n            \"files\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"option\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"optionId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subQuestionAnswers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"files\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"option\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"optionId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subQuestionAnswers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"text\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"comments\": [\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"canEdit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isEdited\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"canEdit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"isEdited\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"findingsIssues\": [\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"findingsIssuesId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"severity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"summary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"content\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"findingsIssuesId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"severity\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"summary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"user\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"id\": \"string\",\n        \"index\": 6852,\n        \"isNotApplicable\": true,\n        \"locked\": false,\n        \"mappedIssues\": [\n          {\n            \"answerId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issueId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"answerId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issueId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"options\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"number\": 8743,\n        \"parentId\": \"string\",\n        \"questionId\": \"string\",\n        \"text\": \"string\"\n      }\n    ],\n    \"questionnaire\": {\n      \"description\": \"string\",\n      \"flattenSections\": [\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"level\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"questions\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"level\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"questions\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    \"report\": {\n      \"createdDate\": \"2021-06-27T09:35:21.380000+00:00\",\n      \"id\": \"1239c6ab-55ad-47a2-847d-2973ed4b00aa\",\n      \"isHideScore\": false,\n      \"maxScore\": 135,\n      \"ratingLabel\": {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"score\": 72,\n      \"sections\": [\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"improvements\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"level\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"maxScore\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"path\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"score\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"improvements\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"level\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"maxScore\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"parentId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"path\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"score\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"stepExeId\": \"13ccab58-b11f-486b-9dc9-05ced81729d8\"\n    },\n    \"status\": \"COMPLETED\",\n    \"step\": {\n      \"formSchema\": {\n        \"description\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"schema\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"version\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"id\": \"123ce62d-892c-4e54-a8c3-3b6f52f0d915\",\n      \"name\": \"Factory Information\"\n    },\n    \"stepId\": \"123ce62d-892c-4e54-a8c3-3b6f52f0d915\",\n    \"updatedBy\": {\n      \"email\": \"john@acme.com\",\n      \"firstName\": \"John\",\n      \"id\": \"cc94fc4e-dcbe-44a5-863e-3255281e02ca\",\n      \"lastName\": \"Doe\"\n    },\n    \"updatedDate\": \"2021-06-24T15:04:28.402000+00:00\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "037ef5cd-d916-4df2-afee-9d45cd255100",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id",
+                    "steps",
+                    ":step_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "step_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3036f260-a049-4152-a724-6d8c5dbd2acb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id",
+                    "steps",
+                    ":step_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "step_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eeaa2ef8-aae4-434b-bd0f-600411d28025",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id",
+                    "steps",
+                    ":step_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "step_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5a8fc67-1173-48b9-b868-9da944b7edbd",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "reports",
+                    ":report_id",
+                    "steps",
+                    ":step_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "step_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "report_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://files-integration.inspectorio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "de06c2f4-f16d-449d-bbff-63f6411b9280",
+    "name": "File Management ANALYTICS REPORT-V2 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

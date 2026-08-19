@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS REPORT-V2 API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "REPORT-V2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v2/reports",
+            "params": [
+              {
+                "name": "assessment_type",
+                "value": "",
+                "type": "query",
+                "description": "Type of the assessment between \"Self Assessment\" or \"Verification Assessment\""
+              },
+              {
+                "name": "report_status",
+                "value": "",
+                "type": "query",
+                "description": "Status of the reports"
+              },
+              {
+                "name": "requestee_id",
+                "value": "",
+                "type": "query",
+                "description": "Requestee ID"
+              },
+              {
+                "name": "capa_status",
+                "value": "",
+                "type": "query",
+                "description": "Status of the CAPA"
+              },
+              {
+                "name": "report_generate_date_from",
+                "value": "",
+                "type": "query",
+                "description": "Earliest date of the report date range"
+              },
+              {
+                "name": "updated_date_from",
+                "value": "",
+                "type": "query",
+                "description": "From the date reports are updated"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit result of list"
+              },
+              {
+                "name": "updated_date_to",
+                "value": "",
+                "type": "query",
+                "description": "To the date reports are updated"
+              },
+              {
+                "name": "report_generate_date_to",
+                "value": "",
+                "type": "query",
+                "description": "Latest date of the report date range"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Order used to sort the reports whether ascending or descending"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Reports V2 with additional data about report and CAPA"
+        },
+        {
+          "info": {
+            "name": "Get Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v2/reports/:report_id",
+            "params": [
+              {
+                "name": "report_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "capa_details",
+                "value": "",
+                "type": "query",
+                "description": "Get additional information about CAPA"
+              }
+            ]
+          },
+          "docs": "Get Report V2 with additional data about report and CAPA"
+        },
+        {
+          "info": {
+            "name": "Get Step Execution",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/reports/:report_id/steps/:step_id",
+            "params": [
+              {
+                "name": "step_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "report_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Step Execution"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

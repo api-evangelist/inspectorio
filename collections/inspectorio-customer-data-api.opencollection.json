@@ -1,0 +1,302 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS CUSTOMER DATA API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CUSTOMER DATA",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create or Update (Upsert) products, items and materials",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v1/customer-data/products",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint allows you to create or update products, items, materials and item sets in your Data Set in Inspectorio Platform. Take special attention on the constraints documented about `force_update`and API Rate Limits in our 429 Response Headers."
+        },
+        {
+          "info": {
+            "name": "Get synchronization status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/customer-data/synchronization/:entity_type/:id",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get synchronization status"
+        },
+        {
+          "info": {
+            "name": "Create a new BOM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/customer-data/boms",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new BOM"
+        },
+        {
+          "info": {
+            "name": "List all BOMs for an entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/customer-data/:entity_type/:entity_custom_id/boms",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "entity_custom_id",
+                "value": "",
+                "type": "path",
+                "description": "The custom ID of the entity that the BOM is attached to"
+              }
+            ]
+          },
+          "docs": "List all BOMs for an entity"
+        },
+        {
+          "info": {
+            "name": "Get BOM details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/customer-data/:entity_type/:entity_custom_id/boms/:bom_custom_id",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "entity_custom_id",
+                "value": "",
+                "type": "path",
+                "description": "The custom ID of the entity that the BOM is attached to"
+              },
+              {
+                "name": "bom_custom_id",
+                "value": "",
+                "type": "path",
+                "description": "The custom ID of the BOM itself"
+              },
+              {
+                "name": "poNumber",
+                "value": "",
+                "type": "query",
+                "description": "Optional Purchase Order number to use when filtering BOMs. Use this when multiple BOMs exist with the same custom ID but different POs."
+              }
+            ]
+          },
+          "docs": "Get BOM details"
+        },
+        {
+          "info": {
+            "name": "Update an existing BOM",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v1/customer-data/:entity_type/:entity_custom_id/boms/:bom_custom_id",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "entity_custom_id",
+                "value": "",
+                "type": "path",
+                "description": "The custom ID of the entity that the BOM is attached to"
+              },
+              {
+                "name": "bom_custom_id",
+                "value": "",
+                "type": "path",
+                "description": "The custom ID of the BOM itself"
+              },
+              {
+                "name": "poNumber",
+                "value": "",
+                "type": "query",
+                "description": "Optional Purchase Order number to use when filtering BOMs. Use this when multiple BOMs exist with the same custom ID but different POs."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing BOM"
+        },
+        {
+          "info": {
+            "name": "Delete a BOM",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://files-integration.inspectorio.com/api/v1/customer-data/:entity_type/:entity_custom_id/boms/:bom_custom_id",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "entity_custom_id",
+                "value": "",
+                "type": "path",
+                "description": "The custom ID of the entity that the BOM is attached to"
+              },
+              {
+                "name": "bom_custom_id",
+                "value": "",
+                "type": "path",
+                "description": "The custom ID of the BOM itself"
+              },
+              {
+                "name": "poNumber",
+                "value": "",
+                "type": "query",
+                "description": "Optional Purchase Order number to use when filtering BOMs. Use this when multiple BOMs exist with the same custom ID but different POs."
+              }
+            ]
+          },
+          "docs": "Delete a BOM"
+        },
+        {
+          "info": {
+            "name": "List products, items, or materials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/customer-data/:entity_type",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataProviderCustomId",
+                "value": "",
+                "type": "query",
+                "description": "Optional Local org custom id whose global organization is used\nas the data scope for the lookup. When omitted, the authenticated organization is used.\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Page size; default 10."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip before returning results."
+              },
+              {
+                "name": "createdFrom",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound (inclusive) on `createdAt`, ISO 8601 datetime."
+              },
+              {
+                "name": "createdTo",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound (inclusive) on `createdAt`, ISO 8601 datetime."
+              },
+              {
+                "name": "updatedFrom",
+                "value": "",
+                "type": "query",
+                "description": "Lower bound (inclusive) on `updatedAt`, ISO 8601 datetime."
+              },
+              {
+                "name": "updatedTo",
+                "value": "",
+                "type": "query",
+                "description": "Upper bound (inclusive) on `updatedAt`, ISO 8601 datetime."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by lifecycle status."
+              }
+            ]
+          },
+          "docs": "List products, items, or materials"
+        },
+        {
+          "info": {
+            "name": "Get a product, item, or material by custom ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/customer-data/:entity_type/:custom_id",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "custom_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dataProviderCustomId",
+                "value": "",
+                "type": "query",
+                "description": "Optional Local org custom id whose global organization is used\nas the data scope for the lookup. When omitted, the authenticated organization is used.\n"
+              }
+            ]
+          },
+          "docs": "Get a product, item, or material by custom ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

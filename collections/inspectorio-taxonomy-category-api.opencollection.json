@@ -1,0 +1,169 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS TAXONOMY CATEGORY API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TAXONOMY CATEGORY",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/customer-data/taxonomies/:taxonomyLevelCustomId/categories",
+            "params": [
+              {
+                "name": "taxonomyLevelCustomId",
+                "value": "",
+                "type": "path",
+                "description": "Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+              },
+              {
+                "name": "parentCustomId",
+                "value": "",
+                "type": "query",
+                "description": "Filter to categories whose parent has one of these custom IDs. Repeat the\nparameter once per value: `?parentCustomId=footwear&parentCustomId=apparel`\nreturns the children of both parents. Comma-separated values are not\nsupported — `?parentCustomId=footwear,apparel` is matched as one literal ID.\nOmit to list all categories at the level.\n"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Free-text search. Whitespace-separated terms are OR-matched (case-insensitive)\nagainst the category `name` and its `businessId`.\n"
+              },
+              {
+                "name": "orderBy",
+                "value": "",
+                "type": "query",
+                "description": "Sort order, in the form `<field>:<direction>`.\n\n`<field>` is one of `name` (sorts by parent name, then category name),\n`createdAt` (creation time) or `updatedAt` (last-update time).\n\n`<direction>` is `asc` or `desc`. The suffix is optional; timestamp fields\ndefault to `desc` (newest first) while `name` defaults to `asc` (A→Z). Omitting\nthe parameter entirely is equivalent to `createdAt:desc`.\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (page size)."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination."
+              }
+            ]
+          },
+          "docs": "List categories at the given taxonomy level for the caller's organization, with\npagination. Soft-deleted categories are excluded. Pass one or more `parentCustomId`\nvalues to fetch the children of specific parents (there is no nested children route).\n"
+        },
+        {
+          "info": {
+            "name": "Create or Restore Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/customer-data/taxonomies/:taxonomyLevelCustomId/categories",
+            "params": [
+              {
+                "name": "taxonomyLevelCustomId",
+                "value": "",
+                "type": "path",
+                "description": "Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new category at the given taxonomy level, or restores a soft-deleted\ncategory with the same `customId` at the same level (201 in both cases).\n\n**Create:** A new row is inserted. `businessId` must be unique among live siblings\n(same parent). `parentCustomId`, if provided, must resolve to a live category at\nthe level immediately above.\n\n**Restore:** If a soft-deleted category with the same `customId` exists at this\nlevel it is restored. `name` and `description` are updated from the reque"
+        },
+        {
+          "info": {
+            "name": "Get Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/customer-data/taxonomies/:taxonomyLevelCustomId/categories/:customId",
+            "params": [
+              {
+                "name": "taxonomyLevelCustomId",
+                "value": "",
+                "type": "path",
+                "description": "Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+              },
+              {
+                "name": "customId",
+                "value": "",
+                "type": "path",
+                "description": "Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+              }
+            ]
+          },
+          "docs": "Retrieve a single category by its `customId` within the taxonomy level.\nSoft-deleted categories are not found.\n"
+        },
+        {
+          "info": {
+            "name": "Update Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v1/customer-data/taxonomies/:taxonomyLevelCustomId/categories/:customId",
+            "params": [
+              {
+                "name": "taxonomyLevelCustomId",
+                "value": "",
+                "type": "path",
+                "description": "Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+              },
+              {
+                "name": "customId",
+                "value": "",
+                "type": "path",
+                "description": "Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the mutable fields (`name`, `description`) of a live category.\n\nOnly `name` and `description` are accepted. All other fields (`customId`, `businessId`,\n`parentCustomId`, etc.) are silently ignored.\nSoft-deleted categories are not found (404).\n"
+        },
+        {
+          "info": {
+            "name": "Delete Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://files-integration.inspectorio.com/api/v1/customer-data/taxonomies/:taxonomyLevelCustomId/categories/:customId",
+            "params": [
+              {
+                "name": "taxonomyLevelCustomId",
+                "value": "",
+                "type": "path",
+                "description": "Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,\n`class`, `department`). Unique within the caller's organization.\n"
+              },
+              {
+                "name": "customId",
+                "value": "",
+                "type": "path",
+                "description": "Client-defined custom identifier of the category. Unique within the\nowner organization (across all taxonomies and levels).\n"
+              }
+            ]
+          },
+          "docs": "Soft-deletes a category and recursively soft-deletes its entire descendant subtree.\nProduct assignments on affected categories are preserved (not removed).\n\nA deleted category (and each deleted descendant) can be restored individually via\nPOST with the same customId — see the Create Category endpoint. Restoring does not\ncascade to descendants: each customId must be restored separately, and the immediate\nparent must already be restored (live) before a child can be restored.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

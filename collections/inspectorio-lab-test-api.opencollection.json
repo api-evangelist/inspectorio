@@ -1,0 +1,506 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS LAB TEST API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LAB TEST",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Lab Tests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/lab-tests",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "offset"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "limit"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "search by Lab Test ID or Case Number or Report Number, each value separated by comma"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "status of lab test, each value separated by comma"
+              },
+              {
+                "name": "updatedFrom",
+                "value": "",
+                "type": "query",
+                "description": "lab test updatedAt From, in format YYYY-MM-DDTHH:MM:SSZ"
+              },
+              {
+                "name": "updatedTo",
+                "value": "",
+                "type": "query",
+                "description": "lab test updatedAt To, in format YYYY-MM-DDTHH:MM:SSZ"
+              },
+              {
+                "name": "createdFrom",
+                "value": "",
+                "type": "query",
+                "description": "lab test createdAt From, in format YYYY-MM-DDTHH:MM:SSZ"
+              },
+              {
+                "name": "createdTo",
+                "value": "",
+                "type": "query",
+                "description": "lab test createdAt To, in format YYYY-MM-DDTHH:MM:SSZ"
+              },
+              {
+                "name": "dispositionStatus",
+                "value": "",
+                "type": "query",
+                "description": "lab test disposition status"
+              },
+              {
+                "name": "dispositionLastUpdateTimeFrom",
+                "value": "",
+                "type": "query",
+                "description": "lab test dispositionLastUpdateTimeFrom, in format YYYY-MM-DDTHH:MM:SSZ"
+              },
+              {
+                "name": "dispositionLastUpdateTimeTo",
+                "value": "",
+                "type": "query",
+                "description": "lab test dispositionLastUpdateTimeTo, in format YYYY-MM-DDTHH:MM:SSZ"
+              }
+            ]
+          },
+          "docs": "List Lab Tests"
+        },
+        {
+          "info": {
+            "name": "Create Lab Test",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/lab-tests",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<details>\n  <summary><strong>Lab Test Creation Modes</strong></summary>\n\n  Create a new Lab Test. The system supports three creation modes based on provided data:\n\n  **Submitted Test Creation:**\n  - Provide all required test result fields: sampleReceiptDate, reportIssueDate, reportNumber, testProperties, and overallResult\n  - Creates a lab test with \"submitted\" status\n  - All provided data is saved\n\n  **New Test Creation:**\n  - Omit test result fields but provide all required fields specified in"
+        },
+        {
+          "info": {
+            "name": "Get CPSC eFiling Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/lab-tests/efiling",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "**Preconditions**\n- The lab test must be in `Completed` status.\n- The lab test entity type must be `Style` or `Item`.\n- If the lab test entity type is `Style`, `filingLevel` must be `style`.\n- The authenticated organization must have an active CPSC template configured\n  for the requested `method`.\n\n**Filing Methods**\n| Value | Description |\n|-------|-------------|\n| `cpsc_product_registry` | CPSC Product Registry submission |\n| `reference_pga_message_set` | Reference PGA Message Set submission |"
+        },
+        {
+          "info": {
+            "name": "Bulk Action Lab Test",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/lab-tests/bulk-actions/:action",
+            "params": [
+              {
+                "name": "action",
+                "value": "",
+                "type": "path",
+                "description": "action"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start/Reject/Abort/Comment Lab Test in batch"
+        },
+        {
+          "info": {
+            "name": "Get Lab Test Package Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/lab-tests/test-packages/:package_id",
+            "params": [
+              {
+                "name": "package_id",
+                "value": "",
+                "type": "path",
+                "description": "Package ID"
+              },
+              {
+                "name": "dataProvider",
+                "value": "",
+                "type": "query",
+                "description": "Data Provider ID"
+              }
+            ]
+          },
+          "docs": "Get Lab Test Package Detail"
+        },
+        {
+          "info": {
+            "name": "Update Lab Test Package",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v1/lab-tests/test-packages/:package_id",
+            "params": [
+              {
+                "name": "package_id",
+                "value": "",
+                "type": "path",
+                "description": "Package ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a lab test package"
+        },
+        {
+          "info": {
+            "name": "List Lab Test Packages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/lab-tests/test-packages",
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search by package ID or name"
+              },
+              {
+                "name": "labTestTypes",
+                "value": "",
+                "type": "query",
+                "description": "Filter by lab test types"
+              },
+              {
+                "name": "revisions",
+                "value": "",
+                "type": "query",
+                "description": "Filter by revisions"
+              },
+              {
+                "name": "enabled",
+                "value": "",
+                "type": "query",
+                "description": "Filter by enabled status"
+              },
+              {
+                "name": "createdFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by creation date from (inclusive)"
+              },
+              {
+                "name": "createdTo",
+                "value": "",
+                "type": "query",
+                "description": "Filter by creation date to (inclusive)"
+              },
+              {
+                "name": "updatedFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by last update date from (inclusive)"
+              },
+              {
+                "name": "updatedTo",
+                "value": "",
+                "type": "query",
+                "description": "Filter by last update date to (inclusive)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip"
+              },
+              {
+                "name": "dataProvider",
+                "value": "",
+                "type": "query",
+                "description": "Data Provider ID"
+              }
+            ]
+          },
+          "docs": "Get a paginated list of lab test packages with filtering options"
+        },
+        {
+          "info": {
+            "name": "Create Lab Test Package",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/lab-tests/test-packages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new lab test package"
+        },
+        {
+          "info": {
+            "name": "Get Lab Test Property Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/lab-tests/test-properties/:property_id",
+            "params": [
+              {
+                "name": "property_id",
+                "value": "",
+                "type": "path",
+                "description": "Property ID"
+              },
+              {
+                "name": "dataProvider",
+                "value": "",
+                "type": "query",
+                "description": "Data Provider ID"
+              }
+            ]
+          },
+          "docs": "Get Lab Test Property Detail"
+        },
+        {
+          "info": {
+            "name": "Update Lab Test Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v1/lab-tests/test-properties/:property_id",
+            "params": [
+              {
+                "name": "property_id",
+                "value": "",
+                "type": "path",
+                "description": "Property ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Lab Test Property"
+        },
+        {
+          "info": {
+            "name": "List Lab Test Properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/lab-tests/test-properties",
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search by property ID or name or standard/method"
+              },
+              {
+                "name": "standards",
+                "value": "",
+                "type": "query",
+                "description": "Filter by standards"
+              },
+              {
+                "name": "revisions",
+                "value": "",
+                "type": "query",
+                "description": "Filter by revisions"
+              },
+              {
+                "name": "revisionYears",
+                "value": "",
+                "type": "query",
+                "description": "Filter by revision years"
+              },
+              {
+                "name": "testSubcategories",
+                "value": "",
+                "type": "query",
+                "description": "Filter by lab test sub category custom id"
+              },
+              {
+                "name": "testCategories",
+                "value": "",
+                "type": "query",
+                "description": "Filter by lab test category custom id"
+              },
+              {
+                "name": "labTestTypes",
+                "value": "",
+                "type": "query",
+                "description": "Filter by lab test types full name"
+              },
+              {
+                "name": "enabled",
+                "value": "",
+                "type": "query",
+                "description": "Filter by enabled status"
+              },
+              {
+                "name": "validityDurations",
+                "value": "",
+                "type": "query",
+                "description": "Filter by validity duration"
+              },
+              {
+                "name": "createdFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by creation date from (inclusive)"
+              },
+              {
+                "name": "createdTo",
+                "value": "",
+                "type": "query",
+                "description": "Filter by creation date to (inclusive)"
+              },
+              {
+                "name": "updatedFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter by last update date from (inclusive)"
+              },
+              {
+                "name": "updatedTo",
+                "value": "",
+                "type": "query",
+                "description": "Filter by last update date to (inclusive)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip"
+              },
+              {
+                "name": "dataProvider",
+                "value": "",
+                "type": "query",
+                "description": "Data Provider ID"
+              }
+            ]
+          },
+          "docs": "Get a paginated list of lab test properties with filtering options"
+        },
+        {
+          "info": {
+            "name": "Create Lab Test Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/lab-tests/test-properties",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Lab Test Property"
+        },
+        {
+          "info": {
+            "name": "Get Lab Test Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/lab-tests/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Lab test uuid or Lab test id"
+              }
+            ]
+          },
+          "docs": "Get Lab Test Detail"
+        },
+        {
+          "info": {
+            "name": "Upload/Update Pre-Created Lab Test",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v1/lab-tests/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Lab test uuid or Lab test id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload/Update Pre-Created Lab Test"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

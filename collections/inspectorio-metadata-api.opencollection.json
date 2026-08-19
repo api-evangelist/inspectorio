@@ -1,0 +1,181 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS METADATA API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "METADATA",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/metadata/:namespace",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The limitation of the returned results. Use together with ***offset*** param to paginate through items in the results"
+              },
+              {
+                "name": "created_to",
+                "value": "",
+                "type": "query",
+                "description": "End date of the range when metadata was created"
+              },
+              {
+                "name": "updated_to",
+                "value": "",
+                "type": "query",
+                "description": "End date of the range when meta data was updated"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Order of metadata in ascending or descending. Only support date filters: ***created_date***, ***updated_date***"
+              },
+              {
+                "name": "updated_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the range when meta data was updated"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Retrieve a subset of results starting with the offset value. Use together with ***limit*** param to paginate through items in the results"
+              },
+              {
+                "name": "created_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the range when metadata was created"
+              },
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "The logical type of data that is set by Inspectorio"
+              }
+            ]
+          },
+          "docs": "List Metadata"
+        },
+        {
+          "info": {
+            "name": "Create Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/metadata/:namespace",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "The logical type of data that is set by Inspectorio"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Metadata"
+        },
+        {
+          "info": {
+            "name": "Get Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/metadata/:namespace/:uid",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "The logical type of data that is set by Inspectorio"
+              },
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
+              }
+            ]
+          },
+          "docs": "Get Metadata"
+        },
+        {
+          "info": {
+            "name": "Update Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v1/metadata/:namespace/:uid",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "The logical type of data that is set by Inspectorio"
+              },
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Metadata"
+        },
+        {
+          "info": {
+            "name": "Delete Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://files-integration.inspectorio.com/api/v1/metadata/:namespace/:uid",
+            "params": [
+              {
+                "name": "namespace",
+                "value": "",
+                "type": "path",
+                "description": "The logical type of data that is set by Inspectorio"
+              },
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path",
+                "description": "UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
+              }
+            ]
+          },
+          "docs": "Delete Metadata"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -5,7 +5,7 @@ source: derived from openapi/ operations (no official hosted MCP server found)
 server:
   name: inspectorio
   transport: stdio
-  note: "candidate \u2014 no official Inspectorio MCP server published as of 2026-07-19"
+  note: candidate — no official Inspectorio MCP server published as of 2026-07-19
 tools:
 - name: get_api_v1_analytics_factory_risk_profile
   description: List Factory Risk Profiles
@@ -527,3 +527,9 @@ tools:
   source_operation: openapi/inspectorio-fms-openapi.json#post_signed_upload_session_id
   method: POST
   path: /signed-upload/{session_id}
+deployment:
+  mode: none
+  verified: derived
+  tools: 104
+  checked: '2026-08-12'
+  source: catalog MCP census

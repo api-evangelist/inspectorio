@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS TIME AND ACTIONS API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TIME AND ACTIONS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Time and Actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/time-and-actions",
+            "params": [
+              {
+                "name": "po_number",
+                "value": "",
+                "type": "query",
+                "description": "Number of the purchase order"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit result of list"
+              },
+              {
+                "name": "created_to",
+                "value": "",
+                "type": "query",
+                "description": "End date of the range when time and actions were created"
+              },
+              {
+                "name": "updated_to",
+                "value": "",
+                "type": "query",
+                "description": "End date of the range when time and actions were updated"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updated_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the range when time and actions were updated"
+              },
+              {
+                "name": "created_from",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the range when time and actions were created"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Status of the Time and Action"
+              }
+            ]
+          },
+          "docs": "List Time and Actions"
+        },
+        {
+          "info": {
+            "name": "Get Time and Actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/time-and-actions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Time and Actions"
+        },
+        {
+          "info": {
+            "name": "Update Time and Actions Milestones",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v1/time-and-actions/:ta_id/milestones",
+            "params": [
+              {
+                "name": "ta_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of a Time and Action"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Time and Actions Milestones"
+        },
+        {
+          "info": {
+            "name": "Get Time and Actions Production status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/time-and-actions/:ta_id/production-status",
+            "params": [
+              {
+                "name": "productionStatusLevel",
+                "value": "",
+                "type": "query",
+                "description": "production status by PO or item level"
+              },
+              {
+                "name": "ta_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of a Time and Action"
+              }
+            ]
+          },
+          "docs": "Get Time and Actions Production status"
+        },
+        {
+          "info": {
+            "name": "Update Time and Actions Production status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v1/time-and-actions/:ta_id/production-status",
+            "params": [
+              {
+                "name": "ta_id",
+                "value": "",
+                "type": "path",
+                "description": "Id of a Time and Action"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Time and Actions Production status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

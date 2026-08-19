@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS PRODUCT API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PRODUCT",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/products"
+          },
+          "docs": "List Products"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

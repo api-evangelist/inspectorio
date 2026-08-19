@@ -1,0 +1,176 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS PURCHASE ORDER API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PURCHASE ORDER",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Purchase Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/purchase-orders",
+            "params": [
+              {
+                "name": "po_number",
+                "value": "",
+                "type": "query",
+                "description": "Purchase order number to be stored in Inspectorio"
+              },
+              {
+                "name": "opo_number",
+                "value": "",
+                "type": "query",
+                "description": "Original purchase order number stored in the client's system"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit result of list"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "delivery_date_to",
+                "value": "",
+                "type": "query",
+                "description": "Purchase order delivery date to"
+              },
+              {
+                "name": "delivery_date_from",
+                "value": "",
+                "type": "query",
+                "description": "Purchase order delivery date from"
+              },
+              {
+                "name": "created_from",
+                "value": "",
+                "type": "query",
+                "description": "Purchase order creation date from"
+              },
+              {
+                "name": "created_to",
+                "value": "",
+                "type": "query",
+                "description": "Purchase order creation date to"
+              }
+            ]
+          },
+          "docs": "List Purchase Orders"
+        },
+        {
+          "info": {
+            "name": "Create Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/purchase-orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Purchase Order"
+        },
+        {
+          "info": {
+            "name": "Get Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/purchase-orders/:po_number",
+            "params": [
+              {
+                "name": "po_number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Purchase Order"
+        },
+        {
+          "info": {
+            "name": "Update Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v1/purchase-orders/:po_number",
+            "params": [
+              {
+                "name": "po_number",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Purchase Order"
+        },
+        {
+          "info": {
+            "name": "Delete Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://files-integration.inspectorio.com/api/v1/purchase-orders/:po_number",
+            "params": [
+              {
+                "name": "po_number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Purchase Order "
+        },
+        {
+          "info": {
+            "name": "Update/Delete Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/purchase-orders/:po_number/actions/:action",
+            "params": [
+              {
+                "name": "po_number",
+                "value": "",
+                "type": "path",
+                "description": "PO number"
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "path",
+                "description": "Specify action applied for given PO. Available values: update, delete\n- action = update   # Same as PUT method\n- action = delete   # Same as DELETE method"
+              }
+            ]
+          },
+          "docs": "Update/Delete Purchase Order"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

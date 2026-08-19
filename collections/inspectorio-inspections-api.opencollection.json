@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS Inspections API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inspections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Inspections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/inspections",
+            "params": [
+              {
+                "name": "ownership",
+                "value": "",
+                "type": "query",
+                "description": "Ownership (Sent/Received/Shared)\n"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Inspection status\n"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order in the form `<field>:asc|desc`. Allowed fields: `created_date` and `updated_date`.\n"
+              },
+              {
+                "name": "created_from",
+                "value": "",
+                "type": "query",
+                "description": "Inclusive lower bound for creation date (ISO-8601 datetime). Must be\npaired with `created_to`.\n"
+              },
+              {
+                "name": "created_to",
+                "value": "",
+                "type": "query",
+                "description": "Inclusive upper bound for creation date (ISO-8601 datetime). Must be\npaired with `created_from`.\n"
+              },
+              {
+                "name": "updated_from",
+                "value": "",
+                "type": "query",
+                "description": "Inclusive lower bound for last-updated date (ISO-8601 datetime). Must be\npaired with `updated_to`.\n"
+              },
+              {
+                "name": "updated_to",
+                "value": "",
+                "type": "query",
+                "description": "Inclusive upper bound for last-updated date (ISO-8601 datetime). Must be\npaired with `updated_from`.\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip."
+              }
+            ]
+          },
+          "docs": "List inspections for the authenticated organization.\n"
+        },
+        {
+          "info": {
+            "name": "Get Inspection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/inspections/:uuid",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "Inspection UUID (equals bookingId)."
+              },
+              {
+                "name": "include_pull_sample",
+                "value": "",
+                "type": "query",
+                "description": "When set to `1`, embeds the AQL-derived `itemPullSample` on each solid\nand assortment configuration item under `detailOfPIPO`. Requires the\nworkmanship step to be configured with an AQL table; otherwise the field\nis omitted.\n"
+              }
+            ]
+          },
+          "docs": "Retrieve a single inspection by UUID.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

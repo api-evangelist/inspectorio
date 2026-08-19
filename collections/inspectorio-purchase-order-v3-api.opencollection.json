@@ -1,0 +1,219 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS PURCHASE ORDER V3 API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PURCHASE ORDER V3",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Purchase Orders (V3)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v3/purchase-orders",
+            "params": [
+              {
+                "name": "created_from",
+                "value": "",
+                "type": "query",
+                "description": "Filter purchase orders created from this date-time timestamp"
+              },
+              {
+                "name": "created_to",
+                "value": "",
+                "type": "query",
+                "description": "Filter purchase orders created to this date-time timestamp"
+              },
+              {
+                "name": "updated_from",
+                "value": "",
+                "type": "query",
+                "description": "Filter purchase orders updated from this date-time timestamp"
+              },
+              {
+                "name": "updated_to",
+                "value": "",
+                "type": "query",
+                "description": "Filter purchase orders updated to this date-time timestamp"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "delivery_date_from",
+                "value": "",
+                "type": "query",
+                "description": "Purchase order delivery date from"
+              },
+              {
+                "name": "opo_number",
+                "value": "",
+                "type": "query",
+                "description": "Original purchase order number stored in the client's system"
+              },
+              {
+                "name": "delivery_date_to",
+                "value": "",
+                "type": "query",
+                "description": "Purchase order delivery date to"
+              },
+              {
+                "name": "po_number",
+                "value": "",
+                "type": "query",
+                "description": "Purchase order number to be stored in Inspectorio (partial/prefix match, case-insensitive)"
+              },
+              {
+                "name": "exact_po_number",
+                "value": "",
+                "type": "query",
+                "description": "Purchase order number for exact match (case-insensitive). Returns at most one result."
+              },
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "query",
+                "description": "Purchase order entity type"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit result of list"
+              }
+            ]
+          },
+          "docs": "List Purchase Orders. Use entity_type (item or material) to filter by finished goods or raw materials."
+        },
+        {
+          "info": {
+            "name": "Create Purchase Order (V3)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v3/purchase-orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Purchase Order. Body is either Finished Goods (item) or Material PO.\nUse PurchaseOrderFinishedGoodsPOST for items (packaging_details required). Use PurchaseOrderMaterialPOST for materials (no packaging_details; material_supplier_custom_id optional).\n"
+        },
+        {
+          "info": {
+            "name": "Get Purchase Order (V3)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v3/purchase-orders/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Purchase Order"
+        },
+        {
+          "info": {
+            "name": "Update Purchase Order (V3)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v3/purchase-orders/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Purchase Order. Body is either Finished Goods (item) or Material PO.\nUse PurchaseOrderFinishedGoodsPOST for items (packaging_details required).\nUse PurchaseOrderMaterialPUT for materials (no packaging_details; supports cancel_reason and canceled_quantity).\n"
+        },
+        {
+          "info": {
+            "name": "Delete Purchase Order (V3)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://files-integration.inspectorio.com/api/v3/purchase-orders/:uid",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Purchase Order"
+        },
+        {
+          "info": {
+            "name": "Update the status of a purchase order (V3)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v3/purchase-orders/:uid/status",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the status of a purchase order (V3)"
+        },
+        {
+          "info": {
+            "name": "Update Packaging Details of a Purchase Order (V3)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://files-integration.inspectorio.com/api/v3/purchase-orders/:uid/packaging-details",
+            "params": [
+              {
+                "name": "uid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the packaging details of a specific purchase order. Note that we only attach/detach items from the purchase order in this endpoint (not insert/delete items)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

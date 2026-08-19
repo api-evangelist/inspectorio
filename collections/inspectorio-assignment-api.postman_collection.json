@@ -1,0 +1,1009 @@
+{
+  "item": [
+    {
+      "id": "589357f3-568a-4dda-bcf5-ff030a73122d",
+      "name": "ASSIGNMENT",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01ac4fd7-e897-441f-93ba-57d3e1b8405e",
+          "name": "List Assignments",
+          "request": {
+            "name": "List Assignments",
+            "description": {
+              "content": "List Assignments",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "assignments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "factory_country",
+                  "value": "<string>",
+                  "description": "Factory's country code (two-letter country code) of assignments. Case-insensitive"
+                },
+                {
+                  "disabled": false,
+                  "key": "executor_organization",
+                  "value": "<string>",
+                  "description": "Inspection Executor of assignments. Allow filtering with the Local Organization ID or the text \"owner\". Case-sensitive"
+                },
+                {
+                  "disabled": false,
+                  "key": "assignment_updated_to",
+                  "value": "<dateTime>",
+                  "description": "Assignment updated to in date and time"
+                },
+                {
+                  "disabled": false,
+                  "key": "assignment_created_from",
+                  "value": "<dateTime>",
+                  "description": "Assignment created from in date and time"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Limit result of list"
+                },
+                {
+                  "disabled": false,
+                  "key": "assignment_status",
+                  "value": "<string>",
+                  "description": "Status of assignments"
+                },
+                {
+                  "disabled": false,
+                  "key": "assignment_created_to",
+                  "value": "<dateTime>",
+                  "description": "Assignment created to in date and time"
+                },
+                {
+                  "disabled": false,
+                  "key": "factory_city",
+                  "value": "<string>",
+                  "description": "Factory's city of assignments. Case-sensitive"
+                },
+                {
+                  "disabled": false,
+                  "key": "expected_inspection_date_from",
+                  "value": "<date>",
+                  "description": "Start date of the range of the expected inspection date in assignments. Allow only date format"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "Order of the list of assignments"
+                },
+                {
+                  "disabled": false,
+                  "key": "expected_inspection_date_to",
+                  "value": "<date>",
+                  "description": "End date of the range of the expected inspection date in assignments. Allow only date format"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "assignment_updated_from",
+                  "value": "<dateTime>",
+                  "description": "Assignment updated from in date and time"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "407644bc-90aa-451a-a5cf-22ee25ab1284",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "factory_country",
+                      "value": "US"
+                    },
+                    {
+                      "key": "executor_organization",
+                      "value": "owner"
+                    },
+                    {
+                      "key": "assignment_updated_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "assignment_created_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "assignment_status",
+                      "value": "COMPLETED"
+                    },
+                    {
+                      "key": "assignment_created_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "factory_city",
+                      "value": "New York"
+                    },
+                    {
+                      "key": "expected_inspection_date_from",
+                      "value": "2021-02-28"
+                    },
+                    {
+                      "key": "order",
+                      "value": "assignment_created_date:desc"
+                    },
+                    {
+                      "key": "expected_inspection_date_to",
+                      "value": "2021-02-28"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "assignment_updated_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limit\": 43,\n  \"offset\": 1964,\n  \"total\": 9343,\n  \"data\": [\n    {\n      \"assignmentId\": \"1234fca6-941b-4470-bcf9-9dc7928867dc\",\n      \"actualInspectionDate\": \"2021-06-14T04:02:57.849000+00:00\",\n      \"assignedToInspector\": {\n        \"email\": \"JohnDoe@gmail.com\",\n        \"employeeId\": \"123\",\n        \"id\": \"U111\",\n        \"name\": \"John Doe\"\n      },\n      \"assignedToOrganization\": {\n        \"name\": \"Acme Corp\",\n        \"systemId\": \"3123123\"\n      },\n      \"assignmentCreatedDate\": \"2021-05-25T13:58:26+00:00\",\n      \"assignmentStatus\": \"NEW\",\n      \"assignmentUpdatedDate\": \"2021-05-25T13:58:26+00:00\",\n      \"billingInformation\": {\n        \"address\": \"1 Park Avenue\",\n        \"city\": \"Minnesota\",\n        \"contact\": {\n          \"email\": \"will@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Will Smith\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"name\": \"Padme Corp\",\n        \"postalCode\": \"55402\",\n        \"state\": \"Minnesota\"\n      },\n      \"bookingId\": \"123456-c4a6-4fdb-b01f-2fe663be4460\",\n      \"bookingType\": \"normal\",\n      \"caseNumber\": \"3269012021-06-10ABC\",\n      \"clientInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      },\n      \"confirmedBy\": \"Acme Corp\",\n      \"inspectionForm\": \"FIForm\",\n      \"createdBy\": \"John Doe\",\n      \"createdDate\": \"2021-06-03T04:02:57.849000+00:00\",\n      \"detailOfPIPO\": {\n        \"pipoInformation\": {\n          \"opoNumber\": \"string\",\n          \"poNumber\": \"string\",\n          \"poTypes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"productLineId\": \"string\",\n          \"productLineName\": \"string\"\n        },\n        \"styles\": [\n          {\n            \"productCategoryId\": \"product_category_1\",\n            \"styleId\": \"style_1\",\n            \"assortments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"measurements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"productCategoryName\": \"string\",\n            \"solids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"styleName\": \"string\"\n          },\n          {\n            \"productCategoryId\": \"product_category_1\",\n            \"styleId\": \"style_1\",\n            \"assortments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"measurements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"productCategoryName\": \"string\",\n            \"solids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"styleName\": \"string\"\n          }\n        ]\n      },\n      \"expectedDate\": {\n        \"inspectionDate\": \"2019-07-04T08:00:00.00Z\",\n        \"shipmentDate\": \"2019-07-04T08:00:00.00Z\"\n      },\n      \"factoryInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"localPostalCode\": \"82052\",\n        \"localState\": \"Wyoming\",\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      },\n      \"fromOrganizationId\": \"F001122\",\n      \"fromOrganizationName\": \"Padme Inc\",\n      \"inspectionInformation\": {\n        \"typeOfInspection\": \"FRI\",\n        \"typeOfInspectionName\": \"Final Random Inspection\"\n      },\n      \"locationPicker\": {\n        \"address\": \"string\",\n        \"gpsLocation\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      },\n      \"questionnaire\": {\n        \"questions\": [\n          {\n            \"id\": \"abc-123\",\n            \"questionType\": \"single select\",\n            \"validation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defaultSubQuestions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"Shipment readiness\",\n            \"freeTextAnswer\": \"Not good but acceptable\",\n            \"options\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"responseId\": \"1a2b3c\"\n          },\n          {\n            \"id\": \"abc-123\",\n            \"questionType\": \"single select\",\n            \"validation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defaultSubQuestions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"Shipment readiness\",\n            \"freeTextAnswer\": \"Not good but acceptable\",\n            \"options\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"responseId\": \"1a2b3c\"\n          }\n        ]\n      },\n      \"remark\": \"Updated to reflect changes\",\n      \"sampleSize\": 0,\n      \"serviceType\": \"TPR\",\n      \"status\": \"NEW\",\n      \"tags\": [\n        \"Revised\",\n        \"1st re-inspection\"\n      ],\n      \"toOrganizationId\": \"C112233\",\n      \"toOrganizationName\": \"Lex Corp\",\n      \"unit\": \"piece\",\n      \"updatedDate\": \"2021-06-03T04:02:57.849000+00:00\",\n      \"vendorInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"localPostalCode\": \"82052\",\n        \"localState\": \"Wyoming\",\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      }\n    },\n    {\n      \"assignmentId\": \"1234fca6-941b-4470-bcf9-9dc7928867dc\",\n      \"actualInspectionDate\": \"2021-06-14T04:02:57.849000+00:00\",\n      \"assignedToInspector\": {\n        \"email\": \"JohnDoe@gmail.com\",\n        \"employeeId\": \"123\",\n        \"id\": \"U111\",\n        \"name\": \"John Doe\"\n      },\n      \"assignedToOrganization\": {\n        \"name\": \"Acme Corp\",\n        \"systemId\": \"3123123\"\n      },\n      \"assignmentCreatedDate\": \"2021-05-25T13:58:26+00:00\",\n      \"assignmentStatus\": \"NEW\",\n      \"assignmentUpdatedDate\": \"2021-05-25T13:58:26+00:00\",\n      \"billingInformation\": {\n        \"address\": \"1 Park Avenue\",\n        \"city\": \"Minnesota\",\n        \"contact\": {\n          \"email\": \"will@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Will Smith\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"name\": \"Padme Corp\",\n        \"postalCode\": \"55402\",\n        \"state\": \"Minnesota\"\n      },\n      \"bookingId\": \"123456-c4a6-4fdb-b01f-2fe663be4460\",\n      \"bookingType\": \"normal\",\n      \"caseNumber\": \"3269012021-06-10ABC\",\n      \"clientInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      },\n      \"confirmedBy\": \"Acme Corp\",\n      \"inspectionForm\": \"FIForm\",\n      \"createdBy\": \"John Doe\",\n      \"createdDate\": \"2021-06-03T04:02:57.849000+00:00\",\n      \"detailOfPIPO\": {\n        \"pipoInformation\": {\n          \"opoNumber\": \"string\",\n          \"poNumber\": \"string\",\n          \"poTypes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"productLineId\": \"string\",\n          \"productLineName\": \"string\"\n        },\n        \"styles\": [\n          {\n            \"productCategoryId\": \"product_category_1\",\n            \"styleId\": \"style_1\",\n            \"assortments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"measurements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"productCategoryName\": \"string\",\n            \"solids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"styleName\": \"string\"\n          },\n          {\n            \"productCategoryId\": \"product_category_1\",\n            \"styleId\": \"style_1\",\n            \"assortments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"measurements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"productCategoryName\": \"string\",\n            \"solids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"styleName\": \"string\"\n          }\n        ]\n      },\n      \"expectedDate\": {\n        \"inspectionDate\": \"2019-07-04T08:00:00.00Z\",\n        \"shipmentDate\": \"2019-07-04T08:00:00.00Z\"\n      },\n      \"factoryInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"localPostalCode\": \"82052\",\n        \"localState\": \"Wyoming\",\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      },\n      \"fromOrganizationId\": \"F001122\",\n      \"fromOrganizationName\": \"Padme Inc\",\n      \"inspectionInformation\": {\n        \"typeOfInspection\": \"FRI\",\n        \"typeOfInspectionName\": \"Final Random Inspection\"\n      },\n      \"locationPicker\": {\n        \"address\": \"string\",\n        \"gpsLocation\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      },\n      \"questionnaire\": {\n        \"questions\": [\n          {\n            \"id\": \"abc-123\",\n            \"questionType\": \"single select\",\n            \"validation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defaultSubQuestions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"Shipment readiness\",\n            \"freeTextAnswer\": \"Not good but acceptable\",\n            \"options\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"responseId\": \"1a2b3c\"\n          },\n          {\n            \"id\": \"abc-123\",\n            \"questionType\": \"single select\",\n            \"validation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defaultSubQuestions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"Shipment readiness\",\n            \"freeTextAnswer\": \"Not good but acceptable\",\n            \"options\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"responseId\": \"1a2b3c\"\n          }\n        ]\n      },\n      \"remark\": \"Updated to reflect changes\",\n      \"sampleSize\": 0,\n      \"serviceType\": \"TPR\",\n      \"status\": \"NEW\",\n      \"tags\": [\n        \"Revised\",\n        \"1st re-inspection\"\n      ],\n      \"toOrganizationId\": \"C112233\",\n      \"toOrganizationName\": \"Lex Corp\",\n      \"unit\": \"piece\",\n      \"updatedDate\": \"2021-06-03T04:02:57.849000+00:00\",\n      \"vendorInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"localPostalCode\": \"82052\",\n        \"localState\": \"Wyoming\",\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8469207-2770-438f-a28f-9828a2a9ec07",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "factory_country",
+                      "value": "US"
+                    },
+                    {
+                      "key": "executor_organization",
+                      "value": "owner"
+                    },
+                    {
+                      "key": "assignment_updated_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "assignment_created_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "assignment_status",
+                      "value": "COMPLETED"
+                    },
+                    {
+                      "key": "assignment_created_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "factory_city",
+                      "value": "New York"
+                    },
+                    {
+                      "key": "expected_inspection_date_from",
+                      "value": "2021-02-28"
+                    },
+                    {
+                      "key": "order",
+                      "value": "assignment_created_date:desc"
+                    },
+                    {
+                      "key": "expected_inspection_date_to",
+                      "value": "2021-02-28"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "assignment_updated_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44c553e4-0d1c-4f6f-b176-926bb8b9c334",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "factory_country",
+                      "value": "US"
+                    },
+                    {
+                      "key": "executor_organization",
+                      "value": "owner"
+                    },
+                    {
+                      "key": "assignment_updated_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "assignment_created_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "assignment_status",
+                      "value": "COMPLETED"
+                    },
+                    {
+                      "key": "assignment_created_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "factory_city",
+                      "value": "New York"
+                    },
+                    {
+                      "key": "expected_inspection_date_from",
+                      "value": "2021-02-28"
+                    },
+                    {
+                      "key": "order",
+                      "value": "assignment_created_date:desc"
+                    },
+                    {
+                      "key": "expected_inspection_date_to",
+                      "value": "2021-02-28"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "assignment_updated_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1268b848-febd-4fae-b04c-78afd3dabc7e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "factory_country",
+                      "value": "US"
+                    },
+                    {
+                      "key": "executor_organization",
+                      "value": "owner"
+                    },
+                    {
+                      "key": "assignment_updated_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "assignment_created_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "assignment_status",
+                      "value": "COMPLETED"
+                    },
+                    {
+                      "key": "assignment_created_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "factory_city",
+                      "value": "New York"
+                    },
+                    {
+                      "key": "expected_inspection_date_from",
+                      "value": "2021-02-28"
+                    },
+                    {
+                      "key": "order",
+                      "value": "assignment_created_date:desc"
+                    },
+                    {
+                      "key": "expected_inspection_date_to",
+                      "value": "2021-02-28"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "assignment_updated_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09a5054e-1499-49eb-ad52-417680bf8ab5",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "factory_country",
+                      "value": "US"
+                    },
+                    {
+                      "key": "executor_organization",
+                      "value": "owner"
+                    },
+                    {
+                      "key": "assignment_updated_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "assignment_created_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "assignment_status",
+                      "value": "COMPLETED"
+                    },
+                    {
+                      "key": "assignment_created_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "factory_city",
+                      "value": "New York"
+                    },
+                    {
+                      "key": "expected_inspection_date_from",
+                      "value": "2021-02-28"
+                    },
+                    {
+                      "key": "order",
+                      "value": "assignment_created_date:desc"
+                    },
+                    {
+                      "key": "expected_inspection_date_to",
+                      "value": "2021-02-28"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "assignment_updated_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a7a99d4-b156-4697-801e-caffc64d38c4",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assignments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "factory_country",
+                      "value": "US"
+                    },
+                    {
+                      "key": "executor_organization",
+                      "value": "owner"
+                    },
+                    {
+                      "key": "assignment_updated_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "assignment_created_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "assignment_status",
+                      "value": "COMPLETED"
+                    },
+                    {
+                      "key": "assignment_created_to",
+                      "value": "2021-06-15T23:59:59Z"
+                    },
+                    {
+                      "key": "factory_city",
+                      "value": "New York"
+                    },
+                    {
+                      "key": "expected_inspection_date_from",
+                      "value": "2021-02-28"
+                    },
+                    {
+                      "key": "order",
+                      "value": "assignment_created_date:desc"
+                    },
+                    {
+                      "key": "expected_inspection_date_to",
+                      "value": "2021-02-28"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "assignment_updated_from",
+                      "value": "2021-05-23T23:59:59Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2795c04c-0505-4576-bbef-bbc7bee98e61",
+          "name": "Get Assignment",
+          "request": {
+            "name": "Get Assignment",
+            "description": {
+              "content": "Get Assignment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "assignments",
+                ":assignment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assignment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "16b3b973-f195-4ec5-b2b9-57b5faab614d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assignments",
+                    ":assignment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assignment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"assignmentId\": \"1234fca6-941b-4470-bcf9-9dc7928867dc\",\n    \"actualInspectionDate\": \"2021-06-14T04:02:57.849000+00:00\",\n    \"assignedToInspector\": {\n      \"email\": \"JohnDoe@gmail.com\",\n      \"employeeId\": \"123\",\n      \"id\": \"U111\",\n      \"name\": \"John Doe\"\n    },\n    \"assignedToOrganization\": {\n      \"name\": \"Acme Corp\",\n      \"systemId\": \"3123123\"\n    },\n    \"assignmentCreatedDate\": \"2021-05-25T13:58:26+00:00\",\n    \"assignmentStatus\": \"NEW\",\n    \"assignmentUpdatedDate\": \"2021-05-25T13:58:26+00:00\",\n    \"billingInformation\": {\n      \"address\": \"1 Park Avenue\",\n      \"city\": \"Minnesota\",\n      \"contact\": {\n        \"email\": \"will@email.com\",\n        \"mobileNumber\": \"1234567890\",\n        \"name\": \"Will Smith\",\n        \"telephoneNumber\": \"1234567890\"\n      },\n      \"country\": \"US\",\n      \"name\": \"Padme Corp\",\n      \"postalCode\": \"55402\",\n      \"state\": \"Minnesota\"\n    },\n    \"bookingId\": \"123456-c4a6-4fdb-b01f-2fe663be4460\",\n    \"bookingType\": \"normal\",\n    \"caseNumber\": \"3269012021-06-10ABC\",\n    \"clientInformation\": {\n      \"address\": \"address\",\n      \"city\": \"city\",\n      \"contact\": {\n        \"contactId\": \"contact_id\",\n        \"email\": \"email@email.com\",\n        \"mobileNumber\": \"1234567890\",\n        \"name\": \"Contact Name\",\n        \"telephoneNumber\": \"1234567890\"\n      },\n      \"country\": \"US\",\n      \"localOrganizationId\": \"F323333\",\n      \"localOrganizationIds\": [\n        \"F323333\",\n        \"F242146\"\n      ],\n      \"name\": \"name\",\n      \"organizationId\": \"org_id\"\n    },\n    \"confirmedBy\": \"Acme Corp\",\n    \"inspectionForm\": \"FIForm\",\n    \"createdBy\": \"John Doe\",\n    \"createdDate\": \"2021-06-03T04:02:57.849000+00:00\",\n    \"detailOfPIPO\": {\n      \"pipoInformation\": {\n        \"opoNumber\": \"string\",\n        \"poNumber\": \"string\",\n        \"poTypes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"productLineId\": \"string\",\n        \"productLineName\": \"string\"\n      },\n      \"styles\": [\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"measurements\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"styleName\": \"string\"\n        },\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"measurements\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"styleName\": \"string\"\n        }\n      ]\n    },\n    \"expectedDate\": {\n      \"inspectionDate\": \"2019-07-04T08:00:00.00Z\",\n      \"shipmentDate\": \"2019-07-04T08:00:00.00Z\"\n    },\n    \"factoryInformation\": {\n      \"address\": \"address\",\n      \"city\": \"city\",\n      \"contact\": {\n        \"contactId\": \"contact_id\",\n        \"email\": \"email@email.com\",\n        \"mobileNumber\": \"1234567890\",\n        \"name\": \"Contact Name\",\n        \"telephoneNumber\": \"1234567890\"\n      },\n      \"country\": \"US\",\n      \"localOrganizationId\": \"F323333\",\n      \"localOrganizationIds\": [\n        \"F323333\",\n        \"F242146\"\n      ],\n      \"localPostalCode\": \"82052\",\n      \"localState\": \"Wyoming\",\n      \"name\": \"name\",\n      \"organizationId\": \"org_id\"\n    },\n    \"fromOrganizationId\": \"F001122\",\n    \"fromOrganizationName\": \"Padme Inc\",\n    \"inspectionInformation\": {\n      \"typeOfInspection\": \"FRI\",\n      \"typeOfInspectionName\": \"Final Random Inspection\"\n    },\n    \"locationPicker\": {\n      \"address\": \"string\",\n      \"gpsLocation\": {\n        \"latitude\": \"string\",\n        \"longitude\": \"string\"\n      }\n    },\n    \"questionnaire\": {\n      \"questions\": [\n        {\n          \"id\": \"abc-123\",\n          \"questionType\": \"single select\",\n          \"validation\": {\n            \"mandatory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"Shipment readiness\",\n          \"freeTextAnswer\": \"Not good but acceptable\",\n          \"options\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"responseId\": \"1a2b3c\"\n        },\n        {\n          \"id\": \"abc-123\",\n          \"questionType\": \"single select\",\n          \"validation\": {\n            \"mandatory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"Shipment readiness\",\n          \"freeTextAnswer\": \"Not good but acceptable\",\n          \"options\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"responseId\": \"1a2b3c\"\n        }\n      ]\n    },\n    \"remark\": \"Updated to reflect changes\",\n    \"sampleSize\": 0,\n    \"serviceType\": \"TPR\",\n    \"status\": \"NEW\",\n    \"tags\": [\n      \"Revised\",\n      \"1st re-inspection\"\n    ],\n    \"toOrganizationId\": \"C112233\",\n    \"toOrganizationName\": \"Lex Corp\",\n    \"unit\": \"piece\",\n    \"updatedDate\": \"2021-06-03T04:02:57.849000+00:00\",\n    \"vendorInformation\": {\n      \"address\": \"address\",\n      \"city\": \"city\",\n      \"contact\": {\n        \"contactId\": \"contact_id\",\n        \"email\": \"email@email.com\",\n        \"mobileNumber\": \"1234567890\",\n        \"name\": \"Contact Name\",\n        \"telephoneNumber\": \"1234567890\"\n      },\n      \"country\": \"US\",\n      \"localOrganizationId\": \"F323333\",\n      \"localOrganizationIds\": [\n        \"F323333\",\n        \"F242146\"\n      ],\n      \"localPostalCode\": \"82052\",\n      \"localState\": \"Wyoming\",\n      \"name\": \"name\",\n      \"organizationId\": \"org_id\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55991ca1-93ab-4688-bb8a-5cacc7017e9e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assignments",
+                    ":assignment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assignment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f62762f-17bb-4d6f-97e9-2ecfea5ff9b6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assignments",
+                    ":assignment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assignment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b36d51c5-44bf-4a3e-a732-cb9fb1a9d09b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assignments",
+                    ":assignment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assignment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f716ca0-04e5-480a-947d-51b78232029b",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assignments",
+                    ":assignment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assignment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5d1375a-50de-4fea-8bb8-cbabbb27a0dc",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assignments",
+                    ":assignment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assignment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://files-integration.inspectorio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "43fe980c-5ef4-49c4-a332-ae666cdd990c",
+    "name": "File Management ANALYTICS ASSIGNMENT API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

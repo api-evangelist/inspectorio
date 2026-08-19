@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS CAPA API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CAPA",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get CAPA",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/capas/:report_id",
+            "params": [
+              {
+                "name": "report_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get CAPA"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

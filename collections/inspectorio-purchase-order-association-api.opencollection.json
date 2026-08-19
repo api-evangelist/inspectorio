@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS PURCHASE ORDER ASSOCIATION API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PURCHASE ORDER ASSOCIATION",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Purchase Order Association",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/purchase-order-associations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Purchase Order Association"
+        },
+        {
+          "info": {
+            "name": "Get Associations of Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/purchase-order-associations/:po_number",
+            "params": [
+              {
+                "name": "po_number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Associations of Purchase Order"
+        },
+        {
+          "info": {
+            "name": "Delete Purchase Order Association",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://files-integration.inspectorio.com/api/v1/purchase-order-associations/:from_po_number/:to_po_number",
+            "params": [
+              {
+                "name": "from_po_number",
+                "value": "",
+                "type": "path",
+                "description": "From PO number"
+              },
+              {
+                "name": "to_po_number",
+                "value": "",
+                "type": "path",
+                "description": "To PO number"
+              }
+            ]
+          },
+          "docs": "Delete Purchase Order Association"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

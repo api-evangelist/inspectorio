@@ -1,0 +1,914 @@
+{
+  "item": [
+    {
+      "id": "cdb3cda3-9776-4765-8b84-7ac9c93fcd3e",
+      "name": "BARCODE",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5a28cd00-a52c-49a9-82b5-54fa9e74d3f3",
+          "name": "Create Barcode",
+          "request": {
+            "name": "Create Barcode",
+            "description": {
+              "content": "Create Barcode",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "barcode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"entityType\": \"<string>\",\n    \"code\": \"<string>\",\n    \"customId\": \"<string>\",\n    \"poCustomId\": \"<string>\",\n    \"itemCustomId\": \"<string>\",\n    \"assortmentCustomId\": \"<string>\",\n    \"format\": \"Generic\"\n  },\n  {\n    \"entityType\": \"<string>\",\n    \"code\": \"<string>\",\n    \"customId\": \"<string>\",\n    \"poCustomId\": \"<string>\",\n    \"itemCustomId\": \"<string>\",\n    \"assortmentCustomId\": \"<string>\",\n    \"format\": \"Generic\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8cc1dfc5-da48-4ddf-8564-50a27e232f9b",
+              "name": "All Items are created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"entityType\": \"<string>\",\n    \"code\": \"<string>\",\n    \"customId\": \"<string>\",\n    \"poCustomId\": \"<string>\",\n    \"itemCustomId\": \"<string>\",\n    \"assortmentCustomId\": \"<string>\",\n    \"format\": \"Generic\"\n  },\n  {\n    \"entityType\": \"<string>\",\n    \"code\": \"<string>\",\n    \"customId\": \"<string>\",\n    \"poCustomId\": \"<string>\",\n    \"itemCustomId\": \"<string>\",\n    \"assortmentCustomId\": \"<string>\",\n    \"format\": \"Generic\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"entityType\": \"item\",\n    \"customId\": \"string\",\n    \"poCustomId\": \"string\",\n    \"itemCustomId\": \"string\",\n    \"assortmentCustomId\": \"string\",\n    \"format\": \"Generic\",\n    \"status\": {\n      \"code\": 4321,\n      \"message\": \"string\"\n    }\n  },\n  {\n    \"entityType\": \"po\",\n    \"customId\": \"string\",\n    \"poCustomId\": \"string\",\n    \"itemCustomId\": \"string\",\n    \"assortmentCustomId\": \"string\",\n    \"format\": \"Generic\",\n    \"status\": {\n      \"code\": 3682,\n      \"message\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e25e8608-c8a8-4385-af95-a64a52332b63",
+              "name": "Only some items are created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"entityType\": \"<string>\",\n    \"code\": \"<string>\",\n    \"customId\": \"<string>\",\n    \"poCustomId\": \"<string>\",\n    \"itemCustomId\": \"<string>\",\n    \"assortmentCustomId\": \"<string>\",\n    \"format\": \"Generic\"\n  },\n  {\n    \"entityType\": \"<string>\",\n    \"code\": \"<string>\",\n    \"customId\": \"<string>\",\n    \"poCustomId\": \"<string>\",\n    \"itemCustomId\": \"<string>\",\n    \"assortmentCustomId\": \"<string>\",\n    \"format\": \"Generic\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Multi-Status (WebDAV) (RFC 4918)",
+              "code": 207,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"entityType\": \"packaging\",\n    \"customId\": \"string\",\n    \"poCustomId\": \"string\",\n    \"itemCustomId\": \"string\",\n    \"assortmentCustomId\": \"string\",\n    \"format\": \"Generic\",\n    \"status\": {\n      \"code\": 9586,\n      \"message\": \"string\"\n    }\n  },\n  {\n    \"entityType\": \"item\",\n    \"customId\": \"string\",\n    \"poCustomId\": \"string\",\n    \"itemCustomId\": \"string\",\n    \"assortmentCustomId\": \"string\",\n    \"format\": \"Generic\",\n    \"status\": {\n      \"code\": 7746,\n      \"message\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a11011e9-f647-4854-a019-8ee992520f01",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"entityType\": \"<string>\",\n    \"code\": \"<string>\",\n    \"customId\": \"<string>\",\n    \"poCustomId\": \"<string>\",\n    \"itemCustomId\": \"<string>\",\n    \"assortmentCustomId\": \"<string>\",\n    \"format\": \"Generic\"\n  },\n  {\n    \"entityType\": \"<string>\",\n    \"code\": \"<string>\",\n    \"customId\": \"<string>\",\n    \"poCustomId\": \"<string>\",\n    \"itemCustomId\": \"<string>\",\n    \"assortmentCustomId\": \"<string>\",\n    \"format\": \"Generic\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"entityType\": \"packaging\",\n    \"customId\": \"string\",\n    \"poCustomId\": \"string\",\n    \"itemCustomId\": \"string\",\n    \"assortmentCustomId\": \"string\",\n    \"format\": \"Generic\",\n    \"status\": {\n      \"code\": 9586,\n      \"message\": \"string\"\n    }\n  },\n  {\n    \"entityType\": \"item\",\n    \"customId\": \"string\",\n    \"poCustomId\": \"string\",\n    \"itemCustomId\": \"string\",\n    \"assortmentCustomId\": \"string\",\n    \"format\": \"Generic\",\n    \"status\": {\n      \"code\": 7746,\n      \"message\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39183618-334e-44ae-8b2c-eaaf0af6f309",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"entityType\": \"<string>\",\n    \"code\": \"<string>\",\n    \"customId\": \"<string>\",\n    \"poCustomId\": \"<string>\",\n    \"itemCustomId\": \"<string>\",\n    \"assortmentCustomId\": \"<string>\",\n    \"format\": \"Generic\"\n  },\n  {\n    \"entityType\": \"<string>\",\n    \"code\": \"<string>\",\n    \"customId\": \"<string>\",\n    \"poCustomId\": \"<string>\",\n    \"itemCustomId\": \"<string>\",\n    \"assortmentCustomId\": \"<string>\",\n    \"format\": \"Generic\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4031070-040d-4709-b1e1-4680cff80b76",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"entityType\": \"<string>\",\n    \"code\": \"<string>\",\n    \"customId\": \"<string>\",\n    \"poCustomId\": \"<string>\",\n    \"itemCustomId\": \"<string>\",\n    \"assortmentCustomId\": \"<string>\",\n    \"format\": \"Generic\"\n  },\n  {\n    \"entityType\": \"<string>\",\n    \"code\": \"<string>\",\n    \"customId\": \"<string>\",\n    \"poCustomId\": \"<string>\",\n    \"itemCustomId\": \"<string>\",\n    \"assortmentCustomId\": \"<string>\",\n    \"format\": \"Generic\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d9ea5d7-bed0-40d6-b033-276d94d884c5",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"entityType\": \"<string>\",\n    \"code\": \"<string>\",\n    \"customId\": \"<string>\",\n    \"poCustomId\": \"<string>\",\n    \"itemCustomId\": \"<string>\",\n    \"assortmentCustomId\": \"<string>\",\n    \"format\": \"Generic\"\n  },\n  {\n    \"entityType\": \"<string>\",\n    \"code\": \"<string>\",\n    \"customId\": \"<string>\",\n    \"poCustomId\": \"<string>\",\n    \"itemCustomId\": \"<string>\",\n    \"assortmentCustomId\": \"<string>\",\n    \"format\": \"Generic\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78355e3e-b600-4d45-ab52-e7bef9106167",
+          "name": "Retrieve Barcode",
+          "request": {
+            "name": "Retrieve Barcode",
+            "description": {
+              "content": "Retrieve Barcode",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "barcode",
+                "retrieve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entityType\": \"<string>\",\n  \"customId\": \"<string>\",\n  \"poCustomId\": \"<string>\",\n  \"itemCustomId\": \"<string>\",\n  \"assortmentCustomId\": \"<string>\",\n  \"format\": \"Generic\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "84699a7e-739e-44e9-bf9e-a55f44bbddc5",
+              "name": "Get Successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode",
+                    "retrieve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entityType\": \"<string>\",\n  \"customId\": \"<string>\",\n  \"poCustomId\": \"<string>\",\n  \"itemCustomId\": \"<string>\",\n  \"assortmentCustomId\": \"<string>\",\n  \"format\": \"Generic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"string\",\n    \"format\": \"Generic\"\n  },\n  {\n    \"code\": \"string\",\n    \"format\": \"Generic\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11327321-b7c5-42ae-91ad-d4ab44ed8389",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode",
+                    "retrieve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entityType\": \"<string>\",\n  \"customId\": \"<string>\",\n  \"poCustomId\": \"<string>\",\n  \"itemCustomId\": \"<string>\",\n  \"assortmentCustomId\": \"<string>\",\n  \"format\": \"Generic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d82274e-28a3-4649-96b4-4fd08e069c78",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode",
+                    "retrieve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entityType\": \"<string>\",\n  \"customId\": \"<string>\",\n  \"poCustomId\": \"<string>\",\n  \"itemCustomId\": \"<string>\",\n  \"assortmentCustomId\": \"<string>\",\n  \"format\": \"Generic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ef5aa7c-d598-4e85-8194-243dc2c89c3c",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode",
+                    "retrieve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entityType\": \"<string>\",\n  \"customId\": \"<string>\",\n  \"poCustomId\": \"<string>\",\n  \"itemCustomId\": \"<string>\",\n  \"assortmentCustomId\": \"<string>\",\n  \"format\": \"Generic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca62f628-525e-4c41-bc81-d9348265031e",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode",
+                    "retrieve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entityType\": \"<string>\",\n  \"customId\": \"<string>\",\n  \"poCustomId\": \"<string>\",\n  \"itemCustomId\": \"<string>\",\n  \"assortmentCustomId\": \"<string>\",\n  \"format\": \"Generic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "984904a2-2e68-47d5-bc5f-e87014c2165a",
+          "name": "Delete Barcode",
+          "request": {
+            "name": "Delete Barcode",
+            "description": {
+              "content": "Delete Barcode",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "barcode",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entityType\": \"<string>\",\n  \"customId\": \"<string>\",\n  \"poCustomId\": \"<string>\",\n  \"itemCustomId\": \"<string>\",\n  \"assortmentCustomId\": \"<string>\",\n  \"format\": \"Generic\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0adf2863-ee48-4744-9563-36914f1a0da2",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entityType\": \"<string>\",\n  \"customId\": \"<string>\",\n  \"poCustomId\": \"<string>\",\n  \"itemCustomId\": \"<string>\",\n  \"assortmentCustomId\": \"<string>\",\n  \"format\": \"Generic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be5d287f-40d2-4356-95b6-444e3e1ff95a",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entityType\": \"<string>\",\n  \"customId\": \"<string>\",\n  \"poCustomId\": \"<string>\",\n  \"itemCustomId\": \"<string>\",\n  \"assortmentCustomId\": \"<string>\",\n  \"format\": \"Generic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "337b5ef0-cbab-4ad3-ba69-3e7d63531606",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entityType\": \"<string>\",\n  \"customId\": \"<string>\",\n  \"poCustomId\": \"<string>\",\n  \"itemCustomId\": \"<string>\",\n  \"assortmentCustomId\": \"<string>\",\n  \"format\": \"Generic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37cf29eb-584c-479e-9ee8-cb6343a65ae2",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entityType\": \"<string>\",\n  \"customId\": \"<string>\",\n  \"poCustomId\": \"<string>\",\n  \"itemCustomId\": \"<string>\",\n  \"assortmentCustomId\": \"<string>\",\n  \"format\": \"Generic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a4b72e5-1199-43bd-8227-b04652ed598e",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "barcode",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entityType\": \"<string>\",\n  \"customId\": \"<string>\",\n  \"poCustomId\": \"<string>\",\n  \"itemCustomId\": \"<string>\",\n  \"assortmentCustomId\": \"<string>\",\n  \"format\": \"Generic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://files-integration.inspectorio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4def57fd-a75f-4cdc-a71f-cb3663b42aec",
+    "name": "File Management ANALYTICS BARCODE API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

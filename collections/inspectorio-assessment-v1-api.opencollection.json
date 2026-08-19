@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "File Management ANALYTICS ASSESSMENT-V1 API",
+    "version": "v3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ASSESSMENT-V1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search assessments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://files-integration.inspectorio.com/api/v1/assessments/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Assessments V1 with filters and pagination"
+        },
+        {
+          "info": {
+            "name": "Get Assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://files-integration.inspectorio.com/api/v1/assessments/:assessment_id",
+            "params": [
+              {
+                "name": "assessment_id",
+                "value": "",
+                "type": "path",
+                "description": "Assessment execution ID (UUID)"
+              },
+              {
+                "name": "capa_details",
+                "value": "",
+                "type": "query",
+                "description": "Get additional information about CAPA"
+              },
+              {
+                "name": "include_step_questions",
+                "value": "",
+                "type": "query",
+                "description": "Get question and answers"
+              }
+            ]
+          },
+          "docs": "Get Assessment V1 with detailed information"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1734 @@
+{
+  "item": [
+    {
+      "id": "7206da61-e186-4342-aa25-26c85e1edf1c",
+      "name": "ORGANIZATION",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f7038a6e-2e91-40c8-89aa-5a62ed4e650f",
+          "name": "List Organizations",
+          "request": {
+            "name": "List Organizations",
+            "description": {
+              "content": "List Organizations",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "organizations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Limit result of list"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter organizations by name"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd9004e6-cb8a-41ed-b1e0-98417a27a6a1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limit\": 1175,\n  \"offset\": 7701,\n  \"total\": 5485,\n  \"data\": [\n    {\n      \"address\": \"5 Madison Avenue\",\n      \"contacts\": [\n        {\n          \"firstName\": \"John\",\n          \"email\": \"john@acme.com\",\n          \"lastName\": \"Doe\",\n          \"phone\": \"1505123123\",\n          \"workPhone\": \"1505456456\"\n        }\n      ],\n      \"country\": \"US\",\n      \"name\": \"Acme Corp\",\n      \"phone\": \"1505111222\",\n      \"type\": \"S\",\n      \"address2\": \"Suite 101\",\n      \"billing_email\": \"email@test.com\",\n      \"city\": \"New York\",\n      \"createdAt\": \"2021-06-02 12:34:02.861000+00:00\",\n      \"id\": \"string\",\n      \"linkedId\": \"string\",\n      \"linkedTo\": \"3111222\",\n      \"location\": {\n        \"latitude\": 38.8951,\n        \"longitude\": -77.0364\n      },\n      \"organizationLabels\": [\n        \"Tier 1\",\n        \"Tier 2\"\n      ],\n      \"postal\": \"A1B2C3\",\n      \"province\": \"New York\",\n      \"updatedAt\": \"2021-06-02 12:34:02.861000+00:00\",\n      \"description\": \"This is a description\"\n    },\n    {\n      \"address\": \"5 Madison Avenue\",\n      \"contacts\": [\n        {\n          \"firstName\": \"John\",\n          \"email\": \"john@acme.com\",\n          \"lastName\": \"Doe\",\n          \"phone\": \"1505123123\",\n          \"workPhone\": \"1505456456\"\n        }\n      ],\n      \"country\": \"US\",\n      \"name\": \"Acme Corp\",\n      \"phone\": \"1505111222\",\n      \"type\": \"S\",\n      \"address2\": \"Suite 101\",\n      \"billing_email\": \"email@test.com\",\n      \"city\": \"New York\",\n      \"createdAt\": \"2021-06-02 12:34:02.861000+00:00\",\n      \"id\": \"string\",\n      \"linkedId\": \"string\",\n      \"linkedTo\": \"3111222\",\n      \"location\": {\n        \"latitude\": 38.8951,\n        \"longitude\": -77.0364\n      },\n      \"organizationLabels\": [\n        \"Tier 1\",\n        \"Tier 2\"\n      ],\n      \"postal\": \"A1B2C3\",\n      \"province\": \"New York\",\n      \"updatedAt\": \"2021-06-02 12:34:02.861000+00:00\",\n      \"description\": \"This is a description\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "805a9b46-97f0-4c7a-998f-6a276014e7b8",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eeeddf9a-f0f2-4e13-affb-f69b91ee8e84",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ce950fe-9bbc-4f4a-b435-b7f745fcbfbc",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "de114e19-e147-4f60-b502-7a57d178da22",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "957ac36e-d67c-49ed-b0b4-58305a2993e1",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0bbe65d-5aa4-4fc2-bc63-b90b0511976f",
+          "name": "Create Organization",
+          "request": {
+            "name": "Create Organization",
+            "description": {
+              "content": "Create Organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "organizations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string>\",\n  \"city\": \"<string>\",\n  \"linkedId\": null,\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string>\",\n  \"organizationLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"postal\": \"<string>\",\n  \"province\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f7960ad8-eaca-4794-97ea-0561b15ea8fb",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"id\": \"<string>\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"address\": \"5 Madison Avenue\",\n    \"contacts\": [\n      {\n        \"firstName\": \"John\",\n        \"email\": \"john@acme.com\",\n        \"lastName\": \"Doe\",\n        \"phone\": \"1505123123\",\n        \"workPhone\": \"1505456456\"\n      }\n    ],\n    \"country\": \"US\",\n    \"id\": \"string\",\n    \"name\": \"Acme Corp\",\n    \"phone\": \"1505111222\",\n    \"type\": \"S\",\n    \"address2\": \"Suite 101\",\n    \"billing_email\": \"email@test.com\",\n    \"city\": \"New York\",\n    \"createdAt\": \"2021-06-02 12:34:02.861000+00:00\",\n    \"linkedTo\": \"3111222\",\n    \"location\": {\n      \"latitude\": 38.8951,\n      \"longitude\": -77.0364\n    },\n    \"officeId\": \"office_123\",\n    \"organizationLabels\": [\n      \"Tier 1\",\n      \"Tier 2\"\n    ],\n    \"postal\": \"A1B2C3\",\n    \"province\": \"New York\",\n    \"updatedAt\": \"2021-06-02 12:34:02.861000+00:00\",\n    \"description\": \"This is a description\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb442327-e6e8-4c1f-a70c-9cfb823eb264",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"id\": \"<string>\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6789b849-36e9-4408-89c3-6db4436c4318",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"id\": \"<string>\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd4f33c3-1ad4-4008-a12f-22d2dcdbe5ad",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"id\": \"<string>\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ae5a003-74f0-4405-8b68-226d40390c2a",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"id\": \"<string>\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "842a2252-dc9f-428f-9a94-84dfa00757ac",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"id\": \"<string>\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "452d9db2-8f13-4cc0-aff0-a9a9799309ed",
+          "name": "Delete Organization",
+          "request": {
+            "name": "Delete Organization",
+            "description": {
+              "content": "Delete Organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "organizations",
+                ":organization_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae4242ea-0997-422b-b100-3b7c7d1c5a54",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73310c59-d8d6-4bbc-81b1-645464186594",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef8939ce-f9d2-4c16-9b8e-d86d945deec9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94fc751b-89b4-4600-975a-8e70659ed5d1",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2038879-0ca2-4eda-a592-cb128d7d0876",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61fa366c-2689-441e-a476-41ee76ad57aa",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c9badab-eacb-495d-bef6-30aaa4ecdb4d",
+          "name": "Get Organization",
+          "request": {
+            "name": "Get Organization",
+            "description": {
+              "content": "Get Organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "organizations",
+                ":organization_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2a464db-17ee-4804-95ee-3d6d3423948a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"address\": \"5 Madison Avenue\",\n    \"contacts\": [\n      {\n        \"firstName\": \"John\",\n        \"email\": \"john@acme.com\",\n        \"lastName\": \"Doe\",\n        \"phone\": \"1505123123\",\n        \"workPhone\": \"1505456456\"\n      }\n    ],\n    \"country\": \"US\",\n    \"id\": \"string\",\n    \"name\": \"Acme Corp\",\n    \"phone\": \"1505111222\",\n    \"type\": \"S\",\n    \"address2\": \"Suite 101\",\n    \"billing_email\": \"email@test.com\",\n    \"city\": \"New York\",\n    \"createdAt\": \"2021-06-02 12:34:02.861000+00:00\",\n    \"linkedId\": \"string\",\n    \"linkedTo\": \"3111222\",\n    \"location\": {\n      \"latitude\": 38.8951,\n      \"longitude\": -77.0364\n    },\n    \"officeId\": \"office_123\",\n    \"organizationLabels\": [\n      \"Tier 1\",\n      \"Tier 2\"\n    ],\n    \"postal\": \"A1B2C3\",\n    \"province\": \"New York\",\n    \"updatedAt\": \"2021-06-02 12:34:02.861000+00:00\",\n    \"description\": \"This is a description\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a3ca93c-57fd-46e6-948a-66bfb6c5e1a7",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e04839ef-b86d-48b3-8baf-fd41741d1fa8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ada7683d-d177-4a5a-a385-64eb99d5a2ba",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cca8e3fb-0149-4201-af41-f6444f6c6c22",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e32d2fcf-878c-49dc-89a5-26ac424d6ec4",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d2ccfe8-43ed-4bba-b80c-ca255436b569",
+          "name": "Update Organization",
+          "request": {
+            "name": "Update Organization",
+            "description": {
+              "content": "Update Organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "organizations",
+                ":organization_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string>\",\n  \"city\": \"<string>\",\n  \"linkedId\": null,\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string>\",\n  \"organizationLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"postal\": \"<string>\",\n  \"province\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "95830ff9-f0f4-4cdf-b43a-32a3f8c61f95",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"address\": \"5 Madison Avenue\",\n    \"contacts\": [\n      {\n        \"firstName\": \"John\",\n        \"email\": \"john@acme.com\",\n        \"lastName\": \"Doe\",\n        \"phone\": \"1505123123\",\n        \"workPhone\": \"1505456456\"\n      }\n    ],\n    \"country\": \"US\",\n    \"id\": \"string\",\n    \"name\": \"Acme Corp\",\n    \"phone\": \"1505111222\",\n    \"type\": \"S\",\n    \"address2\": \"Suite 101\",\n    \"billing_email\": \"email@test.com\",\n    \"city\": \"New York\",\n    \"createdAt\": \"2021-06-02 12:34:02.861000+00:00\",\n    \"linkedTo\": \"3111222\",\n    \"location\": {\n      \"latitude\": 38.8951,\n      \"longitude\": -77.0364\n    },\n    \"officeId\": \"office_123\",\n    \"organizationLabels\": [\n      \"Tier 1\",\n      \"Tier 2\"\n    ],\n    \"postal\": \"A1B2C3\",\n    \"province\": \"New York\",\n    \"updatedAt\": \"2021-06-02 12:34:02.861000+00:00\",\n    \"description\": \"This is a description\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42c11743-04f2-4293-b58c-3147fbbb115a",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5632c2c-38c7-416d-a85f-b828f355067f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0894d7d9-7492-4d5b-933d-68754fee5799",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb4feb5a-208d-4173-8a11-8855f9854898",
+              "name": "Rate-limiting Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0953d207-c75e-4c5a-8213-2d49e49bbb91",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "organizations",
+                    ":organization_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://files-integration.inspectorio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ea87570a-4739-447c-9758-062987a8e3bd",
+    "name": "File Management ANALYTICS ORGANIZATION API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

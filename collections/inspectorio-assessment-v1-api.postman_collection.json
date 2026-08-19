@@ -1,0 +1,702 @@
+{
+  "item": [
+    {
+      "id": "82a0940b-4394-48d1-af22-300a935a9459",
+      "name": "ASSESSMENT-V1",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d1a3f9d5-04b6-4280-a880-f5afd5ed6b7e",
+          "name": "Search assessments",
+          "request": {
+            "name": "Search assessments",
+            "description": {
+              "content": "Search Assessments V1 with filters and pagination",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "assessments",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"case_id\": \"<integer>\",\n  \"assessment_type\": \"<string>\",\n  \"assessment_status\": \"<string>\",\n  \"workflow\": \"<string>\",\n  \"workflow_name\": \"<string>\",\n  \"standard_name\": \"<string>\",\n  \"standard_version\": \"<string>\",\n  \"rating_labels\": \"<string>\",\n  \"scheduling_status\": \"<string>\",\n  \"assessed_org_id\": \"<string>\",\n  \"requester_org_id\": \"<string>\",\n  \"executor_org_id\": \"<string>\",\n  \"selected_partner_org_id\": \"<string>\",\n  \"country\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"capa_status\": \"<string>\",\n  \"capa_due_date_from\": \"<date>\",\n  \"capa_due_date_to\": \"<date>\",\n  \"due_date_from\": \"<date>\",\n  \"due_date_to\": \"<date>\",\n  \"assessment_due_date_from\": \"<date>\",\n  \"assessment_due_date_to\": \"<date>\",\n  \"audit_date_from\": \"<date>\",\n  \"audit_date_to\": \"<date>\",\n  \"audit_start_date_from\": \"<date>\",\n  \"audit_start_date_to\": \"<date>\",\n  \"audit_end_date_from\": \"<date>\",\n  \"audit_end_date_to\": \"<date>\",\n  \"assessment_submit_date_from\": \"<date>\",\n  \"assessment_submit_date_to\": \"<date>\",\n  \"updated_date_from\": \"<date>\",\n  \"updated_date_to\": \"<date>\",\n  \"updated_datetime_from\": \"<dateTime>\",\n  \"updated_datetime_to\": \"<dateTime>\",\n  \"order\": \"updated_date:desc\",\n  \"search\": \"<string>\",\n  \"limit\": 20,\n  \"offset\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1724405a-c085-4ad3-83b1-1f4f8dcc53f7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assessments",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"case_id\": 100000,\n  \"assessment_type\": \"Self Assessment\",\n  \"assessment_status\": \"<string>\",\n  \"workflow\": \"Draft\",\n  \"workflow_name\": \"Draft\",\n  \"standard_name\": \"Environmental Audit - RS Std\",\n  \"standard_version\": \"6.1\",\n  \"rating_labels\": \"Excellent\",\n  \"scheduling_status\": \"Waiting For Scheduling\",\n  \"assessed_org_id\": \"F123\",\n  \"requester_org_id\": \"R123\",\n  \"executor_org_id\": \"E123\",\n  \"selected_partner_org_id\": \"123e4567-e89b-12d3-a456-426614174000,partner123,Factory Org Name\",\n  \"country\": \"US,CN,VN\",\n  \"reason\": \"Regular Audit,Special Audit\",\n  \"capa_status\": \"New\",\n  \"capa_due_date_from\": \"2020-01-01\",\n  \"capa_due_date_to\": \"2020-01-02\",\n  \"due_date_from\": \"2020-01-01\",\n  \"due_date_to\": \"2020-01-02\",\n  \"assessment_due_date_from\": \"2020-01-01\",\n  \"assessment_due_date_to\": \"2020-01-02\",\n  \"audit_date_from\": \"2020-01-01\",\n  \"audit_date_to\": \"2020-01-02\",\n  \"audit_start_date_from\": \"2020-01-01\",\n  \"audit_start_date_to\": \"2020-01-02\",\n  \"audit_end_date_from\": \"2020-01-01\",\n  \"audit_end_date_to\": \"2020-01-02\",\n  \"assessment_submit_date_from\": \"2020-01-01\",\n  \"assessment_submit_date_to\": \"2020-01-02\",\n  \"updated_date_from\": \"2020-01-01\",\n  \"updated_date_to\": \"2020-01-02\",\n  \"updated_datetime_from\": \"2020-01-01T12:34:56Z\",\n  \"updated_datetime_to\": \"2020-01-01T12:34:56Z\",\n  \"order\": \"assessmentId:asc\",\n  \"search\": \"factory\",\n  \"limit\": 20,\n  \"offset\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"5c40e755-3ab0-4fa9-9a44-f76a95f0e87d\",\n      \"assessmentId\": \"100000-2\",\n      \"caseId\": \"string\",\n      \"reportId\": \"5c40e755-3ab0-4fa9-9a44-f76a95f0e87d\",\n      \"status\": \"Submitted\",\n      \"type\": \"Verification Assessment\",\n      \"reason\": \"Annual Audit\",\n      \"workflowName\": \"Factory Information\",\n      \"standard\": {\n        \"name\": \"string\",\n        \"version\": \"string\"\n      },\n      \"rating\": \"Good\",\n      \"score\": \"8/10\",\n      \"scoreInPercentage\": \"80%\",\n      \"totalFindings\": [\n        {\n          \"severity\": \"Critical\",\n          \"findings\": 5\n        },\n        {\n          \"severity\": \"Critical\",\n          \"findings\": 5\n        }\n      ],\n      \"numberOfAreaToImproves\": 12,\n      \"assessmentDueDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"assessmentWindowStart\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"assessmentWindowEnd\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"auditStartDate\": \"2024-09-30T00:00:00.000000+00:00\",\n      \"auditEndDate\": \"2024-09-30T00:00:00.000000+00:00\",\n      \"assessmentSubmitDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"assessmentStartDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"completeCaseDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"reopenCaseDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"stakeholders\": {\n        \"assessedOrg\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"orgId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": \"Abbeville\",\n          \"country\": \"US\"\n        },\n        \"requester\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"orgId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"executors\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"selectedPartners\": [\n          {\n            \"contactPersons\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"contactPersons\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"capa\": {\n        \"id\": \"1235330e-b74b-4be6-8d8a-cb0560effc11\",\n        \"status\": \"New\",\n        \"capaLabels\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"dueDate\": \"2025-01-29T00:00:00.000000+00:00\"\n      },\n      \"schedulingStatus\": \"Scheduled\",\n      \"updatedDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"customFields\": {}\n    },\n    {\n      \"id\": \"5c40e755-3ab0-4fa9-9a44-f76a95f0e87d\",\n      \"assessmentId\": \"100000-2\",\n      \"caseId\": \"string\",\n      \"reportId\": \"5c40e755-3ab0-4fa9-9a44-f76a95f0e87d\",\n      \"status\": \"Submitted\",\n      \"type\": \"Verification Assessment\",\n      \"reason\": \"Annual Audit\",\n      \"workflowName\": \"Factory Information\",\n      \"standard\": {\n        \"name\": \"string\",\n        \"version\": \"string\"\n      },\n      \"rating\": \"Good\",\n      \"score\": \"8/10\",\n      \"scoreInPercentage\": \"80%\",\n      \"totalFindings\": [\n        {\n          \"severity\": \"Critical\",\n          \"findings\": 5\n        },\n        {\n          \"severity\": \"Critical\",\n          \"findings\": 5\n        }\n      ],\n      \"numberOfAreaToImproves\": 12,\n      \"assessmentDueDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"assessmentWindowStart\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"assessmentWindowEnd\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"auditStartDate\": \"2024-09-30T00:00:00.000000+00:00\",\n      \"auditEndDate\": \"2024-09-30T00:00:00.000000+00:00\",\n      \"assessmentSubmitDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"assessmentStartDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"completeCaseDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"reopenCaseDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"stakeholders\": {\n        \"assessedOrg\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"orgId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": \"Abbeville\",\n          \"country\": \"US\"\n        },\n        \"requester\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"orgId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"executors\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"selectedPartners\": [\n          {\n            \"contactPersons\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"contactPersons\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"capa\": {\n        \"id\": \"1235330e-b74b-4be6-8d8a-cb0560effc11\",\n        \"status\": \"New\",\n        \"capaLabels\": [\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"dueDate\": \"2025-01-29T00:00:00.000000+00:00\"\n      },\n      \"schedulingStatus\": \"Scheduled\",\n      \"updatedDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"customFields\": {}\n    }\n  ],\n  \"limit\": 10,\n  \"offset\": 0,\n  \"total\": 9946\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0abb50db-8ecb-4fbf-8875-bbc245852dc2",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assessments",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"case_id\": 100000,\n  \"assessment_type\": \"Self Assessment\",\n  \"assessment_status\": \"<string>\",\n  \"workflow\": \"Draft\",\n  \"workflow_name\": \"Draft\",\n  \"standard_name\": \"Environmental Audit - RS Std\",\n  \"standard_version\": \"6.1\",\n  \"rating_labels\": \"Excellent\",\n  \"scheduling_status\": \"Waiting For Scheduling\",\n  \"assessed_org_id\": \"F123\",\n  \"requester_org_id\": \"R123\",\n  \"executor_org_id\": \"E123\",\n  \"selected_partner_org_id\": \"123e4567-e89b-12d3-a456-426614174000,partner123,Factory Org Name\",\n  \"country\": \"US,CN,VN\",\n  \"reason\": \"Regular Audit,Special Audit\",\n  \"capa_status\": \"New\",\n  \"capa_due_date_from\": \"2020-01-01\",\n  \"capa_due_date_to\": \"2020-01-02\",\n  \"due_date_from\": \"2020-01-01\",\n  \"due_date_to\": \"2020-01-02\",\n  \"assessment_due_date_from\": \"2020-01-01\",\n  \"assessment_due_date_to\": \"2020-01-02\",\n  \"audit_date_from\": \"2020-01-01\",\n  \"audit_date_to\": \"2020-01-02\",\n  \"audit_start_date_from\": \"2020-01-01\",\n  \"audit_start_date_to\": \"2020-01-02\",\n  \"audit_end_date_from\": \"2020-01-01\",\n  \"audit_end_date_to\": \"2020-01-02\",\n  \"assessment_submit_date_from\": \"2020-01-01\",\n  \"assessment_submit_date_to\": \"2020-01-02\",\n  \"updated_date_from\": \"2020-01-01\",\n  \"updated_date_to\": \"2020-01-02\",\n  \"updated_datetime_from\": \"2020-01-01T12:34:56Z\",\n  \"updated_datetime_to\": \"2020-01-01T12:34:56Z\",\n  \"order\": \"assessmentId:asc\",\n  \"search\": \"factory\",\n  \"limit\": 20,\n  \"offset\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "487dac7b-27cb-47f3-8176-bb3ebe8e23bc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assessments",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"case_id\": 100000,\n  \"assessment_type\": \"Self Assessment\",\n  \"assessment_status\": \"<string>\",\n  \"workflow\": \"Draft\",\n  \"workflow_name\": \"Draft\",\n  \"standard_name\": \"Environmental Audit - RS Std\",\n  \"standard_version\": \"6.1\",\n  \"rating_labels\": \"Excellent\",\n  \"scheduling_status\": \"Waiting For Scheduling\",\n  \"assessed_org_id\": \"F123\",\n  \"requester_org_id\": \"R123\",\n  \"executor_org_id\": \"E123\",\n  \"selected_partner_org_id\": \"123e4567-e89b-12d3-a456-426614174000,partner123,Factory Org Name\",\n  \"country\": \"US,CN,VN\",\n  \"reason\": \"Regular Audit,Special Audit\",\n  \"capa_status\": \"New\",\n  \"capa_due_date_from\": \"2020-01-01\",\n  \"capa_due_date_to\": \"2020-01-02\",\n  \"due_date_from\": \"2020-01-01\",\n  \"due_date_to\": \"2020-01-02\",\n  \"assessment_due_date_from\": \"2020-01-01\",\n  \"assessment_due_date_to\": \"2020-01-02\",\n  \"audit_date_from\": \"2020-01-01\",\n  \"audit_date_to\": \"2020-01-02\",\n  \"audit_start_date_from\": \"2020-01-01\",\n  \"audit_start_date_to\": \"2020-01-02\",\n  \"audit_end_date_from\": \"2020-01-01\",\n  \"audit_end_date_to\": \"2020-01-02\",\n  \"assessment_submit_date_from\": \"2020-01-01\",\n  \"assessment_submit_date_to\": \"2020-01-02\",\n  \"updated_date_from\": \"2020-01-01\",\n  \"updated_date_to\": \"2020-01-02\",\n  \"updated_datetime_from\": \"2020-01-01T12:34:56Z\",\n  \"updated_datetime_to\": \"2020-01-01T12:34:56Z\",\n  \"order\": \"assessmentId:asc\",\n  \"search\": \"factory\",\n  \"limit\": 20,\n  \"offset\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6844f72-1a69-4327-a521-903dee969241",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assessments",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"case_id\": 100000,\n  \"assessment_type\": \"Self Assessment\",\n  \"assessment_status\": \"<string>\",\n  \"workflow\": \"Draft\",\n  \"workflow_name\": \"Draft\",\n  \"standard_name\": \"Environmental Audit - RS Std\",\n  \"standard_version\": \"6.1\",\n  \"rating_labels\": \"Excellent\",\n  \"scheduling_status\": \"Waiting For Scheduling\",\n  \"assessed_org_id\": \"F123\",\n  \"requester_org_id\": \"R123\",\n  \"executor_org_id\": \"E123\",\n  \"selected_partner_org_id\": \"123e4567-e89b-12d3-a456-426614174000,partner123,Factory Org Name\",\n  \"country\": \"US,CN,VN\",\n  \"reason\": \"Regular Audit,Special Audit\",\n  \"capa_status\": \"New\",\n  \"capa_due_date_from\": \"2020-01-01\",\n  \"capa_due_date_to\": \"2020-01-02\",\n  \"due_date_from\": \"2020-01-01\",\n  \"due_date_to\": \"2020-01-02\",\n  \"assessment_due_date_from\": \"2020-01-01\",\n  \"assessment_due_date_to\": \"2020-01-02\",\n  \"audit_date_from\": \"2020-01-01\",\n  \"audit_date_to\": \"2020-01-02\",\n  \"audit_start_date_from\": \"2020-01-01\",\n  \"audit_start_date_to\": \"2020-01-02\",\n  \"audit_end_date_from\": \"2020-01-01\",\n  \"audit_end_date_to\": \"2020-01-02\",\n  \"assessment_submit_date_from\": \"2020-01-01\",\n  \"assessment_submit_date_to\": \"2020-01-02\",\n  \"updated_date_from\": \"2020-01-01\",\n  \"updated_date_to\": \"2020-01-02\",\n  \"updated_datetime_from\": \"2020-01-01T12:34:56Z\",\n  \"updated_datetime_to\": \"2020-01-01T12:34:56Z\",\n  \"order\": \"assessmentId:asc\",\n  \"search\": \"factory\",\n  \"limit\": 20,\n  \"offset\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9835e441-7744-47c6-a909-1e527ab39743",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assessments",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"case_id\": 100000,\n  \"assessment_type\": \"Self Assessment\",\n  \"assessment_status\": \"<string>\",\n  \"workflow\": \"Draft\",\n  \"workflow_name\": \"Draft\",\n  \"standard_name\": \"Environmental Audit - RS Std\",\n  \"standard_version\": \"6.1\",\n  \"rating_labels\": \"Excellent\",\n  \"scheduling_status\": \"Waiting For Scheduling\",\n  \"assessed_org_id\": \"F123\",\n  \"requester_org_id\": \"R123\",\n  \"executor_org_id\": \"E123\",\n  \"selected_partner_org_id\": \"123e4567-e89b-12d3-a456-426614174000,partner123,Factory Org Name\",\n  \"country\": \"US,CN,VN\",\n  \"reason\": \"Regular Audit,Special Audit\",\n  \"capa_status\": \"New\",\n  \"capa_due_date_from\": \"2020-01-01\",\n  \"capa_due_date_to\": \"2020-01-02\",\n  \"due_date_from\": \"2020-01-01\",\n  \"due_date_to\": \"2020-01-02\",\n  \"assessment_due_date_from\": \"2020-01-01\",\n  \"assessment_due_date_to\": \"2020-01-02\",\n  \"audit_date_from\": \"2020-01-01\",\n  \"audit_date_to\": \"2020-01-02\",\n  \"audit_start_date_from\": \"2020-01-01\",\n  \"audit_start_date_to\": \"2020-01-02\",\n  \"audit_end_date_from\": \"2020-01-01\",\n  \"audit_end_date_to\": \"2020-01-02\",\n  \"assessment_submit_date_from\": \"2020-01-01\",\n  \"assessment_submit_date_to\": \"2020-01-02\",\n  \"updated_date_from\": \"2020-01-01\",\n  \"updated_date_to\": \"2020-01-02\",\n  \"updated_datetime_from\": \"2020-01-01T12:34:56Z\",\n  \"updated_datetime_to\": \"2020-01-01T12:34:56Z\",\n  \"order\": \"assessmentId:asc\",\n  \"search\": \"factory\",\n  \"limit\": 20,\n  \"offset\": 0\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88e3d885-89f9-47f9-9193-0558b589f21e",
+          "name": "Get Assessment",
+          "request": {
+            "name": "Get Assessment",
+            "description": {
+              "content": "Get Assessment V1 with detailed information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "assessments",
+                ":assessment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "capa_details",
+                  "value": "false",
+                  "description": "Get additional information about CAPA"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_step_questions",
+                  "value": "false",
+                  "description": "Get question and answers"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assessment_id",
+                  "description": "(Required) Assessment execution ID (UUID)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4845ae9-0de9-42f7-9bae-43b206a84ea9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assessments",
+                    ":assessment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "capa_details",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_step_questions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assessment_id",
+                      "description": "(Required) Assessment execution ID (UUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"5c40e755-3ab0-4fa9-9a44-f76a95f0e87d\",\n    \"assessmentId\": \"100000-2\",\n    \"caseId\": \"string\",\n    \"reportId\": \"5c40e755-3ab0-4fa9-9a44-f76a95f0e87d\",\n    \"status\": \"Submitted\",\n    \"type\": \"Verification Assessment\",\n    \"reason\": \"Annual Audit\",\n    \"workflowName\": \"Factory Information\",\n    \"standard\": {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    \"rating\": \"Good\",\n    \"score\": \"8/10\",\n    \"scoreInPercentage\": \"80%\",\n    \"totalFindings\": [\n      {\n        \"severity\": \"Critical\",\n        \"findings\": 5\n      },\n      {\n        \"severity\": \"Critical\",\n        \"findings\": 5\n      }\n    ],\n    \"numberOfAreaToImproves\": 12,\n    \"assessmentDueDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"assessmentWindowStart\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"assessmentWindowEnd\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"auditStartDate\": \"2024-09-30T00:00:00.000000+00:00\",\n    \"auditEndDate\": \"2024-09-30T00:00:00.000000+00:00\",\n    \"assessmentSubmitDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"assessmentStartDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"completeCaseDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"reopenCaseDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"stakeholders\": {\n      \"assessedOrg\": {\n        \"address\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"city\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"postal\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"country\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"province\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"contactPersons\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"siteStatus\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"requester\": {\n        \"contactPersons\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"executors\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"selectedPartners\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    \"capa\": {\n      \"id\": \"1235330e-b74b-4be6-8d8a-cb0560effc11\",\n      \"status\": \"New\",\n      \"capaLabels\": [\n        {\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"dueDate\": \"2025-01-29T00:00:00.000000+00:00\",\n      \"updatedDate\": \"2025-12-12T10:48:07.191000+00:00\",\n      \"updatedByUser\": \"john_doe@example.com\",\n      \"approvedDate\": \"2025-12-12T10:48:07.191000+00:00\",\n      \"createdDate\": \"2025-12-12T10:48:07.191000+00:00\",\n      \"areaToImproves\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ]\n    },\n    \"schedulingStatus\": \"Scheduled\",\n    \"updatedDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"customFields\": {},\n    \"overallComment\": \"Input Manually\\\\nasds\\\\nasd\\\\n\",\n    \"description\": \"Annual audit for supplier compliance\",\n    \"auditors\": [\n      {\n        \"id\": \"0b22ffe3-286a-48ba-b638-d26bd5cd4fcb\",\n        \"email\": \"jane.smith@auditor.com\",\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Smith\"\n      },\n      {\n        \"id\": \"0b22ffe3-286a-48ba-b638-d26bd5cd4fcb\",\n        \"email\": \"jane.smith@auditor.com\",\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Smith\"\n      }\n    ],\n    \"assignedUsers\": [\n      {\n        \"id\": \"5d975074-392d-4850-9f9a-3bde0d756525\",\n        \"email\": \"user@inspectorio.mailinator.com\",\n        \"firstName\": \"Forrest\",\n        \"lastName\": \"V\"\n      },\n      {\n        \"id\": \"5d975074-392d-4850-9f9a-3bde0d756525\",\n        \"email\": \"user@inspectorio.mailinator.com\",\n        \"firstName\": \"Forrest\",\n        \"lastName\": \"V\"\n      }\n    ],\n    \"assignedRoles\": [\n      {\n        \"name\": \"3P ASP\"\n      },\n      {\n        \"name\": \"3P ASP\"\n      }\n    ],\n    \"auditTimeSpent\": 12.5,\n    \"assessmentRequestDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"caseExpirationDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"reportGenerateDate\": \"2024-09-30T10:36:56.057000+00:00\",\n    \"executionLocations\": [\n      \"On-site\",\n      \"Desktop Review\"\n    ],\n    \"schedulingComment\": \"Scheduled for next week\",\n    \"scheduledToOrganization\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"orgId\": \"string\",\n      \"type\": \"string\"\n    },\n    \"scheduledToOrganizationRole\": \"Lead Auditor\",\n    \"checkin\": {\n      \"checkinLocation\": {\n        \"latitude\": 10.762622,\n        \"longitude\": 106.660172,\n        \"address\": \"string\",\n        \"country\": \"US\",\n        \"postal\": \"string\",\n        \"state\": \"string\",\n        \"city\": \"string\"\n      },\n      \"checkinUser\": \"john.doe@example.com\",\n      \"checkinDate\": \"2025-12-12T10:47:57.465000+00:00\",\n      \"isManual\": true,\n      \"reason\": \"GPS not available\"\n    },\n    \"escalations\": [\n      {\n        \"createdDate\": \"2024-09-30T10:36:56.057000+00:00\",\n        \"status\": \"string\",\n        \"resolvedDate\": \"2024-09-30T10:36:56.057000+00:00\",\n        \"escalatedTo\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"escalatedBy\": {\n          \"email\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"firstName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"lastName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"resolvedByUser\": {\n          \"email\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"firstName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"lastName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"note\": \"string\",\n        \"reasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"exceptionReasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"reviewerComment\": \"string\"\n      },\n      {\n        \"createdDate\": \"2024-09-30T10:36:56.057000+00:00\",\n        \"status\": \"string\",\n        \"resolvedDate\": \"2024-09-30T10:36:56.057000+00:00\",\n        \"escalatedTo\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"escalatedBy\": {\n          \"email\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"firstName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"lastName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"resolvedByUser\": {\n          \"email\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"firstName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"lastName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"note\": \"string\",\n        \"reasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"exceptionReasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"reviewerComment\": \"string\"\n      }\n    ],\n    \"announcementType\": \"Announced\",\n    \"stepExecutions\": [\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"order\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"result\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"questionnaire\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"appTestResults\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"questionAnswers\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"order\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"result\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"questionnaire\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"appTestResults\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"questionAnswers\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      }\n    ],\n    \"submitEvent\": {\n      \"submittedByUser\": {},\n      \"submitDate\": \"2024-09-30T10:36:56.057000+00:00\",\n      \"submittedByOrg\": {}\n    },\n    \"confidentialNotes\": [\n      {\n        \"content\": \"Confidential information about assessment\",\n        \"createdBy\": \"Jane Auditor\",\n        \"createdDate\": \"2024-09-30T10:36:56.057000+00:00\"\n      },\n      {\n        \"content\": \"Confidential information about assessment\",\n        \"createdBy\": \"Jane Auditor\",\n        \"createdDate\": \"2024-09-30T10:36:56.057000+00:00\"\n      }\n    ],\n    \"schemes\": [\n      {\n        \"schema\": \"ISO 9001\",\n        \"orgId\": \"ORG_123\",\n        \"reportId\": \"5c40e755-3ab0-4fa9-9a44-f76a95f0e87d\",\n        \"auditDate\": \"2024-09-30\"\n      },\n      {\n        \"schema\": \"ISO 9001\",\n        \"orgId\": \"ORG_123\",\n        \"reportId\": \"5c40e755-3ab0-4fa9-9a44-f76a95f0e87d\",\n        \"auditDate\": \"2024-09-30\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "731ee26b-f15b-42b1-9d44-f093ad10cff7",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assessments",
+                    ":assessment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "capa_details",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_step_questions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assessment_id",
+                      "description": "(Required) Assessment execution ID (UUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2959dc4-1d97-460d-a10d-1eb60b175329",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assessments",
+                    ":assessment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "capa_details",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_step_questions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assessment_id",
+                      "description": "(Required) Assessment execution ID (UUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "424b175d-2e15-4496-aa16-304f195641a9",
+              "name": "Assessment not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assessments",
+                    ":assessment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "capa_details",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_step_questions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assessment_id",
+                      "description": "(Required) Assessment execution ID (UUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86069d81-935a-4a2c-99df-6143f16289fe",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assessments",
+                    ":assessment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "capa_details",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_step_questions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assessment_id",
+                      "description": "(Required) Assessment execution ID (UUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01725f74-113d-49e1-b350-b1da5d45fb1a",
+              "name": "Internal Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "assessments",
+                    ":assessment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "capa_details",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_step_questions",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assessment_id",
+                      "description": "(Required) Assessment execution ID (UUID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://files-integration.inspectorio.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1001ed2d-dec8-4d4b-9558-9340c8a9d7f4",
+    "name": "File Management ANALYTICS ASSESSMENT-V1 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
