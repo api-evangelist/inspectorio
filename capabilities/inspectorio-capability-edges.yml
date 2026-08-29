@@ -1,0 +1,107 @@
+slug: inspectorio
+provider: Inspectorio
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 9
+edges:
+- tag: Inspections
+  spec_file: inspectorio-inspections-api-openapi.yml
+  capability_id: BC-720.30
+  capability_id_l1: BC-720
+  capability_name: Quality Control Management
+  confidence: 0.85
+  evidence: '''listInspectionsV1  List Inspections''; schemas ''AssignedToInspector'', ''schemas-Measurement'',
+    ''schemas-Questionnaire'', ''InspectionDetail'''
+  reason: Operations expose product inspection records with inspectors, measurements and questionnaires
+    — quality control inspection management, not transport inspection.
+- tag: LAB TEST
+  spec_file: inspectorio-lab-test-api-openapi.yml
+  capability_id: BC-720.30
+  capability_id_l1: BC-720
+  capability_name: Quality Control Management
+  confidence: 0.8
+  evidence: '''CreateLabTest  Create Lab Test''; ''CreateLabTestPackage''; ''GetLabTestPropertyList  List
+    Lab Test Properties''; schema ''LabTestDisposition'''
+  reason: Lab test orders, test packages and test properties with pass/fail results and dispositions are
+    product testing under quality control; CPSC eFiling is an ancillary regulatory output.
+- tag: PURCHASE ORDER
+  spec_file: inspectorio-purchase-order-api-openapi.yml
+  capability_id: BC-500.30
+  capability_id_l1: BC-500
+  capability_name: Purchase Order Management
+  confidence: 0.8
+  evidence: '''POST /api/v1/purchase-orders  Create Purchase Order''; ''PUT /api/v1/purchase-orders/{po_number}  Update
+    Purchase Order''; schema ''PurchaseOrderForm'''
+  reason: Full lifecycle CRUD over purchase orders (create, update, delete, actions) is purchase order
+    management for buyer-supplier production orders.
+- tag: PURCHASE ORDER V3
+  spec_file: inspectorio-purchase-order-v3-api-openapi.yml
+  capability_id: BC-500.30
+  capability_id_l1: BC-500
+  capability_name: Purchase Order Management
+  confidence: 0.8
+  evidence: '''createPurchaseOrderV3  Create Purchase Order (V3)''; ''updatePurchaseOrderStatusV3  Update
+    the status of a purchase order (V3)''; schemas ''PurchaseOrderLineFinishedGoodsGET'', ''PackagingDetails'''
+  reason: Versioned purchase order CRUD with order lines, status transitions and packaging details — purchase
+    order creation, approval and execution.
+- tag: CAPA
+  spec_file: inspectorio-capa-api-openapi.yml
+  capability_id: BC-720.40
+  capability_id_l1: BC-720
+  capability_name: Non-Conformance Management
+  confidence: 0.75
+  evidence: GET /api/v1/capas/{report_id} 'Get CAPA'; schemas 'DefectSeverity', 'FailedMeasurement', 'OutOfTolerance',
+    'ReInspection'
+  reason: CAPA here is corrective/preventive action attached to an inspection report, with defect severity,
+    failed measurements and out-of-tolerance findings — i.e. non-conformance/CAPA handling within a quality
+    management platform.
+- tag: REPORT
+  spec_file: inspectorio-report-api-openapi.yml
+  capability_id: BC-720.30
+  capability_id_l1: BC-720
+  capability_name: Quality Control Management
+  confidence: 0.75
+  evidence: operations 'List Reports' / 'Get Report' / 'Get Step Execution' with schemas 'InspectionStandardsAql',
+    'InspectionQuestions', 'InspectionAssortment', 'BookingInspectionInformation'
+  reason: The reports are quality-inspection execution reports (AQL standards, inspection questions, e-signatures),
+    i.e. inspection and acceptance-criteria results, which is Quality Control Management. Not generic
+    reporting/BI, since the payload is inspection-specific.
+- tag: ANALYTICS
+  spec_file: inspectorio-analytics-api-openapi.yml
+  capability_id: BC-510.30
+  capability_id_l1: BC-510
+  capability_name: Supplier Risk Management
+  confidence: 0.72
+  evidence: GET /api/v1/analytics/factory-risk-profile "List Factory Risk Profiles"; schemas FactoryRiskProfileRiskLevelData,
+    FactoryRiskProfileScoreData
+  reason: Exposes risk scores and risk levels for supplier factories, which is supplier risk assessment
+    on a sourcing platform; the analytics framing is the delivery mechanism, the object is supplier risk.
+- tag: MASTER DATA
+  spec_file: inspectorio-master-data-api-openapi.yml
+  capability_id: BC-610.20
+  capability_id_l1: BC-610
+  capability_name: Master Data Management
+  confidence: 0.7
+  evidence: '''CreateMasterData  Create Master Data''; ''UpdateMasterDataByUUID  Update Master Data'';
+    schema ''MasterDataCreateRequest'''
+  reason: Explicit CRUD over master data records for the platform, which is master data management; the
+    payload is generic so the specific domain is unstated.
+- tag: PURCHASE ORDER ASSOCIATION
+  spec_file: inspectorio-purchase-order-association-api-openapi.yml
+  capability_id: BC-500.30
+  capability_id_l1: BC-500
+  capability_name: Purchase Order Management
+  confidence: 0.7
+  evidence: '''POST /api/v1/purchase-order-associations  Create Purchase Order Association''; ''Get Associations
+    of Purchase Order'''
+  reason: Maintains linkage relationships between purchase orders, an ancillary part of purchase order
+    management; it is a relationship-modelling surface rather than PO issuance itself.

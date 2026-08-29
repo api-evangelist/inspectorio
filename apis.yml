@@ -343,6 +343,9 @@ apis:
   - type: OpenAPI
     url: openapi/inspectorio-upload-file-api-openapi.yml
 common:
+- type: CapabilityMap
+  url: capabilities/inspectorio-capability-edges.yml
+  name: Inspectorio Business Capability Map
 - type: Overlay
   url: overlays/inspectorio-fms-overlay.yaml
 - type: Website
