@@ -69,7 +69,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Analytics
+  - ANALYTICS
   tags_raw:
   - ANALYTICS
   properties:
@@ -91,7 +91,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Assignment
+  - ASSIGNMENT
   tags_raw:
   - ASSIGNMENT
   properties:
@@ -103,7 +103,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Authentication
+  - AUTH
   tags_raw:
   - AUTH
   properties:
@@ -115,7 +115,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Barcodes
+  - BARCODE
   tags_raw:
   - BARCODE
   properties:
@@ -127,7 +127,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Booking
+  - BOOKING
   tags_raw:
   - BOOKING
   properties:
@@ -139,7 +139,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Brand
+  - BRAND
   tags_raw:
   - BRAND
   properties:
@@ -161,7 +161,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Customer Data
+  - CUSTOMER DATA
   tags_raw:
   - CUSTOMER DATA
   properties:
@@ -193,7 +193,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Master Data
+  - MASTER DATA
   tags_raw:
   - MASTER DATA
   properties:
@@ -215,7 +215,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Metadata
+  - METADATA
   tags_raw:
   - METADATA
   properties:
@@ -227,7 +227,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Organization
+  - ORGANIZATION
   tags_raw:
   - ORGANIZATION
   properties:
@@ -239,7 +239,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Product
+  - PRODUCT
   tags_raw:
   - PRODUCT
   properties:
@@ -251,7 +251,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Purchase Order
+  - PURCHASE ORDER
   tags_raw:
   - PURCHASE ORDER
   properties:
@@ -284,7 +284,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Report
+  - REPORT
   tags_raw:
   - REPORT
   properties:
@@ -306,7 +306,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Storage
+  - STORAGE
   tags_raw:
   - STORAGE
   properties:
