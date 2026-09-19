@@ -141,7 +141,7 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
-  - Brand
+  - Brands
   tags_raw:
   - BRAND
   properties:
@@ -175,6 +175,8 @@ apis:
   humanURL: https://docs.inspectorio.com/api/qrm
   baseURL: https://sight.inspectorio.com
   tags:
+  - Inspection
+  tags_raw:
   - Inspections
   properties:
   - type: OpenAPI
