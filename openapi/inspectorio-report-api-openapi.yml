@@ -1,19 +1,25 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: File Management ANALYTICS REPORT API
-  version: v3
+  title: Inspectorio REPORT API
+  version: v1
+  description: 'Operations tagged REPORT across 2 of this provider''s published API definitions: inspectorio-qrm-openapi.json, inspectorio-rsc-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
 - description: Production Environment
-  url: https://files-integration.inspectorio.com
+  url: https://sight.inspectorio.com
 - description: Pre-Production Environment
-  url: https://files-integration.pre.inspectorio.com
+  url: https://sight.pre.inspectorio.com
+- description: Production Environment
+  url: https://rise-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://rise-integration.pre.inspectorio.com
+security:
+- ApiKeyAuth: []
 tags:
-- name: REPORT
+- name: Report
 paths:
   /api/v1/reports:
     get:
       summary: List Reports
-      description: List Reports
       parameters:
       - description: Style ID of items included in reports
         in: query
@@ -174,11 +180,17 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - REPORT
+      - Report
+      operationId: getApiV1Reports
+      x-operation-id-source: derived
+    servers:
+    - description: Production Environment
+      url: https://sight.inspectorio.com
+    - description: Pre-Production Environment
+      url: https://sight.pre.inspectorio.com
   /api/v1/reports/{report_id}:
     get:
       summary: Get Report
-      description: Get Report
       parameters:
       - in: path
         name: report_id
@@ -223,10 +235,16 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - REPORT
+      - Report
+      operationId: getApiV1ReportsByReportId
+      x-operation-id-source: derived
+    servers:
+    - description: Production Environment
+      url: https://sight.inspectorio.com
+    - description: Pre-Production Environment
+      url: https://sight.pre.inspectorio.com
   /api/v1/reports/{report_id}/steps/{step_id}:
     get:
-      description: Get Step Execution
       operationId: getStepExecution
       parameters:
       - in: path
@@ -272,51 +290,178 @@ paths:
           description: Internal Error
       summary: Get Step Execution
       tags:
-      - REPORT
+      - Report
+    servers:
+    - description: Production Environment
+      url: https://rise-integration.inspectorio.com
+    - description: Pre-Production Environment
+      url: https://rise-integration.pre.inspectorio.com
 components:
   schemas:
-    StepExecutionAnswerChoiceSubQuestionAnswer:
+    InspectionStandardsMaxAllowed:
       properties:
-        choices:
-          description: List of choices for the question
-          items:
-            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerChoice'
-          nullable: true
-          type: array
-        files:
-          description: Files attached to the question
-          items:
-            type: object
-          nullable: true
-          type: array
-        id:
-          description: Unique identifier of the question in the question/answer set
-          nullable: true
+        critical:
+          description: The number of critical defects max allowed
+          example: '0'
           type: string
-        isNotApplicable:
-          description: Indicates whether the answer was set to 'Not Applicable'
-          type: boolean
-        mappedIssues:
-          description: List of mapped issues of the question
-          items:
-            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerMappedIssue'
-          nullable: true
-          type: array
-        number:
-          description: Number of the question
-          nullable: true
+        major:
+          description: The number of major defects max allowed
+          example: '1'
+          type: string
+        minor:
+          description: The number of minor defects max allowed
+          example: '1'
+          type: string
+      type: object
+    InspectionSpecialAttentionPointPictures:
+      properties:
+        rotateAngle:
+          description: Angle of rotation of the picture
+          example: '0'
+          type: string
+        source:
+          description: Direct URL to the picture
+          example: https://.../image1.jpg
+          type: string
+      type: object
+    BookingSolidItem:
+      properties:
+        availableCartonQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        availableQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        brandId:
+          description: 'Precondition: must be configured in your Inspectorio''s account.'
+          example: brand_1
+          type:
+          - string
+          - 'null'
+        brandName:
+          minLength: 1
+          readOnly: true
+          type: string
+        cartonQuantity:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        casePackQuantity:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        classId:
+          example: class_id_1
+          type:
+          - string
+          - 'null'
+        color:
+          minLength: 1
+          type: string
+        departmentId:
+          example: department_id_1
+          type:
+          - string
+          - 'null'
+        id:
+          type:
+          - string
+          - 'null'
+        itemId:
+          minLength: 1
+          type: string
+        quantity:
+          minimum: 1
           type: integer
-        parentId:
-          description: Unique identifier of the parent question
-          nullable: true
+        shipmentTerm:
+          example: shipment_term_1
+          type:
+          - string
+          - 'null'
+        size:
+          minLength: 1
+          type: string
+      required:
+      - color
+      - itemId
+      - quantity
+      - size
+      type: object
+    InspectionStandardsSampleSizeCategory:
+      properties:
+        productCategory:
+          description: Unique identifier of the product category
+          example: '124301'
+          type: string
+        sampleSize:
+          description: Sample size
+          example: '8'
+          type: integer
+      type: object
+    InspectionGeneralPos:
+      properties:
+        poNumber:
+          description: PO Number of the report
+          example: PO123
+          type: string
+      type: object
+    InspectionQuestions:
+      properties:
+        groupId:
+          description: Unique identifier of the group of question
+          example: 7384b63c-bc99-43f0-b1b5-600959220e19_1e601f70-3c65-4ea8-931f-4976b9c91b3a
+          type: string
+        inspectionId:
+          description: Unique identifier of the report
+          example: abcd1234-ab12-ab12-ab12-abcd1234efgh4568
+          type: string
+        label:
+          description: Label of the question
+          example: Do we need to pull a Green sealed sample?
+          type: string
+        options:
+          description: Options available to answer the question
+          items:
+            $ref: '#/components/schemas/InspectionQuestionsOptions'
+          type: array
+        organizationId:
+          description: Unique identifier of the organization
+          example: 'null'
           type: string
         questionId:
           description: Unique identifier of the question
-          nullable: true
+          example: 7384b63c-bc99-43f0-b1b5-600959220e19_5689d212-b001-4ad2-89c7-2c39654d4cc3_SyJivf3CA
           type: string
-        text:
-          description: Text describes the question
-          nullable: true
+        type:
+          description: Type of the question
+          example: 'null'
+          type: string
+      type: object
+    ReportResponseSchemaInspectionEsignatures:
+      properties:
+        id:
+          description: Unique Identifier of the inspection eSignature
+          example: 123456
+          type: integer
+        name:
+          description: Name of the inspector who provided eSignature
+          example: Bob
+          type:
+          - string
+          - 'null'
+        signature:
+          description: Name of the inspector who provided eSignature
+          example: https://example.jpg
+          type: string
+        title:
+          description: Title of the inspector who provided eSignature
+          example: Factory Representative
           type: string
       type: object
     InspectionQuestionsOptions:
@@ -343,24 +488,163 @@ components:
           example: 'YES'
           type: string
       type: object
-    IdName:
+    InspectionPhotos:
       properties:
-        id:
-          description: Unique identifier
-          nullable: true
+        file:
+          $ref: '#/components/schemas/InspectionPhotosFile'
+          description: List of the files
+        groupId:
+          description: Unique identifier of the group of photo
           type: string
-        name:
-          description: Name
-          nullable: true
+        inspectionId:
+          description: Unique identifier of the report
+          example: abcd1234-ab12-ab12-ab12-abcd1234efgh4568
+          type: string
+        itemId:
+          description: Unique identifier of the item
+          example: 02112-1851
+          type: string
+        label:
+          description: Label of the photo
+          type: string
+        organizationId:
+          description: Unique identifier of the organization who executed the inspection
+          example: '200373'
+          type: string
+        photoId:
+          description: Unique identifier of the photo
+          type: string
+        status:
+          description: Status of the photo
+          type: string
+        styleId:
+          description: Unique identifier of the style
+          example: '123456'
+          type: string
+        type:
+          description: Type of the photo
+          example: image
           type: string
       type: object
-    TooManyResponsesApiError:
+    OrganizationContact:
+      properties:
+        contactId:
+          example: contact_id
+          type: string
+        email:
+          example: email@email.com
+          type: string
+        mobileNumber:
+          example: '1234567890'
+          type: string
+        name:
+          example: Contact Name
+          type: string
+        telephoneNumber:
+          example: '1234567890'
+          type: string
+      type: object
+    InspectionAssortment:
+      properties:
+        assortmentId:
+          minLength: 1
+          type: string
+        availableCartonQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        cartonQuantity:
+          minimum: 0
+          type: integer
+        items:
+          items:
+            $ref: '#/components/schemas/InspectionAssortmentItem'
+          minItems: 1
+          type: array
+      required:
+      - assortmentId
+      - cartonQuantity
+      - items
+      type: object
+    InternalApiError:
       properties:
         errorCode:
           example: Generic
           type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
         message:
-          example: Too many requests
+          example: Internal server error
+          type: string
+      type: object
+    BookingMeasurementItemDetail:
+      properties:
+        measurement:
+          type: string
+        size:
+          description: Size name
+          example: Medium
+          minLength: 1
+          type: string
+      required:
+      - measurement
+      - size
+      type: object
+    User:
+      properties:
+        email:
+          type: string
+        id:
+          type: string
+        mobileNumber:
+          type: string
+        name:
+          type: string
+      type: object
+    InspectionStandardsCountedForAql:
+      properties:
+        critical:
+          description: The number of critical defects that counted for AQL
+          example: '1'
+          type: string
+        major:
+          description: The number of major defects that counted for AQL
+          example: '0'
+          type: string
+        minor:
+          description: The number of minor defects that counted for AQL
+          example: '0'
+          type: string
+      type: object
+    InspectionResult:
+      properties:
+        groupName:
+          description: Name of the group of results
+          example: Check In
+          type: string
+        includeInReport:
+          description: Boolean indicating if the result is included in the report
+          example: 'true'
+          type: boolean
+        inspectionId:
+          description: Unique identifier of the report
+          example: abcd1234-ab12-ab12-ab12-abcd1234efgh4568
+          type: string
+        organizationId:
+          description: Unique identifier of the organization who executed the inspection
+          example: '200373'
+          type: string
+        resultId:
+          description: Unique identifier of the result
+          example: 7384b63c-bc99-43f0-b1b5-600959220e19_6e451830-1d61-4a14-a5e7-03ce20704f52
+          type: string
+        status:
+          description: Status of the result
+          example: non-applicable
           type: string
       type: object
     InspectionPhotosFile:
@@ -382,6 +666,216 @@ components:
           example: https://.../.../.../1a2b3c4d-1a2b-1a2b-1a2b3c4d_eb77a158.jpg
           type: string
       type: object
+    ReportListInspectionGeneral:
+      properties:
+        actualInspectionDate:
+          description: Date when the inspection was started on mobile
+          example: '2021-06-03T00:00:00+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        bookingType:
+          description: Type of the booking, e.g. Normal
+          example: normal
+          type: string
+        capaStatus:
+          description: Status of the CAPA
+          example: Waiting for Response
+          type: string
+        caseNumber:
+          description: Case number of the report generated based on a configurable rule
+          example: 5832DUPRO2019-00537345TESTMTTestInspectorioFactoryASOLID-ASSORTMENT2019-12-095832IS
+          type: string
+        client:
+          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
+          description: Information on the brand/retailer
+        country:
+          description: Country of shipment
+          example: VN
+          type: string
+        createdDate:
+          description: Date and time when the inspection started
+          example: '2021-06-03 07:18:05.372000+00:00'
+          type: string
+        creator:
+          $ref: '#/components/schemas/User'
+          description: Information on the user who generated the report
+        executor:
+          $ref: '#/components/schemas/InspectionGeneralOrganization'
+          description: Information on the executor of the report
+        expectedDate:
+          description: Expected date of inspection that was selected when creating a new inspection
+          example: '2021-06-03 00:00:00+00:00'
+          type: string
+        factory:
+          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
+          description: Information on the factory of the report
+        inspectionDate:
+          description: Date and time when the inspection completed
+          example: '2021-06-03 08:27:20.624000+00:00'
+          type: string
+        inspectionId:
+          description: Unique identifier of the inspection's report
+          example: 123a456b-abcd-efgh-ijk1-a88aa05d7c86
+          type: string
+        inspectionForm:
+          description: The name of the inspection form used
+          example: FIForm
+          type: string
+        inspectionLocation:
+          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
+          description: The location of the inspection
+          example: 'null'
+        inspectionResult:
+          description: Overall result of the inspection
+          example: fail
+          type: string
+        inspector:
+          $ref: '#/components/schemas/Inspector'
+          description: Information on the inspector
+        isReferenceSample:
+          description: Indicates whether a reference sample had been provided
+          example: 'null'
+          type: integer
+        opoNumber:
+          description: Original PO Number of the report
+          example: 123-456
+          type: string
+        oversightOffice:
+          $ref: '#/components/schemas/InspectionGeneralOversightOffice'
+          description: Oversight office
+        pdfUrl:
+          description: Direct URL to the report in PDF format
+          example: https://.../.../.../.../case-number_123a456b-abcd-efgh-ijk1-a88aa05d7c86.pdf
+          type: string
+        poNumber:
+          description: PO Number of the report
+          example: 123-456-L001
+          type: string
+        productCategories:
+          description: List of unique identifiers of all the product categories
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        productLineId:
+          description: Unique identifier of the product line
+          example: '100991'
+          type: string
+        productLineName:
+          description: Name of the product line
+          example: APPAREL
+          type: string
+        productOrders:
+          description: List of all the PO numbers
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        productStyles:
+          description: List of all the styles with items and measurements
+          items:
+            $ref: '#/components/schemas/ReportListProductStyle'
+          type:
+          - array
+          - 'null'
+        status:
+          description: Status of the report, e.g. In-Progress, Completed
+          example: completed
+          type: string
+        systemUpdatedAt:
+          description: Date and time the report was last updated by the system (including both client actions and actions taken by Inspectorio on behalf of the client)
+          example: '2021-06-03 08:27:21.316000+00:00'
+          type: string
+        tags:
+          description: Labels attached to the report giving other information, e.g. 1st re-inspection
+          example: 'null'
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        type:
+          $ref: '#/components/schemas/BookingInspectionInformation'
+          description: Information on the type of inspection
+        updatedDate:
+          description: Date and time the report was last updated
+          example: '2021-06-03 08:27:21.316000+00:00'
+          type: string
+        vendor:
+          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
+          description: Information on the supplier of the report
+        workflowName:
+          description: Name of workflow
+          example: DUPRO Apparel workflow
+          type:
+          - string
+          - 'null'
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object
+    ProductStyle:
+      properties:
+        assortments:
+          items:
+            $ref: '#/components/schemas/InspectionAssortment'
+          type:
+          - array
+          - 'null'
+        measurements:
+          items:
+            $ref: '#/components/schemas/InspectionMeasurement'
+          type: array
+        productCategoryId:
+          example: product_category_1
+          type: string
+        productCategoryName:
+          minLength: 1
+          readOnly: true
+          type: string
+        solids:
+          items:
+            $ref: '#/components/schemas/InspectionSolidItem'
+          type:
+          - array
+          - 'null'
+        styleId:
+          example: style_1
+          minLength: 1
+          type: string
+        styleName:
+          type:
+          - string
+          - 'null'
+      required:
+      - productCategoryId
+      - styleId
+      type: object
+    InspectionDefectListPhoto:
+      properties:
+        description:
+          description: Description of the defect photo
+          example: Mismatch color
+          type: string
+        rotateAngle:
+          description: Angle of rotation of the defect photo
+          example: '0'
+          type: string
+        source:
+          description: Source of the defect photo
+          example: https://.../image1.jpg
+          type: string
+      type: object
     InspectionMeasurement:
       properties:
         caption:
@@ -390,8 +884,9 @@ components:
         isPomCritical:
           description: Measurement is critical or not
           example: 'true'
-          nullable: true
-          type: boolean
+          type:
+          - boolean
+          - 'null'
         pom:
           minLength: 1
           type: string
@@ -404,13 +899,15 @@ components:
         toleranceLower:
           description: Accepted lower limit between the expected measure (standard) and the actual measure
           example: 1
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         toleranceUpper:
           description: Accepted upper limit between the expected measure (standard) and the actual measure
           example: 1
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         unit:
           enum:
           - inch
@@ -422,6 +919,1059 @@ components:
       - pom
       - tolerance
       - unit
+      type: object
+    InspectionRfid:
+      properties:
+        barcode:
+          description: Barcode of the item
+          example: '123456'
+          type: string
+        code:
+          description: Code of the item
+          example: '123'
+          type: string
+        decodedCode:
+          description: Decoded code of the item
+          example: '111'
+          type: string
+        id:
+          description: Unique identifier of the barcode
+          example: abc-def-123
+          type: string
+        inspectionId:
+          description: Unique identifier of the report
+          example: abcd1234-ab12-ab12-ab12-abcd1234efgh4568
+          type: string
+        matched:
+          description: Indicates whether the barcode of the item matches the expected barcode
+          example: 'true'
+          type: boolean
+        organizationId:
+          description: Unique identifier of the organization who executed the inspection
+          example: '200373'
+          type: string
+        photos:
+          description: List of photos taken
+          items:
+            type: string
+          type: array
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    InspectionSpecialAttentionPoint:
+      properties:
+        attentionId:
+          description: Unique identifier of the special attention point
+          example: remark-ee79693e-cd81-45df-af2e-1ee4628b4123-2020-01-15-14-25-13-182
+          type: string
+        description:
+          description: Description of the special attention point
+          example: This is a test
+          type: string
+        group:
+          description: Unique identifier of the special attention point's group
+          example: remark-ee79693e-cd81-45df-af2e-1ee4628b4123-2020-01-15-14-25-13-182
+          type: string
+        inspectionId:
+          description: Unique identifier of the report
+          example: abcd1234-ab12-ab12-ab12-abcd1234efgh4568
+          type: string
+        organizationId:
+          description: Unique identifier of the organization who executed the inspection
+          example: '200373'
+          type: string
+        pictures:
+          description: The list of pictures taken for the special attention point
+          items:
+            $ref: '#/components/schemas/InspectionSpecialAttentionPointPictures'
+          type: array
+        type:
+          description: The type of special attention point
+          example: remark
+          type: string
+      type: object
+    InspectionAssortmentItem:
+      properties:
+        availableQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        brandId:
+          description: 'Precondition: must be configured in your Inspectorio''s account.'
+          example: brand_1
+          type:
+          - string
+          - 'null'
+        brandName:
+          minLength: 1
+          readOnly: true
+          type: string
+        classId:
+          example: class_id_1
+          type:
+          - string
+          - 'null'
+        color:
+          minLength: 1
+          type: string
+        configuration:
+          minimum: 1
+          type: integer
+        departmentId:
+          example: department_id_1
+          type:
+          - string
+          - 'null'
+        id:
+          type:
+          - string
+          - 'null'
+        itemId:
+          minLength: 1
+          type: string
+        purchaseOrders:
+          description: 'List of unique purchase orders associated with this item '
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        quantity:
+          readOnly: true
+          type: integer
+        shipmentTerm:
+          example: shipment_term_1
+          type:
+          - string
+          - 'null'
+        size:
+          minLength: 1
+          type: string
+      required:
+      - color
+      - configuration
+      - itemId
+      - size
+      type: object
+    BookingAssortmentItem:
+      properties:
+        availableQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        brandId:
+          description: 'Precondition: must be configured in your Inspectorio''s account.'
+          example: brand_1
+          type:
+          - string
+          - 'null'
+        brandName:
+          minLength: 1
+          readOnly: true
+          type: string
+        classId:
+          example: class_id_1
+          type:
+          - string
+          - 'null'
+        color:
+          minLength: 1
+          type: string
+        configuration:
+          minimum: 1
+          type: integer
+        departmentId:
+          example: department_id_1
+          type:
+          - string
+          - 'null'
+        id:
+          type:
+          - string
+          - 'null'
+        itemId:
+          minLength: 1
+          type: string
+        quantity:
+          readOnly: true
+          type: integer
+        shipmentTerm:
+          example: shipment_term_1
+          type:
+          - string
+          - 'null'
+        size:
+          minLength: 1
+          type: string
+      required:
+      - color
+      - configuration
+      - itemId
+      - size
+      type: object
+    InspectionMeasurementDimensionsSamples:
+      properties:
+        name:
+          description: Sample name of the inspection measurement dimension
+          example: shirt_1
+          type: string
+        value:
+          description: sample value
+          example: 1.5
+          type:
+          - number
+          - 'null'
+      type: object
+    InspectionQuestionsOptionsActions:
+      properties:
+        action:
+          description: Action the inspector can/needs to take when responding to the question
+          example: request_picture
+          type: string
+        value:
+          description: Information related to the action of the question, e.g. Is Mandatory
+          example: mandatory
+      type: object
+    InspectionSolidItem:
+      properties:
+        availableCartonQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        availableQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        brandId:
+          description: 'Precondition: must be configured in your Inspectorio''s account.'
+          example: brand_1
+          type:
+          - string
+          - 'null'
+        brandName:
+          minLength: 1
+          readOnly: true
+          type: string
+        cartonQuantity:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        casePackQuantity:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        classId:
+          example: class_id_1
+          type:
+          - string
+          - 'null'
+        color:
+          minLength: 1
+          type: string
+        departmentId:
+          example: department_id_1
+          type:
+          - string
+          - 'null'
+        id:
+          type:
+          - string
+          - 'null'
+        itemId:
+          minLength: 1
+          type: string
+        purchaseOrders:
+          description: 'List of unique purchase orders associated with this item '
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        quantity:
+          minimum: 1
+          type: integer
+        shipmentTerm:
+          example: shipment_term_1
+          type:
+          - string
+          - 'null'
+        size:
+          minLength: 1
+          type: string
+      required:
+      - color
+      - itemId
+      - quantity
+      - size
+      type: object
+    InspectionStandardsDefectFound:
+      properties:
+        critical:
+          description: The number of critical defects found
+          example: '1'
+          type: string
+        major:
+          description: The number of major defects found
+          example: '0'
+          type: string
+        minor:
+          description: The number of minor defects found
+          example: '0'
+          type: string
+      type: object
+    InspectionGeneralOrganizationWithLocalId:
+      properties:
+        address:
+          description: Address of the organization
+          example: 5 Madison Avenue
+          type: string
+        city:
+          description: City of the organization
+          example: New York
+          type: string
+        contact:
+          $ref: '#/components/schemas/OrganizationContact'
+          description: Contact information of the organization
+        country:
+          description: Country of the organization
+          example: US
+          type: string
+        localOrganizationId:
+          description: Local Custom ID of the organization
+          example: '123'
+          type:
+          - string
+          - 'null'
+        localOrganizationIds:
+          description: The list of all connected Local Custom IDs of the organization
+          example:
+          - '123'
+          - ABC
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        name:
+          description: Name of the organization
+          example: Acme Corp
+          type: string
+        organizationId:
+          description: Unique Identifier of the organization
+          example: '3123123'
+          type: string
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    Inspector:
+      properties:
+        email:
+          type: string
+        employeeId:
+          type: string
+        id:
+          type: string
+        mobileNumber:
+          type: string
+        name:
+          type: string
+      type: object
+    ReportListResponse:
+      properties:
+        data:
+          description: List of reports data
+          items:
+            $ref: '#/components/schemas/ReportListInspectionGeneral'
+          type: array
+        limit:
+          maximum: 100
+          minimum: 1
+          type: integer
+        offset:
+          minimum: 0
+          type: integer
+        total:
+          type: integer
+      required:
+      - limit
+      - offset
+      - total
+      type: object
+    InspectionGeneralOversightOffice:
+      properties:
+        id:
+          description: Oversight office id
+          example: '111'
+          type:
+          - string
+          - 'null'
+        name:
+          description: Oversight office name
+          example: Acme Oversight Office
+          type:
+          - string
+          - 'null'
+      type: object
+    InspectionMeasurementDimensions:
+      properties:
+        color:
+          description: Color of the item
+          example: Blue/Pink
+          type: string
+        dimensionId:
+          description: Unique identifier of the dimension
+          example: 1a2b3c4d-1a2b-c1d2-b3b2-b76cd21e2a34__00537345__029-02-0590__XL__Blue/Pink__9999__0
+          type: string
+        dimensionIndex:
+          description: Index of the dimension
+          example: '0'
+          type: integer
+        id:
+          description: Unique identifier of the item
+          example: 029-02-0590
+          type: string
+        inspectionId:
+          description: Unique identifier of the report
+          example: 1a2b3c4d-1a2b-c1d2-b3b2-b76cd21e2a34
+          type: string
+        itemId:
+          description: Unique identifier of the item
+          example: 029-02-0590
+          type: string
+        measurementDescription:
+          description: Description of the measurement
+          example: '9999'
+          type: string
+        occurrences:
+          description: Number of occurrences
+          example: '1'
+          type: integer
+        organizationId:
+          description: Unique identifier of the organization who executed the inspection
+          example: '200373'
+          type: string
+        samples:
+          items:
+            $ref: '#/components/schemas/InspectionMeasurementDimensionsSamples'
+          type: array
+        size:
+          description: Size of the item
+          example: XXL
+          type: string
+        skuIndex:
+          description: Index of the SKU
+          example: '0'
+          type: integer
+        standard:
+          description: Expected measure
+          example: 10.5
+          type: number
+        styleId:
+          description: Unique identifier of the style of the item
+          example: '123456'
+          type: string
+        tolerance:
+          description: Accepted gap between the expected measure (standard) and the actual measure
+          example: 2.1
+          type:
+          - number
+          - 'null'
+        toleranceLower:
+          description: Accepted lower limit between the expected measure (standard) and the actual measure
+          example: 2.1
+          type:
+          - number
+          - 'null'
+        toleranceUpper:
+          description: Accepted upper limit between the expected measure (standard) and the actual measure
+          example: 2.1
+          type:
+          - number
+          - 'null'
+        unit:
+          description: Unit of the measure, e.g. cm, mm, inch
+          example: cm
+          type: string
+      type: object
+    CustomResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/ReportResponse'
+      type: object
+    ItemAttributes:
+      properties:
+        code:
+          description: Code of item attribute
+          example: GC Apparel
+          type:
+          - string
+          - 'null'
+        items:
+          description: List of item
+          items:
+            $ref: '#/components/schemas/Item'
+          type:
+          - array
+          - 'null'
+        name:
+          description: Name of item attribute
+          example: Group Code Apparel
+          type:
+          - string
+          - 'null'
+        type:
+          description: Type of item attribute
+          example: single_choice
+          type:
+          - string
+          - 'null'
+      type: object
+    InspectionDefectList:
+      properties:
+        assortmentId:
+          description: Unique identifier of the assortment carton, e.g. 1234
+          example: '1234'
+          type: string
+        clarification:
+          description: Classification of the defect, e.g. Critical, Major, Minor
+          example: major
+          type: string
+        color:
+          description: Color of the item
+          example: Blue/Pink
+          type: string
+        comment:
+          description: Comment of the defect
+          example: Comment
+          type:
+          - string
+          - 'null'
+        defectCategory:
+          description: Category of the defect
+          example: Safety and Regulatory
+          type: string
+        defectCode:
+          description: Code of the defect
+          example: SR002
+          type: string
+        defectId:
+          description: Unique identifier of the defect
+          example: abcd1234-ab12-cd34-ef56-123456789012_workmanship_1
+          type: string
+        defectName:
+          description: Name of the defect
+          example: PKG005 - Missing silica gel / box sticker / box flag
+          type: string
+        defectiveUnit:
+          description: Defective unit
+          example: Defective unit
+          type:
+          - string
+          - 'null'
+        description:
+          description: Description of the defect
+          example: PKG005 - Missing silica gel / box sticker / box flag
+          type: string
+        group:
+          description: Group of the defect, e.g. Workmanship
+          example: workmanship
+          type: string
+        id:
+          description: Custom ID of the list
+          type: string
+        inspectionId:
+          description: Unique identifier of the report
+          example: abcd1234-ab12-ab12-ab12-abcd1234efgh4568
+          type: string
+        itemDescription:
+          description: Description of the item
+          example: Box AB1851
+          type: string
+        itemId:
+          description: Unique identifier of the item
+          example: 02112-1851
+          type: string
+        organizationId:
+          description: Unique identifier of the organization who executed the inspection
+          example: '200373'
+          type: string
+        photos:
+          description: List of photos taken for the defect
+          items:
+            $ref: '#/components/schemas/InspectionDefectListPhoto'
+          type: array
+        productCategory:
+          description: List of product categories of the item
+          items:
+            type: string
+          type: array
+        size:
+          description: Size of the item
+          example: XXL
+          type: string
+        styleId:
+          description: Unique identifier of the style of the item
+          example: '123456'
+          type: string
+        totalDefects:
+          description: Total number of times the defect was found during the inspection
+          example: '1'
+          type: integer
+      type: object
+    InspectionGeneral:
+      properties:
+        actualInspectionDate:
+          description: Date when the inspection was started on mobile
+          example: '2021-06-03T00:00:00+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        bookingType:
+          description: Type of the booking, e.g. Normal
+          example: normal
+          type: string
+        capaStatus:
+          description: Status of the CAPA
+          example: Waiting for Response
+          type: string
+        caseNumber:
+          description: Case number of the report generated based on a configurable rule
+          example: 5832DUPRO2019-00537345TESTMTTestInspectorioFactoryASOLID-ASSORTMENT2019-12-095832IS
+          type: string
+        client:
+          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
+          description: Information on the brand/retailer
+        country:
+          description: Country of shipment
+          example: VN
+          type: string
+        createdDate:
+          description: Date and time when the inspection started
+          example: '2021-06-03 07:18:05.372000+00:00'
+          type: string
+        creator:
+          $ref: '#/components/schemas/User'
+          description: Information on the user who generated the report
+        executor:
+          $ref: '#/components/schemas/InspectionGeneralOrganization'
+          description: Information on the executor of the report
+        expectedDate:
+          description: Expected date of inspection that was selected when creating a new inspection
+          example: '2021-06-03 00:00:00+00:00'
+          type: string
+        factory:
+          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
+          description: Information on the factory of the report
+        inspectionDate:
+          description: Date and time when the inspection completed
+          example: '2021-06-03 08:27:20.624000+00:00'
+          type: string
+        inspectionId:
+          description: Unique identifier of the inspection's report
+          example: 123a456b-abcd-efgh-ijk1-a88aa05d7c86
+          type: string
+        inspectionForm:
+          description: The name of the inspection form used
+          example: FIForm
+          type: string
+        inspectionLocation:
+          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
+          description: The location of the inspection
+          example: 'null'
+        inspectionResult:
+          description: Overall result of the inspection
+          example: fail
+          type: string
+        inspector:
+          $ref: '#/components/schemas/Inspector'
+          description: Information on the inspector
+        isReferenceSample:
+          description: Indicates whether a reference sample had been provided
+          example: 'null'
+          type: integer
+        opoNumber:
+          description: Original PO Number of the report
+          example: 123-456
+          type: string
+        oversightOffice:
+          $ref: '#/components/schemas/InspectionGeneralOversightOffice'
+          description: Oversight office
+        pdfUrl:
+          description: Direct URL to the report in PDF format
+          example: https://.../.../.../.../case-number_123a456b-abcd-efgh-ijk1-a88aa05d7c86.pdf
+          type: string
+        photos:
+          description: List of direct URLs to the photos taken during the inspection
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        poNumber:
+          description: PO Number of the report
+          example: 123-456-L001
+          type: string
+        pos:
+          description: List of all the PO numbers
+          items:
+            $ref: '#/components/schemas/InspectionGeneralPos'
+          type:
+          - array
+          - 'null'
+        productCategories:
+          description: List of unique identifiers of all the product categories
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        productLineId:
+          description: Unique identifier of the product line
+          example: '100991'
+          type: string
+        productLineName:
+          description: Name of the product line
+          example: APPAREL
+          type: string
+        productOrders:
+          description: List of all the PO numbers
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        productStyles:
+          description: List of all the styles with items and measurements
+          items:
+            $ref: '#/components/schemas/ProductStyle'
+          type:
+          - array
+          - 'null'
+        status:
+          description: Status of the report, e.g. In-Progress, Completed
+          example: completed
+          type: string
+        systemUpdatedAt:
+          description: Date and time the report was last updated by the system (including both client actions and actions taken by Inspectorio on behalf of the client)
+          example: '2021-06-03 08:27:21.316000+00:00'
+          type: string
+        tags:
+          description: Labels attached to the report giving other information, e.g. 1st re-inspection
+          example: 'null'
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        type:
+          $ref: '#/components/schemas/BookingInspectionInformation'
+          description: Information on the type of inspection
+        updatedDate:
+          description: Date and time the report was last updated
+          example: '2021-06-03 08:27:21.316000+00:00'
+          type: string
+        vendor:
+          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
+          description: Information on the supplier of the report
+        workflowName:
+          description: Name of workflow
+          example: DUPRO Apparel workflow
+          type:
+          - string
+          - 'null'
+      type: object
+    Item:
+      properties:
+        groupCode:
+          description: Group code
+          type:
+          - string
+          - 'null'
+        itemId:
+          description: Item id
+          type:
+          - string
+          - 'null'
+        styleId:
+          description: Style id
+          type:
+          - string
+          - 'null'
+      type: object
+    InspectionStandardsAql:
+      properties:
+        aqlId:
+          description: Unique identifier of the AQL table
+          example: 31ade06c-1a0b-11e9-83b2-320fe256275a
+          type: string
+        aqlLevel:
+          description: Inspection level
+          example: ii
+          type:
+          - string
+          - 'null'
+        aqlName:
+          description: The name of the AQL table
+          example: Packaging
+          type: string
+        critical:
+          description: The threshold used for critical defects
+          example: '0.010'
+          type: string
+        major:
+          description: The threshold used for major defects
+          example: '2.5'
+          type: string
+        minor:
+          description: The threshold used for minor defects
+          example: '2.5'
+          type: string
+        source:
+          description: The source of the AQL table
+          example: 'null'
+          type: string
+      type: object
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
+    InspectionGeneralOrganization:
+      properties:
+        address:
+          description: Address of the organization
+          example: 5 Madison Avenue
+          type: string
+        city:
+          description: City of the organization
+          example: New York
+          type: string
+        contact:
+          $ref: '#/components/schemas/OrganizationContact'
+          description: Contact information of the organization
+        country:
+          description: Country of the organization
+          example: US
+          type: string
+        name:
+          description: Name of the organization
+          example: Acme Corp
+          type: string
+        organizationId:
+          description: Unique Identifier of the organization
+          example: '3123123'
+          type: string
+      type: object
+    ReportResponse:
+      properties:
+        inspectionDefectList:
+          description: Defect list of the report
+          items:
+            $ref: '#/components/schemas/InspectionDefectList'
+          type: array
+        inspectionEsignatures:
+          description: Information on the eSignature
+          items:
+            $ref: '#/components/schemas/ReportResponseSchemaInspectionEsignatures'
+          type:
+          - array
+          - 'null'
+        inspectionGeneral:
+          $ref: '#/components/schemas/InspectionGeneral'
+          description: General information of the report
+        inspectionMeasurementDimensions:
+          description: Measurement dimensions
+          items:
+            $ref: '#/components/schemas/InspectionMeasurementDimensions'
+          type: array
+        inspectionPhotos:
+          description: List of photos taken during the inspection
+          items:
+            $ref: '#/components/schemas/InspectionPhotos'
+          type: array
+        inspectionQuestions:
+          description: List of questions followed by the inspector
+          items:
+            $ref: '#/components/schemas/InspectionQuestions'
+          type: array
+        inspectionRFID:
+          description: Result of the RFID step taken during the inspection
+          items:
+            $ref: '#/components/schemas/InspectionRfid'
+          type: array
+        inspectionResult:
+          description: Result of each section of the report
+          items:
+            $ref: '#/components/schemas/InspectionResult'
+          type: array
+        inspectionSampleSelection:
+          description: Details of the sample selection calculation
+          items:
+            $ref: '#/components/schemas/InspectionSampleSelection'
+          type: array
+        inspectionSampleSelectionSamples:
+          description: Details of the samples selected by the inspector
+          items:
+            $ref: '#/components/schemas/InspectionSampleSelectionSamples'
+          type: array
+        inspectionSpecialAttentionPoint:
+          description: List of special attention points raised by the inspector
+          items:
+            $ref: '#/components/schemas/InspectionSpecialAttentionPoint'
+          type: array
+        inspectionStandards:
+          description: Information on the inspection standards followed by the inspector
+          items:
+            $ref: '#/components/schemas/InspectionStandards'
+          type: array
+        itemAttributes:
+          description: List of item attribute
+          items:
+            $ref: '#/components/schemas/ItemAttributes'
+          type:
+          - array
+          - 'null'
+      type: object
+    BookingAssortment:
+      properties:
+        assortmentId:
+          minLength: 1
+          type: string
+        availableCartonQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        cartonQuantity:
+          minimum: 0
+          type: integer
+        items:
+          items:
+            $ref: '#/components/schemas/BookingAssortmentItem'
+          minItems: 1
+          type: array
+      required:
+      - assortmentId
+      - cartonQuantity
+      - items
+      type: object
+    InspectionSampleSelectionSamples:
+      properties:
+        assortment:
+          description: Packing type, e.g. Solid, Assortment
+          example: solid
+          type: string
+        assortmentQuantity:
+          description: Assortment available quantity
+          example: '50'
+          type: string
+        cartonPull:
+          description: Number of cartons pulled during the inspection
+          example: '3'
+          type: integer
+        id:
+          description: Custom ID of the list
+          example: '111'
+          type: string
+        inspectionId:
+          description: Unique identifier of the report
+          example: abcd1234-ab12-ab12-ab12-abcd1234efgh4568
+          type: string
+        itemId:
+          description: Unique identifier of the item
+          example: 02112-1851
+          type: string
+        itemOrderQuantity:
+          description: Order quantity of the item
+          example: '50'
+          type: integer
+        organizationId:
+          description: Unique identifier of the organization who executed the inspection
+          example: '200373'
+          type: string
+        sampleId:
+          description: Unique identifier of the sample
+          example: 00537345__solid__02112-1851
+          type: string
+        samplePull:
+          description: Number of samples pulled for the item
+          example: '9'
+          type: integer
+        styleId:
+          description: Unique identifier of the style of the item
+          example: '123456'
+          type: string
+        styleOrderQuantity:
+          description: Order quantity of the style
+          example: '72'
+          type: integer
+      type: object
+    ReportListProductStyle:
+      properties:
+        assortments:
+          items:
+            $ref: '#/components/schemas/BookingAssortment'
+          type:
+          - array
+          - 'null'
+        measurements:
+          items:
+            $ref: '#/components/schemas/InspectionMeasurement'
+          type: array
+        productCategoryId:
+          example: product_category_1
+          type: string
+        productCategoryName:
+          minLength: 1
+          readOnly: true
+          type: string
+        solids:
+          items:
+            $ref: '#/components/schemas/BookingSolidItem'
+          type:
+          - array
+          - 'null'
+        styleId:
+          example: style_1
+          minLength: 1
+          type: string
+        styleName:
+          type:
+          - string
+          - 'null'
+      required:
+      - productCategoryId
+      - styleId
       type: object
     InspectionStandards:
       properties:
@@ -435,15 +1985,15 @@ components:
         countedForAql:
           $ref: '#/components/schemas/InspectionStandardsCountedForAql'
           description: Number of defects found that counted for AQL per classification
-          nullable: true
         defectFound:
           $ref: '#/components/schemas/InspectionStandardsDefectFound'
           description: Number of defects found per classification, e.g. 0 Minor, 2 Major, 0 Critical
         defectiveUnitActivate:
           description: Boolean indicating whether defective unit was activated
           example: 'false'
-          nullable: true
-          type: boolean
+          type:
+          - boolean
+          - 'null'
         determineDesc:
           description: Determine Desc
           example: AQL Standard
@@ -513,188 +2063,6 @@ components:
           example: '2'
           type: integer
       type: object
-    ReportResponse:
-      properties:
-        inspectionDefectList:
-          description: Defect list of the report
-          items:
-            $ref: '#/components/schemas/InspectionDefectList'
-          type: array
-        inspectionEsignatures:
-          description: Information on the eSignature
-          items:
-            $ref: '#/components/schemas/ReportResponseSchemaInspectionEsignatures'
-          nullable: true
-          type: array
-        inspectionGeneral:
-          $ref: '#/components/schemas/InspectionGeneral'
-          description: General information of the report
-        inspectionMeasurementDimensions:
-          description: Measurement dimensions
-          items:
-            $ref: '#/components/schemas/InspectionMeasurementDimensions'
-          type: array
-        inspectionPhotos:
-          description: List of photos taken during the inspection
-          items:
-            $ref: '#/components/schemas/InspectionPhotos'
-          type: array
-        inspectionQuestions:
-          description: List of questions followed by the inspector
-          items:
-            $ref: '#/components/schemas/InspectionQuestions'
-          type: array
-        inspectionRFID:
-          description: Result of the RFID step taken during the inspection
-          items:
-            $ref: '#/components/schemas/InspectionRfid'
-          type: array
-        inspectionResult:
-          description: Result of each section of the report
-          items:
-            $ref: '#/components/schemas/InspectionResult'
-          type: array
-        inspectionSampleSelection:
-          description: Details of the sample selection calculation
-          items:
-            $ref: '#/components/schemas/InspectionSampleSelection'
-          type: array
-        inspectionSampleSelectionSamples:
-          description: Details of the samples selected by the inspector
-          items:
-            $ref: '#/components/schemas/InspectionSampleSelectionSamples'
-          type: array
-        inspectionSpecialAttentionPoint:
-          description: List of special attention points raised by the inspector
-          items:
-            $ref: '#/components/schemas/InspectionSpecialAttentionPoint'
-          type: array
-        inspectionStandards:
-          description: Information on the inspection standards followed by the inspector
-          items:
-            $ref: '#/components/schemas/InspectionStandards'
-          type: array
-        itemAttributes:
-          description: List of item attribute
-          items:
-            $ref: '#/components/schemas/ItemAttributes'
-          nullable: true
-          type: array
-      type: object
-    StepExecutionStep:
-      properties:
-        formSchema:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionForm'
-          description: Form Schema that describes the schema of forms included in the report step
-        id:
-          description: Unique identifier of the report step
-          example: 123ce62d-892c-4e54-a8c3-3b6f52f0d915
-          nullable: true
-          type: string
-        name:
-          description: Name of the report step
-          example: Factory Information
-          nullable: true
-          type: string
-      type: object
-    ReportDetailSection:
-      properties:
-        id:
-          description: Unique identifier of the section
-          example: 123b8df5-6174-4b88-abb7-74b183ec1e70
-          nullable: true
-          type: string
-        improvements:
-          description: List of improvements of the section
-          items:
-            $ref: '#/components/schemas/ReportDetailImprovement'
-          nullable: true
-          type: array
-        level:
-          description: Level of the section
-          example: 0
-          nullable: true
-          type: integer
-        maxScore:
-          description: Maximum score as an float
-          example: 7.5
-          nullable: true
-          type: number
-        name:
-          description: Name of the section
-          example: Manufacturing Control Plan
-          nullable: true
-          type: string
-        parentId:
-          description: Unique identifier of the parent of the section
-          example: 123f99a2-b857-4b9c-986d-54a224cad9ec
-          nullable: true
-          type: string
-        path:
-          description: Path of the section
-          example: 123f99a2-b857-4b9c-986d-54a224cad9ec
-          items:
-            type: string
-          nullable: true
-          type: array
-        score:
-          description: Score of the section as an float
-          example: 6
-          nullable: true
-          type: number
-      type: object
-    BookingAssortmentItem:
-      properties:
-        availableQuantity:
-          nullable: true
-          readOnly: true
-          type: integer
-        brandId:
-          description: 'Precondition: must be configured in your Inspectorio''s account.'
-          example: brand_1
-          nullable: true
-          type: string
-        brandName:
-          minLength: 1
-          readOnly: true
-          type: string
-        classId:
-          example: class_id_1
-          nullable: true
-          type: string
-        color:
-          minLength: 1
-          type: string
-        configuration:
-          minimum: 1
-          type: integer
-        departmentId:
-          example: department_id_1
-          nullable: true
-          type: string
-        id:
-          nullable: true
-          type: string
-        itemId:
-          minLength: 1
-          type: string
-        quantity:
-          readOnly: true
-          type: integer
-        shipmentTerm:
-          example: shipment_term_1
-          nullable: true
-          type: string
-        size:
-          minLength: 1
-          type: string
-      required:
-      - color
-      - configuration
-      - itemId
-      - size
-      type: object
     BookingInspectionInformation:
       properties:
         typeOfInspection:
@@ -703,997 +2071,6 @@ components:
         typeOfInspectionName:
           example: Final Random Inspection
           type: string
-      type: object
-    InspectionStandardsAql:
-      properties:
-        aqlId:
-          description: Unique identifier of the AQL table
-          example: 31ade06c-1a0b-11e9-83b2-320fe256275a
-          type: string
-        aqlLevel:
-          description: Inspection level
-          example: ii
-          nullable: true
-          type: string
-        aqlName:
-          description: The name of the AQL table
-          example: Packaging
-          type: string
-        critical:
-          description: The threshold used for critical defects
-          example: '0.010'
-          type: string
-        major:
-          description: The threshold used for major defects
-          example: '2.5'
-          type: string
-        minor:
-          description: The threshold used for minor defects
-          example: '2.5'
-          type: string
-        source:
-          description: The source of the AQL table
-          example: 'null'
-          type: string
-      type: object
-    ReportListInspectionGeneral:
-      properties:
-        actualInspectionDate:
-          description: Date when the inspection was started on mobile
-          example: '2021-06-03T00:00:00+00:00'
-          format: date-time
-          nullable: true
-          type: string
-        bookingType:
-          description: Type of the booking, e.g. Normal
-          example: normal
-          type: string
-        capaStatus:
-          description: Status of the CAPA
-          example: Waiting for Response
-          type: string
-        caseNumber:
-          description: Case number of the report generated based on a configurable rule
-          example: 5832DUPRO2019-00537345TESTMTTestInspectorioFactoryASOLID-ASSORTMENT2019-12-095832IS
-          type: string
-        client:
-          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
-          description: Information on the brand/retailer
-          nullable: true
-        country:
-          description: Country of shipment
-          example: VN
-          type: string
-        createdDate:
-          description: Date and time when the inspection started
-          example: '2021-06-03 07:18:05.372000+00:00'
-          type: string
-        creator:
-          $ref: '#/components/schemas/User'
-          description: Information on the user who generated the report
-          nullable: true
-        executor:
-          $ref: '#/components/schemas/InspectionGeneralOrganization'
-          description: Information on the executor of the report
-          nullable: true
-        expectedDate:
-          description: Expected date of inspection that was selected when creating a new inspection
-          example: '2021-06-03 00:00:00+00:00'
-          type: string
-        factory:
-          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
-          description: Information on the factory of the report
-          nullable: true
-        inspectionDate:
-          description: Date and time when the inspection completed
-          example: '2021-06-03 08:27:20.624000+00:00'
-          type: string
-        inspectionId:
-          description: Unique identifier of the inspection's report
-          example: 123a456b-abcd-efgh-ijk1-a88aa05d7c86
-          type: string
-        inspectionForm:
-          description: The name of the inspection form used
-          example: FIForm
-          type: string
-        inspectionLocation:
-          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
-          description: The location of the inspection
-          example: 'null'
-          nullable: true
-        inspectionResult:
-          description: Overall result of the inspection
-          example: fail
-          type: string
-        inspector:
-          $ref: '#/components/schemas/Inspector'
-          description: Information on the inspector
-          nullable: true
-        isReferenceSample:
-          description: Indicates whether a reference sample had been provided
-          example: 'null'
-          type: integer
-        opoNumber:
-          description: Original PO Number of the report
-          example: 123-456
-          type: string
-        oversightOffice:
-          $ref: '#/components/schemas/InspectionGeneralOversightOffice'
-          description: Oversight office
-          nullable: true
-        pdfUrl:
-          description: Direct URL to the report in PDF format
-          example: https://.../.../.../.../case-number_123a456b-abcd-efgh-ijk1-a88aa05d7c86.pdf
-          type: string
-        poNumber:
-          description: PO Number of the report
-          example: 123-456-L001
-          type: string
-        productCategories:
-          description: List of unique identifiers of all the product categories
-          items:
-            type: string
-          nullable: true
-          type: array
-        productLineId:
-          description: Unique identifier of the product line
-          example: '100991'
-          type: string
-        productLineName:
-          description: Name of the product line
-          example: APPAREL
-          type: string
-        productOrders:
-          description: List of all the PO numbers
-          items:
-            type: string
-          nullable: true
-          type: array
-        productStyles:
-          description: List of all the styles with items and measurements
-          items:
-            $ref: '#/components/schemas/ReportListProductStyle'
-          nullable: true
-          type: array
-        status:
-          description: Status of the report, e.g. In-Progress, Completed
-          example: completed
-          type: string
-        systemUpdatedAt:
-          description: Date and time the report was last updated by the system (including both client actions and actions taken by Inspectorio on behalf of the client)
-          example: '2021-06-03 08:27:21.316000+00:00'
-          type: string
-        tags:
-          description: Labels attached to the report giving other information, e.g. 1st re-inspection
-          example: 'null'
-          items:
-            type: string
-          nullable: true
-          type: array
-        type:
-          $ref: '#/components/schemas/BookingInspectionInformation'
-          description: Information on the type of inspection
-          nullable: true
-        updatedDate:
-          description: Date and time the report was last updated
-          example: '2021-06-03 08:27:21.316000+00:00'
-          type: string
-        vendor:
-          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
-          description: Information on the supplier of the report
-          nullable: true
-        workflowName:
-          description: Name of workflow
-          example: DUPRO Apparel workflow
-          nullable: true
-          type: string
-      type: object
-    ReportListResponse:
-      properties:
-        data:
-          description: List of reports data
-          items:
-            $ref: '#/components/schemas/ReportListInspectionGeneral'
-          type: array
-        limit:
-          maximum: 100
-          minimum: 1
-          type: integer
-        offset:
-          minimum: 0
-          type: integer
-        total:
-          type: integer
-      required:
-      - limit
-      - offset
-      - total
-      type: object
-    StepExecution:
-      properties:
-        appTestResults:
-          description: App test results in the step execution
-          items:
-            $ref: '#/components/schemas/StepExecutionAppTestResult'
-          nullable: true
-          type: array
-        assessmentExecution:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionSchemaAssessmentExecution'
-          description: Information on the execution of the assessment
-        formData:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionFormData'
-          description: Detailed data of the form in the step execution
-        id:
-          description: Unique identifier of the step execution
-          example: 123d1b06-c172-4cc3-a905-64840ec0a020
-          nullable: true
-          type: string
-        issues:
-          description: List of Issues in the step execution
-          items:
-            $ref: '#/components/schemas/StepExecutionIssue'
-          nullable: true
-          type: array
-        questionAnswers:
-          description: List of Questions/Answers in the step execution
-          items:
-            $ref: '#/components/schemas/StepExecutionQuestionAnswer'
-          nullable: true
-          type: array
-        questionnaire:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionQuestionnaire'
-          description: Questionnaire information
-        report:
-          allOf:
-          - $ref: '#/components/schemas/ReportDetailStepExecutionReport'
-          description: Information of the report
-        status:
-          description: Status of the step execution
-          example: COMPLETED
-          nullable: true
-          type: string
-        step:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionStep'
-          description: Information of the step execution
-        stepId:
-          description: Unique identifier of the step execution
-          example: 123ce62d-892c-4e54-a8c3-3b6f52f0d915
-          nullable: true
-          type: string
-        updatedBy:
-          allOf:
-          - $ref: '#/components/schemas/ReportDetailUser'
-          description: Information of the user who last updated the step execution
-        updatedDate:
-          description: Last updated date of the step execution
-          example: '2021-06-24T15:04:28.402000+00:00'
-          format: date-time
-          nullable: true
-          type: string
-      type: object
-    InspectionGeneralPos:
-      properties:
-        poNumber:
-          description: PO Number of the report
-          example: PO123
-          type: string
-      type: object
-    InspectionResult:
-      properties:
-        groupName:
-          description: Name of the group of results
-          example: Check In
-          type: string
-        includeInReport:
-          description: Boolean indicating if the result is included in the report
-          example: 'true'
-          type: boolean
-        inspectionId:
-          description: Unique identifier of the report
-          example: abcd1234-ab12-ab12-ab12-abcd1234efgh4568
-          type: string
-        organizationId:
-          description: Unique identifier of the organization who executed the inspection
-          example: '200373'
-          type: string
-        resultId:
-          description: Unique identifier of the result
-          example: 7384b63c-bc99-43f0-b1b5-600959220e19_6e451830-1d61-4a14-a5e7-03ce20704f52
-          type: string
-        status:
-          description: Status of the result
-          example: non-applicable
-          type: string
-      type: object
-    InspectionAssortment:
-      properties:
-        assortmentId:
-          minLength: 1
-          type: string
-        availableCartonQuantity:
-          nullable: true
-          readOnly: true
-          type: integer
-        cartonQuantity:
-          minimum: 0
-          type: integer
-        items:
-          items:
-            $ref: '#/components/schemas/InspectionAssortmentItem'
-          minItems: 1
-          type: array
-      required:
-      - assortmentId
-      - cartonQuantity
-      - items
-      type: object
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    StepExecutionQuestionAnswer:
-      properties:
-        choices:
-          description: List of choices for a question
-          items:
-            $ref: '#/components/schemas/StepExecutionAnswerChoice'
-          nullable: true
-          type: array
-        comments:
-          description: List of comments in the question/answer set
-          items:
-            $ref: '#/components/schemas/StepExecutionComment'
-          nullable: true
-          type: array
-        files:
-          description: Files attached to the question/answer set
-          items:
-            type: object
-          nullable: true
-          type: array
-        findingsIssues:
-          description: List of finding issues
-          items:
-            $ref: '#/components/schemas/StepExecutionQuestionAnswerFindingsIssues'
-          nullable: true
-          type: array
-        id:
-          description: Unique identifier of the question/answer set in a questionnaire
-          nullable: true
-          type: string
-        index:
-          description: Indicates the position/order of the question/answer set in a questionnaire
-          nullable: true
-          type: integer
-        isNotApplicable:
-          description: Indicates whether the answer was set to 'Not Applicable'
-          type: boolean
-        locked:
-          description: Indicates whether the question/answer set is locked or can be editable
-          type: boolean
-        mappedIssues:
-          description: List of mapped issues
-          items:
-            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerMappedIssue'
-          nullable: true
-          type: array
-        number:
-          description: Number of the question/answer set
-          nullable: true
-          type: integer
-        parentId:
-          description: Unique identifier of the parent question
-          nullable: true
-          type: string
-        questionId:
-          description: Unique identifier of the question
-          nullable: true
-          type: string
-        text:
-          description: Text describes the question/answer set
-          nullable: true
-          type: string
-      type: object
-    StepExecutionAnswerChoice:
-      properties:
-        files:
-          description: Files attached to the choice/answer for the question
-          items:
-            type: object
-          nullable: true
-          type: array
-        id:
-          description: Unique identifier of the choice/answer for the question
-          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
-          nullable: true
-          type: string
-        option:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption'
-          description: Option selected for the question
-          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
-        optionId:
-          description: Unique identifier of the option selected as the answer for the question
-          nullable: true
-          type: string
-        subQuestionAnswers:
-          description: List of sub-questions and answers
-          items:
-            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswer'
-          nullable: true
-          type: array
-        text:
-          description: Text describing the choice/answer for the question
-          nullable: true
-          type: string
-      type: object
-    StepExecutionAppTestResult:
-      properties:
-        factoryType:
-          allOf:
-          - $ref: '#/components/schemas/IdName'
-          description: Type of factory in the app test result
-        sectionId:
-          description: Unique identifier of the section of the app test result
-          nullable: true
-          type: string
-      type: object
-    InspectionDefectListPhoto:
-      properties:
-        description:
-          description: Description of the defect photo
-          example: Mismatch color
-          type: string
-        rotateAngle:
-          description: Angle of rotation of the defect photo
-          example: '0'
-          type: string
-        source:
-          description: Source of the defect photo
-          example: https://.../image1.jpg
-          type: string
-      type: object
-    InspectionAssortmentItem:
-      properties:
-        availableQuantity:
-          nullable: true
-          readOnly: true
-          type: integer
-        brandId:
-          description: 'Precondition: must be configured in your Inspectorio''s account.'
-          example: brand_1
-          nullable: true
-          type: string
-        brandName:
-          minLength: 1
-          readOnly: true
-          type: string
-        classId:
-          example: class_id_1
-          nullable: true
-          type: string
-        color:
-          minLength: 1
-          type: string
-        configuration:
-          minimum: 1
-          type: integer
-        departmentId:
-          example: department_id_1
-          nullable: true
-          type: string
-        id:
-          nullable: true
-          type: string
-        itemId:
-          minLength: 1
-          type: string
-        purchaseOrders:
-          description: 'List of unique purchase orders associated with this item '
-          items:
-            type: string
-          nullable: true
-          type: array
-        quantity:
-          readOnly: true
-          type: integer
-        shipmentTerm:
-          example: shipment_term_1
-          nullable: true
-          type: string
-        size:
-          minLength: 1
-          type: string
-      required:
-      - color
-      - configuration
-      - itemId
-      - size
-      type: object
-    StepExecutionQuestionAnswerFindingsAttachment:
-      properties:
-        id:
-          description: Unique identifier of the attachment in the step execution
-          nullable: true
-          type: string
-        name:
-          description: Name of the attachment in the step execution
-          nullable: true
-          type: string
-        url:
-          description: URL of the attachment in the step execution
-          nullable: true
-          type: string
-      type: object
-    StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption:
-      properties:
-        content:
-          description: Content of the option available for the question
-          nullable: true
-          type: string
-        id:
-          description: Unique identifier of the option available for the question
-          nullable: true
-          type: string
-      type: object
-    OrganizationContact:
-      properties:
-        contactId:
-          example: contact_id
-          type: string
-        email:
-          example: email@email.com
-          type: string
-        mobileNumber:
-          example: '1234567890'
-          type: string
-        name:
-          example: Contact Name
-          type: string
-        telephoneNumber:
-          example: '1234567890'
-          type: string
-      type: object
-    Item:
-      properties:
-        groupCode:
-          description: Group code
-          nullable: true
-          type: string
-        itemId:
-          description: Item id
-          nullable: true
-          type: string
-        styleId:
-          description: Style id
-          nullable: true
-          type: string
-      type: object
-    StepExecutionAnswerChoiceSubQuestionAnswerChoice:
-      properties:
-        files:
-          description: Files attached to the choice/answer for the question
-          items:
-            type: object
-          nullable: true
-          type: array
-        id:
-          description: Unique identifier of the choice/answer for the question
-          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
-          nullable: true
-          type: string
-        option:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption'
-          description: Option selected for the question
-          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
-        optionId:
-          description: Unique identifier of the option selected as the answer for the question
-          nullable: true
-          type: string
-        text:
-          description: Text describing the choice/answer for the question
-          nullable: true
-          type: string
-      type: object
-    InspectionGeneralOrganizationWithLocalId:
-      properties:
-        address:
-          description: Address of the organization
-          example: 5 Madison Avenue
-          type: string
-        city:
-          description: City of the organization
-          example: New York
-          type: string
-        contact:
-          $ref: '#/components/schemas/OrganizationContact'
-          description: Contact information of the organization
-          nullable: true
-        country:
-          description: Country of the organization
-          example: US
-          type: string
-        localOrganizationId:
-          description: Local Custom ID of the organization
-          example: '123'
-          nullable: true
-          type: string
-        localOrganizationIds:
-          description: The list of all connected Local Custom IDs of the organization
-          example:
-          - '123'
-          - ABC
-          items:
-            type: string
-          nullable: true
-          type: array
-        name:
-          description: Name of the organization
-          example: Acme Corp
-          type: string
-        organizationId:
-          description: Unique Identifier of the organization
-          example: '3123123'
-          type: string
-      type: object
-    InspectionRfid:
-      properties:
-        barcode:
-          description: Barcode of the item
-          example: '123456'
-          type: string
-        code:
-          description: Code of the item
-          example: '123'
-          type: string
-        decodedCode:
-          description: Decoded code of the item
-          example: '111'
-          type: string
-        id:
-          description: Unique identifier of the barcode
-          example: abc-def-123
-          type: string
-        inspectionId:
-          description: Unique identifier of the report
-          example: abcd1234-ab12-ab12-ab12-abcd1234efgh4568
-          type: string
-        matched:
-          description: Indicates whether the barcode of the item matches the expected barcode
-          example: 'true'
-          type: boolean
-        organizationId:
-          description: Unique identifier of the organization who executed the inspection
-          example: '200373'
-          type: string
-        photos:
-          description: List of photos taken
-          items:
-            type: string
-          type: array
-      type: object
-    ReportListProductStyle:
-      properties:
-        assortments:
-          items:
-            $ref: '#/components/schemas/BookingAssortment'
-          nullable: true
-          type: array
-        measurements:
-          items:
-            $ref: '#/components/schemas/InspectionMeasurement'
-          type: array
-        productCategoryId:
-          example: product_category_1
-          type: string
-        productCategoryName:
-          minLength: 1
-          readOnly: true
-          type: string
-        solids:
-          items:
-            $ref: '#/components/schemas/BookingSolidItem'
-          nullable: true
-          type: array
-        styleId:
-          example: style_1
-          minLength: 1
-          type: string
-        styleName:
-          nullable: true
-          type: string
-      required:
-      - productCategoryId
-      - styleId
-      type: object
-    StepExecutionSchemaAssessmentExecution:
-      properties:
-        ableToExecute:
-          description: Indicates whether the assessment of the report had been able to be executed
-          type: boolean
-        id:
-          description: Unique identifier of the assessment of the report
-          nullable: true
-          type: string
-        name:
-          description: Name of the assessment of the report
-          nullable: true
-          type: string
-        status:
-          description: Status of the assessment of the report
-          nullable: true
-          type: string
-        updatedDate:
-          description: The updated date of the assessment of the report
-          format: date-time
-          nullable: true
-          type: string
-        workflow:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionWorkflow'
-          description: Information on the workflow used in the assessment
-      type: object
-    ItemAttributes:
-      properties:
-        code:
-          description: Code of item attribute
-          example: GC Apparel
-          nullable: true
-          type: string
-        items:
-          description: List of item
-          items:
-            $ref: '#/components/schemas/Item'
-          nullable: true
-          type: array
-        name:
-          description: Name of item attribute
-          example: Group Code Apparel
-          nullable: true
-          type: string
-        type:
-          description: Type of item attribute
-          example: single_choice
-          nullable: true
-          type: string
-      type: object
-    InspectionGeneralOrganization:
-      properties:
-        address:
-          description: Address of the organization
-          example: 5 Madison Avenue
-          type: string
-        city:
-          description: City of the organization
-          example: New York
-          type: string
-        contact:
-          $ref: '#/components/schemas/OrganizationContact'
-          description: Contact information of the organization
-          nullable: true
-        country:
-          description: Country of the organization
-          example: US
-          type: string
-        name:
-          description: Name of the organization
-          example: Acme Corp
-          type: string
-        organizationId:
-          description: Unique Identifier of the organization
-          example: '3123123'
-          type: string
-      type: object
-    InspectionDefectList:
-      properties:
-        assortmentId:
-          description: Unique identifier of the assortment carton, e.g. 1234
-          example: '1234'
-          type: string
-        clarification:
-          description: Classification of the defect, e.g. Critical, Major, Minor
-          example: major
-          type: string
-        color:
-          description: Color of the item
-          example: Blue/Pink
-          type: string
-        comment:
-          description: Comment of the defect
-          example: Comment
-          nullable: true
-          type: string
-        defectCategory:
-          description: Category of the defect
-          example: Safety and Regulatory
-          type: string
-        defectCode:
-          description: Code of the defect
-          example: SR002
-          type: string
-        defectId:
-          description: Unique identifier of the defect
-          example: abcd1234-ab12-cd34-ef56-123456789012_workmanship_1
-          type: string
-        defectName:
-          description: Name of the defect
-          example: PKG005 - Missing silica gel / box sticker / box flag
-          type: string
-        defectiveUnit:
-          description: Defective unit
-          example: Defective unit
-          nullable: true
-          type: string
-        description:
-          description: Description of the defect
-          example: PKG005 - Missing silica gel / box sticker / box flag
-          type: string
-        group:
-          description: Group of the defect, e.g. Workmanship
-          example: workmanship
-          type: string
-        id:
-          description: Custom ID of the list
-          type: string
-        inspectionId:
-          description: Unique identifier of the report
-          example: abcd1234-ab12-ab12-ab12-abcd1234efgh4568
-          type: string
-        itemDescription:
-          description: Description of the item
-          example: Box AB1851
-          type: string
-        itemId:
-          description: Unique identifier of the item
-          example: 02112-1851
-          type: string
-        organizationId:
-          description: Unique identifier of the organization who executed the inspection
-          example: '200373'
-          type: string
-        photos:
-          description: List of photos taken for the defect
-          items:
-            $ref: '#/components/schemas/InspectionDefectListPhoto'
-          type: array
-        productCategory:
-          description: List of product categories of the item
-          items:
-            type: string
-          type: array
-        size:
-          description: Size of the item
-          example: XXL
-          type: string
-        styleId:
-          description: Unique identifier of the style of the item
-          example: '123456'
-          type: string
-        totalDefects:
-          description: Total number of times the defect was found during the inspection
-          example: '1'
-          type: integer
-      type: object
-    StepExecutionAttachment:
-      properties:
-        id:
-          description: Unique identifier of the attachment in the step execution
-          nullable: true
-          type: string
-        key:
-          description: Key of the attachment in the step execution
-          nullable: true
-          type: string
-        name:
-          description: Name of the attachment in the step execution
-          nullable: true
-          type: string
-        url:
-          description: URL of the attachment in the step execution
-          nullable: true
-          type: string
-      type: object
-    ReportResponseSchemaInspectionEsignatures:
-      properties:
-        id:
-          description: Unique Identifier of the inspection eSignature
-          example: 123456
-          type: integer
-        name:
-          description: Name of the inspector who provided eSignature
-          example: Bob
-          nullable: true
-          type: string
-        signature:
-          description: Name of the inspector who provided eSignature
-          example: https://example.jpg
-          type: string
-        title:
-          description: Title of the inspector who provided eSignature
-          example: Factory Representative
-          type: string
-      type: object
-    StepExecutionIssue:
-      properties:
-        category:
-          description: Category of the issue in the step execution
-          example: Electrical Safety
-          nullable: true
-          type: string
-        id:
-          description: Unique identifier of the issue in the step execution
-          example: 123abc
-          nullable: true
-          type: string
-        severity:
-          description: Severity of the issue in the step execution
-          example: Major
-          nullable: true
-          type: string
-        sovePrinciple:
-          description: SOVE Principle
-          example: Safety
-          nullable: true
-          type: string
-        text:
-          description: Text describing the issue in the step execution
-          example: Safety measures of electrical panels are not in place
-          nullable: true
-          type: string
-      type: object
-    StepExecutionQuestion:
-      properties:
-        content:
-          description: Content of the question
-          nullable: true
-          type: string
-        externalId:
-          description: External unique identifier of the question
-          nullable: true
-          type: string
-        extraInformation:
-          description: Extra information of the question
-          type: object
-        id:
-          description: Unique identifier of the question
-          nullable: true
-          type: string
-        options:
-          description: List of options available for the question
-          items:
-            $ref: '#/components/schemas/StepExecutionOption'
-          nullable: true
-          type: array
-        parentId:
-          description: Unique identifier of the parent of the question
-          nullable: true
-          type: string
-        responseType:
-          description: Type of response
-          nullable: true
-          type: string
-        responseTypeConfig:
-          description: Configuration of the type of response
-          type: object
-        type:
-          description: Type of question
-          nullable: true
-          type: string
-        order:
-          description: Order of the question
-          example: 0
-          nullable: true
-          type: integer
       type: object
     InspectionSampleSelection:
       properties:
@@ -1718,1051 +2095,225 @@ components:
           example: '72'
           type: integer
       type: object
-    StepExecutionForm:
+    ReportDetailAssessmentExecutionConfidentialNote:
       properties:
-        description:
-          description: Description of the form in the step execution
-          nullable: true
-          type: string
-        schema:
-          type: object
-        version:
-          description: Version of the form in the step execution
-          example: '1.0'
-          nullable: true
-          type: string
-      type: object
-    ProductStyle:
-      properties:
-        assortments:
-          items:
-            $ref: '#/components/schemas/InspectionAssortment'
-          nullable: true
-          type: array
-        measurements:
-          items:
-            $ref: '#/components/schemas/InspectionMeasurement'
-          type: array
-        productCategoryId:
-          example: product_category_1
-          type: string
-        productCategoryName:
-          minLength: 1
-          readOnly: true
-          type: string
-        solids:
-          items:
-            $ref: '#/components/schemas/InspectionSolidItem'
-          nullable: true
-          type: array
-        styleId:
-          example: style_1
-          minLength: 1
-          type: string
-        styleName:
-          nullable: true
-          type: string
-      required:
-      - productCategoryId
-      - styleId
-      type: object
-    StepExecutionOption:
-      properties:
-        actions:
-          description: List of actions
-          items:
-            $ref: '#/components/schemas/StepExecutionOptionAction'
-          nullable: true
-          type: array
         content:
-          description: Content of the option
-          nullable: true
-          type: string
-        id:
-          description: Unique identifier of the option
-          nullable: true
-          type: string
-        isNoneOfTheAbove:
-          description: Is 'true' if 'None of the above' has been selected, 'false' otherwise
-          type: boolean
-      type: object
-    User:
-      properties:
-        email:
-          type: string
-        id:
-          type: string
-        mobileNumber:
-          type: string
-        name:
-          type: string
-      type: object
-    InspectionSampleSelectionSamples:
-      properties:
-        assortment:
-          description: Packing type, e.g. Solid, Assortment
-          example: solid
-          type: string
-        assortmentQuantity:
-          description: Assortment available quantity
-          example: '50'
-          type: string
-        cartonPull:
-          description: Number of cartons pulled during the inspection
-          example: '3'
-          type: integer
-        id:
-          description: Custom ID of the list
-          example: '111'
-          type: string
-        inspectionId:
-          description: Unique identifier of the report
-          example: abcd1234-ab12-ab12-ab12-abcd1234efgh4568
-          type: string
-        itemId:
-          description: Unique identifier of the item
-          example: 02112-1851
-          type: string
-        itemOrderQuantity:
-          description: Order quantity of the item
-          example: '50'
-          type: integer
-        organizationId:
-          description: Unique identifier of the organization who executed the inspection
-          example: '200373'
-          type: string
-        sampleId:
-          description: Unique identifier of the sample
-          example: 00537345__solid__02112-1851
-          type: string
-        samplePull:
-          description: Number of samples pulled for the item
-          example: '9'
-          type: integer
-        styleId:
-          description: Unique identifier of the style of the item
-          example: '123456'
-          type: string
-        styleOrderQuantity:
-          description: Order quantity of the style
-          example: '72'
-          type: integer
-      type: object
-    InspectionPhotos:
-      properties:
-        file:
-          $ref: '#/components/schemas/InspectionPhotosFile'
-          description: List of the files
-        groupId:
-          description: Unique identifier of the group of photo
-          type: string
-        inspectionId:
-          description: Unique identifier of the report
-          example: abcd1234-ab12-ab12-ab12-abcd1234efgh4568
-          type: string
-        itemId:
-          description: Unique identifier of the item
-          example: 02112-1851
-          type: string
-        label:
-          description: Label of the photo
-          type: string
-        organizationId:
-          description: Unique identifier of the organization who executed the inspection
-          example: '200373'
-          type: string
-        photoId:
-          description: Unique identifier of the photo
-          type: string
-        status:
-          description: Status of the photo
-          type: string
-        styleId:
-          description: Unique identifier of the style
-          example: '123456'
-          type: string
-        type:
-          description: Type of the photo
-          example: image
-          type: string
-      type: object
-    StepExecutionQuestionAnswerFindingsUser:
-      properties:
-        email:
-          description: Email address of the user
-          example: john@acme.com
-          nullable: true
-          type: string
-        id:
-          description: Unique identifier of the user
-          example: cc94fc4e-dcbe-44a5-863e-3255281e02ca
-          nullable: true
-          type: string
-        name:
-          description: Name of the auditor
-          example: John Doe
-          nullable: true
-          type: string
-      type: object
-    StepExecutionQuestionnaire:
-      properties:
-        description:
-          description: Description of the questionnaire
-          nullable: true
-          type: string
-        flattenSections:
-          description: Sections of the questionnaire
-          items:
-            $ref: '#/components/schemas/StepExecutionFlattenSection'
-          nullable: true
-          type: array
-        id:
-          description: Unique identifier of the questionnaire
-          nullable: true
-          type: string
-        name:
-          description: Name of the questionnaire
-          nullable: true
-          type: string
-      type: object
-    ReportDetailImprovement:
-      properties:
-        answerId:
-          description: Unique identifier of the answer of the improvement
-          example: 12372c66-f8ec-40c8-a0c7-355f6205c81e
-          nullable: true
-          type: string
-        content:
-          description: Content of the improvement
-          example: Is the facility clean and organized?
-          nullable: true
-          type: string
-        customTags:
-          description: List of custom tags of the improvement
-          items:
-            $ref: '#/components/schemas/IdName'
-          nullable: true
-          type: array
-        id:
-          description: Unique identifier of the improvement
-          example: 123df8c5-6b69-4ae2-9cb8-f94fff3ce1f2
-          nullable: true
-          type: string
-      type: object
-    StepExecutionAnswerChoiceSubQuestionAnswerMappedIssueIssue:
-      properties:
-        category:
-          description: Category of the mapped issue
-          example: Emergency Exit
-          nullable: true
-          type: string
-        code:
-          description: Code of the mapped issue
-          nullable: true
-          type: string
-        id:
-          description: Unique identifier of the mapped issue in the question
-          example: 1a
-          nullable: true
-          type: string
-        section:
-          description: Section of the mapped issue
-          nullable: true
-          type: string
-        severity:
-          description: Severity of the mapped issue
-          example: Major
-          nullable: true
-          type: string
-        text:
-          description: Text describing the mapped issue in the question
-          example: Emergency exits are blocked
-          nullable: true
-          type: string
-      type: object
-    StepExecutionFormData:
-      properties:
-        data:
-          description: Detailed data of the form
-          type: object
-        id:
-          description: Unique identifier of the form data included in the step execution
-          nullable: true
-          type: string
-      type: object
-    InspectionQuestionsOptionsActions:
-      properties:
-        action:
-          description: Action the inspector can/needs to take when responding to the question
-          example: request_picture
-          type: string
-        value:
-          description: Information related to the action of the question, e.g. Is Mandatory
-          example: mandatory
-      type: object
-    InspectionSolidItem:
-      properties:
-        availableCartonQuantity:
-          nullable: true
-          readOnly: true
-          type: integer
-        availableQuantity:
-          nullable: true
-          readOnly: true
-          type: integer
-        brandId:
-          description: 'Precondition: must be configured in your Inspectorio''s account.'
-          example: brand_1
-          nullable: true
-          type: string
-        brandName:
-          minLength: 1
-          readOnly: true
-          type: string
-        cartonQuantity:
-          minimum: 0
-          nullable: true
-          type: integer
-        casePackQuantity:
-          minimum: 0
-          nullable: true
-          type: integer
-        classId:
-          example: class_id_1
-          nullable: true
-          type: string
-        color:
-          minLength: 1
-          type: string
-        departmentId:
-          example: department_id_1
-          nullable: true
-          type: string
-        id:
-          nullable: true
-          type: string
-        itemId:
-          minLength: 1
-          type: string
-        purchaseOrders:
-          description: 'List of unique purchase orders associated with this item '
-          items:
-            type: string
-          nullable: true
-          type: array
-        quantity:
-          minimum: 1
-          type: integer
-        shipmentTerm:
-          example: shipment_term_1
-          nullable: true
-          type: string
-        size:
-          minLength: 1
-          type: string
-      required:
-      - color
-      - itemId
-      - quantity
-      - size
-      type: object
-    StepExecutionResponse:
-      properties:
-        data:
-          allOf:
-          - $ref: '#/components/schemas/StepExecution'
-          description: Step Execution Data
-      type: object
-    InspectionStandardsCountedForAql:
-      properties:
-        critical:
-          description: The number of critical defects that counted for AQL
-          example: '1'
-          type: string
-        major:
-          description: The number of major defects that counted for AQL
-          example: '0'
-          type: string
-        minor:
-          description: The number of minor defects that counted for AQL
-          example: '0'
-          type: string
-      type: object
-    Inspector:
-      properties:
-        email:
-          type: string
-        employeeId:
-          type: string
-        id:
-          type: string
-        mobileNumber:
-          type: string
-        name:
-          type: string
-      type: object
-    StepExecutionAnswerChoiceSubQuestionAnswerMappedIssue:
-      properties:
-        answerId:
-          description: Unique identifier of the answer in the mapped issue
-          nullable: true
-          type: string
-        comments:
-          description: List of comments for mapped issues in the question
-          items:
-            $ref: '#/components/schemas/StepExecutionComment'
-          nullable: true
-          type: array
-        id:
-          description: Unique identifier of the mapped issue of the question
-          nullable: true
-          type: string
-        issue:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerMappedIssueIssue'
-          description: List of mapped issues in the question
-        issueId:
-          description: Unique identifier of the issue in the question
-          nullable: true
-          type: string
-        options:
-          description: List of options available for the question
-          items:
-            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption'
-          nullable: true
-          type: array
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
-    InspectionStandardsSampleSizeCategory:
-      properties:
-        productCategory:
-          description: Unique identifier of the product category
-          example: '124301'
-          type: string
-        sampleSize:
-          description: Sample size
-          example: '8'
-          type: integer
-      type: object
-    InspectionQuestions:
-      properties:
-        groupId:
-          description: Unique identifier of the group of question
-          example: 7384b63c-bc99-43f0-b1b5-600959220e19_1e601f70-3c65-4ea8-931f-4976b9c91b3a
-          type: string
-        inspectionId:
-          description: Unique identifier of the report
-          example: abcd1234-ab12-ab12-ab12-abcd1234efgh4568
-          type: string
-        label:
-          description: Label of the question
-          example: Do we need to pull a Green sealed sample?
-          type: string
-        options:
-          description: Options available to answer the question
-          items:
-            $ref: '#/components/schemas/InspectionQuestionsOptions'
-          type: array
-        organizationId:
-          description: Unique identifier of the organization
-          example: 'null'
-          type: string
-        questionId:
-          description: Unique identifier of the question
-          example: 7384b63c-bc99-43f0-b1b5-600959220e19_5689d212-b001-4ad2-89c7-2c39654d4cc3_SyJivf3CA
-          type: string
-        type:
-          description: Type of the question
-          example: 'null'
-          type: string
-      type: object
-    InspectionGeneral:
-      properties:
-        actualInspectionDate:
-          description: Date when the inspection was started on mobile
-          example: '2021-06-03T00:00:00+00:00'
-          format: date-time
-          nullable: true
-          type: string
-        bookingType:
-          description: Type of the booking, e.g. Normal
-          example: normal
-          type: string
-        capaStatus:
-          description: Status of the CAPA
-          example: Waiting for Response
-          type: string
-        caseNumber:
-          description: Case number of the report generated based on a configurable rule
-          example: 5832DUPRO2019-00537345TESTMTTestInspectorioFactoryASOLID-ASSORTMENT2019-12-095832IS
-          type: string
-        client:
-          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
-          description: Information on the brand/retailer
-          nullable: true
-        country:
-          description: Country of shipment
-          example: VN
-          type: string
+          description: Note content
+          example: Confidential information about assessment
+          type: string
+        createdBy:
+          description: User who created the note
+          example: Jane Auditor
+          type:
+          - string
+          - 'null'
         createdDate:
-          description: Date and time when the inspection started
-          example: '2021-06-03 07:18:05.372000+00:00'
-          type: string
-        creator:
-          $ref: '#/components/schemas/User'
-          description: Information on the user who generated the report
-          nullable: true
-        executor:
-          $ref: '#/components/schemas/InspectionGeneralOrganization'
-          description: Information on the executor of the report
-          nullable: true
-        expectedDate:
-          description: Expected date of inspection that was selected when creating a new inspection
-          example: '2021-06-03 00:00:00+00:00'
-          type: string
-        factory:
-          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
-          description: Information on the factory of the report
-          nullable: true
-        inspectionDate:
-          description: Date and time when the inspection completed
-          example: '2021-06-03 08:27:20.624000+00:00'
-          type: string
-        inspectionId:
-          description: Unique identifier of the inspection's report
-          example: 123a456b-abcd-efgh-ijk1-a88aa05d7c86
-          type: string
-        inspectionForm:
-          description: The name of the inspection form used
-          example: FIForm
-          type: string
-        inspectionLocation:
-          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
-          description: The location of the inspection
-          example: 'null'
-          nullable: true
-        inspectionResult:
-          description: Overall result of the inspection
-          example: fail
-          type: string
-        inspector:
-          $ref: '#/components/schemas/Inspector'
-          description: Information on the inspector
-          nullable: true
-        isReferenceSample:
-          description: Indicates whether a reference sample had been provided
-          example: 'null'
-          type: integer
-        opoNumber:
-          description: Original PO Number of the report
-          example: 123-456
-          type: string
-        oversightOffice:
-          $ref: '#/components/schemas/InspectionGeneralOversightOffice'
-          description: Oversight office
-          nullable: true
-        pdfUrl:
-          description: Direct URL to the report in PDF format
-          example: https://.../.../.../.../case-number_123a456b-abcd-efgh-ijk1-a88aa05d7c86.pdf
-          type: string
-        photos:
-          description: List of direct URLs to the photos taken during the inspection
-          items:
-            type: string
-          nullable: true
-          type: array
-        poNumber:
-          description: PO Number of the report
-          example: 123-456-L001
-          type: string
-        pos:
-          description: List of all the PO numbers
-          items:
-            $ref: '#/components/schemas/InspectionGeneralPos'
-          nullable: true
-          type: array
-        productCategories:
-          description: List of unique identifiers of all the product categories
-          items:
-            type: string
-          nullable: true
-          type: array
-        productLineId:
-          description: Unique identifier of the product line
-          example: '100991'
-          type: string
-        productLineName:
-          description: Name of the product line
-          example: APPAREL
-          type: string
-        productOrders:
-          description: List of all the PO numbers
-          items:
-            type: string
-          nullable: true
-          type: array
-        productStyles:
-          description: List of all the styles with items and measurements
-          items:
-            $ref: '#/components/schemas/ProductStyle'
-          nullable: true
-          type: array
-        status:
-          description: Status of the report, e.g. In-Progress, Completed
-          example: completed
-          type: string
-        systemUpdatedAt:
-          description: Date and time the report was last updated by the system (including both client actions and actions taken by Inspectorio on behalf of the client)
-          example: '2021-06-03 08:27:21.316000+00:00'
-          type: string
-        tags:
-          description: Labels attached to the report giving other information, e.g. 1st re-inspection
-          example: 'null'
-          items:
-            type: string
-          nullable: true
-          type: array
-        type:
-          $ref: '#/components/schemas/BookingInspectionInformation'
-          description: Information on the type of inspection
-          nullable: true
-        updatedDate:
-          description: Date and time the report was last updated
-          example: '2021-06-03 08:27:21.316000+00:00'
-          type: string
-        vendor:
-          $ref: '#/components/schemas/InspectionGeneralOrganizationWithLocalId'
-          description: Information on the supplier of the report
-          nullable: true
-        workflowName:
-          description: Name of workflow
-          example: DUPRO Apparel workflow
-          nullable: true
+          description: Creation date
+          example: '2024-09-30T10:36:56.057000+00:00'
+          format: date-time
           type: string
       type: object
-    BookingMeasurementItemDetail:
+    StepExecutionAnswerChoiceSubQuestionAnswer:
       properties:
-        measurement:
-          type: string
-        size:
-          description: Size name
-          example: Medium
-          minLength: 1
-          type: string
-      required:
-      - measurement
-      - size
-      type: object
-    StepExecutionOptionAction:
-      properties:
-        description:
-          description: Description of the question/answer
-          nullable: true
-          type: string
-        factoryType:
-          allOf:
-          - $ref: '#/components/schemas/IdName'
-          description: Type of factory
-        id:
-          description: Unique identifier of the question/answer
-          example: 1231cddf-1829-49dc-aff4-2d7043d8c1db
-          nullable: true
-          type: string
-        optionId:
-          description: Unique identifier of the option of the question/answer
-          example: 123f5fed-29ef-42a1-8f0b-eb58dc87b84d
-          nullable: true
-          type: string
-        questionIds:
-          description: List of unique identifiers of the questions
-          example: 123df8c5-6b69-4ae2-9cb8-f94fff3ce1f2
+        choices:
+          description: List of choices for the question
           items:
-            type: string
-          nullable: true
-          type: array
-        questions:
-          description: Recursive list of questions in the assessment
+            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerChoice'
+          type:
+          - array
+          - 'null'
+        files:
+          description: Files attached to the question
           items:
             type: object
-          nullable: true
-          type: array
-        type:
-          description: Type of question/answer
-          nullable: true
-          type: string
-      type: object
-    InspectionGeneralOversightOffice:
-      properties:
+          type:
+          - array
+          - 'null'
         id:
-          description: Oversight office id
-          example: '111'
-          nullable: true
-          type: string
-        name:
-          description: Oversight office name
-          example: Acme Oversight Office
-          nullable: true
-          type: string
-      type: object
-    StepExecutionQuestionAnswerFindingsIssuesSeverity:
-      properties:
-        color:
-          description: Color of the severity
-          nullable: true
-          type: string
-        id:
-          description: Unique identifier of the severity
-          nullable: true
-          type: string
-        name:
-          description: Name of the severity
-          nullable: true
-          type: string
-      type: object
-    BookingAssortment:
-      properties:
-        assortmentId:
-          minLength: 1
-          type: string
-        availableCartonQuantity:
-          nullable: true
-          readOnly: true
-          type: integer
-        cartonQuantity:
-          minimum: 0
-          type: integer
-        items:
+          description: Unique identifier of the question in the question/answer set
+          type:
+          - string
+          - 'null'
+        isNotApplicable:
+          description: Indicates whether the answer was set to 'Not Applicable'
+          type: boolean
+        mappedIssues:
+          description: List of mapped issues of the question
           items:
-            $ref: '#/components/schemas/BookingAssortmentItem'
-          minItems: 1
-          type: array
-      required:
-      - assortmentId
-      - cartonQuantity
-      - items
+            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerMappedIssue'
+          type:
+          - array
+          - 'null'
+        number:
+          description: Number of the question
+          type:
+          - integer
+          - 'null'
+        parentId:
+          description: Unique identifier of the parent question
+          type:
+          - string
+          - 'null'
+        questionId:
+          description: Unique identifier of the question
+          type:
+          - string
+          - 'null'
+        text:
+          description: Text describes the question
+          type:
+          - string
+          - 'null'
       type: object
-    InternalApiError:
+    ReportAssessment:
       properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
-    StepExecutionWorkflow:
-      properties:
+        assessmentDueDate:
+          description: Due date of assessment
+          example: '2021-06-02T05:28:49.303000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        assessmentId:
+          description: Unique identifier
+          example: 762546-1
+          type:
+          - string
+          - 'null'
         id:
-          description: Unique identifier of the workflow used in the assessment
-          nullable: true
-          type: string
-        standard:
-          allOf:
-          - $ref: '#/components/schemas/IdName'
-          description: Standard of the workflow used in the assessment
-      type: object
-    InspectionMeasurementDimensions:
-      properties:
-        color:
-          description: Color of the item
-          example: Blue/Pink
-          type: string
-        dimensionId:
-          description: Unique identifier of the dimension
-          example: 1a2b3c4d-1a2b-c1d2-b3b2-b76cd21e2a34__00537345__029-02-0590__XL__Blue/Pink__9999__0
-          type: string
-        dimensionIndex:
-          description: Index of the dimension
-          example: '0'
-          type: integer
-        id:
-          description: Unique identifier of the item
-          example: 029-02-0590
-          type: string
-        inspectionId:
-          description: Unique identifier of the report
-          example: 1a2b3c4d-1a2b-c1d2-b3b2-b76cd21e2a34
-          type: string
-        itemId:
-          description: Unique identifier of the item
-          example: 029-02-0590
-          type: string
-        measurementDescription:
-          description: Description of the measurement
-          example: '9999'
-          type: string
-        occurrences:
-          description: Number of occurrences
-          example: '1'
-          type: integer
-        organizationId:
-          description: Unique identifier of the organization who executed the inspection
-          example: '200373'
-          type: string
-        samples:
-          items:
-            $ref: '#/components/schemas/InspectionMeasurementDimensionsSamples'
-          type: array
-        size:
-          description: Size of the item
-          example: XXL
-          type: string
-        skuIndex:
-          description: Index of the SKU
-          example: '0'
-          type: integer
-        standard:
-          description: Expected measure
-          example: 10.5
-          type: number
-        styleId:
-          description: Unique identifier of the style of the item
-          example: '123456'
-          type: string
-        tolerance:
-          description: Accepted gap between the expected measure (standard) and the actual measure
-          example: 2.1
-          nullable: true
-          type: number
-        toleranceLower:
-          description: Accepted lower limit between the expected measure (standard) and the actual measure
-          example: 2.1
-          nullable: true
-          type: number
-        toleranceUpper:
-          description: Accepted upper limit between the expected measure (standard) and the actual measure
-          example: 2.1
-          nullable: true
-          type: number
-        unit:
-          description: Unit of the measure, e.g. cm, mm, inch
-          example: cm
-          type: string
-      type: object
-    ReportDetailOrg:
-      description: Information of the organization
-      properties:
-        id:
-          description: Unique identifier of the organization
-          example: abc67433-c8d8-4779-a0f1-3f1490e2dde9
-          nullable: true
-          type: string
-        name:
-          description: Name of the organization
-          example: Acme Corp
-          nullable: true
-          type: string
+          description: Unique technical identifier
+          example: 7d100d4b-80c4-4bb7-9005-1793c3c8dff7
+          type:
+          - string
+          - 'null'
         type:
-          description: Type of the organization, e.g. RETAILER, FACTORY, PARTNER, etc.
-          example: RETAILER
-          nullable: true
-          type: string
-        uid:
-          description: Unique technical identifier of the organization
-          example: V123
-          nullable: true
-          type: string
+          description: Type, e.g. 'Self-Assessment', 'Verification Assessment'
+          example: Verification Assessment
+          type:
+          - string
+          - 'null'
       type: object
-    CustomResponse:
+    StepExecutionIssue:
       properties:
-        data:
-          $ref: '#/components/schemas/ReportResponse'
+        category:
+          description: Category of the issue in the step execution
+          example: Electrical Safety
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the issue in the step execution
+          example: 123abc
+          type:
+          - string
+          - 'null'
+        severity:
+          description: Severity of the issue in the step execution
+          example: Major
+          type:
+          - string
+          - 'null'
+        sovePrinciple:
+          description: SOVE Principle
+          example: Safety
+          type:
+          - string
+          - 'null'
+        text:
+          description: Text describing the issue in the step execution
+          example: Safety measures of electrical panels are not in place
+          type:
+          - string
+          - 'null'
       type: object
-    InspectionSpecialAttentionPoint:
+    ReportDetailRequestee:
       properties:
-        attentionId:
-          description: Unique identifier of the special attention point
-          example: remark-ee79693e-cd81-45df-af2e-1ee4628b4123-2020-01-15-14-25-13-182
-          type: string
-        description:
-          description: Description of the special attention point
-          example: This is a test
-          type: string
-        group:
-          description: Unique identifier of the special attention point's group
-          example: remark-ee79693e-cd81-45df-af2e-1ee4628b4123-2020-01-15-14-25-13-182
-          type: string
-        inspectionId:
-          description: Unique identifier of the report
-          example: abcd1234-ab12-ab12-ab12-abcd1234efgh4568
-          type: string
-        organizationId:
-          description: Unique identifier of the organization who executed the inspection
-          example: '200373'
-          type: string
-        pictures:
-          description: The list of pictures taken for the special attention point
-          items:
-            $ref: '#/components/schemas/InspectionSpecialAttentionPointPictures'
-          type: array
-        type:
-          description: The type of special attention point
-          example: remark
-          type: string
-      type: object
-    InspectionStandardsDefectFound:
-      properties:
-        critical:
-          description: The number of critical defects found
-          example: '1'
-          type: string
-        major:
-          description: The number of major defects found
-          example: '0'
-          type: string
-        minor:
-          description: The number of minor defects found
-          example: '0'
-          type: string
-      type: object
-    InspectionStandardsMaxAllowed:
-      properties:
-        critical:
-          description: The number of critical defects max allowed
-          example: '0'
-          type: string
-        major:
-          description: The number of major defects max allowed
-          example: '1'
-          type: string
-        minor:
-          description: The number of minor defects max allowed
-          example: '1'
-          type: string
-      type: object
-    InspectionMeasurementDimensionsSamples:
-      properties:
-        name:
-          description: Sample name of the inspection measurement dimension
-          example: shirt_1
-          type: string
-        value:
-          description: sample value
-          example: 1.5
-          nullable: true
-          type: number
-      type: object
-    ValidateApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            type:
-            - Input type is not valid
-          type: object
-        message:
-          example: Validation error
-          type: string
-      type: object
-    ReportDetailUser:
-      description: Information of the user
-      properties:
+        address:
+          description: Address of the organization who submitted the assessment
+          example: 5 Tao Bao Road
+          type:
+          - string
+          - 'null'
+        city:
+          description: City of the organization who submitted the assessment
+          example: Taizhou
+          type:
+          - string
+          - 'null'
+        country:
+          description: Country of the organization who submitted the assessment
+          example: CN
+          type:
+          - string
+          - 'null'
         email:
-          description: Email address of the user
-          example: john@acme.com
-          nullable: true
-          type: string
-        firstName:
-          description: First name of the user
-          example: John
-          nullable: true
-          type: string
+          description: Contact email of the organization who submitted the assessment
+          example: abc@abc.com
+          type:
+          - string
+          - 'null'
         id:
-          description: Unique identifier of the user
-          example: cc94fc4e-dcbe-44a5-863e-3255281e02ca
-          nullable: true
-          type: string
-        lastName:
-          description: Last name of the user
-          example: Doe
-          nullable: true
-          type: string
+          description: Unique identifier of the organization who submitted the assessment
+          example: 13440bd6-2915-495f-9b34-796fa80e3feb
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the organization who submitted the assessment
+          example: Lex Corp
+          type:
+          - string
+          - 'null'
+        province:
+          description: Province of the organization who submitted the assessment
+          example: Zhejiang
+          type:
+          - string
+          - 'null'
+        type:
+          description: Type of the organization who submitted the assessment
+          example: FACTORY
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Unique technical identifier of the organization who submitted the assessment
+          example: F123596
+          type:
+          - string
+          - 'null'
       type: object
-    BookingSolidItem:
+    ReportDetailNextAssessment:
       properties:
-        availableCartonQuantity:
-          nullable: true
-          readOnly: true
-          type: integer
-        availableQuantity:
-          nullable: true
-          readOnly: true
-          type: integer
-        brandId:
-          description: 'Precondition: must be configured in your Inspectorio''s account.'
-          example: brand_1
-          nullable: true
-          type: string
-        brandName:
-          minLength: 1
-          readOnly: true
-          type: string
-        cartonQuantity:
-          minimum: 0
-          nullable: true
-          type: integer
-        casePackQuantity:
-          minimum: 0
-          nullable: true
-          type: integer
-        classId:
-          example: class_id_1
-          nullable: true
-          type: string
-        color:
-          minLength: 1
-          type: string
-        departmentId:
-          example: department_id_1
-          nullable: true
-          type: string
+        assessmentDueDate:
+          description: The date by which the next follow-up assessment should be submitted
+          example: '2021-05-31T10:06:39+00:00'
+          type:
+          - string
+          - 'null'
+        assessmentLocation:
+          description: The location where the next follow-up assessment will be conducted
+          type:
+          - string
+          - 'null'
+        followUpType:
+          description: The type of the next follow-up assessment
+          type:
+          - string
+          - 'null'
+      type: object
+    IdName:
+      properties:
         id:
-          nullable: true
-          type: string
-        itemId:
-          minLength: 1
-          type: string
-        quantity:
-          minimum: 1
-          type: integer
-        shipmentTerm:
-          example: shipment_term_1
-          nullable: true
-          type: string
-        size:
-          minLength: 1
-          type: string
-      required:
-      - color
-      - itemId
-      - quantity
-      - size
-      type: object
-    InspectionSpecialAttentionPointPictures:
-      properties:
-        rotateAngle:
-          description: Angle of rotation of the picture
-          example: '0'
-          type: string
-        source:
-          description: Direct URL to the picture
-          example: https://.../image1.jpg
-          type: string
+          description: Unique identifier
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name
+          type:
+          - string
+          - 'null'
       type: object
     StepExecutionQuestionAnswerFindingsIssues:
       properties:
@@ -2770,22 +2321,26 @@ components:
           description: Attachments inserted in the findings issue
           items:
             $ref: '#/components/schemas/StepExecutionQuestionAnswerFindingsAttachment'
-          nullable: true
-          type: array
+          type:
+          - array
+          - 'null'
         content:
           description: Content of the findings issue
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         createdDate:
           description: Creation date of the findings issue
           example: '2022-03-02T06:41:19.633000+00:00'
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         findingsIssuesId:
           description: Unique identifier of the findings issue
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         organization:
           allOf:
           - $ref: '#/components/schemas/ReportDetailOrg'
@@ -2796,12 +2351,537 @@ components:
           description: Severity information
         summary:
           description: Summary of the findings issue
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         user:
           allOf:
           - $ref: '#/components/schemas/StepExecutionQuestionAnswerFindingsUser'
           description: User of the findings issue
+      type: object
+    ReportDetailWorkflow:
+      properties:
+        id:
+          description: Unique identifier of the workflow
+          example: a96104b2-9e16-4438-b7be-45cc4a51f066
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the workflow
+          example: QAFA Workflow
+          type:
+          - string
+          - 'null'
+        standard:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailStandard'
+          description: Information of the standard of the workflow
+      type: object
+    ReportDetailCapa:
+      description: CAPA report information
+      properties:
+        dueDate:
+          description: The date by which the CAPA should be submitted by the requestee organization
+          example: '2021-05-31T10:06:39+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        followUpType:
+          description: Follow-up type of the CAPA
+          example: ''
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the CAPA
+          example: 1235330e-b74b-4be6-8d8a-cb0560effc11
+          type:
+          - string
+          - 'null'
+        resolutionDate:
+          description: Resolution date
+          format: date-time
+          type:
+          - string
+          - 'null'
+        rootCauses:
+          description: List of root causes
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        status:
+          description: Status of the CAPA
+          example: NEW
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportDetailResponse:
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetail'
+          description: Report data
+      type: object
+    StepExecutionStep:
+      properties:
+        formSchema:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionForm'
+          description: Form Schema that describes the schema of forms included in the report step
+        id:
+          description: Unique identifier of the report step
+          example: 123ce62d-892c-4e54-a8c3-3b6f52f0d915
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the report step
+          example: Factory Information
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionAppTestResult:
+      properties:
+        factoryType:
+          allOf:
+          - $ref: '#/components/schemas/IdName'
+          description: Type of factory in the app test result
+        sectionId:
+          description: Unique identifier of the section of the app test result
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionQuestionnaire:
+      properties:
+        description:
+          description: Description of the questionnaire
+          type:
+          - string
+          - 'null'
+        flattenSections:
+          description: Sections of the questionnaire
+          items:
+            $ref: '#/components/schemas/StepExecutionFlattenSection'
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique identifier of the questionnaire
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the questionnaire
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportDetailSection:
+      properties:
+        id:
+          description: Unique identifier of the section
+          example: 123b8df5-6174-4b88-abb7-74b183ec1e70
+          type:
+          - string
+          - 'null'
+        improvements:
+          description: List of improvements of the section
+          items:
+            $ref: '#/components/schemas/ReportDetailImprovement'
+          type:
+          - array
+          - 'null'
+        level:
+          description: Level of the section
+          example: 0
+          type:
+          - integer
+          - 'null'
+        maxScore:
+          description: Maximum score as an float
+          example: 7.5
+          type:
+          - number
+          - 'null'
+        name:
+          description: Name of the section
+          example: Manufacturing Control Plan
+          type:
+          - string
+          - 'null'
+        parentId:
+          description: Unique identifier of the parent of the section
+          example: 123f99a2-b857-4b9c-986d-54a224cad9ec
+          type:
+          - string
+          - 'null'
+        path:
+          description: Path of the section
+          example: 123f99a2-b857-4b9c-986d-54a224cad9ec
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        score:
+          description: Score of the section as an float
+          example: 6
+          type:
+          - number
+          - 'null'
+      type: object
+    StepExecutionFormData:
+      properties:
+        data:
+          description: Detailed data of the form
+          type: object
+        id:
+          description: Unique identifier of the form data included in the step execution
+          type:
+          - string
+          - 'null'
+      type: object
+    IdNameVersion:
+      properties:
+        id:
+          description: Unique identifier
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name
+          type:
+          - string
+          - 'null'
+        version:
+          description: Version
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionResponse:
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/StepExecution'
+          description: Step Execution Data
+      type: object
+    StepExecution:
+      properties:
+        appTestResults:
+          description: App test results in the step execution
+          items:
+            $ref: '#/components/schemas/StepExecutionAppTestResult'
+          type:
+          - array
+          - 'null'
+        assessmentExecution:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionSchemaAssessmentExecution'
+          description: Information on the execution of the assessment
+        formData:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionFormData'
+          description: Detailed data of the form in the step execution
+        id:
+          description: Unique identifier of the step execution
+          example: 123d1b06-c172-4cc3-a905-64840ec0a020
+          type:
+          - string
+          - 'null'
+        issues:
+          description: List of Issues in the step execution
+          items:
+            $ref: '#/components/schemas/StepExecutionIssue'
+          type:
+          - array
+          - 'null'
+        questionAnswers:
+          description: List of Questions/Answers in the step execution
+          items:
+            $ref: '#/components/schemas/StepExecutionQuestionAnswer'
+          type:
+          - array
+          - 'null'
+        questionnaire:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionQuestionnaire'
+          description: Questionnaire information
+        report:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailStepExecutionReport'
+          description: Information of the report
+        status:
+          description: Status of the step execution
+          example: COMPLETED
+          type:
+          - string
+          - 'null'
+        step:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionStep'
+          description: Information of the step execution
+        stepId:
+          description: Unique identifier of the step execution
+          example: 123ce62d-892c-4e54-a8c3-3b6f52f0d915
+          type:
+          - string
+          - 'null'
+        updatedBy:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailUser'
+          description: Information of the user who last updated the step execution
+        updatedDate:
+          description: Last updated date of the step execution
+          example: '2021-06-24T15:04:28.402000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionAttachment:
+      properties:
+        id:
+          description: Unique identifier of the attachment in the step execution
+          type:
+          - string
+          - 'null'
+        key:
+          description: Key of the attachment in the step execution
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the attachment in the step execution
+          type:
+          - string
+          - 'null'
+        url:
+          description: URL of the attachment in the step execution
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionQuestionAnswerFindingsUser:
+      properties:
+        email:
+          description: Email address of the user
+          example: john@acme.com
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the user
+          example: cc94fc4e-dcbe-44a5-863e-3255281e02ca
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the auditor
+          example: John Doe
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportDetailImprovement:
+      properties:
+        answerId:
+          description: Unique identifier of the answer of the improvement
+          example: 12372c66-f8ec-40c8-a0c7-355f6205c81e
+          type:
+          - string
+          - 'null'
+        content:
+          description: Content of the improvement
+          example: Is the facility clean and organized?
+          type:
+          - string
+          - 'null'
+        customTags:
+          description: List of custom tags of the improvement
+          items:
+            $ref: '#/components/schemas/IdName'
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique identifier of the improvement
+          example: 123df8c5-6b69-4ae2-9cb8-f94fff3ce1f2
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportListResponse_2:
+      properties:
+        data:
+          description: Report data
+          items:
+            $ref: '#/components/schemas/ReportListItem'
+          type:
+          - array
+          - 'null'
+        limit:
+          default: 10
+          description: Limit result of list
+          maximum: 10
+          minimum: 1
+          type: integer
+        offset:
+          default: 0
+          description: Number of items are skipped
+          minimum: 0
+          type: integer
+        total:
+          type: integer
+      required:
+      - total
+      type: object
+    ReportAssessmentEscalation:
+      properties:
+        createdDate:
+          description: Date when the Escalation was created
+          format: date-time
+          type:
+          - string
+          - 'null'
+        escalatedBy:
+          $ref: '#/components/schemas/ReportDetailUser'
+        escalatedTo:
+          description: The user who receives the escalation
+          items:
+            $ref: '#/components/schemas/ReportDetailUser'
+          type:
+          - array
+          - 'null'
+        escalationNote:
+          description: Escalation note
+          type:
+          - string
+          - 'null'
+        resolvedByUser:
+          $ref: '#/components/schemas/ReportDetailUser'
+        resolvedDate:
+          description: Resolution date of the escalation
+          format: date-time
+          type:
+          - string
+          - 'null'
+        status:
+          description: Status of the escalation
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportDetailCase:
+      properties:
+        dueDate:
+          description: Due date of the case
+          example: '2021-05-31T10:06:39+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        history:
+          allOf:
+          - $ref: '#/components/schemas/ReportCaseHistory'
+          description: History of the case
+        id:
+          description: Unique identifier of the case
+          example: abc1eab1-5163-4b52-861e-048de01be509
+          type:
+          - string
+          - 'null'
+        status:
+          description: Status of the case, e.g. OPEN, REOPEN, CLOSED
+          example: OPEN
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Unique technical identifier of the case
+          example: '991072'
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportLabel:
+      properties:
+        label:
+          description: Type of label assigned in the assignment/report/CAPA
+          type:
+          - string
+          - 'null'
+        value:
+          description: Label assigned in the assignment/report/CAPA
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportDetailUser:
+      description: Information of the user
+      properties:
+        email:
+          description: Email address of the user
+          example: john@acme.com
+          type:
+          - string
+          - 'null'
+        firstName:
+          description: First name of the user
+          example: John
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the user
+          example: cc94fc4e-dcbe-44a5-863e-3255281e02ca
+          type:
+          - string
+          - 'null'
+        lastName:
+          description: Last name of the user
+          example: Doe
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionWorkflow:
+      properties:
+        id:
+          description: Unique identifier of the workflow used in the assessment
+          type:
+          - string
+          - 'null'
+        standard:
+          allOf:
+          - $ref: '#/components/schemas/IdName'
+          description: Standard of the workflow used in the assessment
+      type: object
+    ReportRequestee:
+      properties:
+        email:
+          description: Contact email of the organization who submitted the assessment
+          example: abc@abc.com
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Unique identifier
+          type:
+          - string
+          - 'null'
       type: object
     ReportDetailStepExecutionReport:
       properties:
@@ -2809,13 +2889,15 @@ components:
           description: Creation date of the step
           example: '2021-06-27T09:35:21.380000+00:00'
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         id:
           description: Unique identifier of the step
           example: 1239c6ab-55ad-47a2-847d-2973ed4b00aa
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         isHideScore:
           description: Indicates whether the score is hidden
           example: 'false'
@@ -2823,8 +2905,9 @@ components:
         maxScore:
           description: Maximum score of the step
           example: 135
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         ratingLabel:
           allOf:
           - $ref: '#/components/schemas/IdName'
@@ -2832,48 +2915,221 @@ components:
         score:
           description: Score of the step
           example: 72
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         sections:
           description: List of sections
           items:
             $ref: '#/components/schemas/ReportDetailSection'
-          nullable: true
-          type: array
+          type:
+          - array
+          - 'null'
         stepExeId:
           description: Unique technical identifier of the step
           example: 13ccab58-b11f-486b-9dc9-05ced81729d8
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
       type: object
-    StepExecutionFlattenSection:
+    ReportDetailStepExecution:
+      properties:
+        assessmentExeId:
+          description: Unique identifier of the assessment
+          example: 4d9fc6cc-18d9-466c-922c-259843651506
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique technical identifier
+          example: 1232ef21-2ed2-47c2-b969-b308f9e8edb3
+          type:
+          - string
+          - 'null'
+        questionnaire:
+          allOf:
+          - $ref: '#/components/schemas/IdName'
+          description: Information on the questionnaire
+        report:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailStepExecutionReport'
+          description: Information on the report
+        step:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailStep'
+          description: Information on the step
+      type: object
+    StepExecutionAnswerChoiceSubQuestionAnswerChoice:
+      properties:
+        files:
+          description: Files attached to the choice/answer for the question
+          items:
+            type: object
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique identifier of the choice/answer for the question
+          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
+          type:
+          - string
+          - 'null'
+        option:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption'
+          description: Option selected for the question
+          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
+        optionId:
+          description: Unique identifier of the option selected as the answer for the question
+          type:
+          - string
+          - 'null'
+        text:
+          description: Text describing the choice/answer for the question
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption:
+      properties:
+        content:
+          description: Content of the option available for the question
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the option available for the question
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionQuestionAnswerFindingsAttachment:
       properties:
         id:
-          description: Unique identifier of the section
-          nullable: true
-          type: string
-        level:
-          description: Level of the section
-          nullable: true
-          type: integer
+          description: Unique identifier of the attachment in the step execution
+          type:
+          - string
+          - 'null'
         name:
-          description: Name of the section
-          nullable: true
-          type: string
-        parentId:
-          description: Unique identifier of the parent of the section
-          nullable: true
-          type: string
-        questions:
-          description: List of questions within the section
+          description: Name of the attachment in the step execution
+          type:
+          - string
+          - 'null'
+        url:
+          description: URL of the attachment in the step execution
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionAnswerChoiceSubQuestionAnswerMappedIssue:
+      properties:
+        answerId:
+          description: Unique identifier of the answer in the mapped issue
+          type:
+          - string
+          - 'null'
+        comments:
+          description: List of comments for mapped issues in the question
           items:
-            $ref: '#/components/schemas/StepExecutionQuestion'
-          nullable: true
-          type: array
+            $ref: '#/components/schemas/StepExecutionComment'
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique identifier of the mapped issue of the question
+          type:
+          - string
+          - 'null'
+        issue:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerMappedIssueIssue'
+          description: List of mapped issues in the question
+        issueId:
+          description: Unique identifier of the issue in the question
+          type:
+          - string
+          - 'null'
+        options:
+          description: List of options available for the question
+          items:
+            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption'
+          type:
+          - array
+          - 'null'
+      type: object
+    ReportDetailStep:
+      properties:
+        id:
+          description: Unique identifier of the step
+          example: 66db47a0-2ca8-463a-9ac1-6c8d7830ee74
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the step
+          example: Overview Instructions
+          type:
+          - string
+          - 'null'
+        order:
+          description: Order of the step
+          example: 0
+          type:
+          - integer
+          - 'null'
+      type: object
+    ReportDetailStandard:
+      properties:
+        createdDate:
+          description: Creation date of the standard
+          example: '2021-06-27T09:35:40.899000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the standard
+          example: 2d42fee0-f9df-4469-8a13-39032f1d1d37
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the standard
+          example: Quality Assurance Factory Assessment
+          type:
+          - string
+          - 'null'
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailOrg'
+          description: Information of the owner of the standard
         type:
-          description: Type of section
-          nullable: true
-          type: string
+          description: Type of the standard
+          example: PRODUCTION
+          type:
+          - string
+          - 'null'
+        version:
+          description: The standard version of the report
+          example: 1.23
+          type:
+          - number
+          - 'null'
+      type: object
+    IdUid:
+      properties:
+        history:
+          $ref: '#/components/schemas/ReportCaseHistory'
+        id:
+          description: Unique technical identifier
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Unique identifier
+          type:
+          - string
+          - 'null'
       type: object
     StepExecutionComment:
       properties:
@@ -2881,25 +3137,29 @@ components:
           description: Attachments inserted in the comment of the step execution
           items:
             $ref: '#/components/schemas/StepExecutionAttachment'
-          nullable: true
-          type: array
+          type:
+          - array
+          - 'null'
         canEdit:
           description: Indicates whether or not the comment can be edited
           type: boolean
         content:
           description: Content of the comment of the step execution
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         createdDate:
           description: Creation date of the comment of the step execution
           example: '2022-03-02T06:41:19.633000+00:00'
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         id:
           description: Unique identifier of the comment of the step execution
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         isEdited:
           description: Indicates whether or not the comment had been edited
           type: boolean
@@ -2912,3 +3172,989 @@ components:
           - $ref: '#/components/schemas/ReportDetailUser'
           description: User of the comment of the step execution
       type: object
+    StepExecutionFlattenSection:
+      properties:
+        id:
+          description: Unique identifier of the section
+          type:
+          - string
+          - 'null'
+        level:
+          description: Level of the section
+          type:
+          - integer
+          - 'null'
+        name:
+          description: Name of the section
+          type:
+          - string
+          - 'null'
+        parentId:
+          description: Unique identifier of the parent of the section
+          type:
+          - string
+          - 'null'
+        questions:
+          description: List of questions within the section
+          items:
+            $ref: '#/components/schemas/StepExecutionQuestion'
+          type:
+          - array
+          - 'null'
+        type:
+          description: Type of section
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionSchemaAssessmentExecution:
+      properties:
+        ableToExecute:
+          description: Indicates whether the assessment of the report had been able to be executed
+          type: boolean
+        id:
+          description: Unique identifier of the assessment of the report
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the assessment of the report
+          type:
+          - string
+          - 'null'
+        status:
+          description: Status of the assessment of the report
+          type:
+          - string
+          - 'null'
+        updatedDate:
+          description: The updated date of the assessment of the report
+          format: date-time
+          type:
+          - string
+          - 'null'
+        workflow:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionWorkflow'
+          description: Information on the workflow used in the assessment
+      type: object
+    ReportListItem:
+      properties:
+        assessment:
+          allOf:
+          - $ref: '#/components/schemas/ReportAssessment'
+          description: Assessment information of the report
+        businessAreas:
+          description: The business areas involved in the report
+          example: '[Apparel & Accessories]'
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        capa:
+          allOf:
+          - $ref: '#/components/schemas/IdName'
+          description: Information of the CAPA, Corrective Action and Preventive Action
+        case:
+          allOf:
+          - $ref: '#/components/schemas/IdUid'
+          description: Case ID
+        completeCaseDate:
+          description: Completed date of the case
+          example: '2021-06-02T05:28:49.303000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        country:
+          description: The country code of the organization being evaluated or audited, in standard ISO 3166-1 Alpha-2 code, e.g. CN for China
+          example: CN
+          type:
+          - string
+          - 'null'
+        createdDate:
+          description: Creation date of the report
+          example: '2021-06-02T05:28:49.303000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        departmentNumbers:
+          description: The list of department numbers involved in the report
+          example: '[017]'
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        escalations:
+          description: List of escalations of the assessment
+          items:
+            $ref: '#/components/schemas/ReportAssessmentEscalation'
+          type:
+          - array
+          - 'null'
+        exception:
+          description: Rating exception”
+          example: Non Compliant - Exception
+          type:
+          - string
+          - 'null'
+        executionLocations:
+          description: The locations of the execution, e.g. 'Desktop Review', 'Factory Visit', 'Scheme Onsite', 'Target Onsite'
+          example: '[Desktop Review]'
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        executor:
+          allOf:
+          - $ref: '#/components/schemas/UidName'
+          description: The executor of the report
+        expirationDate:
+          description: Expiration date set by the user or calculated using Validity Duration
+          example: '2021-06-02T05:28:49.303000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique technical identifier of the report
+          example: a32ec460-c327-4d3d-a264-a666c559ccef
+          type: string
+        labels:
+          description: Labels
+          items:
+            $ref: '#/components/schemas/ReportLabel'
+          type: array
+        office:
+          description: The name of the office being evaluated or audited
+          example: Acme China
+          type:
+          - string
+          - 'null'
+        productLines:
+          description: The list of product lines involved in the report
+          example: '[PATIO & OUTDOOR DECOR]'
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        province:
+          description: The province of the organization being evaluated or audited
+          example: Jiangsu
+          type:
+          - string
+          - 'null'
+        rating:
+          description: Rating, e.g. 'Acceptable for Production', 'Acceptable', 'Auto-Fail', 'Critical', 'Factory at Risk', 'Failed Out of Tolerance', 'Needs Improvement', 'Non Compliant', 'Not Acceptable', 'Not Acceptable/Invalid', 'Outstanding', 'Unknown', 'Zero Tolerance'
+          example: Non Compliant
+          type:
+          - string
+          - 'null'
+        reason:
+          allOf:
+          - $ref: '#/components/schemas/IdName'
+          description: The reason of the report, e.g. 'Annual', 'Follow up', 'Initial', 'Out of Tolerance'
+        reopenCaseDate:
+          description: The date the case was reopen
+          example: '2021-06-02T05:28:49.303000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        reportDeclineDate:
+          description: Declined date of the report
+          example: '2021-06-02T05:28:49.303000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        reportGenerateDate:
+          description: Generation date of the report
+          example: '2021-06-02T05:28:49.303000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        assessmentSubmitDate:
+          description: Submit date of the assessment
+          example: '2021-06-02T05:28:49.303000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        reportName:
+          description: Name of the report
+          example: F_TFC_QAFA_13186_Ver_25092019"
+          type:
+          - string
+          - 'null'
+        requestee:
+          allOf:
+          - $ref: '#/components/schemas/ReportRequestee'
+          description: Information of the organization which received the assessment
+        requester:
+          allOf:
+          - $ref: '#/components/schemas/UidName'
+          description: Information of the organization which submitted the assessment
+        score:
+          description: Score of the report
+          example: 44/130
+          type:
+          - string
+          - 'null'
+        scoreInPercentage:
+          description: Score in percentage of the report
+          example: 33.85%
+          type:
+          - string
+          - 'null'
+        standard:
+          allOf:
+          - $ref: '#/components/schemas/IdNameVersion'
+          description: The standard used for the report
+        status:
+          description: The status of the report
+          example: New
+          type:
+          - string
+          - 'null'
+        totalAvailableCapacityInUnits:
+          description: The total available capacity in units
+          example: 8
+          type:
+          - integer
+          - 'null'
+        type:
+          description: Type of report, e.g. 'internal', 'external'
+          example: internal
+          type:
+          - string
+          - 'null'
+        updatedDate:
+          description: Updated date of the report
+          example: '2021-06-02T05:28:49.303000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        workflow:
+          allOf:
+          - $ref: '#/components/schemas/IdName'
+          description: The workflow used for the report
+      type: object
+    UidName:
+      properties:
+        uid:
+          description: Unique identifier
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportCaseHistory:
+      description: History of the case
+      properties:
+        comment:
+          description: Comment of the update
+          example: Updated validity duration
+          type:
+          - string
+          - 'null'
+        reasons:
+          description: Reasons set by user for the case history update
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        updatedDate:
+          description: Updated data of the case
+          example: '2021-05-31T10:06:39+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        updatedValidityDuration:
+          description: Validity Duration set by user or calculated using Expiration Date
+          example: 1 Month
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionAnswerChoiceSubQuestionAnswerMappedIssueIssue:
+      properties:
+        category:
+          description: Category of the mapped issue
+          example: Emergency Exit
+          type:
+          - string
+          - 'null'
+        code:
+          description: Code of the mapped issue
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the mapped issue in the question
+          example: 1a
+          type:
+          - string
+          - 'null'
+        section:
+          description: Section of the mapped issue
+          type:
+          - string
+          - 'null'
+        severity:
+          description: Severity of the mapped issue
+          example: Major
+          type:
+          - string
+          - 'null'
+        text:
+          description: Text describing the mapped issue in the question
+          example: Emergency exits are blocked
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportDetailOrg:
+      description: Information of the organization
+      properties:
+        id:
+          description: Unique identifier of the organization
+          example: abc67433-c8d8-4779-a0f1-3f1490e2dde9
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the organization
+          example: Acme Corp
+          type:
+          - string
+          - 'null'
+        type:
+          description: Type of the organization, e.g. RETAILER, FACTORY, PARTNER, etc.
+          example: RETAILER
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Unique technical identifier of the organization
+          example: V123
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionAnswerChoice:
+      properties:
+        files:
+          description: Files attached to the choice/answer for the question
+          items:
+            type: object
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique identifier of the choice/answer for the question
+          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
+          type:
+          - string
+          - 'null'
+        option:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption'
+          description: Option selected for the question
+          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
+        optionId:
+          description: Unique identifier of the option selected as the answer for the question
+          type:
+          - string
+          - 'null'
+        subQuestionAnswers:
+          description: List of sub-questions and answers
+          items:
+            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswer'
+          type:
+          - array
+          - 'null'
+        text:
+          description: Text describing the choice/answer for the question
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionOptionAction:
+      properties:
+        description:
+          description: Description of the question/answer
+          type:
+          - string
+          - 'null'
+        factoryType:
+          allOf:
+          - $ref: '#/components/schemas/IdName'
+          description: Type of factory
+        id:
+          description: Unique identifier of the question/answer
+          example: 1231cddf-1829-49dc-aff4-2d7043d8c1db
+          type:
+          - string
+          - 'null'
+        optionId:
+          description: Unique identifier of the option of the question/answer
+          example: 123f5fed-29ef-42a1-8f0b-eb58dc87b84d
+          type:
+          - string
+          - 'null'
+        questionIds:
+          description: List of unique identifiers of the questions
+          example: 123df8c5-6b69-4ae2-9cb8-f94fff3ce1f2
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        questions:
+          description: Recursive list of questions in the assessment
+          items:
+            type: object
+          type:
+          - array
+          - 'null'
+        type:
+          description: Type of question/answer
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionOption:
+      properties:
+        actions:
+          description: List of actions
+          items:
+            $ref: '#/components/schemas/StepExecutionOptionAction'
+          type:
+          - array
+          - 'null'
+        content:
+          description: Content of the option
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the option
+          type:
+          - string
+          - 'null'
+        isNoneOfTheAbove:
+          description: Is 'true' if 'None of the above' has been selected, 'false' otherwise
+          type: boolean
+      type: object
+    ReportAssessmentAssignedUser:
+      properties:
+        email:
+          description: Email of the assigned user
+          example: JohnDoe@abc.com
+          type:
+          - string
+          - 'null'
+        firstName:
+          description: First name of the assigned user
+          example: John
+          type:
+          - string
+          - 'null'
+        id:
+          description: Id of the assigned user
+          example: abc123
+          type:
+          - string
+          - 'null'
+        lastName:
+          description: Lastname of the assigned user
+          example: Doe
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportDetailAssessmentExecution:
+      description: Information on the execution of the assessment
+      properties:
+        ableToCompleteCase:
+          description: Is able to complete the case
+          example: 'true'
+          type: boolean
+        ableToReject:
+          description: Is able to reject the assessment
+          example: 'false'
+          type: boolean
+        ableToReopenCase:
+          description: Is able to reopen the case
+          example: 'false'
+          type: boolean
+        ableToRequestAssessment:
+          description: Is able to request a self-assessment
+          example: 'false'
+          type: boolean
+        ableToRequestVerification:
+          description: Is able to request a verification assessment
+          example: 'false'
+          type: boolean
+        assessmentDueDate:
+          description: Due date of the assessment
+          example: '2021-06-27T06:04:19+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        assessmentId:
+          description: Unique identifier of the assessment
+          example: 12313-2
+          type:
+          - string
+          - 'null'
+        assessmentRequestDate:
+          description: Request date of the assessment
+          example: '2021-06-23T06:06:19.116000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        assessmentStartDate:
+          description: Start date of the assessment
+          example: '2021-06-23T06:06:35.880000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        assessmentSubmitDate:
+          description: Submit date of the assessment
+          example: '2021-06-27T09:35:40.899000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        assignedUsers:
+          description: Information of the assigned user
+          items:
+            $ref: '#/components/schemas/ReportAssessmentAssignedUser'
+          type:
+          - array
+          - 'null'
+        assignee:
+          $ref: '#/components/schemas/ReportDetailOrg'
+        auditEndDate:
+          description: The date ended auditing
+          example: '2022-02-24T00:00:00+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        auditStartDate:
+          description: The date started auditing
+          example: '2022-02-24T00:00:00+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        auditors:
+          description: List of auditor for this assessment
+          items:
+            $ref: '#/components/schemas/ReportAssessmentAuditor'
+          type:
+          - array
+          - 'null'
+        case:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailCase'
+          description: Case of the assessment
+        caseIndex:
+          description: Case index of the assessment representing the order of the assessments
+          example: 2
+          type:
+          - integer
+          - 'null'
+        confidentialNote:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailAssessmentExecutionConfidentialNote'
+          description: List of confidential notes
+        declineReasons:
+          description: The reason for which the report is declined
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        escalations:
+          description: List of escalations of the assessment
+          items:
+            $ref: '#/components/schemas/ReportAssessmentEscalation'
+          type:
+          - array
+          - 'null'
+        executionLocations:
+          description: List of locations of the execution
+          example: Factory Visit
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique technical identifier of the assessment execution information
+          example: 4d9fc6cc-18d9-466c-922c-259843651506
+          type: string
+        nextAssessment:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailNextAssessment'
+          description: Next follow up assessment
+        reason:
+          allOf:
+          - $ref: '#/components/schemas/IdName'
+          description: Information on the reason of the assessment
+        requestee:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailRequestee'
+          description: Information of the organization who has received the assessment
+        sourceAssessmentExecId:
+          description: Unique identifier of the source of the assessment execution
+          example: 84e969e2-d5a0-4514-9ce2-25ec898ec409
+          type:
+          - string
+          - 'null'
+        status:
+          description: Status of the assessment
+          example: DONE
+          type:
+          - string
+          - 'null'
+        type:
+          description: Type of the assessment
+          example: Verification Assessment
+          type:
+          - string
+          - 'null'
+        workflow:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailWorkflow'
+          description: Information of the workflow
+      type: object
+    StepExecutionQuestion:
+      properties:
+        content:
+          description: Content of the question
+          type:
+          - string
+          - 'null'
+        externalId:
+          description: External unique identifier of the question
+          type:
+          - string
+          - 'null'
+        extraInformation:
+          description: Extra information of the question
+          type: object
+        id:
+          description: Unique identifier of the question
+          type:
+          - string
+          - 'null'
+        options:
+          description: List of options available for the question
+          items:
+            $ref: '#/components/schemas/StepExecutionOption'
+          type:
+          - array
+          - 'null'
+        parentId:
+          description: Unique identifier of the parent of the question
+          type:
+          - string
+          - 'null'
+        responseType:
+          description: Type of response
+          type:
+          - string
+          - 'null'
+        responseTypeConfig:
+          description: Configuration of the type of response
+          type: object
+        type:
+          description: Type of question
+          type:
+          - string
+          - 'null'
+        order:
+          description: Order of the question
+          example: 0
+          type:
+          - integer
+          - 'null'
+      type: object
+    ReportDetail:
+      properties:
+        areaToImprove:
+          description: Areas to improve
+          example: 1
+          type:
+          - integer
+          - 'null'
+        assessmentExecution:
+          $ref: '#/components/schemas/ReportDetailAssessmentExecution'
+        capa:
+          $ref: '#/components/schemas/ReportDetailCapa'
+        completionEvent:
+          $ref: '#/components/schemas/ReportDetailCompletionEvent'
+        createdDate:
+          description: Creation date of the report
+          example: '2021-06-24T15:33:23.461000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        exception:
+          description: Exception of the report
+          type:
+          - string
+          - 'null'
+        expirationDate:
+          description: Expiration date set by the user or calculated using Validity Duration
+          example: '2021-06-02T05:28:49.303000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the report
+          example: 123bdb6d-9037-41a3-b0b5-42bdd30a8423
+          type: string
+        isHidePreview:
+          description: Indicates whether the preview of the score is hidden
+          type: boolean
+        isHideScore:
+          description: Indicates whether the score is hidden
+          type: boolean
+        isLastInCase:
+          description: Indicates whether this report is last in the case
+          type: boolean
+        isNonCompliant:
+          description: Indicates whether the report is non-compliant
+          type: boolean
+        labels:
+          description: Labels
+          items:
+            $ref: '#/components/schemas/ReportLabel'
+          type:
+          - array
+          - 'null'
+        reportName:
+          description: Name of the report
+          example: QAFA123
+          type:
+          - string
+          - 'null'
+        status:
+          description: Status of the report
+          example: Verification Requested
+          type:
+          - string
+          - 'null'
+        stepExecutions:
+          description: Information on the execution of the steps
+          items:
+            $ref: '#/components/schemas/ReportDetailStepExecution'
+          type:
+          - array
+          - 'null'
+        type:
+          description: Type of the report
+          example: internal
+          type:
+          - string
+          - 'null'
+        updatedDate:
+          description: Update date of the report
+          example: '2021-06-24T17:34:25.690000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportDetailCompletionEvent:
+      description: Information on the completion of the events
+      properties:
+        id:
+          description: Unique identifier of an event
+          example: 123299f1-b5de-4556-823c-75c9efa042a6
+          type:
+          - string
+          - 'null'
+        updatedByOrg:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailOrg'
+          description: Information of the organization who last updated the event
+        updatedByUser:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailUser'
+          description: Information of the user who last updated the event
+        updatedDate:
+          description: Updated date
+          example: '2021-06-27T09:35:40.899000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionForm:
+      properties:
+        description:
+          description: Description of the form in the step execution
+          type:
+          - string
+          - 'null'
+        schema:
+          type: object
+        version:
+          description: Version of the form in the step execution
+          example: '1.0'
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportAssessmentAuditor:
+      properties:
+        auditorId:
+          description: Id of the auditor
+          example: abc123
+          type:
+          - string
+          - 'null'
+        email:
+          description: Email of the auditor
+          example: JohnDoe@abc.com
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the auditor
+          example: John Doe
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          description: Phone number of the auditor
+          example: 0123456789
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionQuestionAnswer:
+      properties:
+        choices:
+          description: List of choices for a question
+          items:
+            $ref: '#/components/schemas/StepExecutionAnswerChoice'
+          type:
+          - array
+          - 'null'
+        comments:
+          description: List of comments in the question/answer set
+          items:
+            $ref: '#/components/schemas/StepExecutionComment'
+          type:
+          - array
+          - 'null'
+        files:
+          description: Files attached to the question/answer set
+          items:
+            type: object
+          type:
+          - array
+          - 'null'
+        findingsIssues:
+          description: List of finding issues
+          items:
+            $ref: '#/components/schemas/StepExecutionQuestionAnswerFindingsIssues'
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique identifier of the question/answer set in a questionnaire
+          type:
+          - string
+          - 'null'
+        index:
+          description: Indicates the position/order of the question/answer set in a questionnaire
+          type:
+          - integer
+          - 'null'
+        isNotApplicable:
+          description: Indicates whether the answer was set to 'Not Applicable'
+          type: boolean
+        locked:
+          description: Indicates whether the question/answer set is locked or can be editable
+          type: boolean
+        mappedIssues:
+          description: List of mapped issues
+          items:
+            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerMappedIssue'
+          type:
+          - array
+          - 'null'
+        number:
+          description: Number of the question/answer set
+          type:
+          - integer
+          - 'null'
+        parentId:
+          description: Unique identifier of the parent question
+          type:
+          - string
+          - 'null'
+        questionId:
+          description: Unique identifier of the question
+          type:
+          - string
+          - 'null'
+        text:
+          description: Text describes the question/answer set
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionQuestionAnswerFindingsIssuesSeverity:
+      properties:
+        color:
+          description: Color of the severity
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the severity
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the severity
+          type:
+          - string
+          - 'null'
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: apiKey
+      type: apiKey
+x-refined-from:
+- inspectorio-qrm-openapi.json
+- inspectorio-rsc-openapi.json

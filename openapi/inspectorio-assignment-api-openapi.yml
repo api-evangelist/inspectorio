@@ -1,19 +1,20 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: File Management ANALYTICS ASSIGNMENT API
-  version: v3
+  title: Inspectorio Quality Risk Management ASSIGNMENT API
+  version: v1
 servers:
 - description: Production Environment
-  url: https://files-integration.inspectorio.com
+  url: https://sight.inspectorio.com
 - description: Pre-Production Environment
-  url: https://files-integration.pre.inspectorio.com
+  url: https://sight.pre.inspectorio.com
+security:
+- ApiKeyAuth: []
 tags:
-- name: ASSIGNMENT
+- name: Assignment
 paths:
   /api/v1/assignments:
     get:
       summary: List Assignments
-      description: List Assignments
       parameters:
       - description: Factory's country code (two-letter country code) of assignments. Case-insensitive
         in: query
@@ -21,8 +22,9 @@ paths:
         required: false
         schema:
           example: US
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
       - description: Inspection Executor of assignments. Allow filtering with the Local Organization ID or the text "owner". Case-sensitive
         in: query
         name: executor_organization
@@ -84,8 +86,9 @@ paths:
         required: false
         schema:
           example: New York
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
       - description: Start date of the range of the expected inspection date in assignments. Allow only date format
         in: query
         name: expected_inspection_date_from
@@ -93,8 +96,9 @@ paths:
         schema:
           example: '2021-02-28'
           format: date
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
       - description: Order of the list of assignments
         in: query
         name: order
@@ -109,8 +113,9 @@ paths:
         schema:
           example: '2021-02-28'
           format: date
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
       - in: query
         name: offset
         required: false
@@ -164,11 +169,12 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - ASSIGNMENT
+      - Assignment
+      operationId: getApiV1Assignments
+      x-operation-id-source: derived
   /api/v1/assignments/{assignment_id}:
     get:
       summary: Get Assignment
-      description: Get Assignment
       parameters:
       - in: path
         name: assignment_id
@@ -213,24 +219,83 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - ASSIGNMENT
+      - Assignment
+      operationId: getApiV1AssignmentsByAssignmentId
+      x-operation-id-source: derived
 components:
   schemas:
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    BookingLocationPicker:
+    AssignmentOrganizationInformation:
       properties:
         address:
+          example: address
           type: string
-        gpsLocation:
-          $ref: '#/components/schemas/BookingLocationPickerGpsLocation'
+        city:
+          example: city
+          type: string
+        contact:
+          $ref: '#/components/schemas/OrganizationContact'
+        country:
+          example: US
+          type: string
+        localOrganizationId:
+          description: Local Custom ID of the organization
+          example: F323333
+          type: string
+        localOrganizationIds:
+          description: The list of all connected Local Custom IDs of the organization
+          example:
+          - F323333
+          - F242146
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        localPostalCode:
+          example: '82052'
+          type: string
+        localState:
+          example: Wyoming
+          type: string
+        name:
+          example: name
+          type: string
+        organizationId:
+          example: org_id
+          type: string
+      type: object
+    BookingExpectedDate:
+      properties:
+        inspectionDate:
+          example: '2019-07-04T08:00:00.00Z'
+          format: date-time
+          type: string
+        shipmentDate:
+          example: '2019-07-04T08:00:00.00Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      required:
+      - inspectionDate
+      type: object
+    OrganizationContact:
+      properties:
+        contactId:
+          example: contact_id
+          type: string
+        email:
+          example: email@email.com
+          type: string
+        mobileNumber:
+          example: '1234567890'
+          type: string
+        name:
+          example: Contact Name
+          type: string
+        telephoneNumber:
+          example: '1234567890'
+          type: string
       type: object
     AssignmentAssignedToInspector:
       properties:
@@ -241,8 +306,9 @@ components:
         employeeId:
           description: External ID of the inspector that is assigned to the assignment
           example: '123'
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         id:
           description: User ID of the inspector that the assignment is assigned to
           example: U111
@@ -251,6 +317,122 @@ components:
           description: Name of the inspector that the assignment is assigned to
           example: John Doe
           type: string
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    QuestionValidation:
+      properties:
+        mandatory:
+          description: Indicate if the question is mandatory or not
+          example: 'true'
+          type: boolean
+      required:
+      - mandatory
+      type: object
+    AssignmentAssignedToOrganization:
+      properties:
+        name:
+          description: Organization name that the assignment is assigned to
+          example: Acme Corp
+          type: string
+        systemId:
+          description: Organization ID stored in the system that the assignment is assigned to
+          example: '3123123'
+          type: string
+      type: object
+    BookingMeasurementItemDetail:
+      properties:
+        measurement:
+          type: string
+        size:
+          description: Size name
+          example: Medium
+          minLength: 1
+          type: string
+      required:
+      - measurement
+      - size
+      type: object
+    BookingSolidItem:
+      properties:
+        availableCartonQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        availableQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        brandId:
+          description: 'Precondition: must be configured in your Inspectorio''s account.'
+          example: brand_1
+          type:
+          - string
+          - 'null'
+        brandName:
+          minLength: 1
+          readOnly: true
+          type: string
+        cartonQuantity:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        casePackQuantity:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        classId:
+          example: class_id_1
+          type:
+          - string
+          - 'null'
+        color:
+          minLength: 1
+          type: string
+        departmentId:
+          example: department_id_1
+          type:
+          - string
+          - 'null'
+        id:
+          type:
+          - string
+          - 'null'
+        itemId:
+          minLength: 1
+          type: string
+        quantity:
+          minimum: 1
+          type: integer
+        shipmentTerm:
+          example: shipment_term_1
+          type:
+          - string
+          - 'null'
+        size:
+          minLength: 1
+          type: string
+      required:
+      - color
+      - itemId
+      - quantity
+      - size
       type: object
     Question1:
       properties:
@@ -292,6 +474,144 @@ components:
       - questionType
       - validation
       type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object
+    BookingLocationPicker:
+      properties:
+        address:
+          type: string
+        gpsLocation:
+          $ref: '#/components/schemas/BookingLocationPickerGpsLocation'
+      type: object
+    BookingPiPoInformation:
+      properties:
+        opoNumber:
+          type: string
+        poNumber:
+          type: string
+        poTypes:
+          items:
+            type: string
+          type: array
+        productLineId:
+          readOnly: true
+          type: string
+        productLineName:
+          readOnly: true
+          type: string
+      type: object
+    AssignmentListResponse:
+      properties:
+        data:
+          description: Assignments data
+          items:
+            $ref: '#/components/schemas/AssignmentResponse'
+          type: array
+        limit:
+          maximum: 100
+          minimum: 1
+          type: integer
+        offset:
+          minimum: 0
+          type: integer
+        total:
+          type: integer
+      required:
+      - limit
+      - offset
+      - total
+      type: object
+    BookingPiPoDetail:
+      properties:
+        pipoInformation:
+          $ref: '#/components/schemas/BookingPiPoInformation'
+        styles:
+          items:
+            $ref: '#/components/schemas/BookingStyle'
+          type: array
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    BookingAssortmentItem:
+      properties:
+        availableQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        brandId:
+          description: 'Precondition: must be configured in your Inspectorio''s account.'
+          example: brand_1
+          type:
+          - string
+          - 'null'
+        brandName:
+          minLength: 1
+          readOnly: true
+          type: string
+        classId:
+          example: class_id_1
+          type:
+          - string
+          - 'null'
+        color:
+          minLength: 1
+          type: string
+        configuration:
+          minimum: 1
+          type: integer
+        departmentId:
+          example: department_id_1
+          type:
+          - string
+          - 'null'
+        id:
+          type:
+          - string
+          - 'null'
+        itemId:
+          minLength: 1
+          type: string
+        quantity:
+          readOnly: true
+          type: integer
+        shipmentTerm:
+          example: shipment_term_1
+          type:
+          - string
+          - 'null'
+        size:
+          minLength: 1
+          type: string
+      required:
+      - color
+      - configuration
+      - itemId
+      - size
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
     BookingMeasurementItem:
       properties:
         caption:
@@ -300,8 +620,9 @@ components:
         isPomCritical:
           description: Measurement is critical or not
           example: 'true'
-          nullable: true
-          type: boolean
+          type:
+          - boolean
+          - 'null'
         pom:
           minLength: 1
           type: string
@@ -314,13 +635,15 @@ components:
         toleranceLower:
           description: Accepted lower limit between the expected measure (standard) and the actual measure
           example: 2.1
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         toleranceUpper:
           description: Accepted upper limit between the expected measure (standard) and the actual measure
           example: 2.1
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         unit:
           enum:
           - inch
@@ -333,55 +656,175 @@ components:
       - tolerance
       - unit
       type: object
+    BookingOrganization:
+      properties:
+        address:
+          example: address
+          type: string
+        city:
+          example: city
+          type: string
+        contact:
+          $ref: '#/components/schemas/OrganizationContact'
+        country:
+          example: US
+          type: string
+        localOrganizationId:
+          description: Local Custom ID of the organization
+          example: F323333
+          type: string
+        localOrganizationIds:
+          description: The list of all connected Local Custom IDs of the organization
+          example:
+          - F323333
+          - F242146
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        name:
+          example: name
+          type: string
+        organizationId:
+          example: org_id
+          type: string
+      type: object
+    Questionnaire:
+      properties:
+        questions:
+          description: List of questions in the questionnaire
+          items:
+            $ref: '#/components/schemas/Question1'
+          type: array
+      type: object
+    BookingStyle:
+      properties:
+        assortments:
+          items:
+            $ref: '#/components/schemas/BookingAssortment'
+          type:
+          - array
+          - 'null'
+        measurements:
+          items:
+            $ref: '#/components/schemas/BookingMeasurementItem'
+          type: array
+        productCategoryId:
+          example: product_category_1
+          type: string
+        productCategoryName:
+          minLength: 1
+          readOnly: true
+          type: string
+        solids:
+          items:
+            $ref: '#/components/schemas/BookingSolidItem'
+          type:
+          - array
+          - 'null'
+        styleId:
+          example: style_1
+          minLength: 1
+          type: string
+        styleName:
+          type:
+          - string
+          - 'null'
+      required:
+      - productCategoryId
+      - styleId
+      type: object
     AssignmentBillingInformation:
       properties:
         address:
           description: Address line of the organization that receives is billed
           example: 1 Park Avenue
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         city:
           description: City of the organization that is billed
           example: Minnesota
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         contact:
           $ref: '#/components/schemas/AssignmentBillingContact'
           description: Contact information of the organization
-          nullable: true
         country:
           description: Country of the organization that is billed
           example: US
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         name:
           description: Name of the organization that is billed
           example: Padme Corp
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         postalCode:
           description: Postal code of the organization that is billed
           example: '55402'
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         state:
           description: State of the organization that is billed
           example: Minnesota
-          nullable: true
+          type:
+          - string
+          - 'null'
+      type: object
+    BookingLocationPickerGpsLocation:
+      properties:
+        latitude:
+          type: string
+        longitude:
           type: string
       type: object
-    BookingMeasurementItemDetail:
+    CustomResponse12:
       properties:
-        measurement:
+        data:
+          $ref: '#/components/schemas/AssignmentResponse'
+      type: object
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
           type: string
-        size:
-          description: Size name
-          example: Medium
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
+    BookingAssortment:
+      properties:
+        assortmentId:
           minLength: 1
           type: string
+        availableCartonQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        cartonQuantity:
+          minimum: 0
+          type: integer
+        items:
+          items:
+            $ref: '#/components/schemas/BookingAssortmentItem'
+          minItems: 1
+          type: array
       required:
-      - measurement
-      - size
+      - assortmentId
+      - cartonQuantity
+      - items
       type: object
     Option:
       properties:
@@ -406,145 +849,6 @@ components:
           example: 'Yes'
           type: string
       type: object
-    TooManyResponsesApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Too many requests
-          type: string
-      type: object
-    OrganizationContact:
-      properties:
-        contactId:
-          example: contact_id
-          type: string
-        email:
-          example: email@email.com
-          type: string
-        mobileNumber:
-          example: '1234567890'
-          type: string
-        name:
-          example: Contact Name
-          type: string
-        telephoneNumber:
-          example: '1234567890'
-          type: string
-      type: object
-    BookingAssortment:
-      properties:
-        assortmentId:
-          minLength: 1
-          type: string
-        availableCartonQuantity:
-          nullable: true
-          readOnly: true
-          type: integer
-        cartonQuantity:
-          minimum: 0
-          type: integer
-        items:
-          items:
-            $ref: '#/components/schemas/BookingAssortmentItem'
-          minItems: 1
-          type: array
-      required:
-      - assortmentId
-      - cartonQuantity
-      - items
-      type: object
-    BookingPiPoInformation:
-      properties:
-        opoNumber:
-          type: string
-        poNumber:
-          type: string
-        poTypes:
-          items:
-            type: string
-          type: array
-        productLineId:
-          readOnly: true
-          type: string
-        productLineName:
-          readOnly: true
-          type: string
-      type: object
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
-    BookingLocationPickerGpsLocation:
-      properties:
-        latitude:
-          type: string
-        longitude:
-          type: string
-      type: object
-    QuestionValidation:
-      properties:
-        mandatory:
-          description: Indicate if the question is mandatory or not
-          example: 'true'
-          type: boolean
-      required:
-      - mandatory
-      type: object
-    BookingPiPoDetail:
-      properties:
-        pipoInformation:
-          $ref: '#/components/schemas/BookingPiPoInformation'
-        styles:
-          items:
-            $ref: '#/components/schemas/BookingStyle'
-          type: array
-      type: object
-    BookingOrganization:
-      properties:
-        address:
-          example: address
-          type: string
-        city:
-          example: city
-          type: string
-        contact:
-          $ref: '#/components/schemas/OrganizationContact'
-          nullable: true
-        country:
-          example: US
-          type: string
-        localOrganizationId:
-          description: Local Custom ID of the organization
-          example: F323333
-          type: string
-        localOrganizationIds:
-          description: The list of all connected Local Custom IDs of the organization
-          example:
-          - F323333
-          - F242146
-          items:
-            type: string
-          nullable: true
-          type: array
-        name:
-          example: name
-          type: string
-        organizationId:
-          example: org_id
-          type: string
-      type: object
     AssignmentResponse:
       properties:
         actualInspectionDate:
@@ -555,11 +859,9 @@ components:
         assignedToInspector:
           $ref: '#/components/schemas/AssignmentAssignedToInspector'
           description: Inspector that the assignment is assigned to
-          nullable: true
         assignedToOrganization:
           $ref: '#/components/schemas/AssignmentAssignedToOrganization'
           description: Organization that the assignment is assigned to
-          nullable: true
         assignmentCreatedDate:
           description: Assignment creation date
           example: '2021-05-25T13:58:26+00:00'
@@ -582,7 +884,6 @@ components:
         billingInformation:
           $ref: '#/components/schemas/AssignmentBillingInformation'
           description: Organization that is billed
-          nullable: true
         bookingId:
           description: Unique identifier of the booking
           example: 123456-c4a6-4fdb-b01f-2fe663be4460
@@ -819,8 +1120,9 @@ components:
           - 1st re-inspection
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+          - array
+          - 'null'
         toOrganizationId:
           description: Organization ID which the booking is booked to
           example: C112233
@@ -844,111 +1146,32 @@ components:
       required:
       - assignmentId
       type: object
-    BookingAssortmentItem:
-      properties:
-        availableQuantity:
-          nullable: true
-          readOnly: true
-          type: integer
-        brandId:
-          description: 'Precondition: must be configured in your Inspectorio''s account.'
-          example: brand_1
-          nullable: true
-          type: string
-        brandName:
-          minLength: 1
-          readOnly: true
-          type: string
-        classId:
-          example: class_id_1
-          nullable: true
-          type: string
-        color:
-          minLength: 1
-          type: string
-        configuration:
-          minimum: 1
-          type: integer
-        departmentId:
-          example: department_id_1
-          nullable: true
-          type: string
-        id:
-          nullable: true
-          type: string
-        itemId:
-          minLength: 1
-          type: string
-        quantity:
-          readOnly: true
-          type: integer
-        shipmentTerm:
-          example: shipment_term_1
-          nullable: true
-          type: string
-        size:
-          minLength: 1
-          type: string
-      required:
-      - color
-      - configuration
-      - itemId
-      - size
-      type: object
-    AssignmentListResponse:
-      properties:
-        data:
-          description: Assignments data
-          items:
-            $ref: '#/components/schemas/AssignmentResponse'
-          type: array
-        limit:
-          maximum: 100
-          minimum: 1
-          type: integer
-        offset:
-          minimum: 0
-          type: integer
-        total:
-          type: integer
-      required:
-      - limit
-      - offset
-      - total
-      type: object
-    AssignmentAssignedToOrganization:
-      properties:
-        name:
-          description: Organization name that the assignment is assigned to
-          example: Acme Corp
-          type: string
-        systemId:
-          description: Organization ID stored in the system that the assignment is assigned to
-          example: '3123123'
-          type: string
-      type: object
     AssignmentBillingContact:
       properties:
         email:
           description: Billing contact email
           example: will@email.com
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         mobileNumber:
           description: Billing contact mobile number
           example: '1234567890'
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         name:
           description: Billing contact name
           example: Will Smith
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         telephoneNumber:
           description: Billing contact telephone number
           example: '1234567890'
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
       type: object
     BookingInspectionInformation:
       properties:
@@ -959,187 +1182,8 @@ components:
           example: Final Random Inspection
           type: string
       type: object
-    ValidateApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            type:
-            - Input type is not valid
-          type: object
-        message:
-          example: Validation error
-          type: string
-      type: object
-    Questionnaire:
-      properties:
-        questions:
-          description: List of questions in the questionnaire
-          items:
-            $ref: '#/components/schemas/Question1'
-          type: array
-      type: object
-    BookingSolidItem:
-      properties:
-        availableCartonQuantity:
-          nullable: true
-          readOnly: true
-          type: integer
-        availableQuantity:
-          nullable: true
-          readOnly: true
-          type: integer
-        brandId:
-          description: 'Precondition: must be configured in your Inspectorio''s account.'
-          example: brand_1
-          nullable: true
-          type: string
-        brandName:
-          minLength: 1
-          readOnly: true
-          type: string
-        cartonQuantity:
-          minimum: 0
-          nullable: true
-          type: integer
-        casePackQuantity:
-          minimum: 0
-          nullable: true
-          type: integer
-        classId:
-          example: class_id_1
-          nullable: true
-          type: string
-        color:
-          minLength: 1
-          type: string
-        departmentId:
-          example: department_id_1
-          nullable: true
-          type: string
-        id:
-          nullable: true
-          type: string
-        itemId:
-          minLength: 1
-          type: string
-        quantity:
-          minimum: 1
-          type: integer
-        shipmentTerm:
-          example: shipment_term_1
-          nullable: true
-          type: string
-        size:
-          minLength: 1
-          type: string
-      required:
-      - color
-      - itemId
-      - quantity
-      - size
-      type: object
-    BookingExpectedDate:
-      properties:
-        inspectionDate:
-          example: '2019-07-04T08:00:00.00Z'
-          format: date-time
-          type: string
-        shipmentDate:
-          example: '2019-07-04T08:00:00.00Z'
-          format: date-time
-          nullable: true
-          type: string
-      required:
-      - inspectionDate
-      type: object
-    AssignmentOrganizationInformation:
-      properties:
-        address:
-          example: address
-          type: string
-        city:
-          example: city
-          type: string
-        contact:
-          $ref: '#/components/schemas/OrganizationContact'
-          nullable: true
-        country:
-          example: US
-          type: string
-        localOrganizationId:
-          description: Local Custom ID of the organization
-          example: F323333
-          type: string
-        localOrganizationIds:
-          description: The list of all connected Local Custom IDs of the organization
-          example:
-          - F323333
-          - F242146
-          items:
-            type: string
-          nullable: true
-          type: array
-        localPostalCode:
-          example: '82052'
-          type: string
-        localState:
-          example: Wyoming
-          type: string
-        name:
-          example: name
-          type: string
-        organizationId:
-          example: org_id
-          type: string
-      type: object
-    CustomResponse12:
-      properties:
-        data:
-          $ref: '#/components/schemas/AssignmentResponse'
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
-    BookingStyle:
-      properties:
-        assortments:
-          items:
-            $ref: '#/components/schemas/BookingAssortment'
-          nullable: true
-          type: array
-        measurements:
-          items:
-            $ref: '#/components/schemas/BookingMeasurementItem'
-          type: array
-        productCategoryId:
-          example: product_category_1
-          type: string
-        productCategoryName:
-          minLength: 1
-          readOnly: true
-          type: string
-        solids:
-          items:
-            $ref: '#/components/schemas/BookingSolidItem'
-          nullable: true
-          type: array
-        styleId:
-          example: style_1
-          minLength: 1
-          type: string
-        styleName:
-          nullable: true
-          type: string
-      required:
-      - productCategoryId
-      - styleId
-      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: apiKey
+      type: apiKey

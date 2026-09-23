@@ -1,19 +1,20 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: File Management ANALYTICS BRAND API
-  version: v3
+  title: Inspectorio Quality Risk Management BRAND API
+  version: v1
 servers:
 - description: Production Environment
-  url: https://files-integration.inspectorio.com
+  url: https://sight.inspectorio.com
 - description: Pre-Production Environment
-  url: https://files-integration.pre.inspectorio.com
+  url: https://sight.pre.inspectorio.com
+security:
+- ApiKeyAuth: []
 tags:
-- name: BRAND
+- name: Brand
 paths:
   /api/v1/brands:
     get:
       summary: List Brands
-      description: List Brands
       parameters:
       - in: query
         name: offset
@@ -69,10 +70,11 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - BRAND
+      - Brand
+      operationId: getApiV1Brands
+      x-operation-id-source: derived
     post:
       summary: Create Brand
-      description: Create Brand
       parameters: []
       requestBody:
         content:
@@ -117,11 +119,12 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - BRAND
+      - Brand
+      operationId: postApiV1Brands
+      x-operation-id-source: derived
   /api/v1/brands/{brand_id}:
     delete:
       summary: Delete Brand
-      description: Delete Brand
       parameters:
       - in: path
         name: brand_id
@@ -165,10 +168,11 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - BRAND
+      - Brand
+      operationId: deleteApiV1BrandsByBrandId
+      x-operation-id-source: derived
     get:
       summary: Get Brand
-      description: Get Brand
       parameters:
       - in: path
         name: brand_id
@@ -213,10 +217,11 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - BRAND
+      - Brand
+      operationId: getApiV1BrandsByBrandId
+      x-operation-id-source: derived
     put:
       summary: Update Brand
-      description: Update Brand
       parameters:
       - in: path
         name: brand_id
@@ -266,9 +271,80 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - BRAND
+      - Brand
+      operationId: putApiV1BrandsByBrandId
+      x-operation-id-source: derived
 components:
   schemas:
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    BrandUpdate:
+      properties:
+        description:
+          description: Brand description
+          example: Modern Menswear
+          type:
+          - string
+          - 'null'
+        name:
+          description: Brand name
+          example: Acme
+          minLength: 1
+          type: string
+      type: object
+    Brand:
+      properties:
+        brandId:
+          description: Unique identifier of the brand
+          example: brand_1
+          type: string
+        description:
+          description: Brand description
+          example: Modern Menswear
+          type: string
+        name:
+          description: Brand name
+          example: Acme
+          type: string
+      required:
+      - brandId
+      - name
+      type: object
+    BrandResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/Brand'
+          description: Brand data
+      type: object
+    BrandCreate:
+      properties:
+        brandId:
+          description: Custom ID of the brand
+          example: brand_1
+          minLength: 1
+          type: string
+        description:
+          description: Brand description
+          example: Modern Menswear
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the brand
+          example: Acme
+          minLength: 1
+          type: string
+      required:
+      - brandId
+      - name
+      type: object
     ValidateApiError:
       properties:
         errorCode:
@@ -292,87 +368,6 @@ components:
           example: Bad Request
           type: string
       type: object
-    BrandResponse:
-      properties:
-        data:
-          $ref: '#/components/schemas/Brand'
-          description: Brand data
-      type: object
-    BrandCreate:
-      properties:
-        brandId:
-          description: Custom ID of the brand
-          example: brand_1
-          minLength: 1
-          type: string
-        description:
-          description: Brand description
-          example: Modern Menswear
-          nullable: true
-          type: string
-        name:
-          description: Name of the brand
-          example: Acme
-          minLength: 1
-          type: string
-      required:
-      - brandId
-      - name
-      type: object
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
-    Brand:
-      properties:
-        brandId:
-          description: Unique identifier of the brand
-          example: brand_1
-          type: string
-        description:
-          description: Brand description
-          example: Modern Menswear
-          type: string
-        name:
-          description: Brand name
-          example: Acme
-          type: string
-      required:
-      - brandId
-      - name
-      type: object
-    BrandUpdate:
-      properties:
-        description:
-          description: Brand description
-          example: Modern Menswear
-          nullable: true
-          type: string
-        name:
-          description: Brand name
-          example: Acme
-          minLength: 1
-          type: string
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
     BrandListResponse:
       properties:
         data:
@@ -394,6 +389,20 @@ components:
       - offset
       - total
       type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
     TooManyResponsesApiError:
       properties:
         errorCode:
@@ -403,3 +412,8 @@ components:
           example: Too many requests
           type: string
       type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: apiKey
+      type: apiKey

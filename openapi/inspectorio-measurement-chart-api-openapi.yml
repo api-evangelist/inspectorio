@@ -1,19 +1,20 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: File Management ANALYTICS MEASUREMENT CHART API
-  version: v3
+  title: Inspectorio Quality Risk Management MEASUREMENT CHART API
+  version: v1
 servers:
 - description: Production Environment
-  url: https://files-integration.inspectorio.com
+  url: https://sight.inspectorio.com
 - description: Pre-Production Environment
-  url: https://files-integration.pre.inspectorio.com
+  url: https://sight.pre.inspectorio.com
+security:
+- ApiKeyAuth: []
 tags:
 - name: MEASUREMENT CHART
 paths:
   /api/v1/measurement-charts/{style_id}:
     get:
       summary: Get Measurement Chart
-      description: Get Measurement Chart
       parameters:
       - in: path
         name: style_id
@@ -59,9 +60,10 @@ paths:
           description: Internal Error
       tags:
       - MEASUREMENT CHART
+      operationId: getApiV1MeasurementChartsByStyleId
+      x-operation-id-source: derived
     post:
       summary: Create Measurement Chart
-      description: Create Measurement Chart
       parameters:
       - in: path
         name: style_id
@@ -112,9 +114,10 @@ paths:
           description: Internal Error
       tags:
       - MEASUREMENT CHART
+      operationId: postApiV1MeasurementChartsByStyleId
+      x-operation-id-source: derived
     put:
       summary: Update Measurement Chart
-      description: Update Measurement Chart
       parameters:
       - in: path
         name: style_id
@@ -165,8 +168,19 @@ paths:
           description: Internal Error
       tags:
       - MEASUREMENT CHART
+      operationId: putApiV1MeasurementChartsByStyleId
+      x-operation-id-source: derived
 components:
   schemas:
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
     ValidateApiError:
       properties:
         errorCode:
@@ -190,24 +204,6 @@ components:
           example: Bad Request
           type: string
       type: object
-    MeasurementListInfo:
-      properties:
-        clientUpdatedDate:
-          description: The last updated date from the client system of the Measurement Chart
-          example: '2019-02-20T06:37:18.048000+00:00'
-          format: date-time
-          type: string
-        measurements:
-          description: List of measurement charts
-          items:
-            $ref: '#/components/schemas/MeasurementResponse'
-          type: array
-        source:
-          description: The source from which the Measurement Chart data comes
-          example: SPARK
-          nullable: true
-          type: string
-      type: object
     MeasurementItemDetail:
       properties:
         measurement:
@@ -223,6 +219,12 @@ components:
       - measurement
       - size
       type: object
+    MeasurementListResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/MeasurementListInfo'
+          description: Measurement charts data
+      type: object
     InternalApiError:
       properties:
         errorCode:
@@ -235,6 +237,63 @@ components:
           type: object
         message:
           example: Internal server error
+          type: string
+      type: object
+    MeasurementForm:
+      properties:
+        clientUpdatedDate:
+          description: The last updated date from the client system of the Measurement Chart
+          example: '2019-02-20T06:37:18Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        measurements:
+          description: Measurement chart information
+          items:
+            $ref: '#/components/schemas/MeasurementItem'
+          minItems: 1
+          type: array
+        source:
+          description: The source from which the Measurement Chart data comes
+          example: SPARK
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        supplierId:
+          type:
+          - string
+          - 'null'
+      required:
+      - measurements
+      type: object
+    MeasurementListInfo:
+      properties:
+        clientUpdatedDate:
+          description: The last updated date from the client system of the Measurement Chart
+          example: '2019-02-20T06:37:18.048000+00:00'
+          format: date-time
+          type: string
+        measurements:
+          description: List of measurement charts
+          items:
+            $ref: '#/components/schemas/MeasurementResponse'
+          type: array
+        source:
+          description: The source from which the Measurement Chart data comes
+          example: SPARK
+          type:
+          - string
+          - 'null'
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
           type: string
       type: object
     MeasurementResponse:
@@ -255,8 +314,9 @@ components:
         setId:
           description: The external id of the measurement set. Use this field when you want to group POMs in a specified set
           example: Set 1
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         sizes:
           description: Sizes in a measurement chart
           items:
@@ -265,18 +325,21 @@ components:
         tolerance:
           description: Tolerance Lower & Upper of a point of measurement, only use this attribute if your organization has not enabled Unequal Tolerance
           example: 1/4
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         toleranceLower:
           description: Tolerance Lower, use this attribute together with toleranceUpper if your organization has enabled Unequal Tolerance
           example: 1/4
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         toleranceUpper:
           description: Tolerance Upper, use this attribute together with toleranceLower if your organization has enabled Unequal Tolerance
           example: 3/4
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         unit:
           description: 'Unit used for measurement. Current values: inch, cm, mm'
           example: cm
@@ -296,8 +359,9 @@ components:
         isPomCritical:
           description: Measurement is critical or not
           example: 'true'
-          nullable: true
-          type: boolean
+          type:
+          - boolean
+          - 'null'
         pom:
           description: Point of measurement
           example: Chest
@@ -307,8 +371,9 @@ components:
           description: The external id of the measurement set. Use this field when you want to group POMs in a specified set
           example: Set 1
           maxLength: 500
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         sizes:
           description: List of sizes in the measurement chart
           items:
@@ -318,18 +383,21 @@ components:
         tolerance:
           description: Tolerance Lower & Upper of a point of measurement, only use this attribute if your organization has not enabled Unequal Tolerance
           example: '1'
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         toleranceLower:
           description: Tolerance Lower, use this attribute together with toleranceUpper if your organization has enabled Unequal Tolerance
           example: '1'
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         toleranceUpper:
           description: Tolerance Upper, use this attribute together with toleranceLower if your organization has enabled Unequal Tolerance
           example: '1'
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         unit:
           description: Unit in the measurement chart in inch,cm,mm
           enum:
@@ -344,53 +412,8 @@ components:
       - sizes
       - unit
       type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
-    MeasurementForm:
-      properties:
-        clientUpdatedDate:
-          description: The last updated date from the client system of the Measurement Chart
-          example: '2019-02-20T06:37:18Z'
-          format: date-time
-          nullable: true
-          type: string
-        measurements:
-          description: Measurement chart information
-          items:
-            $ref: '#/components/schemas/MeasurementItem'
-          minItems: 1
-          type: array
-        source:
-          description: The source from which the Measurement Chart data comes
-          example: SPARK
-          maxLength: 30
-          nullable: true
-          type: string
-        supplierId:
-          nullable: true
-          type: string
-      required:
-      - measurements
-      type: object
-    MeasurementListResponse:
-      properties:
-        data:
-          $ref: '#/components/schemas/MeasurementListInfo'
-          description: Measurement charts data
-      type: object
-    TooManyResponsesApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Too many requests
-          type: string
-      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: apiKey
+      type: apiKey

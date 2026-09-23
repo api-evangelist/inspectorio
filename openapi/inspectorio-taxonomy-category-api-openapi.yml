@@ -1,12 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: File Management ANALYTICS TAXONOMY CATEGORY API
-  version: v3
+  title: Inspectorio Quality Risk Management TAXONOMY CATEGORY API
+  version: v1
 servers:
 - description: Production Environment
-  url: https://files-integration.inspectorio.com
+  url: https://sight.inspectorio.com
 - description: Pre-Production Environment
-  url: https://files-integration.pre.inspectorio.com
+  url: https://sight.pre.inspectorio.com
+security:
+- ApiKeyAuth: []
 tags:
 - name: TAXONOMY CATEGORY
 paths:
@@ -30,9 +32,7 @@ paths:
 
         level it is restored. `name` and `description` are updated from the request body;
 
-        `businessId` and `parentCustomId` are immutable and ignored on restore.
-
-        '
+        `businessId` and `parentCustomId` are immutable and ignored on restore.'
       parameters:
       - $ref: '#/components/parameters/TaxonomyLevelCustomIdPath'
       requestBody:
@@ -104,9 +104,7 @@ paths:
 
         pagination. Soft-deleted categories are excluded. Pass one or more `parentCustomId`
 
-        values to fetch the children of specific parents (there is no nested children route).
-
-        '
+        values to fetch the children of specific parents (there is no nested children route).'
       parameters:
       - $ref: '#/components/parameters/TaxonomyLevelCustomIdPath'
       - $ref: '#/components/parameters/ParentCustomIdQuery'
@@ -166,9 +164,7 @@ paths:
 
         `parentCustomId`, etc.) are silently ignored.
 
-        Soft-deleted categories are not found (404).
-
-        '
+        Soft-deleted categories are not found (404).'
       parameters:
       - $ref: '#/components/parameters/TaxonomyLevelCustomIdPath'
       - $ref: '#/components/parameters/CategoryCustomIdPath'
@@ -233,9 +229,7 @@ paths:
 
         cascade to descendants: each customId must be restored separately, and the immediate
 
-        parent must already be restored (live) before a child can be restored.
-
-        '
+        parent must already be restored (live) before a child can be restored.'
       parameters:
       - $ref: '#/components/parameters/TaxonomyLevelCustomIdPath'
       - $ref: '#/components/parameters/CategoryCustomIdPath'
@@ -271,9 +265,7 @@ paths:
       operationId: getCategory
       description: 'Retrieve a single category by its `customId` within the taxonomy level.
 
-        Soft-deleted categories are not found.
-
-        '
+        Soft-deleted categories are not found.'
       parameters:
       - $ref: '#/components/parameters/TaxonomyLevelCustomIdPath'
       - $ref: '#/components/parameters/CategoryCustomIdPath'
@@ -309,109 +301,52 @@ paths:
       tags:
       - TAXONOMY CATEGORY
 components:
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of records to return (page size).
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 50
-        default: 10
-    TaxonomyLevelCustomIdPath:
-      name: taxonomyLevelCustomId
-      in: path
-      required: true
-      description: 'Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,
-
-        `class`, `department`). Unique within the caller''s organization.
-
-        '
-      schema:
-        type: string
-        example: product_line
-    CategoryCustomIdPath:
-      name: customId
-      in: path
-      required: true
-      description: 'Client-defined custom identifier of the category. Unique within the
-
-        owner organization (across all taxonomies and levels).
-
-        '
-      schema:
-        type: string
-        example: footwear
-    SearchQuery:
-      name: q
-      in: query
-      required: false
-      description: 'Free-text search. Whitespace-separated terms are OR-matched (case-insensitive)
-
-        against the category `name` and its `businessId`.
-
-        '
-      schema:
-        type: string
-        example: sneaker
-    Offset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-    ParentCustomIdQuery:
-      name: parentCustomId
-      in: query
-      required: false
-      description: 'Filter to categories whose parent has one of these custom IDs. Repeat the
-
-        parameter once per value: `?parentCustomId=footwear&parentCustomId=apparel`
-
-        returns the children of both parents. Comma-separated values are not
-
-        supported — `?parentCustomId=footwear,apparel` is matched as one literal ID.
-
-        Omit to list all categories at the level.
-
-        '
-      style: form
-      explode: true
-      schema:
-        type: array
-        items:
-          type: string
-          example: footwear
-    OrderBy:
-      name: orderBy
-      in: query
-      required: false
-      description: 'Sort order, in the form `<field>:<direction>`.
-
-
-        `<field>` is one of `name` (sorts by parent name, then category name),
-
-        `createdAt` (creation time) or `updatedAt` (last-update time).
-
-
-        `<direction>` is `asc` or `desc`. The suffix is optional; timestamp fields
-
-        default to `desc` (newest first) while `name` defaults to `asc` (A→Z). Omitting
-
-        the parameter entirely is equivalent to `createdAt:desc`.
-
-        '
-      schema:
-        type: string
-        pattern: ^(name|createdAt|updatedAt)(:(asc|desc))?$
-        default: createdAt:desc
-        example: createdAt:desc
   schemas:
+    CategoryValidationError:
+      type: object
+      description: 'Error body for request-body validation failures on create/restore (400). Each key is a
+
+        camelCase field from `CategoryCreateRequest`; the value is either a single message or a
+
+        list of messages for that field, as returned by the underlying serializer.
+
+        '
+      properties:
+        code:
+          type: integer
+          description: Echoes the HTTP status code.
+          example: 400
+        status:
+          type: integer
+          description: Echoes the HTTP status code (alias of `code` for legacy consumers).
+          example: 400
+      additionalProperties:
+        oneOf:
+        - type: string
+        - type: array
+          items:
+            type: string
+      example:
+        customId:
+        - This field is required.
+        code: 400
+        status: 400
+    ErrorDetail:
+      type: object
+      description: Error body for 400, 401 and 404 responses.
+      properties:
+        detail:
+          type: string
+          description: Human-readable error message.
+          example: Category not found.
+        code:
+          type: integer
+          description: Echoes the HTTP status code.
+          example: 404
+        status:
+          type: integer
+          description: Echoes the HTTP status code (alias of `code` for legacy consumers).
+          example: 404
     CategoryUpdateRequest:
       type: object
       description: Request body for updating a category's mutable fields.
@@ -434,6 +369,51 @@ components:
       allOf:
       - $ref: '#/components/schemas/Category'
       - $ref: '#/components/schemas/ResponseEnvelope'
+    CategoryListResponse:
+      description: Paginated list of taxonomy categories, wrapped in the platform response envelope.
+      allOf:
+      - $ref: '#/components/schemas/ResponseEnvelope'
+      - type: object
+        properties:
+          count:
+            type: integer
+            description: Total number of categories matching the filters. Page through the collection by adjusting `limit` and `offset` against this value.
+            example: 42
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/Category'
+    ConflictError:
+      type: object
+      description: Error body for 409 conflict responses.
+      properties:
+        detail:
+          type: string
+          description: Human-readable error message.
+          example: This customId is already in use in this organization.
+        code:
+          type: string
+          description: Machine-readable conflict code.
+          enum:
+          - CATEGORY_CUSTOM_ID_CONFLICT
+          - CATEGORY_BUSINESS_ID_CONFLICT
+          example: CATEGORY_CUSTOM_ID_CONFLICT
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 409
+    ResponseEnvelope:
+      type: object
+      description: Platform response envelope fields appended to every successful response.
+      properties:
+        code:
+          type: integer
+          description: Echoes the HTTP status code.
+          example: 200
+        status:
+          type: integer
+          description: Echoes the HTTP status code (alias of `code` for legacy consumers).
+          example: 200
     Category:
       type: object
       description: A taxonomy category. Always addressed by `customId`.
@@ -447,13 +427,15 @@ components:
           description: Display name of the category.
           example: Footwear
         description:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Free-text description. May be an empty string.
           example: All footwear products
         businessId:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: 'Business identifier of the category (stored as the taxonomy level''s
 
             business-id attribute). Empty string when the level has no business-id
@@ -463,8 +445,9 @@ components:
             '
           example: FW-001
         parentCustomId:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Custom ID of the parent category (one level up). Null for a root node.
           example: apparel
         taxonomyLevelCustomId:
@@ -476,8 +459,9 @@ components:
           description: Custom ID of the taxonomy the level belongs to.
           example: product
         lastUpdatedSource:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Origin of the last write (e.g. `api`, `manual`).
           example: api
         createdAt:
@@ -496,20 +480,6 @@ components:
       - customId
       - name
       - taxonomyLevelCustomId
-    CategoryListResponse:
-      description: Paginated list of taxonomy categories, wrapped in the platform response envelope.
-      allOf:
-      - $ref: '#/components/schemas/ResponseEnvelope'
-      - type: object
-        properties:
-          count:
-            type: integer
-            description: Total number of categories matching the filters. Page through the collection by adjusting `limit` and `offset` against this value.
-            example: 42
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/Category'
     CategoryCreateRequest:
       type: object
       description: Request body for creating or restoring a category.
@@ -544,87 +514,119 @@ components:
             '
           example: FW-001
         parentCustomId:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: 'Custom ID of the parent category at the level immediately above. Omit for a
 
             root node. Ignored on restore (re-parenting is not allowed).
 
             '
           example: apparel
-    ResponseEnvelope:
-      type: object
-      description: Platform response envelope fields appended to every successful response.
-      properties:
-        code:
-          type: integer
-          description: Echoes the HTTP status code.
-          example: 200
-        status:
-          type: integer
-          description: Echoes the HTTP status code (alias of `code` for legacy consumers).
-          example: 200
-    ConflictError:
-      type: object
-      description: Error body for 409 conflict responses.
-      properties:
-        detail:
-          type: string
-          description: Human-readable error message.
-          example: This customId is already in use in this organization.
-        code:
-          type: string
-          description: Machine-readable conflict code.
-          enum:
-          - CATEGORY_CUSTOM_ID_CONFLICT
-          - CATEGORY_BUSINESS_ID_CONFLICT
-          example: CATEGORY_CUSTOM_ID_CONFLICT
-        status:
-          type: integer
-          description: HTTP status code.
-          example: 409
-    ErrorDetail:
-      type: object
-      description: Error body for 400, 401 and 404 responses.
-      properties:
-        detail:
-          type: string
-          description: Human-readable error message.
-          example: Category not found.
-        code:
-          type: integer
-          description: Echoes the HTTP status code.
-          example: 404
-        status:
-          type: integer
-          description: Echoes the HTTP status code (alias of `code` for legacy consumers).
-          example: 404
-    CategoryValidationError:
-      type: object
-      description: 'Error body for request-body validation failures on create/restore (400). Each key is a
+  parameters:
+    TaxonomyLevelCustomIdPath:
+      name: taxonomyLevelCustomId
+      in: path
+      required: true
+      description: 'Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,
 
-        camelCase field from `CategoryCreateRequest`; the value is either a single message or a
-
-        list of messages for that field, as returned by the underlying serializer.
+        `class`, `department`). Unique within the caller''s organization.
 
         '
-      properties:
-        code:
-          type: integer
-          description: Echoes the HTTP status code.
-          example: 400
-        status:
-          type: integer
-          description: Echoes the HTTP status code (alias of `code` for legacy consumers).
-          example: 400
-      additionalProperties:
-        oneOf:
-        - type: string
-        - type: array
-          items:
-            type: string
-      example:
-        customId:
-        - This field is required.
-        code: 400
-        status: 400
+      schema:
+        type: string
+        example: product_line
+    ParentCustomIdQuery:
+      name: parentCustomId
+      in: query
+      required: false
+      description: 'Filter to categories whose parent has one of these custom IDs. Repeat the
+
+        parameter once per value: `?parentCustomId=footwear&parentCustomId=apparel`
+
+        returns the children of both parents. Comma-separated values are not
+
+        supported — `?parentCustomId=footwear,apparel` is matched as one literal ID.
+
+        Omit to list all categories at the level.
+
+        '
+      style: form
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+          example: footwear
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return (page size).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 50
+        default: 10
+    CategoryCustomIdPath:
+      name: customId
+      in: path
+      required: true
+      description: 'Client-defined custom identifier of the category. Unique within the
+
+        owner organization (across all taxonomies and levels).
+
+        '
+      schema:
+        type: string
+        example: footwear
+    OrderBy:
+      name: orderBy
+      in: query
+      required: false
+      description: 'Sort order, in the form `<field>:<direction>`.
+
+
+        `<field>` is one of `name` (sorts by parent name, then category name),
+
+        `createdAt` (creation time) or `updatedAt` (last-update time).
+
+
+        `<direction>` is `asc` or `desc`. The suffix is optional; timestamp fields
+
+        default to `desc` (newest first) while `name` defaults to `asc` (A→Z). Omitting
+
+        the parameter entirely is equivalent to `createdAt:desc`.
+
+        '
+      schema:
+        type: string
+        pattern: ^(name|createdAt|updatedAt)(:(asc|desc))?$
+        default: createdAt:desc
+        example: createdAt:desc
+    SearchQuery:
+      name: q
+      in: query
+      required: false
+      description: 'Free-text search. Whitespace-separated terms are OR-matched (case-insensitive)
+
+        against the category `name` and its `businessId`.
+
+        '
+      schema:
+        type: string
+        example: sneaker
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: apiKey
+      type: apiKey

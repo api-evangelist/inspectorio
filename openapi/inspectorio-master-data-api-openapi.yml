@@ -1,14 +1,16 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: File Management ANALYTICS MASTER DATA API
-  version: v3
+  title: Inspectorio Quality Risk Management MASTER DATA API
+  version: v1
 servers:
 - description: Production Environment
-  url: https://files-integration.inspectorio.com
+  url: https://sight.inspectorio.com
 - description: Pre-Production Environment
-  url: https://files-integration.pre.inspectorio.com
+  url: https://sight.pre.inspectorio.com
+security:
+- ApiKeyAuth: []
 tags:
-- name: MASTER DATA
+- name: Master Data
 paths:
   /api/v1/master-data:
     post:
@@ -16,7 +18,7 @@ paths:
       summary: Create Master Data
       description: Create a new master data entry
       tags:
-      - MASTER DATA
+      - Master Data
       requestBody:
         required: true
         content:
@@ -60,7 +62,7 @@ paths:
       summary: Get Master Data by UUID
       description: Get a specific master data entry by its UUID
       tags:
-      - MASTER DATA
+      - Master Data
       parameters:
       - in: path
         name: uuid
@@ -105,7 +107,7 @@ paths:
       summary: Delete Master Data
       description: Delete a specific master data entry by its UUID
       tags:
-      - MASTER DATA
+      - Master Data
       parameters:
       - in: path
         name: uuid
@@ -149,7 +151,7 @@ paths:
       summary: Update Master Data
       description: Update a specific master data entry by its UUID
       tags:
-      - MASTER DATA
+      - Master Data
       parameters:
       - in: path
         name: uuid
@@ -197,20 +199,15 @@ paths:
           description: Internal Error
 components:
   schemas:
-    BadRequestResponse:
-      type: object
+    UnauthenticatedApiError:
       properties:
-        detail:
+        errorCode:
+          example: Generic
           type: string
-          description: Bad request error message
-        code:
-          type: integer
-          description: Response status code
-          example: 400
-        status:
-          type: integer
-          description: Response status code
-          example: 400
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
     MasterDataResponse:
       type: object
       properties:
@@ -242,29 +239,6 @@ components:
               type: string
               format: date-time
               example: '2025-02-14T06:52:42.073319+00:00'
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
     MasterDataCreateRequest:
       type: object
       required:
@@ -287,10 +261,39 @@ components:
             shipmentBookingStatus: PackageBookingStatusAcceptedEvent
             targetOrgId: custom_01
         version:
-          type: string
+          type:
+          - string
+          - 'null'
           description: Optional version identifier for the data format
           example: shipment-booking-v1.0.0
-          nullable: true
+    BadRequestResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Bad request error message
+        code:
+          type: integer
+          description: Response status code
+          example: 400
+        status:
+          type: integer
+          description: Response status code
+          example: 400
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
     TooManyResponsesApiError:
       properties:
         errorCode:
@@ -300,3 +303,8 @@ components:
           example: Too many requests
           type: string
       type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: apiKey
+      type: apiKey

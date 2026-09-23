@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: File Management ANALYTICS Upload File API
+  title: File Management Upload File API
   version: v3
 servers:
 - description: Production Environment
@@ -12,7 +12,6 @@ tags:
 paths:
   /signed-upload/{session_id}:
     post:
-      description: Upload File
       requestBody:
         content:
           multipart/form-data:
@@ -46,8 +45,23 @@ paths:
       summary: Upload File
       tags:
       - Upload File
+      operationId: postSignedUploadBySessionId
+      x-operation-id-source: derived
 components:
   schemas:
+    SignedUploadResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/SignedUploadFileInfo'
+      type: object
+    SignedUploadRequest:
+      properties:
+        file:
+          format: binary
+          type: string
+      required:
+      - file
+      type: object
     BadRequestApiError:
       properties:
         errorCode:
@@ -55,20 +69,6 @@ components:
           type: string
         message:
           example: Bad Request
-          type: string
-      type: object
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
           type: string
       type: object
     SignedUploadFileInfo:
@@ -186,16 +186,17 @@ components:
       - current
       - path
       type: object
-    SignedUploadRequest:
+    InternalApiError:
       properties:
-        file:
-          format: binary
+        errorCode:
+          example: Generic
           type: string
-      required:
-      - file
-      type: object
-    SignedUploadResponse:
-      properties:
-        data:
-          $ref: '#/components/schemas/SignedUploadFileInfo'
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
       type: object

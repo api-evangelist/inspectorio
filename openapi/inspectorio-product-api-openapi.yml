@@ -1,19 +1,20 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: File Management ANALYTICS PRODUCT API
-  version: v3
+  title: Inspectorio Quality Risk Management PRODUCT API
+  version: v1
 servers:
 - description: Production Environment
-  url: https://files-integration.inspectorio.com
+  url: https://sight.inspectorio.com
 - description: Pre-Production Environment
-  url: https://files-integration.pre.inspectorio.com
+  url: https://sight.pre.inspectorio.com
+security:
+- ApiKeyAuth: []
 tags:
-- name: PRODUCT
+- name: Product
 paths:
   /api/v1/products:
     get:
       summary: List Products
-      description: List Products
       parameters: []
       responses:
         '200':
@@ -53,9 +54,59 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - PRODUCT
+      - Product
+      operationId: getApiV1Products
+      x-operation-id-source: derived
 components:
   schemas:
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    Product:
+      properties:
+        categories:
+          description: Information of the product category
+          items:
+            $ref: '#/components/schemas/ProductCategory'
+          type: array
+        productDescription:
+          description: Description of the product
+          example: women tops for SS22
+          type: string
+        productName:
+          description: Name of the product
+          example: Cashmere womens top
+          type: string
+      type: object
+    ProductListResponse:
+      properties:
+        data:
+          description: Product data
+          items:
+            $ref: '#/components/schemas/ProductResponse'
+          type: array
+      type: object
+    ProductCategory:
+      properties:
+        productCategoryDescription:
+          description: Description of the product category
+          example: Apparel women tops
+          type: string
+        productCategoryId:
+          description: Unique identifier of the product category
+          example: '123123'
+          type: string
+        productCategoryName:
+          description: Name of the product category
+          example: Womens top
+          type: string
+      type: object
     ValidateApiError:
       properties:
         errorCode:
@@ -79,13 +130,15 @@ components:
           example: Bad Request
           type: string
       type: object
-    ProductListResponse:
+    ProductResponse:
       properties:
-        data:
-          description: Product data
-          items:
-            $ref: '#/components/schemas/ProductResponse'
-          type: array
+        info:
+          $ref: '#/components/schemas/Product'
+          description: Information of the product
+        productLineId:
+          description: 'Unique identifier of the product line '
+          example: A123
+          type: string
       type: object
     InternalApiError:
       properties:
@@ -101,40 +154,6 @@ components:
           example: Internal server error
           type: string
       type: object
-    ProductCategory:
-      properties:
-        productCategoryDescription:
-          description: Description of the product category
-          example: Apparel women tops
-          type: string
-        productCategoryId:
-          description: Unique identifier of the product category
-          example: '123123'
-          type: string
-        productCategoryName:
-          description: Name of the product category
-          example: Womens top
-          type: string
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
-    ProductResponse:
-      properties:
-        info:
-          $ref: '#/components/schemas/Product'
-          description: Information of the product
-        productLineId:
-          description: 'Unique identifier of the product line '
-          example: A123
-          type: string
-      type: object
     TooManyResponsesApiError:
       properties:
         errorCode:
@@ -144,19 +163,8 @@ components:
           example: Too many requests
           type: string
       type: object
-    Product:
-      properties:
-        categories:
-          description: Information of the product category
-          items:
-            $ref: '#/components/schemas/ProductCategory'
-          type: array
-        productDescription:
-          description: Description of the product
-          example: women tops for SS22
-          type: string
-        productName:
-          description: Name of the product
-          example: Cashmere womens top
-          type: string
-      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: apiKey
+      type: apiKey

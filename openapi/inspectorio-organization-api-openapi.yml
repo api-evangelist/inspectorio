@@ -1,19 +1,25 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: File Management ANALYTICS ORGANIZATION API
-  version: v3
+  title: Inspectorio ORGANIZATION API
+  version: v1
+  description: 'Operations tagged ORGANIZATION across 2 of this provider''s published API definitions: inspectorio-qrm-openapi.json, inspectorio-rsc-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
 - description: Production Environment
-  url: https://files-integration.inspectorio.com
+  url: https://sight.inspectorio.com
 - description: Pre-Production Environment
-  url: https://files-integration.pre.inspectorio.com
+  url: https://sight.pre.inspectorio.com
+- description: Production Environment
+  url: https://rise-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://rise-integration.pre.inspectorio.com
+security:
+- ApiKeyAuth: []
 tags:
-- name: ORGANIZATION
+- name: Organization
 paths:
   /api/v1/organizations:
     get:
       summary: List Organizations
-      description: List Organizations
       parameters:
       - in: query
         name: offset
@@ -75,10 +81,11 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - ORGANIZATION
+      - Organization
+      operationId: getApiV1Organizations
+      x-operation-id-source: derived
     post:
       summary: Create Organization
-      description: Create Organization
       parameters: []
       requestBody:
         content:
@@ -123,11 +130,17 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - ORGANIZATION
+      - Organization
+      operationId: postApiV1Organizations
+      x-operation-id-source: derived
+    servers:
+    - description: Production Environment
+      url: https://sight.inspectorio.com
+    - description: Pre-Production Environment
+      url: https://sight.pre.inspectorio.com
   /api/v1/organizations/{organization_id}:
     delete:
       summary: Delete Organization
-      description: Delete Organization
       parameters:
       - in: path
         name: organization_id
@@ -171,10 +184,11 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - ORGANIZATION
+      - Organization
+      operationId: deleteApiV1OrganizationsByOrganizationId
+      x-operation-id-source: derived
     get:
       summary: Get Organization
-      description: Get Organization
       parameters:
       - in: path
         name: organization_id
@@ -219,10 +233,11 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - ORGANIZATION
+      - Organization
+      operationId: getApiV1OrganizationsByOrganizationId
+      x-operation-id-source: derived
     put:
       summary: Update Organization
-      description: Update Organization
       parameters:
       - in: path
         name: organization_id
@@ -272,115 +287,39 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - ORGANIZATION
+      - Organization
+      operationId: putApiV1OrganizationsByOrganizationId
+      x-operation-id-source: derived
+    servers:
+    - description: Production Environment
+      url: https://sight.inspectorio.com
+    - description: Pre-Production Environment
+      url: https://sight.pre.inspectorio.com
 components:
   schemas:
-    UpdateOrganization:
+    UnauthenticatedApiError:
       properties:
-        address:
-          description: Organization address line 1
-          example: 5 Madison Avenue
-          minLength: 1
+        errorCode:
+          example: Generic
           type: string
-        address2:
-          description: Organization address line 2
-          example: Suite 101
+        message:
+          example: Cannot retrieve session data because of expired token
           type: string
-        billing_email:
-          description: Billing email
-          example: email@test.com
-          nullable: true
-          type: string
-        city:
-          description: City where the organization locates
-          example: New York
-          nullable: true
-          type: string
-        contacts:
-          description: Organization contact information
-          items:
-            $ref: '#/components/schemas/OrganizationContactUpdate'
-          minItems: 1
-          type: array
-        country:
-          description: ISO Alpha-2 country code
-          example: US
-          type: string
-        createdAt:
-          description: Creation date and time of the organization in the system
-          example: '2021-06-02 12:34:02.861000+00:00'
-          readOnly: true
-          type: string
-        linkedId:
-          default: null
-          example: '123123'
-          nullable: true
-          type: string
-        linkedTo:
-          description: Global organization that links to this local organization
-          example: '3111222'
-          readOnly: true
-          type: string
-        location:
-          $ref: '#/components/schemas/OrganizationLocation'
-          description: Organization location
-          nullable: true
-        name:
-          description: Name of the organization
-          example: Acme Corp
-          minLength: 1
-          type: string
-        officeId:
-          description: Office ID
-          example: office_123
-          nullable: true
-          type: string
-        organizationLabels:
-          description: List of organization labels
-          example:
-          - Tier 1
-          - Tier 2
-          items:
-            type: string
-          nullable: true
-          type: array
-        phone:
-          description: Organization phone number
-          example: '1505111222'
-          minLength: 1
-          type: string
-        postal:
-          description: Organization postal code
-          example: A1B2C3
-          nullable: true
-          type: string
-        province:
-          description: Province where the organization locates
-          example: New York
-          nullable: true
-          type: string
-        type:
-          description: Support F(Factory) S(Supplier) B(Brand) R(Retailer) V(Vendor)
-          example: S
-          minLength: 1
-          type: string
-        updatedAt:
-          description: Last updated date and time of the organization in the system
-          example: '2021-06-02 12:34:02.861000+00:00'
-          readOnly: true
-          type: string
-        description:
-          nullable: true
-          example: This is a description
-          description: description of the local organization
-          type: string
-      required:
-      - address
-      - contacts
-      - country
-      - name
-      - phone
-      - type
+      type: object
+    CustomResponse6:
+      properties:
+        data:
+          $ref: '#/components/schemas/CreateOrUpdateOrganizationResponse'
+      type: object
+    CustomResponse4:
+      properties:
+        data:
+          $ref: '#/components/schemas/CreateOrUpdateOrganizationResponse'
+      type: object
+    CustomResponse5:
+      properties:
+        data:
+          $ref: '#/components/schemas/GetOrganizationResponse'
       type: object
     ValidateApiError:
       properties:
@@ -396,40 +335,7 @@ components:
           example: Validation error
           type: string
       type: object
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    CustomResponse6:
-      properties:
-        data:
-          $ref: '#/components/schemas/CreateOrUpdateOrganizationResponse'
-      type: object
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
-    CustomResponse5:
-      properties:
-        data:
-          $ref: '#/components/schemas/GetOrganizationResponse'
-      type: object
-    OrganizationContact1:
+    OrganizationContactUpdate:
       properties:
         email:
           description: Email of the organization contact
@@ -443,37 +349,21 @@ components:
         lastName:
           description: Last name of the organization contact
           example: Doe
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         phone:
           description: Phone number of the organization contact
           example: '1505123123'
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         workPhone:
           description: Work phone number of the organization contact
           example: '1505456456'
           type: string
       required:
       - firstName
-      type: object
-    OrganizationListResponse:
-      properties:
-        data:
-          description: Organizations data
-          items:
-            $ref: '#/components/schemas/LocalOrganization'
-          type: array
-        limit:
-          type: integer
-        offset:
-          type: integer
-        total:
-          type: integer
-      required:
-      - limit
-      - offset
-      - total
       type: object
     OrganizationLocation:
       properties:
@@ -503,13 +393,15 @@ components:
         billing_email:
           description: Billing email
           example: email@test.com
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         city:
           description: City where the organization locates
           example: New York
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         contacts:
           description: Organization contact information
           items:
@@ -528,8 +420,9 @@ components:
         id:
           type: string
         linkedId:
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         linkedTo:
           description: Global organization that links to this local organization
           example: '3111222'
@@ -538,7 +431,6 @@ components:
         location:
           $ref: '#/components/schemas/OrganizationLocation'
           description: Organization location
-          nullable: true
         name:
           description: Name of the organization
           example: Acme Corp
@@ -551,8 +443,9 @@ components:
           - Tier 2
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+          - array
+          - 'null'
         phone:
           description: Organization phone number
           example: '1505111222'
@@ -561,13 +454,15 @@ components:
         postal:
           description: Organization postal code
           example: A1B2C3
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         province:
           description: Province where the organization locates
           example: New York
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         type:
           description: Support F(Factory) S(Supplier) B(Brand) R(Retailer) V(Vendor)
           example: S
@@ -579,10 +474,11 @@ components:
           readOnly: true
           type: string
         description:
-          nullable: true
           example: This is a description
           description: description of the local organization
-          type: string
+          type:
+          - string
+          - 'null'
       required:
       - address
       - contacts
@@ -605,13 +501,15 @@ components:
         billing_email:
           description: Billing email
           example: email@test.com
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         city:
           description: City where the organization locates
           example: New York
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         contacts:
           description: Organization contact information
           items:
@@ -633,8 +531,9 @@ components:
         linkedId:
           default: null
           example: '123123'
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         linkedTo:
           description: Global organization that links to this local organization
           example: '3111222'
@@ -643,7 +542,6 @@ components:
         location:
           $ref: '#/components/schemas/OrganizationLocation'
           description: Organization location
-          nullable: true
         name:
           description: Name of the organization
           example: Acme Corp
@@ -652,8 +550,9 @@ components:
         officeId:
           description: Office ID
           example: office_123
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         organizationLabels:
           description: List of organization labels
           example:
@@ -661,8 +560,9 @@ components:
           - Tier 2
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+          - array
+          - 'null'
         phone:
           description: Organization phone number
           example: '1505111222'
@@ -671,13 +571,15 @@ components:
         postal:
           description: Organization postal code
           example: A1B2C3
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         province:
           description: Province where the organization locates
           example: New York
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         type:
           description: Support F(Factory) S(Supplier) B(Brand) R(Retailer) V(Vendor)
           example: S
@@ -689,10 +591,11 @@ components:
           readOnly: true
           type: string
         description:
-          nullable: true
           example: This is a description
           description: description of the local organization
-          type: string
+          type:
+          - string
+          - 'null'
       required:
       - address
       - contacts
@@ -702,16 +605,160 @@ components:
       - phone
       - type
       type: object
-    UnauthenticatedApiError:
+    BadRequestApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         message:
-          example: Cannot retrieve session data because of expired token
+          example: Bad Request
           type: string
       type: object
-    OrganizationContactUpdate:
+    CreateOrUpdateOrganizationResponse:
+      properties:
+        address:
+          description: Organization address line 1
+          example: 5 Madison Avenue
+          minLength: 1
+          type: string
+        address2:
+          description: Organization address line 2
+          example: Suite 101
+          type: string
+        billing_email:
+          description: Billing email
+          example: email@test.com
+          type:
+          - string
+          - 'null'
+        city:
+          description: City where the organization locates
+          example: New York
+          type:
+          - string
+          - 'null'
+        contacts:
+          description: Organization contact information
+          items:
+            $ref: '#/components/schemas/OrganizationContact1'
+          minItems: 1
+          type: array
+        country:
+          description: ISO Alpha-2 country code
+          example: US
+          type: string
+        createdAt:
+          description: Creation date and time of the organization in the system
+          example: '2021-06-02 12:34:02.861000+00:00'
+          readOnly: true
+          type: string
+        id:
+          minLength: 1
+          type: string
+        linkedTo:
+          description: Global organization that links to this local organization
+          example: '3111222'
+          readOnly: true
+          type: string
+        location:
+          $ref: '#/components/schemas/OrganizationLocation'
+          description: Organization location
+        name:
+          description: Name of the organization
+          example: Acme Corp
+          minLength: 1
+          type: string
+        officeId:
+          description: Office ID
+          example: office_123
+          type:
+          - string
+          - 'null'
+        organizationLabels:
+          description: List of organization labels
+          example:
+          - Tier 1
+          - Tier 2
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        phone:
+          description: Organization phone number
+          example: '1505111222'
+          minLength: 1
+          type: string
+        postal:
+          description: Organization postal code
+          example: A1B2C3
+          type:
+          - string
+          - 'null'
+        province:
+          description: Province where the organization locates
+          example: New York
+          type:
+          - string
+          - 'null'
+        type:
+          description: Support F(Factory) S(Supplier) B(Brand) R(Retailer) V(Vendor)
+          example: S
+          minLength: 1
+          type: string
+        updatedAt:
+          description: Last updated date and time of the organization in the system
+          example: '2021-06-02 12:34:02.861000+00:00'
+          readOnly: true
+          type: string
+        description:
+          example: This is a description
+          description: description of the local organization
+          type:
+          - string
+          - 'null'
+      required:
+      - address
+      - contacts
+      - country
+      - id
+      - name
+      - phone
+      - type
+      type: object
+    OrganizationListResponse:
+      properties:
+        data:
+          description: Organizations data
+          items:
+            $ref: '#/components/schemas/LocalOrganization'
+          type: array
+        limit:
+          type: integer
+        offset:
+          type: integer
+        total:
+          type: integer
+      required:
+      - limit
+      - offset
+      - total
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    OrganizationContact1:
       properties:
         email:
           description: Email of the organization contact
@@ -725,13 +772,15 @@ components:
         lastName:
           description: Last name of the organization contact
           example: Doe
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         phone:
           description: Phone number of the organization contact
           example: '1505123123'
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         workPhone:
           description: Work phone number of the organization contact
           example: '1505456456'
@@ -739,10 +788,119 @@ components:
       required:
       - firstName
       type: object
-    CustomResponse4:
+    UpdateOrganization:
       properties:
-        data:
-          $ref: '#/components/schemas/CreateOrUpdateOrganizationResponse'
+        address:
+          description: Organization address line 1
+          example: 5 Madison Avenue
+          minLength: 1
+          type: string
+        address2:
+          description: Organization address line 2
+          example: Suite 101
+          type: string
+        billing_email:
+          description: Billing email
+          example: email@test.com
+          type:
+          - string
+          - 'null'
+        city:
+          description: City where the organization locates
+          example: New York
+          type:
+          - string
+          - 'null'
+        contacts:
+          description: Organization contact information
+          items:
+            $ref: '#/components/schemas/OrganizationContactUpdate'
+          minItems: 1
+          type: array
+        country:
+          description: ISO Alpha-2 country code
+          example: US
+          type: string
+        createdAt:
+          description: Creation date and time of the organization in the system
+          example: '2021-06-02 12:34:02.861000+00:00'
+          readOnly: true
+          type: string
+        linkedId:
+          default: null
+          example: '123123'
+          type:
+          - string
+          - 'null'
+        linkedTo:
+          description: Global organization that links to this local organization
+          example: '3111222'
+          readOnly: true
+          type: string
+        location:
+          $ref: '#/components/schemas/OrganizationLocation'
+          description: Organization location
+        name:
+          description: Name of the organization
+          example: Acme Corp
+          minLength: 1
+          type: string
+        officeId:
+          description: Office ID
+          example: office_123
+          type:
+          - string
+          - 'null'
+        organizationLabels:
+          description: List of organization labels
+          example:
+          - Tier 1
+          - Tier 2
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        phone:
+          description: Organization phone number
+          example: '1505111222'
+          minLength: 1
+          type: string
+        postal:
+          description: Organization postal code
+          example: A1B2C3
+          type:
+          - string
+          - 'null'
+        province:
+          description: Province where the organization locates
+          example: New York
+          type:
+          - string
+          - 'null'
+        type:
+          description: Support F(Factory) S(Supplier) B(Brand) R(Retailer) V(Vendor)
+          example: S
+          minLength: 1
+          type: string
+        updatedAt:
+          description: Last updated date and time of the organization in the system
+          example: '2021-06-02 12:34:02.861000+00:00'
+          readOnly: true
+          type: string
+        description:
+          example: This is a description
+          description: description of the local organization
+          type:
+          - string
+          - 'null'
+      required:
+      - address
+      - contacts
+      - country
+      - name
+      - phone
+      - type
       type: object
     GetOrganizationResponse:
       properties:
@@ -758,13 +916,15 @@ components:
         billing_email:
           description: Billing email
           example: email@test.com
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         city:
           description: City where the organization locates
           example: New York
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         contacts:
           description: Organization contact information
           items:
@@ -784,8 +944,9 @@ components:
           minLength: 1
           type: string
         linkedId:
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         linkedTo:
           description: Global organization that links to this local organization
           example: '3111222'
@@ -794,7 +955,6 @@ components:
         location:
           $ref: '#/components/schemas/OrganizationLocation'
           description: Organization location
-          nullable: true
         name:
           description: Name of the organization
           example: Acme Corp
@@ -803,8 +963,9 @@ components:
         officeId:
           description: Office ID
           example: office_123
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         organizationLabels:
           description: List of organization labels
           example:
@@ -812,8 +973,9 @@ components:
           - Tier 2
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+          - array
+          - 'null'
         phone:
           description: Organization phone number
           example: '1505111222'
@@ -822,13 +984,15 @@ components:
         postal:
           description: Organization postal code
           example: A1B2C3
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         province:
           description: Province where the organization locates
           example: New York
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         type:
           description: Support F(Factory) S(Supplier) B(Brand) R(Retailer) V(Vendor)
           example: S
@@ -840,10 +1004,11 @@ components:
           readOnly: true
           type: string
         description:
-          nullable: true
           example: This is a description
           description: description of the local organization
-          type: string
+          type:
+          - string
+          - 'null'
       required:
       - address
       - contacts
@@ -862,109 +1027,702 @@ components:
           example: Too many requests
           type: string
       type: object
-    CreateOrUpdateOrganizationResponse:
+    OrganizationDetailResponse:
       properties:
-        address:
-          description: Organization address line 1
-          example: 5 Madison Avenue
+        data:
+          allOf:
+          - $ref: '#/components/schemas/OrganizationCreateResponse'
+          description: Organization data
+      type: object
+    OrganizationPartner:
+      properties:
+        authorizedCapabilities:
+          description: Authorized capabilities of an Organization
+          items:
+            example: PRINTING
+            minLength: 1
+            type: string
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique identifier of the Partner Organization
+          example: P123
           minLength: 1
           type: string
-        address2:
-          description: Organization address line 2
-          example: Suite 101
-          type: string
-        billing_email:
-          description: Billing email
-          example: email@test.com
-          nullable: true
-          type: string
-        city:
-          description: City where the organization locates
-          example: New York
-          nullable: true
-          type: string
-        contacts:
-          description: Organization contact information
+        isLeadSupplier:
+          description: Indicates by true or false whether the Partner can be marked as a Lead Supplier for the Factory
+          type:
+          - boolean
+          - 'null'
+        locationStatus:
+          description: Status of the Partner Organization between Available, In Progress, Non-Compliant, Pending Transfer, or Pending Duplicate Check
+          example: Available
+          type:
+          - string
+          - 'null'
+        manufacturingTypes:
+          description: Types of manufacturing of the Organization represented by an integer from 1 to 5 <br> 1 = FACTORY <br> 2 = MILL <br> 3 = LAUNDRY <br> 4 = PACKING <br> 5 = TRIM
           items:
-            $ref: '#/components/schemas/OrganizationContact1'
-          minItems: 1
-          type: array
-        country:
-          description: ISO Alpha-2 country code
-          example: US
+            example: 1
+            type: integer
+          type:
+          - array
+          - 'null'
+        name:
+          description: Name of the Partner Organization
+          example: Lex Corp
+          minLength: 1
           type: string
-        createdAt:
-          description: Creation date and time of the organization in the system
-          example: '2021-06-02 12:34:02.861000+00:00'
-          readOnly: true
+        registrationDate:
+          description: Date of registration of the Partner Organization
+          example: '2020-04-21'
+          format: date
+          type:
+          - string
+          - 'null'
+        registrationStatus:
+          description: Status of the registration of the Partner Organization represented by an integer from 1 to 4 <br>1 = REGISTERED <br> 2 = UNREGISTERED <br> 3 = PENDING <br> 4 = DECLINED
+          example: 1
+          type:
+          - integer
+          - 'null'
+        scope:
+          description: Scope of the Organization represented by an integer from 1 to 3 <br> 1 = OWNED_BRAND <br> 2 = NATIONAL_BRAND <br> 3 = BOTH
+          example: 1
+          type:
+          - integer
+          - 'null'
+      required:
+      - id
+      - name
+      type: object
+    OrganizationLocation_2:
+      description: Location of the Organization
+      properties:
+        latitude:
+          description: Latitude location of the Organization
+          example: 38.8951
+          type: number
+        longitude:
+          description: Longitude location of the Organization
+          example: -77.0364
+          type: number
+      required:
+      - latitude
+      - longitude
+      type: object
+    OrganizationContact:
+      properties:
+        email:
+          description: Email of the organization contact
+          example: john@acme.com
+          minLength: 1
+          type: string
+        firstName:
+          description: First name of the organization contact
+          example: John
+          minLength: 1
           type: string
         id:
+          description: Unique identifier of the organization contact
+          example: U123456
+          type:
+          - string
+          - 'null'
+        lastName:
+          description: Last name of the organization contact
+          example: Doe
+          type:
+          - string
+          - 'null'
+        phone:
+          description: Phone number of the organization contact
+          example: '1505123456'
           minLength: 1
           type: string
-        linkedTo:
-          description: Global organization that links to this local organization
-          example: '3111222'
-          readOnly: true
+        phoneCountryCode:
+          description: Country code of the phone number of a Contact
+          example: '1'
+          type:
+          - string
+          - 'null'
+      required:
+      - email
+      - firstName
+      - phone
+      type: object
+    OrganizationPartnerResponse:
+      properties:
+        authorizedCapabilities:
+          description: Authorized capabilities of an Organization
+          items:
+            example: PRINTING
+            type: string
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique identifier of the Partner Organization
+          example: P123
+          minLength: 1
           type: string
-        location:
-          $ref: '#/components/schemas/OrganizationLocation'
-          description: Organization location
-          nullable: true
+        isLeadSupplier:
+          description: Indicates by true or false whether the Partner can be marked as a Lead Supplier for the Factory
+          type:
+          - boolean
+          - 'null'
+        locationStatus:
+          description: Status of the Partner Organization between Available, In Progress, Non-Compliant, Pending Transfer, or Pending Duplicate Check
+          example: Available
+          type:
+          - string
+          - 'null'
+        manufacturingTypes:
+          description: Types of manufacturing of the Organization represented by an integer from 1 to 5 <br> 1 = FACTORY <br> 2 = MILL <br> 3 = LAUNDRY <br> 4 = PACKING <br> 5 = TRIM
+          example: '1'
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
         name:
-          description: Name of the organization
+          description: Name of the Partner Organization
+          example: Lex Corp
+          minLength: 1
+          type: string
+        registrationDate:
+          description: Date of registration of the Partner Organization
+          example: '2020-04-21'
+          format: date
+          type:
+          - string
+          - 'null'
+        registrationStatus:
+          description: Status of the registration of the Organization represented by an integer from 1 to 4 <br> 1 = REGISTERED <br> 2 = UNREGISTERED <br> 3 = PENDING <br> 4 = DECLINED
+          example: '1'
+          type:
+          - string
+          - 'null'
+        scope:
+          description: Scope of the Organization represented by an integer from 1 to 3 <br> 1 = OWNED_BRAND <br> 2 = NATIONAL_BRAND <br> 3 = BOTH
+          example: '1'
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - name
+      type: object
+    OrganizationCreateResponse:
+      properties:
+        address:
+          description: Address of the Organization
+          example: 5 Park Avenue
+          minLength: 1
+          type: string
+        businessPartnerTypes:
+          description: List of business partner types of the Organization. This field is only used for an Organization of type 'partner'
+          items:
+            enum:
+            - Fabric Supplier
+            - Trim Supplier
+            - Merchandise Vendor
+            - Packaging Supplier
+            - Production/Storage Facility Owner
+            type: string
+          type:
+          - array
+          - 'null'
+        businessUnit:
+          deprecated: true
+          description: The strategic business unit that the organization belongs to
+          example: Central Europe
+          type:
+          - string
+          - 'null'
+        businessUnits:
+          description: The strategic business units that the organization belongs to
+          example:
+          - Central Europe
+          - Western Europe
+          type:
+          - array
+          - 'null'
+        businessUnitCategories:
+          description: The strategic business unit category that the organization belongs to
+          example:
+          - CZ / Bakery
+          - HU / Bakery
+          - SK / Bakery
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        city:
+          description: City of the Organization
+          example: Minneapolis
+          type:
+          - string
+          - 'null'
+        contacts:
+          description: List of contacts of the Organization
+          items:
+            $ref: '#/components/schemas/OrganizationContact'
+          type:
+          - array
+          - 'null'
+        country:
+          description: Country of the Organization represented by the standard ISO Alpha-2 code, e.g. US for the United States
+          example: US
+          maxLength: 2
+          minLength: 2
+          type:
+          - string
+          - 'null'
+        createdDate:
+          description: The date the organization has been created
+          example: '2020-04-21T12:36:43.693000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        factoryType:
+          description: Factory Type
+          enum:
+          - primary
+          - secondary
+          example: primary
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of an Organization
+          example: F123
+          minLength: 1
+          type: string
+        isFoodFacility:
+          description: Indicates by true or false whether the Organization has the ability to produce food
+          example: true
+          type: boolean
+        leadBusinessUnitCategory:
+          description: The lead strategic business unit category that the organization belongs to
+          example: CZ / Impulse
+          type:
+          - string
+          - 'null'
+        leadManager:
+          description: Lead Manager
+          example: John Doe
+          type:
+          - string
+          - 'null'
+        location:
+          $ref: '#/components/schemas/OrganizationLocation_2'
+        name:
+          description: Name of the Organization
           example: Acme Corp
           minLength: 1
           type: string
-        officeId:
-          description: Office ID
-          example: office_123
-          nullable: true
+        partners:
+          description: List of partner IDs of the Organization
+          items:
+            $ref: '#/components/schemas/OrganizationPartnerResponse'
+          type:
+          - array
+          - 'null'
+        postal:
+          description: Zip / Postal code of the Organization
+          example: '55402'
+          type:
+          - string
+          - 'null'
+        province:
+          description: Province of the Organization
+          example: Minnesota
+          type:
+          - string
+          - 'null'
+        requiresMaintenanceAudit:
+          description: Indicates by true or false whether the Factory requires Maintenance Audit
+          example: true
+          type:
+          - boolean
+          - 'null'
+        status:
+          description: Organization Status
+          enum:
+          - active
+          - inactive
+          - awaiting approval
+          - awaiting registration
+          - de-listed
+          - unapproved
+          example: awaiting approval
+          type:
+          - string
+          - 'null'
+        type:
+          description: The type of the Organization, e.g. 'factory' or 'partner'
+          example: factory
+          minLength: 1
           type: string
-        organizationLabels:
-          description: List of organization labels
+        updatedDate:
+          description: The date the organization has been updated
+          example: '2020-04-21T12:36:43.693000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      required:
+      - address
+      - id
+      - name
+      - type
+      type: object
+    OrganizationUpdate:
+      properties:
+        address:
+          description: Address of the Organization
+          example: 5 Park Avenue
+          minLength: 1
+          type: string
+        authorizedCapabilities:
+          description: Authorized capabilities of an Organization
+          items:
+            example: PRINTING
+            minLength: 1
+            type: string
+          type:
+          - array
+          - 'null'
+        businessPartnerTypes:
+          description: List of business partner types of the Organization. This field is only used for an Organization of type 'partner'
+          items:
+            enum:
+            - Fabric Supplier
+            - Trim Supplier
+            - Merchandise Vendor
+            - Packaging Supplier
+            - Production/Storage Facility Owner
+            type: string
+          type:
+          - array
+          - 'null'
+        businessUnit:
+          deprecated: true
+          description: The strategic business unit that the organization belongs to
+          example: Central Europe
+          type:
+          - string
+          - 'null'
+        businessUnits:
+          description: The strategic business units that the organization belongs to
           example:
-          - Tier 1
-          - Tier 2
+          - Central Europe
+          - Western Europe
+          type:
+          - array
+          - 'null'
+        businessUnitCategories:
+          description: The strategic business unit category that the organization belongs to
+          example:
+          - CZ / Bakery
+          - HU / Bakery
+          - SK / Bakery
           items:
             type: string
-          nullable: true
-          type: array
-        phone:
-          description: Organization phone number
-          example: '1505111222'
+          type:
+          - array
+          - 'null'
+        city:
+          description: City of the Organization
+          example: Minneapolis
+          type:
+          - string
+          - 'null'
+        contacts:
+          description: List of contacts of the Organization
+          items:
+            $ref: '#/components/schemas/OrganizationContact'
+          type:
+          - array
+          - 'null'
+        country:
+          description: Country of the Organization represented by the standard ISO Alpha-2 code, e.g. US for the United States
+          example: US
+          maxLength: 2
+          minLength: 2
+          type:
+          - string
+          - 'null'
+        factoryType:
+          description: Factory Type
+          enum:
+          - primary
+          - secondary
+          example: primary
+          type:
+          - string
+          - 'null'
+        isFoodFacility:
+          description: Indicates by true or false whether the Organization has the ability to produce food
+          example: true
+          type: boolean
+        leadBusinessUnitCategory:
+          description: The lead strategic business unit category that the organization belongs to
+          example: CZ / Impulse
+          type:
+          - string
+          - 'null'
+        leadManager:
+          description: Lead Manager
+          example: John Doe
+          type:
+          - string
+          - 'null'
+        location:
+          $ref: '#/components/schemas/OrganizationLocation_2'
+        name:
+          description: Name of the Organization
+          example: Acme Corp
           minLength: 1
           type: string
+        partners:
+          description: List of partner IDs of the Organization, this field is only use for an Organization of type 'factory'
+          items:
+            $ref: '#/components/schemas/OrganizationPartner'
+          type:
+          - array
+          - 'null'
         postal:
-          description: Organization postal code
-          example: A1B2C3
-          nullable: true
-          type: string
+          description: Zip / Postal code of the Organization
+          example: '55402'
+          type:
+          - string
+          - 'null'
         province:
-          description: Province where the organization locates
-          example: New York
-          nullable: true
-          type: string
-        type:
-          description: Support F(Factory) S(Supplier) B(Brand) R(Retailer) V(Vendor)
-          example: S
+          description: Province of the Organization
+          example: Minnesota
+          type:
+          - string
+          - 'null'
+        registrationDate:
+          description: Date of registration of the Organization
+          example: '2020-04-21'
+          format: date
+          type:
+          - string
+          - 'null'
+        registrationStatus:
+          description: Status of the registration of the Organization represented by an integer from 1 to 4 <br>1 = REGISTERED <br> 2 = UNREGISTERED <br> 3 = PENDING <br> 4 = DECLINED
+          example: 1
+          type:
+          - integer
+          - 'null'
+        requiresMaintenanceAudit:
+          description: Indicates by true or false whether the Factory requires Maintenance Audit
+          example: true
+          type:
+          - boolean
+          - 'null'
+        status:
+          description: Organization Status
+          enum:
+          - active
+          - inactive
+          - awaiting approval
+          - awaiting registration
+          - de-listed
+          - unapproved
+          example: awaiting approval
+          type:
+          - string
+          - 'null'
+      type: object
+    OrganizationCreate:
+      properties:
+        address:
+          description: Address of the Organization
+          example: 5 Park Avenue
           minLength: 1
           type: string
-        updatedAt:
-          description: Last updated date and time of the organization in the system
-          example: '2021-06-02 12:34:02.861000+00:00'
-          readOnly: true
+        authorizedCapabilities:
+          description: Authorized capabilities of an Organization
+          items:
+            example: PRINTING
+            minLength: 1
+            type: string
+          type:
+          - array
+          - 'null'
+        businessPartnerTypes:
+          description: List of business partner types of the Organization. This field is only used for an Organization of type 'partner'
+          items:
+            enum:
+            - Fabric Supplier
+            - Trim Supplier
+            - Merchandise Vendor
+            - Packaging Supplier
+            - Production/Storage Facility Owner
+            type: string
+          type:
+          - array
+          - 'null'
+        businessUnit:
+          deprecated: true
+          description: The strategic business unit that the organization belongs to
+          example: Central Europe
+          type:
+          - string
+          - 'null'
+        businessUnits:
+          description: The strategic business units that the organization belongs to
+          example:
+          - Central Europe
+          - Western Europe
+          type:
+          - array
+          - 'null'
+        businessUnitCategories:
+          description: The strategic business unit category that the organization belongs to
+          example:
+          - CZ / Bakery
+          - HU / Bakery
+          - SK / Bakery
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        city:
+          description: City of the Organization
+          example: Minneapolis
+          type:
+          - string
+          - 'null'
+        contacts:
+          description: List of contacts of the Organization
+          items:
+            $ref: '#/components/schemas/OrganizationContact'
+          type:
+          - array
+          - 'null'
+        country:
+          description: Country of the Organization represented by the standard ISO Alpha-2 code, e.g. US for the United States
+          example: US
+          maxLength: 2
+          minLength: 2
+          type:
+          - string
+          - 'null'
+        factoryType:
+          description: Factory Type
+          enum:
+          - primary
+          - secondary
+          example: primary
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of an Organization, e.g. F123
+          example: F123
+          minLength: 1
           type: string
-        description:
-          nullable: true
-          example: This is a description
-          description: description of the local organization
+        isFoodFacility:
+          description: Indicates by true or false whether the Organization has the ability to produce food
+          example: true
+          type: boolean
+        leadBusinessUnitCategory:
+          description: The lead strategic business unit category that the organization belongs to
+          example: CZ / Impulse
+          type:
+          - string
+          - 'null'
+        leadManager:
+          description: Lead Manager
+          example: John Doe
+          type:
+          - string
+          - 'null'
+        location:
+          $ref: '#/components/schemas/OrganizationLocation_2'
+        name:
+          description: Name of the Organization
+          example: Acme Corp
+          minLength: 1
+          type: string
+        partners:
+          description: List of partner IDs of the Organization, this field is only use for an Organization of type 'factory'
+          items:
+            $ref: '#/components/schemas/OrganizationPartner'
+          type:
+          - array
+          - 'null'
+        postal:
+          description: Zip / Postal code of the Organization
+          example: '55402'
+          type:
+          - string
+          - 'null'
+        province:
+          description: Province of the Organization
+          example: Minnesota
+          type:
+          - string
+          - 'null'
+        registrationDate:
+          description: Date of registration of the Organization
+          example: '2020-04-21'
+          format: date
+          type:
+          - string
+          - 'null'
+        registrationStatus:
+          description: Status of the registration of the Organization represented by an integer from 1 to 4 <br>1 = REGISTERED <br> 2 = UNREGISTERED <br> 3 = PENDING <br> 4 = DECLINED
+          example: 1
+          type:
+          - integer
+          - 'null'
+        requiresMaintenanceAudit:
+          description: Indicates by true or false whether the Factory requires Maintenance Audit
+          example: true
+          type:
+          - boolean
+          - 'null'
+        status:
+          description: Organization Status
+          enum:
+          - active
+          - inactive
+          - awaiting approval
+          - awaiting registration
+          - de-listed
+          - unapproved
+          example: awaiting approval
+          type:
+          - string
+          - 'null'
+        type:
+          description: The type of the Organization, e.g. 'factory' or 'partner'
+          enum:
+          - factory
+          - partner
+          example: factory
           type: string
       required:
       - address
-      - contacts
-      - country
       - id
       - name
-      - phone
       - type
       type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: apiKey
+      type: apiKey
+x-refined-from:
+- inspectorio-qrm-openapi.json
+- inspectorio-rsc-openapi.json

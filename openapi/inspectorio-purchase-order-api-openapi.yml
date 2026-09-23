@@ -1,19 +1,20 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: File Management ANALYTICS PURCHASE ORDER API
-  version: v3
+  title: Inspectorio Quality Risk Management PURCHASE ORDER API
+  version: v1
 servers:
 - description: Production Environment
-  url: https://files-integration.inspectorio.com
+  url: https://sight.inspectorio.com
 - description: Pre-Production Environment
-  url: https://files-integration.pre.inspectorio.com
+  url: https://sight.pre.inspectorio.com
+security:
+- ApiKeyAuth: []
 tags:
-- name: PURCHASE ORDER
+- name: Purchase Order
 paths:
   /api/v1/purchase-orders:
     get:
       summary: List Purchase Orders
-      description: List Purchase Orders
       parameters:
       - description: Purchase order number to be stored in Inspectorio
         in: query
@@ -52,8 +53,9 @@ paths:
         schema:
           example: '2021-06-15T23:59:59Z'
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
       - description: Purchase order delivery date from
         in: query
         name: delivery_date_from
@@ -61,8 +63,9 @@ paths:
         schema:
           example: '2021-05-23T23:59:59Z'
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
       - description: Purchase order creation date from
         in: query
         name: created_from
@@ -70,8 +73,9 @@ paths:
         schema:
           example: '2021-05-23T23:59:59Z'
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
       - description: Purchase order creation date to
         in: query
         name: created_to
@@ -79,8 +83,9 @@ paths:
         schema:
           example: '2021-06-15T23:59:59Z'
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
       responses:
         '200':
           content:
@@ -119,10 +124,11 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - PURCHASE ORDER
+      - Purchase Order
+      operationId: getApiV1PurchaseOrders
+      x-operation-id-source: derived
     post:
       summary: Create Purchase Order
-      description: Create Purchase Order
       parameters: []
       requestBody:
         content:
@@ -167,11 +173,12 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - PURCHASE ORDER
+      - Purchase Order
+      operationId: postApiV1PurchaseOrders
+      x-operation-id-source: derived
   /api/v1/purchase-orders/{po_number}:
     delete:
       summary: Delete Purchase Order
-      description: 'Delete Purchase Order '
       parameters:
       - in: path
         name: po_number
@@ -215,10 +222,11 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - PURCHASE ORDER
+      - Purchase Order
+      operationId: deleteApiV1PurchaseOrdersByPoNumber
+      x-operation-id-source: derived
     get:
       summary: Get Purchase Order
-      description: Get Purchase Order
       parameters:
       - in: path
         name: po_number
@@ -263,10 +271,11 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - PURCHASE ORDER
+      - Purchase Order
+      operationId: getApiV1PurchaseOrdersByPoNumber
+      x-operation-id-source: derived
     put:
       summary: Update Purchase Order
-      description: Update Purchase Order
       parameters:
       - in: path
         name: po_number
@@ -316,11 +325,12 @@ paths:
                 $ref: '#/components/schemas/InternalApiError'
           description: Internal Error
       tags:
-      - PURCHASE ORDER
+      - Purchase Order
+      operationId: putApiV1PurchaseOrdersByPoNumber
+      x-operation-id-source: derived
   /api/v1/purchase-orders/{po_number}/actions/{action}:
     post:
       summary: Update/Delete Purchase Order
-      description: Update/Delete Purchase Order
       parameters:
       - description: PO number
         in: path
@@ -340,13 +350,386 @@ paths:
           type: string
       responses: {}
       tags:
-      - PURCHASE ORDER
+      - Purchase Order
+      operationId: postApiV1PurchaseOrdersByPoNumberActionsByAction
+      x-operation-id-source: derived
 components:
   schemas:
-    CustomResponse10:
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    PurchaseOrderUpdate:
+      properties:
+        clientCreatedDate:
+          description: The creation date from the client system of the Purchase Order
+          example: '2023-02-10'
+          format: date
+          type:
+          - string
+          - 'null'
+        clientId:
+          description: Local Custom ID of the Brand/Retailer organization of the purchase order
+          example: client_1
+          type:
+          - string
+          - 'null'
+        clientUpdatedDate:
+          description: The last updated date from the client system of the Purchase Order
+          example: '2019-02-20T06:37:18Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        commitId:
+          description: Commit ID of the purchase order
+          example: commit_id_1
+          type:
+          - string
+          - 'null'
+        commitPoSequence:
+          description: Commit PO sequence of the purchase order
+          example: commit_po_sequence_1
+          type:
+          - string
+          - 'null'
+        customFields:
+          $ref: '#/components/schemas/CustomFields'
+          description: Custom fields
+          readOnly: true
+        deliveryDate:
+          description: Delivery date or shipment start date of the purchase order
+          example: '2021-05-23T00:00:00Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        eventName:
+          description: Name of the corresponding event in the client's system
+          example: Event 1
+          type:
+          - string
+          - 'null'
+        factoryId:
+          description: Local Custom ID of the Factory organization of the purchase order
+          example: factory_1
+          type:
+          - string
+          - 'null'
+        inStoreDate:
+          description: In store date of the purchase order
+          example: '2021-06-01T00:00:00Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        opoNumber:
+          description: Original purchase order number stored in client's system
+          example: opo_1
+          type:
+          - string
+          - 'null'
+        poNumber:
+          description: Purchase order number to be stored in Inspectorio
+          example: po_1
+          minLength: 1
+          type: string
+        poSource:
+          description: Indicate the source of materials (produced by domestic vendors or imported from vendors outside the country)
+          example: domestic
+          type:
+          - string
+          - 'null'
+        poStatus:
+          description: Status of the purchase order
+          enum:
+          - canceled
+          example: canceled
+          type:
+          - string
+          - 'null'
+        poType:
+          description: Purchase order type in a pre-configured list
+          example: po_type_1
+          minLength: 1
+          type:
+          - string
+          - 'null'
+        productLineId:
+          description: Product Line ID of the purchase order which must be pre-configured in Inspectorio
+          example: product_line_1
+          minLength: 1
+          type: string
+        shareToIds:
+          description: Local Custom IDs of the shared organizations of the purchase order
+          example:
+          - sub_org_1
+          items:
+            minLength: 1
+            type: string
+          type:
+          - array
+          - 'null'
+        shipEndDate:
+          description: Shipment end date of the purchase order
+          example: '2021-05-30T00:00:00Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        styles:
+          description: Style information in the purchase order
+          items:
+            $ref: '#/components/schemas/Style'
+          minItems: 1
+          type: array
+        uid:
+          description: Unique identifier of the purchase order
+          example: abc-def-123-456
+          type:
+          - string
+          - 'null'
+        vendorId:
+          description: Local Custom ID of the Supplier organization of the purchase order
+          example: vendor_1
+          minLength: 1
+          type: string
+      required:
+      - poNumber
+      - productLineId
+      - styles
+      - vendorId
+      type: object
+    AssortmentItem:
+      properties:
+        brandId:
+          description: 'Precondition: must be configured in your Inspectorio''s account.'
+          example: brand_1
+          type:
+          - string
+          - 'null'
+        brandName:
+          minLength: 1
+          readOnly: true
+          type: string
+        classId:
+          example: class_id_1
+          type:
+          - string
+          - 'null'
+        color:
+          minLength: 1
+          type: string
+        configuration:
+          minimum: 1
+          type: integer
+        departmentId:
+          example: department_id_1
+          type:
+          - string
+          - 'null'
+        id:
+          type:
+          - string
+          - 'null'
+        itemId:
+          minLength: 1
+          type: string
+        quantity:
+          readOnly: true
+          type: integer
+        shipmentTerm:
+          example: shipment_term_1
+          type:
+          - string
+          - 'null'
+        size:
+          minLength: 1
+          type: string
+      required:
+      - color
+      - configuration
+      - itemId
+      - size
+      type: object
+    PurchaseOrderListResponse:
+      properties:
+        data:
+          description: List of purchase orders
+          items:
+            $ref: '#/components/schemas/PurchaseOrderResponse'
+          type: array
+        limit:
+          maximum: 100
+          minimum: 1
+          type: integer
+        offset:
+          minimum: 0
+          type: integer
+        total:
+          type: integer
+      required:
+      - limit
+      - offset
+      - total
+      type: object
+    CustomFields:
+      properties:
+        customFile1:
+          type:
+          - string
+          - 'null'
+        customFile2:
+          type:
+          - string
+          - 'null'
+        customString1:
+          type:
+          - string
+          - 'null'
+        customString2:
+          type:
+          - string
+          - 'null'
+        customString3:
+          type:
+          - string
+          - 'null'
+        customString4:
+          type:
+          - string
+          - 'null'
+        customString5:
+          type:
+          - string
+          - 'null'
+        customString6:
+          type:
+          - string
+          - 'null'
+        customString7:
+          type:
+          - string
+          - 'null'
+        customString8:
+          type:
+          - string
+          - 'null'
+        customText1:
+          type:
+          - string
+          - 'null'
+        customText2:
+          type:
+          - string
+          - 'null'
+        customTime1:
+          format: date-time
+          type:
+          - string
+          - 'null'
+      type: object
+    CustomResponse8:
       properties:
         data:
           $ref: '#/components/schemas/PurchaseOrderResponse'
+      type: object
+    SolidItem:
+      properties:
+        brandId:
+          description: 'Precondition: must be configured in your Inspectorio''s account.'
+          example: brand_1
+          type:
+          - string
+          - 'null'
+        brandName:
+          minLength: 1
+          readOnly: true
+          type: string
+        cartonQuantity:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        casePackQuantity:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        classId:
+          example: class_id_1
+          type:
+          - string
+          - 'null'
+        color:
+          minLength: 1
+          type: string
+        departmentId:
+          example: department_id_1
+          type:
+          - string
+          - 'null'
+        id:
+          type:
+          - string
+          - 'null'
+        itemId:
+          minLength: 1
+          type: string
+        quantity:
+          minimum: 1
+          type: integer
+        shipmentTerm:
+          example: shipment_term_1
+          type:
+          - string
+          - 'null'
+        size:
+          minLength: 1
+          type: string
+      required:
+      - color
+      - itemId
+      - quantity
+      - size
+      type: object
+    StyleResponse:
+      properties:
+        assortments:
+          items:
+            $ref: '#/components/schemas/Assortment'
+          type:
+          - array
+          - 'null'
+        productCategoryId:
+          example: product_category_1
+          type: string
+        productCategoryName:
+          minLength: 1
+          readOnly: true
+          type: string
+        solids:
+          items:
+            $ref: '#/components/schemas/SolidItem'
+          type:
+          - array
+          - 'null'
+        styleId:
+          example: style_1
+          minLength: 1
+          type: string
+        styleName:
+          type:
+          - string
+          - 'null'
+      required:
+      - productCategoryId
+      - styleId
       type: object
     ValidateApiError:
       properties:
@@ -371,14 +754,33 @@ components:
           example: Bad Request
           type: string
       type: object
+    Assortment:
+      properties:
+        assortmentId:
+          minLength: 1
+          type: string
+        cartonQuantity:
+          minimum: 0
+          type: integer
+        items:
+          items:
+            $ref: '#/components/schemas/AssortmentItem'
+          minItems: 1
+          type: array
+      required:
+      - assortmentId
+      - cartonQuantity
+      - items
+      type: object
     PurchaseOrderResponse:
       properties:
         clientCreatedDate:
           description: The creation date from the client system of the Purchase Order
           example: '2023-02-10'
           format: date
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         clientId:
           description: Global Custom ID of the Brand/Retailer organization of the purchase order
           example: client_1
@@ -395,13 +797,15 @@ components:
         commitId:
           description: Commit ID of the purchase order
           example: commit_id_1
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         commitPoSequence:
           description: Commit PO sequence of the purchase order
           example: commit_po_sequence_1
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         createdDate:
           description: Creation date of the purchase order
           example: '2021-06-03T04:30:22.726000+00:00'
@@ -411,13 +815,15 @@ components:
           description: Delivery date of the purchase order
           example: '2021-09-14T00:00:00+00:00'
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         eventName:
           description: Name of the corresponding event in the client's system
           example: Event 1
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         factoryId:
           description: Global Custom ID of the Factory organization of the purchase order
           example: factory_1
@@ -430,8 +836,9 @@ components:
           description: The date the purchase order will be delivered to stores
           example: '2021-09-19T00:00:00+00:00'
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         localClientId:
           description: Local Custom ID of the Brand/Retailer organization of the purchase order that is inputted from the request body
           example: client_1
@@ -442,8 +849,9 @@ components:
           - sub_org_1
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+          - array
+          - 'null'
         localFactoryId:
           description: Local Custom ID of the Factory organization of the purchase order that is inputted from the request body
           example: factory_1
@@ -454,8 +862,9 @@ components:
           - sub_org_1
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+          - array
+          - 'null'
         localSupplierId:
           description: Local Custom ID of the Supplier organization of the purchase order that is inputted from the request body
           example: supplier_1
@@ -466,8 +875,9 @@ components:
           - sub_org_1
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+          - array
+          - 'null'
         opoNumber:
           description: Original Purchase Order number
           example: opo_1
@@ -479,13 +889,15 @@ components:
         poSource:
           description: Indicate the source of materials (produced by domestic vendors or imported from vendors outside the country)
           example: domestic
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         poStatus:
           description: Status of the purchase order
           example: canceled
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         poType:
           description: Purchase order type in a pre-configured list in configuration
           example: po_type_1
@@ -505,22 +917,25 @@ components:
           items:
             minLength: 1
             type: string
-          nullable: true
-          type: array
+          type:
+          - array
+          - 'null'
         shareToLocalIds:
           description: The list of all connected Local Custom IDs of the shared Global organizations of the purchase order. By default, it always returns the Local Custom IDs of the Supplier, Factory, and Brand/Retailer (if have)
           example:
           - sub_org_1
           items:
             type: string
-          nullable: true
-          type: array
+          type:
+          - array
+          - 'null'
         shipEndDate:
           description: The last date of the shipment window
           example: '2021-09-19T00:00:00+00:00'
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         styles:
           description: List of styles of items in the purchase order
           items:
@@ -554,56 +969,66 @@ components:
           description: The creation date from the client system of the Purchase Order
           example: '2023-02-10'
           format: date
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         clientId:
           description: Local Custom ID of the Brand/Retailer organization of the purchase order
           example: client_1
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         clientUpdatedDate:
           description: The last updated date from the client system of the Purchase Order
           example: '2019-02-20T06:37:18Z'
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         commitId:
           description: Commit ID of the purchase order
           example: commit_id_1
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         commitPoSequence:
           description: Commit PO sequence of the purchase order
           example: commit_po_sequence_1
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         deliveryDate:
           description: Delivery date or shipment start date of the purchase order
           example: '2021-05-23T00:00:00Z'
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         eventName:
           description: Name of the corresponding event in the client's system
           example: Event 1
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         factoryId:
           description: Local Custom ID of the Factory organization of the purchase order
           example: factory_1
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         inStoreDate:
           description: In store date of the purchase order
           example: '2021-06-01T00:00:00Z'
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         opoNumber:
           description: Original purchase order number stored in client's system
           example: opo_1
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         poNumber:
           description: Purchase order number to be stored in Inspectorio
           example: po_1
@@ -612,21 +1037,24 @@ components:
         poSource:
           description: Indicate the source of materials (produced by domestic vendors or imported from vendors outside the country)
           example: domestic
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         poStatus:
           description: Status of the purchase order
           enum:
           - canceled
           example: canceled
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         poType:
           description: Purchase order type in a pre-configured list
           example: po_type_1
           minLength: 1
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         productLineId:
           description: Product Line ID of the purchase order which must be pre-configured in Inspectorio
           example: product_line_1
@@ -639,14 +1067,16 @@ components:
           items:
             minLength: 1
             type: string
-          nullable: true
-          type: array
+          type:
+          - array
+          - 'null'
         shipEndDate:
           description: Shipment end date of the purchase order
           example: '2021-05-30T00:00:00Z'
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         styles:
           description: Style information in the purchase order
           items:
@@ -656,8 +1086,9 @@ components:
         uid:
           description: Unique identifier of the purchase order
           example: abc-def-123-456
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         vendorId:
           description: Local Custom ID of the Supplier organization of the purchase order
           example: vendor_1
@@ -669,113 +1100,39 @@ components:
       - styles
       - vendorId
       type: object
-    Assortment:
+    Style:
       properties:
-        assortmentId:
-          minLength: 1
-          type: string
-        cartonQuantity:
-          minimum: 0
-          type: integer
-        items:
+        assortments:
           items:
-            $ref: '#/components/schemas/AssortmentItem'
-          minItems: 1
-          type: array
+            $ref: '#/components/schemas/Assortment'
+          type:
+          - array
+          - 'null'
+        productCategoryId:
+          example: product_category_1
+          type: string
+        solids:
+          items:
+            $ref: '#/components/schemas/SolidItem'
+          type:
+          - array
+          - 'null'
+        styleId:
+          example: style_1
+          minLength: 1
+          type: string
+        styleName:
+          type:
+          - string
+          - 'null'
       required:
-      - assortmentId
-      - cartonQuantity
-      - items
+      - productCategoryId
+      - styleId
       type: object
-    CustomFields:
+    CustomResponse10:
       properties:
-        customFile1:
-          nullable: true
-          type: string
-        customFile2:
-          nullable: true
-          type: string
-        customString1:
-          nullable: true
-          type: string
-        customString2:
-          nullable: true
-          type: string
-        customString3:
-          nullable: true
-          type: string
-        customString4:
-          nullable: true
-          type: string
-        customString5:
-          nullable: true
-          type: string
-        customString6:
-          nullable: true
-          type: string
-        customString7:
-          nullable: true
-          type: string
-        customString8:
-          nullable: true
-          type: string
-        customText1:
-          nullable: true
-          type: string
-        customText2:
-          nullable: true
-          type: string
-        customTime1:
-          format: date-time
-          nullable: true
-          type: string
-      type: object
-    AssortmentItem:
-      properties:
-        brandId:
-          description: 'Precondition: must be configured in your Inspectorio''s account.'
-          example: brand_1
-          nullable: true
-          type: string
-        brandName:
-          minLength: 1
-          readOnly: true
-          type: string
-        classId:
-          example: class_id_1
-          nullable: true
-          type: string
-        color:
-          minLength: 1
-          type: string
-        configuration:
-          minimum: 1
-          type: integer
-        departmentId:
-          example: department_id_1
-          nullable: true
-          type: string
-        id:
-          nullable: true
-          type: string
-        itemId:
-          minLength: 1
-          type: string
-        quantity:
-          readOnly: true
-          type: integer
-        shipmentTerm:
-          example: shipment_term_1
-          nullable: true
-          type: string
-        size:
-          minLength: 1
-          type: string
-      required:
-      - color
-      - configuration
-      - itemId
-      - size
+        data:
+          $ref: '#/components/schemas/PurchaseOrderResponse'
       type: object
     InternalApiError:
       properties:
@@ -791,274 +1148,6 @@ components:
           example: Internal server error
           type: string
       type: object
-    StyleResponse:
-      properties:
-        assortments:
-          items:
-            $ref: '#/components/schemas/Assortment'
-          nullable: true
-          type: array
-        productCategoryId:
-          example: product_category_1
-          type: string
-        productCategoryName:
-          minLength: 1
-          readOnly: true
-          type: string
-        solids:
-          items:
-            $ref: '#/components/schemas/SolidItem'
-          nullable: true
-          type: array
-        styleId:
-          example: style_1
-          minLength: 1
-          type: string
-        styleName:
-          nullable: true
-          type: string
-      required:
-      - productCategoryId
-      - styleId
-      type: object
-    CustomResponse9:
-      properties:
-        data:
-          $ref: '#/components/schemas/PurchaseOrderResponse'
-      type: object
-    PurchaseOrderListResponse:
-      properties:
-        data:
-          description: List of purchase orders
-          items:
-            $ref: '#/components/schemas/PurchaseOrderResponse'
-          type: array
-        limit:
-          maximum: 100
-          minimum: 1
-          type: integer
-        offset:
-          minimum: 0
-          type: integer
-        total:
-          type: integer
-      required:
-      - limit
-      - offset
-      - total
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
-    SolidItem:
-      properties:
-        brandId:
-          description: 'Precondition: must be configured in your Inspectorio''s account.'
-          example: brand_1
-          nullable: true
-          type: string
-        brandName:
-          minLength: 1
-          readOnly: true
-          type: string
-        cartonQuantity:
-          minimum: 0
-          nullable: true
-          type: integer
-        casePackQuantity:
-          minimum: 0
-          nullable: true
-          type: integer
-        classId:
-          example: class_id_1
-          nullable: true
-          type: string
-        color:
-          minLength: 1
-          type: string
-        departmentId:
-          example: department_id_1
-          nullable: true
-          type: string
-        id:
-          nullable: true
-          type: string
-        itemId:
-          minLength: 1
-          type: string
-        quantity:
-          minimum: 1
-          type: integer
-        shipmentTerm:
-          example: shipment_term_1
-          nullable: true
-          type: string
-        size:
-          minLength: 1
-          type: string
-      required:
-      - color
-      - itemId
-      - quantity
-      - size
-      type: object
-    Style:
-      properties:
-        assortments:
-          items:
-            $ref: '#/components/schemas/Assortment'
-          nullable: true
-          type: array
-        productCategoryId:
-          example: product_category_1
-          type: string
-        solids:
-          items:
-            $ref: '#/components/schemas/SolidItem'
-          nullable: true
-          type: array
-        styleId:
-          example: style_1
-          minLength: 1
-          type: string
-        styleName:
-          nullable: true
-          type: string
-      required:
-      - productCategoryId
-      - styleId
-      type: object
-    PurchaseOrderUpdate:
-      properties:
-        clientCreatedDate:
-          description: The creation date from the client system of the Purchase Order
-          example: '2023-02-10'
-          format: date
-          nullable: true
-          type: string
-        clientId:
-          description: Local Custom ID of the Brand/Retailer organization of the purchase order
-          example: client_1
-          nullable: true
-          type: string
-        clientUpdatedDate:
-          description: The last updated date from the client system of the Purchase Order
-          example: '2019-02-20T06:37:18Z'
-          format: date-time
-          nullable: true
-          type: string
-        commitId:
-          description: Commit ID of the purchase order
-          example: commit_id_1
-          nullable: true
-          type: string
-        commitPoSequence:
-          description: Commit PO sequence of the purchase order
-          example: commit_po_sequence_1
-          nullable: true
-          type: string
-        customFields:
-          $ref: '#/components/schemas/CustomFields'
-          description: Custom fields
-          readOnly: true
-        deliveryDate:
-          description: Delivery date or shipment start date of the purchase order
-          example: '2021-05-23T00:00:00Z'
-          format: date-time
-          nullable: true
-          type: string
-        eventName:
-          description: Name of the corresponding event in the client's system
-          example: Event 1
-          nullable: true
-          type: string
-        factoryId:
-          description: Local Custom ID of the Factory organization of the purchase order
-          example: factory_1
-          nullable: true
-          type: string
-        inStoreDate:
-          description: In store date of the purchase order
-          example: '2021-06-01T00:00:00Z'
-          format: date-time
-          nullable: true
-          type: string
-        opoNumber:
-          description: Original purchase order number stored in client's system
-          example: opo_1
-          nullable: true
-          type: string
-        poNumber:
-          description: Purchase order number to be stored in Inspectorio
-          example: po_1
-          minLength: 1
-          type: string
-        poSource:
-          description: Indicate the source of materials (produced by domestic vendors or imported from vendors outside the country)
-          example: domestic
-          nullable: true
-          type: string
-        poStatus:
-          description: Status of the purchase order
-          enum:
-          - canceled
-          example: canceled
-          nullable: true
-          type: string
-        poType:
-          description: Purchase order type in a pre-configured list
-          example: po_type_1
-          minLength: 1
-          nullable: true
-          type: string
-        productLineId:
-          description: Product Line ID of the purchase order which must be pre-configured in Inspectorio
-          example: product_line_1
-          minLength: 1
-          type: string
-        shareToIds:
-          description: Local Custom IDs of the shared organizations of the purchase order
-          example:
-          - sub_org_1
-          items:
-            minLength: 1
-            type: string
-          nullable: true
-          type: array
-        shipEndDate:
-          description: Shipment end date of the purchase order
-          example: '2021-05-30T00:00:00Z'
-          format: date-time
-          nullable: true
-          type: string
-        styles:
-          description: Style information in the purchase order
-          items:
-            $ref: '#/components/schemas/Style'
-          minItems: 1
-          type: array
-        uid:
-          description: Unique identifier of the purchase order
-          example: abc-def-123-456
-          nullable: true
-          type: string
-        vendorId:
-          description: Local Custom ID of the Supplier organization of the purchase order
-          example: vendor_1
-          minLength: 1
-          type: string
-      required:
-      - poNumber
-      - productLineId
-      - styles
-      - vendorId
-      type: object
     TooManyResponsesApiError:
       properties:
         errorCode:
@@ -1068,8 +1157,13 @@ components:
           example: Too many requests
           type: string
       type: object
-    CustomResponse8:
+    CustomResponse9:
       properties:
         data:
           $ref: '#/components/schemas/PurchaseOrderResponse'
       type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: apiKey
+      type: apiKey

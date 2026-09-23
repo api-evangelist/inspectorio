@@ -1,20 +1,26 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: File Management ANALYTICS AUTH API
-  version: v3
+  title: Inspectorio AUTH API
+  version: v1
+  description: 'Operations tagged AUTH across 2 of this provider''s published API definitions: inspectorio-qrm-openapi.json, inspectorio-rsc-openapi.json. Each path carries the servers of the definition it was published in.'
 servers:
 - description: Production Environment
-  url: https://files-integration.inspectorio.com
+  url: https://sight.inspectorio.com
 - description: Pre-Production Environment
-  url: https://files-integration.pre.inspectorio.com
+  url: https://sight.pre.inspectorio.com
+- description: Production Environment
+  url: https://rise-integration.inspectorio.com
+- description: Pre-Production Environment
+  url: https://rise-integration.pre.inspectorio.com
+security:
+- ApiKeyAuth: []
 tags:
-- name: AUTH
+- name: Auth
 paths:
   /api/v1/auth/login:
     post:
       deprecated: true
       summary: Login and Retrieve Access Token
-      description: Login and Retrieve Access Token
       parameters: []
       requestBody:
         content:
@@ -60,9 +66,30 @@ paths:
           description: Internal Error
       security: []
       tags:
-      - AUTH
+      - Auth
+      operationId: postApiV1AuthLogin
+      x-operation-id-source: derived
+    servers:
+    - description: Production Environment
+      url: https://sight.inspectorio.com
+    - description: Pre-Production Environment
+      url: https://sight.pre.inspectorio.com
 components:
   schemas:
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    CustomResponse3:
+      properties:
+        data:
+          $ref: '#/components/schemas/AuthResponse'
+      type: object
     ValidateApiError:
       properties:
         errorCode:
@@ -85,11 +112,6 @@ components:
         message:
           example: Bad Request
           type: string
-      type: object
-    CustomResponse3:
-      properties:
-        data:
-          $ref: '#/components/schemas/AuthResponse'
       type: object
     LoginForm:
       properties:
@@ -144,15 +166,6 @@ components:
           example: Internal server error
           type: string
       type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
     TooManyResponsesApiError:
       properties:
         errorCode:
@@ -162,3 +175,45 @@ components:
           example: Too many requests
           type: string
       type: object
+    Login:
+      properties:
+        password:
+          description: Password of the user used to retrieve access token, e.g. acme123
+          example: acme123
+          minLength: 1
+          type: string
+        username:
+          description: Username of the user used to retrieve access token, e.g. john@acme.com
+          example: john@acme.com
+          minLength: 1
+          type: string
+      required:
+      - password
+      - username
+      type: object
+    AuthResponse_2:
+      properties:
+        orgName:
+          description: Name of the organization the user belongs to
+          example: Acme Corp
+          type: string
+        token:
+          description: Authentication token used for every API request
+          example: 8847eae8-9ef1-123-abc
+          type: string
+      required:
+      - token
+      type: object
+    CustomResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/AuthResponse_2'
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: apiKey
+      type: apiKey
+x-refined-from:
+- inspectorio-qrm-openapi.json
+- inspectorio-rsc-openapi.json
