@@ -199,15 +199,6 @@ paths:
           description: Internal Error
 components:
   schemas:
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
     MasterDataResponse:
       type: object
       properties:
@@ -239,6 +230,29 @@ components:
               type: string
               format: date-time
               example: '2025-02-14T06:52:42.073319+00:00'
+    BadRequestResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Bad request error message
+        code:
+          type: integer
+          description: Response status code
+          example: 400
+        status:
+          type: integer
+          description: Response status code
+          example: 400
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
     MasterDataCreateRequest:
       type: object
       required:
@@ -266,20 +280,6 @@ components:
           - 'null'
           description: Optional version identifier for the data format
           example: shipment-booking-v1.0.0
-    BadRequestResponse:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Bad request error message
-        code:
-          type: integer
-          description: Response status code
-          example: 400
-        status:
-          type: integer
-          description: Response status code
-          example: 400
     InternalApiError:
       properties:
         errorCode:

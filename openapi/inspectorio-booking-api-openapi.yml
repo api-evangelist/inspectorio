@@ -184,518 +184,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    CustomResponse11:
-      properties:
-        data:
-          $ref: '#/components/schemas/BookingDetailResponse'
-      type: object
-    BookingExpectedDate:
-      properties:
-        inspectionDate:
-          example: '2019-07-04T08:00:00.00Z'
-          format: date-time
-          type: string
-        shipmentDate:
-          example: '2019-07-04T08:00:00.00Z'
-          format: date-time
-          type:
-          - string
-          - 'null'
-      required:
-      - inspectionDate
-      type: object
-    OrganizationContact:
-      properties:
-        contactId:
-          example: contact_id
-          type: string
-        email:
-          example: email@email.com
-          type: string
-        mobileNumber:
-          example: '1234567890'
-          type: string
-        name:
-          example: Contact Name
-          type: string
-        telephoneNumber:
-          example: '1234567890'
-          type: string
-      type: object
-    BookingSolidItem:
-      properties:
-        availableCartonQuantity:
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-        availableQuantity:
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-        brandId:
-          description: 'Precondition: must be configured in your Inspectorio''s account.'
-          example: brand_1
-          type:
-          - string
-          - 'null'
-        brandName:
-          minLength: 1
-          readOnly: true
-          type: string
-        cartonQuantity:
-          minimum: 0
-          type:
-          - integer
-          - 'null'
-        casePackQuantity:
-          minimum: 0
-          type:
-          - integer
-          - 'null'
-        classId:
-          example: class_id_1
-          type:
-          - string
-          - 'null'
-        color:
-          minLength: 1
-          type: string
-        departmentId:
-          example: department_id_1
-          type:
-          - string
-          - 'null'
-        id:
-          type:
-          - string
-          - 'null'
-        itemId:
-          minLength: 1
-          type: string
-        quantity:
-          minimum: 1
-          type: integer
-        shipmentTerm:
-          example: shipment_term_1
-          type:
-          - string
-          - 'null'
-        size:
-          minLength: 1
-          type: string
-      required:
-      - color
-      - itemId
-      - quantity
-      - size
-      type: object
-    QuestionValidation:
-      properties:
-        mandatory:
-          description: Indicate if the question is mandatory or not
-          example: 'true'
-          type: boolean
-      required:
-      - mandatory
-      type: object
-    BookingMeasurementItemDetail:
-      properties:
-        measurement:
-          type: string
-        size:
-          description: Size name
-          example: Medium
-          minLength: 1
-          type: string
-      required:
-      - measurement
-      - size
-      type: object
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
-    BookingListResponse:
-      properties:
-        data:
-          description: Bookings data
-          items:
-            $ref: '#/components/schemas/BookingResponse'
-          type: array
-        limit:
-          maximum: 100
-          minimum: 1
-          type: integer
-        offset:
-          minimum: 0
-          type: integer
-        total:
-          type: integer
-      required:
-      - limit
-      - offset
-      - total
-      type: object
-    Question1:
-      properties:
-        defaultSubQuestions:
-          description: List of recursive questions from "questionnaire"
-          items:
-            type: object
-          type: array
-        description:
-          description: Description of the question
-          example: Shipment readiness
-          type: string
-        freeTextAnswer:
-          description: Free text answer for the question
-          example: Not good but acceptable
-          type: string
-        id:
-          description: Unique identifier of a question
-          example: abc-123
-          type: string
-        options:
-          description: List of answering options
-          items:
-            $ref: '#/components/schemas/Option'
-          type: array
-        questionType:
-          description: Question type e.g single select, multiple select
-          example: single select
-          type: string
-        responseId:
-          description: Unique identifier of a response
-          example: 1a2b3c
-          type: string
-        validation:
-          $ref: '#/components/schemas/QuestionValidation'
-          description: Question validation
-      required:
-      - id
-      - questionType
-      - validation
-      type: object
-    TooManyResponsesApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Too many requests
-          type: string
-      type: object
-    BookingResponse:
-      properties:
-        actualInspectionDate:
-          description: Actual inspection date
-          example: '2021-06-14T04:02:57.849000+00:00'
-          format: date-time
-          type: string
-        bookingId:
-          description: Unique identifier of the booking
-          example: 123456-c4a6-4fdb-b01f-2fe663be4460
-          type: string
-        bookingType:
-          description: Booking type e.g normal
-          example: normal
-          type: string
-        caseNumber:
-          description: Case number of the booking defined by a configuration rule
-          example: 3269012021-06-10ABC
-          type: string
-        clientInformation:
-          $ref: '#/components/schemas/BookingOrganization'
-          description: Information on the Brand or Retailer in the booking
-        confirmedBy:
-          description: The organization which confirmed the booking
-          example: Acme Corp
-          type: string
-        createdBy:
-          description: The user who created the booking
-          example: John Doe
-          type: string
-        createdDate:
-          description: Creation date of the booking
-          example: '2021-06-03T04:02:57.849000+00:00'
-          format: date-time
-          type: string
-        detailOfPIPO:
-          $ref: '#/components/schemas/BookingPiPoDetail'
-          description: Details of PIPO
-        expectedDate:
-          $ref: '#/components/schemas/BookingExpectedDate'
-          description: Expected date
-        factoryInformation:
-          $ref: '#/components/schemas/BookingOrganization'
-          description: Information on the factory in the booking
-        fromOrganizationId:
-          description: Organization ID where the booking is created
-          example: F001122
-          type: string
-        fromOrganizationName:
-          example: Padme Inc
-          type: string
-        inspectionForm:
-          description: The name of the inspection form used
-          example: FIForm
-          type: string
-        inspectionInformation:
-          $ref: '#/components/schemas/BookingInspectionInformation'
-          description: Inspection Information
-        locationPicker:
-          $ref: '#/components/schemas/BookingLocationPicker'
-          description: Location picker of where the inspection takes place
-        questionnaire:
-          $ref: '#/components/schemas/Questionnaire'
-          example:
-            questions:
-            - defaultSubQuestions: []
-              description: Q1
-              freeTextAnswer: null
-              id: fe_Bkycc4TIX
-              options:
-              - id: 'yes'
-                questions:
-                - defaultSubQuestions: []
-                  description: Q1-1
-                  freeTextAnswer: null
-                  id: fe_ryT8oEpIQ
-                  options:
-                  - id: 'yes'
-                    questions: []
-                    selected: false
-                    text: 'Yes'
-                  - id: 'no'
-                    questions: []
-                    selected: false
-                    text: 'No'
-                  - id: na
-                    questions: []
-                    selected: false
-                    text: N/A
-                  questionType: yes_no
-                  responseId: null
-                  validation:
-                    mandatory: true
-                - defaultSubQuestions: []
-                  description: Q1-2
-                  freeTextAnswer: null
-                  id: fe_ry-DjNTU7
-                  options:
-                  - id: SklfiNaUQ
-                    questions: []
-                    selected: false
-                    text: M1
-                  - id: S1EMoNaI7
-                    questions: []
-                    selected: false
-                    text: M2
-                  - id: HySHj3mDX
-                    questions: []
-                    selected: false
-                    text: M3
-                  - id: other
-                    otherOptionText: null
-                    questions: []
-                    selected: false
-                    text: Other
-                  questionType: multi_select
-                  responseId: Sy8zjNaI7
-                  validation:
-                    mandatory: true
-                selected: false
-                text: 'Yes'
-              - id: 'no'
-                questions: []
-                selected: true
-                text: 'No'
-              - id: na
-                questions: []
-                selected: false
-                text: N/A
-              questionType: yes_no
-              responseId: null
-              validation:
-                mandatory: true
-            - defaultSubQuestions:
-              - defaultSubQuestions: []
-                description: Q2-1
-                freeTextAnswer: null
-                id: fe_SySvsVTLm
-                options:
-                - id: rJFMs4T8Q
-                  questions: []
-                  selected: false
-                  text: S1
-                - id: Sy3Mj4TIm
-                  questions: []
-                  selected: false
-                  text: S2
-                - id: HkSDnNaLX
-                  questions: []
-                  selected: false
-                  text: S3
-                - id: other
-                  otherOptionText: Hello
-                  questions: []
-                  selected: true
-                  text: Other
-                questionType: single_select
-                responseId: ryCGs4TU7
-                validation:
-                  mandatory: true
-              - defaultSubQuestions: []
-                description: Q2-2
-                freeTextAnswer: null
-                id: fe_Syw6NDpPX
-                options:
-                - id: 'yes'
-                  questions: []
-                  selected: false
-                  text: 'Yes'
-                - id: 'no'
-                  questions: []
-                  selected: false
-                  text: 'No'
-                - id: na
-                  questions: []
-                  selected: false
-                  text: N/A
-                - id: other
-                  otherOptionText: Hello again
-                  questions: []
-                  selected: true
-                  text: Other
-                questionType: yes_no
-                responseId: null
-                validation:
-                  mandatory: true
-              - defaultSubQuestions: []
-                description: Q2-3
-                freeTextAnswer: null
-                id: fe_SJs6Ew6wm
-                options:
-                - id: SklfiNaUQ
-                  questions: []
-                  selected: false
-                  text: M1
-                - id: S1EMoNaI7
-                  questions: []
-                  selected: false
-                  text: M2
-                - id: HySHj3mDX
-                  questions: []
-                  selected: true
-                  text: M3
-                - id: other
-                  otherOptionText: free text
-                  questions: []
-                  selected: true
-                  text: Other
-                questionType: multi_select
-                responseId: Sy8zjNaI7
-                validation:
-                  mandatory: true
-              description: Q2
-              freeTextAnswer: free text
-              id: fe_ByBZiNTI7
-              options: []
-              questionType: free_text
-              responseId: null
-              validation:
-                mandatory: true
-        remark:
-          description: Remark on the booking
-          example: Updated to reflect changes
-          type: string
-        sampleSize:
-          description: Sample size of inspection
-          example: 0
-          type: integer
-        serviceType:
-          description: Service Type of the inspection
-          example: TPR
-          type: string
-        status:
-          description: Booking status
-          example: NEW
-          type: string
-        toOrganizationId:
-          description: Organization ID which the booking is booked to
-          example: C112233
-          type: string
-        toOrganizationName:
-          description: Organization name which the booking is booking to
-          example: Lex Corp
-          type: string
-        unit:
-          description: Unit used in inspections e.g piece
-          example: piece
-          type: string
-        updatedDate:
-          description: Last updated date of the booking
-          example: '2021-06-03T04:02:57.849000+00:00'
-          format: date-time
-          type: string
-        vendorInformation:
-          $ref: '#/components/schemas/BookingOrganization'
-          description: Information on the Vendor or Supplier in the booking
-      type: object
-    BookingLocationPicker:
-      properties:
-        address:
-          type: string
-        gpsLocation:
-          $ref: '#/components/schemas/BookingLocationPickerGpsLocation'
-      type: object
-    BookingPiPoInformation:
-      properties:
-        opoNumber:
-          type: string
-        poNumber:
-          type: string
-        poTypes:
-          items:
-            type: string
-          type: array
-        productLineId:
-          readOnly: true
-          type: string
-        productLineName:
-          readOnly: true
-          type: string
-      type: object
-    BookingPiPoDetail:
-      properties:
-        pipoInformation:
-          $ref: '#/components/schemas/BookingPiPoInformation'
-        styles:
-          items:
-            $ref: '#/components/schemas/BookingStyle'
-          type: array
-      type: object
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
     BookingAssortmentItem:
       properties:
         availableQuantity:
@@ -753,13 +241,78 @@ components:
       - itemId
       - size
       type: object
-    UnauthenticatedApiError:
+    Question1:
+      properties:
+        defaultSubQuestions:
+          description: List of recursive questions from "questionnaire"
+          items:
+            type: object
+          type: array
+        description:
+          description: Description of the question
+          example: Shipment readiness
+          type: string
+        freeTextAnswer:
+          description: Free text answer for the question
+          example: Not good but acceptable
+          type: string
+        id:
+          description: Unique identifier of a question
+          example: abc-123
+          type: string
+        options:
+          description: List of answering options
+          items:
+            $ref: '#/components/schemas/Option'
+          type: array
+        questionType:
+          description: Question type e.g single select, multiple select
+          example: single select
+          type: string
+        responseId:
+          description: Unique identifier of a response
+          example: 1a2b3c
+          type: string
+        validation:
+          $ref: '#/components/schemas/QuestionValidation'
+          description: Question validation
+      required:
+      - id
+      - questionType
+      - validation
+      type: object
+    QuestionValidation:
+      properties:
+        mandatory:
+          description: Indicate if the question is mandatory or not
+          example: 'true'
+          type: boolean
+      required:
+      - mandatory
+      type: object
+    BadRequestApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         message:
-          example: Cannot retrieve session data because of expired token
+          example: Bad Request
+          type: string
+      type: object
+    BookingLocationPicker:
+      properties:
+        address:
+          type: string
+        gpsLocation:
+          $ref: '#/components/schemas/BookingLocationPickerGpsLocation'
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
           type: string
       type: object
     BookingDetailResponse:
@@ -1030,6 +583,599 @@ components:
           - string
           - 'null'
       type: object
+    CustomResponse11:
+      properties:
+        data:
+          $ref: '#/components/schemas/BookingDetailResponse'
+      type: object
+    BookingOrganization:
+      properties:
+        address:
+          example: address
+          type: string
+        city:
+          example: city
+          type: string
+        contact:
+          $ref: '#/components/schemas/OrganizationContact'
+        country:
+          example: US
+          type: string
+        localOrganizationId:
+          description: Local Custom ID of the organization
+          example: F323333
+          type: string
+        localOrganizationIds:
+          description: The list of all connected Local Custom IDs of the organization
+          example:
+          - F323333
+          - F242146
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        name:
+          example: name
+          type: string
+        organizationId:
+          example: org_id
+          type: string
+      type: object
+    BookingListResponse:
+      properties:
+        data:
+          description: Bookings data
+          items:
+            $ref: '#/components/schemas/BookingResponse'
+          type: array
+        limit:
+          maximum: 100
+          minimum: 1
+          type: integer
+        offset:
+          minimum: 0
+          type: integer
+        total:
+          type: integer
+      required:
+      - limit
+      - offset
+      - total
+      type: object
+    BookingAssortment:
+      properties:
+        assortmentId:
+          minLength: 1
+          type: string
+        availableCartonQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        cartonQuantity:
+          minimum: 0
+          type: integer
+        items:
+          items:
+            $ref: '#/components/schemas/BookingAssortmentItem'
+          minItems: 1
+          type: array
+      required:
+      - assortmentId
+      - cartonQuantity
+      - items
+      type: object
+    BookingPiPoInformation:
+      properties:
+        opoNumber:
+          type: string
+        poNumber:
+          type: string
+        poTypes:
+          items:
+            type: string
+          type: array
+        productLineId:
+          readOnly: true
+          type: string
+        productLineName:
+          readOnly: true
+          type: string
+      type: object
+    BookingStyle:
+      properties:
+        assortments:
+          items:
+            $ref: '#/components/schemas/BookingAssortment'
+          type:
+          - array
+          - 'null'
+        measurements:
+          items:
+            $ref: '#/components/schemas/BookingMeasurementItem'
+          type: array
+        productCategoryId:
+          example: product_category_1
+          type: string
+        productCategoryName:
+          minLength: 1
+          readOnly: true
+          type: string
+        solids:
+          items:
+            $ref: '#/components/schemas/BookingSolidItem'
+          type:
+          - array
+          - 'null'
+        styleId:
+          example: style_1
+          minLength: 1
+          type: string
+        styleName:
+          type:
+          - string
+          - 'null'
+      required:
+      - productCategoryId
+      - styleId
+      type: object
+    BookingSolidItem:
+      properties:
+        availableCartonQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        availableQuantity:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        brandId:
+          description: 'Precondition: must be configured in your Inspectorio''s account.'
+          example: brand_1
+          type:
+          - string
+          - 'null'
+        brandName:
+          minLength: 1
+          readOnly: true
+          type: string
+        cartonQuantity:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        casePackQuantity:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        classId:
+          example: class_id_1
+          type:
+          - string
+          - 'null'
+        color:
+          minLength: 1
+          type: string
+        departmentId:
+          example: department_id_1
+          type:
+          - string
+          - 'null'
+        id:
+          type:
+          - string
+          - 'null'
+        itemId:
+          minLength: 1
+          type: string
+        quantity:
+          minimum: 1
+          type: integer
+        shipmentTerm:
+          example: shipment_term_1
+          type:
+          - string
+          - 'null'
+        size:
+          minLength: 1
+          type: string
+      required:
+      - color
+      - itemId
+      - quantity
+      - size
+      type: object
+    BookingMeasurementItemDetail:
+      properties:
+        measurement:
+          type: string
+        size:
+          description: Size name
+          example: Medium
+          minLength: 1
+          type: string
+      required:
+      - measurement
+      - size
+      type: object
+    BookingLocationPickerGpsLocation:
+      properties:
+        latitude:
+          type: string
+        longitude:
+          type: string
+      type: object
+    Option:
+      properties:
+        id:
+          description: Unique identifier of the option
+          type: string
+        otherOptionText:
+          description: Other option text
+          example: Acceptable
+          type: string
+        questions:
+          description: List of recursive questions from "questionnaire"
+          items:
+            type: object
+          type: array
+        selected:
+          description: Indicate whether this option is selected or not
+          example: 'true'
+          type: boolean
+        text:
+          description: Preset answer in text
+          example: 'Yes'
+          type: string
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    OrganizationContact:
+      properties:
+        contactId:
+          example: contact_id
+          type: string
+        email:
+          example: email@email.com
+          type: string
+        mobileNumber:
+          example: '1234567890'
+          type: string
+        name:
+          example: Contact Name
+          type: string
+        telephoneNumber:
+          example: '1234567890'
+          type: string
+      type: object
+    BookingResponse:
+      properties:
+        actualInspectionDate:
+          description: Actual inspection date
+          example: '2021-06-14T04:02:57.849000+00:00'
+          format: date-time
+          type: string
+        bookingId:
+          description: Unique identifier of the booking
+          example: 123456-c4a6-4fdb-b01f-2fe663be4460
+          type: string
+        bookingType:
+          description: Booking type e.g normal
+          example: normal
+          type: string
+        caseNumber:
+          description: Case number of the booking defined by a configuration rule
+          example: 3269012021-06-10ABC
+          type: string
+        clientInformation:
+          $ref: '#/components/schemas/BookingOrganization'
+          description: Information on the Brand or Retailer in the booking
+        confirmedBy:
+          description: The organization which confirmed the booking
+          example: Acme Corp
+          type: string
+        createdBy:
+          description: The user who created the booking
+          example: John Doe
+          type: string
+        createdDate:
+          description: Creation date of the booking
+          example: '2021-06-03T04:02:57.849000+00:00'
+          format: date-time
+          type: string
+        detailOfPIPO:
+          $ref: '#/components/schemas/BookingPiPoDetail'
+          description: Details of PIPO
+        expectedDate:
+          $ref: '#/components/schemas/BookingExpectedDate'
+          description: Expected date
+        factoryInformation:
+          $ref: '#/components/schemas/BookingOrganization'
+          description: Information on the factory in the booking
+        fromOrganizationId:
+          description: Organization ID where the booking is created
+          example: F001122
+          type: string
+        fromOrganizationName:
+          example: Padme Inc
+          type: string
+        inspectionForm:
+          description: The name of the inspection form used
+          example: FIForm
+          type: string
+        inspectionInformation:
+          $ref: '#/components/schemas/BookingInspectionInformation'
+          description: Inspection Information
+        locationPicker:
+          $ref: '#/components/schemas/BookingLocationPicker'
+          description: Location picker of where the inspection takes place
+        questionnaire:
+          $ref: '#/components/schemas/Questionnaire'
+          example:
+            questions:
+            - defaultSubQuestions: []
+              description: Q1
+              freeTextAnswer: null
+              id: fe_Bkycc4TIX
+              options:
+              - id: 'yes'
+                questions:
+                - defaultSubQuestions: []
+                  description: Q1-1
+                  freeTextAnswer: null
+                  id: fe_ryT8oEpIQ
+                  options:
+                  - id: 'yes'
+                    questions: []
+                    selected: false
+                    text: 'Yes'
+                  - id: 'no'
+                    questions: []
+                    selected: false
+                    text: 'No'
+                  - id: na
+                    questions: []
+                    selected: false
+                    text: N/A
+                  questionType: yes_no
+                  responseId: null
+                  validation:
+                    mandatory: true
+                - defaultSubQuestions: []
+                  description: Q1-2
+                  freeTextAnswer: null
+                  id: fe_ry-DjNTU7
+                  options:
+                  - id: SklfiNaUQ
+                    questions: []
+                    selected: false
+                    text: M1
+                  - id: S1EMoNaI7
+                    questions: []
+                    selected: false
+                    text: M2
+                  - id: HySHj3mDX
+                    questions: []
+                    selected: false
+                    text: M3
+                  - id: other
+                    otherOptionText: null
+                    questions: []
+                    selected: false
+                    text: Other
+                  questionType: multi_select
+                  responseId: Sy8zjNaI7
+                  validation:
+                    mandatory: true
+                selected: false
+                text: 'Yes'
+              - id: 'no'
+                questions: []
+                selected: true
+                text: 'No'
+              - id: na
+                questions: []
+                selected: false
+                text: N/A
+              questionType: yes_no
+              responseId: null
+              validation:
+                mandatory: true
+            - defaultSubQuestions:
+              - defaultSubQuestions: []
+                description: Q2-1
+                freeTextAnswer: null
+                id: fe_SySvsVTLm
+                options:
+                - id: rJFMs4T8Q
+                  questions: []
+                  selected: false
+                  text: S1
+                - id: Sy3Mj4TIm
+                  questions: []
+                  selected: false
+                  text: S2
+                - id: HkSDnNaLX
+                  questions: []
+                  selected: false
+                  text: S3
+                - id: other
+                  otherOptionText: Hello
+                  questions: []
+                  selected: true
+                  text: Other
+                questionType: single_select
+                responseId: ryCGs4TU7
+                validation:
+                  mandatory: true
+              - defaultSubQuestions: []
+                description: Q2-2
+                freeTextAnswer: null
+                id: fe_Syw6NDpPX
+                options:
+                - id: 'yes'
+                  questions: []
+                  selected: false
+                  text: 'Yes'
+                - id: 'no'
+                  questions: []
+                  selected: false
+                  text: 'No'
+                - id: na
+                  questions: []
+                  selected: false
+                  text: N/A
+                - id: other
+                  otherOptionText: Hello again
+                  questions: []
+                  selected: true
+                  text: Other
+                questionType: yes_no
+                responseId: null
+                validation:
+                  mandatory: true
+              - defaultSubQuestions: []
+                description: Q2-3
+                freeTextAnswer: null
+                id: fe_SJs6Ew6wm
+                options:
+                - id: SklfiNaUQ
+                  questions: []
+                  selected: false
+                  text: M1
+                - id: S1EMoNaI7
+                  questions: []
+                  selected: false
+                  text: M2
+                - id: HySHj3mDX
+                  questions: []
+                  selected: true
+                  text: M3
+                - id: other
+                  otherOptionText: free text
+                  questions: []
+                  selected: true
+                  text: Other
+                questionType: multi_select
+                responseId: Sy8zjNaI7
+                validation:
+                  mandatory: true
+              description: Q2
+              freeTextAnswer: free text
+              id: fe_ByBZiNTI7
+              options: []
+              questionType: free_text
+              responseId: null
+              validation:
+                mandatory: true
+        remark:
+          description: Remark on the booking
+          example: Updated to reflect changes
+          type: string
+        sampleSize:
+          description: Sample size of inspection
+          example: 0
+          type: integer
+        serviceType:
+          description: Service Type of the inspection
+          example: TPR
+          type: string
+        status:
+          description: Booking status
+          example: NEW
+          type: string
+        toOrganizationId:
+          description: Organization ID which the booking is booked to
+          example: C112233
+          type: string
+        toOrganizationName:
+          description: Organization name which the booking is booking to
+          example: Lex Corp
+          type: string
+        unit:
+          description: Unit used in inspections e.g piece
+          example: piece
+          type: string
+        updatedDate:
+          description: Last updated date of the booking
+          example: '2021-06-03T04:02:57.849000+00:00'
+          format: date-time
+          type: string
+        vendorInformation:
+          $ref: '#/components/schemas/BookingOrganization'
+          description: Information on the Vendor or Supplier in the booking
+      type: object
+    BookingExpectedDate:
+      properties:
+        inspectionDate:
+          example: '2019-07-04T08:00:00.00Z'
+          format: date-time
+          type: string
+        shipmentDate:
+          example: '2019-07-04T08:00:00.00Z'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      required:
+      - inspectionDate
+      type: object
+    Questionnaire:
+      properties:
+        questions:
+          description: List of questions in the questionnaire
+          items:
+            $ref: '#/components/schemas/Question1'
+          type: array
+      type: object
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
+    BookingInspectionInformation:
+      properties:
+        typeOfInspection:
+          example: FRI
+          type: string
+        typeOfInspectionName:
+          example: Final Random Inspection
+          type: string
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
     BookingMeasurementItem:
       properties:
         caption:
@@ -1074,160 +1220,14 @@ components:
       - tolerance
       - unit
       type: object
-    BookingOrganization:
+    BookingPiPoDetail:
       properties:
-        address:
-          example: address
-          type: string
-        city:
-          example: city
-          type: string
-        contact:
-          $ref: '#/components/schemas/OrganizationContact'
-        country:
-          example: US
-          type: string
-        localOrganizationId:
-          description: Local Custom ID of the organization
-          example: F323333
-          type: string
-        localOrganizationIds:
-          description: The list of all connected Local Custom IDs of the organization
-          example:
-          - F323333
-          - F242146
+        pipoInformation:
+          $ref: '#/components/schemas/BookingPiPoInformation'
+        styles:
           items:
-            type: string
-          type:
-          - array
-          - 'null'
-        name:
-          example: name
-          type: string
-        organizationId:
-          example: org_id
-          type: string
-      type: object
-    Questionnaire:
-      properties:
-        questions:
-          description: List of questions in the questionnaire
-          items:
-            $ref: '#/components/schemas/Question1'
+            $ref: '#/components/schemas/BookingStyle'
           type: array
-      type: object
-    BookingStyle:
-      properties:
-        assortments:
-          items:
-            $ref: '#/components/schemas/BookingAssortment'
-          type:
-          - array
-          - 'null'
-        measurements:
-          items:
-            $ref: '#/components/schemas/BookingMeasurementItem'
-          type: array
-        productCategoryId:
-          example: product_category_1
-          type: string
-        productCategoryName:
-          minLength: 1
-          readOnly: true
-          type: string
-        solids:
-          items:
-            $ref: '#/components/schemas/BookingSolidItem'
-          type:
-          - array
-          - 'null'
-        styleId:
-          example: style_1
-          minLength: 1
-          type: string
-        styleName:
-          type:
-          - string
-          - 'null'
-      required:
-      - productCategoryId
-      - styleId
-      type: object
-    BookingLocationPickerGpsLocation:
-      properties:
-        latitude:
-          type: string
-        longitude:
-          type: string
-      type: object
-    ValidateApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            type:
-            - Input type is not valid
-          type: object
-        message:
-          example: Validation error
-          type: string
-      type: object
-    BookingAssortment:
-      properties:
-        assortmentId:
-          minLength: 1
-          type: string
-        availableCartonQuantity:
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-        cartonQuantity:
-          minimum: 0
-          type: integer
-        items:
-          items:
-            $ref: '#/components/schemas/BookingAssortmentItem'
-          minItems: 1
-          type: array
-      required:
-      - assortmentId
-      - cartonQuantity
-      - items
-      type: object
-    Option:
-      properties:
-        id:
-          description: Unique identifier of the option
-          type: string
-        otherOptionText:
-          description: Other option text
-          example: Acceptable
-          type: string
-        questions:
-          description: List of recursive questions from "questionnaire"
-          items:
-            type: object
-          type: array
-        selected:
-          description: Indicate whether this option is selected or not
-          example: 'true'
-          type: boolean
-        text:
-          description: Preset answer in text
-          example: 'Yes'
-          type: string
-      type: object
-    BookingInspectionInformation:
-      properties:
-        typeOfInspection:
-          example: FRI
-          type: string
-        typeOfInspectionName:
-          example: Final Random Inspection
-          type: string
       type: object
   securitySchemes:
     ApiKeyAuth:

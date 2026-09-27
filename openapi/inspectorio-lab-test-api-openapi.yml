@@ -1450,338 +1450,6 @@ paths:
                 example: auth or apikey header(s) not exists
 components:
   schemas:
-    LabTestDisposition:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - pending-review
-          - response-requested
-          - response-submitted
-          - completed
-        lastUpdateTime:
-          type: string
-          format: date-time
-          example: '2024-01-05T15:44:42'
-    LabTestDetailResponseForMaterial:
-      title: Material
-      allOf:
-      - $ref: '#/components/schemas/BaseLabTestDetailResponsePrefix'
-      - type: object
-        properties:
-          materials:
-            type: array
-            items:
-              $ref: '#/components/schemas/LabTestDetailMaterial'
-      - $ref: '#/components/schemas/BaseLabTestDetailResponseInfix'
-      - type: object
-        properties:
-          testProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/LabTestDetailPropertyForMaterial'
-      - $ref: '#/components/schemas/BaseLabTestDetailResponsePostfix'
-    LabTestListResponseItemObject:
-      type: object
-      properties:
-        itemIds:
-          type: array
-          description: Array of item ids
-          items:
-            type: string
-            maxLength: 255
-        styleIds:
-          type: array
-          description: Array of style ids
-          items:
-            type: string
-            maxLength: 255
-        productLines:
-          type: array
-          description: Array of product lines
-          items:
-            type: string
-            maxLength: 255
-        productCategories:
-          type: array
-          description: Array of product categories
-          items:
-            type: string
-            maxLength: 255
-        brands:
-          type: array
-          description: Array of brands
-          items:
-            type: string
-            maxLength: 255
-    LabTestPropertyCreateRequest:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Property ID
-          example: Test Property Id
-        name:
-          type: string
-          description: Property name
-        description:
-          type: string
-          description: Property description
-        enabled:
-          type: boolean
-          description: Property enabled status
-        standard:
-          type: string
-          description: Property standard
-        revision:
-          type: string
-          description: Property revision
-        revisionYear:
-          type: string
-          description: Property revision year
-        validatityDuration:
-          type: string
-          description: Property validatity duration
-        conditions:
-          type: array
-          items:
-            $ref: '#/components/schemas/LabTestPropertyConditionCreateUpdateObject'
-        testCategoryId:
-          type: string
-          description: custom id of category
-        testSubcategoryId:
-          type: string
-          description: custom id of subcategory
-        productLines:
-          type: array
-          items:
-            type: string
-          description: custom id of product lines
-        labTestTypes:
-          type: array
-          items:
-            type: string
-          description: short name of lab test types
-        viewingPermissions:
-          type: string
-          enum:
-          - all_orgs
-          - selected_orgs
-          default: all_orgs
-        selectedOrgs:
-          type: array
-          items:
-            type: string
-          description: this field is required used when viewingPermissions is selected_orgs, it's local org id
-      required:
-      - id
-      - name
-      - conditions
-      - testCategoryId
-      - testSubcategoryId
-    LabTestUpdateCustomOrgContact:
-      type: object
-      properties:
-        name:
-          maxLength: 255
-          type:
-          - string
-          - 'null'
-        email:
-          maxLength: 255
-          type:
-          - string
-          - 'null'
-          format: email
-        telephoneNumber:
-          maxLength: 80
-          type:
-          - string
-          - 'null'
-        mobileNumber:
-          maxLength: 80
-          type:
-          - string
-          - 'null'
-    LabTestDetailItem:
-      allOf:
-      - type: object
-        properties:
-          itemId:
-            type: string
-            description: Item id
-          itemName:
-            type: string
-            description: Item name
-          itemDescription:
-            type: string
-            description: Item description
-          styleId:
-            type: string
-            description: Item's style id
-          styleName:
-            type: string
-            description: Item's style name
-          color:
-            type: string
-            description: Item color
-          size:
-            type: string
-            description: Item size
-          originCountry:
-            type: array
-            description: Item origin country, iso alpha-2 country code
-            items:
-              type: string
-          productLine:
-            type: object
-            properties:
-              productLineId:
-                type: string
-                description: Item's product line custom id
-              name:
-                type: string
-                description: Item's product line name
-          productCategory:
-            type: object
-            properties:
-              productCategoryId:
-                type: string
-                description: Item's product category custom id
-              name:
-                type: string
-                description: Item's product category name
-          group:
-            type: object
-            properties:
-              groupId:
-                type: string
-                description: Item's group custom id
-              name:
-                type: string
-                description: Item's group name
-          division:
-            type: object
-            properties:
-              divisionId:
-                type: string
-                description: Item's division custom id
-              name:
-                type: string
-                description: Item's division name
-          department:
-            type: object
-            properties:
-              departmentId:
-                type: string
-                description: Item's department custom id
-              name:
-                type: string
-                description: Item's department name
-          class:
-            type: object
-            properties:
-              classId:
-                type: string
-                description: Item's class custom id
-              name:
-                type: string
-                description: Item's class name
-          brand:
-            type: object
-            properties:
-              brandId:
-                type: string
-                description: Item's brand custom id
-              name:
-                type: string
-                description: Item's brand name
-      - $ref: '#/components/schemas/BaseLabTestDetailEntity'
-    LinkedTestListItem:
-      type: object
-      description: A lab test linked to this lab test (retest or manual link), list shape
-      properties:
-        uuid:
-          type: string
-          format: uuid
-          description: Linked lab test uuid
-        caseNumber:
-          type: string
-          description: Linked lab test case number
-        labTestId:
-          type: string
-          description: Linked lab test id
-          example: LT0DQFRX19
-        reportNumber:
-          type:
-          - string
-          - 'null'
-          description: Linked lab test report number(s)
-        revisionNumber:
-          type:
-          - integer
-          - 'null'
-          description: Linked lab test revision number
-        originalReportNumber:
-          type:
-          - string
-          - 'null'
-          description: Linked lab test original report number
-        status:
-          $ref: '#/components/schemas/LabTestStatusEnum'
-        tags:
-          type: array
-          description: Linked lab test tags
-          items:
-            type: string
-        linkedComment:
-          type: string
-          description: Comment describing the link between the two lab tests
-    LabTestCustomOrgWithLocalOrg:
-      allOf:
-      - $ref: '#/components/schemas/LabTestCustomOrg'
-      - type: object
-        properties:
-          localOrganizationId:
-            type: string
-            description: Local org id
-          localOrganizationName:
-            type: string
-            description: Local org name
-    LabTestCreateResponse:
-      type: object
-      properties:
-        caseNumber:
-          type: string
-          description: Lab test case number
-          example: LT-2024-001
-        uuid:
-          type: string
-          description: Lab test uuid
-          format: uuid
-          example: b04ed17c-0253-40a1-bc3c-5df138643057
-        labTestId:
-          type: string
-          description: 10-digit encoded lab test ID
-          example: ABC1234567
-        labTestStatus:
-          $ref: '#/components/schemas/LabTestStatusEnum'
-        message:
-          type:
-          - string
-          - 'null'
-          description: Additional information when a new lab test can be created but without test data / results.
-          example: 'Insufficient lab test result data. The following data has been discarded (if any): sampleReceiptDate, reportIssueDate, reportNumber, originalReportNumber, revisionNumber, testPackages, testProperties, overallResult, attachments - testReport'
-    LabTestDetailPropertyForItem:
-      allOf:
-      - $ref: '#/components/schemas/BaseLabTestDetailProperty'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/LabTestDetailPropertyItemForItem'
     BaseLabTestDetailProperty:
       type: object
       properties:
@@ -1821,707 +1489,47 @@ components:
           - string
           - 'null'
           example: pass
-    TypeEnum:
-      enum:
-      - testReport
-      - others
-      type: string
-      description: '* `testReport` - testReport
-
-        * `others` - others'
-    LabTestDetailPropertyItemForStyle:
-      allOf:
-      - type: object
-        properties:
-          styleId:
-            type: string
-      - $ref: '#/components/schemas/BaseLabTestDetailPropertyItemForEntity'
-    LabTestOverallResult:
-      description: Overall test result (required for creating a completed lab test)
+    LabTestCreateMaterial:
       type: object
       properties:
-        result:
-          $ref: '#/components/schemas/ResultEnum'
-        reviewResult:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-      required:
-      - result
-    LabTestOrgWithoutTier:
-      type: object
-      properties:
-        name:
+        materialId:
           type: string
           maxLength: 255
-        localOrganizationId:
-          type: string
-          maxLength: 255
-    LabTestDetailPropertyItemForItem:
-      allOf:
-      - type: object
-        properties:
-          itemId:
-            type: string
-      - $ref: '#/components/schemas/BaseLabTestDetailPropertyItemForEntity'
-    LabTestPropertyItems:
-      title: Item
-      allOf:
-      - $ref: '#/components/schemas/LabTestPropertyBase'
-      - type: object
-        properties:
-          items:
-            type:
-            - array
-            - 'null'
-            items:
-              type: object
-              properties:
-                itemId:
-                  type:
-                  - string
-                  - 'null'
-                testConditions:
-                  type:
-                  - array
-                  - 'null'
-                  items:
-                    $ref: '#/components/schemas/LabTestCondition'
-    LabTestPackageCreateRequest:
-      allOf:
-      - $ref: '#/components/schemas/LabTestPackageUpdateRequest'
-      - type: object
-        properties:
-          id:
-            type: string
-            description: Package ID
-            maxLength: 50
-            example: PKG-001
-    LabTestCreateStyle:
-      type: object
-      properties:
-        styleId:
-          type: string
-          maxLength: 255
-        styleName:
+        materialName:
           type:
           - string
           - 'null'
           maxLength: 255
-        styleDescription:
+        materialDescription:
           type:
           - string
           - 'null'
           maxLength: 255
-      required:
-      - styleId
-    LabTestListResponseMaterialObject:
-      type: object
-      properties:
-        materialIds:
-          type: array
-          description: Array of material ids
-          items:
-            type: string
-            maxLength: 255
-        materialTypes:
-          type: array
-          description: Array of material types
-          items:
-            type: string
-            maxLength: 255
-        materialCategories:
-          type: array
-          description: Array of material categories
-          items:
-            type: string
-            maxLength: 255
-        materialSubCategories:
-          type: array
-          description: Array of material sub categories
-          items:
-            type: string
-            maxLength: 255
-    schemas-Contact:
-      type: object
-      properties:
-        name:
+        casNumber:
           type:
           - string
           - 'null'
-          default: ''
           maxLength: 255
-        email:
+        materialColor:
           type:
           - string
           - 'null'
-          default: ''
           maxLength: 255
-        telephoneNumber:
-          type:
-          - string
-          - 'null'
-          default: ''
-          maxLength: 80
-        mobileNumber:
-          type:
-          - string
-          - 'null'
-          default: ''
-          maxLength: 80
-    LabTestCondition:
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        name:
-          type:
-          - string
-          - 'null'
-        result:
-          $ref: '#/components/schemas/ResultEnum'
-        samples:
+        materialOriginCountry:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/LabTestSample'
-        followUpAction:
-          $ref: '#/components/schemas/LabTestFollowUpAction'
-    QuestionnaireObject:
-      type: array
-      items:
-        type: object
-        properties:
-          integrationKey:
             type: string
+            pattern: ^[A-Z]{2}$
+            description: Alpha-2 country code
+        materialSize:
           type:
-            type: string
-            enum:
-            - string
-            - date
-            - attachment
-            - country
-            - table
-            - linkedTest
-          values:
-            type: array
-            items:
-              type: string
-    LabTestBulkActionRejectAbortRequestItem:
-      title: Reject / Abort
-      type: object
-      properties:
-        id:
-          type: string
-          description: Lab test uuid or Lab test id
-        reason:
-          type: string
-          description: Reason for rejection / abortion
-      required:
-      - id
-      - reason
-    ValueResultObject:
-      type: object
-      properties:
-        value:
-          type: string
-          description: Value
-        result:
-          type: string
-          description: Result
-          enum:
-          - pass
-          - fail
-          - data
-          - n/a
-      required:
-      - value
-      - result
-    LabTestList:
-      type: object
-      properties:
-        uuid:
-          type: string
-          description: Lab test uuid
-          format: uuid
-        labTestId:
-          type: string
-          example: LT0DQFRX19
-        caseNumber:
-          type: string
-          description: Lab test case number
-        reportNumber:
-          type: string
-        status:
-          $ref: '#/components/schemas/LabTestStatusEnum'
-        testType:
-          type: string
-          description: Type of lab test
-        creator:
-          type: string
-          description: Creator of the lab test
-        receiver:
-          type: string
-          description: Receiver of the lab test
-        executor:
-          type: string
-          description: Executor of the lab test
-        brandRetailer:
-          type: array
-          description: Array of brand retailer information
-          items:
-            $ref: '#/components/schemas/LabTestOrgWithoutTier'
-        suppliers:
-          type: array
-          description: Array of supplier information
-          items:
-            $ref: '#/components/schemas/LabTestTierOrg'
-        factories:
-          type: array
-          description: Array of factory information
-          items:
-            $ref: '#/components/schemas/LabTestTierOrg'
-        labAgency:
-          type: object
-          properties:
-            name:
-              type: string
-              maxLength: 255
-            localOrganizationId:
-              type: string
-              maxLength: 255
-        createdAt:
-          type: string
-          format: date-time
-          example: '2024-01-05T15:44:42'
-        updatedAt:
-          type: string
-          format: date-time
-          example: '2024-01-09T12:58:30Z'
-        productType:
-          type: string
-          description: Product type
-          enum:
-          - Item
-          - Style
-          - Material
-        overallResult:
-          type: object
-          properties:
-            result:
-              $ref: '#/components/schemas/ResultEnum'
-              example: pass
-            reviewResult:
-              type:
-              - string
-              - 'null'
-              example: pass
-        disposition:
-          $ref: '#/components/schemas/LabTestDisposition'
-        tags:
-          type: array
-          description: Array of tags
-          items:
-            type: string
-            maxLength: 255
-        linkedTests:
-          type: array
-          description: Lab tests linked to this lab test (retest or manual link)
-          items:
-            $ref: '#/components/schemas/LinkedTestListItem'
-    CategoryBaseObject:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Category ID
-        name:
-          type: string
-          description: Category name
-      required:
-      - id
-      - name
-    ValueRangeObject:
-      type: object
-      properties:
-        rangeResult:
-          type: array
-          items:
-            type: string
-            enum:
-            - pass
-            - fail
-        valueResult:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValueResultObject'
-        unit:
-          type: string
-          description: Unit
-      required:
-      - rangeResult
-      - valueResult
-      - unit
-    LabTestDetailPropertyCondition:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Test condition ID
-          example: TC001
-        name:
-          type: string
-          description: Test condition name
-          example: Color Change
-        result:
-          $ref: '#/components/schemas/ResultEnum'
-          description: Test condition result
-          example: pass
-        samples:
-          type: array
-          items:
-            type: object
-            properties:
-              data:
-                type: string
-                description: Sample data
-                example: Grade 4-5
-              result:
-                $ref: '#/components/schemas/ResultEnum'
-                example: pass
-              sampleNumbers:
-                type: array
-                items:
-                  type: integer
-                description: Sample numbers
-                example:
-                - 1
-                - 2
-                - 3
-        followUpAction:
-          type: object
-          properties:
-            comment:
-              type: string
-              description: Follow-up action comment
-              example: No action required
-            attachments:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                    description: Attachment name
-                    example: test-report.pdf
-                  url:
-                    type: string
-                    description: Attachment URL
-                    example: https://example.com/files/test-report.pdf
-                  label:
-                    type:
-                    - string
-                    - 'null'
-                    description: Attachment label
-                    example: Test Report
-            failureCategoryId:
-              type:
-              - string
-              - 'null'
-              description: Failure category ID
-              example: null
-            failureCategoryName:
-              type:
-              - string
-              - 'null'
-              description: Failure category name
-              example: null
-            failureId:
-              type:
-              - string
-              - 'null'
-              description: Failure ID
-              example: null
-            failureName:
-              type:
-              - string
-              - 'null'
-              description: Failure name
-              example: null
-            failureSeverity:
-              type:
-              - string
-              - 'null'
-              description: Failure severity
-              enum:
-              - critical
-              - major
-              - minor
-              example: critical
-    LabTestUpdateResponse:
-      type: object
-      properties:
-        caseNumber:
-          type: string
-          description: Lab test case number
-        uuid:
-          type: string
-          description: Lab test uuid
-          example: b04ed17c-0253-40a1-bc3c-5df138643057
-        code:
-          type: integer
-          description: Response status code
-          example: 204
-        status:
-          type: integer
-          description: Response status code
-          example: 204
-    LabTestBulkActionCommentRequestItem:
-      title: Comment
-      type: object
-      properties:
-        id:
-          type: string
-          description: Lab test uuid or Lab test id
-        content:
-          type: string
-          description: Comment
-      required:
-      - id
-      - content
-    LabTestTierOrg:
-      type: object
-      properties:
-        name:
-          type: string
+          - string
+          - 'null'
           maxLength: 255
-        localOrganizationId:
-          type: string
-          maxLength: 255
-        tier:
-          type:
-          - integer
-          - 'null'
-          maximum: 3
-          minimum: 1
-          example: 1
-          default: 1
-    LabTest:
-      description: 'Lab Test Serializer
-
-
-        **Entity Type Constraint**: Only one entity type (items, materials, or styles) should be provided per request.
-
-        '
-      allOf:
-      - $ref: '#/components/schemas/LabTestBase'
-      - oneOf:
-        - title: Item
-          type: object
-          properties:
-            items:
-              type: array
-              items:
-                $ref: '#/components/schemas/LabTestItem'
-              description: Array of items for the lab test
-          required:
-          - items
-          additionalProperties: false
-        - title: Material
-          type: object
-          properties:
-            materials:
-              type: array
-              items:
-                $ref: '#/components/schemas/LabTestCreateMaterial'
-              description: Array of materials for the lab test
-          required:
-          - materials
-          additionalProperties: false
-        - title: Style
-          type: object
-          properties:
-            styles:
-              type: array
-              items:
-                $ref: '#/components/schemas/LabTestCreateStyle'
-              description: Array of styles for the lab test
-          required:
-          - styles
-          additionalProperties: false
-    LabTestFollowUpAction:
-      type: object
-      properties:
-        comment:
-          type:
-          - string
-          - 'null'
-        attachments:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/LabTestFollowUpAttachment'
-        failureCategoryId:
-          type:
-          - string
-          - 'null'
-        failureCategoryName:
-          type:
-          - string
-          - 'null'
-        failureId:
-          type:
-          - string
-          - 'null'
-        failureName:
-          type:
-          - string
-          - 'null'
-        failureSeverity:
-          type:
-          - string
-          - 'null'
-          enum:
-          - critical
-          - major
-          - minor
-    BaseLabTestDetailResponseInfix:
-      type: object
-      properties:
-        questionnaire:
-          type: object
-          properties:
-            forTestCreation:
-              $ref: '#/components/schemas/QuestionnaireObject'
-            forTestExecution:
-              $ref: '#/components/schemas/QuestionnaireObject'
-        attachments:
-          type: object
-          properties:
-            generalInformation:
-              $ref: '#/components/schemas/AttachmentObject'
-            testResult:
-              $ref: '#/components/schemas/AttachmentObject'
-            questionnaire:
-              $ref: '#/components/schemas/AttachmentObject'
-            activity:
-              $ref: '#/components/schemas/AttachmentObject'
-            followUpAction:
-              $ref: '#/components/schemas/AttachmentObject'
-        sampleReceiptDate:
-          type: string
-          format: date
-          description: Sample receipt date
-          example: '2024-01-10'
-        reportIssueDate:
-          type: string
-          format: date
-          description: Report issue date
-          example: '2024-01-15'
-        reportNumber:
-          type: string
-          description: Report number
-          example: RPT-2024-001
-        originalReportNumber:
-          type: string
-          description: Original report number
-          example: RPT-2024-001
-        revisionNumber:
-          type: integer
-          description: Revision number
-          example: 0
-        testPackages:
-          type: array
-          description: Test packages
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-                description: Test package id
-                example: TP-2024-001
-              name:
-                type: string
-                description: Test package name
-                example: Chemical Test Package
-              type:
-                type:
-                - string
-                - 'null'
-                description: Test package type
-    LabTestPackageUpdateRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Package name
-          maxLength: 255
-        type:
-          type: string
-          description: Package type
-          maxLength: 255
-          example: Sample Type
-        description:
-          type: string
-          description: Package description
-          maxLength: 5000
-        revision:
-          type: string
-          description: Package revision
-          maxLength: 80
-        enabled:
-          type: boolean
-          description: Package enabled status
-          default: true
-        labTestTypes:
-          type: array
-          description: Lab test types
-          items:
-            type: string
-            description: Lab test type custom ID
-            maxLength: 80
-        labTestProperties:
-          type: array
-          description: Lab test properties
-          items:
-            type: string
-            description: Lab test property custom ID
-            maxLength: 100
-        productLines:
-          type: array
-          description: Product lines
-          items:
-            type: string
-            description: Product line custom ID
-            maxLength: 128
-        materialTypes:
-          type: array
-          description: Material types
-          items:
-            type: string
-            description: Material type custom ID
-            maxLength: 128
-        viewingPermissions:
-          type: string
-          description: Viewing permissions
-          enum:
-          - all_orgs
-          - selected_orgs
-          default: all_orgs
-        selectedOrgs:
-          type: array
-          description: Selected organization custom IDs. Required (non-empty) when `viewingPermissions` is `selected_orgs`; ignored otherwise.
-          example:
-          - Org-Custom-ID-1
-          items:
-            type: string
-            description: Organization custom ID
-            maxLength: 255
+      required:
+      - materialId
     BaseLabTestDetailResponsePrefix:
       type: object
       properties:
@@ -2621,28 +1629,368 @@ components:
           - Item
           - Style
           - Material
-    LabTestFollowUpAttachment:
+    BaseLabTestDetailPropertyItemForEntity:
       type: object
       properties:
-        fileId:
+        testConditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/LabTestDetailPropertyCondition'
+    BaseLabTestDetailResponsePostfix:
+      type: object
+      properties:
+        overallResult:
+          type: object
+          properties:
+            result:
+              $ref: '#/components/schemas/ResultEnum'
+              example: pass
+            reviewResult:
+              type:
+              - string
+              - 'null'
+              example: pass
+        disposition:
+          $ref: '#/components/schemas/LabTestDisposition'
+        linkedTests:
+          type: array
+          description: Lab tests linked to this lab test (retest or manual link)
+          items:
+            $ref: '#/components/schemas/LinkedTestDetailItem'
+        createdAt:
           type: string
-          format: uuid
-        label:
+          description: created time
+          example: '2024-07-16T08:13:25Z'
+        updatedAt:
+          type: string
+          description: updated time
+          example: '2024-07-16T08:13:25Z'
+    LabTestPropertyConditionObject:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Condition ID
+        name:
+          type: string
+          description: Condition name
+        required:
+          type: boolean
+          description: is condition required
+        followUpActions:
+          type: object
+          properties:
+            provideComment:
+              type: object
+              properties:
+                data:
+                  type: boolean
+                  default: false
+                pass:
+                  type: boolean
+                  default: false
+                fail:
+                  type: boolean
+                  default: false
+                required:
+                  type: boolean
+                  default: false
+            uploadAttachment:
+              type: object
+              properties:
+                data:
+                  type: boolean
+                  default: false
+                pass:
+                  type: boolean
+                  default: false
+                fail:
+                  type: boolean
+                  default: false
+                required:
+                  type: boolean
+                  default: false
+            uploadPictureOrVideo:
+              type: object
+              properties:
+                data:
+                  type: boolean
+                  default: false
+                pass:
+                  type: boolean
+                  default: false
+                fail:
+                  type: boolean
+                  default: false
+                required:
+                  type: boolean
+                  default: false
+            recordFailureCode:
+              type: object
+              properties:
+                data:
+                  type: boolean
+                  default: false
+                fail:
+                  type: boolean
+                  default: false
+                required:
+                  type: boolean
+                  default: false
+                category:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Category ID
+                      name:
+                        type: string
+                        description: Category name
+        inputMethod:
+          type: string
+          description: Condition input method
+          enum:
+          - TEST_DATA
+          - TEST_RESULT
+        customValueGroup:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Custom value group name
+            customValues:
+              type: array
+              items:
+                type: object
+                properties:
+                  value:
+                    type: string
+                    description: Custom value
+                  result:
+                    type: string
+                    description: Custom value result
+        valueRange:
+          $ref: '#/components/schemas/ValueRangeObject'
+      required:
+      - name
+      - required
+      - inputMethod
+    ValueRangeObject:
+      type: object
+      properties:
+        rangeResult:
+          type: array
+          items:
+            type: string
+            enum:
+            - pass
+            - fail
+        valueResult:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValueResultObject'
+        unit:
+          type: string
+          description: Unit
+      required:
+      - rangeResult
+      - valueResult
+      - unit
+    LabTestTypeObject:
+      type: object
+      properties:
+        shortName:
+          type: string
+          description: Lab test type short name
+        fullName:
+          type: string
+          description: Lab test type long name
+      required:
+      - shortName
+      - fullName
+    LabTestBulkActionStartRequestItem:
+      title: Start
+      type: object
+      properties:
+        id:
+          type: string
+          description: Lab test uuid or Lab test id
+        sampleReceiptDate:
+          type: string
+          format: date
+          description: Sample receipt date
+      required:
+      - id
+      - sampleReceiptDate
+    LabTestFollowUpAction:
+      type: object
+      properties:
+        comment:
           type:
           - string
           - 'null'
-      required:
-      - fileId
-    LabTestPropertyConditionCreateUpdateObject:
+        attachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/LabTestFollowUpAttachment'
+        failureCategoryId:
+          type:
+          - string
+          - 'null'
+        failureCategoryName:
+          type:
+          - string
+          - 'null'
+        failureId:
+          type:
+          - string
+          - 'null'
+        failureName:
+          type:
+          - string
+          - 'null'
+        failureSeverity:
+          type:
+          - string
+          - 'null'
+          enum:
+          - critical
+          - major
+          - minor
+    schemas-Contact:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          default: ''
+          maxLength: 255
+        email:
+          type:
+          - string
+          - 'null'
+          default: ''
+          maxLength: 255
+        telephoneNumber:
+          type:
+          - string
+          - 'null'
+          default: ''
+          maxLength: 80
+        mobileNumber:
+          type:
+          - string
+          - 'null'
+          default: ''
+          maxLength: 80
+    LabTestListForMaterial:
+      title: Material
       allOf:
-      - $ref: '#/components/schemas/LabTestPropertyConditionObject'
+      - $ref: '#/components/schemas/LabTestList'
       - type: object
         properties:
-          position:
-            type: integer
-            description: Condition position
+          materials:
+            $ref: '#/components/schemas/LabTestListResponseMaterialObject'
+    LabTestListResponseStyleObject:
+      type: object
+      properties:
+        styleIds:
+          type: array
+          description: Array of style ids
+          items:
+            type: string
+            maxLength: 255
+        productLines:
+          type: array
+          description: Array of product lines
+          items:
+            type: string
+            maxLength: 255
+        productCategories:
+          type: array
+          description: Array of product categories
+          items:
+            type: string
+            maxLength: 255
+        brands:
+          type: array
+          description: Array of brands
+          items:
+            type: string
+            maxLength: 255
+    LabTestPropertyStyles:
+      title: Style
+      allOf:
+      - $ref: '#/components/schemas/LabTestPropertyBase'
+      - type: object
+        properties:
+          styles:
+            type:
+            - array
+            - 'null'
+            items:
+              type: object
+              properties:
+                styleId:
+                  type:
+                  - string
+                  - 'null'
+                testConditions:
+                  type:
+                  - array
+                  - 'null'
+                  items:
+                    $ref: '#/components/schemas/LabTestCondition'
+    LabTestCreateStyle:
+      type: object
+      properties:
+        styleId:
+          type: string
+          maxLength: 255
+        styleName:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        styleDescription:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
       required:
-      - position
+      - styleId
+    LabTestSample:
+      type: object
+      properties:
+        data:
+          type:
+          - string
+          - 'null'
+        result:
+          type: string
+          enum:
+          - pass
+          - fail
+          - data
+        sampleNumbers:
+          type: array
+          items:
+            type: integer
+      required:
+      - result
+      - sampleNumbers
+    LabTestDetailPropertyItemForItem:
+      allOf:
+      - type: object
+        properties:
+          itemId:
+            type: string
+      - $ref: '#/components/schemas/BaseLabTestDetailPropertyItemForEntity'
     LabTestDetailMaterial:
       allOf:
       - type: object
@@ -2698,6 +2046,214 @@ components:
                 type: string
                 description: Material sub category name
       - $ref: '#/components/schemas/BaseLabTestDetailEntity'
+    CustomOrg:
+      type: object
+      properties:
+        localOrganizationId:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        name:
+          type:
+          - string
+          - 'null'
+          default: ''
+          maxLength: 255
+        address:
+          type:
+          - string
+          - 'null'
+          default: ''
+          maxLength: 255
+        city:
+          type:
+          - string
+          - 'null'
+          default: ''
+          maxLength: 255
+        country:
+          type:
+          - string
+          - 'null'
+          default: ''
+          maxLength: 255
+        postal:
+          type:
+          - string
+          - 'null'
+          default: ''
+          maxLength: 255
+        province:
+          type:
+          - string
+          - 'null'
+          default: ''
+          maxLength: 255
+        contacts:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/schemas-Contact'
+        tier:
+          type:
+          - integer
+          - 'null'
+          maximum: 3
+          minimum: 1
+    CategoryBaseObject:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Category ID
+        name:
+          type: string
+          description: Category name
+      required:
+      - id
+      - name
+    LabTestUpdateCustomOrgContact:
+      type: object
+      properties:
+        name:
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+        email:
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+          format: email
+        telephoneNumber:
+          maxLength: 80
+          type:
+          - string
+          - 'null'
+        mobileNumber:
+          maxLength: 80
+          type:
+          - string
+          - 'null'
+    LabTestListResponseItemObject:
+      type: object
+      properties:
+        itemIds:
+          type: array
+          description: Array of item ids
+          items:
+            type: string
+            maxLength: 255
+        styleIds:
+          type: array
+          description: Array of style ids
+          items:
+            type: string
+            maxLength: 255
+        productLines:
+          type: array
+          description: Array of product lines
+          items:
+            type: string
+            maxLength: 255
+        productCategories:
+          type: array
+          description: Array of product categories
+          items:
+            type: string
+            maxLength: 255
+        brands:
+          type: array
+          description: Array of brands
+          items:
+            type: string
+            maxLength: 255
+    LabTestPropertyMaterials:
+      title: Material
+      allOf:
+      - $ref: '#/components/schemas/LabTestPropertyBase'
+      - type: object
+        properties:
+          materials:
+            type:
+            - array
+            - 'null'
+            items:
+              type: object
+              properties:
+                materialId:
+                  type:
+                  - string
+                  - 'null'
+                testConditions:
+                  type:
+                  - array
+                  - 'null'
+                  items:
+                    $ref: '#/components/schemas/LabTestCondition'
+    LabTestPropertyUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Property name
+        description:
+          type: string
+          description: Property description
+        enabled:
+          type: boolean
+          description: Property enabled status
+        standard:
+          type: string
+          description: Property standard
+        revision:
+          type: string
+          description: Property revision
+        revisionYear:
+          type: string
+          description: Property revision year
+        validatityDuration:
+          type: string
+          description: Property validatity duration
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/LabTestPropertyConditionCreateUpdateObject'
+        testCategoryId:
+          type: string
+          description: custom id of category
+        testSubcategoryId:
+          type: string
+          description: custom id of subcategory
+        productLines:
+          type: array
+          items:
+            type: string
+          description: custom id of product lines
+        labTestTypes:
+          type: array
+          items:
+            type: string
+          description: short name of lab test types
+        viewingPermissions:
+          type: string
+          enum:
+          - all_orgs
+          - selected_orgs
+          default: all_orgs
+        selectedOrgs:
+          type: array
+          items:
+            type: string
+          description: this field is required used when viewingPermissions is selected_orgs, it's local org id
+      required:
+      - name
+      - conditions
+      - testCategoryId
+      - testSubcategoryId
     LabTestStatusEnum:
       enum:
       - new
@@ -2730,24 +2286,6 @@ components:
         * `rejected` - Rejected
 
         * `canceled` - Canceled'
-    LabTestDetailResponseForItem:
-      title: Item
-      allOf:
-      - $ref: '#/components/schemas/BaseLabTestDetailResponsePrefix'
-      - type: object
-        properties:
-          items:
-            type: array
-            items:
-              $ref: '#/components/schemas/LabTestDetailItem'
-      - $ref: '#/components/schemas/BaseLabTestDetailResponseInfix'
-      - type: object
-        properties:
-          testProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/LabTestDetailPropertyForItem'
-      - $ref: '#/components/schemas/BaseLabTestDetailResponsePostfix'
     LabTestPackage:
       type: object
       properties:
@@ -2762,27 +2300,129 @@ components:
           maxLength: 255
       required:
       - id
-    LabTestPackageListResponse:
+    LabTest:
+      description: 'Lab Test Serializer
+
+
+        **Entity Type Constraint**: Only one entity type (items, materials, or styles) should be provided per request.
+
+        '
       allOf:
-      - $ref: '#/components/schemas/LabTestPackageDetailResponse'
+      - $ref: '#/components/schemas/LabTestBase'
+      - oneOf:
+        - title: Item
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/LabTestItem'
+              description: Array of items for the lab test
+          required:
+          - items
+          additionalProperties: false
+        - title: Material
+          type: object
+          properties:
+            materials:
+              type: array
+              items:
+                $ref: '#/components/schemas/LabTestCreateMaterial'
+              description: Array of materials for the lab test
+          required:
+          - materials
+          additionalProperties: false
+        - title: Style
+          type: object
+          properties:
+            styles:
+              type: array
+              items:
+                $ref: '#/components/schemas/LabTestCreateStyle'
+              description: Array of styles for the lab test
+          required:
+          - styles
+          additionalProperties: false
+    LabTestOverallResult:
+      description: Overall test result (required for creating a completed lab test)
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/ResultEnum'
+        reviewResult:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+      required:
+      - result
+    QuestionnaireObject:
+      type: array
+      items:
+        type: object
+        properties:
+          integrationKey:
+            type: string
+          type:
+            type: string
+            enum:
+            - string
+            - date
+            - attachment
+            - country
+            - table
+            - linkedTest
+          values:
+            type: array
+            items:
+              type: string
+    LabTestPropertyItems:
+      title: Item
+      allOf:
+      - $ref: '#/components/schemas/LabTestPropertyBase'
       - type: object
         properties:
-          createdAt:
-            type: string
-            description: Created at
-            format: date-time
-            example: '2025-01-24T02:31:59Z'
-          updatedAt:
-            type: string
-            description: Updated at
-            format: date-time
-            example: '2025-01-24T02:31:59Z'
-    LabTestPropertyDetail:
+          items:
+            type:
+            - array
+            - 'null'
+            items:
+              type: object
+              properties:
+                itemId:
+                  type:
+                  - string
+                  - 'null'
+                testConditions:
+                  type:
+                  - array
+                  - 'null'
+                  items:
+                    $ref: '#/components/schemas/LabTestCondition'
+    LabTestTierOrg:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+        localOrganizationId:
+          type: string
+          maxLength: 255
+        tier:
+          type:
+          - integer
+          - 'null'
+          maximum: 3
+          minimum: 1
+          example: 1
+          default: 1
+    LabTestPropertyCreateRequest:
       type: object
       properties:
         id:
           type: string
-          description: Property custom ID
+          description: Property ID
+          example: Test Property Id
         name:
           type: string
           description: Property name
@@ -2807,23 +2447,23 @@ components:
         conditions:
           type: array
           items:
-            $ref: '#/components/schemas/LabTestPropertyConditionObject'
-        testCategory:
-          $ref: '#/components/schemas/CategoryBaseObject'
-        testSubcategory:
-          $ref: '#/components/schemas/CategoryBaseObject'
-        productLine:
-          $ref: '#/components/schemas/CategoryBaseObject'
-        labTestType:
-          $ref: '#/components/schemas/LabTestTypeObject'
-        createdAt:
+            $ref: '#/components/schemas/LabTestPropertyConditionCreateUpdateObject'
+        testCategoryId:
           type: string
-          format: date-time
-          description: Property created at
-        updatedAt:
+          description: custom id of category
+        testSubcategoryId:
           type: string
-          format: date-time
-          description: Property updated at
+          description: custom id of subcategory
+        productLines:
+          type: array
+          items:
+            type: string
+          description: custom id of product lines
+        labTestTypes:
+          type: array
+          items:
+            type: string
+          description: short name of lab test types
         viewingPermissions:
           type: string
           enum:
@@ -2833,33 +2473,54 @@ components:
         selectedOrgs:
           type: array
           items:
-            $ref: '#/components/schemas/SelectedOrgObject'
-    LabTestTypeObject:
-      type: object
-      properties:
-        shortName:
-          type: string
-          description: Lab test type short name
-        fullName:
-          type: string
-          description: Lab test type long name
+            type: string
+          description: this field is required used when viewingPermissions is selected_orgs, it's local org id
       required:
-      - shortName
-      - fullName
-    BadRequestResponse:
+      - id
+      - name
+      - conditions
+      - testCategoryId
+      - testSubcategoryId
+    LinkedTestListItem:
       type: object
+      description: A lab test linked to this lab test (retest or manual link), list shape
       properties:
-        detail:
+        uuid:
           type: string
-          description: Bad request error message
-        code:
-          type: integer
-          description: Response status code
-          example: 400
+          format: uuid
+          description: Linked lab test uuid
+        caseNumber:
+          type: string
+          description: Linked lab test case number
+        labTestId:
+          type: string
+          description: Linked lab test id
+          example: LT0DQFRX19
+        reportNumber:
+          type:
+          - string
+          - 'null'
+          description: Linked lab test report number(s)
+        revisionNumber:
+          type:
+          - integer
+          - 'null'
+          description: Linked lab test revision number
+        originalReportNumber:
+          type:
+          - string
+          - 'null'
+          description: Linked lab test original report number
         status:
-          type: integer
-          description: Response status code
-          example: 400
+          $ref: '#/components/schemas/LabTestStatusEnum'
+        tags:
+          type: array
+          description: Linked lab test tags
+          items:
+            type: string
+        linkedComment:
+          type: string
+          description: Comment describing the link between the two lab tests
     LabTestPackageDetailResponse:
       type: object
       properties:
@@ -2988,6 +2649,338 @@ components:
                 type: string
                 description: Organization name
                 example: Acme Testing Labs
+    LabTestBulkActionCommentRequestItem:
+      title: Comment
+      type: object
+      properties:
+        id:
+          type: string
+          description: Lab test uuid or Lab test id
+        content:
+          type: string
+          description: Comment
+      required:
+      - id
+      - content
+    SelectedOrgObject:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Selected org name
+      required:
+      - name
+    LabTestDetailItem:
+      allOf:
+      - type: object
+        properties:
+          itemId:
+            type: string
+            description: Item id
+          itemName:
+            type: string
+            description: Item name
+          itemDescription:
+            type: string
+            description: Item description
+          styleId:
+            type: string
+            description: Item's style id
+          styleName:
+            type: string
+            description: Item's style name
+          color:
+            type: string
+            description: Item color
+          size:
+            type: string
+            description: Item size
+          originCountry:
+            type: array
+            description: Item origin country, iso alpha-2 country code
+            items:
+              type: string
+          productLine:
+            type: object
+            properties:
+              productLineId:
+                type: string
+                description: Item's product line custom id
+              name:
+                type: string
+                description: Item's product line name
+          productCategory:
+            type: object
+            properties:
+              productCategoryId:
+                type: string
+                description: Item's product category custom id
+              name:
+                type: string
+                description: Item's product category name
+          group:
+            type: object
+            properties:
+              groupId:
+                type: string
+                description: Item's group custom id
+              name:
+                type: string
+                description: Item's group name
+          division:
+            type: object
+            properties:
+              divisionId:
+                type: string
+                description: Item's division custom id
+              name:
+                type: string
+                description: Item's division name
+          department:
+            type: object
+            properties:
+              departmentId:
+                type: string
+                description: Item's department custom id
+              name:
+                type: string
+                description: Item's department name
+          class:
+            type: object
+            properties:
+              classId:
+                type: string
+                description: Item's class custom id
+              name:
+                type: string
+                description: Item's class name
+          brand:
+            type: object
+            properties:
+              brandId:
+                type: string
+                description: Item's brand custom id
+              name:
+                type: string
+                description: Item's brand name
+      - $ref: '#/components/schemas/BaseLabTestDetailEntity'
+    LabTestDetailResponseForStyle:
+      title: Style
+      allOf:
+      - $ref: '#/components/schemas/BaseLabTestDetailResponsePrefix'
+      - type: object
+        properties:
+          styles:
+            type: array
+            items:
+              $ref: '#/components/schemas/LabTestDetailStyle'
+      - $ref: '#/components/schemas/BaseLabTestDetailResponseInfix'
+      - type: object
+        properties:
+          testProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/LabTestDetailPropertyForStyle'
+      - $ref: '#/components/schemas/BaseLabTestDetailResponsePostfix'
+    LabTestCondition:
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        result:
+          $ref: '#/components/schemas/ResultEnum'
+        samples:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/LabTestSample'
+        followUpAction:
+          $ref: '#/components/schemas/LabTestFollowUpAction'
+    LabTestPackageListResponse:
+      allOf:
+      - $ref: '#/components/schemas/LabTestPackageDetailResponse'
+      - type: object
+        properties:
+          createdAt:
+            type: string
+            description: Created at
+            format: date-time
+            example: '2025-01-24T02:31:59Z'
+          updatedAt:
+            type: string
+            description: Updated at
+            format: date-time
+            example: '2025-01-24T02:31:59Z'
+    BaseLabTestDetailEntity:
+      type: object
+      properties:
+        additionalFields:
+          type: array
+          description: Additional fields
+          items:
+            type: object
+            properties:
+              integrationKey:
+                type: string
+                description: Integration key
+              value:
+                type: array
+                description: Values
+                items:
+                  type: string
+        sampleSize:
+          type: integer
+          description: Sample size
+        unit:
+          type: string
+          description: Unit
+    LabTestList:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: Lab test uuid
+          format: uuid
+        labTestId:
+          type: string
+          example: LT0DQFRX19
+        caseNumber:
+          type: string
+          description: Lab test case number
+        reportNumber:
+          type: string
+        status:
+          $ref: '#/components/schemas/LabTestStatusEnum'
+        testType:
+          type: string
+          description: Type of lab test
+        creator:
+          type: string
+          description: Creator of the lab test
+        receiver:
+          type: string
+          description: Receiver of the lab test
+        executor:
+          type: string
+          description: Executor of the lab test
+        brandRetailer:
+          type: array
+          description: Array of brand retailer information
+          items:
+            $ref: '#/components/schemas/LabTestOrgWithoutTier'
+        suppliers:
+          type: array
+          description: Array of supplier information
+          items:
+            $ref: '#/components/schemas/LabTestTierOrg'
+        factories:
+          type: array
+          description: Array of factory information
+          items:
+            $ref: '#/components/schemas/LabTestTierOrg'
+        labAgency:
+          type: object
+          properties:
+            name:
+              type: string
+              maxLength: 255
+            localOrganizationId:
+              type: string
+              maxLength: 255
+        createdAt:
+          type: string
+          format: date-time
+          example: '2024-01-05T15:44:42'
+        updatedAt:
+          type: string
+          format: date-time
+          example: '2024-01-09T12:58:30Z'
+        productType:
+          type: string
+          description: Product type
+          enum:
+          - Item
+          - Style
+          - Material
+        overallResult:
+          type: object
+          properties:
+            result:
+              $ref: '#/components/schemas/ResultEnum'
+              example: pass
+            reviewResult:
+              type:
+              - string
+              - 'null'
+              example: pass
+        disposition:
+          $ref: '#/components/schemas/LabTestDisposition'
+        tags:
+          type: array
+          description: Array of tags
+          items:
+            type: string
+            maxLength: 255
+        linkedTests:
+          type: array
+          description: Lab tests linked to this lab test (retest or manual link)
+          items:
+            $ref: '#/components/schemas/LinkedTestListItem'
+    LabTestPropertyBase:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        testPackageId:
+          type:
+          - string
+          - 'null'
+        testCategoryId:
+          type:
+          - string
+          - 'null'
+        testSubcategoryId:
+          type:
+          - string
+          - 'null'
+        testMethod:
+          type:
+          - string
+          - 'null'
+        result:
+          type:
+          - string
+          - 'null'
+          enum:
+          - pass
+          - fail
+          - data
+          - na
+        reviewResult:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+      required:
+      - id
+      - name
+    TypeEnum:
+      enum:
+      - testReport
+      - others
+      type: string
+      description: '* `testReport` - testReport
+
+        * `others` - others'
     AttachmentObject:
       type: array
       items:
@@ -2997,64 +2990,259 @@ components:
             type: string
           url:
             type: string
-    LabTestSample:
-      type: object
-      properties:
-        data:
-          type:
-          - string
-          - 'null'
-        result:
-          type: string
-          enum:
-          - pass
-          - fail
-          - data
-        sampleNumbers:
-          type: array
-          items:
-            type: integer
-      required:
-      - result
-      - sampleNumbers
-    QuestionnaireIntegrationItem:
-      type: array
-      items:
-        type: object
-        properties:
-          integrationKey:
-            type: string
-          values:
-            type: array
-            items:
-              type: string
-        required:
-        - integrationKey
-        - values
-    LabTestListForMaterial:
-      title: Material
+    LabTestListForStyle:
+      title: Style
       allOf:
       - $ref: '#/components/schemas/LabTestList'
       - type: object
         properties:
+          styles:
+            $ref: '#/components/schemas/LabTestListResponseStyleObject'
+    LabTestCustomOrgContact:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Contact name
+        email:
+          type: string
+          description: Contact email
+        telephoneNumber:
+          type: string
+          description: Contact telephone number
+        mobileNumber:
+          type: string
+          description: Contact mobile number
+    LabTestUpdateResponse:
+      type: object
+      properties:
+        caseNumber:
+          type: string
+          description: Lab test case number
+        uuid:
+          type: string
+          description: Lab test uuid
+          example: b04ed17c-0253-40a1-bc3c-5df138643057
+        code:
+          type: integer
+          description: Response status code
+          example: 204
+        status:
+          type: integer
+          description: Response status code
+          example: 204
+    LabTestUpdateCustomOrg:
+      type: object
+      properties:
+        localOrganizationId:
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+        address:
+          type:
+          - string
+          - 'null'
+        city:
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+        country:
+          maxLength: 2
+          type:
+          - string
+          - 'null'
+          description: iso alpha-2 country code
+        province:
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+        postal:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/LabTestUpdateCustomOrgContact'
+    LabTestDetailResponseForMaterial:
+      title: Material
+      allOf:
+      - $ref: '#/components/schemas/BaseLabTestDetailResponsePrefix'
+      - type: object
+        properties:
           materials:
-            $ref: '#/components/schemas/LabTestListResponseMaterialObject'
-    LabTestDetailPropertyForStyle:
+            type: array
+            items:
+              $ref: '#/components/schemas/LabTestDetailMaterial'
+      - $ref: '#/components/schemas/BaseLabTestDetailResponseInfix'
+      - type: object
+        properties:
+          testProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/LabTestDetailPropertyForMaterial'
+      - $ref: '#/components/schemas/BaseLabTestDetailResponsePostfix'
+    LabTestPackageCreateRequest:
+      allOf:
+      - $ref: '#/components/schemas/LabTestPackageUpdateRequest'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: Package ID
+            maxLength: 50
+            example: PKG-001
+    LabTestDetailPropertyForMaterial:
       allOf:
       - $ref: '#/components/schemas/BaseLabTestDetailProperty'
       - type: object
         properties:
-          styles:
+          materials:
             type: array
             items:
-              $ref: '#/components/schemas/LabTestDetailPropertyItemForStyle'
-    LabTestDetailPropertyItemForMaterial:
-      allOf:
-      - type: object
-        properties:
-          materialId:
+              $ref: '#/components/schemas/LabTestDetailPropertyItemForMaterial'
+    ResultEnum:
+      enum:
+      - pass
+      - fail
+      - data
+      - na
+      type: string
+      description: '* `pass` - Pass
+
+        * `fail` - Fail
+
+        * `data` - Data
+
+        * `na` - N/A'
+    LabTestPackageUpdateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Package name
+          maxLength: 255
+        type:
+          type: string
+          description: Package type
+          maxLength: 255
+          example: Sample Type
+        description:
+          type: string
+          description: Package description
+          maxLength: 5000
+        revision:
+          type: string
+          description: Package revision
+          maxLength: 80
+        enabled:
+          type: boolean
+          description: Package enabled status
+          default: true
+        labTestTypes:
+          type: array
+          description: Lab test types
+          items:
             type: string
-      - $ref: '#/components/schemas/BaseLabTestDetailPropertyItemForEntity'
+            description: Lab test type custom ID
+            maxLength: 80
+        labTestProperties:
+          type: array
+          description: Lab test properties
+          items:
+            type: string
+            description: Lab test property custom ID
+            maxLength: 100
+        productLines:
+          type: array
+          description: Product lines
+          items:
+            type: string
+            description: Product line custom ID
+            maxLength: 128
+        materialTypes:
+          type: array
+          description: Material types
+          items:
+            type: string
+            description: Material type custom ID
+            maxLength: 128
+        viewingPermissions:
+          type: string
+          description: Viewing permissions
+          enum:
+          - all_orgs
+          - selected_orgs
+          default: all_orgs
+        selectedOrgs:
+          type: array
+          description: Selected organization custom IDs. Required (non-empty) when `viewingPermissions` is `selected_orgs`; ignored otherwise.
+          example:
+          - Org-Custom-ID-1
+          items:
+            type: string
+            description: Organization custom ID
+            maxLength: 255
+    LabTestItem:
+      type: object
+      properties:
+        itemId:
+          type: string
+          maxLength: 255
+        itemName:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        itemDescription:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        styleId:
+          type: string
+          maxLength: 255
+        styleName:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        color:
+          type:
+          - string
+          - 'null'
+          default: ''
+          maxLength: 255
+        size:
+          type:
+          - string
+          - 'null'
+          maxLength: 255
+        originCountry:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            pattern: ^[A-Z]{2}$
+            description: Alpha-2 country code
+        sampleSize:
+          type:
+          - integer
+          - 'null'
+        unit:
+          type:
+          - string
+          - 'null'
+          default: ''
+          maxLength: 255
+      required:
+      - itemId
+      - styleId
     LinkedTestDetailItem:
       type: object
       description: A lab test linked to this lab test (retest or manual link), detail shape
@@ -3113,6 +3301,399 @@ components:
         linkedComment:
           type: string
           description: Comment describing the link between the two lab tests
+    LabTestDetailPropertyItemForStyle:
+      allOf:
+      - type: object
+        properties:
+          styleId:
+            type: string
+      - $ref: '#/components/schemas/BaseLabTestDetailPropertyItemForEntity'
+    LabTestListResponseMaterialObject:
+      type: object
+      properties:
+        materialIds:
+          type: array
+          description: Array of material ids
+          items:
+            type: string
+            maxLength: 255
+        materialTypes:
+          type: array
+          description: Array of material types
+          items:
+            type: string
+            maxLength: 255
+        materialCategories:
+          type: array
+          description: Array of material categories
+          items:
+            type: string
+            maxLength: 255
+        materialSubCategories:
+          type: array
+          description: Array of material sub categories
+          items:
+            type: string
+            maxLength: 255
+    LabTestPropertyConditionCreateUpdateObject:
+      allOf:
+      - $ref: '#/components/schemas/LabTestPropertyConditionObject'
+      - type: object
+        properties:
+          position:
+            type: integer
+            description: Condition position
+      required:
+      - position
+    LabTestAttachment:
+      type: object
+      properties:
+        fileId:
+          type: string
+          maxLength: 64
+        type:
+          $ref: '#/components/schemas/TypeEnum'
+        label:
+          type:
+          - string
+          - 'null'
+          default: ''
+          maxLength: 255
+      required:
+      - fileId
+      - type
+    LabTestCustomOrgWithTier:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Org name
+        address:
+          type: string
+          description: Address
+        city:
+          type: string
+          description: City
+        country:
+          type: string
+          description: Country
+        province:
+          type: string
+          description: Province
+        postal:
+          type: string
+          description: Postal
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/LabTestCustomOrgContact'
+        localOrganizationId:
+          type: string
+          description: Local org id
+        localOrganizationName:
+          type: string
+          description: Local org name
+        tier:
+          type: string
+          description: Org tier
+    LabTestCustomOrgWithLocalOrg:
+      allOf:
+      - $ref: '#/components/schemas/LabTestCustomOrg'
+      - type: object
+        properties:
+          localOrganizationId:
+            type: string
+            description: Local org id
+          localOrganizationName:
+            type: string
+            description: Local org name
+    QuestionnaireIntegrationItem:
+      type: array
+      items:
+        type: object
+        properties:
+          integrationKey:
+            type: string
+          values:
+            type: array
+            items:
+              type: string
+        required:
+        - integrationKey
+        - values
+    ValueResultObject:
+      type: object
+      properties:
+        value:
+          type: string
+          description: Value
+        result:
+          type: string
+          description: Result
+          enum:
+          - pass
+          - fail
+          - data
+          - n/a
+      required:
+      - value
+      - result
+    LabTestDetailPropertyForStyle:
+      allOf:
+      - $ref: '#/components/schemas/BaseLabTestDetailProperty'
+      - type: object
+        properties:
+          styles:
+            type: array
+            items:
+              $ref: '#/components/schemas/LabTestDetailPropertyItemForStyle'
+    BadRequestResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Bad request error message
+        code:
+          type: integer
+          description: Response status code
+          example: 400
+        status:
+          type: integer
+          description: Response status code
+          example: 400
+    LabTestDisposition:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - pending-review
+          - response-requested
+          - response-submitted
+          - completed
+        lastUpdateTime:
+          type: string
+          format: date-time
+          example: '2024-01-05T15:44:42'
+    BaseLabTestDetailResponseInfix:
+      type: object
+      properties:
+        questionnaire:
+          type: object
+          properties:
+            forTestCreation:
+              $ref: '#/components/schemas/QuestionnaireObject'
+            forTestExecution:
+              $ref: '#/components/schemas/QuestionnaireObject'
+        attachments:
+          type: object
+          properties:
+            generalInformation:
+              $ref: '#/components/schemas/AttachmentObject'
+            testResult:
+              $ref: '#/components/schemas/AttachmentObject'
+            questionnaire:
+              $ref: '#/components/schemas/AttachmentObject'
+            activity:
+              $ref: '#/components/schemas/AttachmentObject'
+            followUpAction:
+              $ref: '#/components/schemas/AttachmentObject'
+        sampleReceiptDate:
+          type: string
+          format: date
+          description: Sample receipt date
+          example: '2024-01-10'
+        reportIssueDate:
+          type: string
+          format: date
+          description: Report issue date
+          example: '2024-01-15'
+        reportNumber:
+          type: string
+          description: Report number
+          example: RPT-2024-001
+        originalReportNumber:
+          type: string
+          description: Original report number
+          example: RPT-2024-001
+        revisionNumber:
+          type: integer
+          description: Revision number
+          example: 0
+        testPackages:
+          type: array
+          description: Test packages
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: Test package id
+                example: TP-2024-001
+              name:
+                type: string
+                description: Test package name
+                example: Chemical Test Package
+              type:
+                type:
+                - string
+                - 'null'
+                description: Test package type
+    LabTestPropertyDetail:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Property custom ID
+        name:
+          type: string
+          description: Property name
+        description:
+          type: string
+          description: Property description
+        enabled:
+          type: boolean
+          description: Property enabled status
+        standard:
+          type: string
+          description: Property standard
+        revision:
+          type: string
+          description: Property revision
+        revisionYear:
+          type: string
+          description: Property revision year
+        validatityDuration:
+          type: string
+          description: Property validatity duration
+        conditions:
+          type: array
+          items:
+            $ref: '#/components/schemas/LabTestPropertyConditionObject'
+        testCategory:
+          $ref: '#/components/schemas/CategoryBaseObject'
+        testSubcategory:
+          $ref: '#/components/schemas/CategoryBaseObject'
+        productLine:
+          $ref: '#/components/schemas/CategoryBaseObject'
+        labTestType:
+          $ref: '#/components/schemas/LabTestTypeObject'
+        createdAt:
+          type: string
+          format: date-time
+          description: Property created at
+        updatedAt:
+          type: string
+          format: date-time
+          description: Property updated at
+        viewingPermissions:
+          type: string
+          enum:
+          - all_orgs
+          - selected_orgs
+          default: all_orgs
+        selectedOrgs:
+          type: array
+          items:
+            $ref: '#/components/schemas/SelectedOrgObject'
+    LabTestDetailPropertyForItem:
+      allOf:
+      - $ref: '#/components/schemas/BaseLabTestDetailProperty'
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/LabTestDetailPropertyItemForItem'
+    LabTestUploadRequestBody:
+      type: object
+      properties:
+        reportNumber:
+          type: string
+        originalReportNumber:
+          type: string
+        revisionNumber:
+          type:
+          - integer
+          - 'null'
+        reportIssueDate:
+          type: string
+          format: date
+          example: '2024-04-24'
+        testResultAttachments:
+          type: array
+          items:
+            type: object
+            properties:
+              fileId:
+                type: string
+                format: uuid
+                example: f85774e7-cb3a-4bf3-ab8a-92e22bed41ac
+              label:
+                type:
+                - string
+                - 'null'
+            required:
+            - fileId
+        testPackages:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              type:
+                type:
+                - string
+                - 'null'
+            required:
+            - id
+            - name
+        testProperties:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/LabTestPropertyItems'
+            - $ref: '#/components/schemas/LabTestPropertyMaterials'
+            - $ref: '#/components/schemas/LabTestPropertyStyles'
+        overallResult:
+          type: object
+          properties:
+            result:
+              type: string
+              example: pass
+              enum:
+              - pass
+              - fail
+              - data
+            reviewResult:
+              type:
+              - string
+              - 'null'
+          required:
+          - result
+        questionnaire:
+          type:
+          - object
+          - 'null'
+          properties:
+            forTestExecution:
+              $ref: '#/components/schemas/QuestionnaireIntegrationItem'
+          required:
+          - forTestExecution
+        labAgency:
+          $ref: '#/components/schemas/LabTestUpdateCustomOrg'
+      required:
+      - reportNumber
+      - originalReportNumber
+      - testResultAttachments
+      - testProperties
+      - overallResult
+      - reportIssueDate
     LabTestBase:
       type: object
       description: Base Lab Test properties
@@ -3258,127 +3839,54 @@ components:
       required:
       - testForm
       - testType
-    BaseLabTestDetailResponsePostfix:
-      type: object
-      properties:
-        overallResult:
-          type: object
-          properties:
-            result:
-              $ref: '#/components/schemas/ResultEnum'
-              example: pass
-            reviewResult:
-              type:
-              - string
-              - 'null'
-              example: pass
-        disposition:
-          $ref: '#/components/schemas/LabTestDisposition'
-        linkedTests:
-          type: array
-          description: Lab tests linked to this lab test (retest or manual link)
-          items:
-            $ref: '#/components/schemas/LinkedTestDetailItem'
-        createdAt:
-          type: string
-          description: created time
-          example: '2024-07-16T08:13:25Z'
-        updatedAt:
-          type: string
-          description: updated time
-          example: '2024-07-16T08:13:25Z'
-    BaseLabTestDetailPropertyItemForEntity:
-      type: object
-      properties:
-        testConditions:
-          type: array
-          items:
-            $ref: '#/components/schemas/LabTestDetailPropertyCondition'
-    ResultEnum:
-      enum:
-      - pass
-      - fail
-      - data
-      - na
-      type: string
-      description: '* `pass` - Pass
-
-        * `fail` - Fail
-
-        * `data` - Data
-
-        * `na` - N/A'
-    LabTestCustomOrgContact:
+    LabTestDetailPropertyItemForMaterial:
+      allOf:
+      - type: object
+        properties:
+          materialId:
+            type: string
+      - $ref: '#/components/schemas/BaseLabTestDetailPropertyItemForEntity'
+    LabTestOrgWithoutTier:
       type: object
       properties:
         name:
           type: string
-          description: Contact name
-        email:
+          maxLength: 255
+        localOrganizationId:
           type: string
-          description: Contact email
-        telephoneNumber:
-          type: string
-          description: Contact telephone number
-        mobileNumber:
-          type: string
-          description: Contact mobile number
-    LabTestItem:
+          maxLength: 255
+    LabTestDetailResponse:
       type: object
       properties:
-        itemId:
+        data:
+          oneOf:
+          - $ref: '#/components/schemas/LabTestDetailResponseForItem'
+          - $ref: '#/components/schemas/LabTestDetailResponseForStyle'
+          - $ref: '#/components/schemas/LabTestDetailResponseForMaterial'
+    LabTestCreateResponse:
+      type: object
+      properties:
+        caseNumber:
           type: string
-          maxLength: 255
-        itemName:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-        itemDescription:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-        styleId:
+          description: Lab test case number
+          example: LT-2024-001
+        uuid:
           type: string
-          maxLength: 255
-        styleName:
+          description: Lab test uuid
+          format: uuid
+          example: b04ed17c-0253-40a1-bc3c-5df138643057
+        labTestId:
+          type: string
+          description: 10-digit encoded lab test ID
+          example: ABC1234567
+        labTestStatus:
+          $ref: '#/components/schemas/LabTestStatusEnum'
+        message:
           type:
           - string
           - 'null'
-          maxLength: 255
-        color:
-          type:
-          - string
-          - 'null'
-          default: ''
-          maxLength: 255
-        size:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-        originCountry:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-            pattern: ^[A-Z]{2}$
-            description: Alpha-2 country code
-        sampleSize:
-          type:
-          - integer
-          - 'null'
-        unit:
-          type:
-          - string
-          - 'null'
-          default: ''
-          maxLength: 255
-      required:
-      - itemId
-      - styleId
+          description: Additional information when a new lab test can be created but without test data / results.
+          example: 'Insufficient lab test result data. The following data has been discarded (if any): sampleReceiptDate, reportIssueDate, reportNumber, originalReportNumber, revisionNumber, testPackages, testProperties, overallResult, attachments - testReport'
     LabTestDetailStyle:
       allOf:
       - type: object
@@ -3456,476 +3964,110 @@ components:
                 type: string
                 description: Style's brand name
       - $ref: '#/components/schemas/BaseLabTestDetailEntity'
-    LabTestBulkActionStartRequestItem:
-      title: Start
-      type: object
-      properties:
-        id:
-          type: string
-          description: Lab test uuid or Lab test id
-        sampleReceiptDate:
-          type: string
-          format: date
-          description: Sample receipt date
-      required:
-      - id
-      - sampleReceiptDate
-    LabTestPropertyConditionObject:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Condition ID
-        name:
-          type: string
-          description: Condition name
-        required:
-          type: boolean
-          description: is condition required
-        followUpActions:
-          type: object
-          properties:
-            provideComment:
-              type: object
-              properties:
-                data:
-                  type: boolean
-                  default: false
-                pass:
-                  type: boolean
-                  default: false
-                fail:
-                  type: boolean
-                  default: false
-                required:
-                  type: boolean
-                  default: false
-            uploadAttachment:
-              type: object
-              properties:
-                data:
-                  type: boolean
-                  default: false
-                pass:
-                  type: boolean
-                  default: false
-                fail:
-                  type: boolean
-                  default: false
-                required:
-                  type: boolean
-                  default: false
-            uploadPictureOrVideo:
-              type: object
-              properties:
-                data:
-                  type: boolean
-                  default: false
-                pass:
-                  type: boolean
-                  default: false
-                fail:
-                  type: boolean
-                  default: false
-                required:
-                  type: boolean
-                  default: false
-            recordFailureCode:
-              type: object
-              properties:
-                data:
-                  type: boolean
-                  default: false
-                fail:
-                  type: boolean
-                  default: false
-                required:
-                  type: boolean
-                  default: false
-                category:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        description: Category ID
-                      name:
-                        type: string
-                        description: Category name
-        inputMethod:
-          type: string
-          description: Condition input method
-          enum:
-          - TEST_DATA
-          - TEST_RESULT
-        customValueGroup:
-          type: object
-          properties:
-            name:
-              type: string
-              description: Custom value group name
-            customValues:
-              type: array
-              items:
-                type: object
-                properties:
-                  value:
-                    type: string
-                    description: Custom value
-                  result:
-                    type: string
-                    description: Custom value result
-        valueRange:
-          $ref: '#/components/schemas/ValueRangeObject'
-      required:
-      - name
-      - required
-      - inputMethod
-    LabTestUploadRequestBody:
-      type: object
-      properties:
-        reportNumber:
-          type: string
-        originalReportNumber:
-          type: string
-        revisionNumber:
-          type:
-          - integer
-          - 'null'
-        reportIssueDate:
-          type: string
-          format: date
-          example: '2024-04-24'
-        testResultAttachments:
-          type: array
-          items:
-            type: object
-            properties:
-              fileId:
-                type: string
-                format: uuid
-                example: f85774e7-cb3a-4bf3-ab8a-92e22bed41ac
-              label:
-                type:
-                - string
-                - 'null'
-            required:
-            - fileId
-        testPackages:
-          type:
-          - array
-          - 'null'
-          items:
-            type: object
-            properties:
-              id:
-                type: string
-              name:
-                type: string
-              type:
-                type:
-                - string
-                - 'null'
-            required:
-            - id
-            - name
-        testProperties:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/LabTestPropertyItems'
-            - $ref: '#/components/schemas/LabTestPropertyMaterials'
-            - $ref: '#/components/schemas/LabTestPropertyStyles'
-        overallResult:
-          type: object
-          properties:
-            result:
-              type: string
-              example: pass
-              enum:
-              - pass
-              - fail
-              - data
-            reviewResult:
-              type:
-              - string
-              - 'null'
-          required:
-          - result
-        questionnaire:
-          type:
-          - object
-          - 'null'
-          properties:
-            forTestExecution:
-              $ref: '#/components/schemas/QuestionnaireIntegrationItem'
-          required:
-          - forTestExecution
-        labAgency:
-          $ref: '#/components/schemas/LabTestUpdateCustomOrg'
-      required:
-      - reportNumber
-      - originalReportNumber
-      - testResultAttachments
-      - testProperties
-      - overallResult
-      - reportIssueDate
-    LabTestDetailResponseForStyle:
-      title: Style
-      allOf:
-      - $ref: '#/components/schemas/BaseLabTestDetailResponsePrefix'
-      - type: object
-        properties:
-          styles:
-            type: array
-            items:
-              $ref: '#/components/schemas/LabTestDetailStyle'
-      - $ref: '#/components/schemas/BaseLabTestDetailResponseInfix'
-      - type: object
-        properties:
-          testProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/LabTestDetailPropertyForStyle'
-      - $ref: '#/components/schemas/BaseLabTestDetailResponsePostfix'
-    BaseLabTestDetailEntity:
-      type: object
-      properties:
-        additionalFields:
-          type: array
-          description: Additional fields
-          items:
-            type: object
-            properties:
-              integrationKey:
-                type: string
-                description: Integration key
-              value:
-                type: array
-                description: Values
-                items:
-                  type: string
-        sampleSize:
-          type: integer
-          description: Sample size
-        unit:
-          type: string
-          description: Unit
-    LabTestListForStyle:
-      title: Style
+    LabTestListForItem:
+      title: Item
       allOf:
       - $ref: '#/components/schemas/LabTestList'
       - type: object
         properties:
-          styles:
-            $ref: '#/components/schemas/LabTestListResponseStyleObject'
-    CustomOrg:
-      type: object
-      properties:
-        localOrganizationId:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-        name:
-          type:
-          - string
-          - 'null'
-          default: ''
-          maxLength: 255
-        address:
-          type:
-          - string
-          - 'null'
-          default: ''
-          maxLength: 255
-        city:
-          type:
-          - string
-          - 'null'
-          default: ''
-          maxLength: 255
-        country:
-          type:
-          - string
-          - 'null'
-          default: ''
-          maxLength: 255
-        postal:
-          type:
-          - string
-          - 'null'
-          default: ''
-          maxLength: 255
-        province:
-          type:
-          - string
-          - 'null'
-          default: ''
-          maxLength: 255
-        contacts:
-          type:
-          - array
-          - 'null'
           items:
-            $ref: '#/components/schemas/schemas-Contact'
-        tier:
-          type:
-          - integer
-          - 'null'
-          maximum: 3
-          minimum: 1
-    LabTestPropertyBase:
+            $ref: '#/components/schemas/LabTestListResponseItemObject'
+    LabTestDetailPropertyCondition:
       type: object
       properties:
         id:
           type: string
+          description: Test condition ID
+          example: TC001
         name:
           type: string
-        testPackageId:
-          type:
-          - string
-          - 'null'
-        testCategoryId:
-          type:
-          - string
-          - 'null'
-        testSubcategoryId:
-          type:
-          - string
-          - 'null'
-        testMethod:
-          type:
-          - string
-          - 'null'
+          description: Test condition name
+          example: Color Change
         result:
-          type:
-          - string
-          - 'null'
-          enum:
-          - pass
-          - fail
-          - data
-          - na
-        reviewResult:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-      required:
-      - id
-      - name
-    SelectedOrgObject:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Selected org name
-      required:
-      - name
-    LabTestListResponse:
-      type: object
-      properties:
-        total:
-          type: integer
-          example: 24
-          description: Total number of records matching the query
-        limit:
-          type: integer
-          example: 10
-          description: Number of records returned in a batch
-        offset:
-          type: integer
-          example: 0
-          description: Offset position
-        data:
+          $ref: '#/components/schemas/ResultEnum'
+          description: Test condition result
+          example: pass
+        samples:
           type: array
           items:
-            oneOf:
-            - $ref: '#/components/schemas/LabTestListForItem'
-            - $ref: '#/components/schemas/LabTestListForStyle'
-            - $ref: '#/components/schemas/LabTestListForMaterial'
-    LabTestPropertyMaterials:
-      title: Material
-      allOf:
-      - $ref: '#/components/schemas/LabTestPropertyBase'
-      - type: object
-        properties:
-          materials:
-            type:
-            - array
-            - 'null'
-            items:
-              type: object
-              properties:
-                materialId:
-                  type:
-                  - string
-                  - 'null'
-                testConditions:
-                  type:
-                  - array
-                  - 'null'
-                  items:
-                    $ref: '#/components/schemas/LabTestCondition'
-    LabTestCustomOrgWithTier:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Org name
-        address:
-          type: string
-          description: Address
-        city:
-          type: string
-          description: City
-        country:
-          type: string
-          description: Country
-        province:
-          type: string
-          description: Province
-        postal:
-          type: string
-          description: Postal
-        contacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/LabTestCustomOrgContact'
-        localOrganizationId:
-          type: string
-          description: Local org id
-        localOrganizationName:
-          type: string
-          description: Local org name
-        tier:
-          type: string
-          description: Org tier
-    LabTestPropertyStyles:
-      title: Style
-      allOf:
-      - $ref: '#/components/schemas/LabTestPropertyBase'
-      - type: object
-        properties:
-          styles:
-            type:
-            - array
-            - 'null'
-            items:
-              type: object
-              properties:
-                styleId:
-                  type:
-                  - string
-                  - 'null'
-                testConditions:
-                  type:
-                  - array
-                  - 'null'
-                  items:
-                    $ref: '#/components/schemas/LabTestCondition'
+            type: object
+            properties:
+              data:
+                type: string
+                description: Sample data
+                example: Grade 4-5
+              result:
+                $ref: '#/components/schemas/ResultEnum'
+                example: pass
+              sampleNumbers:
+                type: array
+                items:
+                  type: integer
+                description: Sample numbers
+                example:
+                - 1
+                - 2
+                - 3
+        followUpAction:
+          type: object
+          properties:
+            comment:
+              type: string
+              description: Follow-up action comment
+              example: No action required
+            attachments:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Attachment name
+                    example: test-report.pdf
+                  url:
+                    type: string
+                    description: Attachment URL
+                    example: https://example.com/files/test-report.pdf
+                  label:
+                    type:
+                    - string
+                    - 'null'
+                    description: Attachment label
+                    example: Test Report
+            failureCategoryId:
+              type:
+              - string
+              - 'null'
+              description: Failure category ID
+              example: null
+            failureCategoryName:
+              type:
+              - string
+              - 'null'
+              description: Failure category name
+              example: null
+            failureId:
+              type:
+              - string
+              - 'null'
+              description: Failure ID
+              example: null
+            failureName:
+              type:
+              - string
+              - 'null'
+              description: Failure name
+              example: null
+            failureSeverity:
+              type:
+              - string
+              - 'null'
+              description: Failure severity
+              enum:
+              - critical
+              - major
+              - minor
+              example: critical
     LabTestCustomOrg:
       type: object
       properties:
@@ -3951,213 +4093,71 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LabTestCustomOrgContact'
-    LabTestUpdateCustomOrg:
-      type: object
-      properties:
-        localOrganizationId:
-          maxLength: 255
-          type:
-          - string
-          - 'null'
-        address:
-          type:
-          - string
-          - 'null'
-        city:
-          maxLength: 255
-          type:
-          - string
-          - 'null'
-        country:
-          maxLength: 2
-          type:
-          - string
-          - 'null'
-          description: iso alpha-2 country code
-        province:
-          maxLength: 255
-          type:
-          - string
-          - 'null'
-        postal:
-          maxLength: 50
-          type:
-          - string
-          - 'null'
-        contacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/LabTestUpdateCustomOrgContact'
-    LabTestCreateMaterial:
-      type: object
-      properties:
-        materialId:
-          type: string
-          maxLength: 255
-        materialName:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-        materialDescription:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-        casNumber:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-        materialColor:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-        materialOriginCountry:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-            pattern: ^[A-Z]{2}$
-            description: Alpha-2 country code
-        materialSize:
-          type:
-          - string
-          - 'null'
-          maxLength: 255
-      required:
-      - materialId
-    LabTestAttachment:
+    LabTestFollowUpAttachment:
       type: object
       properties:
         fileId:
           type: string
-          maxLength: 64
-        type:
-          $ref: '#/components/schemas/TypeEnum'
+          format: uuid
         label:
           type:
           - string
           - 'null'
-          default: ''
-          maxLength: 255
       required:
       - fileId
-      - type
-    LabTestDetailPropertyForMaterial:
-      allOf:
-      - $ref: '#/components/schemas/BaseLabTestDetailProperty'
-      - type: object
-        properties:
-          materials:
-            type: array
-            items:
-              $ref: '#/components/schemas/LabTestDetailPropertyItemForMaterial'
-    LabTestListForItem:
+    LabTestListResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+          example: 24
+          description: Total number of records matching the query
+        limit:
+          type: integer
+          example: 10
+          description: Number of records returned in a batch
+        offset:
+          type: integer
+          example: 0
+          description: Offset position
+        data:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/LabTestListForItem'
+            - $ref: '#/components/schemas/LabTestListForStyle'
+            - $ref: '#/components/schemas/LabTestListForMaterial'
+    LabTestDetailResponseForItem:
       title: Item
       allOf:
-      - $ref: '#/components/schemas/LabTestList'
+      - $ref: '#/components/schemas/BaseLabTestDetailResponsePrefix'
       - type: object
         properties:
           items:
-            $ref: '#/components/schemas/LabTestListResponseItemObject'
-    LabTestDetailResponse:
+            type: array
+            items:
+              $ref: '#/components/schemas/LabTestDetailItem'
+      - $ref: '#/components/schemas/BaseLabTestDetailResponseInfix'
+      - type: object
+        properties:
+          testProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/LabTestDetailPropertyForItem'
+      - $ref: '#/components/schemas/BaseLabTestDetailResponsePostfix'
+    LabTestBulkActionRejectAbortRequestItem:
+      title: Reject / Abort
       type: object
       properties:
-        data:
-          oneOf:
-          - $ref: '#/components/schemas/LabTestDetailResponseForItem'
-          - $ref: '#/components/schemas/LabTestDetailResponseForStyle'
-          - $ref: '#/components/schemas/LabTestDetailResponseForMaterial'
-    LabTestPropertyUpdateRequest:
-      type: object
-      properties:
-        name:
+        id:
           type: string
-          description: Property name
-        description:
+          description: Lab test uuid or Lab test id
+        reason:
           type: string
-          description: Property description
-        enabled:
-          type: boolean
-          description: Property enabled status
-        standard:
-          type: string
-          description: Property standard
-        revision:
-          type: string
-          description: Property revision
-        revisionYear:
-          type: string
-          description: Property revision year
-        validatityDuration:
-          type: string
-          description: Property validatity duration
-        conditions:
-          type: array
-          items:
-            $ref: '#/components/schemas/LabTestPropertyConditionCreateUpdateObject'
-        testCategoryId:
-          type: string
-          description: custom id of category
-        testSubcategoryId:
-          type: string
-          description: custom id of subcategory
-        productLines:
-          type: array
-          items:
-            type: string
-          description: custom id of product lines
-        labTestTypes:
-          type: array
-          items:
-            type: string
-          description: short name of lab test types
-        viewingPermissions:
-          type: string
-          enum:
-          - all_orgs
-          - selected_orgs
-          default: all_orgs
-        selectedOrgs:
-          type: array
-          items:
-            type: string
-          description: this field is required used when viewingPermissions is selected_orgs, it's local org id
+          description: Reason for rejection / abortion
       required:
-      - name
-      - conditions
-      - testCategoryId
-      - testSubcategoryId
-    LabTestListResponseStyleObject:
-      type: object
-      properties:
-        styleIds:
-          type: array
-          description: Array of style ids
-          items:
-            type: string
-            maxLength: 255
-        productLines:
-          type: array
-          description: Array of product lines
-          items:
-            type: string
-            maxLength: 255
-        productCategories:
-          type: array
-          description: Array of product categories
-          items:
-            type: string
-            maxLength: 255
-        brands:
-          type: array
-          description: Array of brands
-          items:
-            type: string
-            maxLength: 255
+      - id
+      - reason
   securitySchemes:
     ApiKeyAuth:
       in: header

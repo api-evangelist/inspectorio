@@ -76,54 +76,10 @@ paths:
       url: https://sight.pre.inspectorio.com
 components:
   schemas:
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
     CustomResponse3:
       properties:
         data:
           $ref: '#/components/schemas/AuthResponse'
-      type: object
-    ValidateApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            type:
-            - Input type is not valid
-          type: object
-        message:
-          example: Validation error
-          type: string
-      type: object
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    LoginForm:
-      properties:
-        password:
-          minLength: 1
-          type: string
-        username:
-          minLength: 1
-          type: string
-      required:
-      - password
-      - username
       type: object
     AuthResponse:
       properties:
@@ -166,6 +122,50 @@ components:
           example: Internal server error
           type: string
       type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    LoginForm:
+      properties:
+        password:
+          minLength: 1
+          type: string
+        username:
+          minLength: 1
+          type: string
+      required:
+      - password
+      - username
+      type: object
     TooManyResponsesApiError:
       properties:
         errorCode:
@@ -174,6 +174,24 @@ components:
         message:
           example: Too many requests
           type: string
+      type: object
+    CustomResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/AuthResponse_2'
+      type: object
+    AuthResponse_2:
+      properties:
+        orgName:
+          description: Name of the organization the user belongs to
+          example: Acme Corp
+          type: string
+        token:
+          description: Authentication token used for every API request
+          example: 8847eae8-9ef1-123-abc
+          type: string
+      required:
+      - token
       type: object
     Login:
       properties:
@@ -190,24 +208,6 @@ components:
       required:
       - password
       - username
-      type: object
-    AuthResponse_2:
-      properties:
-        orgName:
-          description: Name of the organization the user belongs to
-          example: Acme Corp
-          type: string
-        token:
-          description: Authentication token used for every API request
-          example: 8847eae8-9ef1-123-abc
-          type: string
-      required:
-      - token
-      type: object
-    CustomResponse:
-      properties:
-        data:
-          $ref: '#/components/schemas/AuthResponse_2'
       type: object
   securitySchemes:
     ApiKeyAuth:

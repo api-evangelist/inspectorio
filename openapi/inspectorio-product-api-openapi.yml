@@ -59,15 +59,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
     Product:
       properties:
         categories:
@@ -84,14 +75,6 @@ components:
           example: Cashmere womens top
           type: string
       type: object
-    ProductListResponse:
-      properties:
-        data:
-          description: Product data
-          items:
-            $ref: '#/components/schemas/ProductResponse'
-          type: array
-      type: object
     ProductCategory:
       properties:
         productCategoryDescription:
@@ -105,6 +88,33 @@ components:
         productCategoryName:
           description: Name of the product category
           example: Womens top
+          type: string
+      type: object
+    ProductListResponse:
+      properties:
+        data:
+          description: Product data
+          items:
+            $ref: '#/components/schemas/ProductResponse'
+          type: array
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    ProductResponse:
+      properties:
+        info:
+          $ref: '#/components/schemas/Product'
+          description: Information of the product
+        productLineId:
+          description: 'Unique identifier of the product line '
+          example: A123
           type: string
       type: object
     ValidateApiError:
@@ -128,16 +138,6 @@ components:
           type: string
         message:
           example: Bad Request
-          type: string
-      type: object
-    ProductResponse:
-      properties:
-        info:
-          $ref: '#/components/schemas/Product'
-          description: Information of the product
-        productLineId:
-          description: 'Unique identifier of the product line '
-          example: A123
           type: string
       type: object
     InternalApiError:

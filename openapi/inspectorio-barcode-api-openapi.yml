@@ -151,29 +151,36 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    UnauthenticatedApiError:
+    BarcodeUpsertRequestItem:
       properties:
-        errorCode:
-          example: Generic
+        entityType:
+          description: The type of entity.
+          enum:
+          - po
+          - item
+          - packaging
           type: string
-        message:
-          example: Cannot retrieve session data because of expired token
+        code:
+          description: Barcode
           type: string
+        customId:
+          description: required when entityType is po or item
+          type: string
+        poCustomId:
+          description: required when entityType is packaging
+          type: string
+        itemCustomId:
+          description: required when entityType is packaging
+          type: string
+        assortmentCustomId:
+          description: define this if this is assortment
+          type: string
+        format:
+          $ref: '#/components/schemas/BarcodeFormat'
+      required:
+      - entityType
+      - code
       type: object
-    BarcodeRetriveResponse:
-      items:
-        properties:
-          code:
-            description: Barcode
-            type: string
-          format:
-            $ref: '#/components/schemas/BarcodeFormat'
-        type: object
-      type: array
-    BarcodeUpsertRequest:
-      items:
-        $ref: '#/components/schemas/BarcodeUpsertRequestItem'
-      type: array
     BarcodeFormat:
       description: Barcode format. If not send, it will use default value.
       enum:
@@ -197,6 +204,82 @@ components:
       - RSS-Expanded
       type: string
       default: Generic
+    BarcodeRetriveAndDeleteRequest:
+      properties:
+        entityType:
+          description: The type of entity.
+          enum:
+          - po
+          - item
+          - packaging
+          type: string
+        customId:
+          description: required when entityType is po or item
+          type: string
+        poCustomId:
+          description: required when entityType is packaging
+          type: string
+        itemCustomId:
+          description: required when entityType is packaging
+          type: string
+        assortmentCustomId:
+          description: define this if this is assortment
+          type: string
+        format:
+          $ref: '#/components/schemas/BarcodeFormat'
+      required:
+      - entityType
+      type: object
+    BarcodeUpsertRequest:
+      items:
+        $ref: '#/components/schemas/BarcodeUpsertRequestItem'
+      type: array
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    BarcodeRetriveResponse:
+      items:
+        properties:
+          code:
+            description: Barcode
+            type: string
+          format:
+            $ref: '#/components/schemas/BarcodeFormat'
+        type: object
+      type: array
+    BarcodeUpsertResponse:
+      items:
+        $ref: '#/components/schemas/BarcodeUpsertResponseItem'
+      type: array
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
     BarcodeUpsertResponseItem:
       properties:
         entityType:
@@ -230,85 +313,6 @@ components:
               type: string
           type: object
       type: object
-    BarcodeUpsertRequestItem:
-      properties:
-        entityType:
-          description: The type of entity.
-          enum:
-          - po
-          - item
-          - packaging
-          type: string
-        code:
-          description: Barcode
-          type: string
-        customId:
-          description: required when entityType is po or item
-          type: string
-        poCustomId:
-          description: required when entityType is packaging
-          type: string
-        itemCustomId:
-          description: required when entityType is packaging
-          type: string
-        assortmentCustomId:
-          description: define this if this is assortment
-          type: string
-        format:
-          $ref: '#/components/schemas/BarcodeFormat'
-      required:
-      - entityType
-      - code
-      type: object
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    BarcodeRetriveAndDeleteRequest:
-      properties:
-        entityType:
-          description: The type of entity.
-          enum:
-          - po
-          - item
-          - packaging
-          type: string
-        customId:
-          description: required when entityType is po or item
-          type: string
-        poCustomId:
-          description: required when entityType is packaging
-          type: string
-        itemCustomId:
-          description: required when entityType is packaging
-          type: string
-        assortmentCustomId:
-          description: define this if this is assortment
-          type: string
-        format:
-          $ref: '#/components/schemas/BarcodeFormat'
-      required:
-      - entityType
-      type: object
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
     TooManyResponsesApiError:
       properties:
         errorCode:
@@ -318,10 +322,6 @@ components:
           example: Too many requests
           type: string
       type: object
-    BarcodeUpsertResponse:
-      items:
-        $ref: '#/components/schemas/BarcodeUpsertResponseItem'
-      type: array
   securitySchemes:
     ApiKeyAuth:
       in: header

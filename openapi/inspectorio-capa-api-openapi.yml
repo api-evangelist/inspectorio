@@ -64,25 +64,8 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Question:
+    Checklist:
       properties:
-        answer:
-          description: Answer of a question in the questionnaire
-          example: 'Yes'
-          type:
-          - string
-          - 'null'
-        answerComments:
-          description: The comments for the answer of a question in the questionnaire
-          example:
-          - comment 1
-          - comment 2
-          - comment 3
-          items:
-            type: string
-          type:
-          - array
-          - 'null'
         attachments:
           description: List of attachments in the questionnaire
           items:
@@ -116,146 +99,108 @@ components:
           - string
           - 'null'
       type: object
-    DefectDetail:
+    ProductCategoryOrLine:
       properties:
-        affectedPercentage:
-          description: Affected percentage by the defect
-          example: 1
+        id:
+          description: Unique identifier of the product category or product line
+          example: C123
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the product category or product line
+          example: Menswear
+          type:
+          - string
+          - 'null'
+      type: object
+    CorrectiveActionData:
+      properties:
+        details:
+          description: Details on the corrective action
+          example: Rework on the defective units
+          type:
+          - string
+          - 'null'
+        value:
+          description: An action in the corrective list
+          example: Rework Units
+          type:
+          - string
+          - 'null'
+      type: object
+    OutOfTolerance:
+      properties:
+        unit:
+          example: cm
+          type:
+          - string
+          - 'null'
+        value:
+          description: value of the out of acceptable tolerance
+          example: 1.5
           type: number
-        comments:
-          description: Comment on the actions
-          example: Reviewed
-          items:
-            $ref: '#/components/schemas/ChatBox'
-          type: array
-        correctiveAction:
-          $ref: '#/components/schemas/CorrectiveActionData'
-          description: Information on the corrective action
-        defectCategory:
-          description: Defect category
-          example: Construction
-          type:
-          - string
-          - 'null'
-        defectCode:
-          description: Defect code
-          example: CON111
-          type:
-          - string
-          - 'null'
-        defectItems:
-          description: List of defective items
-          items:
-            $ref: '#/components/schemas/DefectItem'
-          type: array
-        defectName:
-          description: Defect name
-          example: Construction defect
-          type:
-          - string
-          - 'null'
-        preventativeAction:
-          description: Preventative action
-          example: Advise all staff
-          type:
-          - string
-          - 'null'
-        rootCause:
-          description: Root cause of the defect
-          example: Wrong carton dimension
-          type:
-          - string
-          - 'null'
-        totalDefectItems:
-          description: Total defect items
-          example: 1
-          type: integer
-        totalDefectUnits:
-          description: Total defect units
-          example: 1
-          type: integer
       type: object
-    NonConformities:
+    DefectItem:
       properties:
-        assembly:
-          $ref: '#/components/schemas/DefectGeneral'
-          description: Assembly section
-        checkList:
-          description: Checklist section
+        attachments:
+          description: List of attachments of defective items
           items:
-            $ref: '#/components/schemas/Checklist'
+            $ref: '#/components/schemas/Attachment'
           type: array
-        measurement:
-          $ref: '#/components/schemas/Measurement'
-          description: Measurement section
-        measurementByDefects:
-          $ref: '#/components/schemas/DefectGeneral'
-          description: Measurement by Defects section
-        moistureCheck:
-          $ref: '#/components/schemas/MoistureCheck'
-          description: Moisture Check section
-        packaging:
-          $ref: '#/components/schemas/Packing'
-          description: Packaging section
-        questions:
-          description: Questions
-          items:
-            $ref: '#/components/schemas/Question'
-          type: array
-        rfid:
-          description: RFID section
-          items:
-            $ref: '#/components/schemas/RFID'
-          type: array
-        workmanship:
-          $ref: '#/components/schemas/DefectGeneral'
-          description: Workmanship section
+        classification:
+          description: Classification of the defective item
+          example: Minor
+          type:
+          - string
+          - 'null'
+        color:
+          description: Color of the defective item
+          example: black
+          type:
+          - string
+          - 'null'
+        customId:
+          description: Custom ID of the defective item
+          example: ITEM123
+          type:
+          - string
+          - 'null'
+        itemId:
+          description: ID of the defective item
+          example: 111-22-333
+          type:
+          - string
+          - 'null'
+        size:
+          description: Size of the defective item
+          example: Medium
+          type:
+          - string
+          - 'null'
+        comment:
+          description: Inspector comment on the defective item
+          example: Thread is loose
+          type:
+          - string
+          - 'null'
+        styleId:
+          description: Style ID of the defective item
+          example: style_1
+          type:
+          - string
+          - 'null'
       type: object
-    CapaDetailResponse:
+    BadRequestApiError:
       properties:
-        chatBox:
-          description: Chatbox
-          items:
-            $ref: '#/components/schemas/ChatBox'
-          type: array
-        generalInformation:
-          $ref: '#/components/schemas/GeneralInformation'
-          description: General information on CAPA
-        nonConformities:
-          $ref: '#/components/schemas/NonConformities'
-          description: Non-Conformity
-        reInspectionDetail:
-          $ref: '#/components/schemas/ReInspection'
-          description: Re-inspection details
-        shipmentWindow:
-          $ref: '#/components/schemas/ShipmentWindow'
-          description: Shipment window
-        specialPoints:
-          description: List of special points
-          items:
-            $ref: '#/components/schemas/SpecialPoint'
-          type: array
-      type: object
-    ShipmentWindow:
-      properties:
-        shipmentDateFrom:
-          description: The first date of the shipment window
-          example: '2021-05-07T00:00:00+00:00'
-          format: date-time
+        errorCode:
+          example: Generic
           type: string
-        shipmentDateTo:
-          description: The last date of the shipment window
-          example: '2021-05-15T00:00:00+00:00'
-          format: date-time
+        message:
+          example: Bad Request
           type: string
-        shipmentNote:
-          description: Note on the shipment window
-          example: Acknowledged
-          type:
-          - string
-          - 'null'
       type: object
-    Packing:
+    DefectGeneral:
       properties:
         aql:
           $ref: '#/components/schemas/Aql'
@@ -271,11 +216,6 @@ components:
         maxAllowed:
           $ref: '#/components/schemas/DefectSeverity'
           description: Maximum number of defect allowed
-        packingType:
-          description: Packing type
-          type:
-          - string
-          - 'null'
         totalDefects:
           description: Total number of defects
           example: 2
@@ -285,61 +225,6 @@ components:
           example: 2
           type: integer
       type: object
-    Aql:
-      properties:
-        aqlId:
-          description: AQL ID
-          example: '123'
-          type:
-          - string
-          - 'null'
-        critical:
-          description: Number of Critical defects
-          example: 0
-          type: number
-        major:
-          description: Number of Major defects
-          example: 1
-          type: number
-        minor:
-          description: Number of Minor defects
-          example: 2
-          type: number
-      type: object
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
-    MoistureCheckDefectItem:
-      properties:
-        components:
-          description: Components of items that failed the moisture check
-          items:
-            $ref: '#/components/schemas/Component'
-          type: array
-        itemId:
-          description: ID of the item that failed the moisture check
-          example: ITEM1212
-          type:
-          - string
-          - 'null'
-        type:
-          description: Type of the defective item
-          example: General
-          type:
-          - string
-          - 'null'
-      type: object
     TooManyResponsesApiError:
       properties:
         errorCode:
@@ -347,191 +232,6 @@ components:
           type: string
         message:
           example: Too many requests
-          type: string
-      type: object
-    ReInspection:
-      properties:
-        comment:
-          description: Comment on the re-inspection
-          example: Reviewed
-          type:
-          - string
-          - 'null'
-        inspectionType:
-          description: Inspection Type of the re-inspection
-          example: TPR
-          type:
-          - string
-          - 'null'
-        reInspectionBookingId:
-          description: Booking ID of the re-inspection
-          example: 9dc7928867dc
-          type:
-          - string
-          - 'null'
-        reInspectionDate:
-          description: Re-inspection date
-          example: '2021-05-07T00:00:00+00:00'
-          type:
-          - string
-          - 'null'
-      type: object
-    Measurement:
-      properties:
-        aql:
-          $ref: '#/components/schemas/Aql'
-          description: AQL information
-        comments:
-          description: Comment on the actions
-          example: Reviewed
-          items:
-            $ref: '#/components/schemas/ChatBox'
-          type: array
-        correctiveAction:
-          $ref: '#/components/schemas/CorrectiveActionData'
-          description: Information on the corrective action
-        defectFound:
-          $ref: '#/components/schemas/DefectSeverity'
-          description: Information on the number of defects
-        failedMeasurements:
-          description: Failed measurements information
-          items:
-            $ref: '#/components/schemas/FailedMeasurement'
-          type: array
-        maxAllowed:
-          $ref: '#/components/schemas/DefectSeverity'
-          description: Maximum number of defect allowed
-        preventativeAction:
-          description: Preventative action
-          example: Advise all staff
-          type:
-          - string
-          - 'null'
-        rootCause:
-          description: Root cause of the defect
-          example: Wrong carton dimension
-          type:
-          - string
-          - 'null'
-      type: object
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    Attachment:
-      properties:
-        url:
-          description: URL of attachments for the CAPA report
-          example: https://.../image1.jpg
-          format: url
-          type: string
-      type: object
-    SpecialPointComment:
-      properties:
-        attachments:
-          description: List of attachments on the comment
-          items:
-            $ref: '#/components/schemas/SpecialPointAttachment'
-          type: array
-        createdDate:
-          description: Date the comment was created
-          example: '2021-05-25T13:58:26+00:00'
-          format: date-time
-          type:
-          - string
-          - 'null'
-        email:
-          description: Email of the user who posted the comment
-          example: john@email.com
-          type:
-          - string
-          - 'null'
-        firstName:
-          description: First name of the user who posted the comment
-          example: John
-          type:
-          - string
-          - 'null'
-        lastName:
-          description: Last name of the user who posted the comment
-          example: Doe
-          type:
-          - string
-          - 'null'
-        message:
-          description: Comment message
-          type:
-          - string
-          - 'null'
-        organizationName:
-          description: Organization of the user who posted the comment
-          example: Acme Corp
-          type:
-          - string
-          - 'null'
-      type: object
-    FailedMeasurement:
-      properties:
-        found:
-          description: Number of failed measurement found
-          example: 2
-          type: number
-        measurementDescription:
-          description: Measurement Description
-          example: Chest
-          type:
-          - string
-          - 'null'
-        occurrence:
-          description: Number of occurrences
-          example: 2
-          type: number
-        sampleName:
-          example: tanktop_1
-          type:
-          - string
-          - 'null'
-        standard:
-          description: Standard measurement
-          example: 20
-          type: number
-        tolerance:
-          description: Tolerance Lower & Upper of a point of measurement, only use this attribute if your organization has not enabled Unequal Tolerance
-          example: 0.5
-          type: number
-        toleranceLower:
-          description: Tolerance lower of a point of measurement
-          example: 0.5
-          type: number
-        toleranceUpper:
-          description: Tolerance upper of a point of measurement
-          example: 0.5
-          type: number
-      type: object
-    OutOfTolerance:
-      properties:
-        unit:
-          example: cm
-          type:
-          - string
-          - 'null'
-        value:
-          description: value of the out of acceptable tolerance
-          example: 1.5
-          type: number
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
           type: string
       type: object
     GeneralInformation:
@@ -674,11 +374,45 @@ components:
           - string
           - 'null'
       type: object
-    MoistureCheck:
+    OrganizationContact2:
       properties:
-        aql:
-          $ref: '#/components/schemas/Aql'
-          description: AQL information
+        contactId:
+          description: Unique identifier of the organization contact
+          example: '1122'
+          type:
+          - string
+          - 'null'
+        email:
+          description: Email address of the organization contact
+          example: john@email.com
+          type:
+          - string
+          - 'null'
+        mobileNumber:
+          description: Mobile number of the organization contact
+          example: '1234567890'
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the organization contact
+          example: John Doe
+          type:
+          - string
+          - 'null'
+        telephoneNumber:
+          description: Telephone number of the organization contact
+          example: '1234567890'
+          type:
+          - string
+          - 'null'
+      type: object
+    DefectDetail:
+      properties:
+        affectedPercentage:
+          description: Affected percentage by the defect
+          example: 1
+          type: number
         comments:
           description: Comment on the actions
           example: Reviewed
@@ -688,17 +422,29 @@ components:
         correctiveAction:
           $ref: '#/components/schemas/CorrectiveActionData'
           description: Information on the corrective action
-        defectFound:
-          $ref: '#/components/schemas/DefectSeverity'
-          description: Information on the number of defects
+        defectCategory:
+          description: Defect category
+          example: Construction
+          type:
+          - string
+          - 'null'
+        defectCode:
+          description: Defect code
+          example: CON111
+          type:
+          - string
+          - 'null'
         defectItems:
-          description: List of defective items that failed the moisture check
+          description: List of defective items
           items:
-            $ref: '#/components/schemas/MoistureCheckDefectItem'
+            $ref: '#/components/schemas/DefectItem'
           type: array
-        maxAllowed:
-          $ref: '#/components/schemas/DefectSeverity'
-          description: Maximum number of defect allowed
+        defectName:
+          description: Defect name
+          example: Construction defect
+          type:
+          - string
+          - 'null'
         preventativeAction:
           description: Preventative action
           example: Advise all staff
@@ -711,13 +457,13 @@ components:
           type:
           - string
           - 'null'
-        totalDefects:
-          description: Total number of defects
-          example: 2
+        totalDefectItems:
+          description: Total defect items
+          example: 1
           type: integer
-        totalItems:
-          description: Total number of defective items
-          example: 2
+        totalDefectUnits:
+          description: Total defect units
+          example: 1
           type: integer
       type: object
     DefectSeverity:
@@ -735,13 +481,45 @@ components:
           example: 2
           type: integer
       type: object
-    Checklist:
+    MoistureCheckDefectItem:
       properties:
-        attachments:
-          description: List of attachments in the questionnaire
+        components:
+          description: Components of items that failed the moisture check
           items:
-            $ref: '#/components/schemas/Attachment'
+            $ref: '#/components/schemas/Component'
           type: array
+        itemId:
+          description: ID of the item that failed the moisture check
+          example: ITEM1212
+          type:
+          - string
+          - 'null'
+        type:
+          description: Type of the defective item
+          example: General
+          type:
+          - string
+          - 'null'
+      type: object
+    ChatBoxAttachment:
+      properties:
+        fileName:
+          description: File Name of the attachment in Chatbox
+          example: 123-abc
+          type:
+          - string
+          - 'null'
+        url:
+          description: URL of attachments for the CAPA report
+          example: https://.../image1.jpg
+          format: url
+          type: string
+      type: object
+    Measurement:
+      properties:
+        aql:
+          $ref: '#/components/schemas/Aql'
+          description: AQL information
         comments:
           description: Comment on the actions
           example: Reviewed
@@ -751,12 +529,17 @@ components:
         correctiveAction:
           $ref: '#/components/schemas/CorrectiveActionData'
           description: Information on the corrective action
-        label:
-          description: Label of question
-          example: General
-          type:
-          - string
-          - 'null'
+        defectFound:
+          $ref: '#/components/schemas/DefectSeverity'
+          description: Information on the number of defects
+        failedMeasurements:
+          description: Failed measurements information
+          items:
+            $ref: '#/components/schemas/FailedMeasurement'
+          type: array
+        maxAllowed:
+          $ref: '#/components/schemas/DefectSeverity'
+          description: Maximum number of defect allowed
         preventativeAction:
           description: Preventative action
           example: Advise all staff
@@ -823,84 +606,75 @@ components:
           - string
           - 'null'
       type: object
-    DefectItem:
+    MoistureCheck:
       properties:
-        attachments:
-          description: List of attachments of defective items
+        aql:
+          $ref: '#/components/schemas/Aql'
+          description: AQL information
+        comments:
+          description: Comment on the actions
+          example: Reviewed
           items:
-            $ref: '#/components/schemas/Attachment'
+            $ref: '#/components/schemas/ChatBox'
           type: array
-        classification:
-          description: Classification of the defective item
-          example: Minor
+        correctiveAction:
+          $ref: '#/components/schemas/CorrectiveActionData'
+          description: Information on the corrective action
+        defectFound:
+          $ref: '#/components/schemas/DefectSeverity'
+          description: Information on the number of defects
+        defectItems:
+          description: List of defective items that failed the moisture check
+          items:
+            $ref: '#/components/schemas/MoistureCheckDefectItem'
+          type: array
+        maxAllowed:
+          $ref: '#/components/schemas/DefectSeverity'
+          description: Maximum number of defect allowed
+        preventativeAction:
+          description: Preventative action
+          example: Advise all staff
           type:
           - string
           - 'null'
-        color:
-          description: Color of the defective item
-          example: black
+        rootCause:
+          description: Root cause of the defect
+          example: Wrong carton dimension
           type:
           - string
           - 'null'
-        customId:
-          description: Custom ID of the defective item
-          example: ITEM123
-          type:
-          - string
-          - 'null'
-        itemId:
-          description: ID of the defective item
-          example: 111-22-333
-          type:
-          - string
-          - 'null'
-        size:
-          description: Size of the defective item
-          example: Medium
-          type:
-          - string
-          - 'null'
-        comment:
-          description: Inspector comment on the defective item
-          example: Thread is loose
-          type:
-          - string
-          - 'null'
-        styleId:
-          description: Style ID of the defective item
-          example: style_1
-          type:
-          - string
-          - 'null'
+        totalDefects:
+          description: Total number of defects
+          example: 2
+          type: integer
+        totalItems:
+          description: Total number of defective items
+          example: 2
+          type: integer
       type: object
-    ProductCategoryOrLine:
+    ShipmentWindow:
       properties:
-        id:
-          description: Unique identifier of the product category or product line
-          example: C123
-          type:
-          - string
-          - 'null'
-        name:
-          description: Name of the product category or product line
-          example: Menswear
-          type:
-          - string
-          - 'null'
-      type: object
-    ChatBoxAttachment:
-      properties:
-        fileName:
-          description: File Name of the attachment in Chatbox
-          example: 123-abc
-          type:
-          - string
-          - 'null'
-        url:
-          description: URL of attachments for the CAPA report
-          example: https://.../image1.jpg
-          format: url
+        shipmentDateFrom:
+          description: The first date of the shipment window
+          example: '2021-05-07T00:00:00+00:00'
+          format: date-time
           type: string
+        shipmentDateTo:
+          description: The last date of the shipment window
+          example: '2021-05-15T00:00:00+00:00'
+          format: date-time
+          type: string
+        shipmentNote:
+          description: Note on the shipment window
+          example: Acknowledged
+          type:
+          - string
+          - 'null'
+      type: object
+    CustomResponse7:
+      properties:
+        data:
+          $ref: '#/components/schemas/CapaDetailResponse'
       type: object
     SpecialPoint:
       properties:
@@ -930,80 +704,220 @@ components:
           - string
           - 'null'
       type: object
-    ChatBox:
+    SpecialPointAttachment:
+      properties:
+        fileName:
+          description: File name of the attachment
+          example: photo.jpg
+          type:
+          - string
+          - 'null'
+        fileUrl:
+          description: URL of the attachment
+          example: https://.../file.jpg
+          type:
+          - string
+          - 'null'
+      type: object
+    SpecialPointComment:
       properties:
         attachments:
-          description: Attachments in Chatbox
-          example: file1
+          description: List of attachments on the comment
           items:
-            $ref: '#/components/schemas/ChatBoxAttachment'
+            $ref: '#/components/schemas/SpecialPointAttachment'
           type: array
         createdDate:
-          description: Creation date of the message in Chatbox
+          description: Date the comment was created
           example: '2021-05-25T13:58:26+00:00'
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         email:
-          description: Email of the contact who posted the message in Chatbox
+          description: Email of the user who posted the comment
           example: john@email.com
-          type: string
+          type:
+          - string
+          - 'null'
         firstName:
-          description: First Name of the contact who posted the message in Chatbox
+          description: First name of the user who posted the comment
           example: John
           type:
           - string
           - 'null'
         lastName:
-          description: Last Name of the contact who posted the message in Chatbox
+          description: Last name of the user who posted the comment
           example: Doe
           type:
           - string
           - 'null'
         message:
-          description: Message in Chatbox
-          example: Please update the status
+          description: Comment message
           type:
           - string
           - 'null'
         organizationName:
-          description: Organization of the contact who posted the message in Chatbox
+          description: Organization of the user who posted the comment
           example: Acme Corp
           type:
           - string
           - 'null'
       type: object
-    OrganizationContact2:
+    NonConformities:
       properties:
-        contactId:
-          description: Unique identifier of the organization contact
-          example: '1122'
+        assembly:
+          $ref: '#/components/schemas/DefectGeneral'
+          description: Assembly section
+        checkList:
+          description: Checklist section
+          items:
+            $ref: '#/components/schemas/Checklist'
+          type: array
+        measurement:
+          $ref: '#/components/schemas/Measurement'
+          description: Measurement section
+        measurementByDefects:
+          $ref: '#/components/schemas/DefectGeneral'
+          description: Measurement by Defects section
+        moistureCheck:
+          $ref: '#/components/schemas/MoistureCheck'
+          description: Moisture Check section
+        packaging:
+          $ref: '#/components/schemas/Packing'
+          description: Packaging section
+        questions:
+          description: Questions
+          items:
+            $ref: '#/components/schemas/Question'
+          type: array
+        rfid:
+          description: RFID section
+          items:
+            $ref: '#/components/schemas/RFID'
+          type: array
+        workmanship:
+          $ref: '#/components/schemas/DefectGeneral'
+          description: Workmanship section
+      type: object
+    Aql:
+      properties:
+        aqlId:
+          description: AQL ID
+          example: '123'
           type:
           - string
           - 'null'
-        email:
-          description: Email address of the organization contact
-          example: john@email.com
+        critical:
+          description: Number of Critical defects
+          example: 0
+          type: number
+        major:
+          description: Number of Major defects
+          example: 1
+          type: number
+        minor:
+          description: Number of Minor defects
+          example: 2
+          type: number
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    CapaDetailResponse:
+      properties:
+        chatBox:
+          description: Chatbox
+          items:
+            $ref: '#/components/schemas/ChatBox'
+          type: array
+        generalInformation:
+          $ref: '#/components/schemas/GeneralInformation'
+          description: General information on CAPA
+        nonConformities:
+          $ref: '#/components/schemas/NonConformities'
+          description: Non-Conformity
+        reInspectionDetail:
+          $ref: '#/components/schemas/ReInspection'
+          description: Re-inspection details
+        shipmentWindow:
+          $ref: '#/components/schemas/ShipmentWindow'
+          description: Shipment window
+        specialPoints:
+          description: List of special points
+          items:
+            $ref: '#/components/schemas/SpecialPoint'
+          type: array
+      type: object
+    ReInspection:
+      properties:
+        comment:
+          description: Comment on the re-inspection
+          example: Reviewed
           type:
           - string
           - 'null'
-        mobileNumber:
-          description: Mobile number of the organization contact
-          example: '1234567890'
+        inspectionType:
+          description: Inspection Type of the re-inspection
+          example: TPR
           type:
           - string
           - 'null'
-        name:
-          description: Name of the organization contact
-          example: John Doe
+        reInspectionBookingId:
+          description: Booking ID of the re-inspection
+          example: 9dc7928867dc
           type:
           - string
           - 'null'
-        telephoneNumber:
-          description: Telephone number of the organization contact
-          example: '1234567890'
+        reInspectionDate:
+          description: Re-inspection date
+          example: '2021-05-07T00:00:00+00:00'
           type:
           - string
           - 'null'
+      type: object
+    FailedMeasurement:
+      properties:
+        found:
+          description: Number of failed measurement found
+          example: 2
+          type: number
+        measurementDescription:
+          description: Measurement Description
+          example: Chest
+          type:
+          - string
+          - 'null'
+        occurrence:
+          description: Number of occurrences
+          example: 2
+          type: number
+        sampleName:
+          example: tanktop_1
+          type:
+          - string
+          - 'null'
+        standard:
+          description: Standard measurement
+          example: 20
+          type: number
+        tolerance:
+          description: Tolerance Lower & Upper of a point of measurement, only use this attribute if your organization has not enabled Unequal Tolerance
+          example: 0.5
+          type: number
+        toleranceLower:
+          description: Tolerance lower of a point of measurement
+          example: 0.5
+          type: number
+        toleranceUpper:
+          description: Tolerance upper of a point of measurement
+          example: 0.5
+          type: number
       type: object
     AcceptableTolerances:
       properties:
@@ -1022,17 +936,83 @@ components:
           - string
           - 'null'
       type: object
-    SpecialPointAttachment:
+    Question:
       properties:
-        fileName:
-          description: File name of the attachment
-          example: photo.jpg
+        answer:
+          description: Answer of a question in the questionnaire
+          example: 'Yes'
           type:
           - string
           - 'null'
-        fileUrl:
-          description: URL of the attachment
-          example: https://.../file.jpg
+        answerComments:
+          description: The comments for the answer of a question in the questionnaire
+          example:
+          - comment 1
+          - comment 2
+          - comment 3
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        attachments:
+          description: List of attachments in the questionnaire
+          items:
+            $ref: '#/components/schemas/Attachment'
+          type: array
+        comments:
+          description: Comment on the actions
+          example: Reviewed
+          items:
+            $ref: '#/components/schemas/ChatBox'
+          type: array
+        correctiveAction:
+          $ref: '#/components/schemas/CorrectiveActionData'
+          description: Information on the corrective action
+        label:
+          description: Label of question
+          example: General
+          type:
+          - string
+          - 'null'
+        preventativeAction:
+          description: Preventative action
+          example: Advise all staff
+          type:
+          - string
+          - 'null'
+        rootCause:
+          description: Root cause of the defect
+          example: Wrong carton dimension
+          type:
+          - string
+          - 'null'
+      type: object
+    InspectionLocation:
+      properties:
+        address:
+          description: Address of the inspected organization
+          example: 1 Madison Avenue
+          type:
+          - string
+          - 'null'
+        contact:
+          $ref: '#/components/schemas/OrganizationContact2'
+          description: Contact information of the organization
+        country:
+          description: Country of the inspected organization in 2 characters ISO format
+          example: US
+          type:
+          - string
+          - 'null'
+        name:
+          example: Acme Corp
+          type:
+          - string
+          - 'null'
+        organizationId:
+          description: Unique identifier of the inspected organization
+          example: F000123
           type:
           - string
           - 'null'
@@ -1074,41 +1054,15 @@ components:
           $ref: '#/components/schemas/OutOfTolerance'
           description: Out of Tolerance information
       type: object
-    InspectionLocation:
+    Attachment:
       properties:
-        address:
-          description: Address of the inspected organization
-          example: 1 Madison Avenue
-          type:
-          - string
-          - 'null'
-        contact:
-          $ref: '#/components/schemas/OrganizationContact2'
-          description: Contact information of the organization
-        country:
-          description: Country of the inspected organization in 2 characters ISO format
-          example: US
-          type:
-          - string
-          - 'null'
-        name:
-          example: Acme Corp
-          type:
-          - string
-          - 'null'
-        organizationId:
-          description: Unique identifier of the inspected organization
-          example: F000123
-          type:
-          - string
-          - 'null'
+        url:
+          description: URL of attachments for the CAPA report
+          example: https://.../image1.jpg
+          format: url
+          type: string
       type: object
-    CustomResponse7:
-      properties:
-        data:
-          $ref: '#/components/schemas/CapaDetailResponse'
-      type: object
-    DefectGeneral:
+    Packing:
       properties:
         aql:
           $ref: '#/components/schemas/Aql'
@@ -1124,6 +1078,11 @@ components:
         maxAllowed:
           $ref: '#/components/schemas/DefectSeverity'
           description: Maximum number of defect allowed
+        packingType:
+          description: Packing type
+          type:
+          - string
+          - 'null'
         totalDefects:
           description: Total number of defects
           example: 2
@@ -1133,17 +1092,58 @@ components:
           example: 2
           type: integer
       type: object
-    CorrectiveActionData:
+    InternalApiError:
       properties:
-        details:
-          description: Details on the corrective action
-          example: Rework on the defective units
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    ChatBox:
+      properties:
+        attachments:
+          description: Attachments in Chatbox
+          example: file1
+          items:
+            $ref: '#/components/schemas/ChatBoxAttachment'
+          type: array
+        createdDate:
+          description: Creation date of the message in Chatbox
+          example: '2021-05-25T13:58:26+00:00'
+          format: date-time
+          type: string
+        email:
+          description: Email of the contact who posted the message in Chatbox
+          example: john@email.com
+          type: string
+        firstName:
+          description: First Name of the contact who posted the message in Chatbox
+          example: John
           type:
           - string
           - 'null'
-        value:
-          description: An action in the corrective list
-          example: Rework Units
+        lastName:
+          description: Last Name of the contact who posted the message in Chatbox
+          example: Doe
+          type:
+          - string
+          - 'null'
+        message:
+          description: Message in Chatbox
+          example: Please update the status
+          type:
+          - string
+          - 'null'
+        organizationName:
+          description: Organization of the contact who posted the message in Chatbox
+          example: Acme Corp
           type:
           - string
           - 'null'

@@ -276,6 +276,55 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    BrandCreate:
+      properties:
+        brandId:
+          description: Custom ID of the brand
+          example: brand_1
+          minLength: 1
+          type: string
+        description:
+          description: Brand description
+          example: Modern Menswear
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the brand
+          example: Acme
+          minLength: 1
+          type: string
+      required:
+      - brandId
+      - name
+      type: object
+    BrandResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/Brand'
+          description: Brand data
+      type: object
+    BrandListResponse:
+      properties:
+        data:
+          description: Brands data
+          items:
+            $ref: '#/components/schemas/Brand'
+          type: array
+        limit:
+          maximum: 100
+          minimum: 1
+          type: integer
+        offset:
+          minimum: 0
+          type: integer
+        total:
+          type: integer
+      required:
+      - limit
+      - offset
+      - total
+      type: object
     UnauthenticatedApiError:
       properties:
         errorCode:
@@ -298,52 +347,6 @@ components:
           example: Acme
           minLength: 1
           type: string
-      type: object
-    Brand:
-      properties:
-        brandId:
-          description: Unique identifier of the brand
-          example: brand_1
-          type: string
-        description:
-          description: Brand description
-          example: Modern Menswear
-          type: string
-        name:
-          description: Brand name
-          example: Acme
-          type: string
-      required:
-      - brandId
-      - name
-      type: object
-    BrandResponse:
-      properties:
-        data:
-          $ref: '#/components/schemas/Brand'
-          description: Brand data
-      type: object
-    BrandCreate:
-      properties:
-        brandId:
-          description: Custom ID of the brand
-          example: brand_1
-          minLength: 1
-          type: string
-        description:
-          description: Brand description
-          example: Modern Menswear
-          type:
-          - string
-          - 'null'
-        name:
-          description: Name of the brand
-          example: Acme
-          minLength: 1
-          type: string
-      required:
-      - brandId
-      - name
       type: object
     ValidateApiError:
       properties:
@@ -368,26 +371,23 @@ components:
           example: Bad Request
           type: string
       type: object
-    BrandListResponse:
+    Brand:
       properties:
-        data:
-          description: Brands data
-          items:
-            $ref: '#/components/schemas/Brand'
-          type: array
-        limit:
-          maximum: 100
-          minimum: 1
-          type: integer
-        offset:
-          minimum: 0
-          type: integer
-        total:
-          type: integer
+        brandId:
+          description: Unique identifier of the brand
+          example: brand_1
+          type: string
+        description:
+          description: Brand description
+          example: Modern Menswear
+          type: string
+        name:
+          description: Brand name
+          example: Acme
+          type: string
       required:
-      - limit
-      - offset
-      - total
+      - brandId
+      - name
       type: object
     InternalApiError:
       properties:

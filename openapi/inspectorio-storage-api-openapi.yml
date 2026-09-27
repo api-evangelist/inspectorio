@@ -59,14 +59,10 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    UnauthenticatedApiError:
+    CustomResponse16:
       properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
+        data:
+          $ref: '#/components/schemas/FileUploadSessionResponse'
       type: object
     FileUploadSessionResponse:
       properties:
@@ -81,13 +77,13 @@ components:
           minLength: 1
           type: string
       type: object
-    BadRequestApiError:
+    UnauthenticatedApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         message:
-          example: Bad Request
+          example: Cannot retrieve session data because of expired token
           type: string
       type: object
     FileUploadSessionCreate:
@@ -99,6 +95,15 @@ components:
           type: string
       required:
       - fileName
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
       type: object
     InternalApiError:
       properties:
@@ -122,11 +127,6 @@ components:
         message:
           example: Too many requests
           type: string
-      type: object
-    CustomResponse16:
-      properties:
-        data:
-          $ref: '#/components/schemas/FileUploadSessionResponse'
       type: object
   securitySchemes:
     ApiKeyAuth:

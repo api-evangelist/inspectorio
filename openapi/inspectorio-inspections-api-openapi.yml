@@ -74,296 +74,11 @@ paths:
           $ref: '#/components/responses/NotFound404'
 components:
   schemas:
-    AssignedToInspector:
-      type:
-      - object
-      - 'null'
-      description: The inspector the inspection is assigned to. Null/absent when there is no assignment.
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
-        employeeId:
-          type: string
-    OrganizationInfo:
-      type: object
-      properties:
-        organizationId:
-          type: string
-        localOrganizationId:
-          type: string
-        localOrganizationIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        localState:
-          type:
-          - string
-          - 'null'
-          description: 'Province/state of the linked local organization. `null` unless a
-
-            local organization is linked.
-
-            '
-          example: Wyoming
-        localPostalCode:
-          type:
-          - string
-          - 'null'
-          description: 'Postal code of the linked local organization. `null` unless a local
-
-            organization is linked.
-
-            '
-          example: '82052'
-        name:
-          type: string
-        address:
-          type: string
-        city:
-          type: string
-        country:
-          type: string
-          description: ISO alpha-2 country code.
-        contact:
-          type:
-          - object
-          - 'null'
-          allOf:
-          - $ref: '#/components/schemas/schemas-OrganizationContact'
-    AssignedToOrganization:
-      type:
-      - object
-      - 'null'
-      description: The organization the inspection is assigned to. Null/absent when there is no assignment.
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        localOrganizationIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-    ExpectedDate:
-      type: object
-      required:
-      - inspectionDate
-      properties:
-        inspectionDate:
-          type: string
-          format: date-time
-          description: Expected inspection date (ISO-8601).
-        shipmentDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: Expected shipment date (ISO-8601).
-    InspectionDetail:
-      allOf:
-      - $ref: '#/components/schemas/InspectionListItem'
-      - type: object
-        properties:
-          billingInformation:
-            $ref: '#/components/schemas/BillingInformation'
-          detailOfPIPO:
-            $ref: '#/components/schemas/DetailOfPIPO'
-          questionnaire:
-            $ref: '#/components/schemas/schemas-Questionnaire'
-    schemas-Style:
-      type: object
-      required:
-      - styleId
-      - productCategoryId
-      properties:
-        styleId:
-          type: string
-        styleName:
-          type:
-          - string
-          - 'null'
-        productCategoryId:
-          type: string
-        productCategoryName:
-          type: string
-        solids:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Solid'
-        assortments:
-          type:
-          - array
-          - 'null'
-          items:
-            type: object
-            description: 'Assortment packing detail. Each entry in `assortmentConfiguration`
-
-              carries an `itemPullSample` (AQL-derived pull sample size) when the
-
-              request passes `include_pull_sample=1` and the workmanship step is
-
-              configured with an AQL table.
-
-              '
-        measurements:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas-Measurement'
-    PipoInformation:
-      type: object
-      properties:
-        poNumber:
-          type: string
-        opoNumber:
-          type: string
-        poTypes:
-          type: array
-          items:
-            type: string
-        productLineId:
-          type: string
-        productLineName:
-          type: string
-    MeasurementSize:
-      type: object
-      properties:
-        size:
-          type:
-          - string
-          - 'null'
-        measurement:
-          type:
-          - string
-          - 'null'
-    InspectionInformation:
-      type: object
-      properties:
-        typeOfInspection:
-          type: string
-          example: FRI
-        typeOfInspectionName:
-          type: string
-          example: Final Random Inspection
-    GpsLocation:
-      type: object
-      properties:
-        latitude:
-          type: string
-        longitude:
-          type: string
-    Solid:
-      type: object
-      properties:
-        id:
-          type:
-          - string
-          - 'null'
-        itemId:
-          type:
-          - string
-          - 'null'
-        color:
-          type:
-          - string
-          - 'null'
-        size:
-          type:
-          - string
-          - 'null'
-        brandId:
-          type:
-          - string
-          - 'null'
-        brandName:
-          type:
-          - string
-          - 'null'
-        quantity:
-          type:
-          - integer
-          - 'null'
-        availableQuantity:
-          type:
-          - integer
-          - 'null'
-        cartonQuantity:
-          type:
-          - integer
-          - 'null'
-        availableCartonQuantity:
-          type:
-          - integer
-          - 'null'
-        casePackQuantity:
-          type:
-          - integer
-          - 'null'
-        itemPullSample:
-          type:
-          - integer
-          - 'null'
-          description: 'AQL-derived pull sample size for this item. Only present when the
-
-            request passes `include_pull_sample=1` and the workmanship step is
-
-            configured with an AQL table.
-
-            '
-    InspectionListResponse:
+    InspectionDetailResponse:
       type: object
       properties:
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/InspectionListItem'
-        total:
-          type: integer
-        offset:
-          type: integer
-        limit:
-          type: integer
-    schemas-OrganizationContact:
-      type: object
-      description: 'Key contact for an organization, including its identifier. The parent
-
-        `contact` property is `null` when no contact is on file.
-
-        '
-      properties:
-        contactId:
-          type:
-          - string
-          - 'null'
-          example: contact_id
-        name:
-          type: string
-          example: Contact Name
-        email:
-          type: string
-          example: email@email.com
-        mobileNumber:
-          type: string
-          example: '1234567890'
-        telephoneNumber:
-          type: string
-          example: '1234567890'
-    LocationPicker:
-      type: object
-      properties:
-        address:
-          type: string
-        gpsLocation:
-          $ref: '#/components/schemas/GpsLocation'
+          $ref: '#/components/schemas/InspectionDetail'
     QuestionnaireQuestion:
       type: object
       required:
@@ -393,128 +108,26 @@ components:
                 `questionnaire.questions[].validation.mandatory`).
 
                 '
-    Contact:
-      type: object
-      description: 'Key contact for an organization. When included, all contact fields are
-
-        present as strings (may be empty). The parent `contact` property is
-
-        `null` when no contact is on file.
-
-        '
-      properties:
-        name:
-          type: string
-          example: Contact Name
-        email:
-          type: string
-          example: email@email.com
-        mobileNumber:
-          type: string
-          example: '1234567890'
-        telephoneNumber:
-          type: string
-          example: '1234567890'
-    Error:
+    LocationPicker:
       type: object
       properties:
-        message:
-          type: string
-        code:
-          type:
-          - string
-          - 'null'
-    schemas-Questionnaire:
-      type: object
-      properties:
-        questions:
-          type: array
-          items:
-            $ref: '#/components/schemas/QuestionnaireQuestion'
-    BillingInformation:
-      type: object
-      properties:
-        name:
-          type: string
         address:
           type: string
-        city:
-          type: string
-        state:
-          type: string
-        postalCode:
-          type: string
-        country:
-          type: string
-        contact:
-          type:
-          - object
-          - 'null'
-          allOf:
-          - $ref: '#/components/schemas/Contact'
-    DetailOfPIPO:
-      type: object
-      properties:
-        pipoInformation:
-          $ref: '#/components/schemas/PipoInformation'
-        styles:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas-Style'
-    ReasonCode:
-      type:
-      - string
-      - 'null'
-      description: 'Inspection reason code, formatted as `<Action> - <reason>` where Action is
-
-        one of Aborted / Waived / Rejected / Split / Reset. Resolved from the
-
-        configured reason option answer when present, otherwise the free-text
-
-        reason. `null` when no reason code applies to the inspection.
-
-        '
-      example: Aborted - Order not ready
-    InspectionDetailResponse:
+        gpsLocation:
+          $ref: '#/components/schemas/GpsLocation'
+    InspectionListResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/InspectionDetail'
-    schemas-Measurement:
-      type: object
-      properties:
-        caption:
-          type:
-          - string
-          - 'null'
-        pom:
-          type:
-          - string
-          - 'null'
-        unit:
-          type:
-          - string
-          - 'null'
-        isPomCritical:
-          type:
-          - boolean
-          - 'null'
-        tolerance:
-          type:
-          - number
-          - 'null'
-        toleranceLower:
-          type:
-          - number
-          - 'null'
-        toleranceUpper:
-          type:
-          - number
-          - 'null'
-        sizes:
           type: array
           items:
-            $ref: '#/components/schemas/MeasurementSize'
+            $ref: '#/components/schemas/InspectionListItem'
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
     InspectionListItem:
       type: object
       required:
@@ -616,32 +229,459 @@ components:
           type: array
           items:
             type: string
-  responses:
-    BadRequest400:
-      description: Invalid query parameters (e.g. missing `ownership`, multiple `status` values, unpaired date range).
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InspectionDetail200:
-      description: A single inspection.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InspectionDetailResponse'
-    InspectionList200:
-      description: A paginated list of inspections.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/InspectionListResponse'
-    NotFound404:
-      description: Inspection not found or not accessible by the authenticated organization.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    ReasonCode:
+      type:
+      - string
+      - 'null'
+      description: 'Inspection reason code, formatted as `<Action> - <reason>` where Action is
+
+        one of Aborted / Waived / Rejected / Split / Reset. Resolved from the
+
+        configured reason option answer when present, otherwise the free-text
+
+        reason. `null` when no reason code applies to the inspection.
+
+        '
+      example: Aborted - Order not ready
+    BillingInformation:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+        contact:
+          type:
+          - object
+          - 'null'
+          allOf:
+          - $ref: '#/components/schemas/Contact'
+    schemas-Questionnaire:
+      type: object
+      properties:
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuestionnaireQuestion'
+    schemas-OrganizationContact:
+      type: object
+      description: 'Key contact for an organization, including its identifier. The parent
+
+        `contact` property is `null` when no contact is on file.
+
+        '
+      properties:
+        contactId:
+          type:
+          - string
+          - 'null'
+          example: contact_id
+        name:
+          type: string
+          example: Contact Name
+        email:
+          type: string
+          example: email@email.com
+        mobileNumber:
+          type: string
+          example: '1234567890'
+        telephoneNumber:
+          type: string
+          example: '1234567890'
+    AssignedToOrganization:
+      type:
+      - object
+      - 'null'
+      description: The organization the inspection is assigned to. Null/absent when there is no assignment.
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        localOrganizationIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+    InspectionInformation:
+      type: object
+      properties:
+        typeOfInspection:
+          type: string
+          example: FRI
+        typeOfInspectionName:
+          type: string
+          example: Final Random Inspection
+    Solid:
+      type: object
+      properties:
+        id:
+          type:
+          - string
+          - 'null'
+        itemId:
+          type:
+          - string
+          - 'null'
+        color:
+          type:
+          - string
+          - 'null'
+        size:
+          type:
+          - string
+          - 'null'
+        brandId:
+          type:
+          - string
+          - 'null'
+        brandName:
+          type:
+          - string
+          - 'null'
+        quantity:
+          type:
+          - integer
+          - 'null'
+        availableQuantity:
+          type:
+          - integer
+          - 'null'
+        cartonQuantity:
+          type:
+          - integer
+          - 'null'
+        availableCartonQuantity:
+          type:
+          - integer
+          - 'null'
+        casePackQuantity:
+          type:
+          - integer
+          - 'null'
+        itemPullSample:
+          type:
+          - integer
+          - 'null'
+          description: 'AQL-derived pull sample size for this item. Only present when the
+
+            request passes `include_pull_sample=1` and the workmanship step is
+
+            configured with an AQL table.
+
+            '
+    schemas-Style:
+      type: object
+      required:
+      - styleId
+      - productCategoryId
+      properties:
+        styleId:
+          type: string
+        styleName:
+          type:
+          - string
+          - 'null'
+        productCategoryId:
+          type: string
+        productCategoryName:
+          type: string
+        solids:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Solid'
+        assortments:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            description: 'Assortment packing detail. Each entry in `assortmentConfiguration`
+
+              carries an `itemPullSample` (AQL-derived pull sample size) when the
+
+              request passes `include_pull_sample=1` and the workmanship step is
+
+              configured with an AQL table.
+
+              '
+        measurements:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas-Measurement'
+    schemas-Measurement:
+      type: object
+      properties:
+        caption:
+          type:
+          - string
+          - 'null'
+        pom:
+          type:
+          - string
+          - 'null'
+        unit:
+          type:
+          - string
+          - 'null'
+        isPomCritical:
+          type:
+          - boolean
+          - 'null'
+        tolerance:
+          type:
+          - number
+          - 'null'
+        toleranceLower:
+          type:
+          - number
+          - 'null'
+        toleranceUpper:
+          type:
+          - number
+          - 'null'
+        sizes:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeasurementSize'
+    MeasurementSize:
+      type: object
+      properties:
+        size:
+          type:
+          - string
+          - 'null'
+        measurement:
+          type:
+          - string
+          - 'null'
+    AssignedToInspector:
+      type:
+      - object
+      - 'null'
+      description: The inspector the inspection is assigned to. Null/absent when there is no assignment.
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        employeeId:
+          type: string
+    DetailOfPIPO:
+      type: object
+      properties:
+        pipoInformation:
+          $ref: '#/components/schemas/PipoInformation'
+        styles:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas-Style'
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type:
+          - string
+          - 'null'
+    Contact:
+      type: object
+      description: 'Key contact for an organization. When included, all contact fields are
+
+        present as strings (may be empty). The parent `contact` property is
+
+        `null` when no contact is on file.
+
+        '
+      properties:
+        name:
+          type: string
+          example: Contact Name
+        email:
+          type: string
+          example: email@email.com
+        mobileNumber:
+          type: string
+          example: '1234567890'
+        telephoneNumber:
+          type: string
+          example: '1234567890'
+    ExpectedDate:
+      type: object
+      required:
+      - inspectionDate
+      properties:
+        inspectionDate:
+          type: string
+          format: date-time
+          description: Expected inspection date (ISO-8601).
+        shipmentDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Expected shipment date (ISO-8601).
+    PipoInformation:
+      type: object
+      properties:
+        poNumber:
+          type: string
+        opoNumber:
+          type: string
+        poTypes:
+          type: array
+          items:
+            type: string
+        productLineId:
+          type: string
+        productLineName:
+          type: string
+    GpsLocation:
+      type: object
+      properties:
+        latitude:
+          type: string
+        longitude:
+          type: string
+    OrganizationInfo:
+      type: object
+      properties:
+        organizationId:
+          type: string
+        localOrganizationId:
+          type: string
+        localOrganizationIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        localState:
+          type:
+          - string
+          - 'null'
+          description: 'Province/state of the linked local organization. `null` unless a
+
+            local organization is linked.
+
+            '
+          example: Wyoming
+        localPostalCode:
+          type:
+          - string
+          - 'null'
+          description: 'Postal code of the linked local organization. `null` unless a local
+
+            organization is linked.
+
+            '
+          example: '82052'
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+          description: ISO alpha-2 country code.
+        contact:
+          type:
+          - object
+          - 'null'
+          allOf:
+          - $ref: '#/components/schemas/schemas-OrganizationContact'
+    InspectionDetail:
+      allOf:
+      - $ref: '#/components/schemas/InspectionListItem'
+      - type: object
+        properties:
+          billingInformation:
+            $ref: '#/components/schemas/BillingInformation'
+          detailOfPIPO:
+            $ref: '#/components/schemas/DetailOfPIPO'
+          questionnaire:
+            $ref: '#/components/schemas/schemas-Questionnaire'
   parameters:
+    InspectionListStatus:
+      in: query
+      name: status
+      required: false
+      description: 'Inspection status
+
+        '
+      schema:
+        type: string
+        enum:
+        - new
+        - confirmed
+        - pending
+        - in-progress
+        - completed
+        - released
+        - aborted
+        - waived
+        - rejected
+        - merged
+        - canceled
+    InspectionListOffset:
+      in: query
+      name: offset
+      required: false
+      description: Number of records to skip.
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    InspectionListCreatedFrom:
+      in: query
+      name: created_from
+      required: false
+      description: 'Inclusive lower bound for creation date (ISO-8601 datetime). Must be
+
+        paired with `created_to`.
+
+        '
+      schema:
+        type: string
+        format: date-time
+    InspectionListOwnership:
+      in: query
+      name: ownership
+      required: true
+      description: 'Ownership (Sent/Received/Shared)
+
+        '
+      schema:
+        type: string
+        enum:
+        - sent
+        - received
+        - shared
+    InspectionListOrder:
+      in: query
+      name: order
+      required: false
+      description: 'Sort order in the form `<field>:asc|desc`. Allowed fields: `created_date` and `updated_date`.
+
+        '
+      schema:
+        type: string
+        example: created_date:desc
     InspectionListUpdatedTo:
       in: query
       name: updated_to
@@ -666,6 +706,16 @@ components:
       schema:
         type: string
         format: date-time
+    InspectionListLimit:
+      in: query
+      name: limit
+      required: false
+      description: Maximum number of records to return.
+      schema:
+        type: integer
+        default: 10
+        minimum: 1
+        maximum: 100
     InspectionListCreatedTo:
       in: query
       name: created_to
@@ -678,81 +728,31 @@ components:
       schema:
         type: string
         format: date-time
-    InspectionListStatus:
-      in: query
-      name: status
-      required: false
-      description: 'Inspection status
-
-        '
-      schema:
-        type: string
-        enum:
-        - new
-        - confirmed
-        - pending
-        - in-progress
-        - completed
-        - released
-        - aborted
-        - waived
-        - rejected
-        - merged
-        - canceled
-    InspectionListOwnership:
-      in: query
-      name: ownership
-      required: true
-      description: 'Ownership (Sent/Received/Shared)
-
-        '
-      schema:
-        type: string
-        enum:
-        - sent
-        - received
-        - shared
-    InspectionListCreatedFrom:
-      in: query
-      name: created_from
-      required: false
-      description: 'Inclusive lower bound for creation date (ISO-8601 datetime). Must be
-
-        paired with `created_to`.
-
-        '
-      schema:
-        type: string
-        format: date-time
-    InspectionListLimit:
-      in: query
-      name: limit
-      required: false
-      description: Maximum number of records to return.
-      schema:
-        type: integer
-        default: 10
-        minimum: 1
-        maximum: 100
-    InspectionListOffset:
-      in: query
-      name: offset
-      required: false
-      description: Number of records to skip.
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
-    InspectionListOrder:
-      in: query
-      name: order
-      required: false
-      description: 'Sort order in the form `<field>:asc|desc`. Allowed fields: `created_date` and `updated_date`.
-
-        '
-      schema:
-        type: string
-        example: created_date:desc
+  responses:
+    NotFound404:
+      description: Inspection not found or not accessible by the authenticated organization.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InspectionList200:
+      description: A paginated list of inspections.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InspectionListResponse'
+    BadRequest400:
+      description: Invalid query parameters (e.g. missing `ownership`, multiple `status` values, unpaired date range).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InspectionDetail200:
+      description: A single inspection.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InspectionDetailResponse'
   securitySchemes:
     ApiKeyAuth:
       in: header

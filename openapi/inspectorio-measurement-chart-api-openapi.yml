@@ -172,73 +172,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
-    ValidateApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            type:
-            - Input type is not valid
-          type: object
-        message:
-          example: Validation error
-          type: string
-      type: object
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    MeasurementItemDetail:
-      properties:
-        measurement:
-          description: Measurement value of a size
-          example: '2'
-          type: number
-        size:
-          description: Size name
-          example: Medium
-          minLength: 1
-          type: string
-      required:
-      - measurement
-      - size
-      type: object
-    MeasurementListResponse:
-      properties:
-        data:
-          $ref: '#/components/schemas/MeasurementListInfo'
-          description: Measurement charts data
-      type: object
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
     MeasurementForm:
       properties:
         clientUpdatedDate:
@@ -267,34 +200,6 @@ components:
           - 'null'
       required:
       - measurements
-      type: object
-    MeasurementListInfo:
-      properties:
-        clientUpdatedDate:
-          description: The last updated date from the client system of the Measurement Chart
-          example: '2019-02-20T06:37:18.048000+00:00'
-          format: date-time
-          type: string
-        measurements:
-          description: List of measurement charts
-          items:
-            $ref: '#/components/schemas/MeasurementResponse'
-          type: array
-        source:
-          description: The source from which the Measurement Chart data comes
-          example: SPARK
-          type:
-          - string
-          - 'null'
-      type: object
-    TooManyResponsesApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Too many requests
-          type: string
       type: object
     MeasurementResponse:
       properties:
@@ -348,6 +253,48 @@ components:
       - caption
       - pom
       - unit
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    MeasurementListInfo:
+      properties:
+        clientUpdatedDate:
+          description: The last updated date from the client system of the Measurement Chart
+          example: '2019-02-20T06:37:18.048000+00:00'
+          format: date-time
+          type: string
+        measurements:
+          description: List of measurement charts
+          items:
+            $ref: '#/components/schemas/MeasurementResponse'
+          type: array
+        source:
+          description: The source from which the Measurement Chart data comes
+          example: SPARK
+          type:
+          - string
+          - 'null'
+      type: object
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
       type: object
     MeasurementItem:
       properties:
@@ -411,6 +358,59 @@ components:
       - pom
       - sizes
       - unit
+      type: object
+    MeasurementItemDetail:
+      properties:
+        measurement:
+          description: Measurement value of a size
+          example: '2'
+          type: number
+        size:
+          description: Size name
+          example: Medium
+          minLength: 1
+          type: string
+      required:
+      - measurement
+      - size
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    MeasurementListResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/MeasurementListInfo'
+          description: Measurement charts data
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
       type: object
   securitySchemes:
     ApiKeyAuth:
