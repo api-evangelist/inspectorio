@@ -59,22 +59,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Product:
-      properties:
-        categories:
-          description: Information of the product category
-          items:
-            $ref: '#/components/schemas/ProductCategory'
-          type: array
-        productDescription:
-          description: Description of the product
-          example: women tops for SS22
-          type: string
-        productName:
-          description: Name of the product
-          example: Cashmere womens top
-          type: string
-      type: object
     ProductCategory:
       properties:
         productCategoryDescription:
@@ -90,31 +74,13 @@ components:
           example: Womens top
           type: string
       type: object
-    ProductListResponse:
-      properties:
-        data:
-          description: Product data
-          items:
-            $ref: '#/components/schemas/ProductResponse'
-          type: array
-      type: object
-    UnauthenticatedApiError:
+    BadRequestApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
-    ProductResponse:
-      properties:
-        info:
-          $ref: '#/components/schemas/Product'
-          description: Information of the product
-        productLineId:
-          description: 'Unique identifier of the product line '
-          example: A123
+          example: Bad Request
           type: string
       type: object
     ValidateApiError:
@@ -131,13 +97,13 @@ components:
           example: Validation error
           type: string
       type: object
-    BadRequestApiError:
+    UnauthenticatedApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         message:
-          example: Bad Request
+          example: Cannot retrieve session data because of expired token
           type: string
       type: object
     InternalApiError:
@@ -154,6 +120,14 @@ components:
           example: Internal server error
           type: string
       type: object
+    ProductListResponse:
+      properties:
+        data:
+          description: Product data
+          items:
+            $ref: '#/components/schemas/ProductResponse'
+          type: array
+      type: object
     TooManyResponsesApiError:
       properties:
         errorCode:
@@ -161,6 +135,32 @@ components:
           type: string
         message:
           example: Too many requests
+          type: string
+      type: object
+    ProductResponse:
+      properties:
+        info:
+          $ref: '#/components/schemas/Product'
+          description: Information of the product
+        productLineId:
+          description: 'Unique identifier of the product line '
+          example: A123
+          type: string
+      type: object
+    Product:
+      properties:
+        categories:
+          description: Information of the product category
+          items:
+            $ref: '#/components/schemas/ProductCategory'
+          type: array
+        productDescription:
+          description: Description of the product
+          example: women tops for SS22
+          type: string
+        productName:
+          description: Name of the product
+          example: Cashmere womens top
           type: string
       type: object
   securitySchemes:

@@ -199,6 +199,38 @@ paths:
           description: Internal Error
 components:
   schemas:
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object
+    BadRequestResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Bad request error message
+        code:
+          type: integer
+          description: Response status code
+          example: 400
+        status:
+          type: integer
+          description: Response status code
+          example: 400
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
     MasterDataResponse:
       type: object
       properties:
@@ -230,27 +262,18 @@ components:
               type: string
               format: date-time
               example: '2025-02-14T06:52:42.073319+00:00'
-    BadRequestResponse:
-      type: object
-      properties:
-        detail:
-          type: string
-          description: Bad request error message
-        code:
-          type: integer
-          description: Response status code
-          example: 400
-        status:
-          type: integer
-          description: Response status code
-          example: 400
-    UnauthenticatedApiError:
+    InternalApiError:
       properties:
         errorCode:
           example: Generic
           type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
         message:
-          example: Cannot retrieve session data because of expired token
+          example: Internal server error
           type: string
       type: object
     MasterDataCreateRequest:
@@ -280,29 +303,6 @@ components:
           - 'null'
           description: Optional version identifier for the data format
           example: shipment-booking-v1.0.0
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
-    TooManyResponsesApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Too many requests
-          type: string
-      type: object
   securitySchemes:
     ApiKeyAuth:
       in: header

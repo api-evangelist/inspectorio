@@ -255,133 +255,6 @@ paths:
       - REPORT-V2
 components:
   schemas:
-    StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption:
-      properties:
-        content:
-          description: Content of the option available for the question
-          type:
-          - string
-          - 'null'
-        id:
-          description: Unique identifier of the option available for the question
-          type:
-          - string
-          - 'null'
-      type: object
-    StepExecutionFlattenSection:
-      properties:
-        id:
-          description: Unique identifier of the section
-          type:
-          - string
-          - 'null'
-        level:
-          description: Level of the section
-          type:
-          - integer
-          - 'null'
-        name:
-          description: Name of the section
-          type:
-          - string
-          - 'null'
-        parentId:
-          description: Unique identifier of the parent of the section
-          type:
-          - string
-          - 'null'
-        questions:
-          description: List of questions within the section
-          items:
-            $ref: '#/components/schemas/StepExecutionQuestion'
-          type:
-          - array
-          - 'null'
-        type:
-          description: Type of section
-          type:
-          - string
-          - 'null'
-      type: object
-    StepExecutionForm:
-      properties:
-        description:
-          description: Description of the form in the step execution
-          type:
-          - string
-          - 'null'
-        schema:
-          type: object
-        version:
-          description: Version of the form in the step execution
-          example: '1.0'
-          type:
-          - string
-          - 'null'
-      type: object
-    NameVersion:
-      properties:
-        name:
-          description: Name
-          type: string
-        version:
-          description: Version
-          type: string
-      type: object
-    V2ReportDetailSubmitEvent:
-      description: Information on the event submission
-      properties:
-        submittedByUser:
-          allOf:
-          - $ref: '#/components/schemas/V2ReportDetailUser'
-          type:
-          - object
-          - 'null'
-          description: Information of the user who submitted the assessment
-        submitDate:
-          description: Submit date
-          example: '2024-09-30T10:36:56.057000+00:00'
-          format: date-time
-          type: string
-        submittedByOrg:
-          allOf:
-          - $ref: '#/components/schemas/IdNameTypeOrgId'
-          description: Information of the organization who submitted the assessment
-          type:
-          - object
-          - 'null'
-      type: object
-    StepExecutionQuestionAnswerFindingsAttachment:
-      properties:
-        id:
-          description: Unique identifier of the attachment in the step execution
-          type:
-          - string
-          - 'null'
-        name:
-          description: Name of the attachment in the step execution
-          type:
-          - string
-          - 'null'
-        url:
-          description: URL of the attachment in the step execution
-          type:
-          - string
-          - 'null'
-      type: object
-    AtiComment:
-      properties:
-        text:
-          description: Comment text
-          example: This is a comment.
-          type: string
-        createdByUser:
-          description: User who created the comment
-          example: jane.smith@auditor.com
-          type:
-          - string
-          - 'null'
-      type: object
     V2ReportListItem:
       properties:
         id:
@@ -653,270 +526,205 @@ components:
           - object
           - 'null'
       type: object
-    StepExecutionAnswerChoiceSubQuestionAnswerMappedIssue:
+    V2ReportEscalation:
       properties:
-        answerId:
-          description: Unique identifier of the answer in the mapped issue
+        createdDate:
+          description: Date when the Escalation was created
+          format: date-time
+          example: '2024-09-30T10:36:56.057000+00:00'
+          type: string
+        status:
+          description: Status of the escalation
+          type: string
+        resolvedDate:
+          description: Resolution date of the escalation
+          format: date-time
+          example: '2024-09-30T10:36:56.057000+00:00'
           type:
           - string
           - 'null'
-        comments:
-          description: List of comments for mapped issues in the question
+        escalatedTo:
+          description: The user who received the escalation
           items:
-            $ref: '#/components/schemas/StepExecutionComment'
-          type:
-          - array
-          - 'null'
-        id:
-          description: Unique identifier of the mapped issue of the question
+            $ref: '#/components/schemas/V2ReportDetailUser'
+          type: array
+        escalatedBy:
+          $ref: '#/components/schemas/V2ReportDetailUser'
+        resolvedByUser:
+          $ref: '#/components/schemas/V2ReportDetailUser'
+        note:
+          description: Escalation note
+          type: string
+        reasons:
+          description: Escalation reason
+          items:
+            type: string
+          type: array
+        exceptionReasons:
+          description: Escalation exception reason
+          items:
+            type: string
+          type: array
+        reviewerComment:
+          description: Reviewer comment
           type:
           - string
           - 'null'
-        issue:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerMappedIssueIssue'
-          description: List of mapped issues in the question
-        issueId:
-          description: Unique identifier of the issue in the question
+      type: object
+    StepExecutionQuestion:
+      properties:
+        content:
+          description: Content of the question
+          type:
+          - string
+          - 'null'
+        externalId:
+          description: External unique identifier of the question
+          type:
+          - string
+          - 'null'
+        extraInformation:
+          description: Extra information of the question
+          type: object
+        id:
+          description: Unique identifier of the question
           type:
           - string
           - 'null'
         options:
           description: List of options available for the question
           items:
-            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption'
+            $ref: '#/components/schemas/StepExecutionOption'
           type:
           - array
           - 'null'
-      type: object
-    StepExecutionOption:
-      properties:
-        actions:
-          description: List of actions
-          items:
-            $ref: '#/components/schemas/StepExecutionOptionAction'
-          type:
-          - array
-          - 'null'
-        content:
-          description: Content of the option
+        parentId:
+          description: Unique identifier of the parent of the question
           type:
           - string
           - 'null'
-        id:
-          description: Unique identifier of the option
+        responseType:
+          description: Type of response
           type:
           - string
           - 'null'
-        isNoneOfTheAbove:
-          description: Is 'true' if 'None of the above' has been selected, 'false' otherwise
-          type: boolean
-      type: object
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    StepExecutionAnswerChoice:
-      properties:
-        files:
-          description: Files attached to the choice/answer for the question
-          items:
-            type: object
-          type:
-          - array
-          - 'null'
-        id:
-          description: Unique identifier of the choice/answer for the question
-          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
+        responseTypeConfig:
+          description: Configuration of the type of response
+          type: object
+        type:
+          description: Type of question
           type:
           - string
           - 'null'
-        option:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption'
-          description: Option selected for the question
-          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
-        optionId:
-          description: Unique identifier of the option selected as the answer for the question
-          type:
-          - string
-          - 'null'
-        subQuestionAnswers:
-          description: List of sub-questions and answers
-          items:
-            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswer'
-          type:
-          - array
-          - 'null'
-        text:
-          description: Text describing the choice/answer for the question
-          type:
-          - string
-          - 'null'
-      type: object
-    StepExecutionAnswerChoiceSubQuestionAnswerChoice:
-      properties:
-        files:
-          description: Files attached to the choice/answer for the question
-          items:
-            type: object
-          type:
-          - array
-          - 'null'
-        id:
-          description: Unique identifier of the choice/answer for the question
-          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
-          type:
-          - string
-          - 'null'
-        option:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption'
-          description: Option selected for the question
-          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
-        optionId:
-          description: Unique identifier of the option selected as the answer for the question
-          type:
-          - string
-          - 'null'
-        text:
-          description: Text describing the choice/answer for the question
-          type:
-          - string
-          - 'null'
-      type: object
-    ReportDetailSection:
-      properties:
-        id:
-          description: Unique identifier of the section
-          example: 123b8df5-6174-4b88-abb7-74b183ec1e70
-          type:
-          - string
-          - 'null'
-        improvements:
-          description: List of improvements of the section
-          items:
-            $ref: '#/components/schemas/ReportDetailImprovement'
-          type:
-          - array
-          - 'null'
-        level:
-          description: Level of the section
+        order:
+          description: Order of the question
           example: 0
           type:
           - integer
           - 'null'
-        maxScore:
-          description: Maximum score as an float
-          example: 7.5
-          type:
-          - number
-          - 'null'
-        name:
-          description: Name of the section
-          example: Manufacturing Control Plan
+      type: object
+    StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption:
+      properties:
+        content:
+          description: Content of the option available for the question
           type:
           - string
           - 'null'
-        parentId:
-          description: Unique identifier of the parent of the section
-          example: 123f99a2-b857-4b9c-986d-54a224cad9ec
+        id:
+          description: Unique identifier of the option available for the question
           type:
           - string
           - 'null'
-        path:
-          description: Path of the section
-          example: 123f99a2-b857-4b9c-986d-54a224cad9ec
+      type: object
+    StepExecutionComment:
+      properties:
+        attachments:
+          description: Attachments inserted in the comment of the step execution
+          items:
+            $ref: '#/components/schemas/StepExecutionAttachment'
+          type:
+          - array
+          - 'null'
+        canEdit:
+          description: Indicates whether or not the comment can be edited
+          type: boolean
+        content:
+          description: Content of the comment of the step execution
+          type:
+          - string
+          - 'null'
+        createdDate:
+          description: Creation date of the comment of the step execution
+          example: '2022-03-02T06:41:19.633000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the comment of the step execution
+          type:
+          - string
+          - 'null'
+        isEdited:
+          description: Indicates whether or not the comment had been edited
+          type: boolean
+        organization:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailOrg'
+          description: Organization of the comment
+        user:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailUser'
+          description: User of the comment of the step execution
+      type: object
+    StepExecutionOptionAction:
+      properties:
+        description:
+          description: Description of the question/answer
+          type:
+          - string
+          - 'null'
+        factoryType:
+          allOf:
+          - $ref: '#/components/schemas/IdName'
+          description: Type of factory
+        id:
+          description: Unique identifier of the question/answer
+          example: 1231cddf-1829-49dc-aff4-2d7043d8c1db
+          type:
+          - string
+          - 'null'
+        optionId:
+          description: Unique identifier of the option of the question/answer
+          example: 123f5fed-29ef-42a1-8f0b-eb58dc87b84d
+          type:
+          - string
+          - 'null'
+        questionIds:
+          description: List of unique identifiers of the questions
+          example: 123df8c5-6b69-4ae2-9cb8-f94fff3ce1f2
           items:
             type: string
           type:
           - array
           - 'null'
-        score:
-          description: Score of the section as an float
-          example: 6
-          type:
-          - number
-          - 'null'
-      type: object
-    StepExecutionQuestionnaire:
-      properties:
-        description:
-          description: Description of the questionnaire
-          type:
-          - string
-          - 'null'
-        flattenSections:
-          description: Sections of the questionnaire
+        questions:
+          description: Recursive list of questions in the assessment
           items:
-            $ref: '#/components/schemas/StepExecutionFlattenSection'
+            type: object
           type:
           - array
           - 'null'
-        id:
-          description: Unique identifier of the questionnaire
-          type:
-          - string
-          - 'null'
-        name:
-          description: Name of the questionnaire
+        type:
+          description: Type of question/answer
           type:
           - string
           - 'null'
       type: object
-    NameValue:
-      properties:
-        name:
-          description: Name
-          type: string
-        value:
-          description: Value
-          type: string
-      type: object
-    ReportDetailAssessmentExecutionConfidentialNote:
-      properties:
-        content:
-          description: Note content
-          example: Confidential information about assessment
-          type: string
-        createdBy:
-          description: User who created the note
-          example: Jane Auditor
-          type:
-          - string
-          - 'null'
-        createdDate:
-          description: Creation date
-          example: '2024-09-30T10:36:56.057000+00:00'
-          format: date-time
-          type: string
-      type: object
-    StepExecutionWorkflow:
-      properties:
-        id:
-          description: Unique identifier of the workflow used in the assessment
-          type:
-          - string
-          - 'null'
-        standard:
-          allOf:
-          - $ref: '#/components/schemas/IdName'
-          description: Standard of the workflow used in the assessment
-      type: object
-    StepExecutionAttachment:
+    StepExecutionQuestionAnswerFindingsAttachment:
       properties:
         id:
           description: Unique identifier of the attachment in the step execution
-          type:
-          - string
-          - 'null'
-        key:
-          description: Key of the attachment in the step execution
           type:
           - string
           - 'null'
@@ -931,585 +739,14 @@ components:
           - string
           - 'null'
       type: object
-    StepExecutionQuestionAnswerFindingsIssues:
+    NameVersion:
       properties:
-        attachments:
-          description: Attachments inserted in the findings issue
-          items:
-            $ref: '#/components/schemas/StepExecutionQuestionAnswerFindingsAttachment'
-          type:
-          - array
-          - 'null'
-        content:
-          description: Content of the findings issue
-          type:
-          - string
-          - 'null'
-        createdDate:
-          description: Creation date of the findings issue
-          example: '2022-03-02T06:41:19.633000+00:00'
-          format: date-time
-          type:
-          - string
-          - 'null'
-        findingsIssuesId:
-          description: Unique identifier of the findings issue
-          type:
-          - string
-          - 'null'
-        organization:
-          allOf:
-          - $ref: '#/components/schemas/ReportDetailOrg'
-          description: Organization of the findings issue
-        severity:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionQuestionAnswerFindingsIssuesSeverity'
-          description: Severity information
-        summary:
-          description: Summary of the findings issue
-          type:
-          - string
-          - 'null'
-        user:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionQuestionAnswerFindingsUser'
-          description: User of the findings issue
-      type: object
-    ReportDetailOrg:
-      description: Information of the organization
-      properties:
-        id:
-          description: Unique identifier of the organization
-          example: abc67433-c8d8-4779-a0f1-3f1490e2dde9
-          type:
-          - string
-          - 'null'
-        name:
-          description: Name of the organization
-          example: Acme Corp
-          type:
-          - string
-          - 'null'
-        type:
-          description: Type of the organization, e.g. RETAILER, FACTORY, PARTNER, etc.
-          example: RETAILER
-          type:
-          - string
-          - 'null'
-        uid:
-          description: Unique technical identifier of the organization
-          example: V123
-          type:
-          - string
-          - 'null'
-      type: object
-    StepExecutionQuestionAnswer:
-      properties:
-        choices:
-          description: List of choices for a question
-          items:
-            $ref: '#/components/schemas/StepExecutionAnswerChoice'
-          type:
-          - array
-          - 'null'
-        comments:
-          description: List of comments in the question/answer set
-          items:
-            $ref: '#/components/schemas/StepExecutionComment'
-          type:
-          - array
-          - 'null'
-        files:
-          description: Files attached to the question/answer set
-          items:
-            type: object
-          type:
-          - array
-          - 'null'
-        findingsIssues:
-          description: List of finding issues
-          items:
-            $ref: '#/components/schemas/StepExecutionQuestionAnswerFindingsIssues'
-          type:
-          - array
-          - 'null'
-        id:
-          description: Unique identifier of the question/answer set in a questionnaire
-          type:
-          - string
-          - 'null'
-        index:
-          description: Indicates the position/order of the question/answer set in a questionnaire
-          type:
-          - integer
-          - 'null'
-        isNotApplicable:
-          description: Indicates whether the answer was set to 'Not Applicable'
-          type: boolean
-        locked:
-          description: Indicates whether the question/answer set is locked or can be editable
-          type: boolean
-        mappedIssues:
-          description: List of mapped issues
-          items:
-            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerMappedIssue'
-          type:
-          - array
-          - 'null'
-        number:
-          description: Number of the question/answer set
-          type:
-          - integer
-          - 'null'
-        parentId:
-          description: Unique identifier of the parent question
-          type:
-          - string
-          - 'null'
-        questionId:
-          description: Unique identifier of the question
-          type:
-          - string
-          - 'null'
-        text:
-          description: Text describes the question/answer set
-          type:
-          - string
-          - 'null'
-      type: object
-    V2ReportDetailUser:
-      properties:
-        email:
-          description: Email of the user
-          example: john.doe@abc.com
-          type: string
-        firstName:
-          description: First name of the user
-          example: John
-          type:
-          - string
-          - 'null'
-        lastName:
-          description: Last name of the user
-          example: Doe
-          type:
-          - string
-          - 'null'
-      type: object
-    V2ReportDetailFindings:
-      properties:
-        severity:
-          description: Severity of the issue founded in the report
-          example: Major
-          enum:
-          - Critical
-          - Major
-          - Minor
-          type: string
-        findings:
-          description: Number of findings of the same severity in the report
-          example: 2
-          type: integer
-      type: object
-    StepExecutionFormData:
-      properties:
-        data:
-          description: Detailed data of the form
-          type: object
-        id:
-          description: Unique identifier of the form data included in the step execution
-          type:
-          - string
-          - 'null'
-      type: object
-    BasicStepExecutionInfo:
-      properties:
-        id:
-          description: Step execution ID
-          example: 4ea094ac-84de-4d50-80c3-fef2ef569f3c
-          type: string
-        name:
-          description: Step name
-          example: Questionnaire 1 - Mapping Issue List
-          type: string
-        order:
-          description: Step order
-          example: 0
-          type: integer
-        result:
-          description: Step execution result
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionResult'
-          type:
-          - object
-          - 'null'
-        questionnaire:
-          description: Questionnaire information
-          allOf:
-          - $ref: '#/components/schemas/Questionnaire'
-          type:
-          - object
-          - 'null'
-        appTestResults:
-          description: Application test results
-          items:
-            type: object
-          type: array
-      type: object
-    CustomLabel:
-      properties:
-        name:
-          description: Name of the label
-          type: string
-        value:
-          description: Value of the label
-          type: string
-      type: object
-    V2ReportLabel:
-      properties:
-        name:
-          description: Type of label assigned in the assignment/report/CAPA
-          type: string
-        value:
-          description: Label assigned in the assignment/report/CAPA
-          type: string
-      type: object
-    AreaToImproveField:
-      properties:
-        improvementAreaId:
-          description: ID of the improvement area
-          example: 07e1d9ef-aebe-4901-b26c-941cb5983832
-          type: string
-        fieldId:
-          description: ID of the field
-          example: b62ca36f-fa86-4ee0-ae96-bad52c2c46b2
-          type: string
-        field:
-          description: Field definition
-          properties:
-            id:
-              description: Field ID
-              example: b62ca36f-fa86-4ee0-ae96-bad52c2c46b2
-              type: string
-            fieldName:
-              description: Name of the field
-              example: Root Causes
-              type: string
-            description:
-              description: Field description
-              example: Describe the root causes
-              type: string
-            enabled:
-              description: Whether the field is enabled
-              example: true
-              type: boolean
-            responseType:
-              description: Type of response expected
-              example: MULTIPLE_TEXT_ENTRIES
-              type: string
-            requirement:
-              description: Field requirement level
-              example: REQUIRED_WHEN_ATI_MANDATORY
-              type: string
-            systemKey:
-              description: System key for the field
-              example: ROOT_CAUSES
-              type:
-              - string
-              - 'null'
-            settings:
-              description: Additional settings
-              type:
-              - object
-              - 'null'
-            order:
-              description: Display order
-              example: 0
-              type: integer
-            choices:
-              description: Available choices for the field
-              items:
-                type: object
-              type: array
-            createdAt:
-              description: Creation timestamp
-              example: '2025-11-03T14:40:34.815Z'
-              format: date-time
-              type: string
-            updatedAt:
-              description: Last update timestamp
-              example: '2025-11-03T14:40:34.815Z'
-              format: date-time
-              type: string
-          type: object
-        answer:
-          description: Answer to the field
-          properties:
-            value:
-              description: Answer value
-              example: Some text answer
-              type:
-              - string
-              - 'null'
-            choices:
-              description: Selected choices
-              items:
-                type: string
-              type: array
-            textAreas:
-              description: Text area responses
-              items:
-                type: object
-              type: array
-            attachments:
-              description: Attached files
-              items:
-                type: object
-              type: array
-          type: object
-      type: object
-    StepExecution:
-      properties:
-        appTestResults:
-          description: App test results in the step execution
-          items:
-            $ref: '#/components/schemas/StepExecutionAppTestResult'
-          type:
-          - array
-          - 'null'
-        assessmentExecution:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionSchemaAssessmentExecution'
-          description: Information on the execution of the assessment
-        formData:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionFormData'
-          description: Detailed data of the form in the step execution
-        id:
-          description: Unique identifier of the step execution
-          example: 123d1b06-c172-4cc3-a905-64840ec0a020
-          type:
-          - string
-          - 'null'
-        issues:
-          description: List of Issues in the step execution
-          items:
-            $ref: '#/components/schemas/StepExecutionIssue'
-          type:
-          - array
-          - 'null'
-        questionAnswers:
-          description: List of Questions/Answers in the step execution
-          items:
-            $ref: '#/components/schemas/StepExecutionQuestionAnswer'
-          type:
-          - array
-          - 'null'
-        questionnaire:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionQuestionnaire'
-          description: Questionnaire information
-        report:
-          allOf:
-          - $ref: '#/components/schemas/ReportDetailStepExecutionReport'
-          description: Information of the report
-        status:
-          description: Status of the step execution
-          example: COMPLETED
-          type:
-          - string
-          - 'null'
-        step:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionStep'
-          description: Information of the step execution
-        stepId:
-          description: Unique identifier of the step execution
-          example: 123ce62d-892c-4e54-a8c3-3b6f52f0d915
-          type:
-          - string
-          - 'null'
-        updatedBy:
-          allOf:
-          - $ref: '#/components/schemas/ReportDetailUser'
-          description: Information of the user who last updated the step execution
-        updatedDate:
-          description: Last updated date of the step execution
-          example: '2021-06-24T15:04:28.402000+00:00'
-          format: date-time
-          type:
-          - string
-          - 'null'
-      type: object
-    StepExecutionQuestionAnswerFindingsUser:
-      properties:
-        email:
-          description: Email address of the user
-          example: john@acme.com
-          type:
-          - string
-          - 'null'
-        id:
-          description: Unique identifier of the user
-          example: cc94fc4e-dcbe-44a5-863e-3255281e02ca
-          type:
-          - string
-          - 'null'
-        name:
-          description: Name of the auditor
-          example: John Doe
-          type:
-          - string
-          - 'null'
-      type: object
-    StepExecutionResponse:
-      properties:
-        data:
-          allOf:
-          - $ref: '#/components/schemas/StepExecution'
-          description: Step Execution Data
-      type: object
-    ReportDetailStepExecutionReport:
-      properties:
-        createdDate:
-          description: Creation date of the step
-          example: '2021-06-27T09:35:21.380000+00:00'
-          format: date-time
-          type:
-          - string
-          - 'null'
-        id:
-          description: Unique identifier of the step
-          example: 1239c6ab-55ad-47a2-847d-2973ed4b00aa
-          type:
-          - string
-          - 'null'
-        isHideScore:
-          description: Indicates whether the score is hidden
-          example: 'false'
-          type: boolean
-        maxScore:
-          description: Maximum score of the step
-          example: 135
-          type:
-          - number
-          - 'null'
-        ratingLabel:
-          allOf:
-          - $ref: '#/components/schemas/IdName'
-          description: Rating label
-        score:
-          description: Score of the step
-          example: 72
-          type:
-          - number
-          - 'null'
-        sections:
-          description: List of sections
-          items:
-            $ref: '#/components/schemas/ReportDetailSection'
-          type:
-          - array
-          - 'null'
-        stepExeId:
-          description: Unique technical identifier of the step
-          example: 13ccab58-b11f-486b-9dc9-05ced81729d8
-          type:
-          - string
-          - 'null'
-      type: object
-    IdName:
-      properties:
-        id:
-          description: Unique identifier
-          type:
-          - string
-          - 'null'
         name:
           description: Name
-          type:
-          - string
-          - 'null'
-      type: object
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
           type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
+        version:
+          description: Version
           type: string
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
-    ExecutorAssignedRole:
-      properties:
-        name:
-          description: Assigned role name
-          example: Lead Auditor
-          type: string
-      type: object
-    V2ReportListResponse:
-      properties:
-        data:
-          description: Report data
-          items:
-            $ref: '#/components/schemas/V2ReportListItem'
-          type: array
-        limit:
-          default: 10
-          description: Limit result of list
-          maximum: 100
-          minimum: 1
-          type: integer
-        offset:
-          default: 0
-          description: Number of items are skipped
-          minimum: 0
-          type: integer
-        total:
-          type: integer
-      required:
-      - total
-      type: object
-    OrgLocationAddress:
-      properties:
-        address:
-          description: Address
-          example: 123 Main Street
-          type:
-          - string
-          - 'null'
-        city:
-          description: City
-          example: Abbeville
-          type:
-          - string
-          - 'null'
-        province:
-          description: Province
-          example: Alabama
-          type:
-          - string
-          - 'null'
-        country:
-          description: Country
-          example: US
-          type:
-          - string
-          - 'null'
       type: object
     DetailedAreaToImprove:
       properties:
@@ -1625,12 +862,636 @@ components:
             $ref: '#/components/schemas/AreaToImproveField'
           type: array
       type: object
+    StepExecutionIssue:
+      properties:
+        category:
+          description: Category of the issue in the step execution
+          example: Electrical Safety
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the issue in the step execution
+          example: 123abc
+          type:
+          - string
+          - 'null'
+        severity:
+          description: Severity of the issue in the step execution
+          example: Major
+          type:
+          - string
+          - 'null'
+        sovePrinciple:
+          description: SOVE Principle
+          example: Safety
+          type:
+          - string
+          - 'null'
+        text:
+          description: Text describing the issue in the step execution
+          example: Safety measures of electrical panels are not in place
+          type:
+          - string
+          - 'null'
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    ReportDetailUser:
+      description: Information of the user
+      properties:
+        email:
+          description: Email address of the user
+          example: john@acme.com
+          type:
+          - string
+          - 'null'
+        firstName:
+          description: First name of the user
+          example: John
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the user
+          example: cc94fc4e-dcbe-44a5-863e-3255281e02ca
+          type:
+          - string
+          - 'null'
+        lastName:
+          description: Last name of the user
+          example: Doe
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportDetailStepExecutionReport:
+      properties:
+        createdDate:
+          description: Creation date of the step
+          example: '2021-06-27T09:35:21.380000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the step
+          example: 1239c6ab-55ad-47a2-847d-2973ed4b00aa
+          type:
+          - string
+          - 'null'
+        isHideScore:
+          description: Indicates whether the score is hidden
+          example: 'false'
+          type: boolean
+        maxScore:
+          description: Maximum score of the step
+          example: 135
+          type:
+          - number
+          - 'null'
+        ratingLabel:
+          allOf:
+          - $ref: '#/components/schemas/IdName'
+          description: Rating label
+        score:
+          description: Score of the step
+          example: 72
+          type:
+          - number
+          - 'null'
+        sections:
+          description: List of sections
+          items:
+            $ref: '#/components/schemas/ReportDetailSection'
+          type:
+          - array
+          - 'null'
+        stepExeId:
+          description: Unique technical identifier of the step
+          example: 13ccab58-b11f-486b-9dc9-05ced81729d8
+          type:
+          - string
+          - 'null'
+      type: object
+    V2ReportAssignedRole:
+      properties:
+        name:
+          description: Name of the role
+          example: UL China
+          type: string
+      type: object
+    StepExecutionWorkflow:
+      properties:
+        id:
+          description: Unique identifier of the workflow used in the assessment
+          type:
+          - string
+          - 'null'
+        standard:
+          allOf:
+          - $ref: '#/components/schemas/IdName'
+          description: Standard of the workflow used in the assessment
+      type: object
+    StepExecutionAnswerChoiceSubQuestionAnswerMappedIssue:
+      properties:
+        answerId:
+          description: Unique identifier of the answer in the mapped issue
+          type:
+          - string
+          - 'null'
+        comments:
+          description: List of comments for mapped issues in the question
+          items:
+            $ref: '#/components/schemas/StepExecutionComment'
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique identifier of the mapped issue of the question
+          type:
+          - string
+          - 'null'
+        issue:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerMappedIssueIssue'
+          description: List of mapped issues in the question
+        issueId:
+          description: Unique identifier of the issue in the question
+          type:
+          - string
+          - 'null'
+        options:
+          description: List of options available for the question
+          items:
+            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption'
+          type:
+          - array
+          - 'null'
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    StepExecutionResponse:
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/StepExecution'
+          description: Step Execution Data
+      type: object
     V2ReportDetailResponse:
       properties:
         data:
           allOf:
           - $ref: '#/components/schemas/V2ReportDetail'
           description: Report data
+      type: object
+    Capa:
+      properties:
+        id:
+          description: Unique identifier of the CAPA
+          example: 1235330e-b74b-4be6-8d8a-cb0560effc11
+          type: string
+        status:
+          description: Status of the CAPA
+          example: New
+          type: string
+        capaLabels:
+          description: List of CAPA labels
+          items:
+            properties:
+              name:
+                description: Label field name
+                example: Priority
+                type: string
+              value:
+                description: Label value
+                example: High
+                type: string
+          type: array
+        updatedDate:
+          description: Last update date of the CAPA (available when capa_details=true)
+          example: '2025-12-12T10:48:07.191000+00:00'
+          format: date-time
+          type: string
+        updatedByUser:
+          description: User who last updated the CAPA (available when capa_details=true)
+          example: john_doe@example.com
+          type:
+          - string
+          - 'null'
+        approvedDate:
+          description: Date when CAPA was approved (available when capa_details=true)
+          example: '2025-12-12T10:48:07.191000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        createdDate:
+          description: Creation date of the CAPA (available when capa_details=true)
+          example: '2025-12-12T10:48:07.191000+00:00'
+          format: date-time
+          type: string
+        dueDate:
+          description: Due date for CAPA completion (available when capa_details=true)
+          example: '2025-12-31T00:00:00.000000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        areaToImproves:
+          description: List of area to improves in this CAPA (available when capa_details=true)
+          items:
+            $ref: '#/components/schemas/DetailedAreaToImprove'
+          type: array
+      type: object
+    AreaToImproveField:
+      properties:
+        improvementAreaId:
+          description: ID of the improvement area
+          example: 07e1d9ef-aebe-4901-b26c-941cb5983832
+          type: string
+        fieldId:
+          description: ID of the field
+          example: b62ca36f-fa86-4ee0-ae96-bad52c2c46b2
+          type: string
+        field:
+          description: Field definition
+          properties:
+            id:
+              description: Field ID
+              example: b62ca36f-fa86-4ee0-ae96-bad52c2c46b2
+              type: string
+            fieldName:
+              description: Name of the field
+              example: Root Causes
+              type: string
+            description:
+              description: Field description
+              example: Describe the root causes
+              type: string
+            enabled:
+              description: Whether the field is enabled
+              example: true
+              type: boolean
+            responseType:
+              description: Type of response expected
+              example: MULTIPLE_TEXT_ENTRIES
+              type: string
+            requirement:
+              description: Field requirement level
+              example: REQUIRED_WHEN_ATI_MANDATORY
+              type: string
+            systemKey:
+              description: System key for the field
+              example: ROOT_CAUSES
+              type:
+              - string
+              - 'null'
+            settings:
+              description: Additional settings
+              type:
+              - object
+              - 'null'
+            order:
+              description: Display order
+              example: 0
+              type: integer
+            choices:
+              description: Available choices for the field
+              items:
+                type: object
+              type: array
+            createdAt:
+              description: Creation timestamp
+              example: '2025-11-03T14:40:34.815Z'
+              format: date-time
+              type: string
+            updatedAt:
+              description: Last update timestamp
+              example: '2025-11-03T14:40:34.815Z'
+              format: date-time
+              type: string
+          type: object
+        answer:
+          description: Answer to the field
+          properties:
+            value:
+              description: Answer value
+              example: Some text answer
+              type:
+              - string
+              - 'null'
+            choices:
+              description: Selected choices
+              items:
+                type: string
+              type: array
+            textAreas:
+              description: Text area responses
+              items:
+                type: object
+              type: array
+            attachments:
+              description: Attached files
+              items:
+                type: object
+              type: array
+          type: object
+      type: object
+    IdName:
+      properties:
+        id:
+          description: Unique identifier
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionQuestionnaire:
+      properties:
+        description:
+          description: Description of the questionnaire
+          type:
+          - string
+          - 'null'
+        flattenSections:
+          description: Sections of the questionnaire
+          items:
+            $ref: '#/components/schemas/StepExecutionFlattenSection'
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique identifier of the questionnaire
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the questionnaire
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionAnswerChoiceSubQuestionAnswerMappedIssueIssue:
+      properties:
+        category:
+          description: Category of the mapped issue
+          example: Emergency Exit
+          type:
+          - string
+          - 'null'
+        code:
+          description: Code of the mapped issue
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the mapped issue in the question
+          example: 1a
+          type:
+          - string
+          - 'null'
+        section:
+          description: Section of the mapped issue
+          type:
+          - string
+          - 'null'
+        severity:
+          description: Severity of the mapped issue
+          example: Major
+          type:
+          - string
+          - 'null'
+        text:
+          description: Text describing the mapped issue in the question
+          example: Emergency exits are blocked
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionAttachment:
+      properties:
+        id:
+          description: Unique identifier of the attachment in the step execution
+          type:
+          - string
+          - 'null'
+        key:
+          description: Key of the attachment in the step execution
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the attachment in the step execution
+          type:
+          - string
+          - 'null'
+        url:
+          description: URL of the attachment in the step execution
+          type:
+          - string
+          - 'null'
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    NameValue:
+      properties:
+        name:
+          description: Name
+          type: string
+        value:
+          description: Value
+          type: string
+      type: object
+    StepExecutionForm:
+      properties:
+        description:
+          description: Description of the form in the step execution
+          type:
+          - string
+          - 'null'
+        schema:
+          type: object
+        version:
+          description: Version of the form in the step execution
+          example: '1.0'
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionQuestionAnswerFindingsUser:
+      properties:
+        email:
+          description: Email address of the user
+          example: john@acme.com
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the user
+          example: cc94fc4e-dcbe-44a5-863e-3255281e02ca
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the auditor
+          example: John Doe
+          type:
+          - string
+          - 'null'
+      type: object
+    V2ReportListResponse:
+      properties:
+        data:
+          description: Report data
+          items:
+            $ref: '#/components/schemas/V2ReportListItem'
+          type: array
+        limit:
+          default: 10
+          description: Limit result of list
+          maximum: 100
+          minimum: 1
+          type: integer
+        offset:
+          default: 0
+          description: Number of items are skipped
+          minimum: 0
+          type: integer
+        total:
+          type: integer
+      required:
+      - total
+      type: object
+    AtiComment:
+      properties:
+        text:
+          description: Comment text
+          example: This is a comment.
+          type: string
+        createdByUser:
+          description: User who created the comment
+          example: jane.smith@auditor.com
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportDetailAssessmentExecutionConfidentialNote:
+      properties:
+        content:
+          description: Note content
+          example: Confidential information about assessment
+          type: string
+        createdBy:
+          description: User who created the note
+          example: Jane Auditor
+          type:
+          - string
+          - 'null'
+        createdDate:
+          description: Creation date
+          example: '2024-09-30T10:36:56.057000+00:00'
+          format: date-time
+          type: string
+      type: object
+    ContactPerson:
+      properties:
+        name:
+          description: Contact person name
+          example: John Doe
+          type: string
+        title:
+          description: Contact person title
+          example: Factory Manager
+          type:
+          - string
+          - 'null'
+        email:
+          description: Contact person email
+          example: john.doe@example.com
+          type: string
+        phoneNumber:
+          description: Contact person phone number
+          example: 1234567890
+          type: string
+      type: object
+    V2ReportAuditor:
+      properties:
+        email:
+          description: Actual auditor's email (This field has value only when the configuration is enabled in the standard)
+          example: john.doe@abc.com
+          type:
+          - string
+          - 'null'
+        firstName:
+          description: Actual Auditor's First Name (This field has value only when the configuration is enabled in the standard)
+          example: John
+          type:
+          - string
+          - 'null'
+        lastName:
+          description: Actual Auditor's Last Name (This field has value only when the configuration is enabled in the standard)
+          example: Doe
+          type:
+          - string
+          - 'null'
+      type: object
+    Executor:
+      allOf:
+      - $ref: '#/components/schemas/IdNameTypeOrgId'
+      - properties:
+          contactPersons:
+            description: Executor contact persons
+            items:
+              $ref: '#/components/schemas/ContactPerson'
+            type: array
+          isPlaceholder:
+            description: Whether this is a placeholder executor
+            example: false
+            type: boolean
+          ableToSubmitAssessment:
+            description: Whether this executor can submit the assessment
+            example: true
+            type: boolean
+          isLead:
+            description: Whether this executor is the lead
+            example: true
+            type: boolean
+          assignedRoles:
+            description: Roles assigned to this executor
+            items:
+              $ref: '#/components/schemas/ExecutorAssignedRole'
+            type: array
       type: object
     StepExecutionAppTestResult:
       properties:
@@ -1642,6 +1503,460 @@ components:
           description: Unique identifier of the section of the app test result
           type:
           - string
+          - 'null'
+      type: object
+    StepExecutionAnswerChoice:
+      properties:
+        files:
+          description: Files attached to the choice/answer for the question
+          items:
+            type: object
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique identifier of the choice/answer for the question
+          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
+          type:
+          - string
+          - 'null'
+        option:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption'
+          description: Option selected for the question
+          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
+        optionId:
+          description: Unique identifier of the option selected as the answer for the question
+          type:
+          - string
+          - 'null'
+        subQuestionAnswers:
+          description: List of sub-questions and answers
+          items:
+            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswer'
+          type:
+          - array
+          - 'null'
+        text:
+          description: Text describing the choice/answer for the question
+          type:
+          - string
+          - 'null'
+      type: object
+    V2ReportDetail:
+      allOf:
+      - $ref: '#/components/schemas/V2ReportBasicDetail'
+      - properties:
+          checkin:
+            description: On-site check-in information
+            allOf:
+            - $ref: '#/components/schemas/CheckIn'
+            type:
+            - object
+            - 'null'
+          overallComment:
+            description: Overall comment input by the assignee
+            example: Please submit the capa by due date.
+            type:
+            - string
+            - 'null'
+          assignedUsers:
+            description: Information of the assigned user
+            items:
+              $ref: '#/components/schemas/V2ReportDetailUser'
+            type: array
+          assignedRoles:
+            description: Information of the assigned roles
+            items:
+              $ref: '#/components/schemas/V2ReportAssignedRole'
+            type: array
+          stepExecutions:
+            description: Information of the execution steps
+            items:
+              $ref: '#/components/schemas/BasicStepExecutionInfo'
+            type: array
+          submitEvent:
+            $ref: '#/components/schemas/V2ReportDetailSubmitEvent'
+          declineReasons:
+            description: Reasons input by the retailer when declining the report
+            items:
+              type: string
+            type: array
+          capa:
+            allOf:
+            - $ref: '#/components/schemas/Capa'
+            description: Information of the CAPA, Corrective Action and Preventive Action
+            type:
+            - object
+            - 'null'
+      type: object
+    StepExecutionAnswerChoiceSubQuestionAnswerChoice:
+      properties:
+        files:
+          description: Files attached to the choice/answer for the question
+          items:
+            type: object
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique identifier of the choice/answer for the question
+          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
+          type:
+          - string
+          - 'null'
+        option:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerChoiceOption'
+          description: Option selected for the question
+          example: 12308e4f-67b5-4421-a0a4-2ab365e8a39f
+        optionId:
+          description: Unique identifier of the option selected as the answer for the question
+          type:
+          - string
+          - 'null'
+        text:
+          description: Text describing the choice/answer for the question
+          type:
+          - string
+          - 'null'
+      type: object
+    V2ReportDetailSubmitEvent:
+      description: Information on the event submission
+      properties:
+        submittedByUser:
+          allOf:
+          - $ref: '#/components/schemas/V2ReportDetailUser'
+          type:
+          - object
+          - 'null'
+          description: Information of the user who submitted the assessment
+        submitDate:
+          description: Submit date
+          example: '2024-09-30T10:36:56.057000+00:00'
+          format: date-time
+          type: string
+        submittedByOrg:
+          allOf:
+          - $ref: '#/components/schemas/IdNameTypeOrgId'
+          description: Information of the organization who submitted the assessment
+          type:
+          - object
+          - 'null'
+      type: object
+    CustomLabel:
+      properties:
+        name:
+          description: Name of the label
+          type: string
+        value:
+          description: Value of the label
+          type: string
+      type: object
+    IdNameTypeOrgId:
+      properties:
+        id:
+          description: Unique identifier
+          type: string
+        name:
+          description: Name
+          type:
+          - string
+          - 'null'
+        orgId:
+          description: Organization external ID
+          type:
+          - string
+          - 'null'
+        type:
+          description: Type
+          type: string
+      type: object
+    OrgLocationAddress:
+      properties:
+        address:
+          description: Address
+          example: 123 Main Street
+          type:
+          - string
+          - 'null'
+        city:
+          description: City
+          example: Abbeville
+          type:
+          - string
+          - 'null'
+        province:
+          description: Province
+          example: Alabama
+          type:
+          - string
+          - 'null'
+        country:
+          description: Country
+          example: US
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportDetailSection:
+      properties:
+        id:
+          description: Unique identifier of the section
+          example: 123b8df5-6174-4b88-abb7-74b183ec1e70
+          type:
+          - string
+          - 'null'
+        improvements:
+          description: List of improvements of the section
+          items:
+            $ref: '#/components/schemas/ReportDetailImprovement'
+          type:
+          - array
+          - 'null'
+        level:
+          description: Level of the section
+          example: 0
+          type:
+          - integer
+          - 'null'
+        maxScore:
+          description: Maximum score as an float
+          example: 7.5
+          type:
+          - number
+          - 'null'
+        name:
+          description: Name of the section
+          example: Manufacturing Control Plan
+          type:
+          - string
+          - 'null'
+        parentId:
+          description: Unique identifier of the parent of the section
+          example: 123f99a2-b857-4b9c-986d-54a224cad9ec
+          type:
+          - string
+          - 'null'
+        path:
+          description: Path of the section
+          example: 123f99a2-b857-4b9c-986d-54a224cad9ec
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        score:
+          description: Score of the section as an float
+          example: 6
+          type:
+          - number
+          - 'null'
+      type: object
+    StepExecutionSchemaAssessmentExecution:
+      properties:
+        ableToExecute:
+          description: Indicates whether the assessment of the report had been able to be executed
+          type: boolean
+        id:
+          description: Unique identifier of the assessment of the report
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the assessment of the report
+          type:
+          - string
+          - 'null'
+        status:
+          description: Status of the assessment of the report
+          type:
+          - string
+          - 'null'
+        updatedDate:
+          description: The updated date of the assessment of the report
+          format: date-time
+          type:
+          - string
+          - 'null'
+        workflow:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionWorkflow'
+          description: Information on the workflow used in the assessment
+      type: object
+    ReportDetailOrg:
+      description: Information of the organization
+      properties:
+        id:
+          description: Unique identifier of the organization
+          example: abc67433-c8d8-4779-a0f1-3f1490e2dde9
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the organization
+          example: Acme Corp
+          type:
+          - string
+          - 'null'
+        type:
+          description: Type of the organization, e.g. RETAILER, FACTORY, PARTNER, etc.
+          example: RETAILER
+          type:
+          - string
+          - 'null'
+        uid:
+          description: Unique technical identifier of the organization
+          example: V123
+          type:
+          - string
+          - 'null'
+      type: object
+    V2ReportDetailFindings:
+      properties:
+        severity:
+          description: Severity of the issue founded in the report
+          example: Major
+          enum:
+          - Critical
+          - Major
+          - Minor
+          type: string
+        findings:
+          description: Number of findings of the same severity in the report
+          example: 2
+          type: integer
+      type: object
+    ExecutorAssignedRole:
+      properties:
+        name:
+          description: Assigned role name
+          example: Lead Auditor
+          type: string
+      type: object
+    V2ReportLabel:
+      properties:
+        name:
+          description: Type of label assigned in the assignment/report/CAPA
+          type: string
+        value:
+          description: Label assigned in the assignment/report/CAPA
+          type: string
+      type: object
+    StepExecutionOption:
+      properties:
+        actions:
+          description: List of actions
+          items:
+            $ref: '#/components/schemas/StepExecutionOptionAction'
+          type:
+          - array
+          - 'null'
+        content:
+          description: Content of the option
+          type:
+          - string
+          - 'null'
+        id:
+          description: Unique identifier of the option
+          type:
+          - string
+          - 'null'
+        isNoneOfTheAbove:
+          description: Is 'true' if 'None of the above' has been selected, 'false' otherwise
+          type: boolean
+      type: object
+    StepExecutionQuestionAnswerFindingsIssues:
+      properties:
+        attachments:
+          description: Attachments inserted in the findings issue
+          items:
+            $ref: '#/components/schemas/StepExecutionQuestionAnswerFindingsAttachment'
+          type:
+          - array
+          - 'null'
+        content:
+          description: Content of the findings issue
+          type:
+          - string
+          - 'null'
+        createdDate:
+          description: Creation date of the findings issue
+          example: '2022-03-02T06:41:19.633000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        findingsIssuesId:
+          description: Unique identifier of the findings issue
+          type:
+          - string
+          - 'null'
+        organization:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailOrg'
+          description: Organization of the findings issue
+        severity:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionQuestionAnswerFindingsIssuesSeverity'
+          description: Severity information
+        summary:
+          description: Summary of the findings issue
+          type:
+          - string
+          - 'null'
+        user:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionQuestionAnswerFindingsUser'
+          description: User of the findings issue
+      type: object
+    AtiLinkedFinding:
+      properties:
+        scheme:
+          description: Scheme
+          type:
+          - string
+          - 'null'
+        severity:
+          description: Severity value
+          example: Informational
+          type:
+          - string
+          - 'null'
+        title:
+          description: Title
+          example: Testing finding description
+          type:
+          - string
+          - 'null'
+        category:
+          description: Category
+          example: Section 1
+          type:
+          - string
+          - 'null'
+        subCategory:
+          description: Sub-category
+          example: Section 1.1
+          type:
+          - string
+          - 'null'
+        issueNumber:
+          description: Issue number
+          example: 376882
+          type:
+          - string
+          - 'null'
+        description:
+          description: Issue description
+          example: This is a detailed description of the issue.
+          type:
+          - string
+          - 'null'
+        schemeData:
+          description: Scheme data
+          type:
+          - object
           - 'null'
       type: object
     StepExecutionQuestionAnswerFindingsIssuesSeverity:
@@ -1712,260 +2027,6 @@ components:
           description: Text describes the question
           type:
           - string
-          - 'null'
-      type: object
-    Executor:
-      allOf:
-      - $ref: '#/components/schemas/IdNameTypeOrgId'
-      - properties:
-          contactPersons:
-            description: Executor contact persons
-            items:
-              $ref: '#/components/schemas/ContactPerson'
-            type: array
-          isPlaceholder:
-            description: Whether this is a placeholder executor
-            example: false
-            type: boolean
-          ableToSubmitAssessment:
-            description: Whether this executor can submit the assessment
-            example: true
-            type: boolean
-          isLead:
-            description: Whether this executor is the lead
-            example: true
-            type: boolean
-          assignedRoles:
-            description: Roles assigned to this executor
-            items:
-              $ref: '#/components/schemas/ExecutorAssignedRole'
-            type: array
-      type: object
-    StepExecutionIssue:
-      properties:
-        category:
-          description: Category of the issue in the step execution
-          example: Electrical Safety
-          type:
-          - string
-          - 'null'
-        id:
-          description: Unique identifier of the issue in the step execution
-          example: 123abc
-          type:
-          - string
-          - 'null'
-        severity:
-          description: Severity of the issue in the step execution
-          example: Major
-          type:
-          - string
-          - 'null'
-        sovePrinciple:
-          description: SOVE Principle
-          example: Safety
-          type:
-          - string
-          - 'null'
-        text:
-          description: Text describing the issue in the step execution
-          example: Safety measures of electrical panels are not in place
-          type:
-          - string
-          - 'null'
-      type: object
-    StepExecutionSchemaAssessmentExecution:
-      properties:
-        ableToExecute:
-          description: Indicates whether the assessment of the report had been able to be executed
-          type: boolean
-        id:
-          description: Unique identifier of the assessment of the report
-          type:
-          - string
-          - 'null'
-        name:
-          description: Name of the assessment of the report
-          type:
-          - string
-          - 'null'
-        status:
-          description: Status of the assessment of the report
-          type:
-          - string
-          - 'null'
-        updatedDate:
-          description: The updated date of the assessment of the report
-          format: date-time
-          type:
-          - string
-          - 'null'
-        workflow:
-          allOf:
-          - $ref: '#/components/schemas/StepExecutionWorkflow'
-          description: Information on the workflow used in the assessment
-      type: object
-    IdNameTypeOrgId:
-      properties:
-        id:
-          description: Unique identifier
-          type: string
-        name:
-          description: Name
-          type:
-          - string
-          - 'null'
-        orgId:
-          description: Organization external ID
-          type:
-          - string
-          - 'null'
-        type:
-          description: Type
-          type: string
-      type: object
-    V2ReportListCapa:
-      properties:
-        id:
-          description: Unique identifier of the CAPA
-          example: 1235330e-b74b-4be6-8d8a-cb0560effc11
-          type: string
-        status:
-          description: Status of the CAPA
-          example: NEW
-          type: string
-        capaLabels:
-          description: List of CAPA labels
-          items:
-            $ref: '#/components/schemas/NameValue'
-          type: array
-      type: object
-    StepExecutionOptionAction:
-      properties:
-        description:
-          description: Description of the question/answer
-          type:
-          - string
-          - 'null'
-        factoryType:
-          allOf:
-          - $ref: '#/components/schemas/IdName'
-          description: Type of factory
-        id:
-          description: Unique identifier of the question/answer
-          example: 1231cddf-1829-49dc-aff4-2d7043d8c1db
-          type:
-          - string
-          - 'null'
-        optionId:
-          description: Unique identifier of the option of the question/answer
-          example: 123f5fed-29ef-42a1-8f0b-eb58dc87b84d
-          type:
-          - string
-          - 'null'
-        questionIds:
-          description: List of unique identifiers of the questions
-          example: 123df8c5-6b69-4ae2-9cb8-f94fff3ce1f2
-          items:
-            type: string
-          type:
-          - array
-          - 'null'
-        questions:
-          description: Recursive list of questions in the assessment
-          items:
-            type: object
-          type:
-          - array
-          - 'null'
-        type:
-          description: Type of question/answer
-          type:
-          - string
-          - 'null'
-      type: object
-    ReportDetailImprovement:
-      properties:
-        answerId:
-          description: Unique identifier of the answer of the improvement
-          example: 12372c66-f8ec-40c8-a0c7-355f6205c81e
-          type:
-          - string
-          - 'null'
-        content:
-          description: Content of the improvement
-          example: Is the facility clean and organized?
-          type:
-          - string
-          - 'null'
-        customTags:
-          description: List of custom tags of the improvement
-          items:
-            $ref: '#/components/schemas/IdName'
-          type:
-          - array
-          - 'null'
-        id:
-          description: Unique identifier of the improvement
-          example: 123df8c5-6b69-4ae2-9cb8-f94fff3ce1f2
-          type:
-          - string
-          - 'null'
-      type: object
-    V2ReportAssignedRole:
-      properties:
-        name:
-          description: Name of the role
-          example: UL China
-          type: string
-      type: object
-    AtiLinkedFinding:
-      properties:
-        scheme:
-          description: Scheme
-          type:
-          - string
-          - 'null'
-        severity:
-          description: Severity value
-          example: Informational
-          type:
-          - string
-          - 'null'
-        title:
-          description: Title
-          example: Testing finding description
-          type:
-          - string
-          - 'null'
-        category:
-          description: Category
-          example: Section 1
-          type:
-          - string
-          - 'null'
-        subCategory:
-          description: Sub-category
-          example: Section 1.1
-          type:
-          - string
-          - 'null'
-        issueNumber:
-          description: Issue number
-          example: 376882
-          type:
-          - string
-          - 'null'
-        description:
-          description: Issue description
-          example: This is a detailed description of the issue.
-          type:
-          - string
-          - 'null'
-        schemeData:
-          description: Scheme data
-          type:
-          - object
           - 'null'
       type: object
     V2ReportBasicDetail:
@@ -2237,6 +2298,20 @@ components:
             $ref: '#/components/schemas/V2ReportEscalation'
           type: array
       type: object
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
     CheckIn:
       properties:
         checkinLocation:
@@ -2302,119 +2377,288 @@ components:
           - string
           - 'null'
       type: object
-    ReportDetailUser:
-      description: Information of the user
+    StepExecution:
       properties:
-        email:
-          description: Email address of the user
-          example: john@acme.com
+        appTestResults:
+          description: App test results in the step execution
+          items:
+            $ref: '#/components/schemas/StepExecutionAppTestResult'
+          type:
+          - array
+          - 'null'
+        assessmentExecution:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionSchemaAssessmentExecution'
+          description: Information on the execution of the assessment
+        formData:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionFormData'
+          description: Detailed data of the form in the step execution
+        id:
+          description: Unique identifier of the step execution
+          example: 123d1b06-c172-4cc3-a905-64840ec0a020
           type:
           - string
           - 'null'
+        issues:
+          description: List of Issues in the step execution
+          items:
+            $ref: '#/components/schemas/StepExecutionIssue'
+          type:
+          - array
+          - 'null'
+        questionAnswers:
+          description: List of Questions/Answers in the step execution
+          items:
+            $ref: '#/components/schemas/StepExecutionQuestionAnswer'
+          type:
+          - array
+          - 'null'
+        questionnaire:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionQuestionnaire'
+          description: Questionnaire information
+        report:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailStepExecutionReport'
+          description: Information of the report
+        status:
+          description: Status of the step execution
+          example: COMPLETED
+          type:
+          - string
+          - 'null'
+        step:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionStep'
+          description: Information of the step execution
+        stepId:
+          description: Unique identifier of the step execution
+          example: 123ce62d-892c-4e54-a8c3-3b6f52f0d915
+          type:
+          - string
+          - 'null'
+        updatedBy:
+          allOf:
+          - $ref: '#/components/schemas/ReportDetailUser'
+          description: Information of the user who last updated the step execution
+        updatedDate:
+          description: Last updated date of the step execution
+          example: '2021-06-24T15:04:28.402000+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionQuestionAnswer:
+      properties:
+        choices:
+          description: List of choices for a question
+          items:
+            $ref: '#/components/schemas/StepExecutionAnswerChoice'
+          type:
+          - array
+          - 'null'
+        comments:
+          description: List of comments in the question/answer set
+          items:
+            $ref: '#/components/schemas/StepExecutionComment'
+          type:
+          - array
+          - 'null'
+        files:
+          description: Files attached to the question/answer set
+          items:
+            type: object
+          type:
+          - array
+          - 'null'
+        findingsIssues:
+          description: List of finding issues
+          items:
+            $ref: '#/components/schemas/StepExecutionQuestionAnswerFindingsIssues'
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique identifier of the question/answer set in a questionnaire
+          type:
+          - string
+          - 'null'
+        index:
+          description: Indicates the position/order of the question/answer set in a questionnaire
+          type:
+          - integer
+          - 'null'
+        isNotApplicable:
+          description: Indicates whether the answer was set to 'Not Applicable'
+          type: boolean
+        locked:
+          description: Indicates whether the question/answer set is locked or can be editable
+          type: boolean
+        mappedIssues:
+          description: List of mapped issues
+          items:
+            $ref: '#/components/schemas/StepExecutionAnswerChoiceSubQuestionAnswerMappedIssue'
+          type:
+          - array
+          - 'null'
+        number:
+          description: Number of the question/answer set
+          type:
+          - integer
+          - 'null'
+        parentId:
+          description: Unique identifier of the parent question
+          type:
+          - string
+          - 'null'
+        questionId:
+          description: Unique identifier of the question
+          type:
+          - string
+          - 'null'
+        text:
+          description: Text describes the question/answer set
+          type:
+          - string
+          - 'null'
+      type: object
+    V2ReportListCapa:
+      properties:
+        id:
+          description: Unique identifier of the CAPA
+          example: 1235330e-b74b-4be6-8d8a-cb0560effc11
+          type: string
+        status:
+          description: Status of the CAPA
+          example: NEW
+          type: string
+        capaLabels:
+          description: List of CAPA labels
+          items:
+            $ref: '#/components/schemas/NameValue'
+          type: array
+      type: object
+    Questionnaire:
+      properties:
+        id:
+          description: Questionnaire ID
+          example: cb66f153-712f-4582-848d-1811901ef37d
+          type: string
+        name:
+          description: Questionnaire name
+          example: '[tutest] Mapping Issue List - Schemes'
+          type: string
+      type: object
+    StepExecutionFormData:
+      properties:
+        data:
+          description: Detailed data of the form
+          type: object
+        id:
+          description: Unique identifier of the form data included in the step execution
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionFlattenSection:
+      properties:
+        id:
+          description: Unique identifier of the section
+          type:
+          - string
+          - 'null'
+        level:
+          description: Level of the section
+          type:
+          - integer
+          - 'null'
+        name:
+          description: Name of the section
+          type:
+          - string
+          - 'null'
+        parentId:
+          description: Unique identifier of the parent of the section
+          type:
+          - string
+          - 'null'
+        questions:
+          description: List of questions within the section
+          items:
+            $ref: '#/components/schemas/StepExecutionQuestion'
+          type:
+          - array
+          - 'null'
+        type:
+          description: Type of section
+          type:
+          - string
+          - 'null'
+      type: object
+    ReportDetailImprovement:
+      properties:
+        answerId:
+          description: Unique identifier of the answer of the improvement
+          example: 12372c66-f8ec-40c8-a0c7-355f6205c81e
+          type:
+          - string
+          - 'null'
+        content:
+          description: Content of the improvement
+          example: Is the facility clean and organized?
+          type:
+          - string
+          - 'null'
+        customTags:
+          description: List of custom tags of the improvement
+          items:
+            $ref: '#/components/schemas/IdName'
+          type:
+          - array
+          - 'null'
+        id:
+          description: Unique identifier of the improvement
+          example: 123df8c5-6b69-4ae2-9cb8-f94fff3ce1f2
+          type:
+          - string
+          - 'null'
+      type: object
+    StepExecutionStep:
+      properties:
+        formSchema:
+          allOf:
+          - $ref: '#/components/schemas/StepExecutionForm'
+          description: Form Schema that describes the schema of forms included in the report step
+        id:
+          description: Unique identifier of the report step
+          example: 123ce62d-892c-4e54-a8c3-3b6f52f0d915
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the report step
+          example: Factory Information
+          type:
+          - string
+          - 'null'
+      type: object
+    V2ReportDetailUser:
+      properties:
+        email:
+          description: Email of the user
+          example: john.doe@abc.com
+          type: string
         firstName:
           description: First name of the user
           example: John
           type:
           - string
           - 'null'
-        id:
-          description: Unique identifier of the user
-          example: cc94fc4e-dcbe-44a5-863e-3255281e02ca
-          type:
-          - string
-          - 'null'
         lastName:
           description: Last name of the user
           example: Doe
-          type:
-          - string
-          - 'null'
-      type: object
-    StepExecutionQuestion:
-      properties:
-        content:
-          description: Content of the question
-          type:
-          - string
-          - 'null'
-        externalId:
-          description: External unique identifier of the question
-          type:
-          - string
-          - 'null'
-        extraInformation:
-          description: Extra information of the question
-          type: object
-        id:
-          description: Unique identifier of the question
-          type:
-          - string
-          - 'null'
-        options:
-          description: List of options available for the question
-          items:
-            $ref: '#/components/schemas/StepExecutionOption'
-          type:
-          - array
-          - 'null'
-        parentId:
-          description: Unique identifier of the parent of the question
-          type:
-          - string
-          - 'null'
-        responseType:
-          description: Type of response
-          type:
-          - string
-          - 'null'
-        responseTypeConfig:
-          description: Configuration of the type of response
-          type: object
-        type:
-          description: Type of question
-          type:
-          - string
-          - 'null'
-        order:
-          description: Order of the question
-          example: 0
-          type:
-          - integer
-          - 'null'
-      type: object
-    StepExecutionAnswerChoiceSubQuestionAnswerMappedIssueIssue:
-      properties:
-        category:
-          description: Category of the mapped issue
-          example: Emergency Exit
-          type:
-          - string
-          - 'null'
-        code:
-          description: Code of the mapped issue
-          type:
-          - string
-          - 'null'
-        id:
-          description: Unique identifier of the mapped issue in the question
-          example: 1a
-          type:
-          - string
-          - 'null'
-        section:
-          description: Section of the mapped issue
-          type:
-          - string
-          - 'null'
-        severity:
-          description: Severity of the mapped issue
-          example: Major
-          type:
-          - string
-          - 'null'
-        text:
-          description: Text describing the mapped issue in the question
-          example: Emergency exits are blocked
           type:
           - string
           - 'null'
@@ -2456,283 +2700,39 @@ components:
             type: object
           type: array
       type: object
-    Questionnaire:
+    BasicStepExecutionInfo:
       properties:
         id:
-          description: Questionnaire ID
-          example: cb66f153-712f-4582-848d-1811901ef37d
+          description: Step execution ID
+          example: 4ea094ac-84de-4d50-80c3-fef2ef569f3c
           type: string
         name:
-          description: Questionnaire name
-          example: '[tutest] Mapping Issue List - Schemes'
+          description: Step name
+          example: Questionnaire 1 - Mapping Issue List
           type: string
-      type: object
-    ValidateApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            type:
-            - Input type is not valid
-          type: object
-        message:
-          example: Validation error
-          type: string
-      type: object
-    StepExecutionStep:
-      properties:
-        formSchema:
+        order:
+          description: Step order
+          example: 0
+          type: integer
+        result:
+          description: Step execution result
           allOf:
-          - $ref: '#/components/schemas/StepExecutionForm'
-          description: Form Schema that describes the schema of forms included in the report step
-        id:
-          description: Unique identifier of the report step
-          example: 123ce62d-892c-4e54-a8c3-3b6f52f0d915
+          - $ref: '#/components/schemas/StepExecutionResult'
           type:
-          - string
+          - object
           - 'null'
-        name:
-          description: Name of the report step
-          example: Factory Information
-          type:
-          - string
-          - 'null'
-      type: object
-    V2ReportAuditor:
-      properties:
-        email:
-          description: Actual auditor's email (This field has value only when the configuration is enabled in the standard)
-          example: john.doe@abc.com
-          type:
-          - string
-          - 'null'
-        firstName:
-          description: Actual Auditor's First Name (This field has value only when the configuration is enabled in the standard)
-          example: John
-          type:
-          - string
-          - 'null'
-        lastName:
-          description: Actual Auditor's Last Name (This field has value only when the configuration is enabled in the standard)
-          example: Doe
-          type:
-          - string
-          - 'null'
-      type: object
-    Capa:
-      properties:
-        id:
-          description: Unique identifier of the CAPA
-          example: 1235330e-b74b-4be6-8d8a-cb0560effc11
-          type: string
-        status:
-          description: Status of the CAPA
-          example: New
-          type: string
-        capaLabels:
-          description: List of CAPA labels
-          items:
-            properties:
-              name:
-                description: Label field name
-                example: Priority
-                type: string
-              value:
-                description: Label value
-                example: High
-                type: string
-          type: array
-        updatedDate:
-          description: Last update date of the CAPA (available when capa_details=true)
-          example: '2025-12-12T10:48:07.191000+00:00'
-          format: date-time
-          type: string
-        updatedByUser:
-          description: User who last updated the CAPA (available when capa_details=true)
-          example: john_doe@example.com
-          type:
-          - string
-          - 'null'
-        approvedDate:
-          description: Date when CAPA was approved (available when capa_details=true)
-          example: '2025-12-12T10:48:07.191000+00:00'
-          format: date-time
-          type:
-          - string
-          - 'null'
-        createdDate:
-          description: Creation date of the CAPA (available when capa_details=true)
-          example: '2025-12-12T10:48:07.191000+00:00'
-          format: date-time
-          type: string
-        dueDate:
-          description: Due date for CAPA completion (available when capa_details=true)
-          example: '2025-12-31T00:00:00.000000+00:00'
-          format: date-time
-          type:
-          - string
-          - 'null'
-        areaToImproves:
-          description: List of area to improves in this CAPA (available when capa_details=true)
-          items:
-            $ref: '#/components/schemas/DetailedAreaToImprove'
-          type: array
-      type: object
-    StepExecutionComment:
-      properties:
-        attachments:
-          description: Attachments inserted in the comment of the step execution
-          items:
-            $ref: '#/components/schemas/StepExecutionAttachment'
-          type:
-          - array
-          - 'null'
-        canEdit:
-          description: Indicates whether or not the comment can be edited
-          type: boolean
-        content:
-          description: Content of the comment of the step execution
-          type:
-          - string
-          - 'null'
-        createdDate:
-          description: Creation date of the comment of the step execution
-          example: '2022-03-02T06:41:19.633000+00:00'
-          format: date-time
-          type:
-          - string
-          - 'null'
-        id:
-          description: Unique identifier of the comment of the step execution
-          type:
-          - string
-          - 'null'
-        isEdited:
-          description: Indicates whether or not the comment had been edited
-          type: boolean
-        organization:
+        questionnaire:
+          description: Questionnaire information
           allOf:
-          - $ref: '#/components/schemas/ReportDetailOrg'
-          description: Organization of the comment
-        user:
-          allOf:
-          - $ref: '#/components/schemas/ReportDetailUser'
-          description: User of the comment of the step execution
-      type: object
-    V2ReportDetail:
-      allOf:
-      - $ref: '#/components/schemas/V2ReportBasicDetail'
-      - properties:
-          checkin:
-            description: On-site check-in information
-            allOf:
-            - $ref: '#/components/schemas/CheckIn'
-            type:
-            - object
-            - 'null'
-          overallComment:
-            description: Overall comment input by the assignee
-            example: Please submit the capa by due date.
-            type:
-            - string
-            - 'null'
-          assignedUsers:
-            description: Information of the assigned user
-            items:
-              $ref: '#/components/schemas/V2ReportDetailUser'
-            type: array
-          assignedRoles:
-            description: Information of the assigned roles
-            items:
-              $ref: '#/components/schemas/V2ReportAssignedRole'
-            type: array
-          stepExecutions:
-            description: Information of the execution steps
-            items:
-              $ref: '#/components/schemas/BasicStepExecutionInfo'
-            type: array
-          submitEvent:
-            $ref: '#/components/schemas/V2ReportDetailSubmitEvent'
-          declineReasons:
-            description: Reasons input by the retailer when declining the report
-            items:
-              type: string
-            type: array
-          capa:
-            allOf:
-            - $ref: '#/components/schemas/Capa'
-            description: Information of the CAPA, Corrective Action and Preventive Action
-            type:
-            - object
-            - 'null'
-      type: object
-    ContactPerson:
-      properties:
-        name:
-          description: Contact person name
-          example: John Doe
-          type: string
-        title:
-          description: Contact person title
-          example: Factory Manager
+          - $ref: '#/components/schemas/Questionnaire'
           type:
-          - string
+          - object
           - 'null'
-        email:
-          description: Contact person email
-          example: john.doe@example.com
-          type: string
-        phoneNumber:
-          description: Contact person phone number
-          example: 1234567890
-          type: string
-      type: object
-    V2ReportEscalation:
-      properties:
-        createdDate:
-          description: Date when the Escalation was created
-          format: date-time
-          example: '2024-09-30T10:36:56.057000+00:00'
-          type: string
-        status:
-          description: Status of the escalation
-          type: string
-        resolvedDate:
-          description: Resolution date of the escalation
-          format: date-time
-          example: '2024-09-30T10:36:56.057000+00:00'
-          type:
-          - string
-          - 'null'
-        escalatedTo:
-          description: The user who received the escalation
+        appTestResults:
+          description: Application test results
           items:
-            $ref: '#/components/schemas/V2ReportDetailUser'
+            type: object
           type: array
-        escalatedBy:
-          $ref: '#/components/schemas/V2ReportDetailUser'
-        resolvedByUser:
-          $ref: '#/components/schemas/V2ReportDetailUser'
-        note:
-          description: Escalation note
-          type: string
-        reasons:
-          description: Escalation reason
-          items:
-            type: string
-          type: array
-        exceptionReasons:
-          description: Escalation exception reason
-          items:
-            type: string
-          type: array
-        reviewerComment:
-          description: Reviewer comment
-          type:
-          - string
-          - 'null'
       type: object
   securitySchemes:
     ApiKeyAuth:

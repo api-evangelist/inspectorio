@@ -49,36 +49,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    SignedUploadRequest:
-      properties:
-        file:
-          format: binary
-          type: string
-      required:
-      - file
-      type: object
-    SignedFileStorage:
-      properties:
-        current:
-          description: Storage type
-          example: standard
-          type: string
-        path:
-          description: Relative path to the file
-          example: /sight/xxxx/uuuu/ab8cd482-596d-7a5d-8155-137463f243ac.xls
-          type: string
-        ttl:
-          description: Expiration time
-          type: integer
-      required:
-      - current
-      - path
-      type: object
-    SignedUploadResponse:
-      properties:
-        data:
-          $ref: '#/components/schemas/SignedUploadFileInfo'
-      type: object
     BadRequestApiError:
       properties:
         errorCode:
@@ -186,6 +156,19 @@ components:
       - updatedBy
       - userId
       type: object
+    SignedUploadResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/SignedUploadFileInfo'
+      type: object
+    SignedUploadRequest:
+      properties:
+        file:
+          format: binary
+          type: string
+      required:
+      - file
+      type: object
     InternalApiError:
       properties:
         errorCode:
@@ -199,4 +182,21 @@ components:
         message:
           example: Internal server error
           type: string
+      type: object
+    SignedFileStorage:
+      properties:
+        current:
+          description: Storage type
+          example: standard
+          type: string
+        path:
+          description: Relative path to the file
+          example: /sight/xxxx/uuuu/ab8cd482-596d-7a5d-8155-137463f243ac.xls
+          type: string
+        ttl:
+          description: Expiration time
+          type: integer
+      required:
+      - current
+      - path
       type: object

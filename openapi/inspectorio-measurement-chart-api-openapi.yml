@@ -172,6 +172,38 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
     MeasurementForm:
       properties:
         clientUpdatedDate:
@@ -200,101 +232,6 @@ components:
           - 'null'
       required:
       - measurements
-      type: object
-    MeasurementResponse:
-      properties:
-        caption:
-          description: Caption of the point of measurement
-          example: C01
-          type: string
-        isPomCritical:
-          description: Measurement is critical or not
-          example: 'true'
-          type: boolean
-        pom:
-          description: Point of measurement of the measurement chart
-          example: Chest
-          minLength: 1
-          type: string
-        setId:
-          description: The external id of the measurement set. Use this field when you want to group POMs in a specified set
-          example: Set 1
-          type:
-          - string
-          - 'null'
-        sizes:
-          description: Sizes in a measurement chart
-          items:
-            $ref: '#/components/schemas/MeasurementItemDetail'
-          type: array
-        tolerance:
-          description: Tolerance Lower & Upper of a point of measurement, only use this attribute if your organization has not enabled Unequal Tolerance
-          example: 1/4
-          type:
-          - number
-          - 'null'
-        toleranceLower:
-          description: Tolerance Lower, use this attribute together with toleranceUpper if your organization has enabled Unequal Tolerance
-          example: 1/4
-          type:
-          - number
-          - 'null'
-        toleranceUpper:
-          description: Tolerance Upper, use this attribute together with toleranceLower if your organization has enabled Unequal Tolerance
-          example: 3/4
-          type:
-          - number
-          - 'null'
-        unit:
-          description: 'Unit used for measurement. Current values: inch, cm, mm'
-          example: cm
-          type: string
-      required:
-      - caption
-      - pom
-      - unit
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
-    MeasurementListInfo:
-      properties:
-        clientUpdatedDate:
-          description: The last updated date from the client system of the Measurement Chart
-          example: '2019-02-20T06:37:18.048000+00:00'
-          format: date-time
-          type: string
-        measurements:
-          description: List of measurement charts
-          items:
-            $ref: '#/components/schemas/MeasurementResponse'
-          type: array
-        source:
-          description: The source from which the Measurement Chart data comes
-          example: SPARK
-          type:
-          - string
-          - 'null'
-      type: object
-    ValidateApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            type:
-            - Input type is not valid
-          type: object
-        message:
-          example: Validation error
-          type: string
       type: object
     MeasurementItem:
       properties:
@@ -359,35 +296,77 @@ components:
       - sizes
       - unit
       type: object
-    MeasurementItemDetail:
+    MeasurementResponse:
       properties:
-        measurement:
-          description: Measurement value of a size
-          example: '2'
-          type: number
-        size:
-          description: Size name
-          example: Medium
+        caption:
+          description: Caption of the point of measurement
+          example: C01
+          type: string
+        isPomCritical:
+          description: Measurement is critical or not
+          example: 'true'
+          type: boolean
+        pom:
+          description: Point of measurement of the measurement chart
+          example: Chest
           minLength: 1
           type: string
+        setId:
+          description: The external id of the measurement set. Use this field when you want to group POMs in a specified set
+          example: Set 1
+          type:
+          - string
+          - 'null'
+        sizes:
+          description: Sizes in a measurement chart
+          items:
+            $ref: '#/components/schemas/MeasurementItemDetail'
+          type: array
+        tolerance:
+          description: Tolerance Lower & Upper of a point of measurement, only use this attribute if your organization has not enabled Unequal Tolerance
+          example: 1/4
+          type:
+          - number
+          - 'null'
+        toleranceLower:
+          description: Tolerance Lower, use this attribute together with toleranceUpper if your organization has enabled Unequal Tolerance
+          example: 1/4
+          type:
+          - number
+          - 'null'
+        toleranceUpper:
+          description: Tolerance Upper, use this attribute together with toleranceLower if your organization has enabled Unequal Tolerance
+          example: 3/4
+          type:
+          - number
+          - 'null'
+        unit:
+          description: 'Unit used for measurement. Current values: inch, cm, mm'
+          example: cm
+          type: string
       required:
-      - measurement
-      - size
+      - caption
+      - pom
+      - unit
       type: object
-    BadRequestApiError:
+    MeasurementListInfo:
       properties:
-        errorCode:
-          example: Generic
+        clientUpdatedDate:
+          description: The last updated date from the client system of the Measurement Chart
+          example: '2019-02-20T06:37:18.048000+00:00'
+          format: date-time
           type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    MeasurementListResponse:
-      properties:
-        data:
-          $ref: '#/components/schemas/MeasurementListInfo'
-          description: Measurement charts data
+        measurements:
+          description: List of measurement charts
+          items:
+            $ref: '#/components/schemas/MeasurementResponse'
+          type: array
+        source:
+          description: The source from which the Measurement Chart data comes
+          example: SPARK
+          type:
+          - string
+          - 'null'
       type: object
     InternalApiError:
       properties:
@@ -411,6 +390,27 @@ components:
         message:
           example: Too many requests
           type: string
+      type: object
+    MeasurementItemDetail:
+      properties:
+        measurement:
+          description: Measurement value of a size
+          example: '2'
+          type: number
+        size:
+          description: Size name
+          example: Medium
+          minLength: 1
+          type: string
+      required:
+      - measurement
+      - size
+      type: object
+    MeasurementListResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/MeasurementListInfo'
+          description: Measurement charts data
       type: object
   securitySchemes:
     ApiKeyAuth:

@@ -325,6 +325,47 @@ components:
       - offset
       - total
       type: object
+    Brand:
+      properties:
+        brandId:
+          description: Unique identifier of the brand
+          example: brand_1
+          type: string
+        description:
+          description: Brand description
+          example: Modern Menswear
+          type: string
+        name:
+          description: Brand name
+          example: Acme
+          type: string
+      required:
+      - brandId
+      - name
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
     UnauthenticatedApiError:
       properties:
         errorCode:
@@ -347,47 +388,6 @@ components:
           example: Acme
           minLength: 1
           type: string
-      type: object
-    ValidateApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            type:
-            - Input type is not valid
-          type: object
-        message:
-          example: Validation error
-          type: string
-      type: object
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    Brand:
-      properties:
-        brandId:
-          description: Unique identifier of the brand
-          example: brand_1
-          type: string
-        description:
-          description: Brand description
-          example: Modern Menswear
-          type: string
-        name:
-          description: Brand name
-          example: Acme
-          type: string
-      required:
-      - brandId
-      - name
       type: object
     InternalApiError:
       properties:

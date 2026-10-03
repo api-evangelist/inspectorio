@@ -350,6 +350,96 @@ paths:
       url: https://sight.pre.inspectorio.com
 components:
   schemas:
+    ValueTypeDateTime:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - datetime
+          type: string
+        value:
+          description: The value
+          example: '2020-09-30T09:09:09Z'
+          format: date-time
+          type: string
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeObjectArrayResponse:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - object-array
+          type: string
+        value:
+          description: The value
+          items:
+            items:
+              $ref: '#/components/schemas/MetadataPrimitiveItemResponse'
+            maxItems: 150
+            minItems: 1
+            type: array
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    ValueTypeObjectArrayRequest:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - object-array
+          type: string
+        value:
+          description: The value
+          items:
+            items:
+              $ref: '#/components/schemas/MetadataPrimitiveItemRequest'
+            maxItems: 150
+            minItems: 1
+            type: array
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
     MetadataCreate:
       properties:
         items:
@@ -369,7 +459,33 @@ components:
       - items
       - uid
       type: object
-    ValueTypeDateTime:
+    MetadataUpdate:
+      properties:
+        items:
+          description: Metadata items
+          items:
+            $ref: '#/components/schemas/MetadataItemRequest'
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - items
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    ValueTypeNumber:
       properties:
         key:
           description: The key
@@ -380,13 +496,177 @@ components:
         type:
           description: The type of the value
           enum:
-          - datetime
+          - number
           type: string
         value:
           description: The value
-          example: '2020-09-30T09:09:09Z'
-          format: date-time
+          example: 2021
+          type: number
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeNumberArray:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
           type: string
+        type:
+          description: The type of the value
+          enum:
+          - number-array
+          type: string
+        value:
+          description: The value
+          items:
+            type: number
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    MetadataListResponse:
+      properties:
+        data:
+          description: List of metadata
+          items:
+            $ref: '#/components/schemas/MetadataResponse'
+          type: array
+        limit:
+          maximum: 100
+          minimum: 1
+          type: integer
+        offset:
+          minimum: 0
+          type: integer
+        total:
+          type: integer
+      required:
+      - limit
+      - offset
+      - total
+      type: object
+    ValueTypeStringArray:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - string-array
+          type: string
+        value:
+          description: The value
+          items:
+            type: string
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeDate:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - date
+          type: string
+        value:
+          description: The value
+          example: '2020-09-30'
+          format: date
+          type: string
+      required:
+      - key
+      - type
+      - value
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    MetadataItemResponse:
+      discriminator:
+        mapping:
+          boolean: '#/components/schemas/ValueTypeBoolean'
+          boolean-array: '#/components/schemas/ValueTypeBooleanArray'
+          date: '#/components/schemas/ValueTypeDate'
+          date-array: '#/components/schemas/ValueTypeDateArray'
+          datetime: '#/components/schemas/ValueTypeDateTime'
+          datetime-array: '#/components/schemas/ValueTypeDateTimeArray'
+          file: '#/components/schemas/ValueTypeFileResponse'
+          number: '#/components/schemas/ValueTypeNumber'
+          number-array: '#/components/schemas/ValueTypeNumberArray'
+          object: '#/components/schemas/ValueTypeObjectResponse'
+          object-array: '#/components/schemas/ValueTypeObjectArrayResponse'
+          string: '#/components/schemas/ValueTypeString'
+          string-array: '#/components/schemas/ValueTypeStringArray'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/ValueTypeString'
+      - $ref: '#/components/schemas/ValueTypeNumber'
+      - $ref: '#/components/schemas/ValueTypeBoolean'
+      - $ref: '#/components/schemas/ValueTypeDate'
+      - $ref: '#/components/schemas/ValueTypeDateTime'
+      - $ref: '#/components/schemas/ValueTypeStringArray'
+      - $ref: '#/components/schemas/ValueTypeNumberArray'
+      - $ref: '#/components/schemas/ValueTypeDateArray'
+      - $ref: '#/components/schemas/ValueTypeDateTimeArray'
+      - $ref: '#/components/schemas/ValueTypeBooleanArray'
+      - $ref: '#/components/schemas/ValueTypeFileResponse'
+      - $ref: '#/components/schemas/ValueTypeObjectResponse'
+      - $ref: '#/components/schemas/ValueTypeObjectArrayResponse'
+      properties:
+        type:
+          description: Type of the metadata item
+          type: string
+      type: object
+    ValueTypeDateTimeArray:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - datetime-array
+          type: string
+        value:
+          description: The value
+          items:
+            format: date-time
+            type: string
+          maxItems: 150
+          minItems: 1
+          type: array
       required:
       - key
       - type
@@ -428,6 +708,151 @@ components:
           description: Type of the metadata item
           type: string
       type: object
+    ValueTypeObjectResponse:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - object
+          type: string
+        value:
+          description: The value
+          items:
+            $ref: '#/components/schemas/MetadataPrimitiveItemResponse'
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object
+    ValueTypeFileResponse:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - file
+          type: string
+        value:
+          description: The value
+          example: https://files.stg.inspectorio.com/sight/589/7712/9b02e83f-a28b-40a1-acd0-0863a5489074.jpg
+          type: string
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeDateArray:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - date-array
+          type: string
+        value:
+          description: The value
+          items:
+            format: date
+            type: string
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    CreateOrUpdateMetadataResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/MetadataResponse'
+          description: Metadata
+      type: object
+    ValueTypeBoolean:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - boolean
+          type: string
+        value:
+          description: The value
+          example: false
+          type: boolean
+      required:
+      - key
+      - type
+      - value
+      type: object
+    MetadataResponse:
+      properties:
+        createdDate:
+          description: Creation date of the metadata
+          example: '2021-06-03T04:02:57.849000+00:00'
+          format: date-time
+          type: string
+        items:
+          description: Metadata items
+          items:
+            $ref: '#/components/schemas/MetadataItemResponse'
+          maxItems: 150
+          minItems: 1
+          type: array
+        uid:
+          description: Unique identifier of a Metadata.
+          example: 374b5abc9dcb
+          maxLength: 100
+          minLength: 1
+          type: string
+        updatedDate:
+          description: Last updated date of the metadata
+          example: '2021-06-03T04:02:57.849000+00:00'
+          format: date-time
+          type: string
+      required:
+      - items
+      - uid
+      type: object
+    GetMetadataResponse:
+      properties:
+        data:
+          $ref: '#/components/schemas/MetadataResponse'
+          description: Metadata
+      type: object
     MetadataPrimitiveItemRequest:
       discriminator:
         mapping:
@@ -460,68 +885,7 @@ components:
           description: Type of the metadata item
           type: string
       type: object
-    MetadataResponse:
-      properties:
-        createdDate:
-          description: Creation date of the metadata
-          example: '2021-06-03T04:02:57.849000+00:00'
-          format: date-time
-          type: string
-        items:
-          description: Metadata items
-          items:
-            $ref: '#/components/schemas/MetadataItemResponse'
-          maxItems: 150
-          minItems: 1
-          type: array
-        uid:
-          description: Unique identifier of a Metadata.
-          example: 374b5abc9dcb
-          maxLength: 100
-          minLength: 1
-          type: string
-        updatedDate:
-          description: Last updated date of the metadata
-          example: '2021-06-03T04:02:57.849000+00:00'
-          format: date-time
-          type: string
-      required:
-      - items
-      - uid
-      type: object
-    ValueTypeFileRequest:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - file
-          type: string
-        value:
-          description: The value
-          example: c6ad775c-00fa-4e66-95c5-baed151d1628
-          minLength: 1
-          type: string
-      required:
-      - key
-      - type
-      - value
-      type: object
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    ValueTypeObjectResponse:
+    ValueTypeObjectRequest:
       properties:
         key:
           description: The key
@@ -537,7 +901,7 @@ components:
         value:
           description: The value
           items:
-            $ref: '#/components/schemas/MetadataPrimitiveItemResponse'
+            $ref: '#/components/schemas/MetadataPrimitiveItemRequest'
           maxItems: 150
           minItems: 1
           type: array
@@ -568,14 +932,53 @@ components:
       - type
       - value
       type: object
-    TooManyResponsesApiError:
+    ValueTypeBooleanArray:
       properties:
-        errorCode:
-          example: Generic
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
           type: string
-        message:
-          example: Too many requests
+        type:
+          description: The type of the value
+          enum:
+          - boolean-array
           type: string
+        value:
+          description: The value
+          items:
+            type: boolean
+          maxItems: 150
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeFileRequest:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - file
+          type: string
+        value:
+          description: The value
+          example: c6ad775c-00fa-4e66-95c5-baed151d1628
+          minLength: 1
+          type: string
+      required:
+      - key
+      - type
+      - value
       type: object
     MetadataPrimitiveItemResponse:
       discriminator:
@@ -609,79 +1012,125 @@ components:
           description: Type of the metadata item
           type: string
       type: object
-    ValueTypeBooleanArray:
+    ValueTypeDateTime_2:
       properties:
         key:
           description: The key
           example: test_key
           maxLength: 100
           minLength: 1
+          pattern: ^[a-zA-Z_]\w*$
           type: string
         type:
           description: The type of the value
           enum:
-          - boolean-array
+          - datetime
           type: string
         value:
           description: The value
-          items:
-            type: boolean
-          maxItems: 150
-          minItems: 1
-          type: array
+          example: '2020-09-30T09:09:09Z'
+          format: date-time
+          type: string
       required:
       - key
       - type
       - value
       type: object
-    ValueTypeObjectArrayResponse:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - object-array
-          type: string
-        value:
-          description: The value
-          items:
-            items:
-              $ref: '#/components/schemas/MetadataPrimitiveItemResponse'
-            maxItems: 150
-            minItems: 1
-            type: array
-          maxItems: 150
-          minItems: 1
-          type: array
-      required:
-      - key
-      - type
-      - value
-      type: object
-    MetadataUpdate:
+    MetadataUpdate_2:
       properties:
         items:
           description: Metadata items
           items:
-            $ref: '#/components/schemas/MetadataItemRequest'
-          maxItems: 150
+            $ref: '#/components/schemas/MetadataItem'
+          maxItems: 50
           minItems: 1
           type: array
       required:
       - items
       type: object
-    ValueTypeDate:
+    ValueTypeNumber_2:
       properties:
         key:
           description: The key
           example: test_key
           maxLength: 100
           minLength: 1
+          pattern: ^[a-zA-Z_]\w*$
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - number
+          type: string
+        value:
+          description: The value
+          example: 2021
+          type: number
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeNumberArray_2:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          pattern: ^[a-zA-Z_]\w*$
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - number-array
+          type: string
+        value:
+          description: The value
+          items:
+            type: number
+          maxItems: 50
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeStringArray_2:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          pattern: ^[a-zA-Z_]\w*$
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - string-array
+          type: string
+        value:
+          description: The value
+          items:
+            type: string
+          maxItems: 50
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeDate_2:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          pattern: ^[a-zA-Z_]\w*$
           type: string
         type:
           description: The type of the value
@@ -698,13 +1147,87 @@ components:
       - type
       - value
       type: object
-    ValueTypeObjectRequest:
+    ValueTypeDateTimeArray_2:
       properties:
         key:
           description: The key
           example: test_key
           maxLength: 100
           minLength: 1
+          pattern: ^[a-zA-Z_]\w*$
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - datetime-array
+          type: string
+        value:
+          description: The value
+          items:
+            format: date-time
+            type: string
+          maxItems: 50
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    Metadata:
+      properties:
+        items:
+          description: Metadata items
+          items:
+            $ref: '#/components/schemas/MetadataItem'
+          maxItems: 50
+          minItems: 1
+          type: array
+        uid:
+          description: Unique identifier of a Metadata. If the namespace is questionnaire, then the uid should be your organization id. If the namespace is higg, then the uid should be your higg id.
+          example: 374b5abc9dcb
+          maxLength: 100
+          minLength: 1
+          type: string
+      required:
+      - items
+      - uid
+      type: object
+    ValueTypeDateArray_2:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          pattern: ^[a-zA-Z_]\w*$
+          type: string
+        type:
+          description: The type of the value
+          enum:
+          - date-array
+          type: string
+        value:
+          description: The value
+          items:
+            format: date
+            type: string
+          maxItems: 50
+          minItems: 1
+          type: array
+      required:
+      - key
+      - type
+      - value
+      type: object
+    ValueTypeObject:
+      properties:
+        key:
+          description: The key
+          example: test_key
+          maxLength: 100
+          minLength: 1
+          pattern: ^[a-zA-Z_]\w*$
           type: string
         type:
           description: The type of the value
@@ -714,8 +1237,8 @@ components:
         value:
           description: The value
           items:
-            $ref: '#/components/schemas/MetadataPrimitiveItemRequest'
-          maxItems: 150
+            $ref: '#/components/schemas/MetadataPrimitiveItem'
+          maxItems: 50
           minItems: 1
           type: array
       required:
@@ -723,73 +1246,7 @@ components:
       - type
       - value
       type: object
-    ValueTypeObjectArrayRequest:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - object-array
-          type: string
-        value:
-          description: The value
-          items:
-            items:
-              $ref: '#/components/schemas/MetadataPrimitiveItemRequest'
-            maxItems: 150
-            minItems: 1
-            type: array
-          maxItems: 150
-          minItems: 1
-          type: array
-      required:
-      - key
-      - type
-      - value
-      type: object
-    CreateOrUpdateMetadataResponse:
-      properties:
-        data:
-          $ref: '#/components/schemas/MetadataResponse'
-          description: Metadata
-      type: object
-    ValueTypeFileResponse:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - file
-          type: string
-        value:
-          description: The value
-          example: https://files.stg.inspectorio.com/sight/589/7712/9b02e83f-a28b-40a1-acd0-0863a5489074.jpg
-          type: string
-      required:
-      - key
-      - type
-      - value
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
-    MetadataItemResponse:
+    MetadataItem:
       discriminator:
         mapping:
           boolean: '#/components/schemas/ValueTypeBoolean'
@@ -798,40 +1255,46 @@ components:
           date-array: '#/components/schemas/ValueTypeDateArray'
           datetime: '#/components/schemas/ValueTypeDateTime'
           datetime-array: '#/components/schemas/ValueTypeDateTimeArray'
-          file: '#/components/schemas/ValueTypeFileResponse'
           number: '#/components/schemas/ValueTypeNumber'
           number-array: '#/components/schemas/ValueTypeNumberArray'
-          object: '#/components/schemas/ValueTypeObjectResponse'
-          object-array: '#/components/schemas/ValueTypeObjectArrayResponse'
+          object: '#/components/schemas/ValueTypeObject'
+          object-array: '#/components/schemas/ValueTypeObjectArray'
           string: '#/components/schemas/ValueTypeString'
           string-array: '#/components/schemas/ValueTypeStringArray'
         propertyName: type
       oneOf:
-      - $ref: '#/components/schemas/ValueTypeString'
-      - $ref: '#/components/schemas/ValueTypeNumber'
-      - $ref: '#/components/schemas/ValueTypeBoolean'
-      - $ref: '#/components/schemas/ValueTypeDate'
-      - $ref: '#/components/schemas/ValueTypeDateTime'
-      - $ref: '#/components/schemas/ValueTypeStringArray'
-      - $ref: '#/components/schemas/ValueTypeNumberArray'
-      - $ref: '#/components/schemas/ValueTypeDateArray'
-      - $ref: '#/components/schemas/ValueTypeDateTimeArray'
-      - $ref: '#/components/schemas/ValueTypeBooleanArray'
-      - $ref: '#/components/schemas/ValueTypeFileResponse'
-      - $ref: '#/components/schemas/ValueTypeObjectResponse'
-      - $ref: '#/components/schemas/ValueTypeObjectArrayResponse'
+      - $ref: '#/components/schemas/ValueTypeString_2'
+      - $ref: '#/components/schemas/ValueTypeNumber_2'
+      - $ref: '#/components/schemas/ValueTypeBoolean_2'
+      - $ref: '#/components/schemas/ValueTypeObject'
+      - $ref: '#/components/schemas/ValueTypeDate_2'
+      - $ref: '#/components/schemas/ValueTypeDateTime_2'
+      - $ref: '#/components/schemas/ValueTypeStringArray_2'
+      - $ref: '#/components/schemas/ValueTypeNumberArray_2'
+      - $ref: '#/components/schemas/ValueTypeDateArray_2'
+      - $ref: '#/components/schemas/ValueTypeDateTimeArray_2'
+      - $ref: '#/components/schemas/ValueTypeBooleanArray_2'
+      - $ref: '#/components/schemas/ValueTypeObjectArray'
       properties:
         type:
           description: Type of the metadata item
           type: string
       type: object
-    ValueTypeBoolean:
+    CreateOrUpdateMetadataResponse_2:
+      properties:
+        data:
+          allOf:
+          - $ref: '#/components/schemas/Metadata'
+          description: Metadata
+      type: object
+    ValueTypeBoolean_2:
       properties:
         key:
           description: The key
           example: test_key
           maxLength: 100
           minLength: 1
+          pattern: ^[a-zA-Z_]\w*$
           type: string
         type:
           description: The type of the value
@@ -846,171 +1309,6 @@ components:
       - key
       - type
       - value
-      type: object
-    ValueTypeStringArray:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - string-array
-          type: string
-        value:
-          description: The value
-          items:
-            type: string
-          maxItems: 150
-          minItems: 1
-          type: array
-      required:
-      - key
-      - type
-      - value
-      type: object
-    ValueTypeDateTimeArray:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - datetime-array
-          type: string
-        value:
-          description: The value
-          items:
-            format: date-time
-            type: string
-          maxItems: 150
-          minItems: 1
-          type: array
-      required:
-      - key
-      - type
-      - value
-      type: object
-    ValueTypeNumber:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - number
-          type: string
-        value:
-          description: The value
-          example: 2021
-          type: number
-      required:
-      - key
-      - type
-      - value
-      type: object
-    ValueTypeDateArray:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - date-array
-          type: string
-        value:
-          description: The value
-          items:
-            format: date
-            type: string
-          maxItems: 150
-          minItems: 1
-          type: array
-      required:
-      - key
-      - type
-      - value
-      type: object
-    ValueTypeNumberArray:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - number-array
-          type: string
-        value:
-          description: The value
-          items:
-            type: number
-          maxItems: 150
-          minItems: 1
-          type: array
-      required:
-      - key
-      - type
-      - value
-      type: object
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
-    GetMetadataResponse:
-      properties:
-        data:
-          $ref: '#/components/schemas/MetadataResponse'
-          description: Metadata
-      type: object
-    MetadataListResponse:
-      properties:
-        data:
-          description: List of metadata
-          items:
-            $ref: '#/components/schemas/MetadataResponse'
-          type: array
-        limit:
-          maximum: 100
-          minimum: 1
-          type: integer
-        offset:
-          minimum: 0
-          type: integer
-        total:
-          type: integer
-      required:
-      - limit
-      - offset
-      - total
       type: object
     MetadataPrimitiveItem:
       discriminator:
@@ -1042,29 +1340,12 @@ components:
           description: Type of the metadata item
           type: string
       type: object
-    ValueTypeDateTime_2:
+    GetMetadataResponse_2:
       properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          pattern: ^[a-zA-Z_]\w*$
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - datetime
-          type: string
-        value:
-          description: The value
-          example: '2020-09-30T09:09:09Z'
-          format: date-time
-          type: string
-      required:
-      - key
-      - type
-      - value
+        data:
+          allOf:
+          - $ref: '#/components/schemas/Metadata'
+          description: Metadata
       type: object
     ValueTypeObjectArray:
       properties:
@@ -1119,6 +1400,20 @@ components:
       - type
       - value
       type: object
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
     ValueTypeBooleanArray_2:
       properties:
         key:
@@ -1144,301 +1439,6 @@ components:
       - key
       - type
       - value
-      type: object
-    ValueTypeObject:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          pattern: ^[a-zA-Z_]\w*$
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - object
-          type: string
-        value:
-          description: The value
-          items:
-            $ref: '#/components/schemas/MetadataPrimitiveItem'
-          maxItems: 50
-          minItems: 1
-          type: array
-      required:
-      - key
-      - type
-      - value
-      type: object
-    MetadataUpdate_2:
-      properties:
-        items:
-          description: Metadata items
-          items:
-            $ref: '#/components/schemas/MetadataItem'
-          maxItems: 50
-          minItems: 1
-          type: array
-      required:
-      - items
-      type: object
-    ValueTypeDate_2:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          pattern: ^[a-zA-Z_]\w*$
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - date
-          type: string
-        value:
-          description: The value
-          example: '2020-09-30'
-          format: date
-          type: string
-      required:
-      - key
-      - type
-      - value
-      type: object
-    CreateOrUpdateMetadataResponse_2:
-      properties:
-        data:
-          allOf:
-          - $ref: '#/components/schemas/Metadata'
-          description: Metadata
-      type: object
-    MetadataItem:
-      discriminator:
-        mapping:
-          boolean: '#/components/schemas/ValueTypeBoolean'
-          boolean-array: '#/components/schemas/ValueTypeBooleanArray'
-          date: '#/components/schemas/ValueTypeDate'
-          date-array: '#/components/schemas/ValueTypeDateArray'
-          datetime: '#/components/schemas/ValueTypeDateTime'
-          datetime-array: '#/components/schemas/ValueTypeDateTimeArray'
-          number: '#/components/schemas/ValueTypeNumber'
-          number-array: '#/components/schemas/ValueTypeNumberArray'
-          object: '#/components/schemas/ValueTypeObject'
-          object-array: '#/components/schemas/ValueTypeObjectArray'
-          string: '#/components/schemas/ValueTypeString'
-          string-array: '#/components/schemas/ValueTypeStringArray'
-        propertyName: type
-      oneOf:
-      - $ref: '#/components/schemas/ValueTypeString_2'
-      - $ref: '#/components/schemas/ValueTypeNumber_2'
-      - $ref: '#/components/schemas/ValueTypeBoolean_2'
-      - $ref: '#/components/schemas/ValueTypeObject'
-      - $ref: '#/components/schemas/ValueTypeDate_2'
-      - $ref: '#/components/schemas/ValueTypeDateTime_2'
-      - $ref: '#/components/schemas/ValueTypeStringArray_2'
-      - $ref: '#/components/schemas/ValueTypeNumberArray_2'
-      - $ref: '#/components/schemas/ValueTypeDateArray_2'
-      - $ref: '#/components/schemas/ValueTypeDateTimeArray_2'
-      - $ref: '#/components/schemas/ValueTypeBooleanArray_2'
-      - $ref: '#/components/schemas/ValueTypeObjectArray'
-      properties:
-        type:
-          description: Type of the metadata item
-          type: string
-      type: object
-    ValueTypeStringArray_2:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          pattern: ^[a-zA-Z_]\w*$
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - string-array
-          type: string
-        value:
-          description: The value
-          items:
-            type: string
-          maxItems: 50
-          minItems: 1
-          type: array
-      required:
-      - key
-      - type
-      - value
-      type: object
-    ValueTypeBoolean_2:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          pattern: ^[a-zA-Z_]\w*$
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - boolean
-          type: string
-        value:
-          description: The value
-          example: false
-          type: boolean
-      required:
-      - key
-      - type
-      - value
-      type: object
-    ValueTypeDateTimeArray_2:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          pattern: ^[a-zA-Z_]\w*$
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - datetime-array
-          type: string
-        value:
-          description: The value
-          items:
-            format: date-time
-            type: string
-          maxItems: 50
-          minItems: 1
-          type: array
-      required:
-      - key
-      - type
-      - value
-      type: object
-    ValueTypeNumber_2:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          pattern: ^[a-zA-Z_]\w*$
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - number
-          type: string
-        value:
-          description: The value
-          example: 2021
-          type: number
-      required:
-      - key
-      - type
-      - value
-      type: object
-    Metadata:
-      properties:
-        items:
-          description: Metadata items
-          items:
-            $ref: '#/components/schemas/MetadataItem'
-          maxItems: 50
-          minItems: 1
-          type: array
-        uid:
-          description: Unique identifier of a Metadata. If the namespace is questionnaire, then the uid should be your organization id. If the namespace is higg, then the uid should be your higg id.
-          example: 374b5abc9dcb
-          maxLength: 100
-          minLength: 1
-          type: string
-      required:
-      - items
-      - uid
-      type: object
-    ValidateApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            type:
-            - Input type is not valid
-          type: object
-        message:
-          example: Validation error
-          type: string
-      type: object
-    ValueTypeDateArray_2:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          pattern: ^[a-zA-Z_]\w*$
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - date-array
-          type: string
-        value:
-          description: The value
-          items:
-            format: date
-            type: string
-          maxItems: 50
-          minItems: 1
-          type: array
-      required:
-      - key
-      - type
-      - value
-      type: object
-    ValueTypeNumberArray_2:
-      properties:
-        key:
-          description: The key
-          example: test_key
-          maxLength: 100
-          minLength: 1
-          pattern: ^[a-zA-Z_]\w*$
-          type: string
-        type:
-          description: The type of the value
-          enum:
-          - number-array
-          type: string
-        value:
-          description: The value
-          items:
-            type: number
-          maxItems: 50
-          minItems: 1
-          type: array
-      required:
-      - key
-      - type
-      - value
-      type: object
-    GetMetadataResponse_2:
-      properties:
-        data:
-          allOf:
-          - $ref: '#/components/schemas/Metadata'
-          description: Metadata
       type: object
   securitySchemes:
     ApiKeyAuth:

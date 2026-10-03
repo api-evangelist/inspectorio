@@ -59,22 +59,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    CustomResponse16:
+    BadRequestApiError:
       properties:
-        data:
-          $ref: '#/components/schemas/FileUploadSessionResponse'
-      type: object
-    FileUploadSessionResponse:
-      properties:
-        expiryTime:
-          description: Time until the link is valid.
-          example: '2022-06-22T10:03:00.183881+00:00'
-          format: date-time
+        errorCode:
+          example: Generic
           type: string
-        uploadSession:
-          description: URL to upload the file to File Management System.
-          example: https://mock.url
-          minLength: 1
+        message:
+          example: Bad Request
           type: string
       type: object
     UnauthenticatedApiError:
@@ -96,14 +87,23 @@ components:
       required:
       - fileName
       type: object
-    BadRequestApiError:
+    FileUploadSessionResponse:
       properties:
-        errorCode:
-          example: Generic
+        expiryTime:
+          description: Time until the link is valid.
+          example: '2022-06-22T10:03:00.183881+00:00'
+          format: date-time
           type: string
-        message:
-          example: Bad Request
+        uploadSession:
+          description: URL to upload the file to File Management System.
+          example: https://mock.url
+          minLength: 1
           type: string
+      type: object
+    CustomResponse16:
+      properties:
+        data:
+          $ref: '#/components/schemas/FileUploadSessionResponse'
       type: object
     InternalApiError:
       properties:

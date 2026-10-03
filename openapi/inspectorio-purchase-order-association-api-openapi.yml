@@ -153,19 +153,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    PurchaseOrderAssociationListResponse:
-      properties:
-        associations:
-          description: List of purchase order associations
-          items:
-            $ref: '#/components/schemas/PurchaseOrderAssociationDetail'
-          type: array
-      type: object
-    CustomResponse17:
-      properties:
-        data:
-          $ref: '#/components/schemas/PurchaseOrderAssociationDetail'
-      type: object
     PurchaseOrderAssociationCreate:
       properties:
         associationType:
@@ -205,15 +192,6 @@ components:
       - fromPoNumber
       - toPoNumber
       - associationType
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
       type: object
     BadRequestApiError:
       properties:
@@ -268,6 +246,15 @@ components:
       - toPoNumber
       - associationType
       type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
     InternalApiError:
       properties:
         errorCode:
@@ -282,6 +269,11 @@ components:
           example: Internal server error
           type: string
       type: object
+    CustomResponse17:
+      properties:
+        data:
+          $ref: '#/components/schemas/PurchaseOrderAssociationDetail'
+      type: object
     TooManyResponsesApiError:
       properties:
         errorCode:
@@ -290,6 +282,14 @@ components:
         message:
           example: Too many requests
           type: string
+      type: object
+    PurchaseOrderAssociationListResponse:
+      properties:
+        associations:
+          description: List of purchase order associations
+          items:
+            $ref: '#/components/schemas/PurchaseOrderAssociationDetail'
+          type: array
       type: object
   securitySchemes:
     ApiKeyAuth:
