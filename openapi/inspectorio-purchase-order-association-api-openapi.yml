@@ -153,53 +153,40 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    PurchaseOrderAssociationCreate:
+    CustomResponse17:
       properties:
-        associationType:
-          description: 'The type of association to be created. "linked" is also parent-child relationships, will migrate to "parent child" in the future.
-
-            '
-          enum:
-          - linked
-          - parent child
-          - material
-          type: string
-        fromPoNumber:
-          description: 'Child PO Number for association types: linked, parent child. Material PO Number for association type: material.
-
-            '
-          minLength: 1
-          type: string
-        toPoNumber:
-          description: 'Parent PO Number for association type: linked, parent child. Material PO Number for association type: material.
-
-            '
-          minLength: 1
-          type: string
-        fromPoOwnerId:
-          description: Local org ID of the owner of the fromPoNumber
-          example: client_1
-          type:
-          - string
-          - 'null'
-        toPoOwnerId:
-          description: Local org ID of the owner of the toPoNumber
-          example: client_1
-          type:
-          - string
-          - 'null'
-      required:
-      - fromPoNumber
-      - toPoNumber
-      - associationType
+        data:
+          $ref: '#/components/schemas/PurchaseOrderAssociationDetail'
       type: object
-    BadRequestApiError:
+    PurchaseOrderAssociationListResponse:
+      properties:
+        associations:
+          description: List of purchase order associations
+          items:
+            $ref: '#/components/schemas/PurchaseOrderAssociationDetail'
+          type: array
+      type: object
+    TooManyResponsesApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         message:
-          example: Bad Request
+          example: Too many requests
+          type: string
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
           type: string
       type: object
     PurchaseOrderAssociationDetail:
@@ -255,41 +242,54 @@ components:
           example: Cannot retrieve session data because of expired token
           type: string
       type: object
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
-    CustomResponse17:
-      properties:
-        data:
-          $ref: '#/components/schemas/PurchaseOrderAssociationDetail'
-      type: object
-    TooManyResponsesApiError:
+    BadRequestApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         message:
-          example: Too many requests
+          example: Bad Request
           type: string
       type: object
-    PurchaseOrderAssociationListResponse:
+    PurchaseOrderAssociationCreate:
       properties:
-        associations:
-          description: List of purchase order associations
-          items:
-            $ref: '#/components/schemas/PurchaseOrderAssociationDetail'
-          type: array
+        associationType:
+          description: 'The type of association to be created. "linked" is also parent-child relationships, will migrate to "parent child" in the future.
+
+            '
+          enum:
+          - linked
+          - parent child
+          - material
+          type: string
+        fromPoNumber:
+          description: 'Child PO Number for association types: linked, parent child. Material PO Number for association type: material.
+
+            '
+          minLength: 1
+          type: string
+        toPoNumber:
+          description: 'Parent PO Number for association type: linked, parent child. Material PO Number for association type: material.
+
+            '
+          minLength: 1
+          type: string
+        fromPoOwnerId:
+          description: Local org ID of the owner of the fromPoNumber
+          example: client_1
+          type:
+          - string
+          - 'null'
+        toPoOwnerId:
+          description: Local org ID of the owner of the toPoNumber
+          example: client_1
+          type:
+          - string
+          - 'null'
+      required:
+      - fromPoNumber
+      - toPoNumber
+      - associationType
       type: object
   securitySchemes:
     ApiKeyAuth:

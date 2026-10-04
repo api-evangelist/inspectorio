@@ -151,38 +151,20 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    BarcodeFormat:
-      description: Barcode format. If not send, it will use default value.
-      enum:
-      - Generic
-      - UPC-A
-      - UPC-E
-      - EAN-8
-      - EAN-13
-      - UPC-EAN
-      - Code-39
-      - Code-93
-      - Code-128
-      - Codebar
-      - ITF
-      - QRCode
-      - DataMatrix
-      - Aztec
-      - PDF417
-      - MaxiCode
-      - RSS-14
-      - RSS-Expanded
-      type: string
-      default: Generic
+    BarcodeRetriveResponse:
+      items:
+        properties:
+          code:
+            description: Barcode
+            type: string
+          format:
+            $ref: '#/components/schemas/BarcodeFormat'
+        type: object
+      type: array
+    BarcodeUpsertRequest:
+      items:
+        $ref: '#/components/schemas/BarcodeUpsertRequestItem'
+      type: array
     BarcodeRetriveAndDeleteRequest:
       properties:
         entityType:
@@ -209,29 +191,15 @@ components:
       required:
       - entityType
       type: object
-    UnauthenticatedApiError:
+    TooManyResponsesApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         message:
-          example: Cannot retrieve session data because of expired token
+          example: Too many requests
           type: string
       type: object
-    BarcodeUpsertResponse:
-      items:
-        $ref: '#/components/schemas/BarcodeUpsertResponseItem'
-      type: array
-    BarcodeRetriveResponse:
-      items:
-        properties:
-          code:
-            description: Barcode
-            type: string
-          format:
-            $ref: '#/components/schemas/BarcodeFormat'
-        type: object
-      type: array
     BarcodeUpsertResponseItem:
       properties:
         entityType:
@@ -265,6 +233,33 @@ components:
               type: string
           type: object
       type: object
+    BarcodeFormat:
+      description: Barcode format. If not send, it will use default value.
+      enum:
+      - Generic
+      - UPC-A
+      - UPC-E
+      - EAN-8
+      - EAN-13
+      - UPC-EAN
+      - Code-39
+      - Code-93
+      - Code-128
+      - Codebar
+      - ITF
+      - QRCode
+      - DataMatrix
+      - Aztec
+      - PDF417
+      - MaxiCode
+      - RSS-14
+      - RSS-Expanded
+      type: string
+      default: Generic
+    BarcodeUpsertResponse:
+      items:
+        $ref: '#/components/schemas/BarcodeUpsertResponseItem'
+      type: array
     InternalApiError:
       properties:
         errorCode:
@@ -279,13 +274,13 @@ components:
           example: Internal server error
           type: string
       type: object
-    TooManyResponsesApiError:
+    UnauthenticatedApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         message:
-          example: Too many requests
+          example: Cannot retrieve session data because of expired token
           type: string
       type: object
     BarcodeUpsertRequestItem:
@@ -318,10 +313,15 @@ components:
       - entityType
       - code
       type: object
-    BarcodeUpsertRequest:
-      items:
-        $ref: '#/components/schemas/BarcodeUpsertRequestItem'
-      type: array
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
   securitySchemes:
     ApiKeyAuth:
       in: header

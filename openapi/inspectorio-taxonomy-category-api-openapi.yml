@@ -301,7 +301,126 @@ paths:
       tags:
       - TAXONOMY CATEGORY
 components:
+  parameters:
+    OrderBy:
+      name: orderBy
+      in: query
+      required: false
+      description: 'Sort order, in the form `<field>:<direction>`.
+
+
+        `<field>` is one of `name` (sorts by parent name, then category name),
+
+        `createdAt` (creation time) or `updatedAt` (last-update time).
+
+
+        `<direction>` is `asc` or `desc`. The suffix is optional; timestamp fields
+
+        default to `desc` (newest first) while `name` defaults to `asc` (A→Z). Omitting
+
+        the parameter entirely is equivalent to `createdAt:desc`.
+
+        '
+      schema:
+        type: string
+        pattern: ^(name|createdAt|updatedAt)(:(asc|desc))?$
+        default: createdAt:desc
+        example: createdAt:desc
+    CategoryCustomIdPath:
+      name: customId
+      in: path
+      required: true
+      description: 'Client-defined custom identifier of the category. Unique within the
+
+        owner organization (across all taxonomies and levels).
+
+        '
+      schema:
+        type: string
+        example: footwear
+    Offset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip for pagination.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    SearchQuery:
+      name: q
+      in: query
+      required: false
+      description: 'Free-text search. Whitespace-separated terms are OR-matched (case-insensitive)
+
+        against the category `name` and its `businessId`.
+
+        '
+      schema:
+        type: string
+        example: sneaker
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum number of records to return (page size).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 50
+        default: 10
+    ParentCustomIdQuery:
+      name: parentCustomId
+      in: query
+      required: false
+      description: 'Filter to categories whose parent has one of these custom IDs. Repeat the
+
+        parameter once per value: `?parentCustomId=footwear&parentCustomId=apparel`
+
+        returns the children of both parents. Comma-separated values are not
+
+        supported — `?parentCustomId=footwear,apparel` is matched as one literal ID.
+
+        Omit to list all categories at the level.
+
+        '
+      style: form
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+          example: footwear
+    TaxonomyLevelCustomIdPath:
+      name: taxonomyLevelCustomId
+      in: path
+      required: true
+      description: 'Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,
+
+        `class`, `department`). Unique within the caller''s organization.
+
+        '
+      schema:
+        type: string
+        example: product_line
   schemas:
+    CategoryUpdateRequest:
+      type: object
+      description: Request body for updating a category's mutable fields.
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          description: Display name of the category.
+          example: Footwear
+        description:
+          type: string
+          maxLength: 5000
+          description: Free-text description. Omitting resets it to an empty string (PUT semantics).
+          default: ''
+          example: All footwear products
     ConflictError:
       type: object
       description: Error body for 409 conflict responses.
@@ -321,61 +440,49 @@ components:
           type: integer
           description: HTTP status code.
           example: 409
-    CategoryListResponse:
-      description: Paginated list of taxonomy categories, wrapped in the platform response envelope.
-      allOf:
-      - $ref: '#/components/schemas/ResponseEnvelope'
-      - type: object
-        properties:
-          count:
-            type: integer
-            description: Total number of categories matching the filters. Page through the collection by adjusting `limit` and `offset` against this value.
-            example: 42
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/Category'
-    ResponseEnvelope:
+    CategoryCreateRequest:
       type: object
-      description: Platform response envelope fields appended to every successful response.
+      description: Request body for creating or restoring a category.
+      required:
+      - customId
+      - name
+      - businessId
       properties:
-        code:
-          type: integer
-          description: Echoes the HTTP status code.
-          example: 200
-        status:
-          type: integer
-          description: Echoes the HTTP status code (alias of `code` for legacy consumers).
-          example: 200
-    CategoryValidationError:
-      type: object
-      description: 'Error body for request-body validation failures on create/restore (400). Each key is a
-
-        camelCase field from `CategoryCreateRequest`; the value is either a single message or a
-
-        list of messages for that field, as returned by the underlying serializer.
-
-        '
-      properties:
-        code:
-          type: integer
-          description: Echoes the HTTP status code.
-          example: 400
-        status:
-          type: integer
-          description: Echoes the HTTP status code (alias of `code` for legacy consumers).
-          example: 400
-      additionalProperties:
-        oneOf:
-        - type: string
-        - type: array
-          items:
-            type: string
-      example:
         customId:
-        - This field is required.
-        code: 400
-        status: 400
+          type: string
+          maxLength: 128
+          description: Client-defined identifier. Must be unique within the org.
+          example: footwear
+        name:
+          type: string
+          maxLength: 255
+          description: Display name of the category.
+          example: Footwear
+        description:
+          type: string
+          maxLength: 5000
+          description: Free-text description. Defaults to empty string.
+          default: ''
+          example: All footwear products
+        businessId:
+          type: string
+          maxLength: 32
+          description: 'Business identifier. Must be unique among live siblings at this level.
+
+            Immutable after creation — ignored on restore.
+
+            '
+          example: FW-001
+        parentCustomId:
+          type:
+          - string
+          - 'null'
+          description: 'Custom ID of the parent category at the level immediately above. Omit for a
+
+            root node. Ignored on restore (re-parenting is not allowed).
+
+            '
+          example: apparel
     Category:
       type: object
       description: A taxonomy category. Always addressed by `customId`.
@@ -442,6 +549,18 @@ components:
       - customId
       - name
       - taxonomyLevelCustomId
+    ResponseEnvelope:
+      type: object
+      description: Platform response envelope fields appended to every successful response.
+      properties:
+        code:
+          type: integer
+          description: Echoes the HTTP status code.
+          example: 200
+        status:
+          type: integer
+          description: Echoes the HTTP status code (alias of `code` for legacy consumers).
+          example: 200
     ErrorDetail:
       type: object
       description: Error body for 400, 401 and 404 responses.
@@ -458,173 +577,54 @@ components:
           type: integer
           description: Echoes the HTTP status code (alias of `code` for legacy consumers).
           example: 404
-    CategoryCreateRequest:
-      type: object
-      description: Request body for creating or restoring a category.
-      required:
-      - customId
-      - name
-      - businessId
-      properties:
-        customId:
-          type: string
-          maxLength: 128
-          description: Client-defined identifier. Must be unique within the org.
-          example: footwear
-        name:
-          type: string
-          maxLength: 255
-          description: Display name of the category.
-          example: Footwear
-        description:
-          type: string
-          maxLength: 5000
-          description: Free-text description. Defaults to empty string.
-          default: ''
-          example: All footwear products
-        businessId:
-          type: string
-          maxLength: 32
-          description: 'Business identifier. Must be unique among live siblings at this level.
-
-            Immutable after creation — ignored on restore.
-
-            '
-          example: FW-001
-        parentCustomId:
-          type:
-          - string
-          - 'null'
-          description: 'Custom ID of the parent category at the level immediately above. Omit for a
-
-            root node. Ignored on restore (re-parenting is not allowed).
-
-            '
-          example: apparel
     CategoryResponse:
       description: A single taxonomy category, wrapped in the platform response envelope.
       allOf:
       - $ref: '#/components/schemas/Category'
       - $ref: '#/components/schemas/ResponseEnvelope'
-    CategoryUpdateRequest:
+    CategoryValidationError:
       type: object
-      description: Request body for updating a category's mutable fields.
-      required:
-      - name
+      description: 'Error body for request-body validation failures on create/restore (400). Each key is a
+
+        camelCase field from `CategoryCreateRequest`; the value is either a single message or a
+
+        list of messages for that field, as returned by the underlying serializer.
+
+        '
       properties:
-        name:
-          type: string
-          maxLength: 255
-          description: Display name of the category.
-          example: Footwear
-        description:
-          type: string
-          maxLength: 5000
-          description: Free-text description. Omitting resets it to an empty string (PUT semantics).
-          default: ''
-          example: All footwear products
-  parameters:
-    TaxonomyLevelCustomIdPath:
-      name: taxonomyLevelCustomId
-      in: path
-      required: true
-      description: 'Custom ID of the taxonomy level the category belongs to (e.g. `product_line`,
-
-        `class`, `department`). Unique within the caller''s organization.
-
-        '
-      schema:
-        type: string
-        example: product_line
-    SearchQuery:
-      name: q
-      in: query
-      required: false
-      description: 'Free-text search. Whitespace-separated terms are OR-matched (case-insensitive)
-
-        against the category `name` and its `businessId`.
-
-        '
-      schema:
-        type: string
-        example: sneaker
-    CategoryCustomIdPath:
-      name: customId
-      in: path
-      required: true
-      description: 'Client-defined custom identifier of the category. Unique within the
-
-        owner organization (across all taxonomies and levels).
-
-        '
-      schema:
-        type: string
-        example: footwear
-    Offset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip for pagination.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-    ParentCustomIdQuery:
-      name: parentCustomId
-      in: query
-      required: false
-      description: 'Filter to categories whose parent has one of these custom IDs. Repeat the
-
-        parameter once per value: `?parentCustomId=footwear&parentCustomId=apparel`
-
-        returns the children of both parents. Comma-separated values are not
-
-        supported — `?parentCustomId=footwear,apparel` is matched as one literal ID.
-
-        Omit to list all categories at the level.
-
-        '
-      style: form
-      explode: true
-      schema:
-        type: array
-        items:
-          type: string
-          example: footwear
-    Limit:
-      name: limit
-      in: query
-      required: false
-      description: Maximum number of records to return (page size).
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 50
-        default: 10
-    OrderBy:
-      name: orderBy
-      in: query
-      required: false
-      description: 'Sort order, in the form `<field>:<direction>`.
-
-
-        `<field>` is one of `name` (sorts by parent name, then category name),
-
-        `createdAt` (creation time) or `updatedAt` (last-update time).
-
-
-        `<direction>` is `asc` or `desc`. The suffix is optional; timestamp fields
-
-        default to `desc` (newest first) while `name` defaults to `asc` (A→Z). Omitting
-
-        the parameter entirely is equivalent to `createdAt:desc`.
-
-        '
-      schema:
-        type: string
-        pattern: ^(name|createdAt|updatedAt)(:(asc|desc))?$
-        default: createdAt:desc
-        example: createdAt:desc
+        code:
+          type: integer
+          description: Echoes the HTTP status code.
+          example: 400
+        status:
+          type: integer
+          description: Echoes the HTTP status code (alias of `code` for legacy consumers).
+          example: 400
+      additionalProperties:
+        oneOf:
+        - type: string
+        - type: array
+          items:
+            type: string
+      example:
+        customId:
+        - This field is required.
+        code: 400
+        status: 400
+    CategoryListResponse:
+      description: Paginated list of taxonomy categories, wrapped in the platform response envelope.
+      allOf:
+      - $ref: '#/components/schemas/ResponseEnvelope'
+      - type: object
+        properties:
+          count:
+            type: integer
+            description: Total number of categories matching the filters. Page through the collection by adjusting `limit` and `offset` against this value.
+            example: 42
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/Category'
   securitySchemes:
     ApiKeyAuth:
       in: header

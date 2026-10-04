@@ -222,6 +222,20 @@ components:
           type: integer
           description: Response status code
           example: 400
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
     UnauthenticatedApiError:
       properties:
         errorCode:
@@ -262,20 +276,6 @@ components:
               type: string
               format: date-time
               example: '2025-02-14T06:52:42.073319+00:00'
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
     MasterDataCreateRequest:
       type: object
       required:

@@ -330,6 +330,176 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    TimeAndActionMilestone1:
+      properties:
+        actualEndDate:
+          description: The actual end date of a milestone
+          example: '2022-12-12'
+          format: date
+          type:
+          - string
+          - 'null'
+        actualStartDate:
+          description: The actual start date of a milestone
+          example: '2022-12-12'
+          format: date
+          type:
+          - string
+          - 'null'
+        id:
+          description: ID of a milestone
+          example: 1234f24e-54f6-4326-b4d3-402d52af291a
+          minLength: 1
+          type: string
+      required:
+      - id
+      type: object
+    MilestoneShipmentPlanDelay:
+      properties:
+        reasonCodes:
+          description: List of milestones reason codes
+          items:
+            $ref: '#/components/schemas/MilestoneShipmentPlanDelayReasonCode'
+          type:
+          - array
+          - 'null'
+        reasonSetName:
+          description: Set of reasons
+          example: Delay
+          type:
+          - string
+          - 'null'
+      type: object
+    TAProductionStatusMilestoneItem1:
+      properties:
+        completion:
+          example: 50
+          type: integer
+        itemId:
+          description: Item IDs included in the Time and Action
+          example: 120-230-1234
+          minLength: 1
+          type: string
+        itemQty:
+          description: completed order quantity of a item for a milestone
+          example: 100
+          type: integer
+        orderQty:
+          example: 50
+          type: integer
+        poNumber:
+          example: '8124125'
+          type:
+          - string
+          - 'null'
+        styleID:
+          example: WMN
+          type:
+          - string
+          - 'null'
+      required:
+      - itemId
+      type: object
+    CustomResponse2:
+      properties:
+        data:
+          $ref: '#/components/schemas/TimeAndActionUpdateMilestoneResponse'
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
+    TAProductionStatusMilestone1:
+      properties:
+        actualEndDate:
+          description: The actual end date of a milestone
+          example: '2022-12-12'
+          format: date
+          type:
+          - string
+          - 'null'
+        actualStartDate:
+          description: The actual start date of a milestone
+          example: '2022-12-12'
+          format: date
+          type:
+          - string
+          - 'null'
+        id:
+          description: ID of a milestone
+          example: 1234f24e-54f6-4326-b4d3-402d52af291a
+          minLength: 1
+          type: string
+        items:
+          description: Items information
+          items:
+            $ref: '#/components/schemas/TAProductionStatusMilestoneItem1'
+          type:
+          - array
+          - 'null'
+        name:
+          example: Production Milestone 1
+          type: string
+        quantity:
+          description: Completed order quantity in a milestone
+          example: 100
+          type: integer
+      required:
+      - id
+      type: object
+    TimeAndActionResponseItemShipmentPlan:
+      properties:
+        comment:
+          description: Comment
+          example: Early shipment comment
+          type:
+          - string
+          - 'null'
+        reasonCodes:
+          description: List of reason codes
+          items:
+            $ref: '#/components/schemas/TimeAndActionResponseItemShipmentPlanDelayedReasonCode'
+          type:
+          - array
+          - 'null'
+        reasonSetName:
+          description: Set of reasons
+          example: T&A Late Reason Code
+          type:
+          - string
+          - 'null'
+        unit:
+          description: Unit of the Time and Action shipment plan
+          enum:
+          - day
+          - week
+          - month
+          example: day
+          type: string
+        value:
+          description: Value of the Time and Action shipment plan
+          example: 2
+          type: integer
+      type: object
     TimeAndActionListResponseItem:
       properties:
         createdDate:
@@ -369,50 +539,83 @@ components:
           format: date-time
           type: string
       type: object
-    CustomResponse2:
+    TimeAndActionResponseItemShipmentPlanDelayed:
       properties:
-        data:
-          $ref: '#/components/schemas/TimeAndActionUpdateMilestoneResponse'
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
-    TimeAndActionResponseItemShipmentPlanDelayedReasonCode:
-      properties:
-        primaryReasonCode:
-          description: Primary reason code of the delay of the Time and Action shipment plan
-          example: Third Party Inspection Delay
-          type:
-          - string
-          - 'null'
-        secondaryReasonCodes:
-          description: Secondary reason codes of the delay of the Time and Action shipment plan
-          example: Factory lock down
+        reasonCodes:
+          description: List of reason codes
           items:
-            type: string
+            $ref: '#/components/schemas/TimeAndActionResponseItemShipmentPlanDelayedReasonCode'
           type:
           - array
           - 'null'
+        reasonSetName:
+          description: Set of reasons
+          example: T&A Late Reason Code
+          type:
+          - string
+          - 'null'
+        unit:
+          description: Unit of the delay of the Time and Action shipment plan
+          enum:
+          - day
+          - week
+          - month
+          example: day
+          type: string
+        value:
+          description: Value of the delay of the Time and Action shipment plan
+          type: integer
+      type: object
+    TimeAndActionUpdateMilestoneResponse:
+      properties:
+        milestones:
+          description: Milestones information
+          items:
+            $ref: '#/components/schemas/TimeAndActionMilestone1'
+          type:
+          - array
+          - 'null'
+      type: object
+    TAProductionStatusMilestone:
+      properties:
+        actualEndDate:
+          description: The actual end date of a milestone
+          example: '2022-12-12'
+          format: date
+          type:
+          - string
+          - 'null'
+        actualStartDate:
+          description: The actual start date of a milestone
+          example: '2022-12-12'
+          format: date
+          type:
+          - string
+          - 'null'
+        id:
+          description: ID of a milestone
+          example: 1234f24e-54f6-4326-b4d3-402d52af291a
+          minLength: 1
+          type: string
+        items:
+          description: Items information
+          items:
+            $ref: '#/components/schemas/TAProductionStatusMilestoneItem'
+          type:
+          - array
+          - 'null'
+        poNumber:
+          description: Purchase order number linked with the Time and Action
+          example: '8124125'
+          minLength: 1
+          type: string
+        quantity:
+          description: Completed order quantity in a milestone
+          example: 100
+          type: integer
+      required:
+      - id
+      - poNumber
       type: object
     PurchaseOrders:
       properties:
@@ -475,151 +678,76 @@ components:
           - array
           - 'null'
       type: object
-    TimeAndActionResponse:
+    Department:
       properties:
-        data:
-          $ref: '#/components/schemas/TimeAndActionResponseItem'
-          description: Time and Action data
-      type: object
-    TAProductionStatusMilestone:
-      properties:
-        actualEndDate:
-          description: The actual end date of a milestone
-          example: '2022-12-12'
-          format: date
+        departmentId:
+          description: Unique identifier of the department of the item
+          example: '020'
           type:
           - string
           - 'null'
-        actualStartDate:
-          description: The actual start date of a milestone
-          example: '2022-12-12'
-          format: date
-          type:
-          - string
-          - 'null'
-        id:
-          description: ID of a milestone
-          example: 1234f24e-54f6-4326-b4d3-402d52af291a
-          minLength: 1
-          type: string
-        items:
-          description: Items information
-          items:
-            $ref: '#/components/schemas/TAProductionStatusMilestoneItem'
-          type:
-          - array
-          - 'null'
-        poNumber:
-          description: Purchase order number linked with the Time and Action
-          example: '8124125'
-          minLength: 1
-          type: string
-        quantity:
-          description: Completed order quantity in a milestone
-          example: 100
-          type: integer
-      required:
-      - id
-      - poNumber
-      type: object
-    TimeAndActionUpdateMilestone:
-      properties:
-        milestones:
-          description: Milestones information
-          items:
-            $ref: '#/components/schemas/TimeAndActionMilestone1'
-          type:
-          - array
-          - 'null'
-      type: object
-    MilestonePlanDelayed:
-      properties:
-        unit:
-          description: The unit of late time (day/month i.e.)
-          example: day
-          type:
-          - string
-          - 'null'
-        value:
-          description: Number of late unit (2 i.e.)
-          type: integer
-      type: object
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    TimeAndActionOrgInfoSchemaV1:
-      properties:
-        contactPersons:
-          description: List of contact persons of the Organization
-          items:
-            $ref: '#/components/schemas/ContactPerson'
-          type:
-          - array
-          - 'null'
-        localOrganizationId:
-          description: Local Custom ID of the organization
-          example: '123'
-          type:
-          - string
-          - 'null'
-        localOrganizationIds:
-          description: The list of all connected Local Custom IDs of the organization
-          example:
-          - '123'
-          - ABC
-          items:
-            type: string
-          type:
-          - array
-          - 'null'
-        organizationId:
-          description: Unique identifier of the Organization
-          example: Acme Corp
-          type:
-          - string
-          - 'null'
-      type: object
-    TAProductionStatusMilestoneItem1:
-      properties:
-        completion:
-          example: 50
-          type: integer
-        itemId:
-          description: Item IDs included in the Time and Action
-          example: 120-230-1234
-          minLength: 1
-          type: string
-        itemQty:
-          description: completed order quantity of a item for a milestone
-          example: 100
-          type: integer
-        orderQty:
-          example: 50
-          type: integer
-        poNumber:
-          example: '8124125'
-          type:
-          - string
-          - 'null'
-        styleID:
-          example: WMN
-          type:
-          - string
-          - 'null'
-      required:
-      - itemId
       type: object
     TimeAndActionProductionStatusUpdateResponse:
       properties:
         data:
           $ref: '#/components/schemas/TimeAndActionProductionStatusBase'
           description: Time and Action data
+      type: object
+    CustomResponse1:
+      properties:
+        data:
+          $ref: '#/components/schemas/TimeAndActionProductionStatusListResponse'
+      type: object
+    TimeAndActionProductionStatusListResponse:
+      properties:
+        id:
+          description: Id of a Time and Action
+          example: 34c75453-3ec6-4822-9e9a-9addc6076b3c
+          type:
+          - string
+          - 'null'
+        milestones:
+          description: Milestones information
+          items:
+            $ref: '#/components/schemas/TAProductionStatusMilestone1'
+          type:
+          - array
+          - 'null'
+        poNumber:
+          description: Purchase order number linked with the Time and Action
+          example: '8124125'
+          type:
+          - string
+          - 'null'
+        productionStatusLevel:
+          description: Update production status by PO or item level
+          enum:
+          - poLevel
+          - itemLevel
+          type: string
+        productionStatusUntil:
+          description: Time when the production status data is valid. If it is empty system will pre-fill it with the current date. Only past and current dates are allowed
+          example: '2022-12-12'
+          format: date
+          type: string
+        quantity:
+          description: Completed order quantity
+          example: 2000
+          type: integer
+        styleID:
+          example:
+          - style_1
+          - style_2
+          - style_3
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+      required:
+      - poNumber
+      - productionStatusLevel
+      - productionStatusUntil
       type: object
     TooManyResponsesApiError:
       properties:
@@ -629,59 +757,6 @@ components:
         message:
           example: Too many requests
           type: string
-      type: object
-    ContactPerson:
-      properties:
-        id:
-          description: Unique identifier of the contact person
-          example: '1234'
-          type:
-          - string
-          - 'null'
-        name:
-          description: Name of the contact person
-          example: John Doe
-          type:
-          - string
-          - 'null'
-      type: object
-    OfficeContactPerson:
-      properties:
-        id:
-          description: Contact Id
-          example: '1234'
-          type:
-          - string
-          - 'null'
-        name:
-          description: Contact name
-          example: John Doe
-          type:
-          - string
-          - 'null'
-        email:
-          description: Contact email
-          example: email@test.com
-          type:
-          - string
-          - 'null'
-      type: object
-    MilestoneShipmentPlanDelayReasonCode:
-      properties:
-        primaryReasonCode:
-          description: Primary reason code of the delay of the milestone
-          example: Retailer reason
-          type:
-          - string
-          - 'null'
-        secondaryReasonCodes:
-          description: Secondary reason codes of the delay of the milestone
-          example: Sample Approval Delay
-          items:
-            type: string
-          type:
-          - array
-          - 'null'
       type: object
     TimeAndActionMilestone:
       properties:
@@ -763,31 +838,11 @@ components:
           $ref: '#/components/schemas/MilestoneShipmentPlanDelay'
           description: Delay information of the milestone
       type: object
-    TimeAndActionUpdateMilestoneResponse:
+    TimeAndActionResponse:
       properties:
-        milestones:
-          description: Milestones information
-          items:
-            $ref: '#/components/schemas/TimeAndActionMilestone1'
-          type:
-          - array
-          - 'null'
-      type: object
-    MilestoneShipmentPlanDelay:
-      properties:
-        reasonCodes:
-          description: List of milestones reason codes
-          items:
-            $ref: '#/components/schemas/MilestoneShipmentPlanDelayReasonCode'
-          type:
-          - array
-          - 'null'
-        reasonSetName:
-          description: Set of reasons
-          example: Delay
-          type:
-          - string
-          - 'null'
+        data:
+          $ref: '#/components/schemas/TimeAndActionResponseItem'
+          description: Time and Action data
       type: object
     TimeAndActionListResponse:
       properties:
@@ -810,181 +865,44 @@ components:
       - offset
       - total
       type: object
-    TimeAndActionResponseItemShipmentPlanDelayed:
-      properties:
-        reasonCodes:
-          description: List of reason codes
-          items:
-            $ref: '#/components/schemas/TimeAndActionResponseItemShipmentPlanDelayedReasonCode'
-          type:
-          - array
-          - 'null'
-        reasonSetName:
-          description: Set of reasons
-          example: T&A Late Reason Code
-          type:
-          - string
-          - 'null'
-        unit:
-          description: Unit of the delay of the Time and Action shipment plan
-          enum:
-          - day
-          - week
-          - month
-          example: day
-          type: string
-        value:
-          description: Value of the delay of the Time and Action shipment plan
-          type: integer
-      type: object
-    TimeAndActionMilestone1:
-      properties:
-        actualEndDate:
-          description: The actual end date of a milestone
-          example: '2022-12-12'
-          format: date
-          type:
-          - string
-          - 'null'
-        actualStartDate:
-          description: The actual start date of a milestone
-          example: '2022-12-12'
-          format: date
-          type:
-          - string
-          - 'null'
-        id:
-          description: ID of a milestone
-          example: 1234f24e-54f6-4326-b4d3-402d52af291a
-          minLength: 1
-          type: string
-      required:
-      - id
-      type: object
-    TAProductionStatusMilestone1:
-      properties:
-        actualEndDate:
-          description: The actual end date of a milestone
-          example: '2022-12-12'
-          format: date
-          type:
-          - string
-          - 'null'
-        actualStartDate:
-          description: The actual start date of a milestone
-          example: '2022-12-12'
-          format: date
-          type:
-          - string
-          - 'null'
-        id:
-          description: ID of a milestone
-          example: 1234f24e-54f6-4326-b4d3-402d52af291a
-          minLength: 1
-          type: string
-        items:
-          description: Items information
-          items:
-            $ref: '#/components/schemas/TAProductionStatusMilestoneItem1'
-          type:
-          - array
-          - 'null'
-        name:
-          example: Production Milestone 1
-          type: string
-        quantity:
-          description: Completed order quantity in a milestone
-          example: 100
-          type: integer
-      required:
-      - id
-      type: object
-    TimeAndActionProductionStatusBase:
-      properties:
-        id:
-          description: Id of a Time and Action
-          example: 34c75453-3ec6-4822-9e9a-9addc6076b3c
-          type:
-          - string
-          - 'null'
-        milestones:
-          description: Milestones information
-          items:
-            $ref: '#/components/schemas/TAProductionStatusMilestone'
-          type:
-          - array
-          - 'null'
-        productionStatusLevel:
-          description: Update production status by PO or item level
-          enum:
-          - poLevel
-          - itemLevel
-          type: string
-        productionStatusUntil:
-          description: Time when the production status data is valid. If it is empty system will pre-fill it with the current date. Only past and current dates are allowed
-          example: '2022-12-12'
-          format: date
-          type: string
-      required:
-      - productionStatusLevel
-      - productionStatusUntil
-      type: object
-    Department:
-      properties:
-        departmentId:
-          description: Unique identifier of the department of the item
-          example: '020'
-          type:
-          - string
-          - 'null'
-      type: object
-    ValidateApiError:
+    UnauthenticatedApiError:
       properties:
         errorCode:
           example: Generic
           type: string
-        errors:
-          example:
-            type:
-            - Input type is not valid
-          type: object
         message:
-          example: Validation error
+          example: Cannot retrieve session data because of expired token
           type: string
       type: object
-    TimeAndActionResponseItemShipmentPlan:
+    TimeAndActionOffice:
       properties:
-        comment:
-          description: Comment
-          example: Early shipment comment
+        officeName:
+          description: Office organization name
+          example: Office 001
           type:
           - string
           - 'null'
-        reasonCodes:
-          description: List of reason codes
+        localOrganizationId:
+          description: office local organization id
+          example: '1234'
+          type:
+          - string
+          - 'null'
+        prefillOption:
+          description: Prefill option for the office
+          example: local_supplier_mapping
+          type:
+          - string
+          - 'null'
+        contactPersons:
+          description: List of contact persons of the Office
           items:
-            $ref: '#/components/schemas/TimeAndActionResponseItemShipmentPlanDelayedReasonCode'
+            $ref: '#/components/schemas/OfficeContactPerson'
           type:
           - array
           - 'null'
-        reasonSetName:
-          description: Set of reasons
-          example: T&A Late Reason Code
-          type:
-          - string
-          - 'null'
-        unit:
-          description: Unit of the Time and Action shipment plan
-          enum:
-          - day
-          - week
-          - month
-          example: day
-          type: string
-        value:
-          description: Value of the Time and Action shipment plan
-          example: 2
-          type: integer
+      required:
+      - id
       type: object
     TimeAndActionOrgInfo:
       properties:
@@ -1013,6 +931,55 @@ components:
           - 'null'
         organizationId:
           description: Local ID of the Organization
+          example: Acme Corp
+          type:
+          - string
+          - 'null'
+      type: object
+    MilestoneShipmentPlanDelayReasonCode:
+      properties:
+        primaryReasonCode:
+          description: Primary reason code of the delay of the milestone
+          example: Retailer reason
+          type:
+          - string
+          - 'null'
+        secondaryReasonCodes:
+          description: Secondary reason codes of the delay of the milestone
+          example: Sample Approval Delay
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+      type: object
+    TimeAndActionOrgInfoSchemaV1:
+      properties:
+        contactPersons:
+          description: List of contact persons of the Organization
+          items:
+            $ref: '#/components/schemas/ContactPerson'
+          type:
+          - array
+          - 'null'
+        localOrganizationId:
+          description: Local Custom ID of the organization
+          example: '123'
+          type:
+          - string
+          - 'null'
+        localOrganizationIds:
+          description: The list of all connected Local Custom IDs of the organization
+          example:
+          - '123'
+          - ABC
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        organizationId:
+          description: Unique identifier of the Organization
           example: Acme Corp
           type:
           - string
@@ -1120,92 +1087,6 @@ components:
           format: date-time
           type: string
       type: object
-    TimeAndActionProductionStatusListResponse:
-      properties:
-        id:
-          description: Id of a Time and Action
-          example: 34c75453-3ec6-4822-9e9a-9addc6076b3c
-          type:
-          - string
-          - 'null'
-        milestones:
-          description: Milestones information
-          items:
-            $ref: '#/components/schemas/TAProductionStatusMilestone1'
-          type:
-          - array
-          - 'null'
-        poNumber:
-          description: Purchase order number linked with the Time and Action
-          example: '8124125'
-          type:
-          - string
-          - 'null'
-        productionStatusLevel:
-          description: Update production status by PO or item level
-          enum:
-          - poLevel
-          - itemLevel
-          type: string
-        productionStatusUntil:
-          description: Time when the production status data is valid. If it is empty system will pre-fill it with the current date. Only past and current dates are allowed
-          example: '2022-12-12'
-          format: date
-          type: string
-        quantity:
-          description: Completed order quantity
-          example: 2000
-          type: integer
-        styleID:
-          example:
-          - style_1
-          - style_2
-          - style_3
-          items:
-            type: string
-          type:
-          - array
-          - 'null'
-      required:
-      - poNumber
-      - productionStatusLevel
-      - productionStatusUntil
-      type: object
-    TimeAndActionOffice:
-      properties:
-        officeName:
-          description: Office organization name
-          example: Office 001
-          type:
-          - string
-          - 'null'
-        localOrganizationId:
-          description: office local organization id
-          example: '1234'
-          type:
-          - string
-          - 'null'
-        prefillOption:
-          description: Prefill option for the office
-          example: local_supplier_mapping
-          type:
-          - string
-          - 'null'
-        contactPersons:
-          description: List of contact persons of the Office
-          items:
-            $ref: '#/components/schemas/OfficeContactPerson'
-          type:
-          - array
-          - 'null'
-      required:
-      - id
-      type: object
-    CustomResponse1:
-      properties:
-        data:
-          $ref: '#/components/schemas/TimeAndActionProductionStatusListResponse'
-      type: object
     TAProductionStatusMilestoneItem:
       properties:
         itemId:
@@ -1219,6 +1100,125 @@ components:
           type: integer
       required:
       - itemId
+      type: object
+    TimeAndActionResponseItemShipmentPlanDelayedReasonCode:
+      properties:
+        primaryReasonCode:
+          description: Primary reason code of the delay of the Time and Action shipment plan
+          example: Third Party Inspection Delay
+          type:
+          - string
+          - 'null'
+        secondaryReasonCodes:
+          description: Secondary reason codes of the delay of the Time and Action shipment plan
+          example: Factory lock down
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+      type: object
+    MilestonePlanDelayed:
+      properties:
+        unit:
+          description: The unit of late time (day/month i.e.)
+          example: day
+          type:
+          - string
+          - 'null'
+        value:
+          description: Number of late unit (2 i.e.)
+          type: integer
+      type: object
+    OfficeContactPerson:
+      properties:
+        id:
+          description: Contact Id
+          example: '1234'
+          type:
+          - string
+          - 'null'
+        name:
+          description: Contact name
+          example: John Doe
+          type:
+          - string
+          - 'null'
+        email:
+          description: Contact email
+          example: email@test.com
+          type:
+          - string
+          - 'null'
+      type: object
+    TimeAndActionProductionStatusBase:
+      properties:
+        id:
+          description: Id of a Time and Action
+          example: 34c75453-3ec6-4822-9e9a-9addc6076b3c
+          type:
+          - string
+          - 'null'
+        milestones:
+          description: Milestones information
+          items:
+            $ref: '#/components/schemas/TAProductionStatusMilestone'
+          type:
+          - array
+          - 'null'
+        productionStatusLevel:
+          description: Update production status by PO or item level
+          enum:
+          - poLevel
+          - itemLevel
+          type: string
+        productionStatusUntil:
+          description: Time when the production status data is valid. If it is empty system will pre-fill it with the current date. Only past and current dates are allowed
+          example: '2022-12-12'
+          format: date
+          type: string
+      required:
+      - productionStatusLevel
+      - productionStatusUntil
+      type: object
+    ValidateApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
+        message:
+          example: Validation error
+          type: string
+      type: object
+    ContactPerson:
+      properties:
+        id:
+          description: Unique identifier of the contact person
+          example: '1234'
+          type:
+          - string
+          - 'null'
+        name:
+          description: Name of the contact person
+          example: John Doe
+          type:
+          - string
+          - 'null'
+      type: object
+    TimeAndActionUpdateMilestone:
+      properties:
+        milestones:
+          description: Milestones information
+          items:
+            $ref: '#/components/schemas/TimeAndActionMilestone1'
+          type:
+          - array
+          - 'null'
       type: object
   securitySchemes:
     ApiKeyAuth:

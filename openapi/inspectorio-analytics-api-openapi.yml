@@ -188,29 +188,41 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    FactoryRiskProfileScoreData:
+    FactoryRiskProfileLabel:
       properties:
-        currentScore:
-          $ref: '#/components/schemas/FactoryRiskProfileScoreDataScore'
-          description: Current risk score of the factory
-        lastScore:
-          $ref: '#/components/schemas/FactoryRiskProfileScoreDataScore'
-          description: Last risk score of the factory
+        label:
+          description: Type of label
+          example: Manual
+          type:
+          - string
+          - 'null'
+        labelValue:
+          description: Value of label
+          example: Low
+          type:
+          - string
+          - 'null'
+        reasonCode:
+          description: The selected Top Reason Code when changing                                      Factory Risk Configuration Mode to Manual
+          example: Others - mandatory to fill in comments
+          type:
+          - string
+          - 'null'
+        reasonType:
+          description: The selected Top Reason Type when changing                                      Factory Risk Configuration Mode to Manual
+          example: Others
+          type:
+          - string
+          - 'null'
       type: object
-    FactoryRiskProfile:
+    TooManyResponsesApiError:
       properties:
-        factoryInformation:
-          $ref: '#/components/schemas/FactoryInformation'
-          description: The detailed information about the Factory
-        inspectionData:
-          $ref: '#/components/schemas/FactoryRiskProfileInspectionData'
-          description: Inspection data of the factory risk profile
-        riskLevelData:
-          $ref: '#/components/schemas/FactoryRiskProfileRiskLevelData'
-          description: Risk level data of the factory risk profile
-        scoreData:
-          $ref: '#/components/schemas/FactoryRiskProfileScoreData'
-          description: Score data of the factory risk profile
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
       type: object
     FactoryRiskProfileInspectionDataLasted:
       properties:
@@ -234,20 +246,35 @@ components:
           - string
           - 'null'
       type: object
-    BadRequestApiError:
+    FactoryInformation1:
+      properties:
+        localInformation:
+          description: List of all connected Local Factories
+          items:
+            $ref: '#/components/schemas/LocalInformation'
+          type:
+          - array
+          - 'null'
+        organizationId:
+          description: The Global organization Id of the Factory
+          example: 291524
+          type:
+          - integer
+          - 'null'
+      type: object
+    InternalApiError:
       properties:
         errorCode:
           example: Generic
           type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
         message:
-          example: Bad Request
+          example: Internal server error
           type: string
-      type: object
-    FactoryRiskProfileResponse:
-      properties:
-        data:
-          $ref: '#/components/schemas/FactoryRiskProfile'
-          description: Factory risk profile data
       type: object
     FactoryRiskProfileScoreDataScore:
       properties:
@@ -272,6 +299,69 @@ components:
           - number
           - 'null'
       type: object
+    FactoryRiskProfileList:
+      properties:
+        factoryInformation:
+          $ref: '#/components/schemas/FactoryInformation1'
+          description: Details of the factory
+        latestProcessComputedDate:
+          description: The last activity date of the latest score for eitherFRP score update or risk label/configuration change
+          example: '2020-07-01'
+          format: date
+          type:
+          - string
+          - 'null'
+        latestRiskDate:
+          description: Date of the latest Risk Score of the factory
+          example: '2020-07-01'
+          format: date
+          type:
+          - string
+          - 'null'
+        latestRiskLabel:
+          description: Label of the latest Risk Score of the factory
+          example: low
+          type:
+          - string
+          - 'null'
+        latestRiskScore:
+          description: Latest Risk Score of the factory within the specified time period
+          example: 20.18
+          type:
+          - number
+          - 'null'
+        latestRiskSetting:
+          description: Setting of the latest Risk Score of the factory
+          example: Auto by AI
+          type:
+          - string
+          - 'null'
+      type: object
+    FactoryInformation:
+      properties:
+        localOrganizationId:
+          description: The Local Custom Id of the Factory
+          example: client_1
+          type:
+          - string
+          - 'null'
+        localOrganizationIds:
+          description: The list of all connected Local Custom Ids of the Factory
+          example:
+          - F323333
+          - F242146
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        organizationId:
+          description: The Global organization Id of the Factory
+          example: 291524
+          type:
+          - integer
+          - 'null'
+      type: object
     ValidateApiError:
       properties:
         errorCode:
@@ -286,27 +376,20 @@ components:
           example: Validation error
           type: string
       type: object
-    UnauthenticatedApiError:
+    FactoryRiskProfile:
       properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
-    FactoryRiskProfileInspectionData:
-      properties:
-        inspectionHistories:
-          description: The previous inspections
-          items:
-            $ref: '#/components/schemas/FactoryRiskProfileInspectionDataLasted'
-          type:
-          - array
-          - 'null'
-        inspectionLasted:
-          $ref: '#/components/schemas/FactoryRiskProfileInspectionDataLasted'
-          description: The last inspection
+        factoryInformation:
+          $ref: '#/components/schemas/FactoryInformation'
+          description: The detailed information about the Factory
+        inspectionData:
+          $ref: '#/components/schemas/FactoryRiskProfileInspectionData'
+          description: Inspection data of the factory risk profile
+        riskLevelData:
+          $ref: '#/components/schemas/FactoryRiskProfileRiskLevelData'
+          description: Risk level data of the factory risk profile
+        scoreData:
+          $ref: '#/components/schemas/FactoryRiskProfileScoreData'
+          description: Score data of the factory risk profile
       type: object
     FactoryRiskProfileRiskLevelData:
       properties:
@@ -347,41 +430,38 @@ components:
           - integer
           - 'null'
       type: object
-    LocalInformation:
+    FactoryRiskProfileResponse:
       properties:
-        localOrganizationId:
-          description: Local Custom ID of the Factory
-          example: F323333
-          type:
-          - string
-          - 'null'
+        data:
+          $ref: '#/components/schemas/FactoryRiskProfile'
+          description: Factory risk profile data
       type: object
-    FactoryRiskProfileLabel:
+    UnauthenticatedApiError:
       properties:
-        label:
-          description: Type of label
-          example: Manual
-          type:
-          - string
-          - 'null'
-        labelValue:
-          description: Value of label
-          example: Low
-          type:
-          - string
-          - 'null'
-        reasonCode:
-          description: The selected Top Reason Code when changing                                      Factory Risk Configuration Mode to Manual
-          example: Others - mandatory to fill in comments
-          type:
-          - string
-          - 'null'
-        reasonType:
-          description: The selected Top Reason Type when changing                                      Factory Risk Configuration Mode to Manual
-          example: Others
-          type:
-          - string
-          - 'null'
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
+      type: object
+    FactoryRiskProfileScoreData:
+      properties:
+        currentScore:
+          $ref: '#/components/schemas/FactoryRiskProfileScoreDataScore'
+          description: Current risk score of the factory
+        lastScore:
+          $ref: '#/components/schemas/FactoryRiskProfileScoreDataScore'
+          description: Last risk score of the factory
       type: object
     FactoryRiskProfileListResponse:
       properties:
@@ -406,106 +486,26 @@ components:
       - offset
       - total
       type: object
-    InternalApiError:
+    FactoryRiskProfileInspectionData:
       properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
+        inspectionHistories:
+          description: The previous inspections
+          items:
+            $ref: '#/components/schemas/FactoryRiskProfileInspectionDataLasted'
+          type:
+          - array
+          - 'null'
+        inspectionLasted:
+          $ref: '#/components/schemas/FactoryRiskProfileInspectionDataLasted'
+          description: The last inspection
       type: object
-    FactoryRiskProfileList:
-      properties:
-        factoryInformation:
-          $ref: '#/components/schemas/FactoryInformation1'
-          description: Details of the factory
-        latestProcessComputedDate:
-          description: The last activity date of the latest score for eitherFRP score update or risk label/configuration change
-          example: '2020-07-01'
-          format: date
-          type:
-          - string
-          - 'null'
-        latestRiskDate:
-          description: Date of the latest Risk Score of the factory
-          example: '2020-07-01'
-          format: date
-          type:
-          - string
-          - 'null'
-        latestRiskLabel:
-          description: Label of the latest Risk Score of the factory
-          example: low
-          type:
-          - string
-          - 'null'
-        latestRiskScore:
-          description: Latest Risk Score of the factory within the specified time period
-          example: 20.18
-          type:
-          - number
-          - 'null'
-        latestRiskSetting:
-          description: Setting of the latest Risk Score of the factory
-          example: Auto by AI
-          type:
-          - string
-          - 'null'
-      type: object
-    TooManyResponsesApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Too many requests
-          type: string
-      type: object
-    FactoryInformation:
+    LocalInformation:
       properties:
         localOrganizationId:
-          description: The Local Custom Id of the Factory
-          example: client_1
+          description: Local Custom ID of the Factory
+          example: F323333
           type:
           - string
-          - 'null'
-        localOrganizationIds:
-          description: The list of all connected Local Custom Ids of the Factory
-          example:
-          - F323333
-          - F242146
-          items:
-            type: string
-          type:
-          - array
-          - 'null'
-        organizationId:
-          description: The Global organization Id of the Factory
-          example: 291524
-          type:
-          - integer
-          - 'null'
-      type: object
-    FactoryInformation1:
-      properties:
-        localInformation:
-          description: List of all connected Local Factories
-          items:
-            $ref: '#/components/schemas/LocalInformation'
-          type:
-          - array
-          - 'null'
-        organizationId:
-          description: The Global organization Id of the Factory
-          example: 291524
-          type:
-          - integer
           - 'null'
       type: object
   securitySchemes:

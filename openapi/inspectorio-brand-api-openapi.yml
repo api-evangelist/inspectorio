@@ -276,6 +276,24 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Brand:
+      properties:
+        brandId:
+          description: Unique identifier of the brand
+          example: brand_1
+          type: string
+        description:
+          description: Brand description
+          example: Modern Menswear
+          type: string
+        name:
+          description: Brand name
+          example: Acme
+          type: string
+      required:
+      - brandId
+      - name
+      type: object
     BrandCreate:
       properties:
         brandId:
@@ -298,58 +316,47 @@ components:
       - brandId
       - name
       type: object
+    BrandUpdate:
+      properties:
+        description:
+          description: Brand description
+          example: Modern Menswear
+          type:
+          - string
+          - 'null'
+        name:
+          description: Brand name
+          example: Acme
+          minLength: 1
+          type: string
+      type: object
     BrandResponse:
       properties:
         data:
           $ref: '#/components/schemas/Brand'
           description: Brand data
       type: object
-    BrandListResponse:
-      properties:
-        data:
-          description: Brands data
-          items:
-            $ref: '#/components/schemas/Brand'
-          type: array
-        limit:
-          maximum: 100
-          minimum: 1
-          type: integer
-        offset:
-          minimum: 0
-          type: integer
-        total:
-          type: integer
-      required:
-      - limit
-      - offset
-      - total
-      type: object
-    Brand:
-      properties:
-        brandId:
-          description: Unique identifier of the brand
-          example: brand_1
-          type: string
-        description:
-          description: Brand description
-          example: Modern Menswear
-          type: string
-        name:
-          description: Brand name
-          example: Acme
-          type: string
-      required:
-      - brandId
-      - name
-      type: object
-    BadRequestApiError:
+    TooManyResponsesApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         message:
-          example: Bad Request
+          example: Too many requests
+          type: string
+      type: object
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
           type: string
       type: object
     ValidateApiError:
@@ -375,42 +382,35 @@ components:
           example: Cannot retrieve session data because of expired token
           type: string
       type: object
-    BrandUpdate:
-      properties:
-        description:
-          description: Brand description
-          example: Modern Menswear
-          type:
-          - string
-          - 'null'
-        name:
-          description: Brand name
-          example: Acme
-          minLength: 1
-          type: string
-      type: object
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
-    TooManyResponsesApiError:
+    BadRequestApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         message:
-          example: Too many requests
+          example: Bad Request
           type: string
+      type: object
+    BrandListResponse:
+      properties:
+        data:
+          description: Brands data
+          items:
+            $ref: '#/components/schemas/Brand'
+          type: array
+        limit:
+          maximum: 100
+          minimum: 1
+          type: integer
+        offset:
+          minimum: 0
+          type: integer
+        total:
+          type: integer
+      required:
+      - limit
+      - offset
+      - total
       type: object
   securitySchemes:
     ApiKeyAuth:

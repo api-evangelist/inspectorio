@@ -381,7 +381,504 @@ paths:
       tags:
       - CUSTOMER DATA
 components:
+  parameters:
+    ProductIntegrationStatusFilter:
+      name: status
+      in: query
+      required: false
+      description: Filter by lifecycle status.
+      schema:
+        type: string
+        enum:
+        - active
+        - inactive
+    PoNumber:
+      name: poNumber
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Optional Purchase Order number to use when filtering BOMs. Use this when multiple BOMs exist with the same custom ID but different POs.
+    components-parameters-EntityType:
+      name: entity_type
+      in: path
+      required: true
+      schema:
+        type: string
+        enum:
+        - product
+        - item
+        - material
+    ProductIntegrationUpdatedTo:
+      name: updatedTo
+      in: query
+      required: false
+      description: Upper bound (inclusive) on `updatedAt`, ISO 8601 datetime.
+      schema:
+        type: string
+        format: date-time
+        example: '2024-12-31T23:59:59+00:00'
+    ProductIntegrationCreatedTo:
+      name: createdTo
+      in: query
+      required: false
+      description: Upper bound (inclusive) on `createdAt`, ISO 8601 datetime.
+      schema:
+        type: string
+        format: date-time
+        example: '2024-12-31T23:59:59+00:00'
+    DataProviderCustomId:
+      name: dataProviderCustomId
+      in: query
+      required: false
+      description: 'Optional Local org custom id whose global organization is used
+
+        as the data scope for the lookup. When omitted, the authenticated organization is used.
+
+        '
+      schema:
+        type: string
+    ProductIntegrationCreatedFrom:
+      name: createdFrom
+      in: query
+      required: false
+      description: Lower bound (inclusive) on `createdAt`, ISO 8601 datetime.
+      schema:
+        type: string
+        format: date-time
+        example: '2024-06-01T00:00:00+00:00'
+    CustomId:
+      name: custom_id
+      in: path
+      required: true
+      schema:
+        type: string
+    ProductIntegrationOffset:
+      name: offset
+      in: query
+      required: false
+      description: Number of records to skip before returning results.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    parameters-EntityType:
+      name: entity_type
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/schemas-EntityType'
+    ProductIntegrationLimit:
+      name: limit
+      in: query
+      required: false
+      description: Page size; default 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 50
+        default: 10
+    ProductIntegrationUpdatedFrom:
+      name: updatedFrom
+      in: query
+      required: false
+      description: Lower bound (inclusive) on `updatedAt`, ISO 8601 datetime.
+      schema:
+        type: string
+        format: date-time
+        example: '2024-06-01T00:00:00+00:00'
+    EntityType:
+      name: entity_type
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/EntityType'
   schemas:
+    ContributionRole:
+      type: string
+      enum:
+      - provider
+      - manufacturer
+    Synchronization:
+      allOf:
+      - $ref: '#/components/schemas/CustomRevision'
+      type: object
+      properties:
+        entity_type:
+          $ref: '#/components/schemas/EntityType'
+        last_update_source:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        status:
+          $ref: '#/components/schemas/Status'
+    EntityType:
+      type: string
+      enum:
+      - product
+      - item
+      - material
+      - category
+      description: The type of entity to be updated, unique with the provided custom identifier
+    ProductIntegrationSetElement:
+      type: object
+      properties:
+        styleUuid:
+          type:
+          - string
+          - 'null'
+        styleId:
+          type:
+          - string
+          - 'null'
+        styleName:
+          type:
+          - string
+          - 'null'
+    BomIntegrationComponentAttributeValue:
+      type: string
+      description: Component sustainability attribute (typical BOM form tagbox choices).
+      enum:
+      - Organic
+      - Recycled
+      - Sustainable
+    BomContributionIntegrationObject:
+      type: object
+      properties:
+        role:
+          type: string
+          description: Role of the contributor
+          enum:
+          - bom_editor
+          - bom_viewer
+        orgCustomId:
+          type:
+          - string
+          - 'null'
+          description: Custom ID of the contributor org
+    schemas-Product:
+      allOf:
+      - $ref: '#/components/schemas/BaseProduct'
+      - type: object
+        properties:
+          entity_type:
+            type: string
+            enum:
+            - product
+          categories:
+            type: array
+            items:
+              $ref: '#/components/schemas/schemas-ProductCategory'
+            description: The lowest level reference to the hierarchies used to categorize the product. Only one value accepted per taxonomy (`taxonomy_category_id`)
+    Material:
+      allOf:
+      - $ref: '#/components/schemas/BaseProduct'
+      - type: object
+        properties:
+          entity_type:
+            type: string
+            enum:
+            - material
+          categories:
+            type: array
+            items:
+              $ref: '#/components/schemas/MaterialCategory'
+            description: The lowest level reference to the hierarchies used to categorize the product. Only one value accepted per taxonomy (`taxonomy_category_id`)
+    ProductsIntegrationSuccessResponse:
+      allOf:
+      - $ref: '#/components/schemas/ProductsIntegrationBaseResponse'
+      - type: object
+        properties:
+          action:
+            $ref: '#/components/schemas/ResponseAction'
+          synchronization:
+            $ref: '#/components/schemas/Synchronization'
+    Domain:
+      type: string
+      default: apparel
+      enum:
+      - apparel
+    ProductIntegrationListResponse:
+      type: object
+      description: Paginated list of products, items, or materials.
+      properties:
+        code:
+          type: integer
+          example: 200
+        status:
+          type: string
+          example: success
+        count:
+          type: integer
+          description: Total number of records matching the query.
+        next:
+          type:
+          - string
+          - 'null'
+          description: URL of the next page, if any.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: URL of the previous page, if any.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductIntegrationDetail'
+    MaterialCategory:
+      type: object
+      required:
+      - taxonomy_custom_id
+      - custom_id
+      properties:
+        taxonomy_custom_id:
+          type: string
+          description: Custom Identifier of the Hierarchy for which you want to set a category
+          enum:
+          - material
+        custom_id:
+          type: string
+          description: Custom Identifier of the Category within the Hierarchy
+          example: 540.120884014
+    BomComponentEsgCreateObject:
+      type: object
+      properties:
+        group:
+          type:
+          - string
+          - 'null'
+          description: Group of the ESG
+        standard:
+          type: string
+          description: Standard of the ESG
+        unitAmount:
+          type:
+          - number
+          - 'null'
+          description: Unit amount of the ESG
+        amountUom:
+          type:
+          - string
+          - 'null'
+          description: amount uom of the ESG
+      required:
+      - standard
+    ProductIntegrationDetail:
+      type: object
+      properties:
+        name:
+          type: string
+        customId:
+          type: string
+        entityType:
+          type: string
+          enum:
+          - pdt
+          - itm
+          - mat
+          description: Internal entity type code.
+        description:
+          type: string
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductIntegrationCategory'
+        ownerOrg:
+          $ref: '#/components/schemas/ProductIntegrationOrg'
+        creatorOrg:
+          allOf:
+          - $ref: '#/components/schemas/ProductIntegrationOrg'
+        lastUpdateSource:
+          type: string
+        createdAt:
+          type: string
+          example: '2024-06-01T14:30:05Z'
+        updatedAt:
+          type: string
+          example: '2024-06-01T14:30:05Z'
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+        style:
+          $ref: '#/components/schemas/ProductIntegrationStyleRef'
+        productId:
+          type: string
+        revisionId:
+          type: integer
+        isSet:
+          type: boolean
+        set:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductIntegrationSetElement'
+        domainAttributes:
+          type: object
+          additionalProperties: true
+        additionalAttributes:
+          type: object
+          additionalProperties: true
+        suppliers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductIntegrationLocalOrg'
+        factories:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductIntegrationLocalOrg'
+    BomErrorResponse:
+      type: object
+      properties:
+        customId:
+          type: array
+          items:
+            type: string
+          description: Error messages for custom ID field
+          example:
+          - BOM with custom_id 'BOM-001' already exists for this product and purchase order
+        name:
+          type: array
+          items:
+            type: string
+          description: Error messages for name field
+          example:
+          - BOM with name 'Manufacturing BOM for Winter Line' already exists for this product and purchase order
+        active:
+          type: array
+          items:
+            type: string
+          description: Error messages for active field
+          example:
+          - This field is required.
+        productType:
+          type: array
+          items:
+            type: string
+          description: Error messages for product type field
+          example:
+          - This field is required.
+        productCustomId:
+          type: array
+          items:
+            type: string
+          description: Error messages for product custom ID field
+          example:
+          - This field is required.
+        contributions:
+          type: array
+          items:
+            type: object
+            properties:
+              role:
+                type: array
+                items:
+                  type: string
+              orgCustomId:
+                type: array
+                items:
+                  type: string
+          example:
+          - role:
+            - This field is required.
+            orgCustomId:
+            - This field is required.
+        orgCustomId:
+          type: array
+          items:
+            type: string
+          description: Error messages for local org custom ID
+          example:
+          - Local organization with custom ID 'non_existent_org' not found
+    BomComponentFacilityIntegrationObject:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the facility
+        capabilities:
+          type: array
+          description: Capabilities of the facility
+          items:
+            type: string
+            description: Capability of the facility
+        customId:
+          type: string
+          description: Custom ID of the facility
+        address:
+          type: string
+          description: Address of the facility
+        city:
+          type: string
+          description: City of the facility
+        stateProvince:
+          type: string
+          description: State/Province of the facility
+        postalZipCode:
+          type: string
+          description: Postal/Zip code of the facility
+        country:
+          type: string
+          description: Country of the facility
+        phone:
+          type: string
+          description: Phone of the facility
+        contactName:
+          type: string
+          description: Contact name of the facility
+        contactEmail:
+          type: string
+          description: Contact email of the facility
+        contactPhone:
+          type: string
+          description: Contact phone of the facility
+    ForceUpdate:
+      type: object
+      properties:
+        force_update:
+          type:
+          - boolean
+          - 'null'
+          description: Force update defines whether the data should be updated even in case the last update source happened by user action in Inspectorio Platform
+    ProductIntegrationLocalOrg:
+      type: object
+      properties:
+        id:
+          type:
+          - integer
+          - 'null'
+        globalOrgId:
+          type:
+          - integer
+          - 'null'
+        customId:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+    ProductIntegrationStyleRef:
+      type: object
+      description: Present for items when the item has a parent style product.
+      properties:
+        styleUuid:
+          type:
+          - string
+          - 'null'
+        styleId:
+          type:
+          - string
+          - 'null'
+        styleName:
+          type:
+          - string
+          - 'null'
     BomComponentIntegrationObject:
       type: object
       properties:
@@ -456,46 +953,6 @@ components:
             $ref: '#/components/schemas/BomComponentFacilityIntegrationObject'
         bom:
           $ref: '#/components/schemas/BomDetailIntegrationObject'
-    ProductIntegrationErrorResponse:
-      type: object
-      description: Validation or client error (shape may include field keys or DRF `detail`).
-      additionalProperties: true
-    BomComponentSupplierIntegrationObject:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the supplier
-        customId:
-          type: string
-          description: Custom ID of the supplier
-        address:
-          type: string
-          description: Address of the supplier
-        city:
-          type: string
-          description: City of the supplier
-        stateProvince:
-          type: string
-          description: State/Province of the supplier
-        postalZipCode:
-          type: string
-          description: Postal/Zip code of the supplier
-        country:
-          type: string
-          description: Country of the supplier
-        phone:
-          type: string
-          description: Phone of the supplier
-        contactName:
-          type: string
-          description: Contact name of the supplier
-        contactEmail:
-          type: string
-          description: Contact email of the supplier
-        contactPhone:
-          type: string
-          description: Contact phone of the supplier
     BomCreateRequest:
       type: object
       required:
@@ -529,64 +986,72 @@ components:
             items:
               $ref: '#/components/schemas/BomComponentCreateObject'
             default: []
-    StatusCode:
-      type: integer
-      enum:
-      - 200
-      - 202
-      - 400
-      - 500
-    CustomId:
-      type: string
-      maxLength: 128
-      description: Custom identifier for the entity provided
-    BomCommonFields:
+    BomDetailIntegrationObject:
       type: object
       properties:
+        customId:
+          type: string
+          description: Custom ID of the BOM
         name:
           type: string
-          maxLength: 255
           description: Name of the BOM
         description:
           type: string
-          maxLength: 5000
           description: Description of the BOM
+        enabled:
+          type: boolean
+          description: Is the BOM active
+        createdAt:
+          type: string
+          description: Created at date of the BOM
+          format: date-time
+        productType:
+          type: string
+          description: Product type of the BOM
+        productCustomId:
+          type: string
+          description: Custom ID of the product (item/style)
         poNumber:
           type: string
-          maxLength: 255
-          description: PO Number (custom ID) of the PO that BOM is attached to (if available)
+          description: Purchase order number of the BOM
+        attachments:
+          type: array
+          description: Attachments of the BOM
+          items:
+            $ref: '#/components/schemas/BomAttachmentIntegrationObject'
         contributions:
           type: array
-          description: List of contributions to associate with the BOM
+          description: Contributors of the BOM
           items:
-            $ref: '#/components/schemas/BomContributionRequest'
-    ProductIntegrationListResponse:
-      type: object
-      description: Paginated list of products, items, or materials.
-      properties:
-        code:
-          type: integer
-          example: 200
-        status:
-          type: string
-          example: success
-        count:
-          type: integer
-          description: Total number of records matching the query.
-        next:
-          type:
-          - string
-          - 'null'
-          description: URL of the next page, if any.
-        previous:
-          type:
-          - string
-          - 'null'
-          description: URL of the previous page, if any.
-        results:
+            $ref: '#/components/schemas/BomContributionIntegrationObject'
+        components:
           type: array
+          description: Components of the BOM
           items:
-            $ref: '#/components/schemas/ProductIntegrationDetail'
+            $ref: '#/components/schemas/BomComponentIntegrationObject'
+        customFields:
+          type: object
+          description: 'Custom fields defined in the BOM Form with API Integration Keys configured.
+
+            Keys are the user-defined API Integration Keys (apiIntegrationKey or apiIntegrationKey1).
+
+            Values can be strings, numbers, booleans, arrays, or nested objects depending on the field type.
+
+            This field is only present when at least one field has an API Integration Key configured.
+
+            System ID fields (bom_id, component_id, supplier_id, etc.) are preserved with their original names for row identification.
+
+            '
+          additionalProperties: true
+          example:
+            bom_id: BOM-001
+            bom_description_custom: Custom description
+            components:
+            - supplier_component_id: COMP-001
+              component_name_api: Fabric A
+              suppliers_custom:
+              - supplier_id: SUP-001
+                supplier_address_custom: 123 Main St
     schemas-Item:
       allOf:
       - $ref: '#/components/schemas/BaseProduct'
@@ -606,14 +1071,137 @@ components:
             items:
               $ref: '#/components/schemas/schemas-ProductCategory'
             description: The lowest level reference to the hierarchies used to categorize the product. Only one value accepted per taxonomy (`taxonomy_category_id`)
-    EntityType:
+    ProductIntegrationCategory:
+      type: object
+      properties:
+        taxonomy:
+          type:
+          - string
+          - 'null'
+        levelCustomId:
+          type:
+          - string
+          - 'null'
+        levelIdentifier:
+          type:
+          - string
+          - 'null'
+        customId:
+          type: string
+        name:
+          type: string
+        businessId:
+          type: string
+        customIdentifierId:
+          type:
+          - string
+          - 'null'
+    ResponseAction:
       type: string
       enum:
-      - product
-      - item
-      - material
-      - category
-      description: The type of entity to be updated, unique with the provided custom identifier
+      - processed
+      - error
+      - skipped
+    ItemSet:
+      allOf:
+      - $ref: '#/components/schemas/BaseProduct'
+      - type: object
+        required:
+        - set
+        properties:
+          entity_type:
+            type: string
+            enum:
+            - item
+          categories:
+            type: array
+            items:
+              $ref: '#/components/schemas/schemas-ProductCategory'
+            description: The lowest level reference to the hierarchies used to categorize the product. Only one value accepted per taxonomy (`taxonomy_category_id`)
+          set:
+            type: object
+            required:
+            - entity_type
+            - elements
+            properties:
+              entity_type:
+                type: string
+                enum:
+                - product
+                - item
+                - material
+              elements:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ItemSetReference'
+    BomComponentFacilityCreateObject:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the facility
+        capabilities:
+          type:
+          - array
+          - 'null'
+          description: Capabilities of the facility
+          items:
+            type:
+            - string
+            - 'null'
+            description: Capability of the facility
+        customId:
+          type:
+          - string
+          - 'null'
+          description: Custom ID of the facility
+        address:
+          type:
+          - string
+          - 'null'
+          description: Address of the facility
+        city:
+          type:
+          - string
+          - 'null'
+          description: City of the facility
+        stateProvince:
+          type:
+          - string
+          - 'null'
+          description: State/Province of the facility
+        postalZipCode:
+          type:
+          - string
+          - 'null'
+          description: Postal/Zip code of the facility
+        country:
+          type:
+          - string
+          - 'null'
+          description: Country of the facility
+        phone:
+          type:
+          - string
+          - 'null'
+          description: Phone of the facility
+        contactName:
+          type:
+          - string
+          - 'null'
+          description: Contact name of the facility
+        contactEmail:
+          type:
+          - string
+          - 'null'
+          description: Contact email of the facility
+        contactPhone:
+          type:
+          - string
+          - 'null'
+          description: Contact phone of the facility
+      required:
+      - name
     BomContributionRequest:
       type: object
       required:
@@ -630,28 +1218,13 @@ components:
           type: string
           maxLength: 128
           description: Local Org ID of the org
-    Synchronization:
-      allOf:
-      - $ref: '#/components/schemas/CustomRevision'
-      type: object
-      properties:
-        entity_type:
-          $ref: '#/components/schemas/EntityType'
-        last_update_source:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-        status:
-          $ref: '#/components/schemas/Status'
-    Domain:
+    schemas-EntityType:
       type: string
-      default: apparel
       enum:
-      - apparel
+      - product
+      - item
+      - material
+      description: The type of the entity that the BOM is attached to
     BomComponentCreateObject:
       type: object
       properties:
@@ -787,205 +1360,6 @@ components:
       required:
       - name
       - productType
-    schemas-Product:
-      allOf:
-      - $ref: '#/components/schemas/BaseProduct'
-      - type: object
-        properties:
-          entity_type:
-            type: string
-            enum:
-            - product
-          categories:
-            type: array
-            items:
-              $ref: '#/components/schemas/schemas-ProductCategory'
-            description: The lowest level reference to the hierarchies used to categorize the product. Only one value accepted per taxonomy (`taxonomy_category_id`)
-    ForceUpdate:
-      type: object
-      properties:
-        force_update:
-          type:
-          - boolean
-          - 'null'
-          description: Force update defines whether the data should be updated even in case the last update source happened by user action in Inspectorio Platform
-    ResponseAction:
-      type: string
-      enum:
-      - processed
-      - error
-      - skipped
-    Material:
-      allOf:
-      - $ref: '#/components/schemas/BaseProduct'
-      - type: object
-        properties:
-          entity_type:
-            type: string
-            enum:
-            - material
-          categories:
-            type: array
-            items:
-              $ref: '#/components/schemas/MaterialCategory'
-            description: The lowest level reference to the hierarchies used to categorize the product. Only one value accepted per taxonomy (`taxonomy_category_id`)
-    BomContributionIntegrationObject:
-      type: object
-      properties:
-        role:
-          type: string
-          description: Role of the contributor
-          enum:
-          - bom_editor
-          - bom_viewer
-        orgCustomId:
-          type:
-          - string
-          - 'null'
-          description: Custom ID of the contributor org
-    ProductIntegrationDetail:
-      type: object
-      properties:
-        name:
-          type: string
-        customId:
-          type: string
-        entityType:
-          type: string
-          enum:
-          - pdt
-          - itm
-          - mat
-          description: Internal entity type code.
-        description:
-          type: string
-        categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductIntegrationCategory'
-        ownerOrg:
-          $ref: '#/components/schemas/ProductIntegrationOrg'
-        creatorOrg:
-          allOf:
-          - $ref: '#/components/schemas/ProductIntegrationOrg'
-        lastUpdateSource:
-          type: string
-        createdAt:
-          type: string
-          example: '2024-06-01T14:30:05Z'
-        updatedAt:
-          type: string
-          example: '2024-06-01T14:30:05Z'
-        status:
-          type: string
-          enum:
-          - active
-          - inactive
-        style:
-          $ref: '#/components/schemas/ProductIntegrationStyleRef'
-        productId:
-          type: string
-        revisionId:
-          type: integer
-        isSet:
-          type: boolean
-        set:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductIntegrationSetElement'
-        domainAttributes:
-          type: object
-          additionalProperties: true
-        additionalAttributes:
-          type: object
-          additionalProperties: true
-        suppliers:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductIntegrationLocalOrg'
-        factories:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductIntegrationLocalOrg'
-    BaseProduct:
-      allOf:
-      - $ref: '#/components/schemas/CustomRevision'
-      - $ref: '#/components/schemas/ForceUpdate'
-      type: object
-      required:
-      - custom_id
-      - custom_revision
-      - entity_type
-      - status
-      properties:
-        domain:
-          $ref: '#/components/schemas/Domain'
-        custom_id:
-          $ref: '#/components/schemas/CustomId'
-          description: Unique Custom identifier for products in your system
-        entity_type:
-          $ref: '#/components/schemas/EntityType'
-        name:
-          type: string
-          maxLength: 255
-          description: Name of the product
-        description:
-          type: string
-          description: Description of the product
-        status:
-          $ref: '#/components/schemas/Status'
-          description: Status of the product
-        domain_attributes:
-          type: object
-          description: Domain attributes for products natively supported by our Platform
-          additionalProperties:
-            type: string
-          example:
-            color: Blue
-            size: XL
-            origin_country:
-            - US
-            - CN
-        additional_attributes:
-          type: object
-          description: Additional attributes for products which are not natively supported by our Platform which are configurable by the client
-          additionalProperties:
-            type: string
-          example:
-            business_unit: US
-        contributions:
-          type: array
-          items:
-            $ref: '#/components/schemas/ItemContribution'
-    MaterialCategory:
-      type: object
-      required:
-      - taxonomy_custom_id
-      - custom_id
-      properties:
-        taxonomy_custom_id:
-          type: string
-          description: Custom Identifier of the Hierarchy for which you want to set a category
-          enum:
-          - material
-        custom_id:
-          type: string
-          description: Custom Identifier of the Category within the Hierarchy
-          example: 540.120884014
-    BomIntegrationComponentAttributeValue:
-      type: string
-      description: Component sustainability attribute (typical BOM form tagbox choices).
-      enum:
-      - Organic
-      - Recycled
-      - Sustainable
-    schemas-EntityType:
-      type: string
-      enum:
-      - product
-      - item
-      - material
-      description: The type of the entity that the BOM is attached to
     BomUpdateRequest:
       type: object
       required:
@@ -1006,97 +1380,6 @@ components:
             items:
               $ref: '#/components/schemas/BomComponentCreateObject'
             default: []
-    BomAttachmentIntegrationObject:
-      type: object
-      properties:
-        fileName:
-          type: string
-          description: File name of the attachment
-        fileUrl:
-          type: string
-          description: URL of the attachment
-    BomDetailIntegrationObject:
-      type: object
-      properties:
-        customId:
-          type: string
-          description: Custom ID of the BOM
-        name:
-          type: string
-          description: Name of the BOM
-        description:
-          type: string
-          description: Description of the BOM
-        enabled:
-          type: boolean
-          description: Is the BOM active
-        createdAt:
-          type: string
-          description: Created at date of the BOM
-          format: date-time
-        productType:
-          type: string
-          description: Product type of the BOM
-        productCustomId:
-          type: string
-          description: Custom ID of the product (item/style)
-        poNumber:
-          type: string
-          description: Purchase order number of the BOM
-        attachments:
-          type: array
-          description: Attachments of the BOM
-          items:
-            $ref: '#/components/schemas/BomAttachmentIntegrationObject'
-        contributions:
-          type: array
-          description: Contributors of the BOM
-          items:
-            $ref: '#/components/schemas/BomContributionIntegrationObject'
-        components:
-          type: array
-          description: Components of the BOM
-          items:
-            $ref: '#/components/schemas/BomComponentIntegrationObject'
-        customFields:
-          type: object
-          description: 'Custom fields defined in the BOM Form with API Integration Keys configured.
-
-            Keys are the user-defined API Integration Keys (apiIntegrationKey or apiIntegrationKey1).
-
-            Values can be strings, numbers, booleans, arrays, or nested objects depending on the field type.
-
-            This field is only present when at least one field has an API Integration Key configured.
-
-            System ID fields (bom_id, component_id, supplier_id, etc.) are preserved with their original names for row identification.
-
-            '
-          additionalProperties: true
-          example:
-            bom_id: BOM-001
-            bom_description_custom: Custom description
-            components:
-            - supplier_component_id: COMP-001
-              component_name_api: Fabric A
-              suppliers_custom:
-              - supplier_id: SUP-001
-                supplier_address_custom: 123 Main St
-    ItemContribution:
-      type: object
-      required:
-      - role
-      - org_custom_id
-      properties:
-        role:
-          $ref: '#/components/schemas/ContributionRole'
-          description: This will be pre-defined by Inspectorio in the 1st phase. "manufacturer" role will only have "read" permission to access the items' attributes / properties.
-        org_custom_id:
-          $ref: '#/components/schemas/CustomId'
-          example: S208
-          description: Local Organization ID or BP ID / Vendor ID of the item's provider (Vendor/Supplier)
-        product_custom_id:
-          $ref: '#/components/schemas/CustomId'
-          description: (Optional) The item ID from Vendor/Supplier's internal system if available (e.g. vendor/supplier article number)
     ItemSetReference:
       type: object
       required:
@@ -1108,129 +1391,6 @@ components:
         quantity:
           type: integer
           default: 1
-    BomComponentFacilityCreateObject:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the facility
-        capabilities:
-          type:
-          - array
-          - 'null'
-          description: Capabilities of the facility
-          items:
-            type:
-            - string
-            - 'null'
-            description: Capability of the facility
-        customId:
-          type:
-          - string
-          - 'null'
-          description: Custom ID of the facility
-        address:
-          type:
-          - string
-          - 'null'
-          description: Address of the facility
-        city:
-          type:
-          - string
-          - 'null'
-          description: City of the facility
-        stateProvince:
-          type:
-          - string
-          - 'null'
-          description: State/Province of the facility
-        postalZipCode:
-          type:
-          - string
-          - 'null'
-          description: Postal/Zip code of the facility
-        country:
-          type:
-          - string
-          - 'null'
-          description: Country of the facility
-        phone:
-          type:
-          - string
-          - 'null'
-          description: Phone of the facility
-        contactName:
-          type:
-          - string
-          - 'null'
-          description: Contact name of the facility
-        contactEmail:
-          type:
-          - string
-          - 'null'
-          description: Contact email of the facility
-        contactPhone:
-          type:
-          - string
-          - 'null'
-          description: Contact phone of the facility
-      required:
-      - name
-    CustomRevision:
-      type: object
-      properties:
-        custom_revision:
-          type: string
-          maxLength: 255
-          description: This identifier is a lexographically ordered string used to identify the revision from client's side and used to track changes and avoid unintentional data overwriting such as repeated identical requests.
-          example: 1729684717164
-    Status:
-      type: string
-      enum:
-      - active
-      - inactive
-    BomComponentFacilityIntegrationObject:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the facility
-        capabilities:
-          type: array
-          description: Capabilities of the facility
-          items:
-            type: string
-            description: Capability of the facility
-        customId:
-          type: string
-          description: Custom ID of the facility
-        address:
-          type: string
-          description: Address of the facility
-        city:
-          type: string
-          description: City of the facility
-        stateProvince:
-          type: string
-          description: State/Province of the facility
-        postalZipCode:
-          type: string
-          description: Postal/Zip code of the facility
-        country:
-          type: string
-          description: Country of the facility
-        phone:
-          type: string
-          description: Phone of the facility
-        contactName:
-          type: string
-          description: Contact name of the facility
-        contactEmail:
-          type: string
-          description: Contact email of the facility
-        contactPhone:
-          type: string
-          description: Contact phone of the facility
     BomComponentSupplierCreateObject:
       type: object
       properties:
@@ -1290,105 +1450,167 @@ components:
           description: Contact phone of the supplier
       required:
       - name
-    BomComponentEsgCreateObject:
-      type: object
-      properties:
-        group:
-          type:
-          - string
-          - 'null'
-          description: Group of the ESG
-        standard:
-          type: string
-          description: Standard of the ESG
-        unitAmount:
-          type:
-          - number
-          - 'null'
-          description: Unit amount of the ESG
-        amountUom:
-          type:
-          - string
-          - 'null'
-          description: amount uom of the ESG
-      required:
-      - standard
-    ProductIntegrationCategory:
-      type: object
-      properties:
-        taxonomy:
-          type:
-          - string
-          - 'null'
-        levelCustomId:
-          type:
-          - string
-          - 'null'
-        levelIdentifier:
-          type:
-          - string
-          - 'null'
-        customId:
-          type: string
-        name:
-          type: string
-        businessId:
-          type: string
-        customIdentifierId:
-          type:
-          - string
-          - 'null'
-    ProductIntegrationLocalOrg:
-      type: object
-      properties:
-        id:
-          type:
-          - integer
-          - 'null'
-        globalOrgId:
-          type:
-          - integer
-          - 'null'
-        customId:
-          type:
-          - string
-          - 'null'
-        name:
-          type:
-          - string
-          - 'null'
-    ItemSet:
+    StatusCode:
+      type: integer
+      enum:
+      - 200
+      - 202
+      - 400
+      - 500
+    BaseProduct:
       allOf:
-      - $ref: '#/components/schemas/BaseProduct'
-      - type: object
-        required:
-        - set
-        properties:
-          entity_type:
+      - $ref: '#/components/schemas/CustomRevision'
+      - $ref: '#/components/schemas/ForceUpdate'
+      type: object
+      required:
+      - custom_id
+      - custom_revision
+      - entity_type
+      - status
+      properties:
+        domain:
+          $ref: '#/components/schemas/Domain'
+        custom_id:
+          $ref: '#/components/schemas/CustomId'
+          description: Unique Custom identifier for products in your system
+        entity_type:
+          $ref: '#/components/schemas/EntityType'
+        name:
+          type: string
+          maxLength: 255
+          description: Name of the product
+        description:
+          type: string
+          description: Description of the product
+        status:
+          $ref: '#/components/schemas/Status'
+          description: Status of the product
+        domain_attributes:
+          type: object
+          description: Domain attributes for products natively supported by our Platform
+          additionalProperties:
             type: string
-            enum:
-            - item
-          categories:
+          example:
+            color: Blue
+            size: XL
+            origin_country:
+            - US
+            - CN
+        additional_attributes:
+          type: object
+          description: Additional attributes for products which are not natively supported by our Platform which are configurable by the client
+          additionalProperties:
+            type: string
+          example:
+            business_unit: US
+        contributions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemContribution'
+    ItemContribution:
+      type: object
+      required:
+      - role
+      - org_custom_id
+      properties:
+        role:
+          $ref: '#/components/schemas/ContributionRole'
+          description: This will be pre-defined by Inspectorio in the 1st phase. "manufacturer" role will only have "read" permission to access the items' attributes / properties.
+        org_custom_id:
+          $ref: '#/components/schemas/CustomId'
+          example: S208
+          description: Local Organization ID or BP ID / Vendor ID of the item's provider (Vendor/Supplier)
+        product_custom_id:
+          $ref: '#/components/schemas/CustomId'
+          description: (Optional) The item ID from Vendor/Supplier's internal system if available (e.g. vendor/supplier article number)
+    ProductsIntegrationErrorResponse:
+      allOf:
+      - $ref: '#/components/schemas/ProductsIntegrationBaseResponse'
+      - type: object
+        properties:
+          errors:
             type: array
             items:
-              $ref: '#/components/schemas/schemas-ProductCategory'
-            description: The lowest level reference to the hierarchies used to categorize the product. Only one value accepted per taxonomy (`taxonomy_category_id`)
-          set:
-            type: object
-            required:
-            - entity_type
-            - elements
-            properties:
-              entity_type:
-                type: string
-                enum:
-                - product
-                - item
-                - material
-              elements:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ItemSetReference'
+              type: string
+            example:
+            - 'custom_revision: This field is required'
+            - 'custom_id: Invalid format'
+            - 'status: "INVALID" is not a valid choice.'
+    ProductIntegrationErrorResponse:
+      type: object
+      description: Validation or client error (shape may include field keys or DRF `detail`).
+      additionalProperties: true
+    BomComponentSupplierIntegrationObject:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the supplier
+        customId:
+          type: string
+          description: Custom ID of the supplier
+        address:
+          type: string
+          description: Address of the supplier
+        city:
+          type: string
+          description: City of the supplier
+        stateProvince:
+          type: string
+          description: State/Province of the supplier
+        postalZipCode:
+          type: string
+          description: Postal/Zip code of the supplier
+        country:
+          type: string
+          description: Country of the supplier
+        phone:
+          type: string
+          description: Phone of the supplier
+        contactName:
+          type: string
+          description: Contact name of the supplier
+        contactEmail:
+          type: string
+          description: Contact email of the supplier
+        contactPhone:
+          type: string
+          description: Contact phone of the supplier
+    ProductsIntegrationBaseResponse:
+      type: object
+      properties:
+        custom_id:
+          $ref: '#/components/schemas/CustomId'
+        status_code:
+          $ref: '#/components/schemas/StatusCode'
+    BomCommonFields:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          description: Name of the BOM
+        description:
+          type: string
+          maxLength: 5000
+          description: Description of the BOM
+        poNumber:
+          type: string
+          maxLength: 255
+          description: PO Number (custom ID) of the PO that BOM is attached to (if available)
+        contributions:
+          type: array
+          description: List of contributions to associate with the BOM
+          items:
+            $ref: '#/components/schemas/BomContributionRequest'
+    CustomRevision:
+      type: object
+      properties:
+        custom_revision:
+          type: string
+          maxLength: 255
+          description: This identifier is a lexographically ordered string used to identify the revision from client's side and used to track changes and avoid unintentional data overwriting such as repeated identical requests.
+          example: 1729684717164
     schemas-ProductCategory:
       type: object
       required:
@@ -1406,118 +1628,20 @@ components:
           type: string
           description: Custom Identifier of the Category within the Hierarchy
           example: 540.120884014
-    ProductsIntegrationBaseResponse:
+    BomAttachmentIntegrationObject:
       type: object
       properties:
-        custom_id:
-          $ref: '#/components/schemas/CustomId'
-        status_code:
-          $ref: '#/components/schemas/StatusCode'
-    ProductsIntegrationSuccessResponse:
-      allOf:
-      - $ref: '#/components/schemas/ProductsIntegrationBaseResponse'
-      - type: object
-        properties:
-          action:
-            $ref: '#/components/schemas/ResponseAction'
-          synchronization:
-            $ref: '#/components/schemas/Synchronization'
-    ContributionRole:
+        fileName:
+          type: string
+          description: File name of the attachment
+        fileUrl:
+          type: string
+          description: URL of the attachment
+    Status:
       type: string
       enum:
-      - provider
-      - manufacturer
-    ProductIntegrationSetElement:
-      type: object
-      properties:
-        styleUuid:
-          type:
-          - string
-          - 'null'
-        styleId:
-          type:
-          - string
-          - 'null'
-        styleName:
-          type:
-          - string
-          - 'null'
-    ProductsIntegrationErrorResponse:
-      allOf:
-      - $ref: '#/components/schemas/ProductsIntegrationBaseResponse'
-      - type: object
-        properties:
-          errors:
-            type: array
-            items:
-              type: string
-            example:
-            - 'custom_revision: This field is required'
-            - 'custom_id: Invalid format'
-            - 'status: "INVALID" is not a valid choice.'
-    BomErrorResponse:
-      type: object
-      properties:
-        customId:
-          type: array
-          items:
-            type: string
-          description: Error messages for custom ID field
-          example:
-          - BOM with custom_id 'BOM-001' already exists for this product and purchase order
-        name:
-          type: array
-          items:
-            type: string
-          description: Error messages for name field
-          example:
-          - BOM with name 'Manufacturing BOM for Winter Line' already exists for this product and purchase order
-        active:
-          type: array
-          items:
-            type: string
-          description: Error messages for active field
-          example:
-          - This field is required.
-        productType:
-          type: array
-          items:
-            type: string
-          description: Error messages for product type field
-          example:
-          - This field is required.
-        productCustomId:
-          type: array
-          items:
-            type: string
-          description: Error messages for product custom ID field
-          example:
-          - This field is required.
-        contributions:
-          type: array
-          items:
-            type: object
-            properties:
-              role:
-                type: array
-                items:
-                  type: string
-              orgCustomId:
-                type: array
-                items:
-                  type: string
-          example:
-          - role:
-            - This field is required.
-            orgCustomId:
-            - This field is required.
-        orgCustomId:
-          type: array
-          items:
-            type: string
-          description: Error messages for local org custom ID
-          example:
-          - Local organization with custom ID 'non_existent_org' not found
+      - active
+      - inactive
     ProductIntegrationOrg:
       type: object
       properties:
@@ -1529,134 +1653,10 @@ components:
           type: string
         type:
           type: string
-    ProductIntegrationStyleRef:
-      type: object
-      description: Present for items when the item has a parent style product.
-      properties:
-        styleUuid:
-          type:
-          - string
-          - 'null'
-        styleId:
-          type:
-          - string
-          - 'null'
-        styleName:
-          type:
-          - string
-          - 'null'
-  parameters:
-    ProductIntegrationUpdatedFrom:
-      name: updatedFrom
-      in: query
-      required: false
-      description: Lower bound (inclusive) on `updatedAt`, ISO 8601 datetime.
-      schema:
-        type: string
-        format: date-time
-        example: '2024-06-01T00:00:00+00:00'
-    components-parameters-EntityType:
-      name: entity_type
-      in: path
-      required: true
-      schema:
-        type: string
-        enum:
-        - product
-        - item
-        - material
-    DataProviderCustomId:
-      name: dataProviderCustomId
-      in: query
-      required: false
-      description: 'Optional Local org custom id whose global organization is used
-
-        as the data scope for the lookup. When omitted, the authenticated organization is used.
-
-        '
-      schema:
-        type: string
-    ProductIntegrationUpdatedTo:
-      name: updatedTo
-      in: query
-      required: false
-      description: Upper bound (inclusive) on `updatedAt`, ISO 8601 datetime.
-      schema:
-        type: string
-        format: date-time
-        example: '2024-12-31T23:59:59+00:00'
-    ProductIntegrationCreatedTo:
-      name: createdTo
-      in: query
-      required: false
-      description: Upper bound (inclusive) on `createdAt`, ISO 8601 datetime.
-      schema:
-        type: string
-        format: date-time
-        example: '2024-12-31T23:59:59+00:00'
-    ProductIntegrationCreatedFrom:
-      name: createdFrom
-      in: query
-      required: false
-      description: Lower bound (inclusive) on `createdAt`, ISO 8601 datetime.
-      schema:
-        type: string
-        format: date-time
-        example: '2024-06-01T00:00:00+00:00'
     CustomId:
-      name: custom_id
-      in: path
-      required: true
-      schema:
-        type: string
-    PoNumber:
-      name: poNumber
-      in: query
-      required: false
-      schema:
-        type: string
-      description: Optional Purchase Order number to use when filtering BOMs. Use this when multiple BOMs exist with the same custom ID but different POs.
-    ProductIntegrationStatusFilter:
-      name: status
-      in: query
-      required: false
-      description: Filter by lifecycle status.
-      schema:
-        type: string
-        enum:
-        - active
-        - inactive
-    EntityType:
-      name: entity_type
-      in: path
-      required: true
-      schema:
-        $ref: '#/components/schemas/EntityType'
-    ProductIntegrationOffset:
-      name: offset
-      in: query
-      required: false
-      description: Number of records to skip before returning results.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
-    parameters-EntityType:
-      name: entity_type
-      in: path
-      required: true
-      schema:
-        $ref: '#/components/schemas/schemas-EntityType'
-    ProductIntegrationLimit:
-      name: limit
-      in: query
-      required: false
-      description: Page size; default 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 50
-        default: 10
+      type: string
+      maxLength: 128
+      description: Custom identifier for the entity provided
   securitySchemes:
     ApiKeyAuth:
       in: header

@@ -59,51 +59,13 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ProductCategory:
-      properties:
-        productCategoryDescription:
-          description: Description of the product category
-          example: Apparel women tops
-          type: string
-        productCategoryId:
-          description: Unique identifier of the product category
-          example: '123123'
-          type: string
-        productCategoryName:
-          description: Name of the product category
-          example: Womens top
-          type: string
-      type: object
-    BadRequestApiError:
+    TooManyResponsesApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         message:
-          example: Bad Request
-          type: string
-      type: object
-    ValidateApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            type:
-            - Input type is not valid
-          type: object
-        message:
-          example: Validation error
-          type: string
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
+          example: Too many requests
           type: string
       type: object
     InternalApiError:
@@ -120,21 +82,18 @@ components:
           example: Internal server error
           type: string
       type: object
-    ProductListResponse:
-      properties:
-        data:
-          description: Product data
-          items:
-            $ref: '#/components/schemas/ProductResponse'
-          type: array
-      type: object
-    TooManyResponsesApiError:
+    ValidateApiError:
       properties:
         errorCode:
           example: Generic
           type: string
+        errors:
+          example:
+            type:
+            - Input type is not valid
+          type: object
         message:
-          example: Too many requests
+          example: Validation error
           type: string
       type: object
     ProductResponse:
@@ -146,6 +105,14 @@ components:
           description: 'Unique identifier of the product line '
           example: A123
           type: string
+      type: object
+    ProductListResponse:
+      properties:
+        data:
+          description: Product data
+          items:
+            $ref: '#/components/schemas/ProductResponse'
+          type: array
       type: object
     Product:
       properties:
@@ -161,6 +128,39 @@ components:
         productName:
           description: Name of the product
           example: Cashmere womens top
+          type: string
+      type: object
+    ProductCategory:
+      properties:
+        productCategoryDescription:
+          description: Description of the product category
+          example: Apparel women tops
+          type: string
+        productCategoryId:
+          description: Unique identifier of the product category
+          example: '123123'
+          type: string
+        productCategoryName:
+          description: Name of the product category
+          example: Womens top
+          type: string
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
           type: string
       type: object
   securitySchemes:

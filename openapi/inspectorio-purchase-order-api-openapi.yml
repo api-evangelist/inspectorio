@@ -355,183 +355,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    CustomResponse9:
-      properties:
-        data:
-          $ref: '#/components/schemas/PurchaseOrderResponse'
-      type: object
-    AssortmentItem:
-      properties:
-        brandId:
-          description: 'Precondition: must be configured in your Inspectorio''s account.'
-          example: brand_1
-          type:
-          - string
-          - 'null'
-        brandName:
-          minLength: 1
-          readOnly: true
-          type: string
-        classId:
-          example: class_id_1
-          type:
-          - string
-          - 'null'
-        color:
-          minLength: 1
-          type: string
-        configuration:
-          minimum: 1
-          type: integer
-        departmentId:
-          example: department_id_1
-          type:
-          - string
-          - 'null'
-        id:
-          type:
-          - string
-          - 'null'
-        itemId:
-          minLength: 1
-          type: string
-        quantity:
-          readOnly: true
-          type: integer
-        shipmentTerm:
-          example: shipment_term_1
-          type:
-          - string
-          - 'null'
-        size:
-          minLength: 1
-          type: string
-      required:
-      - color
-      - configuration
-      - itemId
-      - size
-      type: object
-    SolidItem:
-      properties:
-        brandId:
-          description: 'Precondition: must be configured in your Inspectorio''s account.'
-          example: brand_1
-          type:
-          - string
-          - 'null'
-        brandName:
-          minLength: 1
-          readOnly: true
-          type: string
-        cartonQuantity:
-          minimum: 0
-          type:
-          - integer
-          - 'null'
-        casePackQuantity:
-          minimum: 0
-          type:
-          - integer
-          - 'null'
-        classId:
-          example: class_id_1
-          type:
-          - string
-          - 'null'
-        color:
-          minLength: 1
-          type: string
-        departmentId:
-          example: department_id_1
-          type:
-          - string
-          - 'null'
-        id:
-          type:
-          - string
-          - 'null'
-        itemId:
-          minLength: 1
-          type: string
-        quantity:
-          minimum: 1
-          type: integer
-        shipmentTerm:
-          example: shipment_term_1
-          type:
-          - string
-          - 'null'
-        size:
-          minLength: 1
-          type: string
-      required:
-      - color
-      - itemId
-      - quantity
-      - size
-      type: object
-    CustomResponse10:
-      properties:
-        data:
-          $ref: '#/components/schemas/PurchaseOrderResponse'
-      type: object
-    Assortment:
-      properties:
-        assortmentId:
-          minLength: 1
-          type: string
-        cartonQuantity:
-          minimum: 0
-          type: integer
-        items:
-          items:
-            $ref: '#/components/schemas/AssortmentItem'
-          minItems: 1
-          type: array
-      required:
-      - assortmentId
-      - cartonQuantity
-      - items
-      type: object
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    Style:
-      properties:
-        assortments:
-          items:
-            $ref: '#/components/schemas/Assortment'
-          type:
-          - array
-          - 'null'
-        productCategoryId:
-          example: product_category_1
-          type: string
-        solids:
-          items:
-            $ref: '#/components/schemas/SolidItem'
-          type:
-          - array
-          - 'null'
-        styleId:
-          example: style_1
-          minLength: 1
-          type: string
-        styleName:
-          type:
-          - string
-          - 'null'
-      required:
-      - productCategoryId
-      - styleId
-      type: object
     PurchaseOrderResponse:
       properties:
         clientCreatedDate:
@@ -723,15 +546,6 @@ components:
       - productLineId
       - vendorId
       type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
     PurchaseOrderListResponse:
       properties:
         data:
@@ -753,19 +567,217 @@ components:
       - offset
       - total
       type: object
-    ValidateApiError:
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    CustomResponse8:
+      properties:
+        data:
+          $ref: '#/components/schemas/PurchaseOrderResponse'
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
+      type: object
+    Style:
+      properties:
+        assortments:
+          items:
+            $ref: '#/components/schemas/Assortment'
+          type:
+          - array
+          - 'null'
+        productCategoryId:
+          example: product_category_1
+          type: string
+        solids:
+          items:
+            $ref: '#/components/schemas/SolidItem'
+          type:
+          - array
+          - 'null'
+        styleId:
+          example: style_1
+          minLength: 1
+          type: string
+        styleName:
+          type:
+          - string
+          - 'null'
+      required:
+      - productCategoryId
+      - styleId
+      type: object
+    CustomResponse10:
+      properties:
+        data:
+          $ref: '#/components/schemas/PurchaseOrderResponse'
+      type: object
+    InternalApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         errors:
           example:
-            type:
-            - Input type is not valid
+            system:
+            - Internal error detail message
           type: object
         message:
-          example: Validation error
+          example: Internal server error
           type: string
+      type: object
+    StyleResponse:
+      properties:
+        assortments:
+          items:
+            $ref: '#/components/schemas/Assortment'
+          type:
+          - array
+          - 'null'
+        productCategoryId:
+          example: product_category_1
+          type: string
+        productCategoryName:
+          minLength: 1
+          readOnly: true
+          type: string
+        solids:
+          items:
+            $ref: '#/components/schemas/SolidItem'
+          type:
+          - array
+          - 'null'
+        styleId:
+          example: style_1
+          minLength: 1
+          type: string
+        styleName:
+          type:
+          - string
+          - 'null'
+      required:
+      - productCategoryId
+      - styleId
+      type: object
+    CustomFields:
+      properties:
+        customFile1:
+          type:
+          - string
+          - 'null'
+        customFile2:
+          type:
+          - string
+          - 'null'
+        customString1:
+          type:
+          - string
+          - 'null'
+        customString2:
+          type:
+          - string
+          - 'null'
+        customString3:
+          type:
+          - string
+          - 'null'
+        customString4:
+          type:
+          - string
+          - 'null'
+        customString5:
+          type:
+          - string
+          - 'null'
+        customString6:
+          type:
+          - string
+          - 'null'
+        customString7:
+          type:
+          - string
+          - 'null'
+        customString8:
+          type:
+          - string
+          - 'null'
+        customText1:
+          type:
+          - string
+          - 'null'
+        customText2:
+          type:
+          - string
+          - 'null'
+        customTime1:
+          format: date-time
+          type:
+          - string
+          - 'null'
+      type: object
+    AssortmentItem:
+      properties:
+        brandId:
+          description: 'Precondition: must be configured in your Inspectorio''s account.'
+          example: brand_1
+          type:
+          - string
+          - 'null'
+        brandName:
+          minLength: 1
+          readOnly: true
+          type: string
+        classId:
+          example: class_id_1
+          type:
+          - string
+          - 'null'
+        color:
+          minLength: 1
+          type: string
+        configuration:
+          minimum: 1
+          type: integer
+        departmentId:
+          example: department_id_1
+          type:
+          - string
+          - 'null'
+        id:
+          type:
+          - string
+          - 'null'
+        itemId:
+          minLength: 1
+          type: string
+        quantity:
+          readOnly: true
+          type: integer
+        shipmentTerm:
+          example: shipment_term_1
+          type:
+          - string
+          - 'null'
+        size:
+          minLength: 1
+          type: string
+      required:
+      - color
+      - configuration
+      - itemId
+      - size
       type: object
     PurchaseOrderUpdate:
       properties:
@@ -908,24 +920,83 @@ components:
       - styles
       - vendorId
       type: object
-    CustomResponse8:
-      properties:
-        data:
-          $ref: '#/components/schemas/PurchaseOrderResponse'
-      type: object
-    InternalApiError:
+    ValidateApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         errors:
           example:
-            system:
-            - Internal error detail message
+            type:
+            - Input type is not valid
           type: object
         message:
-          example: Internal server error
+          example: Validation error
           type: string
+      type: object
+    CustomResponse9:
+      properties:
+        data:
+          $ref: '#/components/schemas/PurchaseOrderResponse'
+      type: object
+    SolidItem:
+      properties:
+        brandId:
+          description: 'Precondition: must be configured in your Inspectorio''s account.'
+          example: brand_1
+          type:
+          - string
+          - 'null'
+        brandName:
+          minLength: 1
+          readOnly: true
+          type: string
+        cartonQuantity:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        casePackQuantity:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        classId:
+          example: class_id_1
+          type:
+          - string
+          - 'null'
+        color:
+          minLength: 1
+          type: string
+        departmentId:
+          example: department_id_1
+          type:
+          - string
+          - 'null'
+        id:
+          type:
+          - string
+          - 'null'
+        itemId:
+          minLength: 1
+          type: string
+        quantity:
+          minimum: 1
+          type: integer
+        shipmentTerm:
+          example: shipment_term_1
+          type:
+          - string
+          - 'null'
+        size:
+          minLength: 1
+          type: string
+      required:
+      - color
+      - itemId
+      - quantity
+      - size
       type: object
     PurchaseOrderForm:
       properties:
@@ -1064,103 +1135,32 @@ components:
       - styles
       - vendorId
       type: object
-    TooManyResponsesApiError:
+    BadRequestApiError:
       properties:
         errorCode:
           example: Generic
           type: string
         message:
-          example: Too many requests
+          example: Bad Request
           type: string
       type: object
-    CustomFields:
+    Assortment:
       properties:
-        customFile1:
-          type:
-          - string
-          - 'null'
-        customFile2:
-          type:
-          - string
-          - 'null'
-        customString1:
-          type:
-          - string
-          - 'null'
-        customString2:
-          type:
-          - string
-          - 'null'
-        customString3:
-          type:
-          - string
-          - 'null'
-        customString4:
-          type:
-          - string
-          - 'null'
-        customString5:
-          type:
-          - string
-          - 'null'
-        customString6:
-          type:
-          - string
-          - 'null'
-        customString7:
-          type:
-          - string
-          - 'null'
-        customString8:
-          type:
-          - string
-          - 'null'
-        customText1:
-          type:
-          - string
-          - 'null'
-        customText2:
-          type:
-          - string
-          - 'null'
-        customTime1:
-          format: date-time
-          type:
-          - string
-          - 'null'
-      type: object
-    StyleResponse:
-      properties:
-        assortments:
-          items:
-            $ref: '#/components/schemas/Assortment'
-          type:
-          - array
-          - 'null'
-        productCategoryId:
-          example: product_category_1
-          type: string
-        productCategoryName:
-          minLength: 1
-          readOnly: true
-          type: string
-        solids:
-          items:
-            $ref: '#/components/schemas/SolidItem'
-          type:
-          - array
-          - 'null'
-        styleId:
-          example: style_1
+        assortmentId:
           minLength: 1
           type: string
-        styleName:
-          type:
-          - string
-          - 'null'
+        cartonQuantity:
+          minimum: 0
+          type: integer
+        items:
+          items:
+            $ref: '#/components/schemas/AssortmentItem'
+          minItems: 1
+          type: array
       required:
-      - productCategoryId
-      - styleId
+      - assortmentId
+      - cartonQuantity
+      - items
       type: object
   securitySchemes:
     ApiKeyAuth:
