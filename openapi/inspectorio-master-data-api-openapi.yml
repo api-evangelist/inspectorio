@@ -199,6 +199,20 @@ paths:
           description: Internal Error
 components:
   schemas:
+    InternalApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
+      type: object
     TooManyResponsesApiError:
       properties:
         errorCode:
@@ -206,6 +220,15 @@ components:
           type: string
         message:
           example: Too many requests
+          type: string
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
           type: string
       type: object
     BadRequestResponse:
@@ -222,29 +245,33 @@ components:
           type: integer
           description: Response status code
           example: 400
-    InternalApiError:
+    MasterDataCreateRequest:
+      type: object
+      required:
+      - uid
+      - rawData
       properties:
-        errorCode:
-          example: Generic
+        uid:
           type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
+          description: Unique identifier for the master data entry
+          example: UID_ABC_123
+        rawData:
           type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
+          description: Raw data content in any valid JSON format
+          example:
+            purchaseOrderNumber: PO_123456
+            vendorSubmitDate: '2024-04-09'
+            estimatedCargoReadyDate: '2024-04-11'
+            shipmentLoadType: CY
+            shipmentBookingId: SB_ABC_123
+            shipmentBookingStatus: PackageBookingStatusAcceptedEvent
+            targetOrgId: custom_01
+        version:
+          type:
+          - string
+          - 'null'
+          description: Optional version identifier for the data format
+          example: shipment-booking-v1.0.0
     MasterDataResponse:
       type: object
       properties:
@@ -276,33 +303,6 @@ components:
               type: string
               format: date-time
               example: '2025-02-14T06:52:42.073319+00:00'
-    MasterDataCreateRequest:
-      type: object
-      required:
-      - uid
-      - rawData
-      properties:
-        uid:
-          type: string
-          description: Unique identifier for the master data entry
-          example: UID_ABC_123
-        rawData:
-          type: object
-          description: Raw data content in any valid JSON format
-          example:
-            purchaseOrderNumber: PO_123456
-            vendorSubmitDate: '2024-04-09'
-            estimatedCargoReadyDate: '2024-04-11'
-            shipmentLoadType: CY
-            shipmentBookingId: SB_ABC_123
-            shipmentBookingStatus: PackageBookingStatusAcceptedEvent
-            targetOrgId: custom_01
-        version:
-          type:
-          - string
-          - 'null'
-          description: Optional version identifier for the data format
-          example: shipment-booking-v1.0.0
   securitySchemes:
     ApiKeyAuth:
       in: header

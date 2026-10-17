@@ -355,241 +355,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    PurchaseOrderResponse:
-      properties:
-        clientCreatedDate:
-          description: The creation date from the client system of the Purchase Order
-          example: '2023-02-10'
-          format: date
-          type:
-          - string
-          - 'null'
-        clientId:
-          description: Global Custom ID of the Brand/Retailer organization of the purchase order
-          example: client_1
-          type: string
-        clientName:
-          description: Name of the Brand or Retailer of the purchase order
-          example: Lex Corp
-          type: string
-        clientUpdatedDate:
-          description: The last updated date from the client system of the Purchase Order
-          example: '2019-02-20T06:37:18.048000+00:00'
-          format: date-time
-          type: string
-        commitId:
-          description: Commit ID of the purchase order
-          example: commit_id_1
-          type:
-          - string
-          - 'null'
-        commitPoSequence:
-          description: Commit PO sequence of the purchase order
-          example: commit_po_sequence_1
-          type:
-          - string
-          - 'null'
-        createdDate:
-          description: Creation date of the purchase order
-          example: '2021-06-03T04:30:22.726000+00:00'
-          format: date-time
-          type: string
-        deliveryDate:
-          description: Delivery date of the purchase order
-          example: '2021-09-14T00:00:00+00:00'
-          format: date-time
-          type:
-          - string
-          - 'null'
-        eventName:
-          description: Name of the corresponding event in the client's system
-          example: Event 1
-          type:
-          - string
-          - 'null'
-        factoryId:
-          description: Global Custom ID of the Factory organization of the purchase order
-          example: factory_1
-          type: string
-        factoryName:
-          description: Name of the Factory of the purchase order
-          example: Padme Corp
-          type: string
-        inStoreDate:
-          description: The date the purchase order will be delivered to stores
-          example: '2021-09-19T00:00:00+00:00'
-          format: date-time
-          type:
-          - string
-          - 'null'
-        localClientId:
-          description: Local Custom ID of the Brand/Retailer organization of the purchase order that is inputted from the request body
-          example: client_1
-          type: string
-        localClientIds:
-          description: The list of all connected Local Custom IDs of the Brand/Retailer organization
-          example:
-          - sub_org_1
-          items:
-            type: string
-          type:
-          - array
-          - 'null'
-        localFactoryId:
-          description: Local Custom ID of the Factory organization of the purchase order that is inputted from the request body
-          example: factory_1
-          type: string
-        localFactoryIds:
-          description: The list of all connected Local Custom IDs of the Factory organization
-          example:
-          - sub_org_1
-          items:
-            type: string
-          type:
-          - array
-          - 'null'
-        localSupplierId:
-          description: Local Custom ID of the Supplier organization of the purchase order that is inputted from the request body
-          example: supplier_1
-          type: string
-        localSupplierIds:
-          description: The list of all connected Local Custom IDs of the Supplier organization
-          example:
-          - sub_org_1
-          items:
-            type: string
-          type:
-          - array
-          - 'null'
-        opoNumber:
-          description: Original Purchase Order number
-          example: opo_1
-          type: string
-        poNumber:
-          description: Purchase Order number
-          example: po_1
-          type: string
-        poSource:
-          description: Indicate the source of materials (produced by domestic vendors or imported from vendors outside the country)
-          example: domestic
-          type:
-          - string
-          - 'null'
-        poStatus:
-          description: Status of the purchase order
-          example: canceled
-          type:
-          - string
-          - 'null'
-        poType:
-          description: Purchase order type in a pre-configured list in configuration
-          example: po_type_1
-          type: string
-        productLineId:
-          description: Unique identifier of the Product Line
-          example: product_line_1
-          type: string
-        productLineName:
-          description: Name of the product line
-          example: Apparel
-          type: string
-        shareToIds:
-          description: Global Custom IDs of the shared organizations of the purchase order. By default, it always returns the Global Custom IDs of the Supplier, Factory, and Brand/Retailer (if have) of the purchase order
-          example:
-          - sub_org_1
-          items:
-            minLength: 1
-            type: string
-          type:
-          - array
-          - 'null'
-        shareToLocalIds:
-          description: The list of all connected Local Custom IDs of the shared Global organizations of the purchase order. By default, it always returns the Local Custom IDs of the Supplier, Factory, and Brand/Retailer (if have)
-          example:
-          - sub_org_1
-          items:
-            type: string
-          type:
-          - array
-          - 'null'
-        shipEndDate:
-          description: The last date of the shipment window
-          example: '2021-09-19T00:00:00+00:00'
-          format: date-time
-          type:
-          - string
-          - 'null'
-        styles:
-          description: List of styles of items in the purchase order
-          items:
-            $ref: '#/components/schemas/StyleResponse'
-          type: array
-        uid:
-          description: Unique identifier of the PO stored in the system
-          example: uid
-          type: string
-        updatedDate:
-          description: Last updated date of the purchase order
-          example: '2021-06-03T04:30:22.726000+00:00'
-          format: date-time
-          type: string
-        vendorId:
-          description: Global Custom ID of the Supplier organization of the purchase order
-          example: vendor_1
-          type: string
-        vendorName:
-          description: Name of the Vendor or Supplier of the purchase order
-          example: Acme Corp
-          type: string
-      required:
-      - poNumber
-      - productLineId
-      - vendorId
-      type: object
-    PurchaseOrderListResponse:
-      properties:
-        data:
-          description: List of purchase orders
-          items:
-            $ref: '#/components/schemas/PurchaseOrderResponse'
-          type: array
-        limit:
-          maximum: 100
-          minimum: 1
-          type: integer
-        offset:
-          minimum: 0
-          type: integer
-        total:
-          type: integer
-      required:
-      - limit
-      - offset
-      - total
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
-    CustomResponse8:
-      properties:
-        data:
-          $ref: '#/components/schemas/PurchaseOrderResponse'
-      type: object
-    TooManyResponsesApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Too many requests
-          type: string
-      type: object
     Style:
       properties:
         assortments:
@@ -619,11 +384,6 @@ components:
       - productCategoryId
       - styleId
       type: object
-    CustomResponse10:
-      properties:
-        data:
-          $ref: '#/components/schemas/PurchaseOrderResponse'
-      type: object
     InternalApiError:
       properties:
         errorCode:
@@ -637,6 +397,11 @@ components:
         message:
           example: Internal server error
           type: string
+      type: object
+    CustomResponse9:
+      properties:
+        data:
+          $ref: '#/components/schemas/PurchaseOrderResponse'
       type: object
     StyleResponse:
       properties:
@@ -671,61 +436,14 @@ components:
       - productCategoryId
       - styleId
       type: object
-    CustomFields:
+    TooManyResponsesApiError:
       properties:
-        customFile1:
-          type:
-          - string
-          - 'null'
-        customFile2:
-          type:
-          - string
-          - 'null'
-        customString1:
-          type:
-          - string
-          - 'null'
-        customString2:
-          type:
-          - string
-          - 'null'
-        customString3:
-          type:
-          - string
-          - 'null'
-        customString4:
-          type:
-          - string
-          - 'null'
-        customString5:
-          type:
-          - string
-          - 'null'
-        customString6:
-          type:
-          - string
-          - 'null'
-        customString7:
-          type:
-          - string
-          - 'null'
-        customString8:
-          type:
-          - string
-          - 'null'
-        customText1:
-          type:
-          - string
-          - 'null'
-        customText2:
-          type:
-          - string
-          - 'null'
-        customTime1:
-          format: date-time
-          type:
-          - string
-          - 'null'
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
+          type: string
       type: object
     AssortmentItem:
       properties:
@@ -934,10 +652,263 @@ components:
           example: Validation error
           type: string
       type: object
-    CustomResponse9:
+    Assortment:
+      properties:
+        assortmentId:
+          minLength: 1
+          type: string
+        cartonQuantity:
+          minimum: 0
+          type: integer
+        items:
+          items:
+            $ref: '#/components/schemas/AssortmentItem'
+          minItems: 1
+          type: array
+      required:
+      - assortmentId
+      - cartonQuantity
+      - items
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
+          type: string
+      type: object
+    CustomResponse10:
       properties:
         data:
           $ref: '#/components/schemas/PurchaseOrderResponse'
+      type: object
+    CustomResponse8:
+      properties:
+        data:
+          $ref: '#/components/schemas/PurchaseOrderResponse'
+      type: object
+    PurchaseOrderListResponse:
+      properties:
+        data:
+          description: List of purchase orders
+          items:
+            $ref: '#/components/schemas/PurchaseOrderResponse'
+          type: array
+        limit:
+          maximum: 100
+          minimum: 1
+          type: integer
+        offset:
+          minimum: 0
+          type: integer
+        total:
+          type: integer
+      required:
+      - limit
+      - offset
+      - total
+      type: object
+    PurchaseOrderResponse:
+      properties:
+        clientCreatedDate:
+          description: The creation date from the client system of the Purchase Order
+          example: '2023-02-10'
+          format: date
+          type:
+          - string
+          - 'null'
+        clientId:
+          description: Global Custom ID of the Brand/Retailer organization of the purchase order
+          example: client_1
+          type: string
+        clientName:
+          description: Name of the Brand or Retailer of the purchase order
+          example: Lex Corp
+          type: string
+        clientUpdatedDate:
+          description: The last updated date from the client system of the Purchase Order
+          example: '2019-02-20T06:37:18.048000+00:00'
+          format: date-time
+          type: string
+        commitId:
+          description: Commit ID of the purchase order
+          example: commit_id_1
+          type:
+          - string
+          - 'null'
+        commitPoSequence:
+          description: Commit PO sequence of the purchase order
+          example: commit_po_sequence_1
+          type:
+          - string
+          - 'null'
+        createdDate:
+          description: Creation date of the purchase order
+          example: '2021-06-03T04:30:22.726000+00:00'
+          format: date-time
+          type: string
+        deliveryDate:
+          description: Delivery date of the purchase order
+          example: '2021-09-14T00:00:00+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        eventName:
+          description: Name of the corresponding event in the client's system
+          example: Event 1
+          type:
+          - string
+          - 'null'
+        factoryId:
+          description: Global Custom ID of the Factory organization of the purchase order
+          example: factory_1
+          type: string
+        factoryName:
+          description: Name of the Factory of the purchase order
+          example: Padme Corp
+          type: string
+        inStoreDate:
+          description: The date the purchase order will be delivered to stores
+          example: '2021-09-19T00:00:00+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        localClientId:
+          description: Local Custom ID of the Brand/Retailer organization of the purchase order that is inputted from the request body
+          example: client_1
+          type: string
+        localClientIds:
+          description: The list of all connected Local Custom IDs of the Brand/Retailer organization
+          example:
+          - sub_org_1
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        localFactoryId:
+          description: Local Custom ID of the Factory organization of the purchase order that is inputted from the request body
+          example: factory_1
+          type: string
+        localFactoryIds:
+          description: The list of all connected Local Custom IDs of the Factory organization
+          example:
+          - sub_org_1
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        localSupplierId:
+          description: Local Custom ID of the Supplier organization of the purchase order that is inputted from the request body
+          example: supplier_1
+          type: string
+        localSupplierIds:
+          description: The list of all connected Local Custom IDs of the Supplier organization
+          example:
+          - sub_org_1
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        opoNumber:
+          description: Original Purchase Order number
+          example: opo_1
+          type: string
+        poNumber:
+          description: Purchase Order number
+          example: po_1
+          type: string
+        poSource:
+          description: Indicate the source of materials (produced by domestic vendors or imported from vendors outside the country)
+          example: domestic
+          type:
+          - string
+          - 'null'
+        poStatus:
+          description: Status of the purchase order
+          example: canceled
+          type:
+          - string
+          - 'null'
+        poType:
+          description: Purchase order type in a pre-configured list in configuration
+          example: po_type_1
+          type: string
+        productLineId:
+          description: Unique identifier of the Product Line
+          example: product_line_1
+          type: string
+        productLineName:
+          description: Name of the product line
+          example: Apparel
+          type: string
+        shareToIds:
+          description: Global Custom IDs of the shared organizations of the purchase order. By default, it always returns the Global Custom IDs of the Supplier, Factory, and Brand/Retailer (if have) of the purchase order
+          example:
+          - sub_org_1
+          items:
+            minLength: 1
+            type: string
+          type:
+          - array
+          - 'null'
+        shareToLocalIds:
+          description: The list of all connected Local Custom IDs of the shared Global organizations of the purchase order. By default, it always returns the Local Custom IDs of the Supplier, Factory, and Brand/Retailer (if have)
+          example:
+          - sub_org_1
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        shipEndDate:
+          description: The last date of the shipment window
+          example: '2021-09-19T00:00:00+00:00'
+          format: date-time
+          type:
+          - string
+          - 'null'
+        styles:
+          description: List of styles of items in the purchase order
+          items:
+            $ref: '#/components/schemas/StyleResponse'
+          type: array
+        uid:
+          description: Unique identifier of the PO stored in the system
+          example: uid
+          type: string
+        updatedDate:
+          description: Last updated date of the purchase order
+          example: '2021-06-03T04:30:22.726000+00:00'
+          format: date-time
+          type: string
+        vendorId:
+          description: Global Custom ID of the Supplier organization of the purchase order
+          example: vendor_1
+          type: string
+        vendorName:
+          description: Name of the Vendor or Supplier of the purchase order
+          example: Acme Corp
+          type: string
+      required:
+      - poNumber
+      - productLineId
+      - vendorId
+      type: object
+    BadRequestApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Bad Request
+          type: string
       type: object
     SolidItem:
       properties:
@@ -997,6 +968,62 @@ components:
       - itemId
       - quantity
       - size
+      type: object
+    CustomFields:
+      properties:
+        customFile1:
+          type:
+          - string
+          - 'null'
+        customFile2:
+          type:
+          - string
+          - 'null'
+        customString1:
+          type:
+          - string
+          - 'null'
+        customString2:
+          type:
+          - string
+          - 'null'
+        customString3:
+          type:
+          - string
+          - 'null'
+        customString4:
+          type:
+          - string
+          - 'null'
+        customString5:
+          type:
+          - string
+          - 'null'
+        customString6:
+          type:
+          - string
+          - 'null'
+        customString7:
+          type:
+          - string
+          - 'null'
+        customString8:
+          type:
+          - string
+          - 'null'
+        customText1:
+          type:
+          - string
+          - 'null'
+        customText2:
+          type:
+          - string
+          - 'null'
+        customTime1:
+          format: date-time
+          type:
+          - string
+          - 'null'
       type: object
     PurchaseOrderForm:
       properties:
@@ -1134,33 +1161,6 @@ components:
       - productLineId
       - styles
       - vendorId
-      type: object
-    BadRequestApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Bad Request
-          type: string
-      type: object
-    Assortment:
-      properties:
-        assortmentId:
-          minLength: 1
-          type: string
-        cartonQuantity:
-          minimum: 0
-          type: integer
-        items:
-          items:
-            $ref: '#/components/schemas/AssortmentItem'
-          minItems: 1
-          type: array
-      required:
-      - assortmentId
-      - cartonQuantity
-      - items
       type: object
   securitySchemes:
     ApiKeyAuth:

@@ -59,10 +59,19 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    CustomResponse16:
+    InternalApiError:
       properties:
-        data:
-          $ref: '#/components/schemas/FileUploadSessionResponse'
+        errorCode:
+          example: Generic
+          type: string
+        errors:
+          example:
+            system:
+            - Internal error detail message
+          type: object
+        message:
+          example: Internal server error
+          type: string
       type: object
     TooManyResponsesApiError:
       properties:
@@ -71,6 +80,25 @@ components:
           type: string
         message:
           example: Too many requests
+          type: string
+      type: object
+    FileUploadSessionCreate:
+      properties:
+        fileName:
+          description: Unique identifier of the file to be uploaded. File name must be unique for the organization.
+          example: example.zip
+          minLength: 1
+          type: string
+      required:
+      - fileName
+      type: object
+    UnauthenticatedApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Cannot retrieve session data because of expired token
           type: string
       type: object
     FileUploadSessionResponse:
@@ -86,39 +114,6 @@ components:
           minLength: 1
           type: string
       type: object
-    FileUploadSessionCreate:
-      properties:
-        fileName:
-          description: Unique identifier of the file to be uploaded. File name must be unique for the organization.
-          example: example.zip
-          minLength: 1
-          type: string
-      required:
-      - fileName
-      type: object
-    InternalApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        errors:
-          example:
-            system:
-            - Internal error detail message
-          type: object
-        message:
-          example: Internal server error
-          type: string
-      type: object
-    UnauthenticatedApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Cannot retrieve session data because of expired token
-          type: string
-      type: object
     BadRequestApiError:
       properties:
         errorCode:
@@ -127,6 +122,11 @@ components:
         message:
           example: Bad Request
           type: string
+      type: object
+    CustomResponse16:
+      properties:
+        data:
+          $ref: '#/components/schemas/FileUploadSessionResponse'
       type: object
   securitySchemes:
     ApiKeyAuth:

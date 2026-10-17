@@ -76,47 +76,6 @@ paths:
       url: https://sight.pre.inspectorio.com
 components:
   schemas:
-    CustomResponse3:
-      properties:
-        data:
-          $ref: '#/components/schemas/AuthResponse'
-      type: object
-    TooManyResponsesApiError:
-      properties:
-        errorCode:
-          example: Generic
-          type: string
-        message:
-          example: Too many requests
-          type: string
-      type: object
-    AuthResponse:
-      properties:
-        avatarUrl:
-          description: Link of user's avatar
-          example: https://developers.inspectorio.com/img/user.png
-          format: url
-          type: string
-        orgName:
-          description: Name of the organization that the user belongs to
-          example: Acme Corp
-          type: string
-        refreshToken:
-          description: Refresh token used for subsequent API requests
-          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1N123...xyz
-          type: string
-        token:
-          description: Token used for authentication in API requests
-          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1N123...abc
-          type: string
-        username:
-          description: Name of the user
-          example: John Doe
-          type: string
-      required:
-      - refreshToken
-      - token
-      type: object
     InternalApiError:
       properties:
         errorCode:
@@ -129,6 +88,15 @@ components:
           type: object
         message:
           example: Internal server error
+          type: string
+      type: object
+    TooManyResponsesApiError:
+      properties:
+        errorCode:
+          example: Generic
+          type: string
+        message:
+          example: Too many requests
           type: string
       type: object
     ValidateApiError:
@@ -157,6 +125,33 @@ components:
       - password
       - username
       type: object
+    AuthResponse:
+      properties:
+        avatarUrl:
+          description: Link of user's avatar
+          example: https://developers.inspectorio.com/img/user.png
+          format: url
+          type: string
+        orgName:
+          description: Name of the organization that the user belongs to
+          example: Acme Corp
+          type: string
+        refreshToken:
+          description: Refresh token used for subsequent API requests
+          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1N123...xyz
+          type: string
+        token:
+          description: Token used for authentication in API requests
+          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1N123...abc
+          type: string
+        username:
+          description: Name of the user
+          example: John Doe
+          type: string
+      required:
+      - refreshToken
+      - token
+      type: object
     UnauthenticatedApiError:
       properties:
         errorCode:
@@ -165,6 +160,11 @@ components:
         message:
           example: Cannot retrieve session data because of expired token
           type: string
+      type: object
+    CustomResponse3:
+      properties:
+        data:
+          $ref: '#/components/schemas/AuthResponse'
       type: object
     BadRequestApiError:
       properties:
@@ -175,18 +175,10 @@ components:
           example: Bad Request
           type: string
       type: object
-    AuthResponse_2:
+    CustomResponse:
       properties:
-        orgName:
-          description: Name of the organization the user belongs to
-          example: Acme Corp
-          type: string
-        token:
-          description: Authentication token used for every API request
-          example: 8847eae8-9ef1-123-abc
-          type: string
-      required:
-      - token
+        data:
+          $ref: '#/components/schemas/AuthResponse_2'
       type: object
     Login:
       properties:
@@ -204,10 +196,18 @@ components:
       - password
       - username
       type: object
-    CustomResponse:
+    AuthResponse_2:
       properties:
-        data:
-          $ref: '#/components/schemas/AuthResponse_2'
+        orgName:
+          description: Name of the organization the user belongs to
+          example: Acme Corp
+          type: string
+        token:
+          description: Authentication token used for every API request
+          example: 8847eae8-9ef1-123-abc
+          type: string
+      required:
+      - token
       type: object
   securitySchemes:
     ApiKeyAuth:
