@@ -1,291 +1,362 @@
 {
+  "info": {
+    "_postman_id": "24f31836-0894-499b-8c92-c00696063044",
+    "name": "Inspectorio Quality Risk Management PRODUCT API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:28:40.000Z",
+    "updatedAt": "2026-10-22T02:28:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-24f31836-0894-499b-8c92-c00696063044"
+  },
   "item": [
     {
-      "id": "8ec412f4-0aee-4215-8f31-016001c9b0ca",
-      "name": "PRODUCT",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "a7b6bb48-3d5c-4b0a-aeb9-1b81b8363d4a",
-          "name": "List Products",
-          "request": {
-            "name": "List Products",
-            "description": {
-              "content": "List Products",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "products"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "f5a70b31-26d1-4b49-903a-79af3d91bd98",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "products"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "products",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "List Products",
+                  "id": "ee34a04f-e003-4312-93a0-1a033904479a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/products",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "products"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b07cb54f-3809-4127-ab18-45838a805e4f",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/products",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "products"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"info\": {\n        \"categories\": [\n          {\n            \"productCategoryDescription\": \"<string>\",\n            \"productCategoryId\": \"<string>\",\n            \"productCategoryName\": \"<string>\"\n          },\n          {\n            \"productCategoryDescription\": \"<string>\",\n            \"productCategoryId\": \"<string>\",\n            \"productCategoryName\": \"<string>\"\n          }\n        ],\n        \"productDescription\": \"<string>\",\n        \"productName\": \"<string>\"\n      },\n      \"productLineId\": \"<string>\"\n    },\n    {\n      \"info\": {\n        \"categories\": [\n          {\n            \"productCategoryDescription\": \"<string>\",\n            \"productCategoryId\": \"<string>\",\n            \"productCategoryName\": \"<string>\"\n          },\n          {\n            \"productCategoryDescription\": \"<string>\",\n            \"productCategoryId\": \"<string>\",\n            \"productCategoryName\": \"<string>\"\n          }\n        ],\n        \"productDescription\": \"<string>\",\n        \"productName\": \"<string>\"\n      },\n      \"productLineId\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T02:28:40.000Z",
+                      "updatedAt": "2026-10-22T02:28:40.000Z",
+                      "uid": "35240-b07cb54f-3809-4127-ab18-45838a805e4f"
+                    },
+                    {
+                      "id": "740be666-6726-4e65-a4ba-f086892dd374",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/products",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "products"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:40.000Z",
+                      "updatedAt": "2026-10-22T02:28:40.000Z",
+                      "uid": "35240-740be666-6726-4e65-a4ba-f086892dd374"
+                    },
+                    {
+                      "id": "2622db00-5faf-4d43-a360-3fc9a8349e4e",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/products",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "products"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:40.000Z",
+                      "updatedAt": "2026-10-22T02:28:40.000Z",
+                      "uid": "35240-2622db00-5faf-4d43-a360-3fc9a8349e4e"
+                    },
+                    {
+                      "id": "e78861fb-3a9d-4373-a2fe-74b0eb0c9607",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/products",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "products"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:40.000Z",
+                      "updatedAt": "2026-10-22T02:28:40.000Z",
+                      "uid": "35240-e78861fb-3a9d-4373-a2fe-74b0eb0c9607"
+                    },
+                    {
+                      "id": "b41eeb36-70ac-4ac8-8a94-0d114797db34",
+                      "name": "Rate-limiting Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/products",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "products"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:40.000Z",
+                      "updatedAt": "2026-10-22T02:28:40.000Z",
+                      "uid": "35240-b41eeb36-70ac-4ac8-8a94-0d114797db34"
+                    },
+                    {
+                      "id": "cc9e0bdd-1bae-46be-8dfa-2b49351b4fcd",
+                      "name": "Internal Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/products",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "products"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:40.000Z",
+                      "updatedAt": "2026-10-22T02:28:40.000Z",
+                      "uid": "35240-cc9e0bdd-1bae-46be-8dfa-2b49351b4fcd"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:28:40.000Z",
+                  "updatedAt": "2026-10-22T02:28:40.000Z",
+                  "uid": "35240-ee34a04f-e003-4312-93a0-1a033904479a"
                 }
               ],
-              "body": "{\n  \"data\": [\n    {\n      \"info\": {\n        \"categories\": [\n          {\n            \"productCategoryDescription\": \"Apparel women tops\",\n            \"productCategoryId\": \"123123\",\n            \"productCategoryName\": \"Womens top\"\n          },\n          {\n            \"productCategoryDescription\": \"Apparel women tops\",\n            \"productCategoryId\": \"123123\",\n            \"productCategoryName\": \"Womens top\"\n          }\n        ],\n        \"productDescription\": \"women tops for SS22\",\n        \"productName\": \"Cashmere womens top\"\n      },\n      \"productLineId\": \"A123\"\n    },\n    {\n      \"info\": {\n        \"categories\": [\n          {\n            \"productCategoryDescription\": \"Apparel women tops\",\n            \"productCategoryId\": \"123123\",\n            \"productCategoryName\": \"Womens top\"\n          },\n          {\n            \"productCategoryDescription\": \"Apparel women tops\",\n            \"productCategoryId\": \"123123\",\n            \"productCategoryName\": \"Womens top\"\n          }\n        ],\n        \"productDescription\": \"women tops for SS22\",\n        \"productName\": \"Cashmere womens top\"\n      },\n      \"productLineId\": \"A123\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b7700263-80fa-469e-891c-d3516d7e4384",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "products"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ee56f243-f24c-457e-bb1d-6571e29ce176",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "products"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c0f95e44-0c82-4239-bc7e-bce9b15894cc",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "products"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a3d2bc05-5240-4dc2-b391-bb5bd4efde3d",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "products"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "30ede1be-35a5-4871-9101-cc48ec1f0933",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "products"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "49c82064-c6df-4821-8483-5090d37e3647",
+              "createdAt": "2026-10-22T02:28:40.000Z",
+              "updatedAt": "2026-10-22T02:28:40.000Z",
+              "uid": "35240-49c82064-c6df-4821-8483-5090d37e3647"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "5ed4da27-0ce6-4d97-a35f-5192e115401b",
+          "createdAt": "2026-10-22T02:28:40.000Z",
+          "updatedAt": "2026-10-22T02:28:40.000Z",
+          "uid": "35240-5ed4da27-0ce6-4d97-a35f-5192e115401b"
         }
       ],
-      "event": []
+      "id": "cec72256-3fb3-4c00-aeb5-a9afb6591c2b",
+      "createdAt": "2026-10-22T02:28:40.000Z",
+      "updatedAt": "2026-10-22T02:28:40.000Z",
+      "uid": "35240-cec72256-3fb3-4c00-aeb5-a9afb6591c2b"
     }
   ],
-  "event": [],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
   "variable": [
     {
-      "type": "string",
-      "value": "https://files-integration.inspectorio.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://sight.inspectorio.com"
     }
-  ],
-  "info": {
-    "_postman_id": "d38aaafe-965b-444a-8d75-61ed2bc65087",
-    "name": "File Management ANALYTICS PRODUCT API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

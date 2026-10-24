@@ -1,1734 +1,1999 @@
 {
+  "info": {
+    "_postman_id": "6e369096-4bbb-479e-80fa-736ef57b5d98",
+    "name": "Inspectorio ORGANIZATION API",
+    "description": "Operations tagged ORGANIZATION across 2 of this provider's published API definitions: inspectorio-qrm-openapi.json, inspectorio-rsc-openapi.json. Each path carries the servers of the definition it was published in.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:28:33.000Z",
+    "updatedAt": "2026-10-22T02:28:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6e369096-4bbb-479e-80fa-736ef57b5d98"
+  },
   "item": [
     {
-      "id": "7206da61-e186-4342-aa25-26c85e1edf1c",
-      "name": "ORGANIZATION",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "f7038a6e-2e91-40c8-89aa-5a62ed4e650f",
-          "name": "List Organizations",
-          "request": {
-            "name": "List Organizations",
-            "description": {
-              "content": "List Organizations",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organizations"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "10",
-                  "description": "Limit result of list"
-                },
-                {
-                  "disabled": false,
-                  "key": "name",
-                  "value": "<string>",
-                  "description": "Filter organizations by name"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "dd9004e6-cb8a-41ed-b1e0-98417a27a6a1",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "organizations",
+              "item": [
+                {
+                  "name": "{organization_id}",
+                  "item": [
                     {
-                      "key": "offset",
-                      "value": "0"
+                      "name": "Delete Organization",
+                      "id": "a57d15f8-91ce-4445-b9d1-202ec36f276a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations",
+                            ":organization_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f372f4f1-ddb9-4cec-b83a-6e6f820c7316",
+                              "key": "organization_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "4224ff42-7747-4c05-9eea-71e1e63b9f98",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-4224ff42-7747-4c05-9eea-71e1e63b9f98"
+                        },
+                        {
+                          "id": "28d5a1dc-17f6-4e72-9b62-7e74971db691",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-28d5a1dc-17f6-4e72-9b62-7e74971db691"
+                        },
+                        {
+                          "id": "b141d124-c29c-4e64-b740-fc7de4d3bf33",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-b141d124-c29c-4e64-b740-fc7de4d3bf33"
+                        },
+                        {
+                          "id": "f96ed30b-1bac-432a-9fe3-23287e485a31",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-f96ed30b-1bac-432a-9fe3-23287e485a31"
+                        },
+                        {
+                          "id": "70f71858-80ad-476d-95cd-8f0e47a5466e",
+                          "name": "Rate-limiting Error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-70f71858-80ad-476d-95cd-8f0e47a5466e"
+                        },
+                        {
+                          "id": "eb4de2ae-8f56-4b8f-b119-bdc5560f745b",
+                          "name": "Internal Error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-eb4de2ae-8f56-4b8f-b119-bdc5560f745b"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-a57d15f8-91ce-4445-b9d1-202ec36f276a"
                     },
                     {
-                      "key": "limit",
-                      "value": "10"
+                      "name": "Get Organization",
+                      "id": "a3eae52b-d934-4bda-92ab-de10cddc161e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations",
+                            ":organization_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "a10c3f9a-2fea-4e5a-98b7-89a48c0f3e79",
+                              "key": "organization_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "a7d60c3a-da34-466e-aa0d-730f0756f067",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"address\": \"<string>\",\n    \"contacts\": [\n      {\n        \"firstName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"lastName\": \"<string,null>\",\n        \"phone\": \"<string,null>\",\n        \"workPhone\": \"<string>\"\n      }\n    ],\n    \"country\": \"<string>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"type\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"billing_email\": \"<string,null>\",\n    \"city\": \"<string,null>\",\n    \"createdAt\": \"<string>\",\n    \"linkedId\": \"<string,null>\",\n    \"linkedTo\": \"<string>\",\n    \"location\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    },\n    \"officeId\": \"<string,null>\",\n    \"organizationLabels\": \"<array,null>\",\n    \"postal\": \"<string,null>\",\n    \"province\": \"<string,null>\",\n    \"updatedAt\": \"<string>\",\n    \"description\": \"<string,null>\"\n  }\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-a7d60c3a-da34-466e-aa0d-730f0756f067"
+                        },
+                        {
+                          "id": "80262e11-bde3-46d2-bbba-6abe9a4d1daf",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-80262e11-bde3-46d2-bbba-6abe9a4d1daf"
+                        },
+                        {
+                          "id": "7223d6fe-6150-4c80-b610-464a2055dd62",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-7223d6fe-6150-4c80-b610-464a2055dd62"
+                        },
+                        {
+                          "id": "c25a720f-c480-46db-bfd1-5b576620c18a",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-c25a720f-c480-46db-bfd1-5b576620c18a"
+                        },
+                        {
+                          "id": "087284ae-3008-47d7-9bde-10a2a83ee592",
+                          "name": "Rate-limiting Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-087284ae-3008-47d7-9bde-10a2a83ee592"
+                        },
+                        {
+                          "id": "0371e7f7-6167-41a1-85ef-de6596e5ded6",
+                          "name": "Internal Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-0371e7f7-6167-41a1-85ef-de6596e5ded6"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-a3eae52b-d934-4bda-92ab-de10cddc161e"
                     },
                     {
-                      "key": "name",
-                      "value": "<string>"
+                      "name": "Update Organization",
+                      "id": "83bc1c8d-62cb-40b0-b897-96a06e29d2bc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string,null>\",\n      \"phone\": \"<string,null>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"createdAt\": \"<string>\",\n  \"linkedId\": null,\n  \"linkedTo\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string,null>\",\n  \"organizationLabels\": \"<array,null>\",\n  \"postal\": \"<string,null>\",\n  \"province\": \"<string,null>\",\n  \"updatedAt\": \"<string>\",\n  \"description\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations",
+                            ":organization_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "7f26927e-ed4f-4de7-8b31-25bf32b0e84c",
+                              "key": "organization_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "44ee202c-8bc6-4b69-b771-08bb5c7233ea",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string,null>\",\n      \"phone\": \"<string,null>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"createdAt\": \"<string>\",\n  \"linkedId\": null,\n  \"linkedTo\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string,null>\",\n  \"organizationLabels\": \"<array,null>\",\n  \"postal\": \"<string,null>\",\n  \"province\": \"<string,null>\",\n  \"updatedAt\": \"<string>\",\n  \"description\": \"<string,null>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"address\": \"<string>\",\n    \"contacts\": [\n      {\n        \"firstName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"lastName\": \"<string,null>\",\n        \"phone\": \"<string,null>\",\n        \"workPhone\": \"<string>\"\n      }\n    ],\n    \"country\": \"<string>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"type\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"billing_email\": \"<string,null>\",\n    \"city\": \"<string,null>\",\n    \"createdAt\": \"<string>\",\n    \"linkedTo\": \"<string>\",\n    \"location\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    },\n    \"officeId\": \"<string,null>\",\n    \"organizationLabels\": \"<array,null>\",\n    \"postal\": \"<string,null>\",\n    \"province\": \"<string,null>\",\n    \"updatedAt\": \"<string>\",\n    \"description\": \"<string,null>\"\n  }\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-44ee202c-8bc6-4b69-b771-08bb5c7233ea"
+                        },
+                        {
+                          "id": "576a2593-6382-4375-8b0f-e329ab1e5d2b",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string,null>\",\n      \"phone\": \"<string,null>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"createdAt\": \"<string>\",\n  \"linkedId\": null,\n  \"linkedTo\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string,null>\",\n  \"organizationLabels\": \"<array,null>\",\n  \"postal\": \"<string,null>\",\n  \"province\": \"<string,null>\",\n  \"updatedAt\": \"<string>\",\n  \"description\": \"<string,null>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-576a2593-6382-4375-8b0f-e329ab1e5d2b"
+                        },
+                        {
+                          "id": "e5dded67-1d8b-4f23-974c-5bc20ad33b35",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string,null>\",\n      \"phone\": \"<string,null>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"createdAt\": \"<string>\",\n  \"linkedId\": null,\n  \"linkedTo\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string,null>\",\n  \"organizationLabels\": \"<array,null>\",\n  \"postal\": \"<string,null>\",\n  \"province\": \"<string,null>\",\n  \"updatedAt\": \"<string>\",\n  \"description\": \"<string,null>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-e5dded67-1d8b-4f23-974c-5bc20ad33b35"
+                        },
+                        {
+                          "id": "54ce462e-130c-487a-8e5e-88694ffd98d9",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string,null>\",\n      \"phone\": \"<string,null>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"createdAt\": \"<string>\",\n  \"linkedId\": null,\n  \"linkedTo\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string,null>\",\n  \"organizationLabels\": \"<array,null>\",\n  \"postal\": \"<string,null>\",\n  \"province\": \"<string,null>\",\n  \"updatedAt\": \"<string>\",\n  \"description\": \"<string,null>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-54ce462e-130c-487a-8e5e-88694ffd98d9"
+                        },
+                        {
+                          "id": "60689699-f9c1-4b42-92c0-bc517d088d3d",
+                          "name": "Rate-limiting Error",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string,null>\",\n      \"phone\": \"<string,null>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"createdAt\": \"<string>\",\n  \"linkedId\": null,\n  \"linkedTo\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string,null>\",\n  \"organizationLabels\": \"<array,null>\",\n  \"postal\": \"<string,null>\",\n  \"province\": \"<string,null>\",\n  \"updatedAt\": \"<string>\",\n  \"description\": \"<string,null>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-60689699-f9c1-4b42-92c0-bc517d088d3d"
+                        },
+                        {
+                          "id": "6465cac6-9f09-4a36-b777-b7fc8686231a",
+                          "name": "Internal Error",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string,null>\",\n      \"phone\": \"<string,null>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"createdAt\": \"<string>\",\n  \"linkedId\": null,\n  \"linkedTo\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string,null>\",\n  \"organizationLabels\": \"<array,null>\",\n  \"postal\": \"<string,null>\",\n  \"province\": \"<string,null>\",\n  \"updatedAt\": \"<string>\",\n  \"description\": \"<string,null>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/organizations/:organization_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "organizations",
+                                ":organization_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "organization_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:34.000Z",
+                          "updatedAt": "2026-10-22T02:28:34.000Z",
+                          "uid": "35240-6465cac6-9f09-4a36-b777-b7fc8686231a"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-83bc1c8d-62cb-40b0-b897-96a06e29d2bc"
                     }
                   ],
-                  "variable": []
+                  "id": "144d85cb-36b6-4dea-9c36-378576aa588a",
+                  "createdAt": "2026-10-22T02:28:34.000Z",
+                  "updatedAt": "2026-10-22T02:28:34.000Z",
+                  "uid": "35240-144d85cb-36b6-4dea-9c36-378576aa588a"
                 },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"limit\": 1175,\n  \"offset\": 7701,\n  \"total\": 5485,\n  \"data\": [\n    {\n      \"address\": \"5 Madison Avenue\",\n      \"contacts\": [\n        {\n          \"firstName\": \"John\",\n          \"email\": \"john@acme.com\",\n          \"lastName\": \"Doe\",\n          \"phone\": \"1505123123\",\n          \"workPhone\": \"1505456456\"\n        }\n      ],\n      \"country\": \"US\",\n      \"name\": \"Acme Corp\",\n      \"phone\": \"1505111222\",\n      \"type\": \"S\",\n      \"address2\": \"Suite 101\",\n      \"billing_email\": \"email@test.com\",\n      \"city\": \"New York\",\n      \"createdAt\": \"2021-06-02 12:34:02.861000+00:00\",\n      \"id\": \"string\",\n      \"linkedId\": \"string\",\n      \"linkedTo\": \"3111222\",\n      \"location\": {\n        \"latitude\": 38.8951,\n        \"longitude\": -77.0364\n      },\n      \"organizationLabels\": [\n        \"Tier 1\",\n        \"Tier 2\"\n      ],\n      \"postal\": \"A1B2C3\",\n      \"province\": \"New York\",\n      \"updatedAt\": \"2021-06-02 12:34:02.861000+00:00\",\n      \"description\": \"This is a description\"\n    },\n    {\n      \"address\": \"5 Madison Avenue\",\n      \"contacts\": [\n        {\n          \"firstName\": \"John\",\n          \"email\": \"john@acme.com\",\n          \"lastName\": \"Doe\",\n          \"phone\": \"1505123123\",\n          \"workPhone\": \"1505456456\"\n        }\n      ],\n      \"country\": \"US\",\n      \"name\": \"Acme Corp\",\n      \"phone\": \"1505111222\",\n      \"type\": \"S\",\n      \"address2\": \"Suite 101\",\n      \"billing_email\": \"email@test.com\",\n      \"city\": \"New York\",\n      \"createdAt\": \"2021-06-02 12:34:02.861000+00:00\",\n      \"id\": \"string\",\n      \"linkedId\": \"string\",\n      \"linkedTo\": \"3111222\",\n      \"location\": {\n        \"latitude\": 38.8951,\n        \"longitude\": -77.0364\n      },\n      \"organizationLabels\": [\n        \"Tier 1\",\n        \"Tier 2\"\n      ],\n      \"postal\": \"A1B2C3\",\n      \"province\": \"New York\",\n      \"updatedAt\": \"2021-06-02 12:34:02.861000+00:00\",\n      \"description\": \"This is a description\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "805a9b46-97f0-4c7a-998f-6a276014e7b8",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "name": "List Organizations",
+                  "id": "a1c73092-8f2d-4fbf-8d7b-1630093c55b8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/organizations?offset=0&limit=10&name=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "organizations"
+                      ],
+                      "query": [
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Limit result of list",
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Filter organizations by name",
+                          "key": "name",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
                     {
-                      "key": "offset",
-                      "value": "0"
+                      "id": "dab6d782-0351-4406-8984-e585e4559c23",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations?offset=0&limit=10&name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations"
+                          ],
+                          "query": [
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Filter organizations by name",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"address\": \"<string>\",\n      \"contacts\": [\n        {\n          \"firstName\": \"<string>\",\n          \"email\": \"<string>\",\n          \"lastName\": \"<string,null>\",\n          \"phone\": \"<string,null>\",\n          \"workPhone\": \"<string>\"\n        }\n      ],\n      \"country\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"type\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"billing_email\": \"<string,null>\",\n      \"city\": \"<string,null>\",\n      \"createdAt\": \"<string>\",\n      \"id\": \"<string>\",\n      \"linkedId\": \"<string,null>\",\n      \"linkedTo\": \"<string>\",\n      \"location\": {\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\"\n      },\n      \"organizationLabels\": \"<array,null>\",\n      \"postal\": \"<string,null>\",\n      \"province\": \"<string,null>\",\n      \"updatedAt\": \"<string>\",\n      \"description\": \"<string,null>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"contacts\": [\n        {\n          \"firstName\": \"<string>\",\n          \"email\": \"<string>\",\n          \"lastName\": \"<string,null>\",\n          \"phone\": \"<string,null>\",\n          \"workPhone\": \"<string>\"\n        }\n      ],\n      \"country\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"type\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"billing_email\": \"<string,null>\",\n      \"city\": \"<string,null>\",\n      \"createdAt\": \"<string>\",\n      \"id\": \"<string>\",\n      \"linkedId\": \"<string,null>\",\n      \"linkedTo\": \"<string>\",\n      \"location\": {\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\"\n      },\n      \"organizationLabels\": \"<array,null>\",\n      \"postal\": \"<string,null>\",\n      \"province\": \"<string,null>\",\n      \"updatedAt\": \"<string>\",\n      \"description\": \"<string,null>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-dab6d782-0351-4406-8984-e585e4559c23"
                     },
                     {
-                      "key": "limit",
-                      "value": "10"
+                      "id": "d1f136f6-751f-424d-b984-a64fcf971fb8",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations?offset=0&limit=10&name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations"
+                          ],
+                          "query": [
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Filter organizations by name",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-d1f136f6-751f-424d-b984-a64fcf971fb8"
                     },
                     {
-                      "key": "name",
-                      "value": "<string>"
+                      "id": "a952aa11-c190-4e7e-accb-168a0fe1b10e",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations?offset=0&limit=10&name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations"
+                          ],
+                          "query": [
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Filter organizations by name",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-a952aa11-c190-4e7e-accb-168a0fe1b10e"
+                    },
+                    {
+                      "id": "b7d2307a-3942-409f-a5b9-76047a3b2a04",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations?offset=0&limit=10&name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations"
+                          ],
+                          "query": [
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Filter organizations by name",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-b7d2307a-3942-409f-a5b9-76047a3b2a04"
+                    },
+                    {
+                      "id": "e61d434f-fc31-4dee-b049-052816df6500",
+                      "name": "Rate-limiting Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations?offset=0&limit=10&name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations"
+                          ],
+                          "query": [
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Filter organizations by name",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-e61d434f-fc31-4dee-b049-052816df6500"
+                    },
+                    {
+                      "id": "c41cfb5b-85f9-49fc-ae0f-d27975ead212",
+                      "name": "Internal Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations?offset=0&limit=10&name=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations"
+                          ],
+                          "query": [
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Filter organizations by name",
+                              "key": "name",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-c41cfb5b-85f9-49fc-ae0f-d27975ead212"
                     }
                   ],
-                  "variable": []
+                  "createdAt": "2026-10-22T02:28:34.000Z",
+                  "updatedAt": "2026-10-22T02:28:34.000Z",
+                  "uid": "35240-a1c73092-8f2d-4fbf-8d7b-1630093c55b8"
                 },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "eeeddf9a-f0f2-4e13-affb-f69b91ee8e84",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "name": "Create Organization",
+                  "id": "d0988ae3-ac50-4f36-9a8f-f31bcb4a019f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string,null>\",\n      \"phone\": \"<string,null>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"createdAt\": \"<string>\",\n  \"linkedId\": null,\n  \"linkedTo\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string,null>\",\n  \"organizationLabels\": \"<array,null>\",\n  \"postal\": \"<string,null>\",\n  \"province\": \"<string,null>\",\n  \"updatedAt\": \"<string>\",\n  \"description\": \"<string,null>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/organizations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "organizations"
+                      ]
+                    }
+                  },
+                  "response": [
                     {
-                      "key": "offset",
-                      "value": "0"
+                      "id": "65567647-ab54-4cd2-b05f-b58b38c83540",
+                      "name": "Created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string,null>\",\n      \"phone\": \"<string,null>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"createdAt\": \"<string>\",\n  \"linkedId\": null,\n  \"linkedTo\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string,null>\",\n  \"organizationLabels\": \"<array,null>\",\n  \"postal\": \"<string,null>\",\n  \"province\": \"<string,null>\",\n  \"updatedAt\": \"<string>\",\n  \"description\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"address\": \"<string>\",\n    \"contacts\": [\n      {\n        \"firstName\": \"<string>\",\n        \"email\": \"<string>\",\n        \"lastName\": \"<string,null>\",\n        \"phone\": \"<string,null>\",\n        \"workPhone\": \"<string>\"\n      }\n    ],\n    \"country\": \"<string>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"type\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"billing_email\": \"<string,null>\",\n    \"city\": \"<string,null>\",\n    \"createdAt\": \"<string>\",\n    \"linkedTo\": \"<string>\",\n    \"location\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\"\n    },\n    \"officeId\": \"<string,null>\",\n    \"organizationLabels\": \"<array,null>\",\n    \"postal\": \"<string,null>\",\n    \"province\": \"<string,null>\",\n    \"updatedAt\": \"<string>\",\n    \"description\": \"<string,null>\"\n  }\n}",
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-65567647-ab54-4cd2-b05f-b58b38c83540"
                     },
                     {
-                      "key": "limit",
-                      "value": "10"
+                      "id": "a2986cb3-a039-46ac-8ea8-d58187f65f09",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string,null>\",\n      \"phone\": \"<string,null>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"createdAt\": \"<string>\",\n  \"linkedId\": null,\n  \"linkedTo\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string,null>\",\n  \"organizationLabels\": \"<array,null>\",\n  \"postal\": \"<string,null>\",\n  \"province\": \"<string,null>\",\n  \"updatedAt\": \"<string>\",\n  \"description\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-a2986cb3-a039-46ac-8ea8-d58187f65f09"
                     },
                     {
-                      "key": "name",
-                      "value": "<string>"
+                      "id": "ea5985ff-1d30-4293-95d0-582a73050d51",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string,null>\",\n      \"phone\": \"<string,null>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"createdAt\": \"<string>\",\n  \"linkedId\": null,\n  \"linkedTo\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string,null>\",\n  \"organizationLabels\": \"<array,null>\",\n  \"postal\": \"<string,null>\",\n  \"province\": \"<string,null>\",\n  \"updatedAt\": \"<string>\",\n  \"description\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-ea5985ff-1d30-4293-95d0-582a73050d51"
+                    },
+                    {
+                      "id": "3b822d66-593c-4c43-b402-6c19d7e4317a",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string,null>\",\n      \"phone\": \"<string,null>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"createdAt\": \"<string>\",\n  \"linkedId\": null,\n  \"linkedTo\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string,null>\",\n  \"organizationLabels\": \"<array,null>\",\n  \"postal\": \"<string,null>\",\n  \"province\": \"<string,null>\",\n  \"updatedAt\": \"<string>\",\n  \"description\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-3b822d66-593c-4c43-b402-6c19d7e4317a"
+                    },
+                    {
+                      "id": "c879b321-d3df-4d5c-b06f-2b327cbae15a",
+                      "name": "Rate-limiting Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string,null>\",\n      \"phone\": \"<string,null>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"createdAt\": \"<string>\",\n  \"linkedId\": null,\n  \"linkedTo\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string,null>\",\n  \"organizationLabels\": \"<array,null>\",\n  \"postal\": \"<string,null>\",\n  \"province\": \"<string,null>\",\n  \"updatedAt\": \"<string>\",\n  \"description\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-c879b321-d3df-4d5c-b06f-2b327cbae15a"
+                    },
+                    {
+                      "id": "6677855a-dae2-4793-871f-71249ab6bac2",
+                      "name": "Internal Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string,null>\",\n      \"phone\": \"<string,null>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string,null>\",\n  \"city\": \"<string,null>\",\n  \"createdAt\": \"<string>\",\n  \"linkedId\": null,\n  \"linkedTo\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string,null>\",\n  \"organizationLabels\": \"<array,null>\",\n  \"postal\": \"<string,null>\",\n  \"province\": \"<string,null>\",\n  \"updatedAt\": \"<string>\",\n  \"description\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/organizations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "organizations"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:34.000Z",
+                      "updatedAt": "2026-10-22T02:28:34.000Z",
+                      "uid": "35240-6677855a-dae2-4793-871f-71249ab6bac2"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "createdAt": "2026-10-22T02:28:34.000Z",
+                  "updatedAt": "2026-10-22T02:28:34.000Z",
+                  "uid": "35240-d0988ae3-ac50-4f36-9a8f-f31bcb4a019f"
                 }
               ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1ce950fe-9bbc-4f4a-b435-b7f745fcbfbc",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "de114e19-e147-4f60-b502-7a57d178da22",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "957ac36e-d67c-49ed-b0b4-58305a2993e1",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "name",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "299232e2-3814-4810-8958-541cbe691fd3",
+              "createdAt": "2026-10-22T02:28:34.000Z",
+              "updatedAt": "2026-10-22T02:28:34.000Z",
+              "uid": "35240-299232e2-3814-4810-8958-541cbe691fd3"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "a0bbe65d-5aa4-4fc2-bc63-b90b0511976f",
-          "name": "Create Organization",
-          "request": {
-            "name": "Create Organization",
-            "description": {
-              "content": "Create Organization",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organizations"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string>\",\n  \"city\": \"<string>\",\n  \"linkedId\": null,\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string>\",\n  \"organizationLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"postal\": \"<string>\",\n  \"province\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "f7960ad8-eaca-4794-97ea-0561b15ea8fb",
-              "name": "Created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"id\": \"<string>\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": {\n    \"address\": \"5 Madison Avenue\",\n    \"contacts\": [\n      {\n        \"firstName\": \"John\",\n        \"email\": \"john@acme.com\",\n        \"lastName\": \"Doe\",\n        \"phone\": \"1505123123\",\n        \"workPhone\": \"1505456456\"\n      }\n    ],\n    \"country\": \"US\",\n    \"id\": \"string\",\n    \"name\": \"Acme Corp\",\n    \"phone\": \"1505111222\",\n    \"type\": \"S\",\n    \"address2\": \"Suite 101\",\n    \"billing_email\": \"email@test.com\",\n    \"city\": \"New York\",\n    \"createdAt\": \"2021-06-02 12:34:02.861000+00:00\",\n    \"linkedTo\": \"3111222\",\n    \"location\": {\n      \"latitude\": 38.8951,\n      \"longitude\": -77.0364\n    },\n    \"officeId\": \"office_123\",\n    \"organizationLabels\": [\n      \"Tier 1\",\n      \"Tier 2\"\n    ],\n    \"postal\": \"A1B2C3\",\n    \"province\": \"New York\",\n    \"updatedAt\": \"2021-06-02 12:34:02.861000+00:00\",\n    \"description\": \"This is a description\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "eb442327-e6e8-4c1f-a70c-9cfb823eb264",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"id\": \"<string>\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6789b849-36e9-4408-89c3-6db4436c4318",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"id\": \"<string>\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fd4f33c3-1ad4-4008-a12f-22d2dcdbe5ad",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"id\": \"<string>\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0ae5a003-74f0-4405-8b68-226d40390c2a",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"id\": \"<string>\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "842a2252-dc9f-428f-9a94-84dfa00757ac",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"id\": \"<string>\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "452d9db2-8f13-4cc0-aff0-a9a9799309ed",
-          "name": "Delete Organization",
-          "request": {
-            "name": "Delete Organization",
-            "description": {
-              "content": "Delete Organization",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organizations",
-                ":organization_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organization_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "ae4242ea-0997-422b-b100-3b7c7d1c5a54",
-              "name": "No Content",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "73310c59-d8d6-4bbc-81b1-645464186594",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ef8939ce-f9d2-4c16-9b8e-d86d945deec9",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "94fc751b-89b4-4600-975a-8e70659ed5d1",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d2038879-0ca2-4eda-a592-cb128d7d0876",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "61fa366c-2689-441e-a476-41ee76ad57aa",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3c9badab-eacb-495d-bef6-30aaa4ecdb4d",
-          "name": "Get Organization",
-          "request": {
-            "name": "Get Organization",
-            "description": {
-              "content": "Get Organization",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organizations",
-                ":organization_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organization_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a2a464db-17ee-4804-95ee-3d6d3423948a",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": {\n    \"address\": \"5 Madison Avenue\",\n    \"contacts\": [\n      {\n        \"firstName\": \"John\",\n        \"email\": \"john@acme.com\",\n        \"lastName\": \"Doe\",\n        \"phone\": \"1505123123\",\n        \"workPhone\": \"1505456456\"\n      }\n    ],\n    \"country\": \"US\",\n    \"id\": \"string\",\n    \"name\": \"Acme Corp\",\n    \"phone\": \"1505111222\",\n    \"type\": \"S\",\n    \"address2\": \"Suite 101\",\n    \"billing_email\": \"email@test.com\",\n    \"city\": \"New York\",\n    \"createdAt\": \"2021-06-02 12:34:02.861000+00:00\",\n    \"linkedId\": \"string\",\n    \"linkedTo\": \"3111222\",\n    \"location\": {\n      \"latitude\": 38.8951,\n      \"longitude\": -77.0364\n    },\n    \"officeId\": \"office_123\",\n    \"organizationLabels\": [\n      \"Tier 1\",\n      \"Tier 2\"\n    ],\n    \"postal\": \"A1B2C3\",\n    \"province\": \"New York\",\n    \"updatedAt\": \"2021-06-02 12:34:02.861000+00:00\",\n    \"description\": \"This is a description\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2a3ca93c-57fd-46e6-948a-66bfb6c5e1a7",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e04839ef-b86d-48b3-8baf-fd41741d1fa8",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ada7683d-d177-4a5a-a385-64eb99d5a2ba",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cca8e3fb-0149-4201-af41-f6444f6c6c22",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e32d2fcf-878c-49dc-89a5-26ac424d6ec4",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "5d2ccfe8-43ed-4bba-b80c-ca255436b569",
-          "name": "Update Organization",
-          "request": {
-            "name": "Update Organization",
-            "description": {
-              "content": "Update Organization",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "organizations",
-                ":organization_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "organization_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"address\": \"<string>\",\n  \"contacts\": [\n    {\n      \"firstName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"workPhone\": \"<string>\"\n    }\n  ],\n  \"country\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"type\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"billing_email\": \"<string>\",\n  \"city\": \"<string>\",\n  \"linkedId\": null,\n  \"location\": {\n    \"latitude\": \"<number>\",\n    \"longitude\": \"<number>\"\n  },\n  \"officeId\": \"<string>\",\n  \"organizationLabels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"postal\": \"<string>\",\n  \"province\": \"<string>\",\n  \"description\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "95830ff9-f0f4-4cdf-b43a-32a3f8c61f95",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": {\n    \"address\": \"5 Madison Avenue\",\n    \"contacts\": [\n      {\n        \"firstName\": \"John\",\n        \"email\": \"john@acme.com\",\n        \"lastName\": \"Doe\",\n        \"phone\": \"1505123123\",\n        \"workPhone\": \"1505456456\"\n      }\n    ],\n    \"country\": \"US\",\n    \"id\": \"string\",\n    \"name\": \"Acme Corp\",\n    \"phone\": \"1505111222\",\n    \"type\": \"S\",\n    \"address2\": \"Suite 101\",\n    \"billing_email\": \"email@test.com\",\n    \"city\": \"New York\",\n    \"createdAt\": \"2021-06-02 12:34:02.861000+00:00\",\n    \"linkedTo\": \"3111222\",\n    \"location\": {\n      \"latitude\": 38.8951,\n      \"longitude\": -77.0364\n    },\n    \"officeId\": \"office_123\",\n    \"organizationLabels\": [\n      \"Tier 1\",\n      \"Tier 2\"\n    ],\n    \"postal\": \"A1B2C3\",\n    \"province\": \"New York\",\n    \"updatedAt\": \"2021-06-02 12:34:02.861000+00:00\",\n    \"description\": \"This is a description\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "42c11743-04f2-4293-b58c-3147fbbb115a",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b5632c2c-38c7-416d-a85f-b828f355067f",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0894d7d9-7492-4d5b-933d-68754fee5799",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "eb4feb5a-208d-4173-8a11-8855f9854898",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0953d207-c75e-4c5a-8213-2d49e49bbb91",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "organizations",
-                    ":organization_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "organization_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"5 Madison Avenue\",\n  \"contacts\": [\n    {\n      \"firstName\": \"John\",\n      \"email\": \"john@acme.com\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"1505123123\",\n      \"workPhone\": \"1505456456\"\n    }\n  ],\n  \"country\": \"US\",\n  \"name\": \"Acme Corp\",\n  \"phone\": \"1505111222\",\n  \"type\": \"S\",\n  \"address2\": \"Suite 101\",\n  \"billing_email\": \"email@test.com\",\n  \"city\": \"New York\",\n  \"linkedId\": \"123123\",\n  \"location\": {\n    \"latitude\": 38.8951,\n    \"longitude\": -77.0364\n  },\n  \"officeId\": \"office_123\",\n  \"organizationLabels\": [\n    \"Tier 1\",\n    \"Tier 2\"\n  ],\n  \"postal\": \"A1B2C3\",\n  \"province\": \"New York\",\n  \"description\": \"This is a description\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "24e14865-18b9-49dc-ac44-5c48e020c766",
+          "createdAt": "2026-10-22T02:28:34.000Z",
+          "updatedAt": "2026-10-22T02:28:34.000Z",
+          "uid": "35240-24e14865-18b9-49dc-ac44-5c48e020c766"
         }
       ],
-      "event": []
+      "id": "efa193b0-b8af-4b39-9e76-89ef3ede6a19",
+      "createdAt": "2026-10-22T02:28:34.000Z",
+      "updatedAt": "2026-10-22T02:28:34.000Z",
+      "uid": "35240-efa193b0-b8af-4b39-9e76-89ef3ede6a19"
     }
   ],
-  "event": [],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
   "variable": [
     {
-      "type": "string",
-      "value": "https://files-integration.inspectorio.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://sight.inspectorio.com"
     }
-  ],
-  "info": {
-    "_postman_id": "ea87570a-4739-447c-9758-062987a8e3bd",
-    "name": "File Management ANALYTICS ORGANIZATION API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

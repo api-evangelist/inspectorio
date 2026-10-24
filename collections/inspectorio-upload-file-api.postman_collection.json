@@ -1,261 +1,262 @@
 {
+  "info": {
+    "_postman_id": "0bdbff99-1005-4a4c-a2fe-91b8666bbbd3",
+    "name": "File Management Upload File API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:29:42.000Z",
+    "updatedAt": "2026-10-22T02:29:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0bdbff99-1005-4a4c-a2fe-91b8666bbbd3"
+  },
   "item": [
     {
-      "id": "35ebadee-369b-4123-9763-b282883d3979",
-      "name": "Upload File",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "signed-upload",
       "item": [
         {
-          "id": "5b7f9c1f-9238-4f67-a80b-5d45b82980f0",
-          "name": "Upload File",
-          "request": {
-            "name": "Upload File",
-            "description": {
-              "content": "Upload File",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "signed-upload",
-                ":session_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "session_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "multipart/form-data"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "formdata",
-              "formdata": [
-                {
-                  "key": "file",
-                  "type": "file",
-                  "description": "(Required) "
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "{session_id}",
+          "item": [
             {
-              "id": "f9a4a425-bc1d-401c-9117-a9b2f4cc1da4",
-              "name": "File uploaded",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "signed-upload",
-                    ":session_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "session_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+              "name": "Upload File",
+              "id": "67220abd-e070-49a2-852e-17cdb75988f0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "formdata",
                   "formdata": [
                     {
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
+                      "description": "(Required) ",
                       "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
+                      "type": "file",
+                      "value": null
                     }
                   ]
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": {\n    \"contentType\": \"ms-application/excel\",\n    \"createdBy\": \"uuuu\",\n    \"dataSource\": \"integration-api\",\n    \"extension\": \"xls\",\n    \"fileId\": \"ef9cd482-596d-7a5d-8155-137463f056fd\",\n    \"fileName\": \"ab8cd482-596d-7a5d-8155-137463f243ac.xls\",\n    \"fileSize\": 9910,\n    \"fullHashSum\": \"C9025CC0FD86FF0A2B6B53AF58ACDE1B\",\n    \"lightHashSum\": \"C9025CC0FD86FF0A2B6B53AF58ACDE1B\",\n    \"orgId\": \"xxxx\",\n    \"originalExtension\": \"xls\",\n    \"originalName\": \"original file name\",\n    \"product\": \"sight\",\n    \"storageName\": \"/sight/xxxx/uuuu/ab8cd482-596d-7a5d-8155-137463f243ac.xls\",\n    \"updatedBy\": \"uuuu\",\n    \"userId\": \"uuuu\",\n    \"createdAt\": \"2022-07-25T09:46:12+00:00\",\n    \"storage\": {\n      \"current\": \"standard\",\n      \"path\": \"/sight/xxxx/uuuu/ab8cd482-596d-7a5d-8155-137463f243ac.xls\",\n      \"ttl\": 845\n    },\n    \"updatedAt\": \"2022-07-25T09:46:12+00:00\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6cab7c01-1661-4e4a-b631-dac29824f9df",
-              "name": "Bad request",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/signed-upload/:session_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "signed-upload",
                     ":session_id"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "b974718e-cf7f-4fa0-9e9d-883ea7667ea1",
                       "key": "session_id",
+                      "value": "<string>",
                       "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
                     }
                   ]
                 }
               },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1e1b976d-896f-4e98-a220-3d2e49621cac",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "signed-upload",
-                    ":session_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "session_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
+                  "id": "cec9c355-9b19-4415-aca4-f70c98373ac3",
+                  "name": "File uploaded",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
                       },
-                      "key": "file",
-                      "value": "<binary>",
-                      "type": "text"
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) ",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/signed-upload/:session_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "signed-upload",
+                        ":session_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "session_id"
+                        }
+                      ]
                     }
-                  ]
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": {\n    \"contentType\": \"<string>\",\n    \"createdBy\": \"<string>\",\n    \"dataSource\": \"<string>\",\n    \"extension\": \"<string>\",\n    \"fileId\": \"<string>\",\n    \"fileName\": \"<string>\",\n    \"fileSize\": \"<integer>\",\n    \"fullHashSum\": \"<string>\",\n    \"lightHashSum\": \"<string>\",\n    \"orgId\": \"<string>\",\n    \"originalExtension\": \"<string>\",\n    \"originalName\": \"<string>\",\n    \"product\": \"sight\",\n    \"storageName\": \"<string>\",\n    \"updatedBy\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"createdAt\": \"<string>\",\n    \"storage\": {\n      \"current\": \"<string>\",\n      \"path\": \"<string>\",\n      \"ttl\": \"<integer>\"\n    },\n    \"updatedAt\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T02:29:43.000Z",
+                  "updatedAt": "2026-10-22T02:29:43.000Z",
+                  "uid": "35240-cec9c355-9b19-4415-aca4-f70c98373ac3"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "15353f73-198e-4e3e-894e-eb4429ac21ed",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) ",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/signed-upload/:session_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "signed-upload",
+                        ":session_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "session_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T02:29:43.000Z",
+                  "updatedAt": "2026-10-22T02:29:43.000Z",
+                  "uid": "35240-15353f73-198e-4e3e-894e-eb4429ac21ed"
+                },
+                {
+                  "id": "373bc1f7-82b0-40d7-9275-38f583c44799",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) ",
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/signed-upload/:session_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "signed-upload",
+                        ":session_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "session_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T02:29:43.000Z",
+                  "updatedAt": "2026-10-22T02:29:43.000Z",
+                  "uid": "35240-373bc1f7-82b0-40d7-9275-38f583c44799"
                 }
               ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T02:29:43.000Z",
+              "updatedAt": "2026-10-22T02:29:43.000Z",
+              "uid": "35240-67220abd-e070-49a2-852e-17cdb75988f0"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "63a5581c-212c-4a97-a4f1-f0fe37e1d9da",
+          "createdAt": "2026-10-22T02:29:43.000Z",
+          "updatedAt": "2026-10-22T02:29:43.000Z",
+          "uid": "35240-63a5581c-212c-4a97-a4f1-f0fe37e1d9da"
         }
       ],
-      "event": []
+      "id": "ebef5a7f-c21d-499b-b98f-200cc2f29988",
+      "createdAt": "2026-10-22T02:29:43.000Z",
+      "updatedAt": "2026-10-22T02:29:43.000Z",
+      "uid": "35240-ebef5a7f-c21d-499b-b98f-200cc2f29988"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://files-integration.inspectorio.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://files-integration.inspectorio.com"
     }
-  ],
-  "info": {
-    "_postman_id": "dcbbdde9-fd1f-4bc1-8697-00a3633fe34e",
-    "name": "File Management ANALYTICS Upload File API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

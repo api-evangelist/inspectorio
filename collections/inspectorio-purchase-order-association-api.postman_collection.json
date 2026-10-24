@@ -1,907 +1,1039 @@
 {
+  "info": {
+    "_postman_id": "56541090-5a36-4301-80f5-ceffdac0e1ae",
+    "name": "Inspectorio Quality Risk Management PURCHASE ORDER\u2026",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:28:51.000Z",
+    "updatedAt": "2026-10-22T02:28:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-56541090-5a36-4301-80f5-ceffdac0e1ae"
+  },
   "item": [
     {
-      "id": "7db5db1d-6582-4575-b8af-2fc0c6621e52",
-      "name": "PURCHASE ORDER ASSOCIATION",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "068cdb29-e2b8-4bc9-8b57-5ae8551b80e2",
-          "name": "Create Purchase Order Association",
-          "request": {
-            "name": "Create Purchase Order Association",
-            "description": {
-              "content": "Create Purchase Order Association",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "purchase-order-associations"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"fromPoNumber\": \"<string>\",\n  \"toPoNumber\": \"<string>\",\n  \"associationType\": \"<string>\",\n  \"fromPoOwnerId\": \"<string>\",\n  \"toPoOwnerId\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "c8a5545f-9f19-42d9-af52-2446bbae35b0",
-              "name": "Created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"fromPoNumber\": \"<string>\",\n  \"toPoNumber\": \"<string>\",\n  \"associationType\": \"<string>\",\n  \"fromPoOwnerId\": \"client_1\",\n  \"toPoOwnerId\": \"client_1\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
+              "name": "purchase-order-associations",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{po_number}",
+                  "item": [
+                    {
+                      "name": "Get Associations of Purchase Order",
+                      "id": "f7d3ca7a-dd93-41a1-8bd0-71d2ba0b683a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/purchase-order-associations/:po_number",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "purchase-order-associations",
+                            ":po_number"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fe892a6c-e005-402a-879d-5d35f1d29cc4",
+                              "key": "po_number",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "List Associations of Purchase Order"
+                      },
+                      "response": [
+                        {
+                          "id": "34f3ccd2-b239-4ebc-987f-d7782be3c4d9",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/purchase-order-associations/:po_number",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "purchase-order-associations",
+                                ":po_number"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "po_number"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"associations\": [\n    {\n      \"fromPoNumber\": \"<string>\",\n      \"toPoNumber\": \"<string>\",\n      \"associationType\": \"material\",\n      \"createdDate\": \"<string,null-date-time>\",\n      \"associationCreator\": \"<string,null>\",\n      \"fromPoOwnerId\": \"<string,null>\",\n      \"toPoOwnerId\": \"<string,null>\"\n    },\n    {\n      \"fromPoNumber\": \"<string>\",\n      \"toPoNumber\": \"<string>\",\n      \"associationType\": \"parent child\",\n      \"createdDate\": \"<string,null-date-time>\",\n      \"associationCreator\": \"<string,null>\",\n      \"fromPoOwnerId\": \"<string,null>\",\n      \"toPoOwnerId\": \"<string,null>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T02:28:52.000Z",
+                          "updatedAt": "2026-10-22T02:28:52.000Z",
+                          "uid": "35240-34f3ccd2-b239-4ebc-987f-d7782be3c4d9"
+                        },
+                        {
+                          "id": "a9de76f1-5dad-4ba0-8d62-10a18d485ea5",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/purchase-order-associations/:po_number",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "purchase-order-associations",
+                                ":po_number"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "po_number"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:52.000Z",
+                          "updatedAt": "2026-10-22T02:28:52.000Z",
+                          "uid": "35240-a9de76f1-5dad-4ba0-8d62-10a18d485ea5"
+                        },
+                        {
+                          "id": "a8959fba-1c25-4ccf-bc55-1d273b5ac06d",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/purchase-order-associations/:po_number",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "purchase-order-associations",
+                                ":po_number"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "po_number"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:52.000Z",
+                          "updatedAt": "2026-10-22T02:28:52.000Z",
+                          "uid": "35240-a8959fba-1c25-4ccf-bc55-1d273b5ac06d"
+                        },
+                        {
+                          "id": "e4ae66a9-52ba-417a-9992-33a5fa9372b2",
+                          "name": "Rate-limiting Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/purchase-order-associations/:po_number",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "purchase-order-associations",
+                                ":po_number"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "po_number"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:52.000Z",
+                          "updatedAt": "2026-10-22T02:28:52.000Z",
+                          "uid": "35240-e4ae66a9-52ba-417a-9992-33a5fa9372b2"
+                        },
+                        {
+                          "id": "047d38bb-6378-49bc-8e25-e20cfef08ac8",
+                          "name": "Internal Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/purchase-order-associations/:po_number",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "purchase-order-associations",
+                                ":po_number"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "po_number"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:52.000Z",
+                          "updatedAt": "2026-10-22T02:28:52.000Z",
+                          "uid": "35240-047d38bb-6378-49bc-8e25-e20cfef08ac8"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T02:28:52.000Z",
+                      "updatedAt": "2026-10-22T02:28:52.000Z",
+                      "uid": "35240-f7d3ca7a-dd93-41a1-8bd0-71d2ba0b683a"
+                    }
+                  ],
+                  "id": "299bac96-ced3-4715-9ea6-c25d97fedb4b",
+                  "createdAt": "2026-10-22T02:28:52.000Z",
+                  "updatedAt": "2026-10-22T02:28:52.000Z",
+                  "uid": "35240-299bac96-ced3-4715-9ea6-c25d97fedb4b"
+                },
+                {
+                  "name": "{from_po_number}",
+                  "item": [
+                    {
+                      "name": "{to_po_number}",
+                      "item": [
+                        {
+                          "name": "Delete Purchase Order Association",
+                          "id": "9bbc1da6-095d-407c-8d6b-72d91b4f3ff0",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/purchase-order-associations/:from_po_number/:to_po_number",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "purchase-order-associations",
+                                ":from_po_number",
+                                ":to_po_number"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "bacc8aa9-a20a-4ecd-95b4-e9ac52ea4641",
+                                  "key": "from_po_number",
+                                  "value": "<string>",
+                                  "description": "(Required) From PO number"
+                                },
+                                {
+                                  "id": "8170c3fc-2328-4e80-ace8-24d4b8094b70",
+                                  "key": "to_po_number",
+                                  "value": "<string>",
+                                  "description": "(Required) To PO number"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "53351d3b-7af6-43a6-972a-64fc7000abf7",
+                              "name": "No Content",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/purchase-order-associations/:from_po_number/:to_po_number",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "purchase-order-associations",
+                                    ":from_po_number",
+                                    ":to_po_number"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "from_po_number"
+                                    },
+                                    {
+                                      "key": "to_po_number"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-10-22T02:28:52.000Z",
+                              "updatedAt": "2026-10-22T02:28:52.000Z",
+                              "uid": "35240-53351d3b-7af6-43a6-972a-64fc7000abf7"
+                            },
+                            {
+                              "id": "863a9df6-8532-429c-856e-96eedae43dd6",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/purchase-order-associations/:from_po_number/:to_po_number",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "purchase-order-associations",
+                                    ":from_po_number",
+                                    ":to_po_number"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "from_po_number"
+                                    },
+                                    {
+                                      "key": "to_po_number"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:52.000Z",
+                              "updatedAt": "2026-10-22T02:28:52.000Z",
+                              "uid": "35240-863a9df6-8532-429c-856e-96eedae43dd6"
+                            },
+                            {
+                              "id": "9923f662-494b-45cc-9510-44dce2a3c4d4",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/purchase-order-associations/:from_po_number/:to_po_number",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "purchase-order-associations",
+                                    ":from_po_number",
+                                    ":to_po_number"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "from_po_number"
+                                    },
+                                    {
+                                      "key": "to_po_number"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:52.000Z",
+                              "updatedAt": "2026-10-22T02:28:52.000Z",
+                              "uid": "35240-9923f662-494b-45cc-9510-44dce2a3c4d4"
+                            },
+                            {
+                              "id": "1907116a-3a7f-465e-8fa8-f7f710dc0424",
+                              "name": "Rate-limiting Error",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/purchase-order-associations/:from_po_number/:to_po_number",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "purchase-order-associations",
+                                    ":from_po_number",
+                                    ":to_po_number"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "from_po_number"
+                                    },
+                                    {
+                                      "key": "to_po_number"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:52.000Z",
+                              "updatedAt": "2026-10-22T02:28:52.000Z",
+                              "uid": "35240-1907116a-3a7f-465e-8fa8-f7f710dc0424"
+                            },
+                            {
+                              "id": "2397ef82-8a89-4386-8a70-3605f745718a",
+                              "name": "Internal Error",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/purchase-order-associations/:from_po_number/:to_po_number",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "purchase-order-associations",
+                                    ":from_po_number",
+                                    ":to_po_number"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "from_po_number"
+                                    },
+                                    {
+                                      "key": "to_po_number"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:52.000Z",
+                              "updatedAt": "2026-10-22T02:28:52.000Z",
+                              "uid": "35240-2397ef82-8a89-4386-8a70-3605f745718a"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T02:28:52.000Z",
+                          "updatedAt": "2026-10-22T02:28:52.000Z",
+                          "uid": "35240-9bbc1da6-095d-407c-8d6b-72d91b4f3ff0"
+                        }
+                      ],
+                      "id": "33c72ab3-32b4-45b9-af9c-bddc36b06b00",
+                      "createdAt": "2026-10-22T02:28:52.000Z",
+                      "updatedAt": "2026-10-22T02:28:52.000Z",
+                      "uid": "35240-33c72ab3-32b4-45b9-af9c-bddc36b06b00"
+                    }
+                  ],
+                  "id": "2e31818e-5d84-4bb8-a81f-9c9f3d9fa546",
+                  "createdAt": "2026-10-22T02:28:52.000Z",
+                  "updatedAt": "2026-10-22T02:28:52.000Z",
+                  "uid": "35240-2e31818e-5d84-4bb8-a81f-9c9f3d9fa546"
+                },
+                {
+                  "name": "Create Purchase Order Association",
+                  "id": "139aa9e5-64d3-4aa6-9f84-285c75123356",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"fromPoNumber\": \"<string>\",\n  \"toPoNumber\": \"<string>\",\n  \"associationType\": \"linked\",\n  \"fromPoOwnerId\": \"<string,null>\",\n  \"toPoOwnerId\": \"<string,null>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/purchase-order-associations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "purchase-order-associations"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "cb69d8d2-ed5b-4f15-a99c-c215f58e10bd",
+                      "name": "Created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fromPoNumber\": \"<string>\",\n  \"toPoNumber\": \"<string>\",\n  \"associationType\": \"linked\",\n  \"fromPoOwnerId\": \"<string,null>\",\n  \"toPoOwnerId\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/purchase-order-associations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "purchase-order-associations"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"fromPoNumber\": \"<string>\",\n    \"toPoNumber\": \"<string>\",\n    \"associationType\": \"linked\",\n    \"createdDate\": \"<string,null-date-time>\",\n    \"associationCreator\": \"<string,null>\",\n    \"fromPoOwnerId\": \"<string,null>\",\n    \"toPoOwnerId\": \"<string,null>\"\n  }\n}",
+                      "createdAt": "2026-10-22T02:28:52.000Z",
+                      "updatedAt": "2026-10-22T02:28:52.000Z",
+                      "uid": "35240-cb69d8d2-ed5b-4f15-a99c-c215f58e10bd"
+                    },
+                    {
+                      "id": "f750c815-4f84-445d-8853-56c83afb64b9",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fromPoNumber\": \"<string>\",\n  \"toPoNumber\": \"<string>\",\n  \"associationType\": \"linked\",\n  \"fromPoOwnerId\": \"<string,null>\",\n  \"toPoOwnerId\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/purchase-order-associations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "purchase-order-associations"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:52.000Z",
+                      "updatedAt": "2026-10-22T02:28:52.000Z",
+                      "uid": "35240-f750c815-4f84-445d-8853-56c83afb64b9"
+                    },
+                    {
+                      "id": "50247a7c-cda5-4eba-b048-83ce87be7c3e",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fromPoNumber\": \"<string>\",\n  \"toPoNumber\": \"<string>\",\n  \"associationType\": \"linked\",\n  \"fromPoOwnerId\": \"<string,null>\",\n  \"toPoOwnerId\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/purchase-order-associations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "purchase-order-associations"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:52.000Z",
+                      "updatedAt": "2026-10-22T02:28:52.000Z",
+                      "uid": "35240-50247a7c-cda5-4eba-b048-83ce87be7c3e"
+                    },
+                    {
+                      "id": "ff3c11fd-bef8-4c5d-849b-224dab6bcea4",
+                      "name": "Rate-limiting Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fromPoNumber\": \"<string>\",\n  \"toPoNumber\": \"<string>\",\n  \"associationType\": \"linked\",\n  \"fromPoOwnerId\": \"<string,null>\",\n  \"toPoOwnerId\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/purchase-order-associations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "purchase-order-associations"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:52.000Z",
+                      "updatedAt": "2026-10-22T02:28:52.000Z",
+                      "uid": "35240-ff3c11fd-bef8-4c5d-849b-224dab6bcea4"
+                    },
+                    {
+                      "id": "b4bcf134-ba57-4da6-bbe7-90879ddda855",
+                      "name": "Internal Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"fromPoNumber\": \"<string>\",\n  \"toPoNumber\": \"<string>\",\n  \"associationType\": \"linked\",\n  \"fromPoOwnerId\": \"<string,null>\",\n  \"toPoOwnerId\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/purchase-order-associations",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "purchase-order-associations"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:52.000Z",
+                      "updatedAt": "2026-10-22T02:28:52.000Z",
+                      "uid": "35240-b4bcf134-ba57-4da6-bbe7-90879ddda855"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:28:52.000Z",
+                  "updatedAt": "2026-10-22T02:28:52.000Z",
+                  "uid": "35240-139aa9e5-64d3-4aa6-9f84-285c75123356"
                 }
               ],
-              "body": "{\n  \"data\": {\n    \"fromPoNumber\": \"string\",\n    \"toPoNumber\": \"string\",\n    \"associationType\": \"material\",\n    \"createdDate\": \"2023-02-10 10:00:00\",\n    \"associationCreator\": \"Retailer 01\",\n    \"fromPoOwnerId\": \"custom_id_1\",\n    \"toPoOwnerId\": \"custom_id_2\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "59e35f9e-f1ed-4281-86c4-ea0b1ce5e8d6",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"fromPoNumber\": \"<string>\",\n  \"toPoNumber\": \"<string>\",\n  \"associationType\": \"<string>\",\n  \"fromPoOwnerId\": \"client_1\",\n  \"toPoOwnerId\": \"client_1\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5b6f7b82-1eee-4a6a-832d-03197121ac71",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"fromPoNumber\": \"<string>\",\n  \"toPoNumber\": \"<string>\",\n  \"associationType\": \"<string>\",\n  \"fromPoOwnerId\": \"client_1\",\n  \"toPoOwnerId\": \"client_1\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "399c34ca-fccf-42d8-9940-571089df24e5",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"fromPoNumber\": \"<string>\",\n  \"toPoNumber\": \"<string>\",\n  \"associationType\": \"<string>\",\n  \"fromPoOwnerId\": \"client_1\",\n  \"toPoOwnerId\": \"client_1\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "825910b4-75a5-4bc2-93c0-c321b8195acb",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"fromPoNumber\": \"<string>\",\n  \"toPoNumber\": \"<string>\",\n  \"associationType\": \"<string>\",\n  \"fromPoOwnerId\": \"client_1\",\n  \"toPoOwnerId\": \"client_1\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "cc580427-70af-40c0-9d07-2a30883f466f",
+              "createdAt": "2026-10-22T02:28:52.000Z",
+              "updatedAt": "2026-10-22T02:28:52.000Z",
+              "uid": "35240-cc580427-70af-40c0-9d07-2a30883f466f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "78e349c1-2e19-4e52-b789-953d3fba751b",
-          "name": "Get Associations of Purchase Order",
-          "request": {
-            "name": "Get Associations of Purchase Order",
-            "description": {
-              "content": "List Associations of Purchase Order",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "purchase-order-associations",
-                ":po_number"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "po_number",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "3ae41363-98dd-4a83-a81f-1bc2bed13120",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations",
-                    ":po_number"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "po_number",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"associations\": [\n    {\n      \"fromPoNumber\": \"string\",\n      \"toPoNumber\": \"string\",\n      \"associationType\": \"material\",\n      \"createdDate\": \"2023-02-10 10:00:00\",\n      \"associationCreator\": \"Retailer 01\",\n      \"fromPoOwnerId\": \"custom_id_1\",\n      \"toPoOwnerId\": \"custom_id_2\"\n    },\n    {\n      \"fromPoNumber\": \"string\",\n      \"toPoNumber\": \"string\",\n      \"associationType\": \"linked\",\n      \"createdDate\": \"2023-02-10 10:00:00\",\n      \"associationCreator\": \"Retailer 01\",\n      \"fromPoOwnerId\": \"custom_id_1\",\n      \"toPoOwnerId\": \"custom_id_2\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "756b1289-6b13-438d-904d-35147dcc3a8e",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations",
-                    ":po_number"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "po_number",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "51eaf1c8-0e2d-43df-b765-88312b2e19af",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations",
-                    ":po_number"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "po_number",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6105dec2-4294-4fc7-9444-db6e779c8565",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations",
-                    ":po_number"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "po_number",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1d4bf8b9-316f-4d13-93e6-f26729a0b4a7",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations",
-                    ":po_number"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "po_number",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "740c94f8-b26d-4d7a-9037-6bccb8b8ab10",
-          "name": "Delete Purchase Order Association",
-          "request": {
-            "name": "Delete Purchase Order Association",
-            "description": {
-              "content": "Delete Purchase Order Association",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "purchase-order-associations",
-                ":from_po_number",
-                ":to_po_number"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "from_po_number",
-                  "description": "(Required) From PO number"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "to_po_number",
-                  "description": "(Required) To PO number"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5b5254a4-58fb-4258-a811-435bd07d4f08",
-              "name": "No Content",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations",
-                    ":from_po_number",
-                    ":to_po_number"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "from_po_number",
-                      "description": "(Required) From PO number"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "to_po_number",
-                      "description": "(Required) To PO number"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "720ba042-8c06-4e24-aef5-d23e13995989",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations",
-                    ":from_po_number",
-                    ":to_po_number"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "from_po_number",
-                      "description": "(Required) From PO number"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "to_po_number",
-                      "description": "(Required) To PO number"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "dec4340e-9397-4237-939a-3b2a37a85c11",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations",
-                    ":from_po_number",
-                    ":to_po_number"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "from_po_number",
-                      "description": "(Required) From PO number"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "to_po_number",
-                      "description": "(Required) To PO number"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f848c0d0-d482-45e0-b5fe-8dcef8865704",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations",
-                    ":from_po_number",
-                    ":to_po_number"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "from_po_number",
-                      "description": "(Required) From PO number"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "to_po_number",
-                      "description": "(Required) To PO number"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "65642550-eb56-42d4-a641-fdb6bb90c2bb",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "purchase-order-associations",
-                    ":from_po_number",
-                    ":to_po_number"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "from_po_number",
-                      "description": "(Required) From PO number"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "to_po_number",
-                      "description": "(Required) To PO number"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "c888f7cb-17fc-4515-a172-0f15e8eeb083",
+          "createdAt": "2026-10-22T02:28:52.000Z",
+          "updatedAt": "2026-10-22T02:28:52.000Z",
+          "uid": "35240-c888f7cb-17fc-4515-a172-0f15e8eeb083"
         }
       ],
-      "event": []
+      "id": "9caecabe-f117-4213-9284-eccaa7701ea6",
+      "createdAt": "2026-10-22T02:28:52.000Z",
+      "updatedAt": "2026-10-22T02:28:52.000Z",
+      "uid": "35240-9caecabe-f117-4213-9284-eccaa7701ea6"
     }
   ],
-  "event": [],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
   "variable": [
     {
-      "type": "string",
-      "value": "https://files-integration.inspectorio.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://sight.inspectorio.com"
     }
-  ],
-  "info": {
-    "_postman_id": "6344366e-952c-417f-9c48-df19e12599eb",
-    "name": "File Management ANALYTICS PURCHASE ORDER ASSOCIATION API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

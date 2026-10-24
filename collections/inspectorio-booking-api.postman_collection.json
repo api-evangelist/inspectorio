@@ -1,888 +1,1027 @@
 {
+  "info": {
+    "_postman_id": "6ab22e3d-c7ec-49f3-adad-5a61823a902a",
+    "name": "Inspectorio Quality Risk Management BOOKING API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:27:28.000Z",
+    "updatedAt": "2026-10-22T02:27:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6ab22e3d-c7ec-49f3-adad-5a61823a902a"
+  },
   "item": [
     {
-      "id": "b9d0b03e-1405-42b2-85d7-266dc3933d1d",
-      "name": "BOOKING",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "322c21d1-7842-41df-ae98-12fab276ebb7",
-          "name": "List Bookings",
-          "request": {
-            "name": "List Bookings",
-            "description": {
-              "content": "List Bookings",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "bookings"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "to_organization_id",
-                  "value": "<string>",
-                  "description": "Organization ID that the booking is booked to"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "10",
-                  "description": "Limit result of list"
-                },
-                {
-                  "disabled": false,
-                  "key": "created_to",
-                  "value": "<dateTime>",
-                  "description": "Booking created to in date and time"
-                },
-                {
-                  "disabled": false,
-                  "key": "updated_to",
-                  "value": "<dateTime>",
-                  "description": "Booking updated to in date and time"
-                },
-                {
-                  "disabled": false,
-                  "key": "order",
-                  "value": "created_date:desc",
-                  "description": "Order of bookings in the response"
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0"
-                },
-                {
-                  "disabled": false,
-                  "key": "updated_from",
-                  "value": "<dateTime>",
-                  "description": "Booking updated from in date and time"
-                },
-                {
-                  "disabled": false,
-                  "key": "created_from",
-                  "value": "<dateTime>",
-                  "description": "Booking created from in date and time"
-                },
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "66f3f7a8-6394-4510-8a87-bf828a0e5eb7",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bookings"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "bookings",
+              "item": [
+                {
+                  "name": "{booking_id}",
+                  "item": [
                     {
-                      "key": "to_organization_id",
-                      "value": "F123456"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "created_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "updated_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "order",
-                      "value": "created_date:desc|asc"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "updated_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "created_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
+                      "name": "Get Booking",
+                      "id": "59863300-864a-47ba-a08c-5197ca2c3081",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bookings/:booking_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bookings",
+                            ":booking_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "84c7203e-efbd-4623-987b-004600eeb319",
+                              "key": "booking_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "a894c6b7-c090-42af-844b-ef4611e9e502",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bookings/:booking_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bookings",
+                                ":booking_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "booking_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"actualInspectionDate\": \"<dateTime>\",\n    \"bookingId\": \"<string>\",\n    \"bookingType\": \"<string>\",\n    \"caseNumber\": \"<string>\",\n    \"clientInformation\": {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"contact\": {\n        \"contactId\": \"<string>\",\n        \"email\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"name\": \"<string>\",\n        \"telephoneNumber\": \"<string>\"\n      },\n      \"country\": \"<string>\",\n      \"localOrganizationId\": \"<string>\",\n      \"localOrganizationIds\": \"<array,null>\",\n      \"name\": \"<string>\",\n      \"organizationId\": \"<string>\"\n    },\n    \"confirmedBy\": \"<string>\",\n    \"confirmedDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"detailOfPIPO\": {\n      \"pipoInformation\": {\n        \"opoNumber\": \"<string>\",\n        \"poNumber\": \"<string>\",\n        \"poTypes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"productLineId\": \"<string>\",\n        \"productLineName\": \"<string>\"\n      },\n      \"styles\": [\n        {\n          \"productCategoryId\": \"<string>\",\n          \"styleId\": \"<string>\",\n          \"assortments\": \"<array,null>\",\n          \"measurements\": [\n            {\n              \"caption\": \"<string>\",\n              \"pom\": \"<string>\",\n              \"tolerance\": \"<string>\",\n              \"unit\": \"inch\",\n              \"isPomCritical\": \"<boolean,null>\",\n              \"sizes\": [\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                },\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                }\n              ],\n              \"toleranceLower\": \"<number,null>\",\n              \"toleranceUpper\": \"<number,null>\"\n            },\n            {\n              \"caption\": \"<string>\",\n              \"pom\": \"<string>\",\n              \"tolerance\": \"<string>\",\n              \"unit\": \"inch\",\n              \"isPomCritical\": \"<boolean,null>\",\n              \"sizes\": [\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                },\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                }\n              ],\n              \"toleranceLower\": \"<number,null>\",\n              \"toleranceUpper\": \"<number,null>\"\n            }\n          ],\n          \"productCategoryName\": \"<string>\",\n          \"solids\": \"<array,null>\",\n          \"styleName\": \"<string,null>\"\n        },\n        {\n          \"productCategoryId\": \"<string>\",\n          \"styleId\": \"<string>\",\n          \"assortments\": \"<array,null>\",\n          \"measurements\": [\n            {\n              \"caption\": \"<string>\",\n              \"pom\": \"<string>\",\n              \"tolerance\": \"<string>\",\n              \"unit\": \"inch\",\n              \"isPomCritical\": \"<boolean,null>\",\n              \"sizes\": [\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                },\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                }\n              ],\n              \"toleranceLower\": \"<number,null>\",\n              \"toleranceUpper\": \"<number,null>\"\n            },\n            {\n              \"caption\": \"<string>\",\n              \"pom\": \"<string>\",\n              \"tolerance\": \"<string>\",\n              \"unit\": \"cm\",\n              \"isPomCritical\": \"<boolean,null>\",\n              \"sizes\": [\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                },\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                }\n              ],\n              \"toleranceLower\": \"<number,null>\",\n              \"toleranceUpper\": \"<number,null>\"\n            }\n          ],\n          \"productCategoryName\": \"<string>\",\n          \"solids\": \"<array,null>\",\n          \"styleName\": \"<string,null>\"\n        }\n      ]\n    },\n    \"expectedDate\": {\n      \"inspectionDate\": \"<dateTime>\",\n      \"shipmentDate\": \"<string,null-date-time>\"\n    },\n    \"factoryInformation\": {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"contact\": {\n        \"contactId\": \"<string>\",\n        \"email\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"name\": \"<string>\",\n        \"telephoneNumber\": \"<string>\"\n      },\n      \"country\": \"<string>\",\n      \"localOrganizationId\": \"<string>\",\n      \"localOrganizationIds\": \"<array,null>\",\n      \"name\": \"<string>\",\n      \"organizationId\": \"<string>\"\n    },\n    \"fromOrganizationId\": \"<string>\",\n    \"fromOrganizationName\": \"<string>\",\n    \"inspectionForm\": \"<string>\",\n    \"inspectionInformation\": {\n      \"typeOfInspection\": \"<string>\",\n      \"typeOfInspectionName\": \"<string>\"\n    },\n    \"locationPicker\": {\n      \"address\": \"<string>\",\n      \"gpsLocation\": {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\"\n      }\n    },\n    \"questionnaire\": {\n      \"questions\": [\n        {\n          \"id\": \"<string>\",\n          \"questionType\": \"<string>\",\n          \"validation\": {\n            \"mandatory\": \"<boolean>\"\n          },\n          \"description\": \"<string>\",\n          \"freeTextAnswer\": \"<string>\",\n          \"options\": [\n            {\n              \"id\": \"<string>\",\n              \"otherOptionText\": \"<string>\",\n              \"selected\": \"<boolean>\",\n              \"text\": \"<string>\"\n            },\n            {\n              \"id\": \"<string>\",\n              \"otherOptionText\": \"<string>\",\n              \"selected\": \"<boolean>\",\n              \"text\": \"<string>\"\n            }\n          ],\n          \"responseId\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"questionType\": \"<string>\",\n          \"validation\": {\n            \"mandatory\": \"<boolean>\"\n          },\n          \"description\": \"<string>\",\n          \"freeTextAnswer\": \"<string>\",\n          \"options\": [\n            {\n              \"id\": \"<string>\",\n              \"otherOptionText\": \"<string>\",\n              \"selected\": \"<boolean>\",\n              \"text\": \"<string>\"\n            },\n            {\n              \"id\": \"<string>\",\n              \"otherOptionText\": \"<string>\",\n              \"selected\": \"<boolean>\",\n              \"text\": \"<string>\"\n            }\n          ],\n          \"responseId\": \"<string>\"\n        }\n      ]\n    },\n    \"remark\": \"<string>\",\n    \"sampleSize\": \"<integer>\",\n    \"serviceType\": \"<string>\",\n    \"status\": \"<string>\",\n    \"toOrganizationId\": \"<string>\",\n    \"toOrganizationName\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"updatedDate\": \"<dateTime>\",\n    \"vendorInformation\": {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"contact\": {\n        \"contactId\": \"<string>\",\n        \"email\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"name\": \"<string>\",\n        \"telephoneNumber\": \"<string>\"\n      },\n      \"country\": \"<string>\",\n      \"localOrganizationId\": \"<string>\",\n      \"localOrganizationIds\": \"<array,null>\",\n      \"name\": \"<string>\",\n      \"organizationId\": \"<string>\"\n    },\n    \"workflowName\": \"<string,null>\"\n  }\n}",
+                          "createdAt": "2026-10-22T02:27:29.000Z",
+                          "updatedAt": "2026-10-22T02:27:29.000Z",
+                          "uid": "35240-a894c6b7-c090-42af-844b-ef4611e9e502"
+                        },
+                        {
+                          "id": "55708bfe-a533-4d94-8757-4ac698c4dd6f",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bookings/:booking_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bookings",
+                                ":booking_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "booking_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:29.000Z",
+                          "updatedAt": "2026-10-22T02:27:29.000Z",
+                          "uid": "35240-55708bfe-a533-4d94-8757-4ac698c4dd6f"
+                        },
+                        {
+                          "id": "f25c0069-3047-462f-a06f-78e9f4c9152e",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bookings/:booking_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bookings",
+                                ":booking_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "booking_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:29.000Z",
+                          "updatedAt": "2026-10-22T02:27:29.000Z",
+                          "uid": "35240-f25c0069-3047-462f-a06f-78e9f4c9152e"
+                        },
+                        {
+                          "id": "b908a91c-63fa-406f-a764-52e3e93f4188",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bookings/:booking_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bookings",
+                                ":booking_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "booking_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:29.000Z",
+                          "updatedAt": "2026-10-22T02:27:29.000Z",
+                          "uid": "35240-b908a91c-63fa-406f-a764-52e3e93f4188"
+                        },
+                        {
+                          "id": "702a382c-f9b2-4049-b5b1-0d36ef3b9e75",
+                          "name": "Rate-limiting Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bookings/:booking_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bookings",
+                                ":booking_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "booking_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:29.000Z",
+                          "updatedAt": "2026-10-22T02:27:29.000Z",
+                          "uid": "35240-702a382c-f9b2-4049-b5b1-0d36ef3b9e75"
+                        },
+                        {
+                          "id": "cab47443-8089-4cde-968b-49df35ec363d",
+                          "name": "Internal Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/bookings/:booking_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "bookings",
+                                ":booking_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "booking_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:29.000Z",
+                          "updatedAt": "2026-10-22T02:27:29.000Z",
+                          "uid": "35240-cab47443-8089-4cde-968b-49df35ec363d"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T02:27:29.000Z",
+                      "updatedAt": "2026-10-22T02:27:29.000Z",
+                      "uid": "35240-59863300-864a-47ba-a08c-5197ca2c3081"
                     }
                   ],
-                  "variable": []
+                  "id": "60a819e6-09c0-42af-bc53-8c997e09b7a7",
+                  "createdAt": "2026-10-22T02:27:29.000Z",
+                  "updatedAt": "2026-10-22T02:27:29.000Z",
+                  "uid": "35240-60a819e6-09c0-42af-bc53-8c997e09b7a7"
                 },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"limit\": 79,\n  \"offset\": 1678,\n  \"total\": 771,\n  \"data\": [\n    {\n      \"actualInspectionDate\": \"2021-06-14T04:02:57.849000+00:00\",\n      \"bookingId\": \"123456-c4a6-4fdb-b01f-2fe663be4460\",\n      \"bookingType\": \"normal\",\n      \"caseNumber\": \"3269012021-06-10ABC\",\n      \"clientInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      },\n      \"confirmedBy\": \"Acme Corp\",\n      \"createdBy\": \"John Doe\",\n      \"createdDate\": \"2021-06-03T04:02:57.849000+00:00\",\n      \"detailOfPIPO\": {\n        \"pipoInformation\": {\n          \"opoNumber\": \"string\",\n          \"poNumber\": \"string\",\n          \"poTypes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"productLineId\": \"string\",\n          \"productLineName\": \"string\"\n        },\n        \"styles\": [\n          {\n            \"productCategoryId\": \"product_category_1\",\n            \"styleId\": \"style_1\",\n            \"assortments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"measurements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"productCategoryName\": \"string\",\n            \"solids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"styleName\": \"string\"\n          },\n          {\n            \"productCategoryId\": \"product_category_1\",\n            \"styleId\": \"style_1\",\n            \"assortments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"measurements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"productCategoryName\": \"string\",\n            \"solids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"styleName\": \"string\"\n          }\n        ]\n      },\n      \"expectedDate\": {\n        \"inspectionDate\": \"2019-07-04T08:00:00.00Z\",\n        \"shipmentDate\": \"2019-07-04T08:00:00.00Z\"\n      },\n      \"factoryInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      },\n      \"fromOrganizationId\": \"F001122\",\n      \"fromOrganizationName\": \"Padme Inc\",\n      \"inspectionForm\": \"FIForm\",\n      \"inspectionInformation\": {\n        \"typeOfInspection\": \"FRI\",\n        \"typeOfInspectionName\": \"Final Random Inspection\"\n      },\n      \"locationPicker\": {\n        \"address\": \"string\",\n        \"gpsLocation\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      },\n      \"questionnaire\": {\n        \"questions\": [\n          {\n            \"id\": \"abc-123\",\n            \"questionType\": \"single select\",\n            \"validation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defaultSubQuestions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"Shipment readiness\",\n            \"freeTextAnswer\": \"Not good but acceptable\",\n            \"options\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"responseId\": \"1a2b3c\"\n          },\n          {\n            \"id\": \"abc-123\",\n            \"questionType\": \"single select\",\n            \"validation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defaultSubQuestions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"Shipment readiness\",\n            \"freeTextAnswer\": \"Not good but acceptable\",\n            \"options\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"responseId\": \"1a2b3c\"\n          }\n        ]\n      },\n      \"remark\": \"Updated to reflect changes\",\n      \"sampleSize\": 0,\n      \"serviceType\": \"TPR\",\n      \"status\": \"NEW\",\n      \"toOrganizationId\": \"C112233\",\n      \"toOrganizationName\": \"Lex Corp\",\n      \"unit\": \"piece\",\n      \"updatedDate\": \"2021-06-03T04:02:57.849000+00:00\",\n      \"vendorInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      }\n    },\n    {\n      \"actualInspectionDate\": \"2021-06-14T04:02:57.849000+00:00\",\n      \"bookingId\": \"123456-c4a6-4fdb-b01f-2fe663be4460\",\n      \"bookingType\": \"normal\",\n      \"caseNumber\": \"3269012021-06-10ABC\",\n      \"clientInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      },\n      \"confirmedBy\": \"Acme Corp\",\n      \"createdBy\": \"John Doe\",\n      \"createdDate\": \"2021-06-03T04:02:57.849000+00:00\",\n      \"detailOfPIPO\": {\n        \"pipoInformation\": {\n          \"opoNumber\": \"string\",\n          \"poNumber\": \"string\",\n          \"poTypes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"productLineId\": \"string\",\n          \"productLineName\": \"string\"\n        },\n        \"styles\": [\n          {\n            \"productCategoryId\": \"product_category_1\",\n            \"styleId\": \"style_1\",\n            \"assortments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"measurements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"productCategoryName\": \"string\",\n            \"solids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"styleName\": \"string\"\n          },\n          {\n            \"productCategoryId\": \"product_category_1\",\n            \"styleId\": \"style_1\",\n            \"assortments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"measurements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"productCategoryName\": \"string\",\n            \"solids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"styleName\": \"string\"\n          }\n        ]\n      },\n      \"expectedDate\": {\n        \"inspectionDate\": \"2019-07-04T08:00:00.00Z\",\n        \"shipmentDate\": \"2019-07-04T08:00:00.00Z\"\n      },\n      \"factoryInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      },\n      \"fromOrganizationId\": \"F001122\",\n      \"fromOrganizationName\": \"Padme Inc\",\n      \"inspectionForm\": \"FIForm\",\n      \"inspectionInformation\": {\n        \"typeOfInspection\": \"FRI\",\n        \"typeOfInspectionName\": \"Final Random Inspection\"\n      },\n      \"locationPicker\": {\n        \"address\": \"string\",\n        \"gpsLocation\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      },\n      \"questionnaire\": {\n        \"questions\": [\n          {\n            \"id\": \"abc-123\",\n            \"questionType\": \"single select\",\n            \"validation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defaultSubQuestions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"Shipment readiness\",\n            \"freeTextAnswer\": \"Not good but acceptable\",\n            \"options\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"responseId\": \"1a2b3c\"\n          },\n          {\n            \"id\": \"abc-123\",\n            \"questionType\": \"single select\",\n            \"validation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defaultSubQuestions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"Shipment readiness\",\n            \"freeTextAnswer\": \"Not good but acceptable\",\n            \"options\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"responseId\": \"1a2b3c\"\n          }\n        ]\n      },\n      \"remark\": \"Updated to reflect changes\",\n      \"sampleSize\": 0,\n      \"serviceType\": \"TPR\",\n      \"status\": \"NEW\",\n      \"toOrganizationId\": \"C112233\",\n      \"toOrganizationName\": \"Lex Corp\",\n      \"unit\": \"piece\",\n      \"updatedDate\": \"2021-06-03T04:02:57.849000+00:00\",\n      \"vendorInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      }\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2ceda219-23eb-4b38-a5b5-80d9ab488136",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bookings"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "name": "List Bookings",
+                  "id": "d2d8b499-98f9-4440-b1aa-04d172d95ca1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/bookings?to_organization_id=<string>&limit=10&created_to=<dateTime>&updated_to=<dateTime>&order=created_date:desc&offset=0&updated_from=<dateTime>&created_from=<dateTime>&status=MERGED",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "bookings"
+                      ],
+                      "query": [
+                        {
+                          "description": "Organization ID that the booking is booked to",
+                          "key": "to_organization_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit result of list",
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Booking created to in date and time",
+                          "key": "created_to",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Booking updated to in date and time",
+                          "key": "updated_to",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Order of bookings in the response",
+                          "key": "order",
+                          "value": "created_date:desc"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Booking updated from in date and time",
+                          "key": "updated_from",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Booking created from in date and time",
+                          "key": "created_from",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "key": "status",
+                          "value": "MERGED"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
                     {
-                      "key": "to_organization_id",
-                      "value": "F123456"
+                      "id": "f51fe0de-a2f0-47fb-abf6-79d82dc2cab3",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bookings?to_organization_id=<string>&limit=10&created_to=<dateTime>&updated_to=<dateTime>&order=created_date:desc&offset=0&updated_from=<dateTime>&created_from=<dateTime>&status=MERGED",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bookings"
+                          ],
+                          "query": [
+                            {
+                              "description": "Organization ID that the booking is booked to",
+                              "key": "to_organization_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Booking created to in date and time",
+                              "key": "created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Booking updated to in date and time",
+                              "key": "updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Order of bookings in the response",
+                              "key": "order",
+                              "value": "created_date:desc"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Booking updated from in date and time",
+                              "key": "updated_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Booking created from in date and time",
+                              "key": "created_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "key": "status",
+                              "value": "MERGED"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"actualInspectionDate\": \"<dateTime>\",\n      \"bookingId\": \"<string>\",\n      \"bookingType\": \"<string>\",\n      \"caseNumber\": \"<string>\",\n      \"clientInformation\": {\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"name\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        },\n        \"country\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\"\n      },\n      \"confirmedBy\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"detailOfPIPO\": {\n        \"pipoInformation\": {\n          \"opoNumber\": \"<string>\",\n          \"poNumber\": \"<string>\",\n          \"poTypes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"productLineId\": \"<string>\",\n          \"productLineName\": \"<string>\"\n        },\n        \"styles\": [\n          {\n            \"productCategoryId\": \"<string>\",\n            \"styleId\": \"<string>\",\n            \"assortments\": \"<array,null>\",\n            \"measurements\": [\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"inch\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              },\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"mm\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              }\n            ],\n            \"productCategoryName\": \"<string>\",\n            \"solids\": \"<array,null>\",\n            \"styleName\": \"<string,null>\"\n          },\n          {\n            \"productCategoryId\": \"<string>\",\n            \"styleId\": \"<string>\",\n            \"assortments\": \"<array,null>\",\n            \"measurements\": [\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"cm\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              },\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"mm\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              }\n            ],\n            \"productCategoryName\": \"<string>\",\n            \"solids\": \"<array,null>\",\n            \"styleName\": \"<string,null>\"\n          }\n        ]\n      },\n      \"expectedDate\": {\n        \"inspectionDate\": \"<dateTime>\",\n        \"shipmentDate\": \"<string,null-date-time>\"\n      },\n      \"factoryInformation\": {\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"name\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        },\n        \"country\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\"\n      },\n      \"fromOrganizationId\": \"<string>\",\n      \"fromOrganizationName\": \"<string>\",\n      \"inspectionForm\": \"<string>\",\n      \"inspectionInformation\": {\n        \"typeOfInspection\": \"<string>\",\n        \"typeOfInspectionName\": \"<string>\"\n      },\n      \"locationPicker\": {\n        \"address\": \"<string>\",\n        \"gpsLocation\": {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\"\n        }\n      },\n      \"questionnaire\": {\n        \"questions\": [\n          {\n            \"id\": \"<string>\",\n            \"questionType\": \"<string>\",\n            \"validation\": {\n              \"mandatory\": \"<boolean>\"\n            },\n            \"description\": \"<string>\",\n            \"freeTextAnswer\": \"<string>\",\n            \"options\": [\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              },\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              }\n            ],\n            \"responseId\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"questionType\": \"<string>\",\n            \"validation\": {\n              \"mandatory\": \"<boolean>\"\n            },\n            \"description\": \"<string>\",\n            \"freeTextAnswer\": \"<string>\",\n            \"options\": [\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              },\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              }\n            ],\n            \"responseId\": \"<string>\"\n          }\n        ]\n      },\n      \"remark\": \"<string>\",\n      \"sampleSize\": \"<integer>\",\n      \"serviceType\": \"<string>\",\n      \"status\": \"<string>\",\n      \"toOrganizationId\": \"<string>\",\n      \"toOrganizationName\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"vendorInformation\": {\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"name\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        },\n        \"country\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\"\n      }\n    },\n    {\n      \"actualInspectionDate\": \"<dateTime>\",\n      \"bookingId\": \"<string>\",\n      \"bookingType\": \"<string>\",\n      \"caseNumber\": \"<string>\",\n      \"clientInformation\": {\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"name\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        },\n        \"country\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\"\n      },\n      \"confirmedBy\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"detailOfPIPO\": {\n        \"pipoInformation\": {\n          \"opoNumber\": \"<string>\",\n          \"poNumber\": \"<string>\",\n          \"poTypes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"productLineId\": \"<string>\",\n          \"productLineName\": \"<string>\"\n        },\n        \"styles\": [\n          {\n            \"productCategoryId\": \"<string>\",\n            \"styleId\": \"<string>\",\n            \"assortments\": \"<array,null>\",\n            \"measurements\": [\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"cm\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              },\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"cm\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              }\n            ],\n            \"productCategoryName\": \"<string>\",\n            \"solids\": \"<array,null>\",\n            \"styleName\": \"<string,null>\"\n          },\n          {\n            \"productCategoryId\": \"<string>\",\n            \"styleId\": \"<string>\",\n            \"assortments\": \"<array,null>\",\n            \"measurements\": [\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"cm\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              },\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"cm\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              }\n            ],\n            \"productCategoryName\": \"<string>\",\n            \"solids\": \"<array,null>\",\n            \"styleName\": \"<string,null>\"\n          }\n        ]\n      },\n      \"expectedDate\": {\n        \"inspectionDate\": \"<dateTime>\",\n        \"shipmentDate\": \"<string,null-date-time>\"\n      },\n      \"factoryInformation\": {\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"name\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        },\n        \"country\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\"\n      },\n      \"fromOrganizationId\": \"<string>\",\n      \"fromOrganizationName\": \"<string>\",\n      \"inspectionForm\": \"<string>\",\n      \"inspectionInformation\": {\n        \"typeOfInspection\": \"<string>\",\n        \"typeOfInspectionName\": \"<string>\"\n      },\n      \"locationPicker\": {\n        \"address\": \"<string>\",\n        \"gpsLocation\": {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\"\n        }\n      },\n      \"questionnaire\": {\n        \"questions\": [\n          {\n            \"id\": \"<string>\",\n            \"questionType\": \"<string>\",\n            \"validation\": {\n              \"mandatory\": \"<boolean>\"\n            },\n            \"description\": \"<string>\",\n            \"freeTextAnswer\": \"<string>\",\n            \"options\": [\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              },\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              }\n            ],\n            \"responseId\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"questionType\": \"<string>\",\n            \"validation\": {\n              \"mandatory\": \"<boolean>\"\n            },\n            \"description\": \"<string>\",\n            \"freeTextAnswer\": \"<string>\",\n            \"options\": [\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              },\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              }\n            ],\n            \"responseId\": \"<string>\"\n          }\n        ]\n      },\n      \"remark\": \"<string>\",\n      \"sampleSize\": \"<integer>\",\n      \"serviceType\": \"<string>\",\n      \"status\": \"<string>\",\n      \"toOrganizationId\": \"<string>\",\n      \"toOrganizationName\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"vendorInformation\": {\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"name\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        },\n        \"country\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T02:27:29.000Z",
+                      "updatedAt": "2026-10-22T02:27:29.000Z",
+                      "uid": "35240-f51fe0de-a2f0-47fb-abf6-79d82dc2cab3"
                     },
                     {
-                      "key": "limit",
-                      "value": "10"
+                      "id": "7ac4e33d-c816-42f9-bdb4-d888ce47bf70",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bookings?to_organization_id=<string>&limit=10&created_to=<dateTime>&updated_to=<dateTime>&order=created_date:desc&offset=0&updated_from=<dateTime>&created_from=<dateTime>&status=MERGED",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bookings"
+                          ],
+                          "query": [
+                            {
+                              "description": "Organization ID that the booking is booked to",
+                              "key": "to_organization_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Booking created to in date and time",
+                              "key": "created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Booking updated to in date and time",
+                              "key": "updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Order of bookings in the response",
+                              "key": "order",
+                              "value": "created_date:desc"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Booking updated from in date and time",
+                              "key": "updated_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Booking created from in date and time",
+                              "key": "created_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "key": "status",
+                              "value": "MERGED"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:27:29.000Z",
+                      "updatedAt": "2026-10-22T02:27:29.000Z",
+                      "uid": "35240-7ac4e33d-c816-42f9-bdb4-d888ce47bf70"
                     },
                     {
-                      "key": "created_to",
-                      "value": "2021-06-15T23:59:59Z"
+                      "id": "ea294ccd-1de2-4a73-a831-6dffc3ea9cbe",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bookings?to_organization_id=<string>&limit=10&created_to=<dateTime>&updated_to=<dateTime>&order=created_date:desc&offset=0&updated_from=<dateTime>&created_from=<dateTime>&status=MERGED",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bookings"
+                          ],
+                          "query": [
+                            {
+                              "description": "Organization ID that the booking is booked to",
+                              "key": "to_organization_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Booking created to in date and time",
+                              "key": "created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Booking updated to in date and time",
+                              "key": "updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Order of bookings in the response",
+                              "key": "order",
+                              "value": "created_date:desc"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Booking updated from in date and time",
+                              "key": "updated_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Booking created from in date and time",
+                              "key": "created_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "key": "status",
+                              "value": "MERGED"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:27:29.000Z",
+                      "updatedAt": "2026-10-22T02:27:29.000Z",
+                      "uid": "35240-ea294ccd-1de2-4a73-a831-6dffc3ea9cbe"
                     },
                     {
-                      "key": "updated_to",
-                      "value": "2021-06-15T23:59:59Z"
+                      "id": "fb59ace7-0d21-4c2a-b959-68e77abbfdbf",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bookings?to_organization_id=<string>&limit=10&created_to=<dateTime>&updated_to=<dateTime>&order=created_date:desc&offset=0&updated_from=<dateTime>&created_from=<dateTime>&status=MERGED",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bookings"
+                          ],
+                          "query": [
+                            {
+                              "description": "Organization ID that the booking is booked to",
+                              "key": "to_organization_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Booking created to in date and time",
+                              "key": "created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Booking updated to in date and time",
+                              "key": "updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Order of bookings in the response",
+                              "key": "order",
+                              "value": "created_date:desc"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Booking updated from in date and time",
+                              "key": "updated_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Booking created from in date and time",
+                              "key": "created_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "key": "status",
+                              "value": "MERGED"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:27:29.000Z",
+                      "updatedAt": "2026-10-22T02:27:29.000Z",
+                      "uid": "35240-fb59ace7-0d21-4c2a-b959-68e77abbfdbf"
                     },
                     {
-                      "key": "order",
-                      "value": "created_date:desc|asc"
+                      "id": "84b6f4a2-4a4e-454b-b847-08d56e763263",
+                      "name": "Rate-limiting Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bookings?to_organization_id=<string>&limit=10&created_to=<dateTime>&updated_to=<dateTime>&order=created_date:desc&offset=0&updated_from=<dateTime>&created_from=<dateTime>&status=MERGED",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bookings"
+                          ],
+                          "query": [
+                            {
+                              "description": "Organization ID that the booking is booked to",
+                              "key": "to_organization_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Booking created to in date and time",
+                              "key": "created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Booking updated to in date and time",
+                              "key": "updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Order of bookings in the response",
+                              "key": "order",
+                              "value": "created_date:desc"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Booking updated from in date and time",
+                              "key": "updated_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Booking created from in date and time",
+                              "key": "created_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "key": "status",
+                              "value": "MERGED"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:27:29.000Z",
+                      "updatedAt": "2026-10-22T02:27:29.000Z",
+                      "uid": "35240-84b6f4a2-4a4e-454b-b847-08d56e763263"
                     },
                     {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "updated_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "created_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
+                      "id": "742ff393-0c6d-4ee5-9d3b-e2a356f1e93d",
+                      "name": "Internal Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/bookings?to_organization_id=<string>&limit=10&created_to=<dateTime>&updated_to=<dateTime>&order=created_date:desc&offset=0&updated_from=<dateTime>&created_from=<dateTime>&status=MERGED",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "bookings"
+                          ],
+                          "query": [
+                            {
+                              "description": "Organization ID that the booking is booked to",
+                              "key": "to_organization_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Booking created to in date and time",
+                              "key": "created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Booking updated to in date and time",
+                              "key": "updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Order of bookings in the response",
+                              "key": "order",
+                              "value": "created_date:desc"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Booking updated from in date and time",
+                              "key": "updated_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Booking created from in date and time",
+                              "key": "created_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "key": "status",
+                              "value": "MERGED"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:27:29.000Z",
+                      "updatedAt": "2026-10-22T02:27:29.000Z",
+                      "uid": "35240-742ff393-0c6d-4ee5-9d3b-e2a356f1e93d"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "createdAt": "2026-10-22T02:27:29.000Z",
+                  "updatedAt": "2026-10-22T02:27:29.000Z",
+                  "uid": "35240-d2d8b499-98f9-4440-b1aa-04d172d95ca1"
                 }
               ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0347459c-a9cd-43b2-a2a4-a31beb79436f",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bookings"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "to_organization_id",
-                      "value": "F123456"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "created_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "updated_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "order",
-                      "value": "created_date:desc|asc"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "updated_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "created_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "be8ef73e-4997-4d35-9241-8373d6143fea",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bookings"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "to_organization_id",
-                      "value": "F123456"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "created_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "updated_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "order",
-                      "value": "created_date:desc|asc"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "updated_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "created_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1084b593-f1d9-4cde-946d-09cb677d7d4e",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bookings"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "to_organization_id",
-                      "value": "F123456"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "created_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "updated_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "order",
-                      "value": "created_date:desc|asc"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "updated_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "created_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c1b43ed0-9b1f-4e77-889c-0591c91e90d9",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bookings"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "to_organization_id",
-                      "value": "F123456"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "created_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "updated_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "order",
-                      "value": "created_date:desc|asc"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "updated_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "created_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "da597ffc-7901-4aca-897e-de6d29062775",
+              "createdAt": "2026-10-22T02:27:29.000Z",
+              "updatedAt": "2026-10-22T02:27:29.000Z",
+              "uid": "35240-da597ffc-7901-4aca-897e-de6d29062775"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3f9b8ee6-223c-4280-a983-51a20bd08d51",
-          "name": "Get Booking",
-          "request": {
-            "name": "Get Booking",
-            "description": {
-              "content": "Get Booking",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "bookings",
-                ":booking_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "booking_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "15072ed1-cec6-4e9e-b328-ce91d05e4653",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bookings",
-                    ":booking_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "booking_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": {\n    \"actualInspectionDate\": \"2021-06-14T04:02:57.849000+00:00\",\n    \"bookingId\": \"123456-c4a6-4fdb-b01f-2fe663be4460\",\n    \"bookingType\": \"normal\",\n    \"caseNumber\": \"3269012021-06-10ABC\",\n    \"clientInformation\": {\n      \"address\": \"address\",\n      \"city\": \"city\",\n      \"contact\": {\n        \"contactId\": \"contact_id\",\n        \"email\": \"email@email.com\",\n        \"mobileNumber\": \"1234567890\",\n        \"name\": \"Contact Name\",\n        \"telephoneNumber\": \"1234567890\"\n      },\n      \"country\": \"US\",\n      \"localOrganizationId\": \"F323333\",\n      \"localOrganizationIds\": [\n        \"F323333\",\n        \"F242146\"\n      ],\n      \"name\": \"name\",\n      \"organizationId\": \"org_id\"\n    },\n    \"confirmedBy\": \"Acme Corp\",\n    \"confirmedDate\": \"2021-05-20T09:44:23.727000+00:00\",\n    \"createdBy\": \"John Doe\",\n    \"createdDate\": \"2021-06-03T04:02:57.849000+00:00\",\n    \"detailOfPIPO\": {\n      \"pipoInformation\": {\n        \"opoNumber\": \"string\",\n        \"poNumber\": \"string\",\n        \"poTypes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"productLineId\": \"string\",\n        \"productLineName\": \"string\"\n      },\n      \"styles\": [\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"measurements\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"styleName\": \"string\"\n        },\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"measurements\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"styleName\": \"string\"\n        }\n      ]\n    },\n    \"expectedDate\": {\n      \"inspectionDate\": \"2019-07-04T08:00:00.00Z\",\n      \"shipmentDate\": \"2019-07-04T08:00:00.00Z\"\n    },\n    \"factoryInformation\": {\n      \"address\": \"address\",\n      \"city\": \"city\",\n      \"contact\": {\n        \"contactId\": \"contact_id\",\n        \"email\": \"email@email.com\",\n        \"mobileNumber\": \"1234567890\",\n        \"name\": \"Contact Name\",\n        \"telephoneNumber\": \"1234567890\"\n      },\n      \"country\": \"US\",\n      \"localOrganizationId\": \"F323333\",\n      \"localOrganizationIds\": [\n        \"F323333\",\n        \"F242146\"\n      ],\n      \"name\": \"name\",\n      \"organizationId\": \"org_id\"\n    },\n    \"fromOrganizationId\": \"F001122\",\n    \"fromOrganizationName\": \"Padme Inc\",\n    \"inspectionForm\": \"FIForm\",\n    \"inspectionInformation\": {\n      \"typeOfInspection\": \"FRI\",\n      \"typeOfInspectionName\": \"Final Random Inspection\"\n    },\n    \"locationPicker\": {\n      \"address\": \"string\",\n      \"gpsLocation\": {\n        \"latitude\": \"string\",\n        \"longitude\": \"string\"\n      }\n    },\n    \"questionnaire\": {\n      \"questions\": [\n        {\n          \"id\": \"abc-123\",\n          \"questionType\": \"single select\",\n          \"validation\": {\n            \"mandatory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"Shipment readiness\",\n          \"freeTextAnswer\": \"Not good but acceptable\",\n          \"options\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"responseId\": \"1a2b3c\"\n        },\n        {\n          \"id\": \"abc-123\",\n          \"questionType\": \"single select\",\n          \"validation\": {\n            \"mandatory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"Shipment readiness\",\n          \"freeTextAnswer\": \"Not good but acceptable\",\n          \"options\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"responseId\": \"1a2b3c\"\n        }\n      ]\n    },\n    \"remark\": \"Updated to reflect changes\",\n    \"sampleSize\": 0,\n    \"serviceType\": \"TPR\",\n    \"status\": \"NEW\",\n    \"toOrganizationId\": \"C112233\",\n    \"toOrganizationName\": \"Lex Corp\",\n    \"unit\": \"piece\",\n    \"updatedDate\": \"2021-06-03T04:02:57.849000+00:00\",\n    \"vendorInformation\": {\n      \"address\": \"address\",\n      \"city\": \"city\",\n      \"contact\": {\n        \"contactId\": \"contact_id\",\n        \"email\": \"email@email.com\",\n        \"mobileNumber\": \"1234567890\",\n        \"name\": \"Contact Name\",\n        \"telephoneNumber\": \"1234567890\"\n      },\n      \"country\": \"US\",\n      \"localOrganizationId\": \"F323333\",\n      \"localOrganizationIds\": [\n        \"F323333\",\n        \"F242146\"\n      ],\n      \"name\": \"name\",\n      \"organizationId\": \"org_id\"\n    },\n    \"workflowName\": \"DUPRO Apparel workflow\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "50014656-e112-4273-8c29-03961ef36679",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bookings",
-                    ":booking_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "booking_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "bf2dfa41-c605-4346-81c3-1da479cd3f2c",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bookings",
-                    ":booking_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "booking_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "45414984-c8ae-4109-bf4e-3bcc1c0a199d",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bookings",
-                    ":booking_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "booking_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b68b0ea9-b4f3-4af6-8f41-ae748e382bac",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bookings",
-                    ":booking_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "booking_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d80d00fa-2093-49e2-ba41-dc3580f713f3",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "bookings",
-                    ":booking_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "booking_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "d2491486-13c6-456a-94ac-fe8d8abc8631",
+          "createdAt": "2026-10-22T02:27:29.000Z",
+          "updatedAt": "2026-10-22T02:27:29.000Z",
+          "uid": "35240-d2491486-13c6-456a-94ac-fe8d8abc8631"
         }
       ],
-      "event": []
+      "id": "e8e1c164-6471-44c1-9d49-f8c057cd4574",
+      "createdAt": "2026-10-22T02:27:29.000Z",
+      "updatedAt": "2026-10-22T02:27:29.000Z",
+      "uid": "35240-e8e1c164-6471-44c1-9d49-f8c057cd4574"
     }
   ],
-  "event": [],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
   "variable": [
     {
-      "type": "string",
-      "value": "https://files-integration.inspectorio.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://sight.inspectorio.com"
     }
-  ],
-  "info": {
-    "_postman_id": "e3c677b8-cf90-4456-bfb8-0bde5748fad3",
-    "name": "File Management ANALYTICS BOOKING API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

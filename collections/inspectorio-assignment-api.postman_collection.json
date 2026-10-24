@@ -1,1009 +1,1174 @@
 {
+  "info": {
+    "_postman_id": "81f7cd59-126e-4977-8df1-23365ade72e4",
+    "name": "Inspectorio Quality Risk Management ASSIGNMENT API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:27:06.000Z",
+    "updatedAt": "2026-10-22T02:27:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-81f7cd59-126e-4977-8df1-23365ade72e4"
+  },
   "item": [
     {
-      "id": "589357f3-568a-4dda-bcf5-ff030a73122d",
-      "name": "ASSIGNMENT",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "01ac4fd7-e897-441f-93ba-57d3e1b8405e",
-          "name": "List Assignments",
-          "request": {
-            "name": "List Assignments",
-            "description": {
-              "content": "List Assignments",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "assignments"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "factory_country",
-                  "value": "<string>",
-                  "description": "Factory's country code (two-letter country code) of assignments. Case-insensitive"
-                },
-                {
-                  "disabled": false,
-                  "key": "executor_organization",
-                  "value": "<string>",
-                  "description": "Inspection Executor of assignments. Allow filtering with the Local Organization ID or the text \"owner\". Case-sensitive"
-                },
-                {
-                  "disabled": false,
-                  "key": "assignment_updated_to",
-                  "value": "<dateTime>",
-                  "description": "Assignment updated to in date and time"
-                },
-                {
-                  "disabled": false,
-                  "key": "assignment_created_from",
-                  "value": "<dateTime>",
-                  "description": "Assignment created from in date and time"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "10",
-                  "description": "Limit result of list"
-                },
-                {
-                  "disabled": false,
-                  "key": "assignment_status",
-                  "value": "<string>",
-                  "description": "Status of assignments"
-                },
-                {
-                  "disabled": false,
-                  "key": "assignment_created_to",
-                  "value": "<dateTime>",
-                  "description": "Assignment created to in date and time"
-                },
-                {
-                  "disabled": false,
-                  "key": "factory_city",
-                  "value": "<string>",
-                  "description": "Factory's city of assignments. Case-sensitive"
-                },
-                {
-                  "disabled": false,
-                  "key": "expected_inspection_date_from",
-                  "value": "<date>",
-                  "description": "Start date of the range of the expected inspection date in assignments. Allow only date format"
-                },
-                {
-                  "disabled": false,
-                  "key": "order",
-                  "value": "<string>",
-                  "description": "Order of the list of assignments"
-                },
-                {
-                  "disabled": false,
-                  "key": "expected_inspection_date_to",
-                  "value": "<date>",
-                  "description": "End date of the range of the expected inspection date in assignments. Allow only date format"
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0"
-                },
-                {
-                  "disabled": false,
-                  "key": "assignment_updated_from",
-                  "value": "<dateTime>",
-                  "description": "Assignment updated from in date and time"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "407644bc-90aa-451a-a5cf-22ee25ab1284",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "assignments"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "assignments",
+              "item": [
+                {
+                  "name": "{assignment_id}",
+                  "item": [
                     {
-                      "key": "factory_country",
-                      "value": "US"
-                    },
-                    {
-                      "key": "executor_organization",
-                      "value": "owner"
-                    },
-                    {
-                      "key": "assignment_updated_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "assignment_created_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "assignment_status",
-                      "value": "COMPLETED"
-                    },
-                    {
-                      "key": "assignment_created_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "factory_city",
-                      "value": "New York"
-                    },
-                    {
-                      "key": "expected_inspection_date_from",
-                      "value": "2021-02-28"
-                    },
-                    {
-                      "key": "order",
-                      "value": "assignment_created_date:desc"
-                    },
-                    {
-                      "key": "expected_inspection_date_to",
-                      "value": "2021-02-28"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "assignment_updated_from",
-                      "value": "2021-05-23T23:59:59Z"
+                      "name": "Get Assignment",
+                      "id": "19d59faf-1630-4f59-bbe7-177594f8395e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/assignments/:assignment_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "assignments",
+                            ":assignment_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f04c2a44-7f35-4168-abe1-067a90cad038",
+                              "key": "assignment_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "71888939-345c-4878-9411-e4e99e98581b",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/assignments/:assignment_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "assignments",
+                                ":assignment_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "assignment_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"assignmentId\": \"<uuid>\",\n    \"actualInspectionDate\": \"<dateTime>\",\n    \"assignedToInspector\": {\n      \"email\": \"<string>\",\n      \"employeeId\": \"<string,null>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"assignedToOrganization\": {\n      \"name\": \"<string>\",\n      \"systemId\": \"<string>\"\n    },\n    \"assignmentCreatedDate\": \"<dateTime>\",\n    \"assignmentStatus\": \"<string>\",\n    \"assignmentUpdatedDate\": \"<dateTime>\",\n    \"billingInformation\": {\n      \"address\": \"<string,null>\",\n      \"city\": \"<string,null>\",\n      \"contact\": {\n        \"email\": \"<string,null>\",\n        \"mobileNumber\": \"<string,null>\",\n        \"name\": \"<string,null>\",\n        \"telephoneNumber\": \"<string,null>\"\n      },\n      \"country\": \"<string,null>\",\n      \"name\": \"<string,null>\",\n      \"postalCode\": \"<string,null>\",\n      \"state\": \"<string,null>\"\n    },\n    \"bookingId\": \"<string>\",\n    \"bookingType\": \"<string>\",\n    \"caseNumber\": \"<string>\",\n    \"clientInformation\": {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"contact\": {\n        \"contactId\": \"<string>\",\n        \"email\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"name\": \"<string>\",\n        \"telephoneNumber\": \"<string>\"\n      },\n      \"country\": \"<string>\",\n      \"localOrganizationId\": \"<string>\",\n      \"localOrganizationIds\": \"<array,null>\",\n      \"name\": \"<string>\",\n      \"organizationId\": \"<string>\"\n    },\n    \"confirmedBy\": \"<string>\",\n    \"inspectionForm\": \"<string>\",\n    \"createdBy\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"detailOfPIPO\": {\n      \"pipoInformation\": {\n        \"opoNumber\": \"<string>\",\n        \"poNumber\": \"<string>\",\n        \"poTypes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"productLineId\": \"<string>\",\n        \"productLineName\": \"<string>\"\n      },\n      \"styles\": [\n        {\n          \"productCategoryId\": \"<string>\",\n          \"styleId\": \"<string>\",\n          \"assortments\": \"<array,null>\",\n          \"measurements\": [\n            {\n              \"caption\": \"<string>\",\n              \"pom\": \"<string>\",\n              \"tolerance\": \"<string>\",\n              \"unit\": \"cm\",\n              \"isPomCritical\": \"<boolean,null>\",\n              \"sizes\": [\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                },\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                }\n              ],\n              \"toleranceLower\": \"<number,null>\",\n              \"toleranceUpper\": \"<number,null>\"\n            },\n            {\n              \"caption\": \"<string>\",\n              \"pom\": \"<string>\",\n              \"tolerance\": \"<string>\",\n              \"unit\": \"cm\",\n              \"isPomCritical\": \"<boolean,null>\",\n              \"sizes\": [\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                },\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                }\n              ],\n              \"toleranceLower\": \"<number,null>\",\n              \"toleranceUpper\": \"<number,null>\"\n            }\n          ],\n          \"productCategoryName\": \"<string>\",\n          \"solids\": \"<array,null>\",\n          \"styleName\": \"<string,null>\"\n        },\n        {\n          \"productCategoryId\": \"<string>\",\n          \"styleId\": \"<string>\",\n          \"assortments\": \"<array,null>\",\n          \"measurements\": [\n            {\n              \"caption\": \"<string>\",\n              \"pom\": \"<string>\",\n              \"tolerance\": \"<string>\",\n              \"unit\": \"mm\",\n              \"isPomCritical\": \"<boolean,null>\",\n              \"sizes\": [\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                },\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                }\n              ],\n              \"toleranceLower\": \"<number,null>\",\n              \"toleranceUpper\": \"<number,null>\"\n            },\n            {\n              \"caption\": \"<string>\",\n              \"pom\": \"<string>\",\n              \"tolerance\": \"<string>\",\n              \"unit\": \"mm\",\n              \"isPomCritical\": \"<boolean,null>\",\n              \"sizes\": [\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                },\n                {\n                  \"measurement\": \"<string>\",\n                  \"size\": \"<string>\"\n                }\n              ],\n              \"toleranceLower\": \"<number,null>\",\n              \"toleranceUpper\": \"<number,null>\"\n            }\n          ],\n          \"productCategoryName\": \"<string>\",\n          \"solids\": \"<array,null>\",\n          \"styleName\": \"<string,null>\"\n        }\n      ]\n    },\n    \"expectedDate\": {\n      \"inspectionDate\": \"<dateTime>\",\n      \"shipmentDate\": \"<string,null-date-time>\"\n    },\n    \"factoryInformation\": {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"contact\": {\n        \"contactId\": \"<string>\",\n        \"email\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"name\": \"<string>\",\n        \"telephoneNumber\": \"<string>\"\n      },\n      \"country\": \"<string>\",\n      \"localOrganizationId\": \"<string>\",\n      \"localOrganizationIds\": \"<array,null>\",\n      \"localPostalCode\": \"<string>\",\n      \"localState\": \"<string>\",\n      \"name\": \"<string>\",\n      \"organizationId\": \"<string>\"\n    },\n    \"fromOrganizationId\": \"<string>\",\n    \"fromOrganizationName\": \"<string>\",\n    \"inspectionInformation\": {\n      \"typeOfInspection\": \"<string>\",\n      \"typeOfInspectionName\": \"<string>\"\n    },\n    \"locationPicker\": {\n      \"address\": \"<string>\",\n      \"gpsLocation\": {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\"\n      }\n    },\n    \"questionnaire\": {\n      \"questions\": [\n        {\n          \"id\": \"<string>\",\n          \"questionType\": \"<string>\",\n          \"validation\": {\n            \"mandatory\": \"<boolean>\"\n          },\n          \"description\": \"<string>\",\n          \"freeTextAnswer\": \"<string>\",\n          \"options\": [\n            {\n              \"id\": \"<string>\",\n              \"otherOptionText\": \"<string>\",\n              \"selected\": \"<boolean>\",\n              \"text\": \"<string>\"\n            },\n            {\n              \"id\": \"<string>\",\n              \"otherOptionText\": \"<string>\",\n              \"selected\": \"<boolean>\",\n              \"text\": \"<string>\"\n            }\n          ],\n          \"responseId\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"questionType\": \"<string>\",\n          \"validation\": {\n            \"mandatory\": \"<boolean>\"\n          },\n          \"description\": \"<string>\",\n          \"freeTextAnswer\": \"<string>\",\n          \"options\": [\n            {\n              \"id\": \"<string>\",\n              \"otherOptionText\": \"<string>\",\n              \"selected\": \"<boolean>\",\n              \"text\": \"<string>\"\n            },\n            {\n              \"id\": \"<string>\",\n              \"otherOptionText\": \"<string>\",\n              \"selected\": \"<boolean>\",\n              \"text\": \"<string>\"\n            }\n          ],\n          \"responseId\": \"<string>\"\n        }\n      ]\n    },\n    \"remark\": \"<string>\",\n    \"sampleSize\": \"<integer>\",\n    \"serviceType\": \"<string>\",\n    \"status\": \"<string>\",\n    \"tags\": \"<array,null>\",\n    \"toOrganizationId\": \"<string>\",\n    \"toOrganizationName\": \"<string>\",\n    \"unit\": \"<string>\",\n    \"updatedDate\": \"<dateTime>\",\n    \"vendorInformation\": {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"contact\": {\n        \"contactId\": \"<string>\",\n        \"email\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"name\": \"<string>\",\n        \"telephoneNumber\": \"<string>\"\n      },\n      \"country\": \"<string>\",\n      \"localOrganizationId\": \"<string>\",\n      \"localOrganizationIds\": \"<array,null>\",\n      \"localPostalCode\": \"<string>\",\n      \"localState\": \"<string>\",\n      \"name\": \"<string>\",\n      \"organizationId\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-10-22T02:27:06.000Z",
+                          "updatedAt": "2026-10-22T02:27:06.000Z",
+                          "uid": "35240-71888939-345c-4878-9411-e4e99e98581b"
+                        },
+                        {
+                          "id": "e8f55e5b-a6b4-4b9e-bf72-c55079bd2846",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/assignments/:assignment_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "assignments",
+                                ":assignment_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "assignment_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:06.000Z",
+                          "updatedAt": "2026-10-22T02:27:06.000Z",
+                          "uid": "35240-e8f55e5b-a6b4-4b9e-bf72-c55079bd2846"
+                        },
+                        {
+                          "id": "bbaf2753-30b1-4fbb-a73c-80903aa28d31",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/assignments/:assignment_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "assignments",
+                                ":assignment_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "assignment_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:06.000Z",
+                          "updatedAt": "2026-10-22T02:27:06.000Z",
+                          "uid": "35240-bbaf2753-30b1-4fbb-a73c-80903aa28d31"
+                        },
+                        {
+                          "id": "9148dab0-e48e-4a9f-9a1a-aff174b383e4",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/assignments/:assignment_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "assignments",
+                                ":assignment_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "assignment_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:06.000Z",
+                          "updatedAt": "2026-10-22T02:27:06.000Z",
+                          "uid": "35240-9148dab0-e48e-4a9f-9a1a-aff174b383e4"
+                        },
+                        {
+                          "id": "183ad9f1-dc17-4e5f-b9da-9b59f1c24992",
+                          "name": "Rate-limiting Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/assignments/:assignment_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "assignments",
+                                ":assignment_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "assignment_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:06.000Z",
+                          "updatedAt": "2026-10-22T02:27:06.000Z",
+                          "uid": "35240-183ad9f1-dc17-4e5f-b9da-9b59f1c24992"
+                        },
+                        {
+                          "id": "ae0dbc96-e2fc-47b3-8526-15107160aa47",
+                          "name": "Internal Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/assignments/:assignment_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "assignments",
+                                ":assignment_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "assignment_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:06.000Z",
+                          "updatedAt": "2026-10-22T02:27:06.000Z",
+                          "uid": "35240-ae0dbc96-e2fc-47b3-8526-15107160aa47"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T02:27:06.000Z",
+                      "updatedAt": "2026-10-22T02:27:06.000Z",
+                      "uid": "35240-19d59faf-1630-4f59-bbe7-177594f8395e"
                     }
                   ],
-                  "variable": []
+                  "id": "47269b48-6ffe-45c4-996f-c51a1cb0d9a1",
+                  "createdAt": "2026-10-22T02:27:06.000Z",
+                  "updatedAt": "2026-10-22T02:27:06.000Z",
+                  "uid": "35240-47269b48-6ffe-45c4-996f-c51a1cb0d9a1"
                 },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"limit\": 43,\n  \"offset\": 1964,\n  \"total\": 9343,\n  \"data\": [\n    {\n      \"assignmentId\": \"1234fca6-941b-4470-bcf9-9dc7928867dc\",\n      \"actualInspectionDate\": \"2021-06-14T04:02:57.849000+00:00\",\n      \"assignedToInspector\": {\n        \"email\": \"JohnDoe@gmail.com\",\n        \"employeeId\": \"123\",\n        \"id\": \"U111\",\n        \"name\": \"John Doe\"\n      },\n      \"assignedToOrganization\": {\n        \"name\": \"Acme Corp\",\n        \"systemId\": \"3123123\"\n      },\n      \"assignmentCreatedDate\": \"2021-05-25T13:58:26+00:00\",\n      \"assignmentStatus\": \"NEW\",\n      \"assignmentUpdatedDate\": \"2021-05-25T13:58:26+00:00\",\n      \"billingInformation\": {\n        \"address\": \"1 Park Avenue\",\n        \"city\": \"Minnesota\",\n        \"contact\": {\n          \"email\": \"will@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Will Smith\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"name\": \"Padme Corp\",\n        \"postalCode\": \"55402\",\n        \"state\": \"Minnesota\"\n      },\n      \"bookingId\": \"123456-c4a6-4fdb-b01f-2fe663be4460\",\n      \"bookingType\": \"normal\",\n      \"caseNumber\": \"3269012021-06-10ABC\",\n      \"clientInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      },\n      \"confirmedBy\": \"Acme Corp\",\n      \"inspectionForm\": \"FIForm\",\n      \"createdBy\": \"John Doe\",\n      \"createdDate\": \"2021-06-03T04:02:57.849000+00:00\",\n      \"detailOfPIPO\": {\n        \"pipoInformation\": {\n          \"opoNumber\": \"string\",\n          \"poNumber\": \"string\",\n          \"poTypes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"productLineId\": \"string\",\n          \"productLineName\": \"string\"\n        },\n        \"styles\": [\n          {\n            \"productCategoryId\": \"product_category_1\",\n            \"styleId\": \"style_1\",\n            \"assortments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"measurements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"productCategoryName\": \"string\",\n            \"solids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"styleName\": \"string\"\n          },\n          {\n            \"productCategoryId\": \"product_category_1\",\n            \"styleId\": \"style_1\",\n            \"assortments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"measurements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"productCategoryName\": \"string\",\n            \"solids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"styleName\": \"string\"\n          }\n        ]\n      },\n      \"expectedDate\": {\n        \"inspectionDate\": \"2019-07-04T08:00:00.00Z\",\n        \"shipmentDate\": \"2019-07-04T08:00:00.00Z\"\n      },\n      \"factoryInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"localPostalCode\": \"82052\",\n        \"localState\": \"Wyoming\",\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      },\n      \"fromOrganizationId\": \"F001122\",\n      \"fromOrganizationName\": \"Padme Inc\",\n      \"inspectionInformation\": {\n        \"typeOfInspection\": \"FRI\",\n        \"typeOfInspectionName\": \"Final Random Inspection\"\n      },\n      \"locationPicker\": {\n        \"address\": \"string\",\n        \"gpsLocation\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      },\n      \"questionnaire\": {\n        \"questions\": [\n          {\n            \"id\": \"abc-123\",\n            \"questionType\": \"single select\",\n            \"validation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defaultSubQuestions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"Shipment readiness\",\n            \"freeTextAnswer\": \"Not good but acceptable\",\n            \"options\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"responseId\": \"1a2b3c\"\n          },\n          {\n            \"id\": \"abc-123\",\n            \"questionType\": \"single select\",\n            \"validation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defaultSubQuestions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"Shipment readiness\",\n            \"freeTextAnswer\": \"Not good but acceptable\",\n            \"options\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"responseId\": \"1a2b3c\"\n          }\n        ]\n      },\n      \"remark\": \"Updated to reflect changes\",\n      \"sampleSize\": 0,\n      \"serviceType\": \"TPR\",\n      \"status\": \"NEW\",\n      \"tags\": [\n        \"Revised\",\n        \"1st re-inspection\"\n      ],\n      \"toOrganizationId\": \"C112233\",\n      \"toOrganizationName\": \"Lex Corp\",\n      \"unit\": \"piece\",\n      \"updatedDate\": \"2021-06-03T04:02:57.849000+00:00\",\n      \"vendorInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"localPostalCode\": \"82052\",\n        \"localState\": \"Wyoming\",\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      }\n    },\n    {\n      \"assignmentId\": \"1234fca6-941b-4470-bcf9-9dc7928867dc\",\n      \"actualInspectionDate\": \"2021-06-14T04:02:57.849000+00:00\",\n      \"assignedToInspector\": {\n        \"email\": \"JohnDoe@gmail.com\",\n        \"employeeId\": \"123\",\n        \"id\": \"U111\",\n        \"name\": \"John Doe\"\n      },\n      \"assignedToOrganization\": {\n        \"name\": \"Acme Corp\",\n        \"systemId\": \"3123123\"\n      },\n      \"assignmentCreatedDate\": \"2021-05-25T13:58:26+00:00\",\n      \"assignmentStatus\": \"NEW\",\n      \"assignmentUpdatedDate\": \"2021-05-25T13:58:26+00:00\",\n      \"billingInformation\": {\n        \"address\": \"1 Park Avenue\",\n        \"city\": \"Minnesota\",\n        \"contact\": {\n          \"email\": \"will@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Will Smith\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"name\": \"Padme Corp\",\n        \"postalCode\": \"55402\",\n        \"state\": \"Minnesota\"\n      },\n      \"bookingId\": \"123456-c4a6-4fdb-b01f-2fe663be4460\",\n      \"bookingType\": \"normal\",\n      \"caseNumber\": \"3269012021-06-10ABC\",\n      \"clientInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      },\n      \"confirmedBy\": \"Acme Corp\",\n      \"inspectionForm\": \"FIForm\",\n      \"createdBy\": \"John Doe\",\n      \"createdDate\": \"2021-06-03T04:02:57.849000+00:00\",\n      \"detailOfPIPO\": {\n        \"pipoInformation\": {\n          \"opoNumber\": \"string\",\n          \"poNumber\": \"string\",\n          \"poTypes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"productLineId\": \"string\",\n          \"productLineName\": \"string\"\n        },\n        \"styles\": [\n          {\n            \"productCategoryId\": \"product_category_1\",\n            \"styleId\": \"style_1\",\n            \"assortments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"measurements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"productCategoryName\": \"string\",\n            \"solids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"styleName\": \"string\"\n          },\n          {\n            \"productCategoryId\": \"product_category_1\",\n            \"styleId\": \"style_1\",\n            \"assortments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"measurements\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"productCategoryName\": \"string\",\n            \"solids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"styleName\": \"string\"\n          }\n        ]\n      },\n      \"expectedDate\": {\n        \"inspectionDate\": \"2019-07-04T08:00:00.00Z\",\n        \"shipmentDate\": \"2019-07-04T08:00:00.00Z\"\n      },\n      \"factoryInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"localPostalCode\": \"82052\",\n        \"localState\": \"Wyoming\",\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      },\n      \"fromOrganizationId\": \"F001122\",\n      \"fromOrganizationName\": \"Padme Inc\",\n      \"inspectionInformation\": {\n        \"typeOfInspection\": \"FRI\",\n        \"typeOfInspectionName\": \"Final Random Inspection\"\n      },\n      \"locationPicker\": {\n        \"address\": \"string\",\n        \"gpsLocation\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      },\n      \"questionnaire\": {\n        \"questions\": [\n          {\n            \"id\": \"abc-123\",\n            \"questionType\": \"single select\",\n            \"validation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defaultSubQuestions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"Shipment readiness\",\n            \"freeTextAnswer\": \"Not good but acceptable\",\n            \"options\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"responseId\": \"1a2b3c\"\n          },\n          {\n            \"id\": \"abc-123\",\n            \"questionType\": \"single select\",\n            \"validation\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defaultSubQuestions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"description\": \"Shipment readiness\",\n            \"freeTextAnswer\": \"Not good but acceptable\",\n            \"options\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"responseId\": \"1a2b3c\"\n          }\n        ]\n      },\n      \"remark\": \"Updated to reflect changes\",\n      \"sampleSize\": 0,\n      \"serviceType\": \"TPR\",\n      \"status\": \"NEW\",\n      \"tags\": [\n        \"Revised\",\n        \"1st re-inspection\"\n      ],\n      \"toOrganizationId\": \"C112233\",\n      \"toOrganizationName\": \"Lex Corp\",\n      \"unit\": \"piece\",\n      \"updatedDate\": \"2021-06-03T04:02:57.849000+00:00\",\n      \"vendorInformation\": {\n        \"address\": \"address\",\n        \"city\": \"city\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"Contact Name\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"localOrganizationId\": \"F323333\",\n        \"localOrganizationIds\": [\n          \"F323333\",\n          \"F242146\"\n        ],\n        \"localPostalCode\": \"82052\",\n        \"localState\": \"Wyoming\",\n        \"name\": \"name\",\n        \"organizationId\": \"org_id\"\n      }\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d8469207-2770-438f-a28f-9828a2a9ec07",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "assignments"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "name": "List Assignments",
+                  "id": "cc9e76e6-457f-436c-954b-2f9e32aa5d13",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/assignments?factory_country=<string,null>&executor_organization=<string>&assignment_updated_to=<dateTime>&assignment_created_from=<dateTime>&limit=10&assignment_status=NEW&assignment_created_to=<dateTime>&factory_city=<string,null>&expected_inspection_date_from=<string,null-date>&order=<string>&expected_inspection_date_to=<string,null-date>&offset=0&assignment_updated_from=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "assignments"
+                      ],
+                      "query": [
+                        {
+                          "description": "Factory's country code (two-letter country code) of assignments. Case-insensitive",
+                          "key": "factory_country",
+                          "value": "<string,null>"
+                        },
+                        {
+                          "description": "Inspection Executor of assignments. Allow filtering with the Local Organization ID or the text \"owner\". Case-sensitive",
+                          "key": "executor_organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Assignment updated to in date and time",
+                          "key": "assignment_updated_to",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Assignment created from in date and time",
+                          "key": "assignment_created_from",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Limit result of list",
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Status of assignments",
+                          "key": "assignment_status",
+                          "value": "NEW"
+                        },
+                        {
+                          "description": "Assignment created to in date and time",
+                          "key": "assignment_created_to",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Factory's city of assignments. Case-sensitive",
+                          "key": "factory_city",
+                          "value": "<string,null>"
+                        },
+                        {
+                          "description": "Start date of the range of the expected inspection date in assignments. Allow only date format",
+                          "key": "expected_inspection_date_from",
+                          "value": "<string,null-date>"
+                        },
+                        {
+                          "description": "Order of the list of assignments",
+                          "key": "order",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "End date of the range of the expected inspection date in assignments. Allow only date format",
+                          "key": "expected_inspection_date_to",
+                          "value": "<string,null-date>"
+                        },
+                        {
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Assignment updated from in date and time",
+                          "key": "assignment_updated_from",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
                     {
-                      "key": "factory_country",
-                      "value": "US"
+                      "id": "6f36131f-c5ee-4111-ba18-c0c26b704cd0",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/assignments?factory_country=<string,null>&executor_organization=<string>&assignment_updated_to=<dateTime>&assignment_created_from=<dateTime>&limit=10&assignment_status=NEW&assignment_created_to=<dateTime>&factory_city=<string,null>&expected_inspection_date_from=<string,null-date>&order=<string>&expected_inspection_date_to=<string,null-date>&offset=0&assignment_updated_from=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "assignments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Factory's country code (two-letter country code) of assignments. Case-insensitive",
+                              "key": "factory_country",
+                              "value": "<string,null>"
+                            },
+                            {
+                              "description": "Inspection Executor of assignments. Allow filtering with the Local Organization ID or the text \"owner\". Case-sensitive",
+                              "key": "executor_organization",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Assignment updated to in date and time",
+                              "key": "assignment_updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Assignment created from in date and time",
+                              "key": "assignment_created_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Status of assignments",
+                              "key": "assignment_status",
+                              "value": "NEW"
+                            },
+                            {
+                              "description": "Assignment created to in date and time",
+                              "key": "assignment_created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Factory's city of assignments. Case-sensitive",
+                              "key": "factory_city",
+                              "value": "<string,null>"
+                            },
+                            {
+                              "description": "Start date of the range of the expected inspection date in assignments. Allow only date format",
+                              "key": "expected_inspection_date_from",
+                              "value": "<string,null-date>"
+                            },
+                            {
+                              "description": "Order of the list of assignments",
+                              "key": "order",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "End date of the range of the expected inspection date in assignments. Allow only date format",
+                              "key": "expected_inspection_date_to",
+                              "value": "<string,null-date>"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Assignment updated from in date and time",
+                              "key": "assignment_updated_from",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"assignmentId\": \"<uuid>\",\n      \"actualInspectionDate\": \"<dateTime>\",\n      \"assignedToInspector\": {\n        \"email\": \"<string>\",\n        \"employeeId\": \"<string,null>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"assignedToOrganization\": {\n        \"name\": \"<string>\",\n        \"systemId\": \"<string>\"\n      },\n      \"assignmentCreatedDate\": \"<dateTime>\",\n      \"assignmentStatus\": \"<string>\",\n      \"assignmentUpdatedDate\": \"<dateTime>\",\n      \"billingInformation\": {\n        \"address\": \"<string,null>\",\n        \"city\": \"<string,null>\",\n        \"contact\": {\n          \"email\": \"<string,null>\",\n          \"mobileNumber\": \"<string,null>\",\n          \"name\": \"<string,null>\",\n          \"telephoneNumber\": \"<string,null>\"\n        },\n        \"country\": \"<string,null>\",\n        \"name\": \"<string,null>\",\n        \"postalCode\": \"<string,null>\",\n        \"state\": \"<string,null>\"\n      },\n      \"bookingId\": \"<string>\",\n      \"bookingType\": \"<string>\",\n      \"caseNumber\": \"<string>\",\n      \"clientInformation\": {\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"name\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        },\n        \"country\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\"\n      },\n      \"confirmedBy\": \"<string>\",\n      \"inspectionForm\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"detailOfPIPO\": {\n        \"pipoInformation\": {\n          \"opoNumber\": \"<string>\",\n          \"poNumber\": \"<string>\",\n          \"poTypes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"productLineId\": \"<string>\",\n          \"productLineName\": \"<string>\"\n        },\n        \"styles\": [\n          {\n            \"productCategoryId\": \"<string>\",\n            \"styleId\": \"<string>\",\n            \"assortments\": \"<array,null>\",\n            \"measurements\": [\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"mm\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              },\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"mm\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              }\n            ],\n            \"productCategoryName\": \"<string>\",\n            \"solids\": \"<array,null>\",\n            \"styleName\": \"<string,null>\"\n          },\n          {\n            \"productCategoryId\": \"<string>\",\n            \"styleId\": \"<string>\",\n            \"assortments\": \"<array,null>\",\n            \"measurements\": [\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"inch\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              },\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"cm\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              }\n            ],\n            \"productCategoryName\": \"<string>\",\n            \"solids\": \"<array,null>\",\n            \"styleName\": \"<string,null>\"\n          }\n        ]\n      },\n      \"expectedDate\": {\n        \"inspectionDate\": \"<dateTime>\",\n        \"shipmentDate\": \"<string,null-date-time>\"\n      },\n      \"factoryInformation\": {\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"name\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        },\n        \"country\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"localPostalCode\": \"<string>\",\n        \"localState\": \"<string>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\"\n      },\n      \"fromOrganizationId\": \"<string>\",\n      \"fromOrganizationName\": \"<string>\",\n      \"inspectionInformation\": {\n        \"typeOfInspection\": \"<string>\",\n        \"typeOfInspectionName\": \"<string>\"\n      },\n      \"locationPicker\": {\n        \"address\": \"<string>\",\n        \"gpsLocation\": {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\"\n        }\n      },\n      \"questionnaire\": {\n        \"questions\": [\n          {\n            \"id\": \"<string>\",\n            \"questionType\": \"<string>\",\n            \"validation\": {\n              \"mandatory\": \"<boolean>\"\n            },\n            \"description\": \"<string>\",\n            \"freeTextAnswer\": \"<string>\",\n            \"options\": [\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              },\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              }\n            ],\n            \"responseId\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"questionType\": \"<string>\",\n            \"validation\": {\n              \"mandatory\": \"<boolean>\"\n            },\n            \"description\": \"<string>\",\n            \"freeTextAnswer\": \"<string>\",\n            \"options\": [\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              },\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              }\n            ],\n            \"responseId\": \"<string>\"\n          }\n        ]\n      },\n      \"remark\": \"<string>\",\n      \"sampleSize\": \"<integer>\",\n      \"serviceType\": \"<string>\",\n      \"status\": \"<string>\",\n      \"tags\": \"<array,null>\",\n      \"toOrganizationId\": \"<string>\",\n      \"toOrganizationName\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"vendorInformation\": {\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"name\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        },\n        \"country\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"localPostalCode\": \"<string>\",\n        \"localState\": \"<string>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\"\n      }\n    },\n    {\n      \"assignmentId\": \"<uuid>\",\n      \"actualInspectionDate\": \"<dateTime>\",\n      \"assignedToInspector\": {\n        \"email\": \"<string>\",\n        \"employeeId\": \"<string,null>\",\n        \"id\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      \"assignedToOrganization\": {\n        \"name\": \"<string>\",\n        \"systemId\": \"<string>\"\n      },\n      \"assignmentCreatedDate\": \"<dateTime>\",\n      \"assignmentStatus\": \"<string>\",\n      \"assignmentUpdatedDate\": \"<dateTime>\",\n      \"billingInformation\": {\n        \"address\": \"<string,null>\",\n        \"city\": \"<string,null>\",\n        \"contact\": {\n          \"email\": \"<string,null>\",\n          \"mobileNumber\": \"<string,null>\",\n          \"name\": \"<string,null>\",\n          \"telephoneNumber\": \"<string,null>\"\n        },\n        \"country\": \"<string,null>\",\n        \"name\": \"<string,null>\",\n        \"postalCode\": \"<string,null>\",\n        \"state\": \"<string,null>\"\n      },\n      \"bookingId\": \"<string>\",\n      \"bookingType\": \"<string>\",\n      \"caseNumber\": \"<string>\",\n      \"clientInformation\": {\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"name\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        },\n        \"country\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\"\n      },\n      \"confirmedBy\": \"<string>\",\n      \"inspectionForm\": \"<string>\",\n      \"createdBy\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"detailOfPIPO\": {\n        \"pipoInformation\": {\n          \"opoNumber\": \"<string>\",\n          \"poNumber\": \"<string>\",\n          \"poTypes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"productLineId\": \"<string>\",\n          \"productLineName\": \"<string>\"\n        },\n        \"styles\": [\n          {\n            \"productCategoryId\": \"<string>\",\n            \"styleId\": \"<string>\",\n            \"assortments\": \"<array,null>\",\n            \"measurements\": [\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"mm\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              },\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"mm\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              }\n            ],\n            \"productCategoryName\": \"<string>\",\n            \"solids\": \"<array,null>\",\n            \"styleName\": \"<string,null>\"\n          },\n          {\n            \"productCategoryId\": \"<string>\",\n            \"styleId\": \"<string>\",\n            \"assortments\": \"<array,null>\",\n            \"measurements\": [\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"mm\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              },\n              {\n                \"caption\": \"<string>\",\n                \"pom\": \"<string>\",\n                \"tolerance\": \"<string>\",\n                \"unit\": \"inch\",\n                \"isPomCritical\": \"<boolean,null>\",\n                \"sizes\": [\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  },\n                  {\n                    \"measurement\": \"<string>\",\n                    \"size\": \"<string>\"\n                  }\n                ],\n                \"toleranceLower\": \"<number,null>\",\n                \"toleranceUpper\": \"<number,null>\"\n              }\n            ],\n            \"productCategoryName\": \"<string>\",\n            \"solids\": \"<array,null>\",\n            \"styleName\": \"<string,null>\"\n          }\n        ]\n      },\n      \"expectedDate\": {\n        \"inspectionDate\": \"<dateTime>\",\n        \"shipmentDate\": \"<string,null-date-time>\"\n      },\n      \"factoryInformation\": {\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"name\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        },\n        \"country\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"localPostalCode\": \"<string>\",\n        \"localState\": \"<string>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\"\n      },\n      \"fromOrganizationId\": \"<string>\",\n      \"fromOrganizationName\": \"<string>\",\n      \"inspectionInformation\": {\n        \"typeOfInspection\": \"<string>\",\n        \"typeOfInspectionName\": \"<string>\"\n      },\n      \"locationPicker\": {\n        \"address\": \"<string>\",\n        \"gpsLocation\": {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\"\n        }\n      },\n      \"questionnaire\": {\n        \"questions\": [\n          {\n            \"id\": \"<string>\",\n            \"questionType\": \"<string>\",\n            \"validation\": {\n              \"mandatory\": \"<boolean>\"\n            },\n            \"description\": \"<string>\",\n            \"freeTextAnswer\": \"<string>\",\n            \"options\": [\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              },\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              }\n            ],\n            \"responseId\": \"<string>\"\n          },\n          {\n            \"id\": \"<string>\",\n            \"questionType\": \"<string>\",\n            \"validation\": {\n              \"mandatory\": \"<boolean>\"\n            },\n            \"description\": \"<string>\",\n            \"freeTextAnswer\": \"<string>\",\n            \"options\": [\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              },\n              {\n                \"id\": \"<string>\",\n                \"otherOptionText\": \"<string>\",\n                \"selected\": \"<boolean>\",\n                \"text\": \"<string>\"\n              }\n            ],\n            \"responseId\": \"<string>\"\n          }\n        ]\n      },\n      \"remark\": \"<string>\",\n      \"sampleSize\": \"<integer>\",\n      \"serviceType\": \"<string>\",\n      \"status\": \"<string>\",\n      \"tags\": \"<array,null>\",\n      \"toOrganizationId\": \"<string>\",\n      \"toOrganizationName\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"vendorInformation\": {\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"name\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        },\n        \"country\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"localPostalCode\": \"<string>\",\n        \"localState\": \"<string>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\"\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T02:27:06.000Z",
+                      "updatedAt": "2026-10-22T02:27:06.000Z",
+                      "uid": "35240-6f36131f-c5ee-4111-ba18-c0c26b704cd0"
                     },
                     {
-                      "key": "executor_organization",
-                      "value": "owner"
+                      "id": "1bd4d64a-41c2-44bb-a91a-dd268b6da61f",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/assignments?factory_country=<string,null>&executor_organization=<string>&assignment_updated_to=<dateTime>&assignment_created_from=<dateTime>&limit=10&assignment_status=NEW&assignment_created_to=<dateTime>&factory_city=<string,null>&expected_inspection_date_from=<string,null-date>&order=<string>&expected_inspection_date_to=<string,null-date>&offset=0&assignment_updated_from=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "assignments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Factory's country code (two-letter country code) of assignments. Case-insensitive",
+                              "key": "factory_country",
+                              "value": "<string,null>"
+                            },
+                            {
+                              "description": "Inspection Executor of assignments. Allow filtering with the Local Organization ID or the text \"owner\". Case-sensitive",
+                              "key": "executor_organization",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Assignment updated to in date and time",
+                              "key": "assignment_updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Assignment created from in date and time",
+                              "key": "assignment_created_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Status of assignments",
+                              "key": "assignment_status",
+                              "value": "NEW"
+                            },
+                            {
+                              "description": "Assignment created to in date and time",
+                              "key": "assignment_created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Factory's city of assignments. Case-sensitive",
+                              "key": "factory_city",
+                              "value": "<string,null>"
+                            },
+                            {
+                              "description": "Start date of the range of the expected inspection date in assignments. Allow only date format",
+                              "key": "expected_inspection_date_from",
+                              "value": "<string,null-date>"
+                            },
+                            {
+                              "description": "Order of the list of assignments",
+                              "key": "order",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "End date of the range of the expected inspection date in assignments. Allow only date format",
+                              "key": "expected_inspection_date_to",
+                              "value": "<string,null-date>"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Assignment updated from in date and time",
+                              "key": "assignment_updated_from",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:27:06.000Z",
+                      "updatedAt": "2026-10-22T02:27:06.000Z",
+                      "uid": "35240-1bd4d64a-41c2-44bb-a91a-dd268b6da61f"
                     },
                     {
-                      "key": "assignment_updated_to",
-                      "value": "2021-06-15T23:59:59Z"
+                      "id": "04cfc02c-e1cd-473e-82e9-493464406520",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/assignments?factory_country=<string,null>&executor_organization=<string>&assignment_updated_to=<dateTime>&assignment_created_from=<dateTime>&limit=10&assignment_status=NEW&assignment_created_to=<dateTime>&factory_city=<string,null>&expected_inspection_date_from=<string,null-date>&order=<string>&expected_inspection_date_to=<string,null-date>&offset=0&assignment_updated_from=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "assignments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Factory's country code (two-letter country code) of assignments. Case-insensitive",
+                              "key": "factory_country",
+                              "value": "<string,null>"
+                            },
+                            {
+                              "description": "Inspection Executor of assignments. Allow filtering with the Local Organization ID or the text \"owner\". Case-sensitive",
+                              "key": "executor_organization",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Assignment updated to in date and time",
+                              "key": "assignment_updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Assignment created from in date and time",
+                              "key": "assignment_created_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Status of assignments",
+                              "key": "assignment_status",
+                              "value": "NEW"
+                            },
+                            {
+                              "description": "Assignment created to in date and time",
+                              "key": "assignment_created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Factory's city of assignments. Case-sensitive",
+                              "key": "factory_city",
+                              "value": "<string,null>"
+                            },
+                            {
+                              "description": "Start date of the range of the expected inspection date in assignments. Allow only date format",
+                              "key": "expected_inspection_date_from",
+                              "value": "<string,null-date>"
+                            },
+                            {
+                              "description": "Order of the list of assignments",
+                              "key": "order",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "End date of the range of the expected inspection date in assignments. Allow only date format",
+                              "key": "expected_inspection_date_to",
+                              "value": "<string,null-date>"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Assignment updated from in date and time",
+                              "key": "assignment_updated_from",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:27:06.000Z",
+                      "updatedAt": "2026-10-22T02:27:06.000Z",
+                      "uid": "35240-04cfc02c-e1cd-473e-82e9-493464406520"
                     },
                     {
-                      "key": "assignment_created_from",
-                      "value": "2021-05-23T23:59:59Z"
+                      "id": "343f615b-6d73-463b-a00e-1fb74905ad55",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/assignments?factory_country=<string,null>&executor_organization=<string>&assignment_updated_to=<dateTime>&assignment_created_from=<dateTime>&limit=10&assignment_status=NEW&assignment_created_to=<dateTime>&factory_city=<string,null>&expected_inspection_date_from=<string,null-date>&order=<string>&expected_inspection_date_to=<string,null-date>&offset=0&assignment_updated_from=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "assignments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Factory's country code (two-letter country code) of assignments. Case-insensitive",
+                              "key": "factory_country",
+                              "value": "<string,null>"
+                            },
+                            {
+                              "description": "Inspection Executor of assignments. Allow filtering with the Local Organization ID or the text \"owner\". Case-sensitive",
+                              "key": "executor_organization",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Assignment updated to in date and time",
+                              "key": "assignment_updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Assignment created from in date and time",
+                              "key": "assignment_created_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Status of assignments",
+                              "key": "assignment_status",
+                              "value": "NEW"
+                            },
+                            {
+                              "description": "Assignment created to in date and time",
+                              "key": "assignment_created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Factory's city of assignments. Case-sensitive",
+                              "key": "factory_city",
+                              "value": "<string,null>"
+                            },
+                            {
+                              "description": "Start date of the range of the expected inspection date in assignments. Allow only date format",
+                              "key": "expected_inspection_date_from",
+                              "value": "<string,null-date>"
+                            },
+                            {
+                              "description": "Order of the list of assignments",
+                              "key": "order",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "End date of the range of the expected inspection date in assignments. Allow only date format",
+                              "key": "expected_inspection_date_to",
+                              "value": "<string,null-date>"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Assignment updated from in date and time",
+                              "key": "assignment_updated_from",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:27:06.000Z",
+                      "updatedAt": "2026-10-22T02:27:06.000Z",
+                      "uid": "35240-343f615b-6d73-463b-a00e-1fb74905ad55"
                     },
                     {
-                      "key": "limit",
-                      "value": "10"
+                      "id": "0f12e9c2-7c3c-4c52-9b88-c3c71987eb99",
+                      "name": "Rate-limiting Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/assignments?factory_country=<string,null>&executor_organization=<string>&assignment_updated_to=<dateTime>&assignment_created_from=<dateTime>&limit=10&assignment_status=NEW&assignment_created_to=<dateTime>&factory_city=<string,null>&expected_inspection_date_from=<string,null-date>&order=<string>&expected_inspection_date_to=<string,null-date>&offset=0&assignment_updated_from=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "assignments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Factory's country code (two-letter country code) of assignments. Case-insensitive",
+                              "key": "factory_country",
+                              "value": "<string,null>"
+                            },
+                            {
+                              "description": "Inspection Executor of assignments. Allow filtering with the Local Organization ID or the text \"owner\". Case-sensitive",
+                              "key": "executor_organization",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Assignment updated to in date and time",
+                              "key": "assignment_updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Assignment created from in date and time",
+                              "key": "assignment_created_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Status of assignments",
+                              "key": "assignment_status",
+                              "value": "NEW"
+                            },
+                            {
+                              "description": "Assignment created to in date and time",
+                              "key": "assignment_created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Factory's city of assignments. Case-sensitive",
+                              "key": "factory_city",
+                              "value": "<string,null>"
+                            },
+                            {
+                              "description": "Start date of the range of the expected inspection date in assignments. Allow only date format",
+                              "key": "expected_inspection_date_from",
+                              "value": "<string,null-date>"
+                            },
+                            {
+                              "description": "Order of the list of assignments",
+                              "key": "order",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "End date of the range of the expected inspection date in assignments. Allow only date format",
+                              "key": "expected_inspection_date_to",
+                              "value": "<string,null-date>"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Assignment updated from in date and time",
+                              "key": "assignment_updated_from",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:27:06.000Z",
+                      "updatedAt": "2026-10-22T02:27:06.000Z",
+                      "uid": "35240-0f12e9c2-7c3c-4c52-9b88-c3c71987eb99"
                     },
                     {
-                      "key": "assignment_status",
-                      "value": "COMPLETED"
-                    },
-                    {
-                      "key": "assignment_created_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "factory_city",
-                      "value": "New York"
-                    },
-                    {
-                      "key": "expected_inspection_date_from",
-                      "value": "2021-02-28"
-                    },
-                    {
-                      "key": "order",
-                      "value": "assignment_created_date:desc"
-                    },
-                    {
-                      "key": "expected_inspection_date_to",
-                      "value": "2021-02-28"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "assignment_updated_from",
-                      "value": "2021-05-23T23:59:59Z"
+                      "id": "95cdb02a-6f9f-4e31-843e-c6c3ad13c458",
+                      "name": "Internal Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/assignments?factory_country=<string,null>&executor_organization=<string>&assignment_updated_to=<dateTime>&assignment_created_from=<dateTime>&limit=10&assignment_status=NEW&assignment_created_to=<dateTime>&factory_city=<string,null>&expected_inspection_date_from=<string,null-date>&order=<string>&expected_inspection_date_to=<string,null-date>&offset=0&assignment_updated_from=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "assignments"
+                          ],
+                          "query": [
+                            {
+                              "description": "Factory's country code (two-letter country code) of assignments. Case-insensitive",
+                              "key": "factory_country",
+                              "value": "<string,null>"
+                            },
+                            {
+                              "description": "Inspection Executor of assignments. Allow filtering with the Local Organization ID or the text \"owner\". Case-sensitive",
+                              "key": "executor_organization",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Assignment updated to in date and time",
+                              "key": "assignment_updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Assignment created from in date and time",
+                              "key": "assignment_created_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Limit result of list",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Status of assignments",
+                              "key": "assignment_status",
+                              "value": "NEW"
+                            },
+                            {
+                              "description": "Assignment created to in date and time",
+                              "key": "assignment_created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Factory's city of assignments. Case-sensitive",
+                              "key": "factory_city",
+                              "value": "<string,null>"
+                            },
+                            {
+                              "description": "Start date of the range of the expected inspection date in assignments. Allow only date format",
+                              "key": "expected_inspection_date_from",
+                              "value": "<string,null-date>"
+                            },
+                            {
+                              "description": "Order of the list of assignments",
+                              "key": "order",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "End date of the range of the expected inspection date in assignments. Allow only date format",
+                              "key": "expected_inspection_date_to",
+                              "value": "<string,null-date>"
+                            },
+                            {
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Assignment updated from in date and time",
+                              "key": "assignment_updated_from",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:27:06.000Z",
+                      "updatedAt": "2026-10-22T02:27:06.000Z",
+                      "uid": "35240-95cdb02a-6f9f-4e31-843e-c6c3ad13c458"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "createdAt": "2026-10-22T02:27:06.000Z",
+                  "updatedAt": "2026-10-22T02:27:06.000Z",
+                  "uid": "35240-cc9e76e6-457f-436c-954b-2f9e32aa5d13"
                 }
               ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "44c553e4-0d1c-4f6f-b176-926bb8b9c334",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "assignments"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "factory_country",
-                      "value": "US"
-                    },
-                    {
-                      "key": "executor_organization",
-                      "value": "owner"
-                    },
-                    {
-                      "key": "assignment_updated_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "assignment_created_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "assignment_status",
-                      "value": "COMPLETED"
-                    },
-                    {
-                      "key": "assignment_created_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "factory_city",
-                      "value": "New York"
-                    },
-                    {
-                      "key": "expected_inspection_date_from",
-                      "value": "2021-02-28"
-                    },
-                    {
-                      "key": "order",
-                      "value": "assignment_created_date:desc"
-                    },
-                    {
-                      "key": "expected_inspection_date_to",
-                      "value": "2021-02-28"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "assignment_updated_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1268b848-febd-4fae-b04c-78afd3dabc7e",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "assignments"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "factory_country",
-                      "value": "US"
-                    },
-                    {
-                      "key": "executor_organization",
-                      "value": "owner"
-                    },
-                    {
-                      "key": "assignment_updated_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "assignment_created_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "assignment_status",
-                      "value": "COMPLETED"
-                    },
-                    {
-                      "key": "assignment_created_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "factory_city",
-                      "value": "New York"
-                    },
-                    {
-                      "key": "expected_inspection_date_from",
-                      "value": "2021-02-28"
-                    },
-                    {
-                      "key": "order",
-                      "value": "assignment_created_date:desc"
-                    },
-                    {
-                      "key": "expected_inspection_date_to",
-                      "value": "2021-02-28"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "assignment_updated_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "09a5054e-1499-49eb-ad52-417680bf8ab5",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "assignments"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "factory_country",
-                      "value": "US"
-                    },
-                    {
-                      "key": "executor_organization",
-                      "value": "owner"
-                    },
-                    {
-                      "key": "assignment_updated_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "assignment_created_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "assignment_status",
-                      "value": "COMPLETED"
-                    },
-                    {
-                      "key": "assignment_created_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "factory_city",
-                      "value": "New York"
-                    },
-                    {
-                      "key": "expected_inspection_date_from",
-                      "value": "2021-02-28"
-                    },
-                    {
-                      "key": "order",
-                      "value": "assignment_created_date:desc"
-                    },
-                    {
-                      "key": "expected_inspection_date_to",
-                      "value": "2021-02-28"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "assignment_updated_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4a7a99d4-b156-4697-801e-caffc64d38c4",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "assignments"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "factory_country",
-                      "value": "US"
-                    },
-                    {
-                      "key": "executor_organization",
-                      "value": "owner"
-                    },
-                    {
-                      "key": "assignment_updated_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "assignment_created_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "assignment_status",
-                      "value": "COMPLETED"
-                    },
-                    {
-                      "key": "assignment_created_to",
-                      "value": "2021-06-15T23:59:59Z"
-                    },
-                    {
-                      "key": "factory_city",
-                      "value": "New York"
-                    },
-                    {
-                      "key": "expected_inspection_date_from",
-                      "value": "2021-02-28"
-                    },
-                    {
-                      "key": "order",
-                      "value": "assignment_created_date:desc"
-                    },
-                    {
-                      "key": "expected_inspection_date_to",
-                      "value": "2021-02-28"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "assignment_updated_from",
-                      "value": "2021-05-23T23:59:59Z"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "6511e416-8284-45de-81b0-f6954588f6d3",
+              "createdAt": "2026-10-22T02:27:06.000Z",
+              "updatedAt": "2026-10-22T02:27:06.000Z",
+              "uid": "35240-6511e416-8284-45de-81b0-f6954588f6d3"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "2795c04c-0505-4576-bbef-bbc7bee98e61",
-          "name": "Get Assignment",
-          "request": {
-            "name": "Get Assignment",
-            "description": {
-              "content": "Get Assignment",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "assignments",
-                ":assignment_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "assignment_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "16b3b973-f195-4ec5-b2b9-57b5faab614d",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "assignments",
-                    ":assignment_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "assignment_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": {\n    \"assignmentId\": \"1234fca6-941b-4470-bcf9-9dc7928867dc\",\n    \"actualInspectionDate\": \"2021-06-14T04:02:57.849000+00:00\",\n    \"assignedToInspector\": {\n      \"email\": \"JohnDoe@gmail.com\",\n      \"employeeId\": \"123\",\n      \"id\": \"U111\",\n      \"name\": \"John Doe\"\n    },\n    \"assignedToOrganization\": {\n      \"name\": \"Acme Corp\",\n      \"systemId\": \"3123123\"\n    },\n    \"assignmentCreatedDate\": \"2021-05-25T13:58:26+00:00\",\n    \"assignmentStatus\": \"NEW\",\n    \"assignmentUpdatedDate\": \"2021-05-25T13:58:26+00:00\",\n    \"billingInformation\": {\n      \"address\": \"1 Park Avenue\",\n      \"city\": \"Minnesota\",\n      \"contact\": {\n        \"email\": \"will@email.com\",\n        \"mobileNumber\": \"1234567890\",\n        \"name\": \"Will Smith\",\n        \"telephoneNumber\": \"1234567890\"\n      },\n      \"country\": \"US\",\n      \"name\": \"Padme Corp\",\n      \"postalCode\": \"55402\",\n      \"state\": \"Minnesota\"\n    },\n    \"bookingId\": \"123456-c4a6-4fdb-b01f-2fe663be4460\",\n    \"bookingType\": \"normal\",\n    \"caseNumber\": \"3269012021-06-10ABC\",\n    \"clientInformation\": {\n      \"address\": \"address\",\n      \"city\": \"city\",\n      \"contact\": {\n        \"contactId\": \"contact_id\",\n        \"email\": \"email@email.com\",\n        \"mobileNumber\": \"1234567890\",\n        \"name\": \"Contact Name\",\n        \"telephoneNumber\": \"1234567890\"\n      },\n      \"country\": \"US\",\n      \"localOrganizationId\": \"F323333\",\n      \"localOrganizationIds\": [\n        \"F323333\",\n        \"F242146\"\n      ],\n      \"name\": \"name\",\n      \"organizationId\": \"org_id\"\n    },\n    \"confirmedBy\": \"Acme Corp\",\n    \"inspectionForm\": \"FIForm\",\n    \"createdBy\": \"John Doe\",\n    \"createdDate\": \"2021-06-03T04:02:57.849000+00:00\",\n    \"detailOfPIPO\": {\n      \"pipoInformation\": {\n        \"opoNumber\": \"string\",\n        \"poNumber\": \"string\",\n        \"poTypes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"productLineId\": \"string\",\n        \"productLineName\": \"string\"\n      },\n      \"styles\": [\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"measurements\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"styleName\": \"string\"\n        },\n        {\n          \"productCategoryId\": \"product_category_1\",\n          \"styleId\": \"style_1\",\n          \"assortments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"measurements\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"styleName\": \"string\"\n        }\n      ]\n    },\n    \"expectedDate\": {\n      \"inspectionDate\": \"2019-07-04T08:00:00.00Z\",\n      \"shipmentDate\": \"2019-07-04T08:00:00.00Z\"\n    },\n    \"factoryInformation\": {\n      \"address\": \"address\",\n      \"city\": \"city\",\n      \"contact\": {\n        \"contactId\": \"contact_id\",\n        \"email\": \"email@email.com\",\n        \"mobileNumber\": \"1234567890\",\n        \"name\": \"Contact Name\",\n        \"telephoneNumber\": \"1234567890\"\n      },\n      \"country\": \"US\",\n      \"localOrganizationId\": \"F323333\",\n      \"localOrganizationIds\": [\n        \"F323333\",\n        \"F242146\"\n      ],\n      \"localPostalCode\": \"82052\",\n      \"localState\": \"Wyoming\",\n      \"name\": \"name\",\n      \"organizationId\": \"org_id\"\n    },\n    \"fromOrganizationId\": \"F001122\",\n    \"fromOrganizationName\": \"Padme Inc\",\n    \"inspectionInformation\": {\n      \"typeOfInspection\": \"FRI\",\n      \"typeOfInspectionName\": \"Final Random Inspection\"\n    },\n    \"locationPicker\": {\n      \"address\": \"string\",\n      \"gpsLocation\": {\n        \"latitude\": \"string\",\n        \"longitude\": \"string\"\n      }\n    },\n    \"questionnaire\": {\n      \"questions\": [\n        {\n          \"id\": \"abc-123\",\n          \"questionType\": \"single select\",\n          \"validation\": {\n            \"mandatory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"Shipment readiness\",\n          \"freeTextAnswer\": \"Not good but acceptable\",\n          \"options\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"responseId\": \"1a2b3c\"\n        },\n        {\n          \"id\": \"abc-123\",\n          \"questionType\": \"single select\",\n          \"validation\": {\n            \"mandatory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"Shipment readiness\",\n          \"freeTextAnswer\": \"Not good but acceptable\",\n          \"options\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"responseId\": \"1a2b3c\"\n        }\n      ]\n    },\n    \"remark\": \"Updated to reflect changes\",\n    \"sampleSize\": 0,\n    \"serviceType\": \"TPR\",\n    \"status\": \"NEW\",\n    \"tags\": [\n      \"Revised\",\n      \"1st re-inspection\"\n    ],\n    \"toOrganizationId\": \"C112233\",\n    \"toOrganizationName\": \"Lex Corp\",\n    \"unit\": \"piece\",\n    \"updatedDate\": \"2021-06-03T04:02:57.849000+00:00\",\n    \"vendorInformation\": {\n      \"address\": \"address\",\n      \"city\": \"city\",\n      \"contact\": {\n        \"contactId\": \"contact_id\",\n        \"email\": \"email@email.com\",\n        \"mobileNumber\": \"1234567890\",\n        \"name\": \"Contact Name\",\n        \"telephoneNumber\": \"1234567890\"\n      },\n      \"country\": \"US\",\n      \"localOrganizationId\": \"F323333\",\n      \"localOrganizationIds\": [\n        \"F323333\",\n        \"F242146\"\n      ],\n      \"localPostalCode\": \"82052\",\n      \"localState\": \"Wyoming\",\n      \"name\": \"name\",\n      \"organizationId\": \"org_id\"\n    }\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "55991ca1-93ab-4688-bb8a-5cacc7017e9e",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "assignments",
-                    ":assignment_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "assignment_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8f62762f-17bb-4d6f-97e9-2ecfea5ff9b6",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "assignments",
-                    ":assignment_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "assignment_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b36d51c5-44bf-4a3e-a732-cb9fb1a9d09b",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "assignments",
-                    ":assignment_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "assignment_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7f716ca0-04e5-480a-947d-51b78232029b",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "assignments",
-                    ":assignment_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "assignment_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f5d1375a-50de-4fea-8bb8-cbabbb27a0dc",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "assignments",
-                    ":assignment_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "assignment_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "d4a402e1-d057-467b-aeaf-4563cd6c6588",
+          "createdAt": "2026-10-22T02:27:06.000Z",
+          "updatedAt": "2026-10-22T02:27:06.000Z",
+          "uid": "35240-d4a402e1-d057-467b-aeaf-4563cd6c6588"
         }
       ],
-      "event": []
+      "id": "2445e3a8-64b0-4770-bf51-c088332dcc8d",
+      "createdAt": "2026-10-22T02:27:06.000Z",
+      "updatedAt": "2026-10-22T02:27:06.000Z",
+      "uid": "35240-2445e3a8-64b0-4770-bf51-c088332dcc8d"
     }
   ],
-  "event": [],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
   "variable": [
     {
-      "type": "string",
-      "value": "https://files-integration.inspectorio.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://sight.inspectorio.com"
     }
-  ],
-  "info": {
-    "_postman_id": "43fe980c-5ef4-49c4-a332-ae666cdd990c",
-    "name": "File Management ANALYTICS ASSIGNMENT API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

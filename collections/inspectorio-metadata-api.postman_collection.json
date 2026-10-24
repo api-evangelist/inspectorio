@@ -1,1850 +1,2011 @@
 {
+  "info": {
+    "_postman_id": "e29fa56a-51dd-44d4-b230-f5e6b0f16bae",
+    "name": "Inspectorio METADATA API",
+    "description": "Operations tagged METADATA across 2 of this provider's published API definitions: inspectorio-qrm-openapi.json, inspectorio-rsc-openapi.json. Each path carries the servers of the definition it was published in.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:28:23.000Z",
+    "updatedAt": "2026-10-22T02:28:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e29fa56a-51dd-44d4-b230-f5e6b0f16bae"
+  },
   "item": [
     {
-      "id": "c4314a47-d33b-4cea-a348-c2c73fd350a7",
-      "name": "METADATA",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "3fa4fe65-88fc-4e56-948c-202cc5e34b16",
-          "name": "List Metadata",
-          "request": {
-            "name": "List Metadata",
-            "description": {
-              "content": "List Metadata",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "metadata",
-                ":namespace"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "10",
-                  "description": "The limitation of the returned results. Use together with ***offset*** param to paginate through items in the results"
-                },
-                {
-                  "disabled": false,
-                  "key": "created_to",
-                  "value": "<dateTime>",
-                  "description": "End date of the range when metadata was created"
-                },
-                {
-                  "disabled": false,
-                  "key": "updated_to",
-                  "value": "<dateTime>",
-                  "description": "End date of the range when meta data was updated"
-                },
-                {
-                  "disabled": false,
-                  "key": "order",
-                  "value": "created_date:desc",
-                  "description": "Order of metadata in ascending or descending. Only support date filters: ***created_date***, ***updated_date***"
-                },
-                {
-                  "disabled": false,
-                  "key": "updated_from",
-                  "value": "<dateTime>",
-                  "description": "Start date of the range when meta data was updated"
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0",
-                  "description": "Retrieve a subset of results starting with the offset value. Use together with ***limit*** param to paginate through items in the results"
-                },
-                {
-                  "disabled": false,
-                  "key": "created_from",
-                  "value": "<dateTime>",
-                  "description": "Start date of the range when metadata was created"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "namespace",
-                  "description": "(Required) The logical type of data that is set by Inspectorio"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "2110e3d0-05e9-42eb-a9db-ba41e7043323",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "created_to",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "updated_to",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "order",
-                      "value": "created_date:desc|asc"
-                    },
-                    {
-                      "key": "updated_from",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "created_from",
-                      "value": "2021-12-31T23:59:59Z"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "metadata",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{namespace}",
+                  "item": [
+                    {
+                      "name": "{uid}",
+                      "item": [
+                        {
+                          "name": "Delete Metadata",
+                          "id": "cf4c5b69-7307-4cbb-9d3f-4eb3d25f1597",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "metadata",
+                                ":namespace",
+                                ":uid"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "5064a84d-824e-4a99-8f22-2f3ab00affb4",
+                                  "key": "namespace",
+                                  "value": "analytics",
+                                  "description": "(Required) The logical type of data that is set by Inspectorio"
+                                },
+                                {
+                                  "id": "e3e01cc2-3455-4bca-b409-32d600f75efe",
+                                  "key": "uid",
+                                  "value": "<string>",
+                                  "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "64aa50e1-d85d-4199-8d3c-68b1ae7a3def",
+                              "name": "No Content",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-64aa50e1-d85d-4199-8d3c-68b1ae7a3def"
+                            },
+                            {
+                              "id": "03b745f2-facf-4245-b7ff-ed0963ca5b49",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-03b745f2-facf-4245-b7ff-ed0963ca5b49"
+                            },
+                            {
+                              "id": "0f058612-c246-4a53-801a-1b78b1d468a6",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-0f058612-c246-4a53-801a-1b78b1d468a6"
+                            },
+                            {
+                              "id": "c8555f01-e51d-4eb8-8f3b-85152b8e06a6",
+                              "name": "Rate-limiting Error",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-c8555f01-e51d-4eb8-8f3b-85152b8e06a6"
+                            },
+                            {
+                              "id": "03f08558-380e-490b-bad8-d4f489ee4392",
+                              "name": "Internal Error",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-03f08558-380e-490b-bad8-d4f489ee4392"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T02:28:23.000Z",
+                          "updatedAt": "2026-10-22T02:28:23.000Z",
+                          "uid": "35240-cf4c5b69-7307-4cbb-9d3f-4eb3d25f1597"
+                        },
+                        {
+                          "name": "Get Metadata",
+                          "id": "174780e7-0c71-4c40-b201-8d173acccbdf",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "metadata",
+                                ":namespace",
+                                ":uid"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "37a75017-805d-46e8-9039-7b89eaf94727",
+                                  "key": "namespace",
+                                  "value": "analytics",
+                                  "description": "(Required) The logical type of data that is set by Inspectorio"
+                                },
+                                {
+                                  "id": "53c16b62-10de-43e2-adb1-dc1e2b45ecaa",
+                                  "key": "uid",
+                                  "value": "<string>",
+                                  "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "da2b0f63-3e8e-4508-b4a1-c33ddcf5434b",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"key\": \"<string>\",\n        \"type\": \"string\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"uid\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"updatedDate\": \"<dateTime>\"\n  }\n}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-da2b0f63-3e8e-4508-b4a1-c33ddcf5434b"
+                            },
+                            {
+                              "id": "106d56d0-ae4a-4b7a-bfaa-7b7bfd8dc9b0",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-106d56d0-ae4a-4b7a-bfaa-7b7bfd8dc9b0"
+                            },
+                            {
+                              "id": "02651517-4212-4c78-9355-0ff4ac91208b",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-02651517-4212-4c78-9355-0ff4ac91208b"
+                            },
+                            {
+                              "id": "39df531a-b408-432c-9042-c8866a88f1a2",
+                              "name": "Rate-limiting Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-39df531a-b408-432c-9042-c8866a88f1a2"
+                            },
+                            {
+                              "id": "241b658b-17d5-452f-b47d-f85a5d4d1ab7",
+                              "name": "Internal Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-241b658b-17d5-452f-b47d-f85a5d4d1ab7"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T02:28:23.000Z",
+                          "updatedAt": "2026-10-22T02:28:23.000Z",
+                          "uid": "35240-174780e7-0c71-4c40-b201-8d173acccbdf"
+                        },
+                        {
+                          "name": "Update Metadata",
+                          "id": "6d065618-679d-4e85-a391-1ecf146cfbe7",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"items\": [\n    {\n      \"key\": \"<string>\",\n      \"type\": \"string\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "metadata",
+                                ":namespace",
+                                ":uid"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d6021c99-db87-4545-8135-31359cb164cf",
+                                  "key": "namespace",
+                                  "value": "analytics",
+                                  "description": "(Required) The logical type of data that is set by Inspectorio"
+                                },
+                                {
+                                  "id": "5bc98f36-bb02-4940-89a3-045950142168",
+                                  "key": "uid",
+                                  "value": "<string>",
+                                  "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "7569fa99-17da-410d-8757-11a5700873eb",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"<string>\",\n      \"type\": \"string\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"key\": \"<string>\",\n        \"type\": \"string\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"uid\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"updatedDate\": \"<dateTime>\"\n  }\n}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-7569fa99-17da-410d-8757-11a5700873eb"
+                            },
+                            {
+                              "id": "706f564f-66e0-4a58-b8af-c4e99297f0a9",
+                              "name": "Bad request",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"<string>\",\n      \"type\": \"string\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-706f564f-66e0-4a58-b8af-c4e99297f0a9"
+                            },
+                            {
+                              "id": "7b85c7c8-c18c-4d8c-84b5-5a43d5ea99c7",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"<string>\",\n      \"type\": \"string\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-7b85c7c8-c18c-4d8c-84b5-5a43d5ea99c7"
+                            },
+                            {
+                              "id": "afa4f343-39b2-47b3-8e60-78eaabb497e8",
+                              "name": "Rate-limiting Error",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"<string>\",\n      \"type\": \"string\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-afa4f343-39b2-47b3-8e60-78eaabb497e8"
+                            },
+                            {
+                              "id": "43a72f54-f4be-474a-9ddf-ef91d0574a1f",
+                              "name": "Internal Error",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "apiKey",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"<string>\",\n      \"type\": \"string\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/metadata/:namespace/:uid",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "metadata",
+                                    ":namespace",
+                                    ":uid"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "namespace"
+                                    },
+                                    {
+                                      "key": "uid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T02:28:24.000Z",
+                              "updatedAt": "2026-10-22T02:28:24.000Z",
+                              "uid": "35240-43a72f54-f4be-474a-9ddf-ef91d0574a1f"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T02:28:23.000Z",
+                          "updatedAt": "2026-10-22T02:28:23.000Z",
+                          "uid": "35240-6d065618-679d-4e85-a391-1ecf146cfbe7"
+                        }
+                      ],
+                      "id": "a0d331a3-d398-4262-9814-ad9592f79d48",
+                      "createdAt": "2026-10-22T02:28:23.000Z",
+                      "updatedAt": "2026-10-22T02:28:23.000Z",
+                      "uid": "35240-a0d331a3-d398-4262-9814-ad9592f79d48"
+                    },
+                    {
+                      "name": "List Metadata",
+                      "id": "8dc93104-79e6-4493-a175-96f9585f611b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/metadata/:namespace?limit=10&created_to=<dateTime>&updated_to=<dateTime>&order=created_date:desc&updated_from=<dateTime>&offset=0&created_from=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "metadata",
+                            ":namespace"
+                          ],
+                          "query": [
+                            {
+                              "description": "The limitation of the returned results. Use together with ***offset*** param to paginate through items in the results",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "End date of the range when metadata was created",
+                              "key": "created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "End date of the range when meta data was updated",
+                              "key": "updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Order of metadata in ascending or descending. Only support date filters: ***created_date***, ***updated_date***",
+                              "key": "order",
+                              "value": "created_date:desc"
+                            },
+                            {
+                              "description": "Start date of the range when meta data was updated",
+                              "key": "updated_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Retrieve a subset of results starting with the offset value. Use together with ***limit*** param to paginate through items in the results",
+                              "key": "offset",
+                              "value": "0"
+                            },
+                            {
+                              "description": "Start date of the range when metadata was created",
+                              "key": "created_from",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "028ff9b6-2dfc-459d-a410-ba2a14a0f9d5",
+                              "key": "namespace",
+                              "value": "analytics",
+                              "description": "(Required) The logical type of data that is set by Inspectorio"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e311c2bf-3b09-431c-b583-2cfd606f856e",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/metadata/:namespace?limit=10&created_to=<dateTime>&updated_to=<dateTime>&order=created_date:desc&updated_from=<dateTime>&offset=0&created_from=<dateTime>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "metadata",
+                                ":namespace"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The limitation of the returned results. Use together with ***offset*** param to paginate through items in the results",
+                                  "key": "limit",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "End date of the range when metadata was created",
+                                  "key": "created_to",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "End date of the range when meta data was updated",
+                                  "key": "updated_to",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Order of metadata in ascending or descending. Only support date filters: ***created_date***, ***updated_date***",
+                                  "key": "order",
+                                  "value": "created_date:desc"
+                                },
+                                {
+                                  "description": "Start date of the range when meta data was updated",
+                                  "key": "updated_from",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Retrieve a subset of results starting with the offset value. Use together with ***limit*** param to paginate through items in the results",
+                                  "key": "offset",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Start date of the range when metadata was created",
+                                  "key": "created_from",
+                                  "value": "<dateTime>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"items\": [\n        {\n          \"key\": \"<string>\",\n          \"type\": \"string\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"uid\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\"\n    },\n    {\n      \"items\": [\n        {\n          \"key\": \"<string>\",\n          \"type\": \"string\",\n          \"value\": \"<string>\"\n        }\n      ],\n      \"uid\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T02:28:24.000Z",
+                          "updatedAt": "2026-10-22T02:28:24.000Z",
+                          "uid": "35240-e311c2bf-3b09-431c-b583-2cfd606f856e"
+                        },
+                        {
+                          "id": "abb0db7b-843c-4772-a35b-d21014515016",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/metadata/:namespace?limit=10&created_to=<dateTime>&updated_to=<dateTime>&order=created_date:desc&updated_from=<dateTime>&offset=0&created_from=<dateTime>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "metadata",
+                                ":namespace"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The limitation of the returned results. Use together with ***offset*** param to paginate through items in the results",
+                                  "key": "limit",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "End date of the range when metadata was created",
+                                  "key": "created_to",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "End date of the range when meta data was updated",
+                                  "key": "updated_to",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Order of metadata in ascending or descending. Only support date filters: ***created_date***, ***updated_date***",
+                                  "key": "order",
+                                  "value": "created_date:desc"
+                                },
+                                {
+                                  "description": "Start date of the range when meta data was updated",
+                                  "key": "updated_from",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Retrieve a subset of results starting with the offset value. Use together with ***limit*** param to paginate through items in the results",
+                                  "key": "offset",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Start date of the range when metadata was created",
+                                  "key": "created_from",
+                                  "value": "<dateTime>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:24.000Z",
+                          "updatedAt": "2026-10-22T02:28:24.000Z",
+                          "uid": "35240-abb0db7b-843c-4772-a35b-d21014515016"
+                        },
+                        {
+                          "id": "513f8877-4d6d-4586-ad01-8391ab067845",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/metadata/:namespace?limit=10&created_to=<dateTime>&updated_to=<dateTime>&order=created_date:desc&updated_from=<dateTime>&offset=0&created_from=<dateTime>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "metadata",
+                                ":namespace"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The limitation of the returned results. Use together with ***offset*** param to paginate through items in the results",
+                                  "key": "limit",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "End date of the range when metadata was created",
+                                  "key": "created_to",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "End date of the range when meta data was updated",
+                                  "key": "updated_to",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Order of metadata in ascending or descending. Only support date filters: ***created_date***, ***updated_date***",
+                                  "key": "order",
+                                  "value": "created_date:desc"
+                                },
+                                {
+                                  "description": "Start date of the range when meta data was updated",
+                                  "key": "updated_from",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Retrieve a subset of results starting with the offset value. Use together with ***limit*** param to paginate through items in the results",
+                                  "key": "offset",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Start date of the range when metadata was created",
+                                  "key": "created_from",
+                                  "value": "<dateTime>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:24.000Z",
+                          "updatedAt": "2026-10-22T02:28:24.000Z",
+                          "uid": "35240-513f8877-4d6d-4586-ad01-8391ab067845"
+                        },
+                        {
+                          "id": "e3a01062-7fba-47cf-b6e6-2ccdfbe2dc28",
+                          "name": "Rate-limiting Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/metadata/:namespace?limit=10&created_to=<dateTime>&updated_to=<dateTime>&order=created_date:desc&updated_from=<dateTime>&offset=0&created_from=<dateTime>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "metadata",
+                                ":namespace"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The limitation of the returned results. Use together with ***offset*** param to paginate through items in the results",
+                                  "key": "limit",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "End date of the range when metadata was created",
+                                  "key": "created_to",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "End date of the range when meta data was updated",
+                                  "key": "updated_to",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Order of metadata in ascending or descending. Only support date filters: ***created_date***, ***updated_date***",
+                                  "key": "order",
+                                  "value": "created_date:desc"
+                                },
+                                {
+                                  "description": "Start date of the range when meta data was updated",
+                                  "key": "updated_from",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Retrieve a subset of results starting with the offset value. Use together with ***limit*** param to paginate through items in the results",
+                                  "key": "offset",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Start date of the range when metadata was created",
+                                  "key": "created_from",
+                                  "value": "<dateTime>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:24.000Z",
+                          "updatedAt": "2026-10-22T02:28:24.000Z",
+                          "uid": "35240-e3a01062-7fba-47cf-b6e6-2ccdfbe2dc28"
+                        },
+                        {
+                          "id": "baa20aa9-88ef-4b74-9fdb-b813ad5ef07e",
+                          "name": "Internal Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/metadata/:namespace?limit=10&created_to=<dateTime>&updated_to=<dateTime>&order=created_date:desc&updated_from=<dateTime>&offset=0&created_from=<dateTime>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "metadata",
+                                ":namespace"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The limitation of the returned results. Use together with ***offset*** param to paginate through items in the results",
+                                  "key": "limit",
+                                  "value": "10"
+                                },
+                                {
+                                  "description": "End date of the range when metadata was created",
+                                  "key": "created_to",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "End date of the range when meta data was updated",
+                                  "key": "updated_to",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Order of metadata in ascending or descending. Only support date filters: ***created_date***, ***updated_date***",
+                                  "key": "order",
+                                  "value": "created_date:desc"
+                                },
+                                {
+                                  "description": "Start date of the range when meta data was updated",
+                                  "key": "updated_from",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "Retrieve a subset of results starting with the offset value. Use together with ***limit*** param to paginate through items in the results",
+                                  "key": "offset",
+                                  "value": "0"
+                                },
+                                {
+                                  "description": "Start date of the range when metadata was created",
+                                  "key": "created_from",
+                                  "value": "<dateTime>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:24.000Z",
+                          "updatedAt": "2026-10-22T02:28:24.000Z",
+                          "uid": "35240-baa20aa9-88ef-4b74-9fdb-b813ad5ef07e"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T02:28:23.000Z",
+                      "updatedAt": "2026-10-22T02:28:23.000Z",
+                      "uid": "35240-8dc93104-79e6-4493-a175-96f9585f611b"
+                    },
+                    {
+                      "name": "Create Metadata",
+                      "id": "57ae070c-546d-4643-a40b-770804d51c3e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"items\": [\n    {\n      \"key\": \"<string>\",\n      \"type\": \"string\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"uid\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/metadata/:namespace",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "metadata",
+                            ":namespace"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3e6d2ba3-9d36-4b92-b4fc-6a343e1f8c1e",
+                              "key": "namespace",
+                              "value": "analytics",
+                              "description": "(Required) The logical type of data that is set by Inspectorio"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e7e65095-6ec2-4ffb-8683-3d7dde3482c4",
+                          "name": "Created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"items\": [\n    {\n      \"key\": \"<string>\",\n      \"type\": \"string\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"uid\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/metadata/:namespace",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "metadata",
+                                ":namespace"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"key\": \"<string>\",\n        \"type\": \"string\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"uid\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"updatedDate\": \"<dateTime>\"\n  }\n}",
+                          "createdAt": "2026-10-22T02:28:24.000Z",
+                          "updatedAt": "2026-10-22T02:28:24.000Z",
+                          "uid": "35240-e7e65095-6ec2-4ffb-8683-3d7dde3482c4"
+                        },
+                        {
+                          "id": "2654262e-2d31-4df8-8c63-9d41729ccafe",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"items\": [\n    {\n      \"key\": \"<string>\",\n      \"type\": \"string\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"uid\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/metadata/:namespace",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "metadata",
+                                ":namespace"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:24.000Z",
+                          "updatedAt": "2026-10-22T02:28:24.000Z",
+                          "uid": "35240-2654262e-2d31-4df8-8c63-9d41729ccafe"
+                        },
+                        {
+                          "id": "8cd0e8d5-af2f-41c2-b24f-f812d2e3bc8b",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"items\": [\n    {\n      \"key\": \"<string>\",\n      \"type\": \"string\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"uid\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/metadata/:namespace",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "metadata",
+                                ":namespace"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:24.000Z",
+                          "updatedAt": "2026-10-22T02:28:24.000Z",
+                          "uid": "35240-8cd0e8d5-af2f-41c2-b24f-f812d2e3bc8b"
+                        },
+                        {
+                          "id": "20cfee4d-19da-4f76-9ad9-1de06c9a97be",
+                          "name": "Rate-limiting Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"items\": [\n    {\n      \"key\": \"<string>\",\n      \"type\": \"string\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"uid\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/metadata/:namespace",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "metadata",
+                                ":namespace"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:24.000Z",
+                          "updatedAt": "2026-10-22T02:28:24.000Z",
+                          "uid": "35240-20cfee4d-19da-4f76-9ad9-1de06c9a97be"
+                        },
+                        {
+                          "id": "045bf251-b282-4022-a3f3-2c2c70eedb40",
+                          "name": "Internal Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"items\": [\n    {\n      \"key\": \"<string>\",\n      \"type\": \"string\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"uid\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/metadata/:namespace",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "metadata",
+                                ":namespace"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "namespace"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:24.000Z",
+                          "updatedAt": "2026-10-22T02:28:24.000Z",
+                          "uid": "35240-045bf251-b282-4022-a3f3-2c2c70eedb40"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T02:28:23.000Z",
+                      "updatedAt": "2026-10-22T02:28:23.000Z",
+                      "uid": "35240-57ae070c-546d-4643-a40b-770804d51c3e"
+                    }
+                  ],
+                  "id": "2dd45d57-7e6f-49be-91ac-bb5d63b2adc7",
+                  "createdAt": "2026-10-22T02:28:23.000Z",
+                  "updatedAt": "2026-10-22T02:28:23.000Z",
+                  "uid": "35240-2dd45d57-7e6f-49be-91ac-bb5d63b2adc7"
                 }
               ],
-              "body": "{\n  \"limit\": 57,\n  \"offset\": 9125,\n  \"total\": 1819,\n  \"data\": [\n    {\n      \"items\": [\n        {\n          \"key\": \"test_key\",\n          \"type\": \"string\",\n          \"value\": \"The value of test_key\"\n        }\n      ],\n      \"uid\": \"374b5abc9dcb\",\n      \"createdDate\": \"2021-06-03T04:02:57.849000+00:00\",\n      \"updatedDate\": \"2021-06-03T04:02:57.849000+00:00\"\n    },\n    {\n      \"items\": [\n        {\n          \"key\": \"test_key\",\n          \"type\": \"string\",\n          \"value\": \"The value of test_key\"\n        }\n      ],\n      \"uid\": \"374b5abc9dcb\",\n      \"createdDate\": \"2021-06-03T04:02:57.849000+00:00\",\n      \"updatedDate\": \"2021-06-03T04:02:57.849000+00:00\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b0da8bea-d9c4-49cc-96da-508881aaca8d",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "created_to",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "updated_to",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "order",
-                      "value": "created_date:desc|asc"
-                    },
-                    {
-                      "key": "updated_from",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "created_from",
-                      "value": "2021-12-31T23:59:59Z"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e65b4478-6319-43c1-90a3-2eb2ad4220a0",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "created_to",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "updated_to",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "order",
-                      "value": "created_date:desc|asc"
-                    },
-                    {
-                      "key": "updated_from",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "created_from",
-                      "value": "2021-12-31T23:59:59Z"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "68ba8d58-2136-4ae3-8112-4c0bdb18dea0",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "created_to",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "updated_to",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "order",
-                      "value": "created_date:desc|asc"
-                    },
-                    {
-                      "key": "updated_from",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "created_from",
-                      "value": "2021-12-31T23:59:59Z"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "06ce1c5d-0f33-4493-9f93-6aed62ba3b44",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "created_to",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "updated_to",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "order",
-                      "value": "created_date:desc|asc"
-                    },
-                    {
-                      "key": "updated_from",
-                      "value": "2021-12-31T23:59:59Z"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "created_from",
-                      "value": "2021-12-31T23:59:59Z"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "b4a7300f-84a6-4b69-8cac-fd1affe9f1b5",
+              "createdAt": "2026-10-22T02:28:23.000Z",
+              "updatedAt": "2026-10-22T02:28:23.000Z",
+              "uid": "35240-b4a7300f-84a6-4b69-8cac-fd1affe9f1b5"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "247a53a6-9eb0-4bd9-8b35-770f907de6bc",
-          "name": "Create Metadata",
-          "request": {
-            "name": "Create Metadata",
-            "description": {
-              "content": "Create Metadata",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "metadata",
-                ":namespace"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "namespace",
-                  "description": "(Required) The logical type of data that is set by Inspectorio"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"items\": [\n    {\n      \"key\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"uid\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "d05b91bc-33de-4e11-ae82-4973e53caa90",
-              "name": "Created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"test_key\",\n      \"type\": \"<string>\",\n      \"value\": \"The value of test_key\"\n    }\n  ],\n  \"uid\": \"374b5abc9dcb\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"key\": \"test_key\",\n        \"type\": \"<string>\",\n        \"value\": \"The value of test_key\"\n      }\n    ],\n    \"uid\": \"374b5abc9dcb\",\n    \"createdDate\": \"2021-06-03T04:02:57.849000+00:00\",\n    \"updatedDate\": \"2021-06-03T04:02:57.849000+00:00\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b51925be-538e-45c7-b25a-3aad4bdf11dc",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"test_key\",\n      \"type\": \"<string>\",\n      \"value\": \"The value of test_key\"\n    }\n  ],\n  \"uid\": \"374b5abc9dcb\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f45c1681-6e17-4f58-9310-8234ead5531a",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"test_key\",\n      \"type\": \"<string>\",\n      \"value\": \"The value of test_key\"\n    }\n  ],\n  \"uid\": \"374b5abc9dcb\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a8356b00-9186-46c4-87f5-c9ce9b7d3ae1",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"test_key\",\n      \"type\": \"<string>\",\n      \"value\": \"The value of test_key\"\n    }\n  ],\n  \"uid\": \"374b5abc9dcb\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "64397d21-f09d-4fba-ba85-7391d570a825",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"test_key\",\n      \"type\": \"<string>\",\n      \"value\": \"The value of test_key\"\n    }\n  ],\n  \"uid\": \"374b5abc9dcb\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "38b3efd7-2e03-466e-8329-2cd417e6c31a",
-          "name": "Delete Metadata",
-          "request": {
-            "name": "Delete Metadata",
-            "description": {
-              "content": "Delete Metadata",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "metadata",
-                ":namespace",
-                ":uid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "namespace",
-                  "description": "(Required) The logical type of data that is set by Inspectorio"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "uid",
-                  "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "267c3192-430b-47fd-9933-ef92bcbe65f6",
-              "name": "No Content",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1aff0097-409c-4405-834e-5079eccab9dc",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4192d4a4-20ee-4ed6-9410-d6ff656b15a3",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f24836f7-afb2-42e2-88cd-a5dc7d0c1674",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f4102919-7c48-466d-8a41-bdf293b07a29",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "872cdece-d278-4f87-879f-ee2c0356bdf2",
-          "name": "Get Metadata",
-          "request": {
-            "name": "Get Metadata",
-            "description": {
-              "content": "Get Metadata",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "metadata",
-                ":namespace",
-                ":uid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "namespace",
-                  "description": "(Required) The logical type of data that is set by Inspectorio"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "uid",
-                  "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "ccb47483-f24f-41be-a0b3-a9b836371393",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"key\": \"test_key\",\n        \"type\": \"<string>\",\n        \"value\": \"The value of test_key\"\n      }\n    ],\n    \"uid\": \"374b5abc9dcb\",\n    \"createdDate\": \"2021-06-03T04:02:57.849000+00:00\",\n    \"updatedDate\": \"2021-06-03T04:02:57.849000+00:00\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "af1b0090-fbce-4855-be05-220fe8c16dbc",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1b9fd5af-cf91-4f35-b9b9-acb2811dbfd6",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d6543718-5513-4762-a7d5-1b87b20cb679",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "907adba7-db39-4ff2-83f7-dc5118f7c83b",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "75a622bd-05d1-42c9-8e24-d73e41f269ce",
-          "name": "Update Metadata",
-          "request": {
-            "name": "Update Metadata",
-            "description": {
-              "content": "Update Metadata",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "metadata",
-                ":namespace",
-                ":uid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "namespace",
-                  "description": "(Required) The logical type of data that is set by Inspectorio"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "uid",
-                  "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"items\": [\n    {\n      \"key\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "83629836-fac5-4994-8cab-d5cc4c3c368f",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"test_key\",\n      \"type\": \"<string>\",\n      \"value\": \"The value of test_key\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": {\n    \"items\": [\n      {\n        \"key\": \"test_key\",\n        \"type\": \"<string>\",\n        \"value\": \"The value of test_key\"\n      }\n    ],\n    \"uid\": \"374b5abc9dcb\",\n    \"createdDate\": \"2021-06-03T04:02:57.849000+00:00\",\n    \"updatedDate\": \"2021-06-03T04:02:57.849000+00:00\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7e98b62f-9920-41cb-a5d3-1db0c4befa51",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"test_key\",\n      \"type\": \"<string>\",\n      \"value\": \"The value of test_key\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c86e51c8-d9cb-49c8-8f67-39a7e8e53392",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"test_key\",\n      \"type\": \"<string>\",\n      \"value\": \"The value of test_key\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "3dfdc911-3b1d-48a8-909d-b58d9d4cf862",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"test_key\",\n      \"type\": \"<string>\",\n      \"value\": \"The value of test_key\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "443d63e4-de06-4e8e-b90e-573df65b9ee1",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "metadata",
-                    ":namespace",
-                    ":uid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "namespace",
-                      "description": "(Required) The logical type of data that is set by Inspectorio"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uid",
-                      "description": "(Required) UIDs (unique identifiers) are unique within Ecosystem + Namespace. You can consider it as a Unique Keys of ecosystem + namespace + uid"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"items\": [\n    {\n      \"key\": \"test_key\",\n      \"type\": \"<string>\",\n      \"value\": \"The value of test_key\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "a9aa297c-8f74-481e-af63-0340dba0eca6",
+          "createdAt": "2026-10-22T02:28:23.000Z",
+          "updatedAt": "2026-10-22T02:28:23.000Z",
+          "uid": "35240-a9aa297c-8f74-481e-af63-0340dba0eca6"
         }
       ],
-      "event": []
+      "id": "ce450c17-7b11-4310-aa0b-89b363e101bd",
+      "createdAt": "2026-10-22T02:28:23.000Z",
+      "updatedAt": "2026-10-22T02:28:23.000Z",
+      "uid": "35240-ce450c17-7b11-4310-aa0b-89b363e101bd"
     }
   ],
-  "event": [],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
   "variable": [
     {
-      "type": "string",
-      "value": "https://files-integration.inspectorio.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://sight.inspectorio.com"
     }
-  ],
-  "info": {
-    "_postman_id": "347c301c-41a2-427c-b309-6e1cf2479774",
-    "name": "File Management ANALYTICS METADATA API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

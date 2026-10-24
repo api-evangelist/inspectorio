@@ -1,354 +1,416 @@
 {
+  "info": {
+    "_postman_id": "5e24cb2a-18cd-49e5-a244-a0d22106e9a5",
+    "name": "Inspectorio Quality Risk Management CAPA API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:27:41.000Z",
+    "updatedAt": "2026-10-22T02:27:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5e24cb2a-18cd-49e5-a244-a0d22106e9a5"
+  },
   "item": [
     {
-      "id": "bc7cc9dd-68e8-4cb3-a798-1924d63e3278",
-      "name": "CAPA",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "1c9af208-04f3-4f79-aa5d-7d702ea85224",
-          "name": "Get CAPA",
-          "request": {
-            "name": "Get CAPA",
-            "description": {
-              "content": "Get CAPA",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "capas",
-                ":report_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "report_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "facdadca-eb6f-4550-a437-ce9776434650",
-              "name": "OK",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "capas",
-                    ":report_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "report_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "capas",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{report_id}",
+                  "item": [
+                    {
+                      "name": "Get CAPA",
+                      "id": "ccf0296a-7504-4047-a50e-4c8198b305fa",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/capas/:report_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "capas",
+                            ":report_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "36a29160-8604-4f72-858a-d44bba4208a1",
+                              "key": "report_id",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "7a50dfb4-ddc9-4c9b-8c67-0bc8fe32d1f0",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/capas/:report_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "capas",
+                                ":report_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "report_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"chatBox\": [\n      {\n        \"attachments\": [\n          {\n            \"fileName\": \"<string,null>\",\n            \"url\": \"<string>\"\n          },\n          {\n            \"fileName\": \"<string,null>\",\n            \"url\": \"<string>\"\n          }\n        ],\n        \"createdDate\": \"<dateTime>\",\n        \"email\": \"<string>\",\n        \"firstName\": \"<string,null>\",\n        \"lastName\": \"<string,null>\",\n        \"message\": \"<string,null>\",\n        \"organizationName\": \"<string,null>\"\n      },\n      {\n        \"attachments\": [\n          {\n            \"fileName\": \"<string,null>\",\n            \"url\": \"<string>\"\n          },\n          {\n            \"fileName\": \"<string,null>\",\n            \"url\": \"<string>\"\n          }\n        ],\n        \"createdDate\": \"<dateTime>\",\n        \"email\": \"<string>\",\n        \"firstName\": \"<string,null>\",\n        \"lastName\": \"<string,null>\",\n        \"message\": \"<string,null>\",\n        \"organizationName\": \"<string,null>\"\n      }\n    ],\n    \"generalInformation\": {\n      \"actualInspectionDate\": \"<string,null-date-time>\",\n      \"assortmentIds\": \"<array,null>\",\n      \"availableQuantity\": \"<integer,null>\",\n      \"capaStatus\": \"<string,null>\",\n      \"factoryId\": \"<string,null>\",\n      \"factoryName\": \"<string,null>\",\n      \"inspectionId\": \"<string,null>\",\n      \"inspectionLocation\": {\n        \"address\": \"<string,null>\",\n        \"contact\": {\n          \"contactId\": \"<string,null>\",\n          \"email\": \"<string,null>\",\n          \"mobileNumber\": \"<string,null>\",\n          \"name\": \"<string,null>\",\n          \"telephoneNumber\": \"<string,null>\"\n        },\n        \"country\": \"<string,null>\",\n        \"name\": \"<string,null>\",\n        \"organizationId\": \"<string,null>\"\n      },\n      \"inspectionResult\": \"<string,null>\",\n      \"inspectionType\": \"<string,null>\",\n      \"inspectorName\": \"<string,null>\",\n      \"itemIds\": \"<array,null>\",\n      \"orderQuantity\": \"<integer,null>\",\n      \"packingTypes\": \"<array,null>\",\n      \"productCategories\": \"<array,null>\",\n      \"productLines\": \"<array,null>\",\n      \"proposedInspectionDate\": \"<string,null-date-time>\",\n      \"styleIds\": \"<array,null>\",\n      \"supplierId\": \"<string,null>\",\n      \"supplierName\": \"<string,null>\"\n    },\n    \"nonConformities\": {\n      \"assembly\": {\n        \"aql\": {\n          \"aqlId\": \"<string,null>\",\n          \"critical\": \"<number>\",\n          \"major\": \"<number>\",\n          \"minor\": \"<number>\"\n        },\n        \"defectFound\": {\n          \"critical\": \"<integer>\",\n          \"major\": \"<integer>\",\n          \"minor\": \"<integer>\"\n        },\n        \"defects\": [\n          {\n            \"affectedPercentage\": \"<number>\",\n            \"comments\": [\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              }\n            ],\n            \"correctiveAction\": {\n              \"details\": \"<string,null>\",\n              \"value\": \"<string,null>\"\n            },\n            \"defectCategory\": \"<string,null>\",\n            \"defectCode\": \"<string,null>\",\n            \"defectItems\": [\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              }\n            ],\n            \"defectName\": \"<string,null>\",\n            \"preventativeAction\": \"<string,null>\",\n            \"rootCause\": \"<string,null>\",\n            \"totalDefectItems\": \"<integer>\",\n            \"totalDefectUnits\": \"<integer>\"\n          },\n          {\n            \"affectedPercentage\": \"<number>\",\n            \"comments\": [\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              }\n            ],\n            \"correctiveAction\": {\n              \"details\": \"<string,null>\",\n              \"value\": \"<string,null>\"\n            },\n            \"defectCategory\": \"<string,null>\",\n            \"defectCode\": \"<string,null>\",\n            \"defectItems\": [\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              }\n            ],\n            \"defectName\": \"<string,null>\",\n            \"preventativeAction\": \"<string,null>\",\n            \"rootCause\": \"<string,null>\",\n            \"totalDefectItems\": \"<integer>\",\n            \"totalDefectUnits\": \"<integer>\"\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": \"<integer>\",\n          \"major\": \"<integer>\",\n          \"minor\": \"<integer>\"\n        },\n        \"totalDefects\": \"<integer>\",\n        \"totalItems\": \"<integer>\"\n      },\n      \"checkList\": [\n        {\n          \"attachments\": [\n            {\n              \"url\": \"<string>\"\n            },\n            {\n              \"url\": \"<string>\"\n            }\n          ],\n          \"comments\": [\n            {\n              \"attachments\": [\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                },\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                }\n              ],\n              \"createdDate\": \"<dateTime>\",\n              \"email\": \"<string>\",\n              \"firstName\": \"<string,null>\",\n              \"lastName\": \"<string,null>\",\n              \"message\": \"<string,null>\",\n              \"organizationName\": \"<string,null>\"\n            },\n            {\n              \"attachments\": [\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                },\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                }\n              ],\n              \"createdDate\": \"<dateTime>\",\n              \"email\": \"<string>\",\n              \"firstName\": \"<string,null>\",\n              \"lastName\": \"<string,null>\",\n              \"message\": \"<string,null>\",\n              \"organizationName\": \"<string,null>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": \"<string,null>\",\n            \"value\": \"<string,null>\"\n          },\n          \"label\": \"<string,null>\",\n          \"preventativeAction\": \"<string,null>\",\n          \"rootCause\": \"<string,null>\"\n        },\n        {\n          \"attachments\": [\n            {\n              \"url\": \"<string>\"\n            },\n            {\n              \"url\": \"<string>\"\n            }\n          ],\n          \"comments\": [\n            {\n              \"attachments\": [\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                },\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                }\n              ],\n              \"createdDate\": \"<dateTime>\",\n              \"email\": \"<string>\",\n              \"firstName\": \"<string,null>\",\n              \"lastName\": \"<string,null>\",\n              \"message\": \"<string,null>\",\n              \"organizationName\": \"<string,null>\"\n            },\n            {\n              \"attachments\": [\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                },\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                }\n              ],\n              \"createdDate\": \"<dateTime>\",\n              \"email\": \"<string>\",\n              \"firstName\": \"<string,null>\",\n              \"lastName\": \"<string,null>\",\n              \"message\": \"<string,null>\",\n              \"organizationName\": \"<string,null>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": \"<string,null>\",\n            \"value\": \"<string,null>\"\n          },\n          \"label\": \"<string,null>\",\n          \"preventativeAction\": \"<string,null>\",\n          \"rootCause\": \"<string,null>\"\n        }\n      ],\n      \"measurement\": {\n        \"aql\": {\n          \"aqlId\": \"<string,null>\",\n          \"critical\": \"<number>\",\n          \"major\": \"<number>\",\n          \"minor\": \"<number>\"\n        },\n        \"comments\": [\n          {\n            \"attachments\": [\n              {\n                \"fileName\": \"<string,null>\",\n                \"url\": \"<string>\"\n              },\n              {\n                \"fileName\": \"<string,null>\",\n                \"url\": \"<string>\"\n              }\n            ],\n            \"createdDate\": \"<dateTime>\",\n            \"email\": \"<string>\",\n            \"firstName\": \"<string,null>\",\n            \"lastName\": \"<string,null>\",\n            \"message\": \"<string,null>\",\n            \"organizationName\": \"<string,null>\"\n          },\n          {\n            \"attachments\": [\n              {\n                \"fileName\": \"<string,null>\",\n                \"url\": \"<string>\"\n              },\n              {\n                \"fileName\": \"<string,null>\",\n                \"url\": \"<string>\"\n              }\n            ],\n            \"createdDate\": \"<dateTime>\",\n            \"email\": \"<string>\",\n            \"firstName\": \"<string,null>\",\n            \"lastName\": \"<string,null>\",\n            \"message\": \"<string,null>\",\n            \"organizationName\": \"<string,null>\"\n          }\n        ],\n        \"correctiveAction\": {\n          \"details\": \"<string,null>\",\n          \"value\": \"<string,null>\"\n        },\n        \"defectFound\": {\n          \"critical\": \"<integer>\",\n          \"major\": \"<integer>\",\n          \"minor\": \"<integer>\"\n        },\n        \"failedMeasurements\": [\n          {\n            \"found\": \"<number>\",\n            \"measurementDescription\": \"<string,null>\",\n            \"occurrence\": \"<number>\",\n            \"sampleName\": \"<string,null>\",\n            \"standard\": \"<number>\",\n            \"tolerance\": \"<number>\",\n            \"toleranceLower\": \"<number>\",\n            \"toleranceUpper\": \"<number>\"\n          },\n          {\n            \"found\": \"<number>\",\n            \"measurementDescription\": \"<string,null>\",\n            \"occurrence\": \"<number>\",\n            \"sampleName\": \"<string,null>\",\n            \"standard\": \"<number>\",\n            \"tolerance\": \"<number>\",\n            \"toleranceLower\": \"<number>\",\n            \"toleranceUpper\": \"<number>\"\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": \"<integer>\",\n          \"major\": \"<integer>\",\n          \"minor\": \"<integer>\"\n        },\n        \"preventativeAction\": \"<string,null>\",\n        \"rootCause\": \"<string,null>\"\n      },\n      \"measurementByDefects\": {\n        \"aql\": {\n          \"aqlId\": \"<string,null>\",\n          \"critical\": \"<number>\",\n          \"major\": \"<number>\",\n          \"minor\": \"<number>\"\n        },\n        \"defectFound\": {\n          \"critical\": \"<integer>\",\n          \"major\": \"<integer>\",\n          \"minor\": \"<integer>\"\n        },\n        \"defects\": [\n          {\n            \"affectedPercentage\": \"<number>\",\n            \"comments\": [\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              }\n            ],\n            \"correctiveAction\": {\n              \"details\": \"<string,null>\",\n              \"value\": \"<string,null>\"\n            },\n            \"defectCategory\": \"<string,null>\",\n            \"defectCode\": \"<string,null>\",\n            \"defectItems\": [\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              }\n            ],\n            \"defectName\": \"<string,null>\",\n            \"preventativeAction\": \"<string,null>\",\n            \"rootCause\": \"<string,null>\",\n            \"totalDefectItems\": \"<integer>\",\n            \"totalDefectUnits\": \"<integer>\"\n          },\n          {\n            \"affectedPercentage\": \"<number>\",\n            \"comments\": [\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              }\n            ],\n            \"correctiveAction\": {\n              \"details\": \"<string,null>\",\n              \"value\": \"<string,null>\"\n            },\n            \"defectCategory\": \"<string,null>\",\n            \"defectCode\": \"<string,null>\",\n            \"defectItems\": [\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              }\n            ],\n            \"defectName\": \"<string,null>\",\n            \"preventativeAction\": \"<string,null>\",\n            \"rootCause\": \"<string,null>\",\n            \"totalDefectItems\": \"<integer>\",\n            \"totalDefectUnits\": \"<integer>\"\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": \"<integer>\",\n          \"major\": \"<integer>\",\n          \"minor\": \"<integer>\"\n        },\n        \"totalDefects\": \"<integer>\",\n        \"totalItems\": \"<integer>\"\n      },\n      \"moistureCheck\": {\n        \"aql\": {\n          \"aqlId\": \"<string,null>\",\n          \"critical\": \"<number>\",\n          \"major\": \"<number>\",\n          \"minor\": \"<number>\"\n        },\n        \"comments\": [\n          {\n            \"attachments\": [\n              {\n                \"fileName\": \"<string,null>\",\n                \"url\": \"<string>\"\n              },\n              {\n                \"fileName\": \"<string,null>\",\n                \"url\": \"<string>\"\n              }\n            ],\n            \"createdDate\": \"<dateTime>\",\n            \"email\": \"<string>\",\n            \"firstName\": \"<string,null>\",\n            \"lastName\": \"<string,null>\",\n            \"message\": \"<string,null>\",\n            \"organizationName\": \"<string,null>\"\n          },\n          {\n            \"attachments\": [\n              {\n                \"fileName\": \"<string,null>\",\n                \"url\": \"<string>\"\n              },\n              {\n                \"fileName\": \"<string,null>\",\n                \"url\": \"<string>\"\n              }\n            ],\n            \"createdDate\": \"<dateTime>\",\n            \"email\": \"<string>\",\n            \"firstName\": \"<string,null>\",\n            \"lastName\": \"<string,null>\",\n            \"message\": \"<string,null>\",\n            \"organizationName\": \"<string,null>\"\n          }\n        ],\n        \"correctiveAction\": {\n          \"details\": \"<string,null>\",\n          \"value\": \"<string,null>\"\n        },\n        \"defectFound\": {\n          \"critical\": \"<integer>\",\n          \"major\": \"<integer>\",\n          \"minor\": \"<integer>\"\n        },\n        \"defectItems\": [\n          {\n            \"components\": [\n              {\n                \"acceptableTolerances\": [\n                  {\n                    \"from\": \"<number>\",\n                    \"to\": \"<number>\",\n                    \"unit\": \"<string,null>\"\n                  },\n                  {\n                    \"from\": \"<number>\",\n                    \"to\": \"<number>\",\n                    \"unit\": \"<string,null>\"\n                  }\n                ],\n                \"defectClassification\": \"<string,null>\",\n                \"name\": \"<string,null>\",\n                \"outOfTolerance\": {\n                  \"unit\": \"<string,null>\",\n                  \"value\": \"<number>\"\n                }\n              },\n              {\n                \"acceptableTolerances\": [\n                  {\n                    \"from\": \"<number>\",\n                    \"to\": \"<number>\",\n                    \"unit\": \"<string,null>\"\n                  },\n                  {\n                    \"from\": \"<number>\",\n                    \"to\": \"<number>\",\n                    \"unit\": \"<string,null>\"\n                  }\n                ],\n                \"defectClassification\": \"<string,null>\",\n                \"name\": \"<string,null>\",\n                \"outOfTolerance\": {\n                  \"unit\": \"<string,null>\",\n                  \"value\": \"<number>\"\n                }\n              }\n            ],\n            \"itemId\": \"<string,null>\",\n            \"type\": \"<string,null>\"\n          },\n          {\n            \"components\": [\n              {\n                \"acceptableTolerances\": [\n                  {\n                    \"from\": \"<number>\",\n                    \"to\": \"<number>\",\n                    \"unit\": \"<string,null>\"\n                  },\n                  {\n                    \"from\": \"<number>\",\n                    \"to\": \"<number>\",\n                    \"unit\": \"<string,null>\"\n                  }\n                ],\n                \"defectClassification\": \"<string,null>\",\n                \"name\": \"<string,null>\",\n                \"outOfTolerance\": {\n                  \"unit\": \"<string,null>\",\n                  \"value\": \"<number>\"\n                }\n              },\n              {\n                \"acceptableTolerances\": [\n                  {\n                    \"from\": \"<number>\",\n                    \"to\": \"<number>\",\n                    \"unit\": \"<string,null>\"\n                  },\n                  {\n                    \"from\": \"<number>\",\n                    \"to\": \"<number>\",\n                    \"unit\": \"<string,null>\"\n                  }\n                ],\n                \"defectClassification\": \"<string,null>\",\n                \"name\": \"<string,null>\",\n                \"outOfTolerance\": {\n                  \"unit\": \"<string,null>\",\n                  \"value\": \"<number>\"\n                }\n              }\n            ],\n            \"itemId\": \"<string,null>\",\n            \"type\": \"<string,null>\"\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": \"<integer>\",\n          \"major\": \"<integer>\",\n          \"minor\": \"<integer>\"\n        },\n        \"preventativeAction\": \"<string,null>\",\n        \"rootCause\": \"<string,null>\",\n        \"totalDefects\": \"<integer>\",\n        \"totalItems\": \"<integer>\"\n      },\n      \"packaging\": {\n        \"aql\": {\n          \"aqlId\": \"<string,null>\",\n          \"critical\": \"<number>\",\n          \"major\": \"<number>\",\n          \"minor\": \"<number>\"\n        },\n        \"defectFound\": {\n          \"critical\": \"<integer>\",\n          \"major\": \"<integer>\",\n          \"minor\": \"<integer>\"\n        },\n        \"defects\": [\n          {\n            \"affectedPercentage\": \"<number>\",\n            \"comments\": [\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              }\n            ],\n            \"correctiveAction\": {\n              \"details\": \"<string,null>\",\n              \"value\": \"<string,null>\"\n            },\n            \"defectCategory\": \"<string,null>\",\n            \"defectCode\": \"<string,null>\",\n            \"defectItems\": [\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              }\n            ],\n            \"defectName\": \"<string,null>\",\n            \"preventativeAction\": \"<string,null>\",\n            \"rootCause\": \"<string,null>\",\n            \"totalDefectItems\": \"<integer>\",\n            \"totalDefectUnits\": \"<integer>\"\n          },\n          {\n            \"affectedPercentage\": \"<number>\",\n            \"comments\": [\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              }\n            ],\n            \"correctiveAction\": {\n              \"details\": \"<string,null>\",\n              \"value\": \"<string,null>\"\n            },\n            \"defectCategory\": \"<string,null>\",\n            \"defectCode\": \"<string,null>\",\n            \"defectItems\": [\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              }\n            ],\n            \"defectName\": \"<string,null>\",\n            \"preventativeAction\": \"<string,null>\",\n            \"rootCause\": \"<string,null>\",\n            \"totalDefectItems\": \"<integer>\",\n            \"totalDefectUnits\": \"<integer>\"\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": \"<integer>\",\n          \"major\": \"<integer>\",\n          \"minor\": \"<integer>\"\n        },\n        \"packingType\": \"<string,null>\",\n        \"totalDefects\": \"<integer>\",\n        \"totalItems\": \"<integer>\"\n      },\n      \"questions\": [\n        {\n          \"answer\": \"<string,null>\",\n          \"answerComments\": \"<array,null>\",\n          \"attachments\": [\n            {\n              \"url\": \"<string>\"\n            },\n            {\n              \"url\": \"<string>\"\n            }\n          ],\n          \"comments\": [\n            {\n              \"attachments\": [\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                },\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                }\n              ],\n              \"createdDate\": \"<dateTime>\",\n              \"email\": \"<string>\",\n              \"firstName\": \"<string,null>\",\n              \"lastName\": \"<string,null>\",\n              \"message\": \"<string,null>\",\n              \"organizationName\": \"<string,null>\"\n            },\n            {\n              \"attachments\": [\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                },\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                }\n              ],\n              \"createdDate\": \"<dateTime>\",\n              \"email\": \"<string>\",\n              \"firstName\": \"<string,null>\",\n              \"lastName\": \"<string,null>\",\n              \"message\": \"<string,null>\",\n              \"organizationName\": \"<string,null>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": \"<string,null>\",\n            \"value\": \"<string,null>\"\n          },\n          \"label\": \"<string,null>\",\n          \"preventativeAction\": \"<string,null>\",\n          \"rootCause\": \"<string,null>\"\n        },\n        {\n          \"answer\": \"<string,null>\",\n          \"answerComments\": \"<array,null>\",\n          \"attachments\": [\n            {\n              \"url\": \"<string>\"\n            },\n            {\n              \"url\": \"<string>\"\n            }\n          ],\n          \"comments\": [\n            {\n              \"attachments\": [\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                },\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                }\n              ],\n              \"createdDate\": \"<dateTime>\",\n              \"email\": \"<string>\",\n              \"firstName\": \"<string,null>\",\n              \"lastName\": \"<string,null>\",\n              \"message\": \"<string,null>\",\n              \"organizationName\": \"<string,null>\"\n            },\n            {\n              \"attachments\": [\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                },\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                }\n              ],\n              \"createdDate\": \"<dateTime>\",\n              \"email\": \"<string>\",\n              \"firstName\": \"<string,null>\",\n              \"lastName\": \"<string,null>\",\n              \"message\": \"<string,null>\",\n              \"organizationName\": \"<string,null>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": \"<string,null>\",\n            \"value\": \"<string,null>\"\n          },\n          \"label\": \"<string,null>\",\n          \"preventativeAction\": \"<string,null>\",\n          \"rootCause\": \"<string,null>\"\n        }\n      ],\n      \"rfid\": [\n        {\n          \"barCode\": \"<string,null>\",\n          \"comments\": [\n            {\n              \"attachments\": [\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                },\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                }\n              ],\n              \"createdDate\": \"<dateTime>\",\n              \"email\": \"<string>\",\n              \"firstName\": \"<string,null>\",\n              \"lastName\": \"<string,null>\",\n              \"message\": \"<string,null>\",\n              \"organizationName\": \"<string,null>\"\n            },\n            {\n              \"attachments\": [\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                },\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                }\n              ],\n              \"createdDate\": \"<dateTime>\",\n              \"email\": \"<string>\",\n              \"firstName\": \"<string,null>\",\n              \"lastName\": \"<string,null>\",\n              \"message\": \"<string,null>\",\n              \"organizationName\": \"<string,null>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": \"<string,null>\",\n            \"value\": \"<string,null>\"\n          },\n          \"decryptedCode\": \"<string,null>\",\n          \"matched\": \"<boolean>\",\n          \"photos\": [\n            \"<string,null>\",\n            \"<string,null>\"\n          ],\n          \"preventativeAction\": \"<string,null>\",\n          \"rfid\": \"<string,null>\",\n          \"rootCause\": \"<string,null>\"\n        },\n        {\n          \"barCode\": \"<string,null>\",\n          \"comments\": [\n            {\n              \"attachments\": [\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                },\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                }\n              ],\n              \"createdDate\": \"<dateTime>\",\n              \"email\": \"<string>\",\n              \"firstName\": \"<string,null>\",\n              \"lastName\": \"<string,null>\",\n              \"message\": \"<string,null>\",\n              \"organizationName\": \"<string,null>\"\n            },\n            {\n              \"attachments\": [\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                },\n                {\n                  \"fileName\": \"<string,null>\",\n                  \"url\": \"<string>\"\n                }\n              ],\n              \"createdDate\": \"<dateTime>\",\n              \"email\": \"<string>\",\n              \"firstName\": \"<string,null>\",\n              \"lastName\": \"<string,null>\",\n              \"message\": \"<string,null>\",\n              \"organizationName\": \"<string,null>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": \"<string,null>\",\n            \"value\": \"<string,null>\"\n          },\n          \"decryptedCode\": \"<string,null>\",\n          \"matched\": \"<boolean>\",\n          \"photos\": [\n            \"<string,null>\",\n            \"<string,null>\"\n          ],\n          \"preventativeAction\": \"<string,null>\",\n          \"rfid\": \"<string,null>\",\n          \"rootCause\": \"<string,null>\"\n        }\n      ],\n      \"workmanship\": {\n        \"aql\": {\n          \"aqlId\": \"<string,null>\",\n          \"critical\": \"<number>\",\n          \"major\": \"<number>\",\n          \"minor\": \"<number>\"\n        },\n        \"defectFound\": {\n          \"critical\": \"<integer>\",\n          \"major\": \"<integer>\",\n          \"minor\": \"<integer>\"\n        },\n        \"defects\": [\n          {\n            \"affectedPercentage\": \"<number>\",\n            \"comments\": [\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              }\n            ],\n            \"correctiveAction\": {\n              \"details\": \"<string,null>\",\n              \"value\": \"<string,null>\"\n            },\n            \"defectCategory\": \"<string,null>\",\n            \"defectCode\": \"<string,null>\",\n            \"defectItems\": [\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              }\n            ],\n            \"defectName\": \"<string,null>\",\n            \"preventativeAction\": \"<string,null>\",\n            \"rootCause\": \"<string,null>\",\n            \"totalDefectItems\": \"<integer>\",\n            \"totalDefectUnits\": \"<integer>\"\n          },\n          {\n            \"affectedPercentage\": \"<number>\",\n            \"comments\": [\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"fileName\": \"<string,null>\",\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"createdDate\": \"<dateTime>\",\n                \"email\": \"<string>\",\n                \"firstName\": \"<string,null>\",\n                \"lastName\": \"<string,null>\",\n                \"message\": \"<string,null>\",\n                \"organizationName\": \"<string,null>\"\n              }\n            ],\n            \"correctiveAction\": {\n              \"details\": \"<string,null>\",\n              \"value\": \"<string,null>\"\n            },\n            \"defectCategory\": \"<string,null>\",\n            \"defectCode\": \"<string,null>\",\n            \"defectItems\": [\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              },\n              {\n                \"attachments\": [\n                  {\n                    \"url\": \"<string>\"\n                  },\n                  {\n                    \"url\": \"<string>\"\n                  }\n                ],\n                \"classification\": \"<string,null>\",\n                \"color\": \"<string,null>\",\n                \"customId\": \"<string,null>\",\n                \"itemId\": \"<string,null>\",\n                \"size\": \"<string,null>\",\n                \"comment\": \"<string,null>\",\n                \"styleId\": \"<string,null>\"\n              }\n            ],\n            \"defectName\": \"<string,null>\",\n            \"preventativeAction\": \"<string,null>\",\n            \"rootCause\": \"<string,null>\",\n            \"totalDefectItems\": \"<integer>\",\n            \"totalDefectUnits\": \"<integer>\"\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": \"<integer>\",\n          \"major\": \"<integer>\",\n          \"minor\": \"<integer>\"\n        },\n        \"totalDefects\": \"<integer>\",\n        \"totalItems\": \"<integer>\"\n      }\n    },\n    \"reInspectionDetail\": {\n      \"comment\": \"<string,null>\",\n      \"inspectionType\": \"<string,null>\",\n      \"reInspectionBookingId\": \"<string,null>\",\n      \"reInspectionDate\": \"<string,null>\"\n    },\n    \"shipmentWindow\": {\n      \"shipmentDateFrom\": \"<dateTime>\",\n      \"shipmentDateTo\": \"<dateTime>\",\n      \"shipmentNote\": \"<string,null>\"\n    },\n    \"specialPoints\": [\n      {\n        \"comments\": [\n          {\n            \"attachments\": [\n              {\n                \"fileName\": \"<string,null>\",\n                \"fileUrl\": \"<string,null>\"\n              },\n              {\n                \"fileName\": \"<string,null>\",\n                \"fileUrl\": \"<string,null>\"\n              }\n            ],\n            \"createdDate\": \"<string,null-date-time>\",\n            \"email\": \"<string,null>\",\n            \"firstName\": \"<string,null>\",\n            \"lastName\": \"<string,null>\",\n            \"message\": \"<string,null>\",\n            \"organizationName\": \"<string,null>\"\n          },\n          {\n            \"attachments\": [\n              {\n                \"fileName\": \"<string,null>\",\n                \"fileUrl\": \"<string,null>\"\n              },\n              {\n                \"fileName\": \"<string,null>\",\n                \"fileUrl\": \"<string,null>\"\n              }\n            ],\n            \"createdDate\": \"<string,null-date-time>\",\n            \"email\": \"<string,null>\",\n            \"firstName\": \"<string,null>\",\n            \"lastName\": \"<string,null>\",\n            \"message\": \"<string,null>\",\n            \"organizationName\": \"<string,null>\"\n          }\n        ],\n        \"correctiveAction\": {\n          \"details\": \"<string,null>\",\n          \"value\": \"<string,null>\"\n        },\n        \"description\": \"<string,null>\",\n        \"preventativeAction\": \"<string,null>\",\n        \"type\": \"<string,null>\"\n      },\n      {\n        \"comments\": [\n          {\n            \"attachments\": [\n              {\n                \"fileName\": \"<string,null>\",\n                \"fileUrl\": \"<string,null>\"\n              },\n              {\n                \"fileName\": \"<string,null>\",\n                \"fileUrl\": \"<string,null>\"\n              }\n            ],\n            \"createdDate\": \"<string,null-date-time>\",\n            \"email\": \"<string,null>\",\n            \"firstName\": \"<string,null>\",\n            \"lastName\": \"<string,null>\",\n            \"message\": \"<string,null>\",\n            \"organizationName\": \"<string,null>\"\n          },\n          {\n            \"attachments\": [\n              {\n                \"fileName\": \"<string,null>\",\n                \"fileUrl\": \"<string,null>\"\n              },\n              {\n                \"fileName\": \"<string,null>\",\n                \"fileUrl\": \"<string,null>\"\n              }\n            ],\n            \"createdDate\": \"<string,null-date-time>\",\n            \"email\": \"<string,null>\",\n            \"firstName\": \"<string,null>\",\n            \"lastName\": \"<string,null>\",\n            \"message\": \"<string,null>\",\n            \"organizationName\": \"<string,null>\"\n          }\n        ],\n        \"correctiveAction\": {\n          \"details\": \"<string,null>\",\n          \"value\": \"<string,null>\"\n        },\n        \"description\": \"<string,null>\",\n        \"preventativeAction\": \"<string,null>\",\n        \"type\": \"<string,null>\"\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-10-22T02:27:41.000Z",
+                          "updatedAt": "2026-10-22T02:27:41.000Z",
+                          "uid": "35240-7a50dfb4-ddc9-4c9b-8c67-0bc8fe32d1f0"
+                        },
+                        {
+                          "id": "78986c07-6413-45e6-a5e9-a435662be651",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/capas/:report_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "capas",
+                                ":report_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "report_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:41.000Z",
+                          "updatedAt": "2026-10-22T02:27:41.000Z",
+                          "uid": "35240-78986c07-6413-45e6-a5e9-a435662be651"
+                        },
+                        {
+                          "id": "31d38a39-8824-4aba-8f43-ffdb3e40054f",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/capas/:report_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "capas",
+                                ":report_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "report_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:41.000Z",
+                          "updatedAt": "2026-10-22T02:27:41.000Z",
+                          "uid": "35240-31d38a39-8824-4aba-8f43-ffdb3e40054f"
+                        },
+                        {
+                          "id": "ec5cf264-687b-4c33-9555-752b99649260",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/capas/:report_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "capas",
+                                ":report_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "report_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:41.000Z",
+                          "updatedAt": "2026-10-22T02:27:41.000Z",
+                          "uid": "35240-ec5cf264-687b-4c33-9555-752b99649260"
+                        },
+                        {
+                          "id": "ac02e666-8ede-48c6-bb6f-927f617d0b84",
+                          "name": "Rate-limiting Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/capas/:report_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "capas",
+                                ":report_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "report_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:41.000Z",
+                          "updatedAt": "2026-10-22T02:27:41.000Z",
+                          "uid": "35240-ac02e666-8ede-48c6-bb6f-927f617d0b84"
+                        },
+                        {
+                          "id": "4a4f2968-ad40-4dbf-b9a8-758acd277301",
+                          "name": "Internal Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/capas/:report_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "capas",
+                                ":report_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "report_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:27:41.000Z",
+                          "updatedAt": "2026-10-22T02:27:41.000Z",
+                          "uid": "35240-4a4f2968-ad40-4dbf-b9a8-758acd277301"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T02:27:41.000Z",
+                      "updatedAt": "2026-10-22T02:27:41.000Z",
+                      "uid": "35240-ccf0296a-7504-4047-a50e-4c8198b305fa"
+                    }
+                  ],
+                  "id": "c9d83292-e180-45bc-9500-b712cb4547bb",
+                  "createdAt": "2026-10-22T02:27:41.000Z",
+                  "updatedAt": "2026-10-22T02:27:41.000Z",
+                  "uid": "35240-c9d83292-e180-45bc-9500-b712cb4547bb"
                 }
               ],
-              "body": "{\n  \"data\": {\n    \"chatBox\": [\n      {\n        \"attachments\": [\n          {\n            \"fileName\": \"123-abc\",\n            \"url\": \"https://.../image1.jpg\"\n          },\n          {\n            \"fileName\": \"123-abc\",\n            \"url\": \"https://.../image1.jpg\"\n          }\n        ],\n        \"createdDate\": \"2021-05-25T13:58:26+00:00\",\n        \"email\": \"john@email.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"message\": \"Please update the status\",\n        \"organizationName\": \"Acme Corp\"\n      },\n      {\n        \"attachments\": [\n          {\n            \"fileName\": \"123-abc\",\n            \"url\": \"https://.../image1.jpg\"\n          },\n          {\n            \"fileName\": \"123-abc\",\n            \"url\": \"https://.../image1.jpg\"\n          }\n        ],\n        \"createdDate\": \"2021-05-25T13:58:26+00:00\",\n        \"email\": \"john@email.com\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"message\": \"Please update the status\",\n        \"organizationName\": \"Acme Corp\"\n      }\n    ],\n    \"generalInformation\": {\n      \"actualInspectionDate\": \"2021-05-07T00:00:00+00:00\",\n      \"assortmentIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"availableQuantity\": 6687,\n      \"capaStatus\": \"Approved\",\n      \"factoryId\": \"F0123\",\n      \"factoryName\": \"Acme Factory\",\n      \"inspectionId\": \"1234902f-5ab4-4f4e-8422-794109d951b4\",\n      \"inspectionLocation\": {\n        \"address\": \"1 Madison Avenue\",\n        \"contact\": {\n          \"contactId\": \"1122\",\n          \"email\": \"john@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"name\": \"John Doe\",\n          \"telephoneNumber\": \"1234567890\"\n        },\n        \"country\": \"US\",\n        \"name\": \"Acme Corp\",\n        \"organizationId\": \"F000123\"\n      },\n      \"inspectionResult\": \"pass\",\n      \"inspectionType\": \"TPR\",\n      \"inspectorName\": \"John Doe\",\n      \"itemIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"orderQuantity\": 499,\n      \"packingTypes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"productCategories\": [\n        {\n          \"id\": \"C123\",\n          \"name\": \"Menswear\"\n        },\n        {\n          \"id\": \"C123\",\n          \"name\": \"Menswear\"\n        }\n      ],\n      \"productLines\": [\n        {\n          \"id\": \"C123\",\n          \"name\": \"Menswear\"\n        },\n        {\n          \"id\": \"C123\",\n          \"name\": \"Menswear\"\n        }\n      ],\n      \"proposedInspectionDate\": \"2021-05-07T00:00:00+00:00\",\n      \"styleIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"supplierId\": \"S0246\",\n      \"supplierName\": \"Padme Supplier\"\n    },\n    \"nonConformities\": {\n      \"assembly\": {\n        \"aql\": {\n          \"aqlId\": \"123\",\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defectFound\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defects\": [\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"totalDefects\": 2,\n        \"totalItems\": 2\n      },\n      \"checkList\": [\n        {\n          \"attachments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"comments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"label\": \"General\",\n          \"preventativeAction\": \"Advise all staff\",\n          \"rootCause\": \"Wrong carton dimension\"\n        },\n        {\n          \"attachments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"comments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"label\": \"General\",\n          \"preventativeAction\": \"Advise all staff\",\n          \"rootCause\": \"Wrong carton dimension\"\n        }\n      ],\n      \"measurement\": {\n        \"aql\": {\n          \"aqlId\": \"123\",\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"comments\": [\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"message\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organizationName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"message\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organizationName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"correctiveAction\": {\n          \"details\": \"Rework on the defective units\",\n          \"value\": \"Rework Units\"\n        },\n        \"defectFound\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"failedMeasurements\": [\n          {\n            \"found\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"measurementDescription\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"occurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sampleName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"standard\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tolerance\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"toleranceLower\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"toleranceUpper\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"found\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"measurementDescription\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"occurrence\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sampleName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"standard\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"tolerance\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"toleranceLower\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"toleranceUpper\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"preventativeAction\": \"Advise all staff\",\n        \"rootCause\": \"Wrong carton dimension\"\n      },\n      \"measurementByDefects\": {\n        \"aql\": {\n          \"aqlId\": \"123\",\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defectFound\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defects\": [\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"totalDefects\": 2,\n        \"totalItems\": 2\n      },\n      \"moistureCheck\": {\n        \"aql\": {\n          \"aqlId\": \"123\",\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"comments\": [\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"message\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organizationName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"attachments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createdDate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"message\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organizationName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"correctiveAction\": {\n          \"details\": \"Rework on the defective units\",\n          \"value\": \"Rework Units\"\n        },\n        \"defectFound\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defectItems\": [\n          {\n            \"components\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"itemId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"components\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"itemId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"preventativeAction\": \"Advise all staff\",\n        \"rootCause\": \"Wrong carton dimension\",\n        \"totalDefects\": 2,\n        \"totalItems\": 2\n      },\n      \"packaging\": {\n        \"aql\": {\n          \"aqlId\": \"123\",\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defectFound\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defects\": [\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"packingType\": \"string\",\n        \"totalDefects\": 2,\n        \"totalItems\": 2\n      },\n      \"questions\": [\n        {\n          \"answer\": \"Yes\",\n          \"answerComments\": [\n            \"comment 1\",\n            \"comment 2\",\n            \"comment 3\"\n          ],\n          \"attachments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"comments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"label\": \"General\",\n          \"preventativeAction\": \"Advise all staff\",\n          \"rootCause\": \"Wrong carton dimension\"\n        },\n        {\n          \"answer\": \"Yes\",\n          \"answerComments\": [\n            \"comment 1\",\n            \"comment 2\",\n            \"comment 3\"\n          ],\n          \"attachments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"comments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"label\": \"General\",\n          \"preventativeAction\": \"Advise all staff\",\n          \"rootCause\": \"Wrong carton dimension\"\n        }\n      ],\n      \"rfid\": [\n        {\n          \"barCode\": \"456\",\n          \"comments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"decryptedCode\": \"123123\",\n          \"matched\": true,\n          \"photos\": [\n            \"string\",\n            \"string\"\n          ],\n          \"preventativeAction\": \"Advise all staff\",\n          \"rfid\": \"123\",\n          \"rootCause\": \"Wrong carton dimension\"\n        },\n        {\n          \"barCode\": \"456\",\n          \"comments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"correctiveAction\": {\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"decryptedCode\": \"123123\",\n          \"matched\": false,\n          \"photos\": [\n            \"string\",\n            \"string\"\n          ],\n          \"preventativeAction\": \"Advise all staff\",\n          \"rfid\": \"123\",\n          \"rootCause\": \"Wrong carton dimension\"\n        }\n      ],\n      \"workmanship\": {\n        \"aql\": {\n          \"aqlId\": \"123\",\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defectFound\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"defects\": [\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"affectedPercentage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"comments\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"correctiveAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCategory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defectName\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"preventativeAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"rootCause\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectItems\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalDefectUnits\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"maxAllowed\": {\n          \"critical\": 0,\n          \"major\": 1,\n          \"minor\": 2\n        },\n        \"totalDefects\": 2,\n        \"totalItems\": 2\n      }\n    },\n    \"reInspectionDetail\": {\n      \"comment\": \"Reviewed\",\n      \"inspectionType\": \"TPR\",\n      \"reInspectionBookingId\": \"9dc7928867dc\",\n      \"reInspectionDate\": \"2021-05-07T00:00:00+00:00\"\n    },\n    \"shipmentWindow\": {\n      \"shipmentDateFrom\": \"2021-05-07T00:00:00+00:00\",\n      \"shipmentDateTo\": \"2021-05-15T00:00:00+00:00\",\n      \"shipmentNote\": \"Acknowledged\"\n    },\n    \"specialPoints\": [\n      {\n        \"comments\": [\n          {\n            \"attachments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"createdDate\": \"2021-05-25T13:58:26+00:00\",\n            \"email\": \"john@email.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"message\": \"string\",\n            \"organizationName\": \"Acme Corp\"\n          },\n          {\n            \"attachments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"createdDate\": \"2021-05-25T13:58:26+00:00\",\n            \"email\": \"john@email.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"message\": \"string\",\n            \"organizationName\": \"Acme Corp\"\n          }\n        ],\n        \"correctiveAction\": {\n          \"details\": \"Rework on the defective units\",\n          \"value\": \"Rework Units\"\n        },\n        \"description\": \"Stitching quality issue observed\",\n        \"preventativeAction\": \"Advise all staff\",\n        \"type\": \"remark\"\n      },\n      {\n        \"comments\": [\n          {\n            \"attachments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"createdDate\": \"2021-05-25T13:58:26+00:00\",\n            \"email\": \"john@email.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"message\": \"string\",\n            \"organizationName\": \"Acme Corp\"\n          },\n          {\n            \"attachments\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"createdDate\": \"2021-05-25T13:58:26+00:00\",\n            \"email\": \"john@email.com\",\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"message\": \"string\",\n            \"organizationName\": \"Acme Corp\"\n          }\n        ],\n        \"correctiveAction\": {\n          \"details\": \"Rework on the defective units\",\n          \"value\": \"Rework Units\"\n        },\n        \"description\": \"Stitching quality issue observed\",\n        \"preventativeAction\": \"Advise all staff\",\n        \"type\": \"remark\"\n      }\n    ]\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "365b3ae7-acf0-4459-889e-9cbbfd9247ce",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "capas",
-                    ":report_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "report_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Bad Request\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6d4fbcbb-5c86-45af-9c15-9a5b023fbf02",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "capas",
-                    ":report_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "report_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2262ba45-5281-4792-9afd-2ab24b4a1562",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "capas",
-                    ":report_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "report_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"type\": [\n      \"Input type is not valid\"\n    ]\n  },\n  \"message\": \"Validation error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1de20e31-bd71-49c4-9747-40c136801705",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "capas",
-                    ":report_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "report_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "549179f5-0111-4385-abde-6da7dc585fa3",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "capas",
-                    ":report_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "report_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "fc552c31-6c5b-4a38-9fab-689376d668d6",
+              "createdAt": "2026-10-22T02:27:41.000Z",
+              "updatedAt": "2026-10-22T02:27:41.000Z",
+              "uid": "35240-fc552c31-6c5b-4a38-9fab-689376d668d6"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "3c7d3cc0-db14-4c10-82b0-2eb77f3c3cf1",
+          "createdAt": "2026-10-22T02:27:41.000Z",
+          "updatedAt": "2026-10-22T02:27:41.000Z",
+          "uid": "35240-3c7d3cc0-db14-4c10-82b0-2eb77f3c3cf1"
         }
       ],
-      "event": []
+      "id": "a9e96d83-9d68-499f-9ec5-2f3219c5a1c6",
+      "createdAt": "2026-10-22T02:27:41.000Z",
+      "updatedAt": "2026-10-22T02:27:41.000Z",
+      "uid": "35240-a9e96d83-9d68-499f-9ec5-2f3219c5a1c6"
     }
   ],
-  "event": [],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
   "variable": [
     {
-      "type": "string",
-      "value": "https://files-integration.inspectorio.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://sight.inspectorio.com"
     }
-  ],
-  "info": {
-    "_postman_id": "43dea3e9-7509-48f5-8d84-960c68359bf8",
-    "name": "File Management ANALYTICS CAPA API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

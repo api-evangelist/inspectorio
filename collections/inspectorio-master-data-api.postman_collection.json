@@ -1,1188 +1,1372 @@
 {
+  "info": {
+    "_postman_id": "e2bb2e7e-c904-4a36-a959-52efccfa1c75",
+    "name": "Inspectorio Quality Risk Management MASTER DATA API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:28:10.000Z",
+    "updatedAt": "2026-10-22T02:28:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e2bb2e7e-c904-4a36-a959-52efccfa1c75"
+  },
   "item": [
     {
-      "id": "8d734e4e-3d7b-4159-bfdb-1cb86f0856ce",
-      "name": "MASTER DATA",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "9c62491b-3ad4-4ed9-9f8c-882f22b97806",
-          "name": "Create Master Data",
-          "request": {
-            "name": "Create Master Data",
-            "description": {
-              "content": "Create a new master data entry",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "master-data"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"uid\": \"<string>\",\n  \"rawData\": \"<object>\",\n  \"version\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "eacf6c9b-7175-4e09-b3e3-ba643d56699a",
-              "name": "Master data created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"uid\": \"UID_ABC_123\",\n  \"rawData\": {\n    \"purchaseOrderNumber\": \"PO_123456\",\n    \"vendorSubmitDate\": \"2024-04-09\",\n    \"estimatedCargoReadyDate\": \"2024-04-11\",\n    \"shipmentLoadType\": \"CY\",\n    \"shipmentBookingId\": \"SB_ABC_123\",\n    \"shipmentBookingStatus\": \"PackageBookingStatusAcceptedEvent\",\n    \"targetOrgId\": \"custom_01\"\n  },\n  \"version\": \"shipment-booking-v1.0.0\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
+              "name": "master-data",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{uuid}",
+                  "item": [
+                    {
+                      "name": "Get Master Data by UUID",
+                      "id": "c8b17a5c-f2c0-4c37-9200-cd729369f443",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "master-data",
+                            ":uuid"
+                          ],
+                          "variable": [
+                            {
+                              "id": "845676c2-1a04-4652-af22-f6926a246ff8",
+                              "key": "uuid",
+                              "value": "<string>",
+                              "description": "(Required) UUID of the master data entry"
+                            }
+                          ]
+                        },
+                        "description": "Get a specific master data entry by its UUID"
+                      },
+                      "response": [
+                        {
+                          "id": "24cb1fa5-2b38-47ab-ad88-dae2c47d6c92",
+                          "name": "Successfully retrieved master data",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"updatedDate\": \"<dateTime>\",\n    \"version\": \"<string>\",\n    \"uid\": \"<string>\",\n    \"rawData\": {},\n    \"createdDate\": \"<dateTime>\"\n  }\n}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-24cb1fa5-2b38-47ab-ad88-dae2c47d6c92"
+                        },
+                        {
+                          "id": "e17fb42f-10e0-48de-a3e7-7bb801f907d7",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"detail\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\"\n}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-e17fb42f-10e0-48de-a3e7-7bb801f907d7"
+                        },
+                        {
+                          "id": "cb70e19a-2f39-4c0c-89c9-7904aa22aa2c",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-cb70e19a-2f39-4c0c-89c9-7904aa22aa2c"
+                        },
+                        {
+                          "id": "3623ef6c-082e-4c34-af03-46ba494b4fc2",
+                          "name": "Rate-limiting Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-3623ef6c-082e-4c34-af03-46ba494b4fc2"
+                        },
+                        {
+                          "id": "fa8baa54-1c7a-468c-a51b-5e593939a8ed",
+                          "name": "Internal Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-fa8baa54-1c7a-468c-a51b-5e593939a8ed"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T02:28:10.000Z",
+                      "updatedAt": "2026-10-22T02:28:10.000Z",
+                      "uid": "35240-c8b17a5c-f2c0-4c37-9200-cd729369f443"
+                    },
+                    {
+                      "name": "Delete Master Data",
+                      "id": "6ee38f5e-9d14-442f-942f-6d9c571757c8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "master-data",
+                            ":uuid"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8e6270fb-c344-4e78-a590-d81f6fbd5a9d",
+                              "key": "uuid",
+                              "value": "<string>",
+                              "description": "(Required) UUID of the master data entry"
+                            }
+                          ]
+                        },
+                        "description": "Delete a specific master data entry by its UUID"
+                      },
+                      "response": [
+                        {
+                          "id": "95ae9f1d-4d41-4cd6-aa7f-f9032a13fb51",
+                          "name": "Master data successfully deleted",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-95ae9f1d-4d41-4cd6-aa7f-f9032a13fb51"
+                        },
+                        {
+                          "id": "7f4f5a12-355b-4215-afbb-7cfe571e8efa",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"detail\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\"\n}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-7f4f5a12-355b-4215-afbb-7cfe571e8efa"
+                        },
+                        {
+                          "id": "33bc5ff6-481c-4dcd-8fec-ef79fc3afb59",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-33bc5ff6-481c-4dcd-8fec-ef79fc3afb59"
+                        },
+                        {
+                          "id": "43b3b3df-0c63-4230-9cb3-389516585377",
+                          "name": "Rate-limiting Error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-43b3b3df-0c63-4230-9cb3-389516585377"
+                        },
+                        {
+                          "id": "aa5de44c-6310-43ef-904d-e082d9eaf4d0",
+                          "name": "Internal Error",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-aa5de44c-6310-43ef-904d-e082d9eaf4d0"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T02:28:10.000Z",
+                      "updatedAt": "2026-10-22T02:28:10.000Z",
+                      "uid": "35240-6ee38f5e-9d14-442f-942f-6d9c571757c8"
+                    },
+                    {
+                      "name": "Update Master Data",
+                      "id": "6ed02685-0e4f-431c-97ed-6d1dd48f9593",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"uid\": \"<string>\",\n  \"rawData\": {},\n  \"version\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "master-data",
+                            ":uuid"
+                          ],
+                          "variable": [
+                            {
+                              "id": "daa71539-e231-451b-a7df-da0af5176353",
+                              "key": "uuid",
+                              "value": "<string>",
+                              "description": "(Required) UUID of the master data entry"
+                            }
+                          ]
+                        },
+                        "description": "Update a specific master data entry by its UUID"
+                      },
+                      "response": [
+                        {
+                          "id": "720798c9-dae2-4dc8-a454-7e43b3b7f8b5",
+                          "name": "Master data updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"uid\": \"<string>\",\n  \"rawData\": {},\n  \"version\": \"<string,null>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"updatedDate\": \"<dateTime>\",\n    \"version\": \"<string>\",\n    \"uid\": \"<string>\",\n    \"rawData\": {},\n    \"createdDate\": \"<dateTime>\"\n  }\n}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-720798c9-dae2-4dc8-a454-7e43b3b7f8b5"
+                        },
+                        {
+                          "id": "fe7409d9-5aba-442f-92c5-29cf96a8c153",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"uid\": \"<string>\",\n  \"rawData\": {},\n  \"version\": \"<string,null>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"detail\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\"\n}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-fe7409d9-5aba-442f-92c5-29cf96a8c153"
+                        },
+                        {
+                          "id": "25250e84-6fe8-4317-8963-8be9af1351cf",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"uid\": \"<string>\",\n  \"rawData\": {},\n  \"version\": \"<string,null>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-25250e84-6fe8-4317-8963-8be9af1351cf"
+                        },
+                        {
+                          "id": "985656f4-08fe-4b10-a3f4-1dce7243e41f",
+                          "name": "Rate-limiting Error",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"uid\": \"<string>\",\n  \"rawData\": {},\n  \"version\": \"<string,null>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-985656f4-08fe-4b10-a3f4-1dce7243e41f"
+                        },
+                        {
+                          "id": "13ce674d-adf1-40a3-9a81-24b368496aab",
+                          "name": "Internal Error",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"uid\": \"<string>\",\n  \"rawData\": {},\n  \"version\": \"<string,null>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/master-data/:uuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "master-data",
+                                ":uuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T02:28:11.000Z",
+                          "updatedAt": "2026-10-22T02:28:11.000Z",
+                          "uid": "35240-13ce674d-adf1-40a3-9a81-24b368496aab"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T02:28:10.000Z",
+                      "updatedAt": "2026-10-22T02:28:10.000Z",
+                      "uid": "35240-6ed02685-0e4f-431c-97ed-6d1dd48f9593"
+                    }
+                  ],
+                  "id": "6ba72c76-740a-40e2-a4cb-2ebce9a911ec",
+                  "createdAt": "2026-10-22T02:28:10.000Z",
+                  "updatedAt": "2026-10-22T02:28:10.000Z",
+                  "uid": "35240-6ba72c76-740a-40e2-a4cb-2ebce9a911ec"
+                },
+                {
+                  "name": "Create Master Data",
+                  "id": "762073e9-81b7-43f3-ad3d-29b1532f2cca",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"uid\": \"<string>\",\n  \"rawData\": {},\n  \"version\": \"<string,null>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/master-data",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "master-data"
+                      ]
+                    },
+                    "description": "Create a new master data entry"
+                  },
+                  "response": [
+                    {
+                      "id": "0b39a9d7-9bbf-4965-bc9d-854a0e761957",
+                      "name": "Master data created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"uid\": \"<string>\",\n  \"rawData\": {},\n  \"version\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/master-data",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "master-data"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": {\n    \"updatedDate\": \"<dateTime>\",\n    \"version\": \"<string>\",\n    \"uid\": \"<string>\",\n    \"rawData\": {},\n    \"createdDate\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-22T02:28:11.000Z",
+                      "updatedAt": "2026-10-22T02:28:11.000Z",
+                      "uid": "35240-0b39a9d7-9bbf-4965-bc9d-854a0e761957"
+                    },
+                    {
+                      "id": "cb9bb7b7-7673-4f03-aca5-85ea7e922526",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"uid\": \"<string>\",\n  \"rawData\": {},\n  \"version\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/master-data",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "master-data"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"detail\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-22T02:28:11.000Z",
+                      "updatedAt": "2026-10-22T02:28:11.000Z",
+                      "uid": "35240-cb9bb7b7-7673-4f03-aca5-85ea7e922526"
+                    },
+                    {
+                      "id": "851b3daa-f099-4b2f-92b7-c3d9629a4f2f",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"uid\": \"<string>\",\n  \"rawData\": {},\n  \"version\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/master-data",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "master-data"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:11.000Z",
+                      "updatedAt": "2026-10-22T02:28:11.000Z",
+                      "uid": "35240-851b3daa-f099-4b2f-92b7-c3d9629a4f2f"
+                    },
+                    {
+                      "id": "dda9c98f-134f-4da5-9f68-b1d69a6f8c18",
+                      "name": "Rate-limiting Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"uid\": \"<string>\",\n  \"rawData\": {},\n  \"version\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/master-data",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "master-data"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:11.000Z",
+                      "updatedAt": "2026-10-22T02:28:11.000Z",
+                      "uid": "35240-dda9c98f-134f-4da5-9f68-b1d69a6f8c18"
+                    },
+                    {
+                      "id": "1e4c1095-22b2-4d9b-a4bf-ce258c76b833",
+                      "name": "Internal Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"uid\": \"<string>\",\n  \"rawData\": {},\n  \"version\": \"<string,null>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/master-data",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "master-data"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<string>\",\n  \"errors\": {},\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:28:11.000Z",
+                      "updatedAt": "2026-10-22T02:28:11.000Z",
+                      "uid": "35240-1e4c1095-22b2-4d9b-a4bf-ce258c76b833"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:28:10.000Z",
+                  "updatedAt": "2026-10-22T02:28:10.000Z",
+                  "uid": "35240-762073e9-81b7-43f3-ad3d-29b1532f2cca"
                 }
               ],
-              "body": "{\n  \"data\": {\n    \"updatedDate\": \"2025-02-14T06:52:42.073326+00:00\",\n    \"version\": \"shipment-booking-v1.0.0\",\n    \"uid\": \"UID_ABC_123\",\n    \"rawData\": {\n      \"purchaseOrderNumber\": \"PO_123456\",\n      \"vendorSubmitDate\": \"2024-04-09\",\n      \"estimatedCargoReadyDate\": \"2024-04-11\",\n      \"shipmentLoadType\": \"CY\",\n      \"shipmentBookingId\": \"SB_ABC_123\",\n      \"shipmentBookingStatus\": \"PackageBookingStatusAcceptedEvent\",\n      \"targetOrgId\": \"custom_01\"\n    },\n    \"createdDate\": \"2025-02-14T06:52:42.073319+00:00\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "79ca8f0d-7435-4c07-9100-63059a403e72",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"uid\": \"UID_ABC_123\",\n  \"rawData\": {\n    \"purchaseOrderNumber\": \"PO_123456\",\n    \"vendorSubmitDate\": \"2024-04-09\",\n    \"estimatedCargoReadyDate\": \"2024-04-11\",\n    \"shipmentLoadType\": \"CY\",\n    \"shipmentBookingId\": \"SB_ABC_123\",\n    \"shipmentBookingStatus\": \"PackageBookingStatusAcceptedEvent\",\n    \"targetOrgId\": \"custom_01\"\n  },\n  \"version\": \"shipment-booking-v1.0.0\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": \"string\",\n  \"code\": 400,\n  \"status\": 400\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cd1a4160-caf6-4e56-a78d-259279cf6842",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"uid\": \"UID_ABC_123\",\n  \"rawData\": {\n    \"purchaseOrderNumber\": \"PO_123456\",\n    \"vendorSubmitDate\": \"2024-04-09\",\n    \"estimatedCargoReadyDate\": \"2024-04-11\",\n    \"shipmentLoadType\": \"CY\",\n    \"shipmentBookingId\": \"SB_ABC_123\",\n    \"shipmentBookingStatus\": \"PackageBookingStatusAcceptedEvent\",\n    \"targetOrgId\": \"custom_01\"\n  },\n  \"version\": \"shipment-booking-v1.0.0\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "69557fb2-a77b-4da1-8e19-0ffada1ad01a",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"uid\": \"UID_ABC_123\",\n  \"rawData\": {\n    \"purchaseOrderNumber\": \"PO_123456\",\n    \"vendorSubmitDate\": \"2024-04-09\",\n    \"estimatedCargoReadyDate\": \"2024-04-11\",\n    \"shipmentLoadType\": \"CY\",\n    \"shipmentBookingId\": \"SB_ABC_123\",\n    \"shipmentBookingStatus\": \"PackageBookingStatusAcceptedEvent\",\n    \"targetOrgId\": \"custom_01\"\n  },\n  \"version\": \"shipment-booking-v1.0.0\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1c45a66a-c878-4ffd-9152-1e24eebeb429",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"uid\": \"UID_ABC_123\",\n  \"rawData\": {\n    \"purchaseOrderNumber\": \"PO_123456\",\n    \"vendorSubmitDate\": \"2024-04-09\",\n    \"estimatedCargoReadyDate\": \"2024-04-11\",\n    \"shipmentLoadType\": \"CY\",\n    \"shipmentBookingId\": \"SB_ABC_123\",\n    \"shipmentBookingStatus\": \"PackageBookingStatusAcceptedEvent\",\n    \"targetOrgId\": \"custom_01\"\n  },\n  \"version\": \"shipment-booking-v1.0.0\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "eabcec27-3249-4710-b861-3feeda153192",
+              "createdAt": "2026-10-22T02:28:10.000Z",
+              "updatedAt": "2026-10-22T02:28:10.000Z",
+              "uid": "35240-eabcec27-3249-4710-b861-3feeda153192"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "460a6792-8dc5-480d-9ae7-cd3f35aaba09",
-          "name": "Get Master Data by UUID",
-          "request": {
-            "name": "Get Master Data by UUID",
-            "description": {
-              "content": "Get a specific master data entry by its UUID",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "master-data",
-                ":uuid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "uuid",
-                  "description": "(Required) UUID of the master data entry"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "78ce77d0-4c73-4eb3-b85f-e4a33d2959b0",
-              "name": "Successfully retrieved master data",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": {\n    \"updatedDate\": \"2025-02-14T06:52:42.073326+00:00\",\n    \"version\": \"shipment-booking-v1.0.0\",\n    \"uid\": \"UID_ABC_123\",\n    \"rawData\": {\n      \"purchaseOrderNumber\": \"PO_123456\",\n      \"vendorSubmitDate\": \"2024-04-09\",\n      \"estimatedCargoReadyDate\": \"2024-04-11\",\n      \"shipmentLoadType\": \"CY\",\n      \"shipmentBookingId\": \"SB_ABC_123\",\n      \"shipmentBookingStatus\": \"PackageBookingStatusAcceptedEvent\",\n      \"targetOrgId\": \"custom_01\"\n    },\n    \"createdDate\": \"2025-02-14T06:52:42.073319+00:00\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f0a5af9e-e682-4639-b2b6-ec3baf496e6f",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": \"string\",\n  \"code\": 400,\n  \"status\": 400\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "22aa6ca2-e47c-48f4-a514-c408b1912098",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c0121fcd-aacb-4b0c-b80f-29304523b785",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "554adcfc-b5a9-41a6-b2a6-36b92b632d3e",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4bde07aa-c5d0-4679-b6ef-f7b6d179bb91",
-          "name": "Delete Master Data",
-          "request": {
-            "name": "Delete Master Data",
-            "description": {
-              "content": "Delete a specific master data entry by its UUID",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "master-data",
-                ":uuid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "uuid",
-                  "description": "(Required) UUID of the master data entry"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "06d20c07-ca39-4617-ad24-1caee0bbba07",
-              "name": "Master data successfully deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "34b5ddba-3ff9-4c5d-8fac-21cea4907bf2",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": \"string\",\n  \"code\": 400,\n  \"status\": 400\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "df6949d7-37f5-4451-8c8c-0b6354811efc",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "12fb574b-e602-412d-944a-911b9d39ba6b",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "729d41b4-5cc6-4725-9315-8c1894c53710",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4736dcd9-599e-4eba-a72e-91c392dc743e",
-          "name": "Update Master Data",
-          "request": {
-            "name": "Update Master Data",
-            "description": {
-              "content": "Update a specific master data entry by its UUID",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "master-data",
-                ":uuid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "uuid",
-                  "description": "(Required) UUID of the master data entry"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"uid\": \"<string>\",\n  \"rawData\": \"<object>\",\n  \"version\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "889a22db-16b3-4ee0-9bfd-a38653c5b07c",
-              "name": "Master data updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"uid\": \"UID_ABC_123\",\n  \"rawData\": {\n    \"purchaseOrderNumber\": \"PO_123456\",\n    \"vendorSubmitDate\": \"2024-04-09\",\n    \"estimatedCargoReadyDate\": \"2024-04-11\",\n    \"shipmentLoadType\": \"CY\",\n    \"shipmentBookingId\": \"SB_ABC_123\",\n    \"shipmentBookingStatus\": \"PackageBookingStatusAcceptedEvent\",\n    \"targetOrgId\": \"custom_01\"\n  },\n  \"version\": \"shipment-booking-v1.0.0\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": {\n    \"updatedDate\": \"2025-02-14T06:52:42.073326+00:00\",\n    \"version\": \"shipment-booking-v1.0.0\",\n    \"uid\": \"UID_ABC_123\",\n    \"rawData\": {\n      \"purchaseOrderNumber\": \"PO_123456\",\n      \"vendorSubmitDate\": \"2024-04-09\",\n      \"estimatedCargoReadyDate\": \"2024-04-11\",\n      \"shipmentLoadType\": \"CY\",\n      \"shipmentBookingId\": \"SB_ABC_123\",\n      \"shipmentBookingStatus\": \"PackageBookingStatusAcceptedEvent\",\n      \"targetOrgId\": \"custom_01\"\n    },\n    \"createdDate\": \"2025-02-14T06:52:42.073319+00:00\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "65b10445-5c18-4c4d-b638-e84a4a7cb6ca",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"uid\": \"UID_ABC_123\",\n  \"rawData\": {\n    \"purchaseOrderNumber\": \"PO_123456\",\n    \"vendorSubmitDate\": \"2024-04-09\",\n    \"estimatedCargoReadyDate\": \"2024-04-11\",\n    \"shipmentLoadType\": \"CY\",\n    \"shipmentBookingId\": \"SB_ABC_123\",\n    \"shipmentBookingStatus\": \"PackageBookingStatusAcceptedEvent\",\n    \"targetOrgId\": \"custom_01\"\n  },\n  \"version\": \"shipment-booking-v1.0.0\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"detail\": \"string\",\n  \"code\": 400,\n  \"status\": 400\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "330022a4-3174-44d4-9023-ff8c37bf7952",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"uid\": \"UID_ABC_123\",\n  \"rawData\": {\n    \"purchaseOrderNumber\": \"PO_123456\",\n    \"vendorSubmitDate\": \"2024-04-09\",\n    \"estimatedCargoReadyDate\": \"2024-04-11\",\n    \"shipmentLoadType\": \"CY\",\n    \"shipmentBookingId\": \"SB_ABC_123\",\n    \"shipmentBookingStatus\": \"PackageBookingStatusAcceptedEvent\",\n    \"targetOrgId\": \"custom_01\"\n  },\n  \"version\": \"shipment-booking-v1.0.0\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Cannot retrieve session data because of expired token\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c0e6ef85-8c57-477c-8b52-3d674f344c2b",
-              "name": "Rate-limiting Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"uid\": \"UID_ABC_123\",\n  \"rawData\": {\n    \"purchaseOrderNumber\": \"PO_123456\",\n    \"vendorSubmitDate\": \"2024-04-09\",\n    \"estimatedCargoReadyDate\": \"2024-04-11\",\n    \"shipmentLoadType\": \"CY\",\n    \"shipmentBookingId\": \"SB_ABC_123\",\n    \"shipmentBookingStatus\": \"PackageBookingStatusAcceptedEvent\",\n    \"targetOrgId\": \"custom_01\"\n  },\n  \"version\": \"shipment-booking-v1.0.0\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"message\": \"Too many requests\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cc79e979-b74c-4976-b674-d1508c677cd2",
-              "name": "Internal Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "master-data",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "uuid",
-                      "description": "(Required) UUID of the master data entry"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"uid\": \"UID_ABC_123\",\n  \"rawData\": {\n    \"purchaseOrderNumber\": \"PO_123456\",\n    \"vendorSubmitDate\": \"2024-04-09\",\n    \"estimatedCargoReadyDate\": \"2024-04-11\",\n    \"shipmentLoadType\": \"CY\",\n    \"shipmentBookingId\": \"SB_ABC_123\",\n    \"shipmentBookingStatus\": \"PackageBookingStatusAcceptedEvent\",\n    \"targetOrgId\": \"custom_01\"\n  },\n  \"version\": \"shipment-booking-v1.0.0\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errorCode\": \"Generic\",\n  \"errors\": {\n    \"system\": [\n      \"Internal error detail message\"\n    ]\n  },\n  \"message\": \"Internal server error\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "a743c59d-5a42-42ec-9a3b-1af136b206a8",
+          "createdAt": "2026-10-22T02:28:10.000Z",
+          "updatedAt": "2026-10-22T02:28:10.000Z",
+          "uid": "35240-a743c59d-5a42-42ec-9a3b-1af136b206a8"
         }
       ],
-      "event": []
+      "id": "052b81ae-0ddc-4d51-a703-2c5074a0b3fa",
+      "createdAt": "2026-10-22T02:28:10.000Z",
+      "updatedAt": "2026-10-22T02:28:10.000Z",
+      "uid": "35240-052b81ae-0ddc-4d51-a703-2c5074a0b3fa"
     }
   ],
-  "event": [],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
   "variable": [
     {
-      "type": "string",
-      "value": "https://files-integration.inspectorio.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://sight.inspectorio.com"
     }
-  ],
-  "info": {
-    "_postman_id": "8a65348a-92fc-485d-a491-c7bcd0170faa",
-    "name": "File Management ANALYTICS MASTER DATA API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

@@ -1,427 +1,500 @@
 {
+  "info": {
+    "_postman_id": "34a14315-9d05-495c-8376-d53ad711e6fb",
+    "name": "Inspectorio Quality Risk Management Inspections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:27:56.000Z",
+    "updatedAt": "2026-10-22T02:27:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-34a14315-9d05-495c-8376-d53ad711e6fb"
+  },
   "item": [
     {
-      "id": "ecf7b7f2-ad24-4b7d-bcc5-1f299f57baaf",
-      "name": "Inspections",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "e3ccaafe-0e94-48b3-9d41-86299af7c396",
-          "name": "List Inspections",
-          "request": {
-            "name": "List Inspections",
-            "description": {
-              "content": "List inspections for the authenticated organization.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "inspections"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "ownership",
-                  "value": "<string>",
-                  "description": "(Required) Ownership (Sent/Received/Shared)\n"
-                },
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>",
-                  "description": "Inspection status\n"
-                },
-                {
-                  "disabled": false,
-                  "key": "order",
-                  "value": "<string>",
-                  "description": "Sort order in the form `<field>:asc|desc`. Allowed fields: `created_date` and `updated_date`.\n"
-                },
-                {
-                  "disabled": false,
-                  "key": "created_from",
-                  "value": "<dateTime>",
-                  "description": "Inclusive lower bound for creation date (ISO-8601 datetime). Must be\npaired with `created_to`.\n"
-                },
-                {
-                  "disabled": false,
-                  "key": "created_to",
-                  "value": "<dateTime>",
-                  "description": "Inclusive upper bound for creation date (ISO-8601 datetime). Must be\npaired with `created_from`.\n"
-                },
-                {
-                  "disabled": false,
-                  "key": "updated_from",
-                  "value": "<dateTime>",
-                  "description": "Inclusive lower bound for last-updated date (ISO-8601 datetime). Must be\npaired with `updated_to`.\n"
-                },
-                {
-                  "disabled": false,
-                  "key": "updated_to",
-                  "value": "<dateTime>",
-                  "description": "Inclusive upper bound for last-updated date (ISO-8601 datetime). Must be\npaired with `updated_from`.\n"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "10",
-                  "description": "Maximum number of records to return."
-                },
-                {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0",
-                  "description": "Number of records to skip."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "v1",
+          "item": [
             {
-              "id": "3dd27d0c-3fe1-4306-9a95-0bd4edb672ac",
-              "name": "A paginated list of inspections.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "inspections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "inspections",
+              "item": [
+                {
+                  "name": "{uuid}",
+                  "item": [
                     {
-                      "key": "ownership",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "order",
-                      "value": "created_date:desc"
-                    },
-                    {
-                      "key": "created_from",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "created_to",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "updated_from",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "updated_to",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
+                      "name": "Get Inspection",
+                      "id": "39cd8631-3026-486e-8017-24e5a73c9d1d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/inspections/:uuid?include_pull_sample=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "inspections",
+                            ":uuid"
+                          ],
+                          "query": [
+                            {
+                              "description": "When set to `1`, embeds the AQL-derived `itemPullSample` on each solid\nand assortment configuration item under `detailOfPIPO`. Requires the\nworkmanship step to be configured with an AQL table; otherwise the field\nis omitted.\n",
+                              "key": "include_pull_sample",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "230bc759-0d9a-4770-9317-7555be46a38a",
+                              "key": "uuid",
+                              "value": "<uuid>",
+                              "description": "(Required) Inspection UUID (equals bookingId)."
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a single inspection by UUID."
+                      },
+                      "response": [
+                        {
+                          "id": "24c31d8c-5a4d-4fa5-8dd8-ccc83763c649",
+                          "name": "A single inspection.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/inspections/:uuid?include_pull_sample=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "inspections",
+                                ":uuid"
+                              ],
+                              "query": [
+                                {
+                                  "description": "When set to `1`, embeds the AQL-derived `itemPullSample` on each solid\nand assortment configuration item under `detailOfPIPO`. Requires the\nworkmanship step to be configured with an AQL table; otherwise the field\nis omitted.\n",
+                                  "key": "include_pull_sample",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data\": {\n    \"inspectionId\": \"<uuid>\",\n    \"caseNumber\": \"<string>\",\n    \"status\": \"<string>\",\n    \"createdDate\": \"<dateTime>\",\n    \"updatedDate\": \"<dateTime>\",\n    \"createdBy\": \"<string>\",\n    \"fromOrganizationId\": \"<string>\",\n    \"fromOrganizationName\": \"<string>\",\n    \"toOrganizationId\": \"<string>\",\n    \"toOrganizationName\": \"<string>\",\n    \"expectedDate\": {\n      \"inspectionDate\": \"<dateTime>\",\n      \"shipmentDate\": \"<string,null-date-time>\"\n    },\n    \"clientInformation\": {\n      \"organizationId\": \"<string>\",\n      \"localOrganizationId\": \"<string>\",\n      \"localOrganizationIds\": \"<array,null>\",\n      \"localState\": \"<string,null>\",\n      \"localPostalCode\": \"<string,null>\",\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"contact\": {\n        \"contactId\": \"<string,null>\",\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"telephoneNumber\": \"<string>\"\n      }\n    },\n    \"vendorInformation\": {\n      \"organizationId\": \"<string>\",\n      \"localOrganizationId\": \"<string>\",\n      \"localOrganizationIds\": \"<array,null>\",\n      \"localState\": \"<string,null>\",\n      \"localPostalCode\": \"<string,null>\",\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"contact\": {\n        \"contactId\": \"<string,null>\",\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"telephoneNumber\": \"<string>\"\n      }\n    },\n    \"factoryInformation\": {\n      \"organizationId\": \"<string>\",\n      \"localOrganizationId\": \"<string>\",\n      \"localOrganizationIds\": \"<array,null>\",\n      \"localState\": \"<string,null>\",\n      \"localPostalCode\": \"<string,null>\",\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"contact\": {\n        \"contactId\": \"<string,null>\",\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"telephoneNumber\": \"<string>\"\n      }\n    },\n    \"inspectionInformation\": {\n      \"typeOfInspection\": \"<string>\",\n      \"typeOfInspectionName\": \"<string>\"\n    },\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"reasonCode\": \"<string,null>\",\n    \"actualInspectionDate\": \"<dateTime>\",\n    \"confirmedBy\": \"<string,null>\",\n    \"confirmedDate\": \"<dateTime>\",\n    \"assignedToOrganization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"localOrganizationIds\": \"<array,null>\"\n    },\n    \"assignedToInspector\": null,\n    \"locationPicker\": {\n      \"address\": \"<string>\",\n      \"gpsLocation\": {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\"\n      }\n    },\n    \"inspectionForm\": \"<string>\",\n    \"workflowName\": \"<string,null>\",\n    \"billingInformation\": {\n      \"name\": \"<string>\",\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"state\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\",\n      \"contact\": {\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"mobileNumber\": \"<string>\",\n        \"telephoneNumber\": \"<string>\"\n      }\n    },\n    \"detailOfPIPO\": {\n      \"pipoInformation\": {\n        \"poNumber\": \"<string>\",\n        \"opoNumber\": \"<string>\",\n        \"poTypes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"productLineId\": \"<string>\",\n        \"productLineName\": \"<string>\"\n      },\n      \"styles\": [\n        {\n          \"styleId\": \"<string>\",\n          \"productCategoryId\": \"<string>\",\n          \"styleName\": \"<string,null>\",\n          \"productCategoryName\": \"<string>\",\n          \"solids\": \"<array,null>\",\n          \"assortments\": \"<array,null>\",\n          \"measurements\": [\n            {\n              \"caption\": \"<string,null>\",\n              \"pom\": \"<string,null>\",\n              \"unit\": \"<string,null>\",\n              \"isPomCritical\": \"<boolean,null>\",\n              \"tolerance\": \"<number,null>\",\n              \"toleranceLower\": \"<number,null>\",\n              \"toleranceUpper\": \"<number,null>\",\n              \"sizes\": [\n                {\n                  \"size\": \"<string,null>\",\n                  \"measurement\": \"<string,null>\"\n                },\n                {\n                  \"size\": \"<string,null>\",\n                  \"measurement\": \"<string,null>\"\n                }\n              ]\n            },\n            {\n              \"caption\": \"<string,null>\",\n              \"pom\": \"<string,null>\",\n              \"unit\": \"<string,null>\",\n              \"isPomCritical\": \"<boolean,null>\",\n              \"tolerance\": \"<number,null>\",\n              \"toleranceLower\": \"<number,null>\",\n              \"toleranceUpper\": \"<number,null>\",\n              \"sizes\": [\n                {\n                  \"size\": \"<string,null>\",\n                  \"measurement\": \"<string,null>\"\n                },\n                {\n                  \"size\": \"<string,null>\",\n                  \"measurement\": \"<string,null>\"\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"styleId\": \"<string>\",\n          \"productCategoryId\": \"<string>\",\n          \"styleName\": \"<string,null>\",\n          \"productCategoryName\": \"<string>\",\n          \"solids\": \"<array,null>\",\n          \"assortments\": \"<array,null>\",\n          \"measurements\": [\n            {\n              \"caption\": \"<string,null>\",\n              \"pom\": \"<string,null>\",\n              \"unit\": \"<string,null>\",\n              \"isPomCritical\": \"<boolean,null>\",\n              \"tolerance\": \"<number,null>\",\n              \"toleranceLower\": \"<number,null>\",\n              \"toleranceUpper\": \"<number,null>\",\n              \"sizes\": [\n                {\n                  \"size\": \"<string,null>\",\n                  \"measurement\": \"<string,null>\"\n                },\n                {\n                  \"size\": \"<string,null>\",\n                  \"measurement\": \"<string,null>\"\n                }\n              ]\n            },\n            {\n              \"caption\": \"<string,null>\",\n              \"pom\": \"<string,null>\",\n              \"unit\": \"<string,null>\",\n              \"isPomCritical\": \"<boolean,null>\",\n              \"tolerance\": \"<number,null>\",\n              \"toleranceLower\": \"<number,null>\",\n              \"toleranceUpper\": \"<number,null>\",\n              \"sizes\": [\n                {\n                  \"size\": \"<string,null>\",\n                  \"measurement\": \"<string,null>\"\n                },\n                {\n                  \"size\": \"<string,null>\",\n                  \"measurement\": \"<string,null>\"\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"questionnaire\": {\n      \"questions\": [\n        {\n          \"id\": \"<string>\",\n          \"questionType\": \"<string>\",\n          \"validation\": {\n            \"mandatory\": \"<boolean>\"\n          },\n          \"description\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"questionType\": \"<string>\",\n          \"validation\": {\n            \"mandatory\": \"<boolean>\"\n          },\n          \"description\": \"<string>\"\n        }\n      ]\n    }\n  }\n}",
+                          "createdAt": "2026-10-22T02:27:57.000Z",
+                          "updatedAt": "2026-10-22T02:27:57.000Z",
+                          "uid": "35240-24c31d8c-5a4d-4fa5-8dd8-ccc83763c649"
+                        },
+                        {
+                          "id": "a44be23d-4690-4f03-9a2e-2e5dfb5abc78",
+                          "name": "Inspection not found or not accessible by the authenticated organization.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "apiKey",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/inspections/:uuid?include_pull_sample=0",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "inspections",
+                                ":uuid"
+                              ],
+                              "query": [
+                                {
+                                  "description": "When set to `1`, embeds the AQL-derived `itemPullSample` on each solid\nand assortment configuration item under `detailOfPIPO`. Requires the\nworkmanship step to be configured with an AQL table; otherwise the field\nis omitted.\n",
+                                  "key": "include_pull_sample",
+                                  "value": "0"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "uuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string,null>\"\n}",
+                          "createdAt": "2026-10-22T02:27:57.000Z",
+                          "updatedAt": "2026-10-22T02:27:57.000Z",
+                          "uid": "35240-a44be23d-4690-4f03-9a2e-2e5dfb5abc78"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T02:27:57.000Z",
+                      "updatedAt": "2026-10-22T02:27:57.000Z",
+                      "uid": "35240-39cd8631-3026-486e-8017-24e5a73c9d1d"
                     }
                   ],
-                  "variable": []
+                  "id": "10374b69-8eab-43b7-a089-beb32e5762a3",
+                  "createdAt": "2026-10-22T02:27:57.000Z",
+                  "updatedAt": "2026-10-22T02:27:57.000Z",
+                  "uid": "35240-10374b69-8eab-43b7-a089-beb32e5762a3"
                 },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": [\n    {\n      \"inspectionId\": \"e8b7a579-1e13-bd57-5213-9d9877f15a1d\",\n      \"caseNumber\": \"string\",\n      \"status\": \"string\",\n      \"createdDate\": \"2016-11-21T13:57:18.126Z\",\n      \"updatedDate\": \"2020-07-21T17:10:49.023Z\",\n      \"createdBy\": \"string\",\n      \"fromOrganizationId\": \"string\",\n      \"fromOrganizationName\": \"string\",\n      \"toOrganizationId\": \"string\",\n      \"toOrganizationName\": \"string\",\n      \"expectedDate\": {\n        \"inspectionDate\": \"2020-02-26T10:50:00.829Z\",\n        \"shipmentDate\": \"1948-11-08T10:55:33.182Z\"\n      },\n      \"clientInformation\": {\n        \"organizationId\": \"string\",\n        \"localOrganizationId\": \"string\",\n        \"localOrganizationIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"localState\": \"Wyoming\",\n        \"localPostalCode\": \"82052\",\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"name\": \"Contact Name\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"telephoneNumber\": \"1234567890\"\n        }\n      },\n      \"vendorInformation\": {\n        \"organizationId\": \"string\",\n        \"localOrganizationId\": \"string\",\n        \"localOrganizationIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"localState\": \"Wyoming\",\n        \"localPostalCode\": \"82052\",\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"name\": \"Contact Name\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"telephoneNumber\": \"1234567890\"\n        }\n      },\n      \"factoryInformation\": {\n        \"organizationId\": \"string\",\n        \"localOrganizationId\": \"string\",\n        \"localOrganizationIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"localState\": \"Wyoming\",\n        \"localPostalCode\": \"82052\",\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"name\": \"Contact Name\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"telephoneNumber\": \"1234567890\"\n        }\n      },\n      \"inspectionInformation\": {\n        \"typeOfInspection\": \"FRI\",\n        \"typeOfInspectionName\": \"Final Random Inspection\"\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"reasonCode\": \"Aborted - Order not ready\",\n      \"actualInspectionDate\": \"2008-12-06T00:16:55.122Z\",\n      \"confirmedBy\": \"string\",\n      \"confirmedDate\": \"1976-07-06T01:52:04.721Z\",\n      \"assignedToOrganization\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"localOrganizationIds\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"assignedToInspector\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\",\n        \"employeeId\": \"string\"\n      },\n      \"locationPicker\": {\n        \"address\": \"string\",\n        \"gpsLocation\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      },\n      \"inspectionForm\": \"string\",\n      \"workflowName\": \"string\"\n    },\n    {\n      \"inspectionId\": \"53992847-da07-4ddd-cbe8-6f95f7ffb9ab\",\n      \"caseNumber\": \"string\",\n      \"status\": \"string\",\n      \"createdDate\": \"2023-12-13T17:59:38.727Z\",\n      \"updatedDate\": \"2005-02-23T03:01:47.637Z\",\n      \"createdBy\": \"string\",\n      \"fromOrganizationId\": \"string\",\n      \"fromOrganizationName\": \"string\",\n      \"toOrganizationId\": \"string\",\n      \"toOrganizationName\": \"string\",\n      \"expectedDate\": {\n        \"inspectionDate\": \"2021-01-10T15:19:48.736Z\",\n        \"shipmentDate\": \"1982-01-19T17:36:07.137Z\"\n      },\n      \"clientInformation\": {\n        \"organizationId\": \"string\",\n        \"localOrganizationId\": \"string\",\n        \"localOrganizationIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"localState\": \"Wyoming\",\n        \"localPostalCode\": \"82052\",\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"name\": \"Contact Name\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"telephoneNumber\": \"1234567890\"\n        }\n      },\n      \"vendorInformation\": {\n        \"organizationId\": \"string\",\n        \"localOrganizationId\": \"string\",\n        \"localOrganizationIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"localState\": \"Wyoming\",\n        \"localPostalCode\": \"82052\",\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"name\": \"Contact Name\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"telephoneNumber\": \"1234567890\"\n        }\n      },\n      \"factoryInformation\": {\n        \"organizationId\": \"string\",\n        \"localOrganizationId\": \"string\",\n        \"localOrganizationIds\": [\n          \"string\",\n          \"string\"\n        ],\n        \"localState\": \"Wyoming\",\n        \"localPostalCode\": \"82052\",\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"contact\": {\n          \"contactId\": \"contact_id\",\n          \"name\": \"Contact Name\",\n          \"email\": \"email@email.com\",\n          \"mobileNumber\": \"1234567890\",\n          \"telephoneNumber\": \"1234567890\"\n        }\n      },\n      \"inspectionInformation\": {\n        \"typeOfInspection\": \"FRI\",\n        \"typeOfInspectionName\": \"Final Random Inspection\"\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"reasonCode\": \"Aborted - Order not ready\",\n      \"actualInspectionDate\": \"1985-11-03T19:48:17.786Z\",\n      \"confirmedBy\": \"string\",\n      \"confirmedDate\": \"1974-12-05T19:55:30.366Z\",\n      \"assignedToOrganization\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"localOrganizationIds\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"assignedToInspector\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"email\": \"string\",\n        \"employeeId\": \"string\"\n      },\n      \"locationPicker\": {\n        \"address\": \"string\",\n        \"gpsLocation\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      },\n      \"inspectionForm\": \"string\",\n      \"workflowName\": \"string\"\n    }\n  ],\n  \"total\": 4479,\n  \"offset\": 4978,\n  \"limit\": 7929\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d9babb1e-e110-4a20-b00c-66f429be562f",
-              "name": "Invalid query parameters (e.g. missing `ownership`, multiple `status` values, unpaired date range).",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "inspections"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "name": "List Inspections",
+                  "id": "a28f37e4-5fdc-4bb2-9d2e-1e1d8325994a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/inspections?ownership=received&status=completed&order=<string>&created_from=<dateTime>&created_to=<dateTime>&updated_from=<dateTime>&updated_to=<dateTime>&limit=10&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "inspections"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Ownership (Sent/Received/Shared)\n",
+                          "key": "ownership",
+                          "value": "received"
+                        },
+                        {
+                          "description": "Inspection status\n",
+                          "key": "status",
+                          "value": "completed"
+                        },
+                        {
+                          "description": "Sort order in the form `<field>:asc|desc`. Allowed fields: `created_date` and `updated_date`.\n",
+                          "key": "order",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Inclusive lower bound for creation date (ISO-8601 datetime). Must be\npaired with `created_to`.\n",
+                          "key": "created_from",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Inclusive upper bound for creation date (ISO-8601 datetime). Must be\npaired with `created_from`.\n",
+                          "key": "created_to",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Inclusive lower bound for last-updated date (ISO-8601 datetime). Must be\npaired with `updated_to`.\n",
+                          "key": "updated_from",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Inclusive upper bound for last-updated date (ISO-8601 datetime). Must be\npaired with `updated_from`.\n",
+                          "key": "updated_to",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Maximum number of records to return.",
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Number of records to skip.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ]
+                    },
+                    "description": "List inspections for the authenticated organization."
+                  },
+                  "response": [
                     {
-                      "key": "ownership",
-                      "value": "<string>"
+                      "id": "aa873da4-7296-4982-aad4-1092e69a8473",
+                      "name": "A paginated list of inspections.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/inspections?ownership=received&status=completed&order=<string>&created_from=<dateTime>&created_to=<dateTime>&updated_from=<dateTime>&updated_to=<dateTime>&limit=10&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "inspections"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Ownership (Sent/Received/Shared)\n",
+                              "key": "ownership",
+                              "value": "received"
+                            },
+                            {
+                              "description": "Inspection status\n",
+                              "key": "status",
+                              "value": "completed"
+                            },
+                            {
+                              "description": "Sort order in the form `<field>:asc|desc`. Allowed fields: `created_date` and `updated_date`.\n",
+                              "key": "order",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Inclusive lower bound for creation date (ISO-8601 datetime). Must be\npaired with `created_to`.\n",
+                              "key": "created_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Inclusive upper bound for creation date (ISO-8601 datetime). Must be\npaired with `created_from`.\n",
+                              "key": "created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Inclusive lower bound for last-updated date (ISO-8601 datetime). Must be\npaired with `updated_to`.\n",
+                              "key": "updated_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Inclusive upper bound for last-updated date (ISO-8601 datetime). Must be\npaired with `updated_from`.\n",
+                              "key": "updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Maximum number of records to return.",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Number of records to skip.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"data\": [\n    {\n      \"inspectionId\": \"<uuid>\",\n      \"caseNumber\": \"<string>\",\n      \"status\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"createdBy\": \"<string>\",\n      \"fromOrganizationId\": \"<string>\",\n      \"fromOrganizationName\": \"<string>\",\n      \"toOrganizationId\": \"<string>\",\n      \"toOrganizationName\": \"<string>\",\n      \"expectedDate\": {\n        \"inspectionDate\": \"<dateTime>\",\n        \"shipmentDate\": \"<string,null-date-time>\"\n      },\n      \"clientInformation\": {\n        \"organizationId\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"localState\": \"<string,null>\",\n        \"localPostalCode\": \"<string,null>\",\n        \"name\": \"<string>\",\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"country\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string,null>\",\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        }\n      },\n      \"vendorInformation\": {\n        \"organizationId\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"localState\": \"<string,null>\",\n        \"localPostalCode\": \"<string,null>\",\n        \"name\": \"<string>\",\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"country\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string,null>\",\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        }\n      },\n      \"factoryInformation\": {\n        \"organizationId\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"localState\": \"<string,null>\",\n        \"localPostalCode\": \"<string,null>\",\n        \"name\": \"<string>\",\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"country\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string,null>\",\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        }\n      },\n      \"inspectionInformation\": {\n        \"typeOfInspection\": \"<string>\",\n        \"typeOfInspectionName\": \"<string>\"\n      },\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"reasonCode\": \"<string,null>\",\n      \"actualInspectionDate\": \"<dateTime>\",\n      \"confirmedBy\": \"<string,null>\",\n      \"confirmedDate\": \"<dateTime>\",\n      \"assignedToOrganization\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\"\n      },\n      \"assignedToInspector\": null,\n      \"locationPicker\": {\n        \"address\": \"<string>\",\n        \"gpsLocation\": {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\"\n        }\n      },\n      \"inspectionForm\": \"<string>\",\n      \"workflowName\": \"<string,null>\"\n    },\n    {\n      \"inspectionId\": \"<uuid>\",\n      \"caseNumber\": \"<string>\",\n      \"status\": \"<string>\",\n      \"createdDate\": \"<dateTime>\",\n      \"updatedDate\": \"<dateTime>\",\n      \"createdBy\": \"<string>\",\n      \"fromOrganizationId\": \"<string>\",\n      \"fromOrganizationName\": \"<string>\",\n      \"toOrganizationId\": \"<string>\",\n      \"toOrganizationName\": \"<string>\",\n      \"expectedDate\": {\n        \"inspectionDate\": \"<dateTime>\",\n        \"shipmentDate\": \"<string,null-date-time>\"\n      },\n      \"clientInformation\": {\n        \"organizationId\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"localState\": \"<string,null>\",\n        \"localPostalCode\": \"<string,null>\",\n        \"name\": \"<string>\",\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"country\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string,null>\",\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        }\n      },\n      \"vendorInformation\": {\n        \"organizationId\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"localState\": \"<string,null>\",\n        \"localPostalCode\": \"<string,null>\",\n        \"name\": \"<string>\",\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"country\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string,null>\",\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        }\n      },\n      \"factoryInformation\": {\n        \"organizationId\": \"<string>\",\n        \"localOrganizationId\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\",\n        \"localState\": \"<string,null>\",\n        \"localPostalCode\": \"<string,null>\",\n        \"name\": \"<string>\",\n        \"address\": \"<string>\",\n        \"city\": \"<string>\",\n        \"country\": \"<string>\",\n        \"contact\": {\n          \"contactId\": \"<string,null>\",\n          \"name\": \"<string>\",\n          \"email\": \"<string>\",\n          \"mobileNumber\": \"<string>\",\n          \"telephoneNumber\": \"<string>\"\n        }\n      },\n      \"inspectionInformation\": {\n        \"typeOfInspection\": \"<string>\",\n        \"typeOfInspectionName\": \"<string>\"\n      },\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"reasonCode\": \"<string,null>\",\n      \"actualInspectionDate\": \"<dateTime>\",\n      \"confirmedBy\": \"<string,null>\",\n      \"confirmedDate\": \"<dateTime>\",\n      \"assignedToOrganization\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"localOrganizationIds\": \"<array,null>\"\n      },\n      \"assignedToInspector\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"email\": \"<string>\",\n        \"employeeId\": \"<string>\"\n      },\n      \"locationPicker\": {\n        \"address\": \"<string>\",\n        \"gpsLocation\": {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\"\n        }\n      },\n      \"inspectionForm\": \"<string>\",\n      \"workflowName\": \"<string,null>\"\n    }\n  ],\n  \"total\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"limit\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-22T02:27:57.000Z",
+                      "updatedAt": "2026-10-22T02:27:57.000Z",
+                      "uid": "35240-aa873da4-7296-4982-aad4-1092e69a8473"
                     },
                     {
-                      "key": "status",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "order",
-                      "value": "created_date:desc"
-                    },
-                    {
-                      "key": "created_from",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "created_to",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "updated_from",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "updated_to",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
+                      "id": "bddb76a0-a954-4b6f-a669-c2daba14d72c",
+                      "name": "Invalid query parameters (e.g. missing `ownership`, multiple `status` values, unpaired date range).",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "apiKey",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/inspections?ownership=received&status=completed&order=<string>&created_from=<dateTime>&created_to=<dateTime>&updated_from=<dateTime>&updated_to=<dateTime>&limit=10&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "inspections"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Ownership (Sent/Received/Shared)\n",
+                              "key": "ownership",
+                              "value": "received"
+                            },
+                            {
+                              "description": "Inspection status\n",
+                              "key": "status",
+                              "value": "completed"
+                            },
+                            {
+                              "description": "Sort order in the form `<field>:asc|desc`. Allowed fields: `created_date` and `updated_date`.\n",
+                              "key": "order",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Inclusive lower bound for creation date (ISO-8601 datetime). Must be\npaired with `created_to`.\n",
+                              "key": "created_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Inclusive upper bound for creation date (ISO-8601 datetime). Must be\npaired with `created_from`.\n",
+                              "key": "created_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Inclusive lower bound for last-updated date (ISO-8601 datetime). Must be\npaired with `updated_to`.\n",
+                              "key": "updated_from",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Inclusive upper bound for last-updated date (ISO-8601 datetime). Must be\npaired with `updated_from`.\n",
+                              "key": "updated_to",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Maximum number of records to return.",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Number of records to skip.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string,null>\"\n}",
+                      "createdAt": "2026-10-22T02:27:57.000Z",
+                      "updatedAt": "2026-10-22T02:27:57.000Z",
+                      "uid": "35240-bddb76a0-a954-4b6f-a669-c2daba14d72c"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "createdAt": "2026-10-22T02:27:57.000Z",
+                  "updatedAt": "2026-10-22T02:27:57.000Z",
+                  "uid": "35240-a28f37e4-5fdc-4bb2-9d2e-1e1d8325994a"
                 }
               ],
-              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "27383397-176b-4ee6-ab1f-4e2ba1db6cc7",
+              "createdAt": "2026-10-22T02:27:57.000Z",
+              "updatedAt": "2026-10-22T02:27:57.000Z",
+              "uid": "35240-27383397-176b-4ee6-ab1f-4e2ba1db6cc7"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c672174b-5029-4b6e-a783-778018d6bf60",
-          "name": "Get Inspection",
-          "request": {
-            "name": "Get Inspection",
-            "description": {
-              "content": "Retrieve a single inspection by UUID.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v1",
-                "inspections",
-                ":uuid"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "include_pull_sample",
-                  "value": "0",
-                  "description": "When set to `1`, embeds the AQL-derived `itemPullSample` on each solid\nand assortment configuration item under `detailOfPIPO`. Requires the\nworkmanship step to be configured with an AQL table; otherwise the field\nis omitted.\n"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "uuid",
-                  "description": "(Required) Inspection UUID (equals bookingId)."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "3ae131a2-d8d9-4c61-996a-dbb4a372f5d9",
-              "name": "A single inspection.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "inspections",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "include_pull_sample",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "uuid",
-                      "description": "(Required) Inspection UUID (equals bookingId)."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"data\": {\n    \"inspectionId\": \"b0c4febd-cdff-2290-b0e2-0a6056d2baf5\",\n    \"caseNumber\": \"string\",\n    \"status\": \"string\",\n    \"createdDate\": \"2000-12-10T11:28:13.726Z\",\n    \"updatedDate\": \"2021-11-29T11:16:32.938Z\",\n    \"createdBy\": \"string\",\n    \"fromOrganizationId\": \"string\",\n    \"fromOrganizationName\": \"string\",\n    \"toOrganizationId\": \"string\",\n    \"toOrganizationName\": \"string\",\n    \"expectedDate\": {\n      \"inspectionDate\": \"1965-08-30T13:25:18.379Z\",\n      \"shipmentDate\": \"1960-07-26T16:35:50.571Z\"\n    },\n    \"clientInformation\": {\n      \"organizationId\": \"string\",\n      \"localOrganizationId\": \"string\",\n      \"localOrganizationIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"localState\": \"Wyoming\",\n      \"localPostalCode\": \"82052\",\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"contact\": {\n        \"contactId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"email\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"mobileNumber\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"telephoneNumber\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    \"vendorInformation\": {\n      \"organizationId\": \"string\",\n      \"localOrganizationId\": \"string\",\n      \"localOrganizationIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"localState\": \"Wyoming\",\n      \"localPostalCode\": \"82052\",\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"contact\": {\n        \"contactId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"email\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"mobileNumber\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"telephoneNumber\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    \"factoryInformation\": {\n      \"organizationId\": \"string\",\n      \"localOrganizationId\": \"string\",\n      \"localOrganizationIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"localState\": \"Wyoming\",\n      \"localPostalCode\": \"82052\",\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"contact\": {\n        \"contactId\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"email\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"mobileNumber\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"telephoneNumber\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    \"inspectionInformation\": {\n      \"typeOfInspection\": \"FRI\",\n      \"typeOfInspectionName\": \"Final Random Inspection\"\n    },\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"reasonCode\": \"Aborted - Order not ready\",\n    \"actualInspectionDate\": \"1986-05-13T16:25:48.112Z\",\n    \"confirmedBy\": \"string\",\n    \"confirmedDate\": \"1967-05-02T12:36:19.975Z\",\n    \"assignedToOrganization\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"localOrganizationIds\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"assignedToInspector\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"employeeId\": \"string\"\n    },\n    \"locationPicker\": {\n      \"address\": \"string\",\n      \"gpsLocation\": {\n        \"latitude\": \"string\",\n        \"longitude\": \"string\"\n      }\n    },\n    \"inspectionForm\": \"string\",\n    \"workflowName\": \"string\",\n    \"billingInformation\": {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\",\n      \"contact\": {\n        \"name\": \"Contact Name\",\n        \"email\": \"email@email.com\",\n        \"mobileNumber\": \"1234567890\",\n        \"telephoneNumber\": \"1234567890\"\n      }\n    },\n    \"detailOfPIPO\": {\n      \"pipoInformation\": {\n        \"poNumber\": \"string\",\n        \"opoNumber\": \"string\",\n        \"poTypes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"productLineId\": \"string\",\n        \"productLineName\": \"string\"\n      },\n      \"styles\": [\n        {\n          \"styleId\": \"string\",\n          \"productCategoryId\": \"string\",\n          \"styleName\": \"string\",\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"assortments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"measurements\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"styleId\": \"string\",\n          \"productCategoryId\": \"string\",\n          \"styleName\": \"string\",\n          \"productCategoryName\": \"string\",\n          \"solids\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"assortments\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"measurements\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"questionnaire\": {\n      \"questions\": [\n        {\n          \"id\": \"string\",\n          \"questionType\": \"string\",\n          \"validation\": {\n            \"mandatory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\",\n          \"options\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"questionType\": \"string\",\n          \"validation\": {\n            \"mandatory\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\",\n          \"options\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "abb6c9db-5006-4457-8e50-d2332905cfd8",
-              "name": "Inspection not found or not accessible by the authenticated organization.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v1",
-                    "inspections",
-                    ":uuid"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "include_pull_sample",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "uuid",
-                      "description": "(Required) Inspection UUID (equals bookingId)."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "57bb4050-0a86-42d4-86c6-3d79df6a7f7b",
+          "createdAt": "2026-10-22T02:27:57.000Z",
+          "updatedAt": "2026-10-22T02:27:57.000Z",
+          "uid": "35240-57bb4050-0a86-42d4-86c6-3d79df6a7f7b"
         }
       ],
-      "event": []
+      "id": "dbdf00ee-7b78-4bed-b3ed-c45b2e342a10",
+      "createdAt": "2026-10-22T02:27:57.000Z",
+      "updatedAt": "2026-10-22T02:27:57.000Z",
+      "uid": "35240-dbdf00ee-7b78-4bed-b3ed-c45b2e342a10"
     }
   ],
-  "event": [],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apiKey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
   "variable": [
     {
-      "type": "string",
-      "value": "https://files-integration.inspectorio.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://sight.inspectorio.com"
     }
-  ],
-  "info": {
-    "_postman_id": "092c4a91-e90c-417d-98fe-57ba1d7033a9",
-    "name": "File Management ANALYTICS Inspections API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
